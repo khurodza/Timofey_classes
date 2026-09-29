@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>★ Homework – Lesson NUMBER</title>
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+
+<header class="hero hw">
+  <div class="wrap">
+    <a class="back-home" href="../lesson-NUMBER.html">← Back to Lesson NUMBER</a>
+    <div class="hero-grid">
+      <div>
+        <h1>Homework: ★ TOPIC</h1>
+        <p>★ One short sentence on what this homework covers.</p>
+        <div class="hero-badges">
+          <span class="badge">Lesson NUMBER</span>
+          <span class="badge">★ Unit ★</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ══════════════════════════════════════════════════════
+       Copy a whole <section class="step">…</section> block
+       for each homework task. Same exercise types as a
+       regular lesson page — see the main GUIDE.md.
+  ══════════════════════════════════════════════════════ -->
+  <section class="step" id="s1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Task 1</div>
+        <h2>★ Fill in the blanks</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-fill">
+      <div class="exercise-label">Fill in the Blanks</div>
+      <h3>★ Instruction, e.g. "Write the correct word."</h3>
+
+      <p>1. ★ Sentence <input class="blank" id="hw1" data-answer="ANSWER" placeholder="?"> here.</p>
+      <p>2. ★ Sentence <input class="blank" id="hw2" data-answer="ANSWER" placeholder="?"> here.</p>
+
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-fill')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-fill')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="s2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Task 2</div>
+        <h2>★ Writing</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Writing</div>
+      <h3>★ Instruction, e.g. "Write four sentences about your weekend."</h3>
+      <textarea class="free-write" id="fw-hw" placeholder="Write here…" rows="5"></textarea>
+      <div class="char-count" id="cc-fw-hw">0 characters</div>
+    </div>
+  </section>
+
+  <section class="step" id="s3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Finish</div>
+        <h2>★ Done</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <p>★ A short closing note.</p>
+      <div class="btn-row">
+        <a class="btn-ghost" href="../lesson-NUMBER.html">← Back to Lesson NUMBER</a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /wrap -->
+
+<div class="scorebar" id="scoreBar" style="display:none">
+  <div class="wrap">
+    <span>Score: <span id="scoreCorrect">0</span> correct · <span id="scoreDone">0</span>/<span id="scoreTotal">0</span> answered</span>
+    <div class="meter"><i id="scoreMeter"></i></div>
+    <button class="btn-primary" onclick="checkAll()">Check my answers ✓</button>
+  </div>
+</div>
+
+<script src="../../assets/lessons.js"></script>
+<script src="../../assets/matching.js"></script>
+<script src="../../assets/name.js"></script>
+</body>
+</html>

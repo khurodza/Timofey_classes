@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My English Lessons</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <h1 id="greetingText" class="name-slot" data-with="Welcome, {name}!" data-without="Welcome!">Welcome!</h1>
+        <p>Pick a lesson to get started.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="name-bar">
+    <label for="studentName">Your name:</label>
+    <input type="text" id="studentName" placeholder="Type your name…" autocomplete="off">
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       ADD NEW LESSONS BELOW THIS LINE
+       Copy one .lesson-card block and update:
+         href          → the lesson file, e.g. lessons/lesson-02.html
+         .lesson-num   → lesson number
+         .lesson-topic → topic title
+         .lesson-date  → date of the class
+       Card colours cycle automatically — you don't set them.
+  ══════════════════════════════════════════════════════════ -->
+
+  <div class="section-title">All Lessons</div>
+
+  <div class="lesson-list" id="lessonList">
+
+    <!-- ADD NEW LESSON CARDS HERE (newest lesson goes first / at the top) -->
+
+    <!-- LESSON 1 -->
+    <div class="lesson-card">
+      <span class="lesson-num">1</span>
+      <div class="lesson-info">
+        <span class="lesson-topic">Hello! Let's see what you know</span>
+        <div class="lesson-tags">
+          <span class="lesson-tag">getting to know you</span>
+          <span class="lesson-tag">my interests</span>
+          <span class="lesson-tag">placement</span>
+        </div>
+        <span class="lesson-date">First lesson</span>
+      </div>
+      <div class="lesson-actions">
+        <a class="btn-primary" href="lessons/lesson-01.html">Lesson →</a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer class="site-footer name-slot" data-with="{name}'s English Lessons" data-without="My English Lessons">My English Lessons</footer>
+
+<script src="assets/name.js"></script>
+<script>
+  /* the name box keeps the saved name in sync (name.js asks for it on the first visit) */
+  const nameInput = document.getElementById('studentName');
+  document.addEventListener('studentnamechange', e => {
+    if (document.activeElement !== nameInput) nameInput.value = e.detail;
+  });
+  nameInput.addEventListener('input', () => setStudentName(nameInput.value));
+</script>
+
+</body>
+</html>

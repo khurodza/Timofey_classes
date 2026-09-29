@@ -1,0 +1,614 @@
+/* ============================================================
+   Timofey's English Lessons — shared visual style
+   "Language explorer" look — cool paper, navy + bright blue,
+   rounded cards with soft shadows, speech-bubble header.
+   Same class names as the original site, so lessons.js and
+   every template work unchanged.
+   Do not edit unless you want to change the look of every page.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&family=Rubik:wght@500;600;700;800&display=swap');
+
+:root{
+  /* core palette */
+  --bg:#F3F5FB; --paper:#FFFFFF; --ink:#16213E; --muted:#5E6886;
+  --blue:#3352E0; --blue-dark:#2340C4; --blue-soft:#E8EDFF;
+  --orange:#FF7A45; --orange-soft:#FFEDE4;
+  --violet:#7B5CE6; --violet-soft:#EEE9FF;
+  --green:#12A374; --green-soft:#DDF6EC; --green-ink:#0B6B4C;
+  --red:#E03E52; --red-soft:#FDE6E9; --red-ink:#9C1F31;
+  --yellow:#FFC53D; --yellow-soft:#FFF6DB; --yellow-ink:#6E4E00;
+  --border:#DDE3F1; --border-strong:#C3CCE4;
+  --radius:20px;
+  --shadow:0 1px 2px rgba(22,33,62,.05),0 8px 24px rgba(22,33,62,.07);
+  --shadow-sm:0 1px 2px rgba(22,33,62,.08),0 3px 8px rgba(22,33,62,.06);
+  --font-body:"Nunito",ui-rounded,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --font-head:"Rubik","Nunito",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+
+  /* aliases for inline styles copied from the original templates */
+  --cream:var(--bg); --line:var(--border-strong); --coral:var(--orange); --teal:var(--blue);
+  --lilac:var(--violet); --peach:var(--orange-soft); --mint:#EEF2FB; --butter:var(--yellow-soft);
+  --lav:var(--violet-soft); --okgreen:var(--green-soft); --badred:var(--red-soft);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ink);background-color:var(--bg);
+  background-image:url('doodles.svg'),radial-gradient(rgba(51,82,224,.06) 1.2px,transparent 1.2px);
+  background-size:640px 640px,22px 22px;
+  font:18px/1.6 var(--font-body);font-weight:600;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px 80px}
+h1,h2,h3{font-family:var(--font-head);line-height:1.2;margin:0;font-weight:700}
+h1{font-size:clamp(30px,4.6vw,46px);letter-spacing:-.02em}
+h2{font-size:clamp(21px,3vw,28px);letter-spacing:-.01em}
+h3{font-size:18px;font-weight:600}
+p{margin:.6em 0}
+a{color:inherit}
+b,strong{font-weight:800}
+
+/* ---------------- hero header (used on every page) ---------------- */
+header.hero{
+  color:#fff;padding:34px 0 34px;position:relative;overflow:hidden;min-height:190px;
+  background:
+    url('hero-art.svg') right 20px bottom -34px / 420px auto no-repeat,
+    radial-gradient(circle at 85% 20%,rgba(255,197,61,.28),transparent 32%),
+    radial-gradient(circle at 10% 120%,rgba(123,92,230,.55),transparent 45%),
+    linear-gradient(135deg,#16213E 0%,#23357F 55%,#3352E0 100%);
+}
+/* decorative speech bubbles */
+header.hero::before,header.hero::after{
+  position:absolute;font-family:var(--font-head);font-weight:800;pointer-events:none;
+  border-radius:22px;padding:10px 20px;box-shadow:0 10px 30px rgba(0,0,0,.18)
+}
+header.hero::before{
+  content:"Hallo!";right:clamp(20px,9vw,150px);top:30px;font-size:26px;
+  background:var(--yellow);color:var(--ink);transform:rotate(-6deg);border-bottom-right-radius:4px
+}
+header.hero::after{
+  content:"Hello!";right:clamp(10px,3vw,50px);top:98px;font-size:22px;
+  background:#fff;color:var(--blue);transform:rotate(5deg);border-bottom-left-radius:4px
+}
+@media(max-width:820px){
+  header.hero::before,header.hero::after{display:none}
+  header.hero,header.hero.hw{background-size:260px auto,auto,auto,auto;background-position:right -60px bottom -40px,0 0,0 0,0 0}
+}
+header.hero .wrap{padding-bottom:0;position:relative;z-index:1}
+.hero-grid{display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.hero-grid > div:first-child{max-width:640px}
+.hero p{margin:.5em 0 0;max-width:56ch;color:#D9E0FF;font-size:17px}
+.hero-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.badge{
+  background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:999px;
+  padding:5px 14px;font-size:13px;font-weight:800;backdrop-filter:blur(4px)
+}
+.back-home{
+  display:inline-flex;align-items:center;gap:6px;color:#fff;text-decoration:none;
+  font-weight:800;font-size:14px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);
+  border-radius:999px;padding:6px 14px;margin-bottom:16px
+}
+.back-home:hover{background:rgba(255,255,255,.22)}
+header.hero.hw{
+  background:
+    url('hero-art.svg') right 20px bottom -34px / 420px auto no-repeat,
+    radial-gradient(circle at 85% 20%,rgba(255,197,61,.28),transparent 32%),
+    linear-gradient(135deg,#3B2A86 0%,#7B5CE6 100%);
+}
+
+/* ---------------- lesson parts (big tabs under the header) ---------------- */
+nav.parts{background:var(--paper);padding:14px 0;border-bottom:1px solid var(--border);box-shadow:var(--shadow-sm)}
+nav.parts .wrap{padding-top:0;padding-bottom:0;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.part-tab{
+  font:inherit;font-family:var(--font-head);font-weight:600;font-size:16px;color:var(--muted);cursor:pointer;
+  padding:9px 18px;background:var(--bg);border:1px solid var(--border);border-radius:999px;box-shadow:none;
+  transition:background .15s,color .15s
+}
+.part-tab:hover{background:var(--blue-soft);color:var(--blue);transform:none}
+.part-tab:active{transform:none}
+.part-tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.part-tab.hw.active{background:var(--violet);border-color:var(--violet)}
+.lesson-part{display:none}
+.lesson-part.active{display:block}
+
+/* ---------------- sticky nav chips ---------------- */
+nav.chips{
+  position:sticky;top:0;z-index:40;background:rgba(243,245,251,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);padding:10px 0;
+}
+nav.chips .wrap{padding-bottom:0;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+nav.chips a{
+  text-decoration:none;color:var(--ink);background:var(--paper);border:1px solid var(--border);
+  border-radius:999px;padding:5px 13px;font-size:14px;font-weight:800;white-space:nowrap
+}
+nav.chips a:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+
+/* ---------------- generic card + step ---------------- */
+section.step{margin-top:38px;scroll-margin-top:70px}
+.card{
+  background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:26px;margin-top:16px
+}
+.step-head{display:flex;gap:14px;align-items:center}
+.step-num{
+  flex:0 0 auto;width:48px;height:48px;border-radius:50%;color:#fff;
+  display:grid;place-items:center;font-family:var(--font-head);font-weight:700;font-size:21px;
+  background:var(--blue);box-shadow:0 6px 14px rgba(51,82,224,.28)
+}
+.step-meta{font-size:12px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+
+/* colour cycle helper for step-num badges */
+.step:nth-of-type(4n+1) .step-num{background:var(--blue);box-shadow:0 6px 14px rgba(51,82,224,.28)}
+.step:nth-of-type(4n+2) .step-num{background:var(--orange);box-shadow:0 6px 14px rgba(255,122,69,.3)}
+.step:nth-of-type(4n+3) .step-num{background:var(--green);box-shadow:0 6px 14px rgba(18,163,116,.28)}
+.step:nth-of-type(4n+4) .step-num{background:var(--violet);box-shadow:0 6px 14px rgba(123,92,230,.28)}
+
+/* ---------------- tip box ---------------- */
+.tip{
+  position:relative;background:var(--blue-soft);border:1px solid #D3DCFF;border-radius:14px;
+  padding:12px 16px 12px 48px;margin-top:16px;font-size:15px
+}
+.tip::before{content:"💡";position:absolute;left:16px;top:11px;font-size:18px}
+.tip b{color:var(--blue-dark)}
+
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+
+/* ---------------- buttons ---------------- */
+button,.btn,.btn-primary,.btn-accent,.btn-warm,.btn-ghost{
+  font:inherit;font-weight:800;font-size:16px;cursor:pointer;border:1px solid var(--border-strong);
+  background:var(--paper);color:var(--ink);border-radius:12px;padding:10px 20px;
+  box-shadow:var(--shadow-sm);transition:transform .1s ease,box-shadow .1s ease,background .15s;
+  display:inline-block;text-decoration:none
+}
+button:hover,.btn:hover,.btn-primary:hover,.btn-accent:hover,.btn-warm:hover,.btn-ghost:hover{transform:translateY(-1px)}
+button:active,.btn:active,.btn-primary:active,.btn-accent:active,.btn-warm:active,.btn-ghost:active{
+  transform:translateY(1px);box-shadow:none
+}
+button:focus-visible,a:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.btn-primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn-primary:hover{background:var(--blue-dark)}
+.btn-accent{background:var(--violet);border-color:var(--violet);color:#fff}
+.btn-warm{background:var(--orange);border-color:var(--orange);color:#fff}
+.btn-ghost{background:var(--paper)}
+.btn-row{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+
+/* ---------------- exercise label ---------------- */
+.exercise-label{
+  display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:900;text-transform:uppercase;
+  letter-spacing:.09em;color:var(--blue-dark);background:var(--blue-soft);padding:4px 12px 4px 10px;
+  border-radius:999px;margin-bottom:12px
+}
+.exercise-label::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue)}
+.exercise-label.hw{color:var(--violet);background:var(--violet-soft)}
+.exercise-label.hw::before{background:var(--violet)}
+
+/* ---------------- Everyday English phrase box ---------------- */
+.ee-box{
+  margin:18px 0 6px;border:1px solid var(--border);border-radius:18px;overflow:hidden;
+  background:var(--yellow-soft)
+}
+.ee-head{
+  display:flex;align-items:center;gap:10px;padding:10px 18px;background:var(--ink);color:#fff;
+  font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:.09em
+}
+.ee-icon{font-size:20px;letter-spacing:0}
+.ee-list{display:flex;flex-wrap:wrap;gap:10px;padding:16px}
+.ee-item{
+  flex:1 1 200px;display:flex;flex-direction:column;gap:2px;padding:12px 16px;background:var(--paper);
+  border:1px solid var(--border);border-radius:14px
+}
+.ee-phrase{font-family:var(--font-head);font-size:20px;font-weight:700;line-height:1.25;color:var(--ink)}
+.ee-mean{font-size:15px;font-weight:700;color:var(--muted)}
+.ee-mean::before{content:'= ';color:var(--blue);font-weight:900}
+.ee-list.compact{display:flex;flex-wrap:wrap;gap:10px}
+.ee-list.compact .ee-phrase{
+  font-size:17px;padding:7px 16px;background:var(--paper);border:1px solid var(--border);border-radius:999px
+}
+
+/* ---------------- fill in the blanks ---------------- */
+.blank{
+  font:inherit;font-weight:800;text-align:center;color:var(--ink);
+  border:2px solid transparent;border-bottom:3px solid var(--border-strong);border-radius:10px;
+  background:#EEF2FB;padding:5px 10px;min-width:110px;outline:none;transition:background .15s,border-color .15s
+}
+.blank::placeholder{color:#A3ACC6}
+.blank:focus{background:var(--paper);border-color:var(--blue)}
+.blank.correct{background:var(--green-soft);border-color:var(--green);color:var(--green-ink)}
+.blank.wrong{background:var(--red-soft);border-color:var(--red);color:var(--red-ink)}
+.blank.line-write{width:100%;text-align:left;font-weight:700;display:block;margin-top:6px}
+
+/* the given word a student has to transform (e.g. the adjective in brackets) */
+.cue{
+  background:var(--yellow);color:var(--ink);border-radius:6px;padding:1px 7px;
+  font-weight:800;white-space:nowrap
+}
+
+/* a blank with the word to transform shown as a label above the box */
+.cue-input{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:2px 6px}
+.cue-lab{
+  font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.07em;line-height:1.5;
+  color:var(--yellow-ink);background:var(--yellow);border-radius:999px;padding:1px 10px;margin-bottom:3px
+}
+.cue-input .blank{min-width:150px;width:150px;margin:0}
+.cue-input .given{
+  display:inline-block;min-width:150px;text-align:center;font-weight:800;
+  background:var(--green-soft);border:2px dashed var(--green);border-radius:10px;padding:5px 10px;color:var(--green-ink)
+}
+
+/* a numbered sentence that contains a .cue-input gap */
+.gap-line{line-height:1.9;margin:0 0 10px}
+.gap-line .num{font-weight:900;color:var(--muted);margin-right:4px}
+
+/* two-speaker dialogue (name chip + line) */
+.dialogue{display:grid;grid-template-columns:auto 1fr;gap:12px 14px;align-items:start;margin:6px 0}
+.dl-name{
+  font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.07em;color:#fff;
+  background:var(--blue);border-radius:999px;padding:6px 14px;white-space:nowrap;margin-top:8px
+}
+.dl-name.two{background:var(--orange)}
+.dl-text{margin:0;line-height:1.85;padding:6px 0}
+.dl-text.ask{background:var(--yellow-soft);border:1px solid #F7E3A6;border-radius:14px;padding:6px 14px}
+@media(max-width:620px){
+  .dialogue{grid-template-columns:1fr;gap:4px 0}
+  .dl-name{justify-self:start;margin-top:10px}
+}
+
+/* possibly new word in a reading text (highlighter stroke) */
+.hl{background:linear-gradient(transparent 55%,#FFE08A 55%);font-weight:800;padding:0 2px;border-radius:2px}
+
+/* reading text + picture side by side (stacks on small screens) */
+.read-grid{display:grid;grid-template-columns:1fr minmax(220px,300px);gap:18px;align-items:center;margin:10px 0}
+.read-grid .media-img{margin-top:0}
+@media(max-width:620px){.read-grid{grid-template-columns:1fr}}
+
+/* worked example (already answered, shown for reference, not interactive) */
+.example-row{
+  display:flex;gap:10px;align-items:baseline;background:#F6F8FD;border:1px dashed var(--border-strong);
+  border-radius:12px;padding:8px 12px;margin-bottom:12px;font-size:15px
+}
+.example-row .ex-tag{
+  flex:0 0 auto;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;
+  color:#fff;background:var(--green);border-radius:999px;padding:2px 10px
+}
+
+/* tap-to-underline phrases ("find and underline … in the text") */
+.tap{cursor:pointer;border-radius:6px;padding:0 3px;user-select:none;transition:background .12s}
+.tap:hover{background:var(--yellow-soft)}
+.tap.ul{text-decoration:underline;text-decoration-thickness:3px;text-decoration-color:var(--orange);text-underline-offset:4px}
+.tap.correct{background:var(--green-soft);color:var(--green-ink);font-weight:800}
+.tap.wrong{background:var(--red-soft);color:var(--red);text-decoration:line-through}
+
+/* reference table (grammar rules, not interactive) */
+.ref-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;font-size:15px;
+  border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.ref-table th{background:var(--ink);color:#fff;padding:9px 14px;text-align:left;font-weight:800}
+.ref-table td{padding:9px 14px;border-top:1px solid var(--border);background:var(--paper)}
+.ref-table td + td,.ref-table th + th{border-left:1px solid var(--border)}
+.ref-table td.label{font-weight:800;background:var(--blue-soft);color:var(--blue-dark);white-space:nowrap}
+.ref-table tr.group td{background:var(--bg);font-weight:800;text-align:center;color:var(--muted)}
+
+/* plain reference word list (click a word to cross it out once used) */
+.word-bank-ref{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.word-bank-ref span{background:var(--yellow-soft);border:1px solid #F1D98E;border-radius:999px;padding:4px 14px;font-size:14px;font-weight:800;cursor:pointer;user-select:none}
+.word-bank-ref span:hover{background:var(--yellow)}
+.word-bank-ref span.crossed{text-decoration:line-through;opacity:.5;background:var(--paper)}
+
+/* ---------------- multiple choice ---------------- */
+.mc-options{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.mc-option{
+  display:flex;align-items:center;gap:12px;padding:11px 16px;
+  border:2px solid var(--border);border-radius:14px;cursor:pointer;
+  background:var(--paper);font-size:16px;font-weight:700;transition:background .15s,border-color .15s;user-select:none
+}
+.mc-option:hover{border-color:#B8C5F5;background:#F7F9FF}
+.mc-option input[type=radio]{display:none}
+.mc-bullet{
+  width:28px;height:28px;border-radius:50%;background:var(--bg);color:var(--muted);
+  display:grid;place-items:center;flex-shrink:0;font-size:13px;font-weight:900
+}
+.mc-option.selected{background:var(--blue-soft);border-color:var(--blue)}
+.mc-option.selected .mc-bullet{background:var(--blue);color:#fff}
+.mc-option.correct{background:var(--green-soft);border-color:var(--green)}
+.mc-option.correct .mc-bullet{background:var(--green);color:#fff}
+.mc-option.wrong{background:var(--red-soft);border-color:var(--red)}
+.mc-option.wrong .mc-bullet{background:var(--red);color:#fff}
+
+/* ---------------- matching ---------------- */
+/* both columns share one grid, so each row is one pair; matching.js moves a
+   correctly matched right-hand item into its partner's row */
+.match-grid{display:grid;grid-template-columns:1fr 1fr;grid-auto-flow:row dense;column-gap:14px;row-gap:8px;margin-top:10px}
+.match-col{display:contents}
+.match-col[data-side="left"] .match-item{grid-column:1}
+.match-col[data-side="right"] .match-item{grid-column:2}
+.match-item{
+  padding:12px 16px;border:2px solid var(--border);border-radius:14px;cursor:pointer;
+  background:var(--paper);font-size:16px;font-weight:800;transition:background .15s,border-color .15s;user-select:none;
+  min-height:50px;display:flex;align-items:center
+}
+.match-item:hover:not(.locked){border-color:#B8C5F5;background:#F7F9FF}
+.match-item.selected{background:var(--blue-soft);border-color:var(--blue)}
+.match-item.matched{background:var(--green-soft);border-color:var(--green);color:var(--green-ink);cursor:default}
+.match-item.shake{animation:shake .3s;background:var(--red-soft);border-color:var(--red)}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* ---------------- word-choice inline buttons ---------------- */
+.word-choice{display:inline-flex;gap:6px;margin:2px 6px;vertical-align:middle;flex-wrap:wrap}
+.word-choice-btn{
+  padding:5px 14px;cursor:pointer;border:2px solid var(--border);border-radius:999px;
+  background:var(--paper);font-size:16px;font-weight:800;color:var(--muted);font-family:inherit;
+  box-shadow:none;transition:background .12s,border-color .12s,color .12s
+}
+.word-choice-btn:hover{border-color:var(--blue);color:var(--blue);transform:none}
+.word-choice-btn.selected{background:var(--blue);color:#fff;border-color:var(--blue)}
+.word-choice-btn.correct{background:var(--green)!important;color:#fff!important;border-color:var(--green)!important}
+.word-choice-btn.wrong{background:var(--red)!important;color:#fff!important;border-color:var(--red)!important}
+
+/* ---------------- crossword ---------------- */
+.crossword-scroll{overflow-x:auto;padding-bottom:8px;margin-top:14px}
+.xw-grid{display:inline-grid;gap:0;background:var(--ink)}
+.xw-cell{
+  position:relative;width:38px;height:38px;background:#fff;border:1px solid var(--ink);
+  box-sizing:border-box
+}
+.xw-num{
+  position:absolute;top:1px;left:2px;font-size:9px;font-weight:900;color:var(--muted);
+  line-height:1;pointer-events:none
+}
+.xw-blank{
+  width:100%;height:100%;border:none;background:transparent;text-align:center;
+  font:inherit;font-weight:900;font-size:17px;text-transform:uppercase;padding:0;
+  color:var(--ink);outline:none
+}
+.xw-blank:focus{background:var(--yellow-soft)}
+.xw-blank.correct{background:var(--green-soft);color:var(--green-ink)}
+.xw-blank.wrong{background:var(--red-soft);color:var(--red-ink)}
+.xw-cell.xw-grey .xw-blank{background:var(--yellow)}
+.xw-cell.xw-grey .xw-blank:focus{background:#FFD978}
+.xw-cell.xw-grey .xw-blank.correct{background:var(--green-soft)}
+.xw-cell.xw-grey .xw-blank.wrong{background:var(--red-soft)}
+.xw-cell.xw-given{background:#EEF2FB}
+.xw-letter{
+  display:flex;align-items:center;justify-content:center;width:100%;height:100%;
+  font-weight:900;font-size:17px;text-transform:uppercase;color:var(--blue)
+}
+.xw-cell.xw-given.xw-grey{background:var(--yellow)}
+.xw-cell.xw-given.xw-grey .xw-letter{color:var(--yellow-ink)}
+
+/* ---------------- emoji picker (choose up to 5, no right answer) ---------------- */
+.emoji-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(58px,1fr));gap:8px;margin-top:6px}
+.emoji-btn{
+  font-size:30px;line-height:1;padding:10px 0;border-radius:14px;border:2px solid var(--border);
+  background:var(--paper);box-shadow:none;cursor:pointer;transition:transform .1s,border-color .12s,background .12s
+}
+.emoji-btn:hover{border-color:#B8C5F5;background:#F7F9FF;transform:translateY(-2px)}
+.emoji-btn.selected{border-color:var(--blue);background:var(--blue-soft);transform:scale(1.06)}
+.emoji-pick.full .emoji-btn:not(.selected){opacity:.45}
+.emoji-pick.shake .emoji-chosen{animation:shake .3s}
+.emoji-chosen{
+  display:flex;align-items:center;gap:14px;margin-top:14px;padding:10px 16px;min-height:62px;
+  background:var(--yellow-soft);border:1px dashed #F1D98E;border-radius:14px
+}
+.emoji-count{font-weight:900;color:var(--yellow-ink);font-size:15px;white-space:nowrap}
+.emoji-row{font-size:34px;letter-spacing:.12em;line-height:1}
+
+/* ---------------- questionnaire (goals & self-assessment) ---------------- */
+.q-block{margin:0 0 22px}
+.q-title{font-weight:800;margin:0 0 10px}
+.q-hint{font-weight:700;font-size:13px;color:var(--muted);margin-left:6px}
+.choice-set{display:flex;flex-wrap:wrap;gap:8px}
+.choice-set .word-choice-btn{font-size:15px;padding:7px 16px}
+.cando-row{display:grid;grid-template-columns:1fr auto;gap:10px 16px;align-items:center;padding:12px 0;border-top:1px solid var(--border)}
+.cando-row:first-of-type{border-top:none}
+.cando-text{font-weight:700}
+@media(max-width:620px){.cando-row{grid-template-columns:1fr}}
+.card.congrats{text-align:center;padding:34px 26px;background:linear-gradient(160deg,#FFFFFF 0%,#FFF6DB 100%)}
+.card.congrats img{display:block;margin:0 auto 10px}
+.card.congrats h2{font-size:clamp(26px,4vw,36px)}
+.card.congrats p{font-size:19px;margin:.5em 0}
+.summary-box{
+  width:100%;margin-top:14px;border:2px dashed var(--border-strong);border-radius:14px;padding:14px 16px;
+  font:15px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink);background:#F6F8FD;resize:vertical
+}
+
+/* ---------------- reflection checklist ---------------- */
+.reflect-list{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.reflect-item{
+  display:flex;align-items:center;gap:14px;padding:12px 18px;border:2px solid var(--border);
+  border-radius:14px;background:var(--paper);cursor:pointer;font-weight:800;font-size:16px;
+  transition:background .15s,border-color .15s
+}
+.reflect-item:hover{border-color:#B8C5F5}
+.reflect-item input[type=checkbox]{display:none}
+.reflect-item .check-box{
+  width:28px;height:28px;flex-shrink:0;border:2px solid var(--border-strong);border-radius:9px;
+  background:var(--paper);display:inline-flex;align-items:center;justify-content:center;
+  font-weight:900;color:#fff
+}
+.reflect-item input:checked + .check-box{background:var(--green);border-color:var(--green)}
+.reflect-item input:checked + .check-box::after{content:'✓'}
+.reflect-item:has(input:checked){background:var(--green-soft);border-color:var(--green)}
+
+/* ---------------- free writing ---------------- */
+.free-write{
+  width:100%;min-height:120px;border:2px solid var(--border);border-radius:14px;
+  padding:14px 16px;font-size:17px;font-family:inherit;font-weight:600;color:var(--ink);
+  background-color:var(--paper);resize:vertical;outline:none;line-height:32px;
+  background-image:linear-gradient(transparent 31px,#E8ECF6 31px);background-size:100% 32px;
+  background-position:0 13px;background-attachment:local
+}
+.free-write:focus{border-color:var(--blue)}
+.char-count{font-size:12px;color:var(--muted);margin-top:6px;text-align:right}
+
+/* ---------------- embedded media ---------------- */
+.embed-wrap{border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-top:10px;box-shadow:var(--shadow-sm)}
+.embed-wrap iframe{width:100%;border:none;display:block}
+.media-img{width:100%;border-radius:18px;margin-top:10px;box-shadow:var(--shadow-sm)}
+.audio-wrap{margin-top:12px}
+.audio-wrap audio{width:100%}
+/* custom audio player (built by setupAudio in lessons.js) */
+.ap{
+  display:flex;align-items:center;gap:12px;padding:10px 16px 10px 10px;
+  background:var(--paper);border:1px solid var(--border);border-radius:999px;box-shadow:var(--shadow-sm)
+}
+.ap button{font-family:inherit;cursor:pointer;flex-shrink:0;-webkit-tap-highlight-color:transparent}
+.ap-play{
+  width:50px;height:50px;border-radius:50%;border:none;background:var(--blue);
+  color:#fff;display:grid;place-items:center;padding:0;box-shadow:0 6px 14px rgba(51,82,224,.3);
+  transition:transform .08s ease,background .15s
+}
+.ap-play svg{width:24px;height:24px;fill:currentColor}
+.ap-play:hover{background:var(--blue-dark)}
+.ap.playing .ap-play{background:var(--orange)}
+.ap-back{
+  position:relative;width:38px;height:38px;border-radius:50%;border:1px solid var(--border);
+  background:var(--paper);color:var(--ink);display:grid;place-items:center;padding:0;box-shadow:none
+}
+.ap-back svg{width:26px;height:26px;fill:currentColor;grid-area:1/1}
+.ap-back span{grid-area:1/1;font-size:9px;font-weight:900;margin-top:3px}
+.ap-back:hover{background:var(--blue-soft)}
+.ap-track{
+  position:relative;flex:1;min-width:60px;height:10px;border-radius:999px;
+  background:var(--blue-soft);cursor:pointer;touch-action:none;outline:none
+}
+.ap-track:focus-visible{box-shadow:0 0 0 3px var(--yellow)}
+.ap-fill{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--blue);border-radius:999px}
+.ap-knob{
+  position:absolute;top:50%;left:0;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;
+  background:var(--paper);border:3px solid var(--blue);transition:transform .1s
+}
+.ap-track:hover .ap-knob,.ap.seeking .ap-knob{transform:scale(1.2)}
+.ap-time{font-size:14px;font-weight:800;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ap-cur{color:var(--ink)}
+.ap-speed{
+  min-width:52px;height:32px;padding:0 10px;border-radius:999px;border:1px solid var(--border);
+  background:var(--paper);color:var(--ink);font-size:13px;font-weight:900;box-shadow:none
+}
+.ap-speed:hover{background:var(--violet-soft)}
+.ap-speed.slow{background:var(--violet);border-color:var(--violet);color:#fff}
+@media (max-width:560px){
+  .ap{flex-wrap:wrap;border-radius:22px;padding:10px 14px 16px;row-gap:12px}
+  .ap-track{order:5;flex-basis:calc(100% - 16px);margin:0 8px}
+  .ap-time{margin-left:auto}
+}
+.video-wrap{margin-top:10px;border-radius:18px;overflow:hidden;box-shadow:var(--shadow-sm)}
+.video-wrap video{width:100%;display:block;background:#000}
+.wordwall-btn{
+  display:inline-flex;align-items:center;gap:10px;margin-top:6px;padding:12px 24px;
+  background:var(--orange);color:#fff;border-radius:999px;
+  font-size:16px;font-weight:800;text-decoration:none;box-shadow:0 6px 14px rgba(255,122,69,.3)
+}
+.wordwall-btn:active{transform:translateY(1px);box-shadow:none}
+
+/* ---------------- sticky score bar (floating dock) ---------------- */
+.scorebar{
+  position:sticky;bottom:12px;z-index:30;
+  width:min(1000px,calc(100% - 24px));margin:40px auto 12px;
+  background:var(--ink);color:#fff;border-radius:18px;padding:12px 14px 12px 20px;
+  display:flex;gap:16px;align-items:center;flex-wrap:wrap;font-weight:800;font-size:16px;
+  box-shadow:0 12px 32px rgba(22,33,62,.28)
+}
+.scorebar .wrap{padding:0;display:flex;gap:16px;align-items:center;flex-wrap:wrap;max-width:none;margin:0;width:100%}
+.meter{flex:1;min-width:120px;height:12px;border-radius:999px;background:rgba(255,255,255,.16);overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--yellow),#7EE0B8);border-radius:999px;transition:width .3s ease}
+.scorebar .btn-primary{background:var(--yellow);border-color:var(--yellow);color:var(--ink);box-shadow:none}
+.scorebar .btn-primary:hover{background:#FFD466}
+
+/* ---------------- toast ---------------- */
+.toast{
+  position:fixed;left:50%;bottom:96px;transform:translateX(-50%) translateY(20px);
+  background:var(--green);color:#fff;padding:12px 22px;border-radius:999px;font-weight:800;font-size:15px;
+  opacity:0;pointer-events:none;transition:.25s ease;z-index:99;box-shadow:0 10px 24px rgba(18,163,116,.35)
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ---------------- first-visit name window (name.js) ---------------- */
+body.name-open{overflow:hidden}
+.name-overlay{
+  position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:16px;
+  background:rgba(22,33,62,.55);backdrop-filter:blur(6px);animation:nameFade .2s ease
+}
+.name-overlay.closing{opacity:0;transition:opacity .2s ease}
+.name-dialog{
+  width:min(420px,100%);background:var(--paper);border-radius:24px;padding:30px 28px 26px;text-align:center;
+  box-shadow:0 24px 60px rgba(22,33,62,.35);animation:namePop .25s ease
+}
+.name-wave{font-size:46px;line-height:1;margin-bottom:10px}
+.name-dialog h2{font-size:26px}
+.name-dialog p{color:var(--muted);margin:.5em 0 18px;font-size:16px}
+.name-dialog input{
+  width:100%;font:inherit;font-size:20px;font-weight:800;text-align:center;color:var(--ink);
+  border:2px solid var(--border);border-radius:14px;padding:12px 14px;background:var(--bg);outline:none
+}
+.name-dialog input:focus{border-color:var(--blue);background:var(--paper)}
+.name-dialog input.shake{animation:shake .3s;border-color:var(--red)}
+.name-dialog button{width:100%;margin-top:14px;padding:12px 20px;font-size:18px}
+@keyframes nameFade{from{opacity:0}to{opacity:1}}
+@keyframes namePop{from{transform:translateY(12px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+
+/* ---------------- footer ---------------- */
+footer.site-footer{margin-top:46px;padding:18px 0 40px;border-top:1px solid var(--border);font-size:14px;color:var(--muted);text-align:center}
+
+/* ============================================================
+   HOME PAGE ONLY
+   ============================================================ */
+.name-bar{
+  background:var(--paper);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);
+  padding:14px 20px;margin-top:-28px;position:relative;z-index:5;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap
+}
+.name-bar label{font-weight:800;white-space:nowrap}
+.name-bar input{
+  flex:1;min-width:160px;font:inherit;font-weight:800;border:2px solid var(--border);
+  border-radius:999px;padding:8px 18px;background:var(--bg);outline:none;color:var(--ink)
+}
+.name-bar input:focus{background:var(--paper);border-color:var(--blue)}
+
+.section-title{
+  font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);
+  margin:34px 0 4px
+}
+
+.lesson-list{margin-top:14px;display:flex;flex-direction:column;gap:12px}
+.lesson-card{
+  display:flex;align-items:center;gap:18px;background:var(--paper);border:1px solid var(--border);
+  border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;color:var(--ink);
+  transition:transform .15s,box-shadow .15s
+}
+.lesson-card:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(22,33,62,.05),0 14px 32px rgba(22,33,62,.1)}
+.lesson-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap}
+.lesson-actions .btn-primary,.lesson-actions .btn-ghost{padding:9px 18px;font-size:15px}
+.lesson-num{
+  flex:0 0 auto;width:56px;height:56px;border-radius:18px;color:#fff;
+  display:grid;place-items:center;font-family:var(--font-head);font-weight:700;font-size:24px
+}
+.lesson-card:nth-child(4n+1) .lesson-num{background:linear-gradient(135deg,#3352E0,#7B5CE6)}
+.lesson-card:nth-child(4n+2) .lesson-num{background:linear-gradient(135deg,#FF7A45,#FFB03D)}
+.lesson-card:nth-child(4n+3) .lesson-num{background:linear-gradient(135deg,#12A374,#3CC7A0)}
+.lesson-card:nth-child(4n+4) .lesson-num{background:linear-gradient(135deg,#7B5CE6,#C05CE6)}
+.lesson-info{flex:1;min-width:0}
+.lesson-topic{display:block;font-family:var(--font-head);font-weight:600;font-size:19px}
+.lesson-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.lesson-tag{background:var(--blue-soft);border-radius:999px;padding:4px 12px;font-size:13px;font-weight:800;color:var(--blue-dark)}
+.lesson-date{display:block;font-size:13px;color:var(--muted);margin-top:8px}
+.empty-note{color:var(--muted);text-align:center;padding:30px 10px;font-size:15px}
+
+@media(max-width:560px){
+  .card{padding:20px 16px}
+  .lesson-card{flex-wrap:wrap}
+  .lesson-actions{width:100%}
+  .lesson-actions a{flex:1;text-align:center}
+  .match-grid{column-gap:8px}
+  .match-item{padding:10px 12px;font-size:15px}
+  nav.chips .wrap,nav.parts .wrap{overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px}
+  .part-tab{white-space:nowrap}
+  .scorebar{font-size:14px;gap:10px}
+}
+
+@media print{
+  nav.chips,nav.parts,button,.scorebar,.toast{display:none!important}
+  header.hero::before,header.hero::after{display:none}
+  .lesson-part{display:block}
+  .card{box-shadow:none;break-inside:avoid}
+  body{background:#fff}
+}

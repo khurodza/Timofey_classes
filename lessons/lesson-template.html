@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>★ Lesson NUMBER – TOPIC</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="back-home" href="../index.html">← All lessons</a>
+    <div class="hero-grid">
+      <div>
+        <h1>Lesson NUMBER: ★ TOPIC</h1>
+        <p>★ One or two short sentences saying what this lesson covers.</p>
+        <div class="hero-badges">
+          <span class="badge">Lesson NUMBER</span>
+          <span class="badge">★ Unit ★</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     STICKY NAV — one chip per section below.
+     Keep the href (#s1, #s2 …) matching each section's id.
+     Add or remove chips to match your sections.
+══════════════════════════════════════════════════════════ -->
+<nav class="chips">
+  <div class="wrap">
+    <a href="#s1">1 · ★ Warm-up</a>
+    <a href="#s2">2 · ★ New words</a>
+    <a href="#s3">3 · ★ Practice</a>
+    <a href="#s4">4 · ★ Game</a>
+    <a href="#s5">5 · Finish</a>
+    <a href="homework/homework-NUMBER.html">Homework ↗</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 1 — copy a whole <section class="step">…</section>
+       block for every part of your lesson. Change the number
+       in .step-num and the text in .step-meta / <h2>.
+  ══════════════════════════════════════════════════════ -->
+  <section class="step" id="s1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">★ Warm-up</div>
+        <h2>★ Step title</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <p>★ Instructions — keep sentences short and clear for A1.</p>
+
+      <div class="tip">
+        <b>Tip:</b> ★ A hint or reminder, e.g. "Remember: I is always a capital letter."
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 2 — FILL IN THE BLANKS
+       data-answer = correct word, lowercase. Use | for more
+       than one accepted answer, e.g. data-answer="cat|kitten"
+       Give every input a unique id (f1, f2, f3 …).
+  ══════════════════════════════════════════════════════ -->
+  <section class="step" id="s2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">★ New words</div>
+        <h2>★ Fill in the blanks</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-fill">
+      <div class="exercise-label">Fill in the Blanks</div>
+      <h3>★ Instruction, e.g. "Write the correct word."</h3>
+
+      <p>1. ★ Sentence with a <input class="blank" id="f1" data-answer="ANSWER" placeholder="?"> in it.</p>
+      <p>2. ★ Another sentence <input class="blank" id="f2" data-answer="ANSWER" placeholder="?"> here.</p>
+      <p>3. ★ One more sentence <input class="blank" id="f3" data-answer="ANSWER" placeholder="?"> too.</p>
+
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-fill')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-fill')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 3 — MULTIPLE CHOICE + MATCHING + WRITING
+       data-correct on .mc-options = value ("a"/"b"/"c") of
+       the right answer. Use a different name="mcX" per question.
+  ══════════════════════════════════════════════════════ -->
+  <section class="step" id="s3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">★ Practice</div>
+        <h2>★ Choose the right answer</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-mc">
+      <div class="exercise-label">Multiple Choice</div>
+      <h3>★ Instruction, e.g. "Choose the correct word."</h3>
+
+      <p style="font-weight:800;margin-bottom:4px">1. ★ Question ___?</p>
+      <div class="mc-options" data-correct="a">
+        <label class="mc-option"><input type="radio" name="mc1" value="a"><span class="mc-bullet">A</span> ★ Option A</label>
+        <label class="mc-option"><input type="radio" name="mc1" value="b"><span class="mc-bullet">B</span> ★ Option B</label>
+        <label class="mc-option"><input type="radio" name="mc1" value="c"><span class="mc-bullet">C</span> ★ Option C</label>
+      </div>
+
+      <p style="font-weight:800;margin:20px 0 4px">2. ★ Question ___?</p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="mc2" value="a"><span class="mc-bullet">A</span> ★ Option A</label>
+        <label class="mc-option"><input type="radio" name="mc2" value="b"><span class="mc-bullet">B</span> ★ Option B</label>
+        <label class="mc-option"><input type="radio" name="mc2" value="c"><span class="mc-bullet">C</span> ★ Option C</label>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-mc')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-mc')">Try again</button>
+      </div>
+    </div>
+
+    <!-- MATCHING
+         Each exercise needs a unique id starting with "ex-match".
+         Items with the same data-pair number are a correct pair.
+         Shuffle the right column so answers don't line up. -->
+    <div class="card" id="ex-match-01">
+      <div class="exercise-label">Matching</div>
+      <h3>★ Instruction, e.g. "Match the word with its meaning."</h3>
+
+      <div class="match-grid">
+        <div class="match-col" data-side="left">
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-01')">★ Word 1</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-01')">★ Word 2</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-01')">★ Word 3</div>
+        </div>
+        <div class="match-col" data-side="right">
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-01')">★ Match 2</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-01')">★ Match 3</div>
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-01')">★ Match 1</div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-ghost" onclick="resetMatchEx('ex-match-01')">Reset</button>
+      </div>
+    </div>
+
+    <!-- FREE WRITING -->
+    <div class="card">
+      <div class="exercise-label">Writing</div>
+      <h3>★ Instruction, e.g. "Write two sentences about your day."</h3>
+      <textarea class="free-write" id="fw-s3" placeholder="Write here…" rows="4"></textarea>
+      <div class="char-count" id="cc-fw-s3">0 characters</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 4 — GAME / EMBED SLOTS
+       Keep only the embed types you use, delete the rest.
+  ══════════════════════════════════════════════════════ -->
+  <section class="step" id="s4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">★ Game</div>
+        <h2>★ Play and practise</h2>
+      </div>
+    </div>
+
+    <!-- WORDWALL — Wordwall blocks embedding, so use a link button -->
+    <div class="card">
+      <div class="exercise-label">Wordwall Game</div>
+      <h3>★ Instruction, e.g. "Play the game to practise the new words."</h3>
+      <a class="wordwall-btn" href="https://wordwall.net/play/GAME-ID" target="_blank" rel="noopener">▶ Play the game</a>
+    </div>
+
+    <!-- YOUTUBE -->
+    <div class="card">
+      <div class="exercise-label">Watch</div>
+      <h3>★ Instruction, e.g. "Watch the video. What do you see?"</h3>
+      <div class="embed-wrap">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID" height="320"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- AUDIO -->
+    <div class="card">
+      <div class="exercise-label">Listen</div>
+      <h3>★ Instruction, e.g. "Listen and repeat."</h3>
+      <div class="audio-wrap">
+        <audio controls>
+          <source src="audio/YOUR-FILE.mp3" type="audio/mpeg">
+          Your browser does not support audio.
+        </audio>
+      </div>
+    </div>
+
+    <!-- IMAGE -->
+    <div class="card">
+      <div class="exercise-label">Look</div>
+      <h3>★ Instruction, e.g. "Look at the picture and answer."</h3>
+      <img class="media-img" src="images/YOUR-IMAGE.jpg" alt="★ description" onerror="this.style.display='none'">
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 5 — FINISH
+  ══════════════════════════════════════════════════════ -->
+  <section class="step" id="s5">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Finish</div>
+        <h2>★ Wrap-up</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Now I...</h3>
+      <!-- One reflect-item per skill covered in this lesson. Add or remove
+           to match what was actually taught — keep the ids unique. -->
+      <div class="reflect-list">
+        <label class="reflect-item">
+          <input type="checkbox" id="r1">
+          <span class="check-box"></span>
+          <span class="reflect-text">★ know about ...</span>
+        </label>
+        <label class="reflect-item">
+          <input type="checkbox" id="r2">
+          <span class="check-box"></span>
+          <span class="reflect-text">★ can use ...</span>
+        </label>
+        <label class="reflect-item">
+          <input type="checkbox" id="r3">
+          <span class="check-box"></span>
+          <span class="reflect-text">★ can ...</span>
+        </label>
+      </div>
+
+      <div class="btn-row">
+        <a class="btn-accent" href="homework/homework-NUMBER.html">Go to homework →</a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /wrap -->
+
+<!-- ══════════════════════════════════════════════════════
+     STICKY SCORE BAR — shows automatically once the page
+     has at least one fill-blank or multiple-choice exercise.
+     Nothing to edit here.
+══════════════════════════════════════════════════════ -->
+<div class="scorebar" id="scoreBar" style="display:none">
+  <div class="wrap">
+    <span>Score: <span id="scoreCorrect">0</span> correct · <span id="scoreDone">0</span>/<span id="scoreTotal">0</span> answered</span>
+    <div class="meter"><i id="scoreMeter"></i></div>
+    <button class="btn-primary" onclick="checkAll()">Check my answers ✓</button>
+  </div>
+</div>
+
+<script src="../assets/lessons.js"></script>
+<script src="../assets/matching.js"></script>
+<script src="../assets/name.js"></script>
+</body>
+</html>

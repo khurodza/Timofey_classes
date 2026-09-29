@@ -1,0 +1,2255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 1 – Hello! Let's see what you know</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="back-home" href="../index.html">← All lessons</a>
+    <div class="hero-grid">
+      <div>
+        <h1 class="name-slot" data-with="Lesson 1: Hello, {name}!" data-without="Lesson 1: Hello!">Lesson 1: Hello!</h1>
+        <p>Get to know your teacher, show what you know, and talk about the things you like.</p>
+        <div class="hero-badges">
+          <span class="badge">Lesson 1</span>
+          <span class="badge">Me &amp; my interests</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     TABS. Tabs 1–2 are for everyone. Tabs 3–6 are the four
+     follow-up options: open only the one that fits.
+       My world = A0–A1 · Everyday life = A1–A2
+       Stories = A2 · Experiences = A2–B1
+     (Level names are deliberately NOT shown on the page.)
+══════════════════════════════════════════════════════════ -->
+<nav class="parts">
+  <div class="wrap">
+    <button class="part-tab" data-part="part-meet" onclick="showPart('part-meet')">Let’s meet!</button>
+    <button class="part-tab" data-part="part-test" onclick="showPart('part-test')">Let’s see what you know</button>
+    <button class="part-tab" data-part="part-world" onclick="showPart('part-world')">My world</button>
+    <button class="part-tab" data-part="part-life" onclick="showPart('part-life')">Everyday life</button>
+    <button class="part-tab" data-part="part-stories" onclick="showPart('part-stories')">Stories</button>
+    <button class="part-tab" data-part="part-exp" onclick="showPart('part-exp')">Experiences</button>
+    <button class="part-tab" data-part="part-goals" onclick="showPart('part-goals')">My goals</button>
+  </div>
+</nav>
+
+<div class="lesson-part" id="part-meet">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#m1">1 · Languages</a>
+    <a href="#m2">2 · Cousins</a>
+    <a href="#m3">3 · This or that</a>
+    <a href="#m4">4 · Truth or lie</a>
+    <a href="#m5">5 · Ask me</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="m1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Language detective</div>
+        <h2>Hello in 4 languages</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-m-lang">
+      <div class="exercise-label">Multiple Choice</div>
+      <h3>Which language is it? Guess!</h3>
+      <p style="font-weight:800;margin:6px 0 4px">1. “Ciao! Come stai?”</p>
+      <div class="mc-options" data-correct="d">
+        <label class="mc-option"><input type="radio" name="m-mc1" value="a"><span class="mc-bullet">A</span> German</label>
+        <label class="mc-option"><input type="radio" name="m-mc1" value="b"><span class="mc-bullet">B</span> Spanish</label>
+        <label class="mc-option"><input type="radio" name="m-mc1" value="c"><span class="mc-bullet">C</span> French</label>
+        <label class="mc-option"><input type="radio" name="m-mc1" value="d"><span class="mc-bullet">D</span> Italian</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">2. “Hallo! Wie geht’s?”</p>
+      <div class="mc-options" data-correct="a">
+        <label class="mc-option"><input type="radio" name="m-mc2" value="a"><span class="mc-bullet">A</span> German</label>
+        <label class="mc-option"><input type="radio" name="m-mc2" value="b"><span class="mc-bullet">B</span> Spanish</label>
+        <label class="mc-option"><input type="radio" name="m-mc2" value="c"><span class="mc-bullet">C</span> French</label>
+        <label class="mc-option"><input type="radio" name="m-mc2" value="d"><span class="mc-bullet">D</span> Italian</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">3. “Bonjour ! Ça va ?”</p>
+      <div class="mc-options" data-correct="c">
+        <label class="mc-option"><input type="radio" name="m-mc3" value="a"><span class="mc-bullet">A</span> German</label>
+        <label class="mc-option"><input type="radio" name="m-mc3" value="b"><span class="mc-bullet">B</span> Spanish</label>
+        <label class="mc-option"><input type="radio" name="m-mc3" value="c"><span class="mc-bullet">C</span> French</label>
+        <label class="mc-option"><input type="radio" name="m-mc3" value="d"><span class="mc-bullet">D</span> Italian</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">4. “¡Hola! ¿Qué tal?”</p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="m-mc4" value="a"><span class="mc-bullet">A</span> German</label>
+        <label class="mc-option"><input type="radio" name="m-mc4" value="b"><span class="mc-bullet">B</span> Spanish</label>
+        <label class="mc-option"><input type="radio" name="m-mc4" value="c"><span class="mc-bullet">C</span> French</label>
+        <label class="mc-option"><input type="radio" name="m-mc4" value="d"><span class="mc-bullet">D</span> Italian</label>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-m-lang')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-m-lang')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="m2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">German → English</div>
+        <h2>English and German are cousins!</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-match-m">
+      <div class="exercise-label">Matching</div>
+      <h3>Match the German word and the English word.</h3>
+      <div class="match-grid">
+        <div class="match-col" data-side="left">
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-m')">Hund</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-m')">Katze</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-m')">Haus</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-m')">Buch</div>
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-m')">Apfel</div>
+          <div class="match-item" data-pair="6" onclick="selectMatch(this,'ex-match-m')">Wasser</div>
+          <div class="match-item" data-pair="7" onclick="selectMatch(this,'ex-match-m')">Freund</div>
+          <div class="match-item" data-pair="8" onclick="selectMatch(this,'ex-match-m')">Schule</div>
+        </div>
+        <div class="match-col" data-side="right">
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-m')">apple</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-m')">house</div>
+          <div class="match-item" data-pair="8" onclick="selectMatch(this,'ex-match-m')">school</div>
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-m')">dog</div>
+          <div class="match-item" data-pair="7" onclick="selectMatch(this,'ex-match-m')">friend</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-m')">cat</div>
+          <div class="match-item" data-pair="6" onclick="selectMatch(this,'ex-match-m')">water</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-m')">book</div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-ghost" onclick="resetMatchEx('ex-match-m')">Reset</button>
+      </div>
+    </div>
+    <div class="tip"><b>Did you see?</b> Lots of English and German words look almost the same. Your German helps your English! 🚀</div>
+  </section>
+
+  <section class="step" id="m3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Quick game</div>
+        <h2>This or that?</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">This or That</div>
+      <h3>Tap one. Then ask your teacher: “What about you?”</h3>
+      <p class="gap-line"><span class="num">1.</span> <span class="pick" id="m-pk1" style="display:inline-flex;gap:6px;flex-wrap:wrap;vertical-align:middle;margin:2px 6px"><button class="word-choice-btn" onclick="pickThis(this)">🐶 dogs</button><button class="word-choice-btn" onclick="pickThis(this)">🐱 cats</button></span></p>
+      <p class="gap-line"><span class="num">2.</span> <span class="pick" id="m-pk2" style="display:inline-flex;gap:6px;flex-wrap:wrap;vertical-align:middle;margin:2px 6px"><button class="word-choice-btn" onclick="pickThis(this)">🍕 pizza</button><button class="word-choice-btn" onclick="pickThis(this)">🍔 burgers</button></span></p>
+      <p class="gap-line"><span class="num">3.</span> <span class="pick" id="m-pk3" style="display:inline-flex;gap:6px;flex-wrap:wrap;vertical-align:middle;margin:2px 6px"><button class="word-choice-btn" onclick="pickThis(this)">☀️ summer</button><button class="word-choice-btn" onclick="pickThis(this)">❄️ winter</button></span></p>
+      <p class="gap-line"><span class="num">4.</span> <span class="pick" id="m-pk4" style="display:inline-flex;gap:6px;flex-wrap:wrap;vertical-align:middle;margin:2px 6px"><button class="word-choice-btn" onclick="pickThis(this)">🎮 games</button><button class="word-choice-btn" onclick="pickThis(this)">📺 YouTube</button></span></p>
+      <p class="gap-line"><span class="num">5.</span> <span class="pick" id="m-pk5" style="display:inline-flex;gap:6px;flex-wrap:wrap;vertical-align:middle;margin:2px 6px"><button class="word-choice-btn" onclick="pickThis(this)">🌅 morning</button><button class="word-choice-btn" onclick="pickThis(this)">🌙 night</button></span></p>
+      <p class="gap-line"><span class="num">6.</span> <span class="pick" id="m-pk6" style="display:inline-flex;gap:6px;flex-wrap:wrap;vertical-align:middle;margin:2px 6px"><button class="word-choice-btn" onclick="pickThis(this)">⚽ football</button><button class="word-choice-btn" onclick="pickThis(this)">🏀 basketball</button></span></p>
+      <p class="gap-line"><span class="num">7.</span> <span class="pick" id="m-pk7" style="display:inline-flex;gap:6px;flex-wrap:wrap;vertical-align:middle;margin:2px 6px"><button class="word-choice-btn" onclick="pickThis(this)">📚 books</button><button class="word-choice-btn" onclick="pickThis(this)">🎬 films</button></span></p>
+    </div>
+  </section>
+
+  <section class="step" id="m4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Game</div>
+        <h2>Two truths and a lie</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Game</div>
+      <h3>Write 3 sentences about you: 2 are true, 1 is a lie! Your teacher guesses the lie.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>I’ve got a pet snake. (a lie? 🐍)</span></div>
+      <input class="blank line-write" id="m-t1" placeholder="1. …">
+      <input class="blank line-write" id="m-t2" placeholder="2. …">
+      <input class="blank line-write" id="m-t3" placeholder="3. …">
+      <div class="tip"><b>Now swap:</b> listen to your teacher’s 3 sentences. Which one is the lie?</div>
+    </div>
+  </section>
+
+  <section class="step" id="m5">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Speaking</div>
+        <h2>Ask your teacher!</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Speaking</div>
+      <h3>Now you are the teacher. Ask these questions, then add your own!</h3>
+      <ol start="1" style="padding-left:24px;line-height:1.7;font-size:19px">
+        <li style="margin-bottom:6px">What’s your name?</li>
+        <li style="margin-bottom:6px">Where are you from?</li>
+        <li style="margin-bottom:6px">How many languages can you speak?</li>
+        <li style="margin-bottom:6px">Have you got a pet?</li>
+        <li style="margin-bottom:6px">What’s your favourite food / film / game?</li>
+        <li style="margin-bottom:6px">Your question: …</li>
+      </ol>
+      <div class="tip"><b>Word swap:</b> say a word in another language you know. Your teacher says it in English. Then swap! 🔁</div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<div class="lesson-part" id="part-test">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#p00">Class English</a>
+    <a href="#p0">Start</a>
+    <a href="#p1">Level 1</a>
+    <a href="#p2">Level 2</a>
+    <a href="#p3">Level 3</a>
+    <a href="#p4">Level 4</a>
+    <a href="#p5">Let’s talk</a>
+    <a href="#p6">Write</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="p00">
+    <div class="step-head">
+      <div class="step-num">🙋</div>
+      <div>
+        <div class="step-meta">Class English</div>
+        <h2>Useful phrases for our lessons</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-match-ce">
+      <div class="exercise-label">Matching</div>
+      <h3>Match the picture and the phrase.</h3>
+      <div class="match-grid">
+        <div class="match-col" data-side="left">
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-ce')"><img src="images/class-english/repeat.png" alt="repeat arrows" style="width:52px;height:52px;margin:auto"></div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-ce')"><img src="images/class-english/confused.png" alt="confused face" style="width:52px;height:52px;margin:auto"></div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-ce')"><img src="images/class-english/book.png" alt="open book" style="width:52px;height:52px;margin:auto"></div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-ce')"><img src="images/class-english/speaking.png" alt="speaking head" style="width:52px;height:52px;margin:auto"></div>
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-ce')"><img src="images/class-english/turtle.png" alt="turtle" style="width:52px;height:52px;margin:auto"></div>
+          <div class="match-item" data-pair="6" onclick="selectMatch(this,'ex-match-ce')"><img src="images/class-english/letters.png" alt="letters ABC" style="width:52px;height:52px;margin:auto"></div>
+          <div class="match-item" data-pair="7" onclick="selectMatch(this,'ex-match-ce')"><img src="images/class-english/muted.png" alt="muted speaker" style="width:52px;height:52px;margin:auto"></div>
+          <div class="match-item" data-pair="8" onclick="selectMatch(this,'ex-match-ce')"><img src="images/class-english/hand.png" alt="raised hand" style="width:52px;height:52px;margin:auto"></div>
+          <div class="match-item" data-pair="9" onclick="selectMatch(this,'ex-match-ce')"><img src="images/class-english/hourglass.png" alt="hourglass" style="width:52px;height:52px;margin:auto"></div>
+          <div class="match-item" data-pair="10" onclick="selectMatch(this,'ex-match-ce')"><img src="images/class-english/clock.png" alt="alarm clock" style="width:52px;height:52px;margin:auto"></div>
+        </div>
+        <div class="match-col" data-side="right">
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-ce')">How do you say ‘…’ in English?</div>
+          <div class="match-item" data-pair="7" onclick="selectMatch(this,'ex-match-ce')">Sorry, I can’t hear you.</div>
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-ce')">Can you repeat that, please?</div>
+          <div class="match-item" data-pair="9" onclick="selectMatch(this,'ex-match-ce')">Can I have a minute to think?</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-ce')">Sorry, I don’t understand the question.</div>
+          <div class="match-item" data-pair="10" onclick="selectMatch(this,'ex-match-ce')">Sorry I’m late!</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-ce')">What does ‘…’ mean?</div>
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-ce')">Can you speak more slowly, please?</div>
+          <div class="match-item" data-pair="8" onclick="selectMatch(this,'ex-match-ce')">Can you help me, please?</div>
+          <div class="match-item" data-pair="6" onclick="selectMatch(this,'ex-match-ce')">How do you spell it?</div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-ghost" onclick="resetMatchEx('ex-match-ce')">Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="p0">
+    <div class="step-head">
+      <div class="step-num">🚩</div>
+      <div>
+        <div class="step-meta">Before you start</div>
+        <h2>Do your best!</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <p style="font-size:20px">There are 4 levels. They get harder. 🧗</p>
+      <p>It’s OK if you don’t know something. Just try!</p>
+      <p>Finish a level, then press <b>Check ✓</b>.</p>
+    </div>
+    <div class="tip"><b>Too hard?</b> That’s OK. Tell your teacher. You can stop. 🙂</div>
+  </section>
+
+  <section class="step" id="p1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Words · grammar · reading</div>
+        <h2>Level 1 ⭐</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-pl1">
+      <div class="exercise-label">Questions</div>
+      <h3>Answer the questions. Then press Check.</h3>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">A. Choose the right word.</p>
+      <p style="font-weight:800;margin:6px 0 4px">1. ___ you twelve?</p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="p1-mc1" value="a"><span class="mc-bullet">A</span> Is</label>
+        <label class="mc-option"><input type="radio" name="p1-mc1" value="b"><span class="mc-bullet">B</span> Are</label>
+        <label class="mc-option"><input type="radio" name="p1-mc1" value="c"><span class="mc-bullet">C</span> Am</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">2. I ___ got a brother.</p>
+      <div class="mc-options" data-correct="a">
+        <label class="mc-option"><input type="radio" name="p1-mc2" value="a"><span class="mc-bullet">A</span> have</label>
+        <label class="mc-option"><input type="radio" name="p1-mc2" value="b"><span class="mc-bullet">B</span> has</label>
+        <label class="mc-option"><input type="radio" name="p1-mc2" value="c"><span class="mc-bullet">C</span> am</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">3. There ___ two cats in my house.</p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="p1-mc3" value="a"><span class="mc-bullet">A</span> is</label>
+        <label class="mc-option"><input type="radio" name="p1-mc3" value="b"><span class="mc-bullet">B</span> are</label>
+        <label class="mc-option"><input type="radio" name="p1-mc3" value="c"><span class="mc-bullet">C</span> be</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">4. ___ is my pen. It’s here, in my hand.</p>
+      <div class="mc-options" data-correct="a">
+        <label class="mc-option"><input type="radio" name="p1-mc4" value="a"><span class="mc-bullet">A</span> This</label>
+        <label class="mc-option"><input type="radio" name="p1-mc4" value="b"><span class="mc-bullet">B</span> That</label>
+        <label class="mc-option"><input type="radio" name="p1-mc4" value="c"><span class="mc-bullet">C</span> These</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">5. Fish can swim, but my cat ___ swim.</p>
+      <div class="mc-options" data-correct="a">
+        <label class="mc-option"><input type="radio" name="p1-mc5" value="a"><span class="mc-bullet">A</span> can’t</label>
+        <label class="mc-option"><input type="radio" name="p1-mc5" value="b"><span class="mc-bullet">B</span> don’t</label>
+        <label class="mc-option"><input type="radio" name="p1-mc5" value="c"><span class="mc-bullet">C</span> isn’t</label>
+      </div>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">B. Write one word.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>one pen → two <span class="cue-input"><span class="cue-lab">pen</span><span class="given">pens</span></span></span></div>
+      <p class="gap-line"><span class="num">6.</span> one box → two <span class="cue-input"><span class="cue-lab">box</span><input class="blank" id="p1-f6" data-answer="boxes" placeholder="?"></span></p>
+      <p class="gap-line"><span class="num">7.</span> one child → three <span class="cue-input"><span class="cue-lab">child</span><input class="blank" id="p1-f7" data-answer="children" placeholder="?"></span></p>
+      <p class="gap-line"><span class="num">8.</span> 7 + 8 = <input class="blank" id="p1-f8" data-answer="fifteen|15" placeholder="?"></p>
+      <p class="gap-line"><span class="num">9.</span> My mum’s mum is my <input class="blank" id="p1-f9" data-answer="grandmother|grandma|granny|gran|grandmum" placeholder="?">.</p>
+      <p class="gap-line"><span class="num">10.</span> red + yellow = <input class="blank" id="p1-f10" data-answer="orange" placeholder="?"></p>
+      <div class="exercise-label" style="margin-top:22px">Read</div>
+      <h3>Read about Leo. Then answer.</h3>
+      <div class="read-grid">
+        <div style="background:var(--mint);border-radius:12px;padding:12px 16px;font-size:19px;line-height:1.7">This is Leo. He is eleven. He has got a dog. His name is Max. Max is black and white. Leo can play football, but he can’t <span class="hl">swim</span>. His <span class="hl">favourite</span> food is pizza.</div>
+        <img class="media-img" src="images/level1-leo-and-max.jpg" alt="A smiling boy running along a path with his black and white dog">
+      </div>
+      <p style="font-weight:800;margin:10px 0 4px">11. Max is Leo’s ___</p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="p1-mc11" value="a"><span class="mc-bullet">A</span> brother</label>
+        <label class="mc-option"><input type="radio" name="p1-mc11" value="b"><span class="mc-bullet">B</span> dog</label>
+        <label class="mc-option"><input type="radio" name="p1-mc11" value="c"><span class="mc-bullet">C</span> friend</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">12. Leo can ___</p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="p1-mc12" value="a"><span class="mc-bullet">A</span> swim</label>
+        <label class="mc-option"><input type="radio" name="p1-mc12" value="b"><span class="mc-bullet">B</span> play football</label>
+        <label class="mc-option"><input type="radio" name="p1-mc12" value="c"><span class="mc-bullet">C</span> ride a horse</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">13. Max is ___</p>
+      <div class="mc-options" data-correct="a">
+        <label class="mc-option"><input type="radio" name="p1-mc13" value="a"><span class="mc-bullet">A</span> black and white</label>
+        <label class="mc-option"><input type="radio" name="p1-mc13" value="b"><span class="mc-bullet">B</span> brown</label>
+        <label class="mc-option"><input type="radio" name="p1-mc13" value="c"><span class="mc-bullet">C</span> grey</label>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkSection('ex-pl1')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetSection('ex-pl1')">Try again</button>
+      </div>
+      <p class="char-count" id="res-ex-pl1" style="text-align:left"></p>
+    </div>
+  </section>
+
+  <section class="step" id="p2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Words · grammar · reading</div>
+        <h2>Level 2 ⭐⭐</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-pl2">
+      <div class="exercise-label">Questions</div>
+      <h3>Answer the questions. Then press Check.</h3>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">A. Choose the right answer.</p>
+      <p style="font-weight:800;margin:6px 0 4px">1. Look! My brother ___ a video game now.</p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="p2-mc1" value="a"><span class="mc-bullet">A</span> plays</label>
+        <label class="mc-option"><input type="radio" name="p2-mc1" value="b"><span class="mc-bullet">B</span> is playing</label>
+        <label class="mc-option"><input type="radio" name="p2-mc1" value="c"><span class="mc-bullet">C</span> play</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">2. I ___ to school by bus every day.</p>
+      <div class="mc-options" data-correct="a">
+        <label class="mc-option"><input type="radio" name="p2-mc2" value="a"><span class="mc-bullet">A</span> go</label>
+        <label class="mc-option"><input type="radio" name="p2-mc2" value="b"><span class="mc-bullet">B</span> am going</label>
+        <label class="mc-option"><input type="radio" name="p2-mc2" value="c"><span class="mc-bullet">C</span> goes</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">3. Tom is never late. He ___ gets up early.</p>
+      <div class="mc-options" data-correct="a">
+        <label class="mc-option"><input type="radio" name="p2-mc3" value="a"><span class="mc-bullet">A</span> always</label>
+        <label class="mc-option"><input type="radio" name="p2-mc3" value="b"><span class="mc-bullet">B</span> never</label>
+        <label class="mc-option"><input type="radio" name="p2-mc3" value="c"><span class="mc-bullet">C</span> sometimes</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">4. Is there ___ milk in the fridge?</p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="p2-mc4" value="a"><span class="mc-bullet">A</span> a</label>
+        <label class="mc-option"><input type="radio" name="p2-mc4" value="b"><span class="mc-bullet">B</span> any</label>
+        <label class="mc-option"><input type="radio" name="p2-mc4" value="c"><span class="mc-bullet">C</span> many</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">5. I need some ___ for my sandwich.</p>
+      <div class="mc-options" data-correct="a">
+        <label class="mc-option"><input type="radio" name="p2-mc5" value="a"><span class="mc-bullet">A</span> bread</label>
+        <label class="mc-option"><input type="radio" name="p2-mc5" value="b"><span class="mc-bullet">B</span> egg</label>
+        <label class="mc-option"><input type="radio" name="p2-mc5" value="c"><span class="mc-bullet">C</span> tomato</label>
+      </div>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">B. Change the word on the label. Write it in the past.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>Yesterday I <span class="cue-input"><span class="cue-lab">have</span><span class="given">had</span></span> pizza for lunch.</span></div>
+      <p class="gap-line"><span class="num">6.</span> Last Saturday I <span class="cue-input"><span class="cue-lab">play</span><input class="blank" id="p2-f6" data-answer="played" placeholder="?"></span> football with my friends.</p>
+      <p class="gap-line"><span class="num">7.</span> On Friday we <span class="cue-input"><span class="cue-lab">watch</span><input class="blank" id="p2-f7" data-answer="watched" placeholder="?"></span> a funny film.</p>
+      <p class="gap-line"><span class="num">8.</span> My parents <span class="cue-input"><span class="cue-lab">be</span><input class="blank" id="p2-f8" data-answer="were" placeholder="?"></span> at home last night.</p>
+      <p class="gap-line"><span class="num">9.</span> I <span class="cue-input"><span class="cue-lab">be</span><input class="blank" id="p2-f9" data-answer="was" placeholder="?"></span> at the cinema yesterday.</p>
+      <p class="gap-line"><span class="num">10.</span> She <span class="cue-input"><span class="cue-lab">study</span><input class="blank" id="p2-f10" data-answer="studied" placeholder="?"></span> for her test all evening.</p>
+      <div class="exercise-label" style="margin-top:22px">Read</div>
+      <h3>Read about Mia. Then answer.</h3>
+      <div class="read-grid">
+        <div style="background:var(--mint);border-radius:12px;padding:12px 16px;font-size:19px;line-height:1.7">Mia <span class="hl">usually</span> gets up at seven o’clock. She always has breakfast with her dad. On Saturdays she plays tennis. But today is <span class="hl">different</span>! It’s <span class="hl">raining</span>, so she is playing video games with her brother. Yesterday she was at her friend’s house, and they watched a film.</div>
+        <img class="media-img" src="images/level2-mia-tennis.jpg" alt="A girl hitting a tennis ball on an outdoor tennis court">
+      </div>
+      <p style="font-weight:800;margin:10px 0 4px">11. What is Mia doing today?</p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="p2-mc11" value="a"><span class="mc-bullet">A</span> playing tennis</label>
+        <label class="mc-option"><input type="radio" name="p2-mc11" value="b"><span class="mc-bullet">B</span> playing video games</label>
+        <label class="mc-option"><input type="radio" name="p2-mc11" value="c"><span class="mc-bullet">C</span> watching a film</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">12. Where was Mia yesterday?</p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="p2-mc12" value="a"><span class="mc-bullet">A</span> at home</label>
+        <label class="mc-option"><input type="radio" name="p2-mc12" value="b"><span class="mc-bullet">B</span> at her friend’s house</label>
+        <label class="mc-option"><input type="radio" name="p2-mc12" value="c"><span class="mc-bullet">C</span> at school</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">13. Mia ___ has breakfast with her dad.</p>
+      <div class="mc-options" data-correct="a">
+        <label class="mc-option"><input type="radio" name="p2-mc13" value="a"><span class="mc-bullet">A</span> always</label>
+        <label class="mc-option"><input type="radio" name="p2-mc13" value="b"><span class="mc-bullet">B</span> never</label>
+        <label class="mc-option"><input type="radio" name="p2-mc13" value="c"><span class="mc-bullet">C</span> sometimes</label>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkSection('ex-pl2')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetSection('ex-pl2')">Try again</button>
+      </div>
+      <p class="char-count" id="res-ex-pl2" style="text-align:left"></p>
+    </div>
+  </section>
+
+  <section class="step" id="p3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Words · grammar · reading</div>
+        <h2>Level 3 ⭐⭐⭐</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-pl3">
+      <div class="exercise-label">Questions</div>
+      <h3>Answer the questions. Then press Check.</h3>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">A. Choose the right answer.</p>
+      <p style="font-weight:800;margin:6px 0 4px">1. ___ you go to the park yesterday?</p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="p3-mc1" value="a"><span class="mc-bullet">A</span> Do</label>
+        <label class="mc-option"><input type="radio" name="p3-mc1" value="b"><span class="mc-bullet">B</span> Did</label>
+        <label class="mc-option"><input type="radio" name="p3-mc1" value="c"><span class="mc-bullet">C</span> Were</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">2. Next summer we ___ visit our cousins in Spain.</p>
+      <div class="mc-options" data-correct="a">
+        <label class="mc-option"><input type="radio" name="p3-mc2" value="a"><span class="mc-bullet">A</span> are going to</label>
+        <label class="mc-option"><input type="radio" name="p3-mc2" value="b"><span class="mc-bullet">B</span> going to</label>
+        <label class="mc-option"><input type="radio" name="p3-mc2" value="c"><span class="mc-bullet">C</span> go to</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">3. It’s a school rule: you ___ use your phone in class.</p>
+      <div class="mc-options" data-correct="a">
+        <label class="mc-option"><input type="radio" name="p3-mc3" value="a"><span class="mc-bullet">A</span> mustn’t</label>
+        <label class="mc-option"><input type="radio" name="p3-mc3" value="b"><span class="mc-bullet">B</span> don’t have to</label>
+        <label class="mc-option"><input type="radio" name="p3-mc3" value="c"><span class="mc-bullet">C</span> must</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">4. You look tired. You ___ go to bed early.</p>
+      <div class="mc-options" data-correct="a">
+        <label class="mc-option"><input type="radio" name="p3-mc4" value="a"><span class="mc-bullet">A</span> should</label>
+        <label class="mc-option"><input type="radio" name="p3-mc4" value="b"><span class="mc-bullet">B</span> mustn’t</label>
+        <label class="mc-option"><input type="radio" name="p3-mc4" value="c"><span class="mc-bullet">C</span> did</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">5. How ___ friends have you got in your class?</p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="p3-mc5" value="a"><span class="mc-bullet">A</span> much</label>
+        <label class="mc-option"><input type="radio" name="p3-mc5" value="b"><span class="mc-bullet">B</span> many</label>
+        <label class="mc-option"><input type="radio" name="p3-mc5" value="c"><span class="mc-bullet">C</span> any</label>
+      </div>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">B. Change the word on the label.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>Yesterday I <span class="cue-input"><span class="cue-lab">eat</span><span class="given">ate</span></span> a big burger.</span></div>
+      <p class="gap-line"><span class="num">6.</span> I <span class="cue-input"><span class="cue-lab">buy</span><input class="blank" id="p3-f6" data-answer="bought" placeholder="?"></span> a new game last weekend.</p>
+      <p class="gap-line"><span class="num">7.</span> Last summer we <span class="cue-input"><span class="cue-lab">go</span><input class="blank" id="p3-f7" data-answer="went" placeholder="?"></span> to the beach.</p>
+      <p class="gap-line"><span class="num">8.</span> My phone is <span class="cue-input"><span class="cue-lab">new</span><input class="blank" id="p3-f8" data-answer="newer" placeholder="?"></span> than your phone.</p>
+      <p class="gap-line"><span class="num">9.</span> This is the <span class="cue-input"><span class="cue-lab">good</span><input class="blank" id="p3-f9" data-answer="best" placeholder="?"></span> game in the world!</p>
+      <p class="gap-line"><span class="num">10.</span> For me, maths is <span class="cue-input"><span class="cue-lab">difficult</span><input class="blank" id="p3-f10" data-answer="more difficult" placeholder="?" style="width:190px"></span> than art.</p>
+      <div class="exercise-label" style="margin-top:22px">Read</div>
+      <h3>Read about Sam and Ben. Then answer.</h3>
+      <div class="read-grid">
+        <div style="background:var(--mint);border-radius:12px;padding:12px 16px;font-size:19px;line-height:1.7">Last Saturday, Sam and his best friend Ben went to a big gaming <span class="hl">festival</span> in the city. They took the train, and the <span class="hl">journey</span> was longer than they thought. At the festival, they tried a new racing game. Sam thought it was the best game there, but Ben liked the football game more. They didn’t buy anything because the games were very <span class="hl">expensive</span>. Next month, they are going to play in a gaming competition at their school.</div>
+        <img class="media-img" src="images/level3-gaming-festival.jpg" alt="Two boys with headsets doing a fist bump at a gaming event">
+      </div>
+      <p style="font-weight:800;margin:10px 0 4px">11. How did Sam and Ben get to the festival?</p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="p3-mc11" value="a"><span class="mc-bullet">A</span> by car</label>
+        <label class="mc-option"><input type="radio" name="p3-mc11" value="b"><span class="mc-bullet">B</span> by train</label>
+        <label class="mc-option"><input type="radio" name="p3-mc11" value="c"><span class="mc-bullet">C</span> by bus</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">12. Which game did Ben like more?</p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="p3-mc12" value="a"><span class="mc-bullet">A</span> the racing game</label>
+        <label class="mc-option"><input type="radio" name="p3-mc12" value="b"><span class="mc-bullet">B</span> the football game</label>
+        <label class="mc-option"><input type="radio" name="p3-mc12" value="c"><span class="mc-bullet">C</span> the dancing game</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">13. What are they going to do next month?</p>
+      <div class="mc-options" data-correct="c">
+        <label class="mc-option"><input type="radio" name="p3-mc13" value="a"><span class="mc-bullet">A</span> buy a new game</label>
+        <label class="mc-option"><input type="radio" name="p3-mc13" value="b"><span class="mc-bullet">B</span> go to the festival again</label>
+        <label class="mc-option"><input type="radio" name="p3-mc13" value="c"><span class="mc-bullet">C</span> play in a competition at school</label>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkSection('ex-pl3')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetSection('ex-pl3')">Try again</button>
+      </div>
+      <p class="char-count" id="res-ex-pl3" style="text-align:left"></p>
+    </div>
+  </section>
+
+  <section class="step" id="p4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Words · grammar · reading</div>
+        <h2>Level 4 ⭐⭐⭐⭐</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-pl4">
+      <div class="exercise-label">Questions</div>
+      <h3>Answer the questions. Then press Check.</h3>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">A. Choose the right answer.</p>
+      <p style="font-weight:800;margin:6px 0 4px">1. Have you ever ___ sushi?</p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="p4-mc1" value="a"><span class="mc-bullet">A</span> ate</label>
+        <label class="mc-option"><input type="radio" name="p4-mc1" value="b"><span class="mc-bullet">B</span> eaten</label>
+        <label class="mc-option"><input type="radio" name="p4-mc1" value="c"><span class="mc-bullet">C</span> eat</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">2. Sorry, I ___ my homework yet.</p>
+      <div class="mc-options" data-correct="a">
+        <label class="mc-option"><input type="radio" name="p4-mc2" value="a"><span class="mc-bullet">A</span> haven’t finished</label>
+        <label class="mc-option"><input type="radio" name="p4-mc2" value="b"><span class="mc-bullet">B</span> didn’t finish</label>
+        <label class="mc-option"><input type="radio" name="p4-mc2" value="c"><span class="mc-bullet">C</span> don’t finish</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">3. I ___ this film last Friday.</p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="p4-mc3" value="a"><span class="mc-bullet">A</span> have seen</label>
+        <label class="mc-option"><input type="radio" name="p4-mc3" value="b"><span class="mc-bullet">B</span> saw</label>
+        <label class="mc-option"><input type="radio" name="p4-mc3" value="c"><span class="mc-bullet">C</span> have saw</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">4. That’s the girl ___ won the chess competition.</p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="p4-mc4" value="a"><span class="mc-bullet">A</span> which</label>
+        <label class="mc-option"><input type="radio" name="p4-mc4" value="b"><span class="mc-bullet">B</span> who</label>
+        <label class="mc-option"><input type="radio" name="p4-mc4" value="c"><span class="mc-bullet">C</span> where</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">5. This is the park ___ we play basketball.</p>
+      <div class="mc-options" data-correct="a">
+        <label class="mc-option"><input type="radio" name="p4-mc5" value="a"><span class="mc-bullet">A</span> where</label>
+        <label class="mc-option"><input type="radio" name="p4-mc5" value="b"><span class="mc-bullet">B</span> who</label>
+        <label class="mc-option"><input type="radio" name="p4-mc5" value="c"><span class="mc-bullet">C</span> which</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">6. “Oh no, it’s raining!” “Don’t worry, I ___ lend you my umbrella.”</p>
+      <div class="mc-options" data-correct="a">
+        <label class="mc-option"><input type="radio" name="p4-mc6" value="a"><span class="mc-bullet">A</span> will</label>
+        <label class="mc-option"><input type="radio" name="p4-mc6" value="b"><span class="mc-bullet">B</span> am going to</label>
+        <label class="mc-option"><input type="radio" name="p4-mc6" value="c"><span class="mc-bullet">C</span> lend</label>
+      </div>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">B. Change the word on the label. You may need more than one word.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>My brother <span class="cue-input"><span class="cue-lab">be</span><span class="given">is</span></span> fifteen.</span></div>
+      <p class="gap-line"><span class="num">7.</span> At 8 o’clock last night I <span class="cue-input"><span class="cue-lab">watch</span><input class="blank" id="p4-f7" data-answer="was watching" placeholder="?" style="width:190px"></span> TV.</p>
+      <p class="gap-line"><span class="num">8.</span> If it <span class="cue-input"><span class="cue-lab">rain</span><input class="blank" id="p4-f8" data-answer="rains" placeholder="?"></span> tomorrow, we will stay at home.</p>
+      <p class="gap-line"><span class="num">9.</span> We <span class="cue-input"><span class="cue-lab">be</span><input class="blank" id="p4-f9" data-answer="have been|’ve been|&#x27;ve been" placeholder="?" style="width:190px"></span> to Italy three times.</p>
+      <p class="gap-line"><span class="num">10.</span> I can’t carry this bag. It’s <input class="blank" id="p4-f10" data-answer="too" placeholder="?"> heavy.</p>
+      <div class="exercise-label" style="margin-top:22px">Read</div>
+      <h3>Read about Dasha. Then answer.</h3>
+      <div class="read-grid">
+        <div style="background:var(--mint);border-radius:12px;padding:12px 16px;font-size:19px;line-height:1.7">Have you ever made your own video game? Last year my cousin Dasha <span class="hl">decided</span> to try. She was watching a YouTube <span class="hl">tutorial</span> when she had a great idea: a game about a cat who lives in space. She has worked on it every weekend since then, and she has just finished the first level. It isn’t perfect yet – some parts are too slow – but her friends love it. She says that if she wins the school tech <span class="hl">prize</span>, she will put the game online so everyone can play it.</div>
+        <img class="media-img" src="images/level4-dasha-coding.jpg" alt="A girl working on a laptop at home">
+      </div>
+      <p style="font-weight:800;margin:10px 0 4px">11. When did Dasha get her idea?</p>
+      <div class="mc-options" data-correct="a">
+        <label class="mc-option"><input type="radio" name="p4-mc11" value="a"><span class="mc-bullet">A</span> when she was watching a video</label>
+        <label class="mc-option"><input type="radio" name="p4-mc11" value="b"><span class="mc-bullet">B</span> when she was playing a game</label>
+        <label class="mc-option"><input type="radio" name="p4-mc11" value="c"><span class="mc-bullet">C</span> when she was at school</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">12. What has Dasha just done?</p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="p4-mc12" value="a"><span class="mc-bullet">A</span> finished the whole game</label>
+        <label class="mc-option"><input type="radio" name="p4-mc12" value="b"><span class="mc-bullet">B</span> finished the first level</label>
+        <label class="mc-option"><input type="radio" name="p4-mc12" value="c"><span class="mc-bullet">C</span> won a prize</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">13. What will she do if she wins the prize?</p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="p4-mc13" value="a"><span class="mc-bullet">A</span> make a new game</label>
+        <label class="mc-option"><input type="radio" name="p4-mc13" value="b"><span class="mc-bullet">B</span> put the game online</label>
+        <label class="mc-option"><input type="radio" name="p4-mc13" value="c"><span class="mc-bullet">C</span> buy a cat</label>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkSection('ex-pl4')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetSection('ex-pl4')">Try again</button>
+      </div>
+      <p class="char-count" id="res-ex-pl4" style="text-align:left"></p>
+    </div>
+  </section>
+
+  <section class="step" id="p5">
+    <div class="step-head">
+      <div class="step-num">💬</div>
+      <div>
+        <div class="step-meta">Speaking</div>
+        <h2>Let’s talk</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Speaking</div>
+      <h3>Your teacher asks. You answer. Say as much as you can!</h3>
+      <ol start="1" style="padding-left:24px;line-height:1.7;font-size:19px">
+        <li style="margin-bottom:6px">What’s your name? How old are you?</li>
+        <li style="margin-bottom:6px">Have you got any brothers, sisters or pets? Tell me about them.</li>
+        <li style="margin-bottom:6px">What can you do well? What can’t you do?</li>
+        <li style="margin-bottom:6px">What do you usually do after school?</li>
+        <li style="margin-bottom:6px">What did you do last weekend?</li>
+        <li style="margin-bottom:6px">What do you like more: films, books or games? Why?</li>
+        <li style="margin-bottom:6px">What are you going to do in the summer holidays?</li>
+        <li style="margin-bottom:6px">Have you ever been to another country? When did you go? What was it like?</li>
+        <li style="margin-bottom:6px">What will you do this weekend if the weather is bad?</li>
+        <li style="margin-bottom:6px">What would you do if you had a million dollars? <br>– or – Tell me about something you’ve done that you’re proud of.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="step" id="p6">
+    <div class="step-head">
+      <div class="step-num">✏️</div>
+      <div>
+        <div class="step-meta">Writing</div>
+        <h2>Write about you</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Writing</div>
+      <h3>Write 3–5 sentences about your weekend OR your favourite game.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>On Saturday I played football with my friends. Then I …</span></div>
+      <textarea class="free-write" id="fw-p" placeholder="Write here…" rows="6"></textarea>
+      <div class="char-count" id="cc-fw-p">0 characters</div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<div class="lesson-part" id="part-world">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#w1">1 · Warm-up</a>
+    <a href="#w2">2 · New words</a>
+    <a href="#w3">3 · can / can’t</a>
+    <a href="#w4">4 · Practice</a>
+    <a href="#wL">5 · Listen</a>
+    <a href="#w5">6 · Basics</a>
+    <a href="#w6">7 · Speak</a>
+    <a href="#w7">8 · Write</a>
+    <a href="#w8">9 · Finish</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="w1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Warm-up</div>
+        <h2>My first month of school</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Choose</div>
+      <h3>Choose 5 emojis about your first month of school.</h3>
+      <div class="emoji-pick" id="w-emo" data-max="5">
+        <div class="emoji-grid"><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😀</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😊</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😎</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🤩</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😂</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🤔</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😴</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🥱</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😫</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😬</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😤</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🤯</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">📚</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">✏️</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🎒</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">⏰</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">📝</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🧪</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">👫</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🏀</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🍕</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🎮</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🌧️</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">💪</button></div>
+        <div class="emoji-chosen" aria-live="polite"><span class="emoji-count">0 / 5</span><span class="emoji-row"></span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Let’s talk</div>
+      <h3>Tell your teacher about your emojis.</h3>
+      <ol start="1" style="padding-left:24px;line-height:1.7;font-size:19px">
+        <li style="margin-bottom:6px">Say one sentence for each emoji: <i>I’m… / I like… / I have got…</i></li>
+        <li style="margin-bottom:6px">Which emoji is the best? Which is the worst?</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="step" id="w2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">New words</div>
+        <h2>Hobbies</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-match-w">
+      <div class="exercise-label">Matching</div>
+      <h3>Match the picture and the words.</h3>
+      <div class="match-grid">
+        <div class="match-col" data-side="left">
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-w')">🎸</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-w')">🎨</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-w')">🍳</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-w')">♟️</div>
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-w')">🛹</div>
+          <div class="match-item" data-pair="6" onclick="selectMatch(this,'ex-match-w')">📷</div>
+          <div class="match-item" data-pair="7" onclick="selectMatch(this,'ex-match-w')">💃</div>
+          <div class="match-item" data-pair="8" onclick="selectMatch(this,'ex-match-w')">🏊</div>
+        </div>
+        <div class="match-col" data-side="right">
+          <div class="match-item" data-pair="6" onclick="selectMatch(this,'ex-match-w')">take photos</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-w')">cook</div>
+          <div class="match-item" data-pair="8" onclick="selectMatch(this,'ex-match-w')">swim</div>
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-w')">play the guitar</div>
+          <div class="match-item" data-pair="7" onclick="selectMatch(this,'ex-match-w')">dance</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-w')">draw</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-w')">play chess</div>
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-w')">skateboard</div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-ghost" onclick="resetMatchEx('ex-match-w')">Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="w3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Grammar check</div>
+        <h2>can / can’t</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-w-wc">
+      <div class="exercise-label">Word Choice</div>
+      <h3>Look at ✅ or ❌. Tap <i>can</i> or <i>can’t</i>.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>🎸 ✅ I <b>can</b> play the guitar.</span></div>
+      <p class="gap-line"><span class="num">1.</span> 🍳 ❌ My dad <span class="word-choice" id="w-wc1" data-answer="can’t"><button class="word-choice-btn" onclick="selectWord(this)">can</button><button class="word-choice-btn" onclick="selectWord(this)">can’t</button></span> cook.</p>
+      <p class="gap-line"><span class="num">2.</span> ♟️ ✅ My sister <span class="word-choice" id="w-wc2" data-answer="can"><button class="word-choice-btn" onclick="selectWord(this)">can</button><button class="word-choice-btn" onclick="selectWord(this)">can’t</button></span> play chess.</p>
+      <p class="gap-line"><span class="num">3.</span> 🗣️ ✅ Anna <span class="word-choice" id="w-wc3" data-answer="can"><button class="word-choice-btn" onclick="selectWord(this)">can</button><button class="word-choice-btn" onclick="selectWord(this)">can’t</button></span> speak three languages.</p>
+      <p class="gap-line"><span class="num">4.</span> 🛹 ❌ I <span class="word-choice" id="w-wc4" data-answer="can’t"><button class="word-choice-btn" onclick="selectWord(this)">can</button><button class="word-choice-btn" onclick="selectWord(this)">can’t</button></span> skateboard.</p>
+      <p class="gap-line"><span class="num">5.</span> 📷 ✅ We <span class="word-choice" id="w-wc5" data-answer="can"><button class="word-choice-btn" onclick="selectWord(this)">can</button><button class="word-choice-btn" onclick="selectWord(this)">can’t</button></span> take great photos.</p>
+      <p class="gap-line"><span class="num">6.</span> 🏊 ❌ My cat <span class="word-choice" id="w-wc6" data-answer="can’t"><button class="word-choice-btn" onclick="selectWord(this)">can</button><button class="word-choice-btn" onclick="selectWord(this)">can’t</button></span> swim! 😺</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-w-wc')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-w-wc')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="w4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Practice</div>
+        <h2>Can you…?</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-w-dl">
+      <div class="exercise-label">Fill in the Blanks</div>
+      <h3>Write <i>can</i>, <i>can’t</i> or <i>Can</i>.</h3>
+      <div class="dialogue">
+        <span class="dl-name">Sara</span>
+        <p class="dl-text ask"><span class="cue-input"><span class="cue-lab">example</span><span class="given">Can</span></span> you draw?</p>
+        <span class="dl-name two">Max</span>
+        <p class="dl-text ask">Yes, I <input class="blank" id="w-d1" data-answer="can" placeholder="?">. I draw every day! 🎨</p>
+        <span class="dl-name">Sara</span>
+        <p class="dl-text ask"><input class="blank" id="w-d2" data-answer="can" placeholder="?"> you play the guitar?</p>
+        <span class="dl-name two">Max</span>
+        <p class="dl-text ask">No, I <input class="blank" id="w-d3" data-answer="can’t|can&#x27;t|cannot|can not" placeholder="?">. But I can play the piano.</p>
+        <span class="dl-name">Sara</span>
+        <p class="dl-text ask"><input class="blank" id="w-d4" data-answer="can" placeholder="?"> you cook?</p>
+        <span class="dl-name two">Max</span>
+        <p class="dl-text ask">Yes, I <input class="blank" id="w-d5" data-answer="can" placeholder="?">. I can make great pancakes! 🥞</p>
+        <span class="dl-name">Sara</span>
+        <p class="dl-text">Can your brother skateboard?</p>
+        <span class="dl-name two">Max</span>
+        <p class="dl-text ask">No, he <input class="blank" id="w-d6" data-answer="can’t|can&#x27;t|cannot|can not" placeholder="?">. He’s only four!</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-w-dl')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-w-dl')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="wL">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Listening</div>
+        <h2>The Hobby Club</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-w-listen">
+      <div class="exercise-label">Listening</div>
+      <h3>Listen and write the missing word. You can listen two times.</h3>
+      <div class="audio-wrap">
+        <audio controls>
+          <source src="audio/listen-my-world-hobby-club.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div style="height:12px"></div>
+      <p class="gap-line"><span class="num">1.</span> Max can play the <input class="blank" id="w-lg1" data-answer="guitar" placeholder="?">.</p>
+      <p class="gap-line"><span class="num">2.</span> He can draw a <input class="blank" id="w-lg2" data-answer="little|bit|little bit" placeholder="?">.</p>
+      <p class="gap-line"><span class="num">3.</span> Anna can’t play the guitar, but she can <input class="blank" id="w-lg3" data-answer="sing" placeholder="?">.</p>
+      <p class="gap-line"><span class="num">4.</span> Anna plays chess with her <input class="blank" id="w-lg4" data-answer="grandpa|grandfather|granddad|grandad" placeholder="?">.</p>
+      <p class="gap-line"><span class="num">5.</span> They play chess every <input class="blank" id="w-lg5" data-answer="sunday" placeholder="?">.</p>
+      <p class="gap-line"><span class="num">6.</span> Max wants Anna to <input class="blank" id="w-lg6" data-answer="teach|help" placeholder="?"> him to play chess.</p>
+      <p class="gap-line"><span class="num">7.</span> Max’s favourite food is <input class="blank" id="w-lg7" data-answer="pizza" placeholder="?">.</p>
+      <p class="gap-line"><span class="num">8.</span> His mum is from <input class="blank" id="w-lg8" data-answer="italy" placeholder="?">.</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkSection('ex-w-listen')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetSection('ex-w-listen')">Try again</button>
+      </div>
+      <p class="char-count" id="res-ex-w-listen" style="text-align:left"></p>
+    </div>
+  </section>
+
+  <section class="step" id="w5">
+    <div class="step-head">
+      <div class="step-num">6</div>
+      <div>
+        <div class="step-meta">Basics check</div>
+        <h2>a / an, some / any, in / on / at, spelling</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-w-basics">
+      <div class="exercise-label">Basics Check</div>
+      <h3>Four quick tasks. Then press Check.</h3>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">A. a or an?</p>
+      <p class="gap-line"><span class="num">1.</span> I’ve got <span class="word-choice" id="w-b1" data-answer="a"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> new skateboard.</p>
+      <p class="gap-line"><span class="num">2.</span> This is <span class="word-choice" id="w-b2" data-answer="an"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> English book.</p>
+      <p class="gap-line"><span class="num">3.</span> Max is <span class="word-choice" id="w-b3" data-answer="a"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> good singer.</p>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">B. some or any?</p>
+      <p class="gap-line"><span class="num">4.</span> Have you got <span class="word-choice" id="w-b4" data-answer="any"><button class="word-choice-btn" onclick="selectWord(this)">some</button><button class="word-choice-btn" onclick="selectWord(this)">any</button></span> pets?</p>
+      <p class="gap-line"><span class="num">5.</span> I’ve got <span class="word-choice" id="w-b5" data-answer="some"><button class="word-choice-btn" onclick="selectWord(this)">some</button><button class="word-choice-btn" onclick="selectWord(this)">any</button></span> new trainers. 👟</p>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">C. in, on or at?</p>
+      <p class="gap-line"><span class="num">6.</span> I have guitar lessons <span class="word-choice" id="w-b6" data-answer="on"><button class="word-choice-btn" onclick="selectWord(this)">in</button><button class="word-choice-btn" onclick="selectWord(this)">on</button><button class="word-choice-btn" onclick="selectWord(this)">at</button></span> Monday.</p>
+      <p class="gap-line"><span class="num">7.</span> The lesson starts <span class="word-choice" id="w-b7" data-answer="at"><button class="word-choice-btn" onclick="selectWord(this)">in</button><button class="word-choice-btn" onclick="selectWord(this)">on</button><button class="word-choice-btn" onclick="selectWord(this)">at</button></span> 5 o’clock.</p>
+      <p class="gap-line"><span class="num">8.</span> My birthday is <span class="word-choice" id="w-b8" data-answer="in"><button class="word-choice-btn" onclick="selectWord(this)">in</button><button class="word-choice-btn" onclick="selectWord(this)">on</button><button class="word-choice-btn" onclick="selectWord(this)">at</button></span> July.</p>
+      <p class="gap-line"><span class="num">9.</span> There’s a poster <span class="word-choice" id="w-b9" data-answer="on"><button class="word-choice-btn" onclick="selectWord(this)">in</button><button class="word-choice-btn" onclick="selectWord(this)">on</button><button class="word-choice-btn" onclick="selectWord(this)">at</button></span> the wall.</p>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">D. Spelling: the word on the label is wrong. Write it correctly.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span><span class="cue-input"><span class="cue-lab">scool</span><span class="given">school</span></span></span></div>
+      <p class="gap-line"><span class="num">10.</span> <span class="cue-input"><span class="cue-lab">frend</span><input class="blank" id="w-b10" data-answer="friend" placeholder="?"></span></p>
+      <p class="gap-line"><span class="num">11.</span> <span class="cue-input"><span class="cue-lab">famly</span><input class="blank" id="w-b11" data-answer="family" placeholder="?"></span></p>
+      <p class="gap-line"><span class="num">12.</span> <span class="cue-input"><span class="cue-lab">wensday</span><input class="blank" id="w-b12" data-answer="wednesday" placeholder="?"></span></p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkSection('ex-w-basics')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetSection('ex-w-basics')">Try again</button>
+      </div>
+      <p class="char-count" id="res-ex-w-basics" style="text-align:left"></p>
+    </div>
+  </section>
+
+  <section class="step" id="w6">
+    <div class="step-head">
+      <div class="step-num">7</div>
+      <div>
+        <div class="step-meta">Speaking</div>
+        <h2>Ask and answer</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Speaking</div>
+      <h3>Ask your teacher: “Can you…?” Then answer your teacher’s questions.</h3>
+      <ol start="1" style="padding-left:24px;line-height:1.7;font-size:19px">
+        <li style="margin-bottom:6px">Can you play an instrument? 🎹</li>
+        <li style="margin-bottom:6px">Can you cook? 🍳</li>
+        <li style="margin-bottom:6px">Can you draw? 🎨</li>
+        <li style="margin-bottom:6px">Can you speak another language? 🗣️</li>
+        <li style="margin-bottom:6px">Can you dance? 💃</li>
+        <li style="margin-bottom:6px">Can you play chess? ♟️</li>
+      </ol>
+      <div class="tip"><b>Now you:</b> say 3 things you <b>can</b> do and 2 things you <b>can’t</b> do.</div>
+    </div>
+  </section>
+
+  <section class="step" id="w7">
+    <div class="step-head">
+      <div class="step-num">8</div>
+      <div>
+        <div class="step-meta">Writing</div>
+        <h2>Me and my hobbies</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Writing</div>
+      <h3>Write 4–5 sentences about your hobbies. Use <i>can</i> and <i>can’t</i>.</h3>
+      <textarea class="free-write" id="fw-w" placeholder="I can …" rows="5"></textarea>
+      <div class="char-count" id="cc-fw-w">0 characters</div>
+    </div>
+  </section>
+
+  <section class="step" id="w8">
+    <div class="step-head">
+      <div class="step-num">9</div>
+      <div>
+        <div class="step-meta">Finish</div>
+        <h2>Well done!</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Now I…</h3>
+      <div class="reflect-list">
+        <label class="reflect-item">
+          <input type="checkbox" id="r-w1">
+          <span class="check-box"></span>
+          <span class="reflect-text">know 8 hobbies in English</span>
+        </label>
+        <label class="reflect-item">
+          <input type="checkbox" id="r-w2">
+          <span class="check-box"></span>
+          <span class="reflect-text">can say what I <b>can</b> and <b>can’t</b> do</span>
+        </label>
+        <label class="reflect-item">
+          <input type="checkbox" id="r-w3">
+          <span class="check-box"></span>
+          <span class="reflect-text">can ask a friend “<b>Can</b> you…?”</span>
+        </label>
+        <label class="reflect-item">
+          <input type="checkbox" id="r-w4">
+          <span class="check-box"></span>
+          <span class="reflect-text">can understand a short conversation about hobbies</span>
+        </label>
+      </div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<div class="lesson-part" id="part-life">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#e1">1 · Warm-up</a>
+    <a href="#e2">2 · New words</a>
+    <a href="#e3">3 · How often?</a>
+    <a href="#e4">4 · Practice</a>
+    <a href="#eL">5 · Listen</a>
+    <a href="#eX">6 · More listening</a>
+    <a href="#e5">7 · Basics</a>
+    <a href="#e6">8 · Speak</a>
+    <a href="#e7">9 · Write</a>
+    <a href="#e8">10 · Finish</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="e1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Warm-up</div>
+        <h2>My first month of school</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Choose</div>
+      <h3>Choose 5 emojis about your first month of school.</h3>
+      <div class="emoji-pick" id="e-emo" data-max="5">
+        <div class="emoji-grid"><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😀</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😊</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😎</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🤩</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😂</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🤔</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😴</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🥱</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😫</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😬</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😤</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🤯</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">📚</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">✏️</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🎒</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">⏰</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">📝</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🧪</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">👫</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🏀</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🍕</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🎮</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🌧️</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">💪</button></div>
+        <div class="emoji-chosen" aria-live="polite"><span class="emoji-count">0 / 5</span><span class="emoji-row"></span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Let’s talk</div>
+      <h3>Tell your teacher about your emojis.</h3>
+      <ol start="1" style="padding-left:24px;line-height:1.7;font-size:19px">
+        <li style="margin-bottom:6px">Why did you choose each emoji?</li>
+        <li style="margin-bottom:6px">What do you usually do at school every day?</li>
+        <li style="margin-bottom:6px">What do you like at school? What don’t you like?</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="step" id="e2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">New words</div>
+        <h2>My week</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-match-e">
+      <div class="exercise-label">Matching</div>
+      <h3>Match the two halves.</h3>
+      <div class="match-grid">
+        <div class="match-col" data-side="left">
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-e')">go to</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-e')">walk</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-e')">hang out</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-e')">watch</div>
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-e')">take</div>
+          <div class="match-item" data-pair="6" onclick="selectMatch(this,'ex-match-e')">read</div>
+          <div class="match-item" data-pair="7" onclick="selectMatch(this,'ex-match-e')">practise</div>
+          <div class="match-item" data-pair="8" onclick="selectMatch(this,'ex-match-e')">tidy</div>
+        </div>
+        <div class="match-col" data-side="right">
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-e')">with friends</div>
+          <div class="match-item" data-pair="6" onclick="selectMatch(this,'ex-match-e')">comics</div>
+          <div class="match-item" data-pair="8" onclick="selectMatch(this,'ex-match-e')">my room</div>
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-e')">music lessons</div>
+          <div class="match-item" data-pair="7" onclick="selectMatch(this,'ex-match-e')">the piano</div>
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-e')">photos</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-e')">series online</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-e')">the dog</div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-ghost" onclick="resetMatchEx('ex-match-e')">Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="e3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Grammar check</div>
+        <h2>How often?</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-e-fill">
+      <div class="exercise-label">Fill in the Blanks</div>
+      <h3>Change the word on the label.</h3>
+      <p class="gap-line"><span class="num">1.</span> My sister always <span class="cue-input"><span class="cue-lab">practise</span><input class="blank" id="e-f1" data-answer="practises|practices" placeholder="?"></span> the piano after school.</p>
+      <p class="gap-line"><span class="num">2.</span> Dad never <span class="cue-input"><span class="cue-lab">cook</span><input class="blank" id="e-f2" data-answer="cooks" placeholder="?"></span> on Mondays.</p>
+      <p class="gap-line"><span class="num">3.</span> Anna usually <span class="cue-input"><span class="cue-lab">watch</span><input class="blank" id="e-f3" data-answer="watches" placeholder="?"></span> series in English.</p>
+      <p class="gap-line"><span class="num">4.</span> My brother sometimes <span class="cue-input"><span class="cue-lab">tidy</span><input class="blank" id="e-f4" data-answer="tidies" placeholder="?"></span> his room.</p>
+      <p class="gap-line"><span class="num">5.</span> He <span class="cue-input"><span class="cue-lab">go</span><input class="blank" id="e-f5" data-answer="goes" placeholder="?"></span> to music lessons by bus.</p>
+      <p class="gap-line"><span class="num">6.</span> I <span class="cue-input"><span class="cue-lab">not like</span><input class="blank" id="e-f6" data-answer="don’t like|don&#x27;t like|do not like" placeholder="?"></span> getting up early.</p>
+      <p class="gap-line"><span class="num">7.</span> <span class="cue-input"><span class="cue-lab">do</span><input class="blank" id="e-f7" data-answer="does" placeholder="?"></span> your cat sleep on your bed?</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-e-fill')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-e-fill')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="e4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Practice</div>
+        <h2>Where does it go?</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-e-mc">
+      <div class="exercise-label">Multiple Choice</div>
+      <h3>Choose the correct sentence.</h3>
+      <p style="font-weight:800;margin:6px 0 4px">1. </p>
+      <div class="mc-options" data-correct="a">
+        <label class="mc-option"><input type="radio" name="e-mc1" value="a"><span class="mc-bullet">A</span> I always walk the dog after school.</label>
+        <label class="mc-option"><input type="radio" name="e-mc1" value="b"><span class="mc-bullet">B</span> I walk always the dog after school.</label>
+        <label class="mc-option"><input type="radio" name="e-mc1" value="c"><span class="mc-bullet">C</span> Always I walk the dog after school.</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">2. </p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="e-mc2" value="a"><span class="mc-bullet">A</span> He never is late for school.</label>
+        <label class="mc-option"><input type="radio" name="e-mc2" value="b"><span class="mc-bullet">B</span> He is never late for school.</label>
+        <label class="mc-option"><input type="radio" name="e-mc2" value="c"><span class="mc-bullet">C</span> He never late for school.</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">3. </p>
+      <div class="mc-options" data-correct="c">
+        <label class="mc-option"><input type="radio" name="e-mc3" value="a"><span class="mc-bullet">A</span> Often do you read comics?</label>
+        <label class="mc-option"><input type="radio" name="e-mc3" value="b"><span class="mc-bullet">B</span> You read often comics?</label>
+        <label class="mc-option"><input type="radio" name="e-mc3" value="c"><span class="mc-bullet">C</span> Do you often read comics?</label>
+      </div>
+      <p style="font-weight:800;margin:16px 0 4px">4. </p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="e-mc4" value="a"><span class="mc-bullet">A</span> She takes usually photos at the weekend.</label>
+        <label class="mc-option"><input type="radio" name="e-mc4" value="b"><span class="mc-bullet">B</span> She usually takes photos at the weekend.</label>
+        <label class="mc-option"><input type="radio" name="e-mc4" value="c"><span class="mc-bullet">C</span> Usually she take photos at the weekend.</label>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-e-mc')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-e-mc')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="eL">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Listening</div>
+        <h2>School radio: Leo’s week</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-e-listen">
+      <div class="exercise-label">Listening</div>
+      <h3>Listen and write the missing word. You can listen two times.</h3>
+      <div class="audio-wrap">
+        <audio controls>
+          <source src="audio/listen-everyday-life-school-radio.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div style="height:12px"></div>
+      <p class="gap-line"><span class="num">1.</span> Leo has piano lessons on Mondays and <input class="blank" id="e-lg1" data-answer="thursdays|thursday" placeholder="?">.</p>
+      <p class="gap-line"><span class="num">2.</span> His dog’s name is <input class="blank" id="e-lg2" data-answer="biscuit" placeholder="?">.</p>
+      <p class="gap-line"><span class="num">3.</span> He usually gets up at <input class="blank" id="e-lg3" data-answer="seven|7" placeholder="?"> o’clock.</p>
+      <p class="gap-line"><span class="num">4.</span> He always has toast and <input class="blank" id="e-lg4" data-answer="orange juice|juice" placeholder="?" style="width:170px"> for breakfast.</p>
+      <p class="gap-line"><span class="num">5.</span> He <input class="blank" id="e-lg5" data-answer="never" placeholder="?"> plays video games on school days.</p>
+      <p class="gap-line"><span class="num">6.</span> On Saturdays he usually goes to the <input class="blank" id="e-lg6" data-answer="park" placeholder="?"> with his friends.</p>
+      <p class="gap-line"><span class="num">7.</span> Sometimes they go to the <input class="blank" id="e-lg7" data-answer="cinema|movies" placeholder="?">.</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkSection('ex-e-listen')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetSection('ex-e-listen')">Try again</button>
+      </div>
+      <p class="char-count" id="res-ex-e-listen" style="text-align:left"></p>
+    </div>
+  </section>
+
+  <section class="step" id="eX">
+    <div class="step-head">
+      <div class="step-num">6</div>
+      <div>
+        <div class="step-meta">Listening</div>
+        <h2>More listening: Who is in your new class?</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Online Test</div>
+      <h3>Open the test. Listen and answer the questions. Then come back here.</h3>
+      <a class="wordwall-btn" href="https://test-english.com/listening/a1/who-is-in-your-new-class-a1-english-listening-test/" target="_blank" rel="noopener">▶ Open the listening test</a>
+      <p class="char-count" style="text-align:left;margin-top:10px">It opens on the Test-English website in a new tab.</p>
+    </div>
+  </section>
+
+  <section class="step" id="e5">
+    <div class="step-head">
+      <div class="step-num">7</div>
+      <div>
+        <div class="step-meta">Basics check</div>
+        <h2>Articles, some / any, in / on / at, spelling</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-e-basics">
+      <div class="exercise-label">Basics Check</div>
+      <h3>Four quick tasks. Then press Check.</h3>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">A. a, an, the or – (no word)?</p>
+      <p class="gap-line"><span class="num">1.</span> I play <span class="word-choice" id="e-b1" data-answer="–"><button class="word-choice-btn" onclick="selectWord(this)">the</button><button class="word-choice-btn" onclick="selectWord(this)">–</button></span> football on Fridays.</p>
+      <p class="gap-line"><span class="num">2.</span> My sister plays <span class="word-choice" id="e-b2" data-answer="the"><button class="word-choice-btn" onclick="selectWord(this)">the</button><button class="word-choice-btn" onclick="selectWord(this)">–</button></span> piano.</p>
+      <p class="gap-line"><span class="num">3.</span> She speaks <span class="word-choice" id="e-b3" data-answer="–"><button class="word-choice-btn" onclick="selectWord(this)">the</button><button class="word-choice-btn" onclick="selectWord(this)">–</button></span> French very well.</p>
+      <p class="gap-line"><span class="num">4.</span> Our music teacher is <span class="word-choice" id="e-b4" data-answer="an"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button><button class="word-choice-btn" onclick="selectWord(this)">the</button></span> old rock star!</p>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">B. some or any?</p>
+      <p class="gap-line"><span class="num">5.</span> We haven’t got <span class="word-choice" id="e-b5" data-answer="any"><button class="word-choice-btn" onclick="selectWord(this)">some</button><button class="word-choice-btn" onclick="selectWord(this)">any</button></span> milk.</p>
+      <p class="gap-line"><span class="num">6.</span> Can I have <span class="word-choice" id="e-b6" data-answer="some"><button class="word-choice-btn" onclick="selectWord(this)">some</button><button class="word-choice-btn" onclick="selectWord(this)">any</button></span> water, please?</p>
+      <p class="gap-line"><span class="num">7.</span> Are there <span class="word-choice" id="e-b7" data-answer="any"><button class="word-choice-btn" onclick="selectWord(this)">some</button><button class="word-choice-btn" onclick="selectWord(this)">any</button></span> good cafés near your school?</p>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">C. in, on or at?</p>
+      <p class="gap-line"><span class="num">8.</span> I have a piano lesson <span class="word-choice" id="e-b8" data-answer="on"><button class="word-choice-btn" onclick="selectWord(this)">in</button><button class="word-choice-btn" onclick="selectWord(this)">on</button><button class="word-choice-btn" onclick="selectWord(this)">at</button></span> Saturday morning.</p>
+      <p class="gap-line"><span class="num">9.</span> It starts <span class="word-choice" id="e-b9" data-answer="at"><button class="word-choice-btn" onclick="selectWord(this)">in</button><button class="word-choice-btn" onclick="selectWord(this)">on</button><button class="word-choice-btn" onclick="selectWord(this)">at</button></span> 10 a.m.</p>
+      <p class="gap-line"><span class="num">10.</span> We don’t have school <span class="word-choice" id="e-b10" data-answer="in"><button class="word-choice-btn" onclick="selectWord(this)">in</button><button class="word-choice-btn" onclick="selectWord(this)">on</button><button class="word-choice-btn" onclick="selectWord(this)">at</button></span> August.</p>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">D. Spelling: add -ing.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>play → <span class="cue-input"><span class="cue-lab">play + ing</span><span class="given">playing</span></span></span></div>
+      <p class="gap-line"><span class="num">11.</span> swim → <span class="cue-input"><span class="cue-lab">swim + ing</span><input class="blank" id="e-b11" data-answer="swimming" placeholder="?"></span></p>
+      <p class="gap-line"><span class="num">12.</span> run → <span class="cue-input"><span class="cue-lab">run + ing</span><input class="blank" id="e-b12" data-answer="running" placeholder="?"></span></p>
+      <p class="gap-line"><span class="num">13.</span> write → <span class="cue-input"><span class="cue-lab">write + ing</span><input class="blank" id="e-b13" data-answer="writing" placeholder="?"></span></p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkSection('ex-e-basics')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetSection('ex-e-basics')">Try again</button>
+      </div>
+      <p class="char-count" id="res-ex-e-basics" style="text-align:left"></p>
+    </div>
+  </section>
+
+  <section class="step" id="e6">
+    <div class="step-head">
+      <div class="step-num">8</div>
+      <div>
+        <div class="step-meta">Speaking</div>
+        <h2>How often do you…?</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Speaking</div>
+      <h3>Ask and answer. Use <i>always, usually, often, sometimes, never</i>.</h3>
+      <ol start="1" style="padding-left:24px;line-height:1.7;font-size:19px">
+        <li style="margin-bottom:6px">How often do you listen to music?</li>
+        <li style="margin-bottom:6px">How often do you cook or help in the kitchen?</li>
+        <li style="margin-bottom:6px">How often do you watch series or films?</li>
+        <li style="margin-bottom:6px">How often do you read books or comics?</li>
+        <li style="margin-bottom:6px">How often do you do sport?</li>
+        <li style="margin-bottom:6px">How often do you play computer games?</li>
+      </ol>
+      <div class="tip"><b>Now:</b> tell your teacher about your week. <i>On Mondays I… At the weekend I usually…</i></div>
+    </div>
+  </section>
+
+  <section class="step" id="e7">
+    <div class="step-head">
+      <div class="step-num">9</div>
+      <div>
+        <div class="step-meta">Writing</div>
+        <h2>My week</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Writing</div>
+      <h3>Write 5 sentences about your week. Use <i>always, usually, sometimes, never</i>.</h3>
+      <textarea class="free-write" id="fw-e" placeholder="Write here…" rows="5"></textarea>
+      <div class="char-count" id="cc-fw-e">0 characters</div>
+    </div>
+  </section>
+
+  <section class="step" id="e8">
+    <div class="step-head">
+      <div class="step-num">10</div>
+      <div>
+        <div class="step-meta">Finish</div>
+        <h2>Well done!</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Now I…</h3>
+      <div class="reflect-list">
+        <label class="reflect-item">
+          <input type="checkbox" id="r-e1">
+          <span class="check-box"></span>
+          <span class="reflect-text">know 8 phrases about my week</span>
+        </label>
+        <label class="reflect-item">
+          <input type="checkbox" id="r-e2">
+          <span class="check-box"></span>
+          <span class="reflect-text">can say how often I do things</span>
+        </label>
+        <label class="reflect-item">
+          <input type="checkbox" id="r-e3">
+          <span class="check-box"></span>
+          <span class="reflect-text">remember <b>he plays / she watches / he does</b></span>
+        </label>
+        <label class="reflect-item">
+          <input type="checkbox" id="r-e4">
+          <span class="check-box"></span>
+          <span class="reflect-text">can understand a short interview about someone’s week</span>
+        </label>
+      </div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<div class="lesson-part" id="part-stories">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#st1">1 · Warm-up</a>
+    <a href="#st2">2 · New words</a>
+    <a href="#st3">3 · Past simple</a>
+    <a href="#st4">4 · Practice</a>
+    <a href="#stL">5 · Listen</a>
+    <a href="#stX">6 · More listening</a>
+    <a href="#st5">7 · Basics</a>
+    <a href="#st6">8 · Speak</a>
+    <a href="#st7">9 · Write</a>
+    <a href="#st8">10 · Finish</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="st1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Warm-up</div>
+        <h2>My first month of school</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Choose</div>
+      <h3>Choose 5 emojis about your first month of school.</h3>
+      <div class="emoji-pick" id="st-emo" data-max="5">
+        <div class="emoji-grid"><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😀</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😊</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😎</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🤩</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😂</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🤔</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😴</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🥱</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😫</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😬</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😤</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🤯</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">📚</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">✏️</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🎒</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">⏰</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">📝</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🧪</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">👫</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🏀</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🍕</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🎮</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🌧️</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">💪</button></div>
+        <div class="emoji-chosen" aria-live="polite"><span class="emoji-count">0 / 5</span><span class="emoji-row"></span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Let’s talk</div>
+      <h3>Tell your teacher the story behind your emojis.</h3>
+      <ol start="1" style="padding-left:24px;line-height:1.7;font-size:19px">
+        <li style="margin-bottom:6px">Why did you choose each emoji? What happened?</li>
+        <li style="margin-bottom:6px">What was the best day this month? What did you do?</li>
+        <li style="margin-bottom:6px">Was anything difficult or funny?</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="step" id="st2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">New words</div>
+        <h2>Travel words</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-match-st">
+      <div class="exercise-label">Matching</div>
+      <h3>Match the word and its meaning.</h3>
+      <div class="match-grid">
+        <div class="match-col" data-side="left">
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-st')">trip</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-st')">ticket</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-st')">map</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-st')">museum</div>
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-st')">souvenir</div>
+          <div class="match-item" data-pair="6" onclick="selectMatch(this,'ex-match-st')">guide</div>
+          <div class="match-item" data-pair="7" onclick="selectMatch(this,'ex-match-st')">tent</div>
+          <div class="match-item" data-pair="8" onclick="selectMatch(this,'ex-match-st')">hotel</div>
+        </div>
+        <div class="match-col" data-side="right">
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-st')">something you buy to remember a place</div>
+          <div class="match-item" data-pair="8" onclick="selectMatch(this,'ex-match-st')">a place where you pay to sleep when you travel</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-st')">a paper you need for a train, a bus or a concert</div>
+          <div class="match-item" data-pair="6" onclick="selectMatch(this,'ex-match-st')">a person who shows tourists a place</div>
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-st')">a short journey to visit a place</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-st')">a building with old or interesting things to see</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-st')">a picture that shows where places are</div>
+          <div class="match-item" data-pair="7" onclick="selectMatch(this,'ex-match-st')">a small “house” you sleep in when you go camping</div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-ghost" onclick="resetMatchEx('ex-match-st')">Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="st3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Grammar check</div>
+        <h2>What happened?</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-st-story">
+      <div class="exercise-label">Fill in the Blanks</div>
+      <h3>Read Artem’s story. Put the verbs in the past.</h3>
+      <div style="font-size:19px;line-height:2.2">
+        Last Saturday my class <span class="cue-input"><span class="cue-lab">go</span><span class="given">went</span></span> on a trip to the science museum.
+        We <span class="cue-input"><span class="cue-lab">take</span><input class="blank" id="st-s1" data-answer="took" placeholder="?"></span> the bus at 8 a.m.
+        At the museum we <span class="cue-input"><span class="cue-lab">see</span><input class="blank" id="st-s2" data-answer="saw" placeholder="?"></span> a real rocket! 🚀
+        I <span class="cue-input"><span class="cue-lab">feel</span><input class="blank" id="st-s3" data-answer="felt" placeholder="?"></span> a bit scared in the dark space room.
+        At lunchtime we <span class="cue-input"><span class="cue-lab">eat</span><input class="blank" id="st-s4" data-answer="ate" placeholder="?"></span> sandwiches in the park.
+        My friend <span class="cue-input"><span class="cue-lab">lose</span><input class="blank" id="st-s5" data-answer="lost" placeholder="?"></span> his ticket, but a guide <span class="cue-input"><span class="cue-lab">find</span><input class="blank" id="st-s6" data-answer="found" placeholder="?"></span> it under a chair.
+        I <span class="cue-input"><span class="cue-lab">buy</span><input class="blank" id="st-s7" data-answer="bought" placeholder="?"></span> a small robot as a souvenir, and we <span class="cue-input"><span class="cue-lab">get</span><input class="blank" id="st-s8" data-answer="got" placeholder="?"></span> home at six, very tired.
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-st-story')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-st-story')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="st4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Practice</div>
+        <h2>Did you like it?</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-st-dl">
+      <div class="exercise-label">Fill in the Blanks</div>
+      <h3>Complete the conversation. If there is a label, use that word.</h3>
+      <div class="dialogue">
+        <span class="dl-name">Sofia</span>
+        <p class="dl-text ask">Hi, Artem! What <input class="blank" id="st-d1" data-answer="did" placeholder="?"> you do at the weekend?</p>
+        <span class="dl-name two">Artem</span>
+        <p class="dl-text">I went to a concert with my cousin.</p>
+        <span class="dl-name">Sofia</span>
+        <p class="dl-text ask">Cool! Who <span class="cue-input"><span class="cue-lab">play</span><input class="blank" id="st-d2" data-answer="played" placeholder="?"></span>?</p>
+        <span class="dl-name two">Artem</span>
+        <p class="dl-text">A band from London. They were amazing!</p>
+        <span class="dl-name">Sofia</span>
+        <p class="dl-text ask"><input class="blank" id="st-d3" data-answer="did" placeholder="?"> you dance?</p>
+        <span class="dl-name two">Artem</span>
+        <p class="dl-text ask">Yes, I <input class="blank" id="st-d4" data-answer="did" placeholder="?">! All night!</p>
+        <span class="dl-name">Sofia</span>
+        <p class="dl-text ask">What did you <span class="cue-input"><span class="cue-lab">buy</span><input class="blank" id="st-d5" data-answer="buy" placeholder="?"></span> there?</p>
+        <span class="dl-name two">Artem</span>
+        <p class="dl-text">A T-shirt with the band’s name on it.</p>
+        <span class="dl-name">Sofia</span>
+        <p class="dl-text ask">How did you <span class="cue-input"><span class="cue-lab">get</span><input class="blank" id="st-d6" data-answer="get" placeholder="?"></span> home?</p>
+        <span class="dl-name two">Artem</span>
+        <p class="dl-text ask">By taxi. We <input class="blank" id="st-d7" data-answer="didn’t|didn&#x27;t|did not" placeholder="?"> take the bus because it was very late.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-st-dl')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-st-dl')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="stL">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Listening</div>
+        <h2>A day at the seaside</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-st-listen">
+      <div class="exercise-label">Listening</div>
+      <h3>Listen and write the missing word. You can listen two times.</h3>
+      <div class="audio-wrap">
+        <audio controls>
+          <source src="audio/listen-stories-a-day-at-the-seaside.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div style="height:12px"></div>
+      <p class="gap-line"><span class="num">1.</span> Kate went to the seaside with her <input class="blank" id="st-lg1" data-answer="aunt|auntie" placeholder="?">.</p>
+      <p class="gap-line"><span class="num">2.</span> They travelled there by <input class="blank" id="st-lg2" data-answer="train" placeholder="?">.</p>
+      <p class="gap-line"><span class="num">3.</span> The journey took about <input class="blank" id="st-lg3" data-answer="two|2" placeholder="?"> hours.</p>
+      <p class="gap-line"><span class="num">4.</span> In the morning the water was really <input class="blank" id="st-lg4" data-answer="cold" placeholder="?">.</p>
+      <p class="gap-line"><span class="num">5.</span> In the afternoon they went to an <input class="blank" id="st-lg5" data-answer="aquarium" placeholder="?">.</p>
+      <p class="gap-line"><span class="num">6.</span> Kate saw a huge <input class="blank" id="st-lg6" data-answer="octopus" placeholder="?">.</p>
+      <p class="gap-line"><span class="num">7.</span> She bought a book about <input class="blank" id="st-lg7" data-answer="sharks|shark" placeholder="?"> for her brother.</p>
+      <p class="gap-line"><span class="num">8.</span> For dinner they had fish and <input class="blank" id="st-lg8" data-answer="chips" placeholder="?">.</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkSection('ex-st-listen')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetSection('ex-st-listen')">Try again</button>
+      </div>
+      <p class="char-count" id="res-ex-st-listen" style="text-align:left"></p>
+    </div>
+  </section>
+
+  <section class="step" id="stX">
+    <div class="step-head">
+      <div class="step-num">6</div>
+      <div>
+        <div class="step-meta">Listening</div>
+        <h2>More listening: What do you have to do at home?</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Online Test</div>
+      <h3>Open the test. Listen and answer the questions. Then come back here.</h3>
+      <a class="wordwall-btn" href="https://test-english.com/listening/a2/what-do-you-have-to-do-at-home-a2-english-listening-test/" target="_blank" rel="noopener">▶ Open the listening test</a>
+      <p class="char-count" style="text-align:left;margin-top:10px">It opens on the Test-English website in a new tab.</p>
+    </div>
+  </section>
+
+  <section class="step" id="st5">
+    <div class="step-head">
+      <div class="step-num">7</div>
+      <div>
+        <div class="step-meta">Basics check</div>
+        <h2>Articles, some / any / much / many, prepositions, spelling</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-st-basics">
+      <div class="exercise-label">Basics Check</div>
+      <h3>Four quick tasks. Then press Check.</h3>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">A. a, an, the or – (no word)?</p>
+      <p class="gap-line"><span class="num">1.</span> Last summer we went to <span class="word-choice" id="st-b1" data-answer="–"><button class="word-choice-btn" onclick="selectWord(this)">the</button><button class="word-choice-btn" onclick="selectWord(this)">–</button></span> Italy.</p>
+      <p class="gap-line"><span class="num">2.</span> We saw <span class="word-choice" id="st-b2" data-answer="the"><button class="word-choice-btn" onclick="selectWord(this)">the</button><button class="word-choice-btn" onclick="selectWord(this)">–</button></span> Colosseum in Rome.</p>
+      <p class="gap-line"><span class="num">3.</span> <span class="word-choice" id="st-b3" data-answer="–"><button class="word-choice-btn" onclick="selectWord(this)">The</button><button class="word-choice-btn" onclick="selectWord(this)">–</button></span> music is my favourite subject.</p>
+      <p class="gap-line"><span class="num">4.</span> I met <span class="word-choice" id="st-b4" data-answer="an"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> interesting girl at the concert.</p>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">B. some, any, much or many?</p>
+      <p class="gap-line"><span class="num">5.</span> There weren’t <span class="word-choice" id="st-b5" data-answer="many"><button class="word-choice-btn" onclick="selectWord(this)">much</button><button class="word-choice-btn" onclick="selectWord(this)">many</button></span> people on the beach.</p>
+      <p class="gap-line"><span class="num">6.</span> We didn’t have <span class="word-choice" id="st-b6" data-answer="much"><button class="word-choice-btn" onclick="selectWord(this)">much</button><button class="word-choice-btn" onclick="selectWord(this)">many</button></span> time before the concert.</p>
+      <p class="gap-line"><span class="num">7.</span> Did you buy <span class="word-choice" id="st-b7" data-answer="any"><button class="word-choice-btn" onclick="selectWord(this)">some</button><button class="word-choice-btn" onclick="selectWord(this)">any</button></span> souvenirs?</p>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">C. in, on or at?</p>
+      <p class="gap-line"><span class="num">8.</span> We arrived <span class="word-choice" id="st-b8" data-answer="at"><button class="word-choice-btn" onclick="selectWord(this)">in</button><button class="word-choice-btn" onclick="selectWord(this)">on</button><button class="word-choice-btn" onclick="selectWord(this)">at</button></span> the airport late.</p>
+      <p class="gap-line"><span class="num">9.</span> The concert was <span class="word-choice" id="st-b9" data-answer="in"><button class="word-choice-btn" onclick="selectWord(this)">in</button><button class="word-choice-btn" onclick="selectWord(this)">on</button><button class="word-choice-btn" onclick="selectWord(this)">at</button></span> the evening.</p>
+      <p class="gap-line"><span class="num">10.</span> We came home <span class="word-choice" id="st-b10" data-answer="on"><button class="word-choice-btn" onclick="selectWord(this)">in</button><button class="word-choice-btn" onclick="selectWord(this)">on</button><button class="word-choice-btn" onclick="selectWord(this)">at</button></span> Sunday.</p>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">D. Spelling: write the past form.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span><span class="cue-input"><span class="cue-lab">play</span><span class="given">played</span></span></span></div>
+      <p class="gap-line"><span class="num">11.</span> <span class="cue-input"><span class="cue-lab">stop</span><input class="blank" id="st-b11" data-answer="stopped" placeholder="?"></span></p>
+      <p class="gap-line"><span class="num">12.</span> <span class="cue-input"><span class="cue-lab">plan</span><input class="blank" id="st-b12" data-answer="planned" placeholder="?"></span></p>
+      <p class="gap-line"><span class="num">13.</span> <span class="cue-input"><span class="cue-lab">try</span><input class="blank" id="st-b13" data-answer="tried" placeholder="?"></span></p>
+      <p class="gap-line"><span class="num">14.</span> <span class="cue-input"><span class="cue-lab">travel</span><input class="blank" id="st-b14" data-answer="travelled|traveled" placeholder="?"></span></p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkSection('ex-st-basics')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetSection('ex-st-basics')">Try again</button>
+      </div>
+      <p class="char-count" id="res-ex-st-basics" style="text-align:left"></p>
+    </div>
+  </section>
+
+  <section class="step" id="st6">
+    <div class="step-head">
+      <div class="step-num">8</div>
+      <div>
+        <div class="step-meta">Speaking</div>
+        <h2>Tell a story</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Speaking</div>
+      <h3>Tell your teacher about a great (or terrible!) day: a trip, a party, a concert, a holiday… Your teacher will ask:</h3>
+      <ol start="1" style="padding-left:24px;line-height:1.7;font-size:19px">
+        <li style="margin-bottom:6px">Where did you go?</li>
+        <li style="margin-bottom:6px">Who did you go with?</li>
+        <li style="margin-bottom:6px">What did you do?</li>
+        <li style="margin-bottom:6px">What happened?</li>
+        <li style="margin-bottom:6px">How did you feel?</li>
+      </ol>
+      <div class="tip"><b>Now you:</b> ask your teacher 3 questions about their last holiday. <i>Where did you…? Did you…?</i></div>
+    </div>
+  </section>
+
+  <section class="step" id="st7">
+    <div class="step-head">
+      <div class="step-num">9</div>
+      <div>
+        <div class="step-meta">Writing</div>
+        <h2>My best day out</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Writing</div>
+      <h3>Write a short story (5–6 sentences): “My best day out”. Use <i>first, then, after that, in the end</i>.</h3>
+      <textarea class="free-write" id="fw-st" placeholder="Write here…" rows="7"></textarea>
+      <div class="char-count" id="cc-fw-st">0 characters</div>
+    </div>
+  </section>
+
+  <section class="step" id="st8">
+    <div class="step-head">
+      <div class="step-num">10</div>
+      <div>
+        <div class="step-meta">Finish</div>
+        <h2>Well done!</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Now I…</h3>
+      <div class="reflect-list">
+        <label class="reflect-item">
+          <input type="checkbox" id="r-st1">
+          <span class="check-box"></span>
+          <span class="reflect-text">know 8 travel words (<i>trip, ticket, souvenir…</i>)</span>
+        </label>
+        <label class="reflect-item">
+          <input type="checkbox" id="r-st2">
+          <span class="check-box"></span>
+          <span class="reflect-text">know 10 irregular past verbs</span>
+        </label>
+        <label class="reflect-item">
+          <input type="checkbox" id="r-st3">
+          <span class="check-box"></span>
+          <span class="reflect-text">can ask “Did you…?” and “What did you…?”</span>
+        </label>
+        <label class="reflect-item">
+          <input type="checkbox" id="r-st4">
+          <span class="check-box"></span>
+          <span class="reflect-text">can tell a short story about a day out</span>
+        </label>
+      </div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<div class="lesson-part" id="part-exp">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#x1">1 · Warm-up</a>
+    <a href="#x2">2 · New words</a>
+    <a href="#x3">3 · Grammar</a>
+    <a href="#x4">4 · Practice</a>
+    <a href="#xL">5 · Listen</a>
+    <a href="#xX">6 · More listening</a>
+    <a href="#x5">7 · Basics</a>
+    <a href="#x6">8 · Speak</a>
+    <a href="#x7">9 · Write</a>
+    <a href="#x8">10 · Finish</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="x1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Warm-up</div>
+        <h2>My first month of school</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Choose</div>
+      <h3>Choose 5 emojis about your first month of school.</h3>
+      <div class="emoji-pick" id="x-emo" data-max="5">
+        <div class="emoji-grid"><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😀</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😊</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😎</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🤩</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😂</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🤔</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😴</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🥱</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😫</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😬</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">😤</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🤯</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">📚</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">✏️</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🎒</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">⏰</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">📝</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🧪</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">👫</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🏀</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🍕</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🎮</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">🌧️</button><button type="button" class="emoji-btn" onclick="pickEmoji(this)">💪</button></div>
+        <div class="emoji-chosen" aria-live="polite"><span class="emoji-count">0 / 5</span><span class="emoji-row"></span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Let’s talk</div>
+      <h3>Tell your teacher about your emojis.</h3>
+      <ol start="1" style="padding-left:24px;line-height:1.7;font-size:19px">
+        <li style="margin-bottom:6px">Why did you choose each emoji?</li>
+        <li style="margin-bottom:6px">What have you done this month for the first time?</li>
+        <li style="margin-bottom:6px">What has been the best part so far? And the hardest?</li>
+        <li style="margin-bottom:6px">Is this year better or worse than last year? Why?</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="step" id="x2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">New words</div>
+        <h2>Experiences</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-match-x">
+      <div class="exercise-label">Matching</div>
+      <h3>Match the phrase and its meaning.</h3>
+      <div class="match-grid">
+        <div class="match-col" data-side="left">
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-x')">go camping</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-x')">perform on stage</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-x')">try a new food</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-x')">win a competition</div>
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-x')">get lost</div>
+          <div class="match-item" data-pair="6" onclick="selectMatch(this,'ex-match-x')">meet a famous person</div>
+          <div class="match-item" data-pair="7" onclick="selectMatch(this,'ex-match-x')">break a bone</div>
+          <div class="match-item" data-pair="8" onclick="selectMatch(this,'ex-match-x')">stay up all night</div>
+        </div>
+        <div class="match-col" data-side="right">
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-x')">be number one in a contest</div>
+          <div class="match-item" data-pair="7" onclick="selectMatch(this,'ex-match-x')">hurt your arm or leg very badly</div>
+          <div class="match-item" data-pair="6" onclick="selectMatch(this,'ex-match-x')">see and talk to a star</div>
+          <div class="match-item" data-pair="8" onclick="selectMatch(this,'ex-match-x')">not go to bed until the morning</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-x')">sing, dance or act in front of people</div>
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-x')">sleep in a tent outside</div>
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-x')">not know where you are</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-x')">eat something for the first time</div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-ghost" onclick="resetMatchEx('ex-match-x')">Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="x3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Grammar check</div>
+        <h2>Present perfect or past simple?</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-x-wc">
+      <div class="exercise-label">Word Choice</div>
+      <h3>Tap the correct form.</h3>
+      <p class="gap-line"><span class="num">1.</span> I <span class="word-choice" id="x-wc1" data-answer="performed"><button class="word-choice-btn" onclick="selectWord(this)">have performed</button><button class="word-choice-btn" onclick="selectWord(this)">performed</button></span> in a school concert last year.</p>
+      <p class="gap-line"><span class="num">2.</span> <span class="word-choice" id="x-wc2" data-answer="Have you ever tried"><button class="word-choice-btn" onclick="selectWord(this)">Have you ever tried</button><button class="word-choice-btn" onclick="selectWord(this)">Did you ever try</button></span> Japanese food?</p>
+      <p class="gap-line"><span class="num">3.</span> My sister <span class="word-choice" id="x-wc3" data-answer="has learned"><button class="word-choice-btn" onclick="selectWord(this)">has learned</button><button class="word-choice-btn" onclick="selectWord(this)">learned</button></span> three languages so far.</p>
+      <p class="gap-line"><span class="num">4.</span> He <span class="word-choice" id="x-wc4" data-answer="got lost"><button class="word-choice-btn" onclick="selectWord(this)">has got lost</button><button class="word-choice-btn" onclick="selectWord(this)">got lost</button></span> in London on Saturday.</p>
+      <p class="gap-line"><span class="num">5.</span> I <span class="word-choice" id="x-wc5" data-answer="have never broken"><button class="word-choice-btn" onclick="selectWord(this)">have never broken</button><button class="word-choice-btn" onclick="selectWord(this)">never broke</button></span> a bone.</p>
+      <p class="gap-line"><span class="num">6.</span> <span class="word-choice" id="x-wc6" data-answer="Have you finished"><button class="word-choice-btn" onclick="selectWord(this)">Have you finished</button><button class="word-choice-btn" onclick="selectWord(this)">Did you finish</button></span> your science project yet?</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-x-wc')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-x-wc')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="x4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Practice</div>
+        <h2>Have you ever…?</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-x-dl">
+      <div class="exercise-label">Fill in the Blanks</div>
+      <h3>Complete the conversation. Change the word on the label.</h3>
+      <div class="dialogue">
+        <span class="dl-name">Mila</span>
+        <p class="dl-text ask">Have you ever <span class="cue-input"><span class="cue-lab">take</span><input class="blank" id="x-d1" data-answer="taken" placeholder="?"></span> part in a competition?</p>
+        <span class="dl-name two">Nick</span>
+        <p class="dl-text ask">Yes, I <input class="blank" id="x-d2" data-answer="have" placeholder="?">. My first one <span class="cue-input"><span class="cue-lab">be</span><input class="blank" id="x-d3" data-answer="was" placeholder="?"></span> in 2023. It was a robot competition! 🤖</p>
+        <span class="dl-name">Mila</span>
+        <p class="dl-text ask"><span class="cue-input"><span class="cue-lab">do</span><input class="blank" id="x-d4" data-answer="did" placeholder="?"></span> your team win?</p>
+        <span class="dl-name two">Nick</span>
+        <p class="dl-text ask">No, we <span class="cue-input"><span class="cue-lab">lose</span><input class="blank" id="x-d5" data-answer="lost" placeholder="?"></span> in the final. But I’ve just <span class="cue-input"><span class="cue-lab">make</span><input class="blank" id="x-d6" data-answer="made" placeholder="?"></span> a new robot!</p>
+        <span class="dl-name">Mila</span>
+        <p class="dl-text ask">Cool! Have you <span class="cue-input"><span class="cue-lab">learn</span><input class="blank" id="x-d7" data-answer="learned|learnt" placeholder="?"></span> anything new this year?</p>
+        <span class="dl-name two">Nick</span>
+        <p class="dl-text ask">Yes – I’ve <span class="cue-input"><span class="cue-lab">start</span><input class="blank" id="x-d8" data-answer="started" placeholder="?"></span> a video editing course.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-x-dl')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-x-dl')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="xL">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Listening</div>
+        <h2>Young Voices podcast</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-x-listen">
+      <div class="exercise-label">Listening</div>
+      <h3>Listen and write the missing word. You can listen two times.</h3>
+      <div class="audio-wrap">
+        <audio controls>
+          <source src="audio/listen-experiences-young-voices-podcast.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div style="height:12px"></div>
+      <p class="gap-line"><span class="num">1.</span> Lucy is <input class="blank" id="x-lg1" data-answer="fifteen|15" placeholder="?"> years old.</p>
+      <p class="gap-line"><span class="num">2.</span> She has made films for about <input class="blank" id="x-lg2" data-answer="three|3" placeholder="?"> years.</p>
+      <p class="gap-line"><span class="num">3.</span> Her prize-winning film was about her grandmother’s <input class="blank" id="x-lg3" data-answer="village" placeholder="?">.</p>
+      <p class="gap-line"><span class="num">4.</span> The film festival was in <input class="blank" id="x-lg4" data-answer="prague" placeholder="?">.</p>
+      <p class="gap-line"><span class="num">5.</span> For Lucy, the hardest thing about making films is the <input class="blank" id="x-lg5" data-answer="sound" placeholder="?">.</p>
+      <p class="gap-line"><span class="num">6.</span> Her new film is a <input class="blank" id="x-lg6" data-answer="comedy" placeholder="?">.</p>
+      <p class="gap-line"><span class="num">7.</span> It’s about a cat who wants to be a <input class="blank" id="x-lg7" data-answer="chef|cook" placeholder="?">.</p>
+      <p class="gap-line"><span class="num">8.</span> The new film is <input class="blank" id="x-lg8" data-answer="twelve|12" placeholder="?"> minutes long.</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkSection('ex-x-listen')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetSection('ex-x-listen')">Try again</button>
+      </div>
+      <p class="char-count" id="res-ex-x-listen" style="text-align:left"></p>
+    </div>
+  </section>
+
+  <section class="step" id="xX">
+    <div class="step-head">
+      <div class="step-num">6</div>
+      <div>
+        <div class="step-meta">Listening</div>
+        <h2>More listening: What do you have to do at home?</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Online Test</div>
+      <h3>Open the test. Listen and answer the questions. Then come back here.</h3>
+      <a class="wordwall-btn" href="https://test-english.com/listening/a2/what-do-you-have-to-do-at-home-a2-english-listening-test/" target="_blank" rel="noopener">▶ Open the listening test</a>
+      <p class="char-count" style="text-align:left;margin-top:10px">It opens on the Test-English website in a new tab.</p>
+    </div>
+  </section>
+
+  <section class="step" id="x5">
+    <div class="step-head">
+      <div class="step-num">7</div>
+      <div>
+        <div class="step-meta">Basics check</div>
+        <h2>Articles, quantifiers, prepositions, spelling</h2>
+      </div>
+    </div>
+
+    <div class="card" id="ex-x-basics">
+      <div class="exercise-label">Basics Check</div>
+      <h3>Four quick tasks. Then press Check.</h3>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">A. a, the or – (no word)?</p>
+      <p class="gap-line"><span class="num">1.</span> I want to be <span class="word-choice" id="x-b1" data-answer="a"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">the</button><button class="word-choice-btn" onclick="selectWord(this)">–</button></span> vet one day.</p>
+      <p class="gap-line"><span class="num">2.</span> Have you ever been to <span class="word-choice" id="x-b2" data-answer="the"><button class="word-choice-btn" onclick="selectWord(this)">the</button><button class="word-choice-btn" onclick="selectWord(this)">–</button></span> USA?</p>
+      <p class="gap-line"><span class="num">3.</span> I think <span class="word-choice" id="x-b3" data-answer="–"><button class="word-choice-btn" onclick="selectWord(this)">the</button><button class="word-choice-btn" onclick="selectWord(this)">–</button></span> English is easier than maths.</p>
+      <p class="gap-line"><span class="num">4.</span> This is <span class="word-choice" id="x-b4" data-answer="the"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">the</button></span> best film I’ve ever seen!</p>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">B. Choose the right word.</p>
+      <p class="gap-line"><span class="num">5.</span> I’ve got <span class="word-choice" id="x-b5" data-answer="a few"><button class="word-choice-btn" onclick="selectWord(this)">a few</button><button class="word-choice-btn" onclick="selectWord(this)">a little</button></span> friends in Spain.</p>
+      <p class="gap-line"><span class="num">6.</span> I speak <span class="word-choice" id="x-b6" data-answer="a little"><button class="word-choice-btn" onclick="selectWord(this)">a few</button><button class="word-choice-btn" onclick="selectWord(this)">a little</button></span> French – not much.</p>
+      <p class="gap-line"><span class="num">7.</span> Is there <span class="word-choice" id="x-b7" data-answer="any"><button class="word-choice-btn" onclick="selectWord(this)">some</button><button class="word-choice-btn" onclick="selectWord(this)">any</button></span> chance we can win?</p>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">C. Prepositions</p>
+      <p class="gap-line"><span class="num">8.</span> I’m good <span class="word-choice" id="x-b8" data-answer="at"><button class="word-choice-btn" onclick="selectWord(this)">at</button><button class="word-choice-btn" onclick="selectWord(this)">in</button><button class="word-choice-btn" onclick="selectWord(this)">on</button></span> maths.</p>
+      <p class="gap-line"><span class="num">9.</span> I’m interested <span class="word-choice" id="x-b9" data-answer="in"><button class="word-choice-btn" onclick="selectWord(this)">at</button><button class="word-choice-btn" onclick="selectWord(this)">in</button><button class="word-choice-btn" onclick="selectWord(this)">on</button></span> science.</p>
+      <p class="gap-line"><span class="num">10.</span> I’ve played the guitar <span class="word-choice" id="x-b10" data-answer="for"><button class="word-choice-btn" onclick="selectWord(this)">for</button><button class="word-choice-btn" onclick="selectWord(this)">since</button></span> three years.</p>
+      <p class="gap-line"><span class="num">11.</span> I’ve known my best friend <span class="word-choice" id="x-b11" data-answer="since"><button class="word-choice-btn" onclick="selectWord(this)">for</button><button class="word-choice-btn" onclick="selectWord(this)">since</button></span> 2020.</p>
+      <p style="font-weight:900;color:var(--teal);margin:18px 0 4px">D. Spelling: the word on the label is wrong. Write it correctly.</p>
+      <p class="gap-line"><span class="num">12.</span> <span class="cue-input"><span class="cue-lab">langauge</span><input class="blank" id="x-b12" data-answer="language" placeholder="?"></span></p>
+      <p class="gap-line"><span class="num">13.</span> <span class="cue-input"><span class="cue-lab">begining</span><input class="blank" id="x-b13" data-answer="beginning" placeholder="?"></span></p>
+      <p class="gap-line"><span class="num">14.</span> <span class="cue-input"><span class="cue-lab">untill</span><input class="blank" id="x-b14" data-answer="until" placeholder="?"></span></p>
+      <p class="gap-line"><span class="num">15.</span> <span class="cue-input"><span class="cue-lab">realy</span><input class="blank" id="x-b15" data-answer="really" placeholder="?"></span></p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkSection('ex-x-basics')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetSection('ex-x-basics')">Try again</button>
+      </div>
+      <p class="char-count" id="res-ex-x-basics" style="text-align:left"></p>
+    </div>
+  </section>
+
+  <section class="step" id="x6">
+    <div class="step-head">
+      <div class="step-num">8</div>
+      <div>
+        <div class="step-meta">Speaking</div>
+        <h2>Find out!</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Speaking</div>
+      <h3>Ask “Have you ever…?” If the answer is yes, ask 2 more questions: <i>When did you…? What was it like?</i></h3>
+      <ol start="1" style="padding-left:24px;line-height:1.7;font-size:19px">
+        <li style="margin-bottom:6px">…been camping?</li>
+        <li style="margin-bottom:6px">…performed on stage?</li>
+        <li style="margin-bottom:6px">…tried a really strange food?</li>
+        <li style="margin-bottom:6px">…met a famous person?</li>
+        <li style="margin-bottom:6px">…got lost?</li>
+        <li style="margin-bottom:6px">…won a competition?</li>
+        <li style="margin-bottom:6px">…made a video or a film?</li>
+        <li style="margin-bottom:6px">…stayed up all night?</li>
+      </ol>
+      <div class="tip"><b>Challenge:</b> What’s something you’d love to try one day? Why?</div>
+    </div>
+  </section>
+
+  <section class="step" id="x7">
+    <div class="step-head">
+      <div class="step-num">9</div>
+      <div>
+        <div class="step-meta">Writing</div>
+        <h2>I’m proud of it!</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Writing</div>
+      <h3>Write 5–7 sentences about something you’ve done that you’re proud of. What? When? How did you feel?</h3>
+      <textarea class="free-write" id="fw-x" placeholder="Write here…" rows="7"></textarea>
+      <div class="char-count" id="cc-fw-x">0 characters</div>
+    </div>
+  </section>
+
+  <section class="step" id="x8">
+    <div class="step-head">
+      <div class="step-num">10</div>
+      <div>
+        <div class="step-meta">Finish</div>
+        <h2>Well done!</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Now I…</h3>
+      <div class="reflect-list">
+        <label class="reflect-item">
+          <input type="checkbox" id="r-x1">
+          <span class="check-box"></span>
+          <span class="reflect-text">know 8 phrases about experiences</span>
+        </label>
+        <label class="reflect-item">
+          <input type="checkbox" id="r-x2">
+          <span class="check-box"></span>
+          <span class="reflect-text">can ask “Have you ever…?”</span>
+        </label>
+        <label class="reflect-item">
+          <input type="checkbox" id="r-x3">
+          <span class="check-box"></span>
+          <span class="reflect-text">know when to use <b>present perfect</b> and when to use <b>past simple</b></span>
+        </label>
+        <label class="reflect-item">
+          <input type="checkbox" id="r-x4">
+          <span class="check-box"></span>
+          <span class="reflect-text">can use <b>for / since</b> and <b>good at / interested in</b></span>
+        </label>
+      </div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<div class="lesson-part" id="part-goals">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#g1">Well done</a>
+    <a href="#g2">The lesson</a>
+    <a href="#g3">My English</a>
+    <a href="#g4">My goals</a>
+    <a href="#g5">Homework</a>
+    <a href="#g6">Send</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="g1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Finish</div>
+        <h2>You did it!</h2>
+      </div>
+    </div>
+
+    <div class="card congrats">
+      <img src="images/class-english/party.png" alt="" width="96" height="96">
+      <h2 class="name-slot" data-with="Well done, {name}!" data-without="Well done!">Well done!</h2>
+      <p>You finished your first English lesson. Great work! 🏀</p>
+      <p>Now tell me about you. There are no wrong answers.</p>
+    </div>
+  </section>
+
+  <section class="step" id="g2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Think back</div>
+        <h2>How was the lesson?</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Choose</div>
+      <h3>Tap your answers.</h3>
+      <div class="q-block">
+        <p class="q-title">How do you feel now?</p>
+        <span class="pick choice-set" id="g-feel" data-q="How do you feel now?"><button class="word-choice-btn" onclick="pickThis(this)">😃 Great</button><button class="word-choice-btn" onclick="pickThis(this)">🙂 Good</button><button class="word-choice-btn" onclick="pickThis(this)">😐 OK</button><button class="word-choice-btn" onclick="pickThis(this)">😴 Tired</button></span>
+      </div>
+      <div class="q-block">
+        <p class="q-title">What was the most difficult part? <span class="q-hint">one or two</span></p>
+        <span class="pick choice-set" id="g-hard" data-q="Most difficult part" data-multi><button class="word-choice-btn" onclick="pickThis(this)">🗣️ Speaking</button><button class="word-choice-btn" onclick="pickThis(this)">🎧 Listening</button><button class="word-choice-btn" onclick="pickThis(this)">📖 Reading</button><button class="word-choice-btn" onclick="pickThis(this)">✍️ Writing</button><button class="word-choice-btn" onclick="pickThis(this)">🧩 Grammar</button><button class="word-choice-btn" onclick="pickThis(this)">🔤 New words</button></span>
+      </div>
+      <div class="q-block">
+        <p class="q-title">What was the easiest part? <span class="q-hint">one or two</span></p>
+        <span class="pick choice-set" id="g-easy" data-q="Easiest part" data-multi><button class="word-choice-btn" onclick="pickThis(this)">🗣️ Speaking</button><button class="word-choice-btn" onclick="pickThis(this)">🎧 Listening</button><button class="word-choice-btn" onclick="pickThis(this)">📖 Reading</button><button class="word-choice-btn" onclick="pickThis(this)">✍️ Writing</button><button class="word-choice-btn" onclick="pickThis(this)">🧩 Grammar</button><button class="word-choice-btn" onclick="pickThis(this)">🔤 New words</button></span>
+      </div>
+      <div class="q-block">
+        <p class="q-title">What was the most fun? <span class="q-hint">one or two</span></p>
+        <span class="pick choice-set" id="g-fun" data-q="Most fun" data-multi><button class="word-choice-btn" onclick="pickThis(this)">Let’s meet! games</button><button class="word-choice-btn" onclick="pickThis(this)">The test</button><button class="word-choice-btn" onclick="pickThis(this)">Emoji warm-up</button><button class="word-choice-btn" onclick="pickThis(this)">Matching</button><button class="word-choice-btn" onclick="pickThis(this)">Listening</button><button class="word-choice-btn" onclick="pickThis(this)">Talking with my teacher</button></span>
+      </div>
+      <div class="q-block">
+        <p class="q-title">The lesson was…</p>
+        <span class="pick choice-set" id="g-level" data-q="The lesson was"><button class="word-choice-btn" onclick="pickThis(this)">too easy</button><button class="word-choice-btn" onclick="pickThis(this)">just right</button><button class="word-choice-btn" onclick="pickThis(this)">too difficult</button></span>
+      </div>
+      <div class="q-block">
+        <p class="q-title">The speed of the lesson was…</p>
+        <span class="pick choice-set" id="g-speed" data-q="The speed was"><button class="word-choice-btn" onclick="pickThis(this)">too slow</button><button class="word-choice-btn" onclick="pickThis(this)">just right</button><button class="word-choice-btn" onclick="pickThis(this)">too fast</button></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="g3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Self-assessment</div>
+        <h2>My English now</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Choose</div>
+      <h3>Read and tap: Not yet, A bit or Yes!</h3>
+      <div class="cando-row"><span class="cando-text">I can talk about myself and my family.</span><span class="pick choice-set" id="g-c1" data-q="I can talk about myself and my family"><button class="word-choice-btn" onclick="pickThis(this)">Not yet</button><button class="word-choice-btn" onclick="pickThis(this)">A bit</button><button class="word-choice-btn" onclick="pickThis(this)">Yes!</button></span></div>
+      <div class="cando-row"><span class="cando-text">I can understand my teacher when they speak English.</span><span class="pick choice-set" id="g-c2" data-q="I can understand my teacher when they speak English"><button class="word-choice-btn" onclick="pickThis(this)">Not yet</button><button class="word-choice-btn" onclick="pickThis(this)">A bit</button><button class="word-choice-btn" onclick="pickThis(this)">Yes!</button></span></div>
+      <div class="cando-row"><span class="cando-text">I can understand a YouTube video in English.</span><span class="pick choice-set" id="g-c3" data-q="I can understand a YouTube video in English"><button class="word-choice-btn" onclick="pickThis(this)">Not yet</button><button class="word-choice-btn" onclick="pickThis(this)">A bit</button><button class="word-choice-btn" onclick="pickThis(this)">Yes!</button></span></div>
+      <div class="cando-row"><span class="cando-text">I can read a short story in English.</span><span class="pick choice-set" id="g-c4" data-q="I can read a short story in English"><button class="word-choice-btn" onclick="pickThis(this)">Not yet</button><button class="word-choice-btn" onclick="pickThis(this)">A bit</button><button class="word-choice-btn" onclick="pickThis(this)">Yes!</button></span></div>
+      <div class="cando-row"><span class="cando-text">I can write a message to a friend in English.</span><span class="pick choice-set" id="g-c5" data-q="I can write a message to a friend in English"><button class="word-choice-btn" onclick="pickThis(this)">Not yet</button><button class="word-choice-btn" onclick="pickThis(this)">A bit</button><button class="word-choice-btn" onclick="pickThis(this)">Yes!</button></span></div>
+      <div class="cando-row"><span class="cando-text">I can speak English and not feel nervous.</span><span class="pick choice-set" id="g-c6" data-q="I can speak English and not feel nervous"><button class="word-choice-btn" onclick="pickThis(this)">Not yet</button><button class="word-choice-btn" onclick="pickThis(this)">A bit</button><button class="word-choice-btn" onclick="pickThis(this)">Yes!</button></span></div>
+    </div>
+  </section>
+
+  <section class="step" id="g4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Goals</div>
+        <h2>My goals</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Choose</div>
+      <h3>Tap your answers. You can choose more than one.</h3>
+      <div class="q-block">
+        <p class="q-title">Why do you want to learn English?</p>
+        <span class="pick choice-set" id="g-why" data-q="Why I learn English" data-multi><button class="word-choice-btn" onclick="pickThis(this)">For good marks at school</button><button class="word-choice-btn" onclick="pickThis(this)">For exams</button><button class="word-choice-btn" onclick="pickThis(this)">To travel</button><button class="word-choice-btn" onclick="pickThis(this)">To talk to people online</button><button class="word-choice-btn" onclick="pickThis(this)">To understand games and YouTube</button><button class="word-choice-btn" onclick="pickThis(this)">To watch films without subtitles</button><button class="word-choice-btn" onclick="pickThis(this)">For my future job</button></span>
+      </div>
+      <div class="q-block">
+        <p class="q-title">What do you want to get better at?</p>
+        <span class="pick choice-set" id="g-better" data-q="I want to get better at" data-multi><button class="word-choice-btn" onclick="pickThis(this)">🗣️ Speaking</button><button class="word-choice-btn" onclick="pickThis(this)">🎧 Listening</button><button class="word-choice-btn" onclick="pickThis(this)">📖 Reading</button><button class="word-choice-btn" onclick="pickThis(this)">✍️ Writing</button><button class="word-choice-btn" onclick="pickThis(this)">🧩 Grammar</button><button class="word-choice-btn" onclick="pickThis(this)">🔤 New words</button><button class="word-choice-btn" onclick="pickThis(this)">🔊 Pronunciation</button></span>
+      </div>
+      <div class="q-block">
+        <p class="q-title">What do you want to talk about in our lessons?</p>
+        <span class="pick choice-set" id="g-topics" data-q="Topics I like" data-multi><button class="word-choice-btn" onclick="pickThis(this)">🏀 Basketball</button><button class="word-choice-btn" onclick="pickThis(this)">⚽ Other sports</button><button class="word-choice-btn" onclick="pickThis(this)">🎮 Games</button><button class="word-choice-btn" onclick="pickThis(this)">📺 YouTube</button><button class="word-choice-btn" onclick="pickThis(this)">🎬 Films and series</button><button class="word-choice-btn" onclick="pickThis(this)">🎵 Music</button><button class="word-choice-btn" onclick="pickThis(this)">✈️ Travel</button><button class="word-choice-btn" onclick="pickThis(this)">🔬 Science and tech</button><button class="word-choice-btn" onclick="pickThis(this)">🌍 Languages</button><button class="word-choice-btn" onclick="pickThis(this)">🐶 Animals</button><button class="word-choice-btn" onclick="pickThis(this)">🍕 Food</button></span>
+      </div>
+      <div class="q-block">
+        <p class="q-title">My big goal for this year:</p>
+        <input class="blank line-write" id="g-goal" data-q="My big goal for this year" placeholder="By next summer I want to…">
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="g5">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Organisation</div>
+        <h2>Homework and lessons</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Choose</div>
+      <h3>Tap your answers.</h3>
+      <div class="q-block">
+        <p class="q-title">How much time can you spend on homework every week?</p>
+        <span class="pick choice-set" id="g-hwtime" data-q="Homework time per week"><button class="word-choice-btn" onclick="pickThis(this)">15 minutes</button><button class="word-choice-btn" onclick="pickThis(this)">30 minutes</button><button class="word-choice-btn" onclick="pickThis(this)">1 hour</button><button class="word-choice-btn" onclick="pickThis(this)">More than 1 hour</button></span>
+      </div>
+      <div class="q-block">
+        <p class="q-title">When is the best time for homework?</p>
+        <span class="pick choice-set" id="g-hwwhen" data-q="Best time for homework"><button class="word-choice-btn" onclick="pickThis(this)">On school days</button><button class="word-choice-btn" onclick="pickThis(this)">At the weekend</button><button class="word-choice-btn" onclick="pickThis(this)">Both</button></span>
+      </div>
+      <div class="q-block">
+        <p class="q-title">What do you use for our lessons?</p>
+        <span class="pick choice-set" id="g-device" data-q="Device for lessons"><button class="word-choice-btn" onclick="pickThis(this)">📱 Phone</button><button class="word-choice-btn" onclick="pickThis(this)">📟 Tablet</button><button class="word-choice-btn" onclick="pickThis(this)">💻 Computer</button></span>
+      </div>
+      <div class="q-block">
+        <p class="q-title">When I make a mistake in speaking, I want my teacher to…</p>
+        <span class="pick choice-set" id="g-correct" data-q="Correcting my mistakes"><button class="word-choice-btn" onclick="pickThis(this)">correct me at once</button><button class="word-choice-btn" onclick="pickThis(this)">correct me at the end</button><button class="word-choice-btn" onclick="pickThis(this)">correct only big mistakes</button></span>
+      </div>
+      <div class="q-block">
+        <p class="q-title">Anything else you want to tell me?</p>
+        <textarea class="free-write" id="fw-g" data-q="Anything else" placeholder="Write here…" rows="3"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="g6">
+    <div class="step-head">
+      <div class="step-num">6</div>
+      <div>
+        <div class="step-meta">Send</div>
+        <h2>Send your answers to your teacher</h2>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Last step</div>
+      <h3>Press the button. Copy your answers and send them to your teacher.</h3>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="showSummary('part-goals')">Show my answers</button>
+        <button class="btn-ghost" onclick="copySummary()">Copy 📋</button>
+      </div>
+      <textarea id="goals-summary" class="summary-box" readonly rows="12" style="display:none"></textarea>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<!-- STICKY SCORE BAR — nothing to edit here. -->
+<div class="scorebar" id="scoreBar" style="display:none">
+  <div class="wrap">
+    <span>Score: <span id="scoreCorrect">0</span> correct · <span id="scoreDone">0</span>/<span id="scoreTotal">0</span> answered</span>
+    <div class="meter"><i id="scoreMeter"></i></div>
+    <button class="btn-primary" onclick="checkAll()">Check my answers ✓</button>
+  </div>
+</div>
+
+<script src="../assets/lessons.js"></script>
+<script src="../assets/matching.js"></script>
+<script src="../assets/name.js"></script>
+<script>
+/* ══════════════════════════════════════════════════════════
+   PAGE-ONLY HELPERS for Lesson 1 (the shared lessons.js is
+   unchanged). Delete this block to go back to the default.
+   1. checkSection / resetSection — one Check button for a mixed
+      block (blanks + multiple choice + word buttons) that also
+      prints "7 / 13 correct" under it (placement levels, Basics checks).
+   2. resetWords + restoring word-button choices after a reload
+      (lessons.js saves them but has no reset / restore).
+   3. The score bar counts only the tab that is open, so the
+      student doesn't see the answers from all 6 tabs added up.
+══════════════════════════════════════════════════════════ */
+function checkSection(id) {
+  checkBlanks(id); checkMC(id); checkWords(id);
+  const box = document.getElementById(id);
+  let total = 0, ok = 0;
+  box.querySelectorAll('.blank[data-answer]').forEach(i => { total++; if (i.classList.contains('correct')) ok++; });
+  box.querySelectorAll('.mc-options[data-correct]').forEach(g => { total++; if (g.querySelector('.mc-option.correct.selected')) ok++; });
+  box.querySelectorAll('.word-choice[data-answer]').forEach(w => { total++; if (w.querySelector('.word-choice-btn.correct.selected')) ok++; });
+  const out = document.getElementById('res-' + id);
+  if (out) out.textContent = ok + ' / ' + total + ' correct';
+}
+
+function resetSection(id) {
+  resetBlanks(id); resetMC(id); resetWords(id);
+  const out = document.getElementById('res-' + id);
+  if (out) out.textContent = '';
+}
+
+function resetWords(id) {
+  document.getElementById(id).querySelectorAll('.word-choice').forEach(span => {
+    span.querySelectorAll('.word-choice-btn').forEach(b => b.classList.remove('selected', 'correct', 'wrong'));
+    save({ [span.id]: '' });
+  });
+}
+
+function updateScoreBar() {
+  const bar = document.getElementById('scoreBar');
+  if (!bar) return;
+  const scope = document.querySelector('.lesson-part.active') || document;
+  let total = 0, done = 0, correct = 0;
+  scope.querySelectorAll('.blank[data-answer]').forEach(inp => {
+    total++;
+    if (inp.value.trim()) done++;
+    if (inp.classList.contains('correct')) correct++;
+  });
+  scope.querySelectorAll('.mc-options[data-correct]').forEach(group => {
+    total++;
+    if (group.querySelector('.mc-option.selected')) done++;
+    if (group.querySelector('.mc-option.correct.selected')) correct++;
+  });
+  if (total === 0) { bar.style.display = 'none'; return; }
+  bar.style.display = 'flex';
+  document.getElementById('scoreCorrect').textContent = correct;
+  document.getElementById('scoreDone').textContent = done;
+  document.getElementById('scoreTotal').textContent = total;
+  document.getElementById('scoreMeter').style.width = (done / total * 100) + '%';
+}
+
+/* 4. "This or that?" buttons (.pick) — no right answer, just a saved choice */
+function pickThis(btn) {
+  const set = btn.closest('.pick');
+  if (set.hasAttribute('data-multi')) btn.classList.toggle('selected');
+  else set.querySelectorAll('.word-choice-btn').forEach(b => b.classList.toggle('selected', b === btn));
+  save({ [set.id]: [...set.querySelectorAll('.word-choice-btn.selected')].map(b => b.textContent.trim()).join(' | ') });
+}
+
+/* 6. "My goals" tab — collect every answer into one text he can copy and send */
+function showSummary(partId) {
+  const lines = [];
+  document.getElementById(partId).querySelectorAll('[data-q]').forEach(el => {
+    const a = el.classList.contains('pick')
+      ? [...el.querySelectorAll('.word-choice-btn.selected')].map(b => b.textContent.trim()).join(', ')
+      : el.value.trim();
+    lines.push('• ' + el.dataset.q + ': ' + (a || '–'));
+  });
+  const name = (window.getStudentName && getStudentName()) || '';
+  const box = document.getElementById('goals-summary');
+  box.value = (name ? name + ' – ' : '') + 'Lesson 1: my answers\n\n' + lines.join('\n');
+  box.style.display = 'block';
+  return box;
+}
+function copySummary() {
+  const box = showSummary('part-goals');
+  const done = () => toast('Copied! Now paste it in a message to your teacher.');
+  if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(box.value).then(done, () => { box.select(); document.execCommand('copy'); done(); });
+  else { box.select(); document.execCommand('copy'); done(); }
+}
+
+/* 5. Emoji warm-up (.emoji-pick) — choose up to 5, no right answer, saved in order */
+function renderEmoji(box, list) {
+  box.querySelectorAll('.emoji-btn').forEach(b => b.classList.toggle('selected', list.includes(b.textContent)));
+  box.querySelector('.emoji-count').textContent = list.length + ' / ' + (box.dataset.max || 5);
+  box.querySelector('.emoji-row').textContent = list.join(' ');
+  box.classList.toggle('full', list.length >= (+box.dataset.max || 5));
+}
+function pickEmoji(btn) {
+  const box = btn.closest('.emoji-pick'), max = +box.dataset.max || 5;
+  let list = (data[box.id] || '').split(' ').filter(Boolean);
+  const e = btn.textContent;
+  if (list.includes(e)) list = list.filter(x => x !== e);
+  else if (list.length < max) list.push(e);
+  else { box.classList.remove('shake'); void box.offsetWidth; box.classList.add('shake'); return; }
+  save({ [box.id]: list.join(' ') });
+  renderEmoji(box, list);
+}
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.emoji-pick').forEach(box => renderEmoji(box, (data[box.id] || '').split(' ').filter(Boolean)));
+});
+
+const baseShowPart = showPart;
+showPart = function (id) { baseShowPart(id); updateScoreBar(); };
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.word-choice, .pick').forEach(span => {
+    const saved = data[span.id];
+    if (!saved) return;
+    const list = saved.split(' | ');
+    span.querySelectorAll('.word-choice-btn').forEach(b => b.classList.toggle('selected', list.includes(b.textContent.trim())));
+  });
+});
+</script>
+</body>
+</html>
