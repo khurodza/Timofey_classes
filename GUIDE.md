@@ -14,7 +14,8 @@ website/
 └── lessons/
     ├── lesson-template.html   ← Blank class-lesson template — copy this for a new lesson
     ├── lesson-01.html          ← Lesson 1: site tour + placement test + 4 follow-up tabs
-    ├── lesson-02.html          ← Lesson 2: reading & pronunciation (phonics: i t s a c n o p e)
+    ├── lesson-02.html          ← Lesson 2: reading & pronunciation (phonics: s a c n o p e)
+    ├── lesson-03.html          ← Lesson 3: Starter "Welcome!" vocabulary (months, numbers, dates, colours) + phonics i · t
     ├── images/                 ← Put lesson images here
     ├── audio/                  ← Put lesson audio files here
     │   └── words/               ← One short clip per sound button (see "Sound buttons")
@@ -286,6 +287,20 @@ for microphone permission the first time.
   reset with `resetWords('exercise-id')`.
 - `.ipa` — use it around phonetic symbols so they show in a font that has them.
 
+### Note boxes
+
+```html
+<div class="tip"><span class="tip-title">Big letter, please!</span>Months start with a capital: <span class="key">January</span>.</div>
+<div class="tip rule">…</div>        <!-- 📌 blue: a rule to remember -->
+<div class="tip class-note">…</div>  <!-- 🗣️ green: something to do in class -->
+```
+
+- `.tip` 💡 yellow for hints. Start with a short, catchy `.tip-title`.
+- `.key` turns the form to remember into a sticker: `<span class="key">24th July</span>`.
+- For "we write / we say" comparisons, use
+  `<div class="rule-grid"><div><small>We write</small>…</div><div><small>We say</small>…</div></div>`.
+- `.get-right` is the coursebook's "Get it right!" box (Lesson 3).
+
 ### Reflection checklist (Finish step)
 
 ```html
@@ -320,20 +335,23 @@ something to go over separately.
   at it, inside `<div class="audio-wrap"><audio controls>…</audio></div>`.
   `lessons.js` automatically swaps the browser's plain player for the styled
   one (play/pause, back 5 s, seek bar, 0.75× slow-down) — nothing to add.
+  If the file isn't there yet, the player shows "🎧 Audio coming soon"
+  instead, so you can build the page first and add the recording later.
 - **Images** — put the file in `lessons/images/` and point `<img src="...">`
   at it.
 
 ---
 
-## The sticky score bar
+## The score badge
 
-Every lesson and homework page has its own score bar pinned to the bottom of
-the screen. It counts every fill-in-the-blank and multiple-choice exercise on
-that page automatically — nothing to configure. It stays hidden until the
-page has at least one of those exercises. Clicking **Check my answers**
-checks everything on the page at once and shows a small confirmation toast.
-A lesson page and its homework page score separately, since they're separate
-pages.
+Every lesson and homework page has a small round badge in the bottom-left
+corner: a progress ring and "answered / total". It counts every
+fill-in-the-blank and multiple-choice exercise on that page automatically,
+with nothing to configure, and stays hidden until the page has at least one
+of those exercises. Tapping it opens the full score and the **Check my
+answers** button, which checks everything on the page at once. Tapping
+anywhere else folds it away again. A lesson page and its homework page score
+separately, since they're separate pages.
 
 ---
 

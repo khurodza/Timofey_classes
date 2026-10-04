@@ -143,13 +143,45 @@ section.step{margin-top:38px;scroll-margin-top:70px}
 .step:nth-of-type(4n+3) .step-num{background:var(--green);box-shadow:0 6px 14px rgba(18,163,116,.28)}
 .step:nth-of-type(4n+4) .step-num{background:var(--violet);box-shadow:0 6px 14px rgba(123,92,230,.28)}
 
-/* ---------------- tip box ---------------- */
+/* ---------------- note boxes ----------------
+   .tip             💡 yellow  — a hint or reminder
+   .tip.rule        📌 blue    — a rule to remember
+   .tip.class-note  🗣️ green   — something to do in class
+   Inside: <span class="tip-title">Headline</span> (optional),
+   <span class="key">24th July</span> for the form to remember,
+   <div class="rule-grid"><div><small>We write</small>…</div>…</div>
+   for side-by-side comparisons. */
 .tip{
-  position:relative;background:var(--blue-soft);border:1px solid #D3DCFF;border-radius:14px;
-  padding:12px 16px 12px 48px;margin-top:16px;font-size:15px
+  position:relative;margin-top:18px;padding:14px 18px 14px 66px;border-radius:18px;
+  background:linear-gradient(135deg,#FFF8E1 0%,#FFF0D4 100%);border:2px solid #FFD978;
+  font-size:16px;font-weight:700;line-height:1.55;box-shadow:0 6px 18px rgba(255,176,61,.16)
 }
-.tip::before{content:"💡";position:absolute;left:16px;top:11px;font-size:18px}
-.tip b{color:var(--blue-dark)}
+.tip::before{
+  content:"💡";position:absolute;left:14px;top:12px;width:38px;height:38px;display:grid;place-items:center;
+  font-size:20px;background:#fff;border-radius:12px;box-shadow:0 2px 6px rgba(22,33,62,.14);transform:rotate(-6deg)
+}
+.tip b{color:#B6461A}
+.tip p{margin:.45em 0 0}
+.tip-title{
+  display:block;font-family:var(--font-head);font-size:18px;font-weight:800;line-height:1.3;
+  color:var(--ink);letter-spacing:-.01em;margin-bottom:3px
+}
+.tip.rule{background:linear-gradient(135deg,#E8EDFF 0%,#F1ECFF 100%);border-color:#C4CFFF;box-shadow:0 6px 18px rgba(51,82,224,.13)}
+.tip.rule::before{content:"📌"}
+.tip.rule b{color:var(--blue-dark)}
+.tip.class-note{background:linear-gradient(135deg,#DDF6EC 0%,#ECFBF4 100%);border-color:#9EDFC2;box-shadow:0 6px 18px rgba(18,163,116,.13)}
+.tip.class-note::before{content:"🗣️"}
+.tip.class-note b{color:var(--green-ink)}
+/* the word or form to remember: a little sticker */
+.key{
+  display:inline-block;background:#fff;color:var(--ink);border:2px solid var(--ink);border-radius:9px;
+  padding:0 8px;margin:2px 1px;font-weight:900;line-height:1.6;white-space:nowrap;box-shadow:2px 2px 0 var(--ink)
+}
+.key .cap{color:var(--red)}
+.rule-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin:8px 0 2px}
+.rule-grid > div{display:flex;flex-wrap:wrap;align-items:center;gap:4px;padding:8px 12px;background:rgba(255,255,255,.8);border-radius:14px}
+.rule-grid small{flex-basis:100%;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+@media(max-width:560px){.tip,.trap{padding-left:16px;padding-top:58px}.tip::before,.trap::before{top:12px}}
 
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
 .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
@@ -500,16 +532,29 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--yellow);outline-off
 }
 .wordwall-btn:active{transform:translateY(1px);box-shadow:none}
 
-/* ---------------- sticky score bar (floating dock) ---------------- */
-.scorebar{
-  position:sticky;bottom:12px;z-index:30;
-  width:min(1000px,calc(100% - 24px));margin:40px auto 12px;
-  background:var(--ink);color:#fff;border-radius:18px;padding:12px 14px 12px 20px;
-  display:flex;gap:16px;align-items:center;flex-wrap:wrap;font-weight:800;font-size:16px;
-  box-shadow:0 12px 32px rgba(22,33,62,.28)
+/* ---------------- score badge (bottom-left corner) ----------------
+   Folded: a small ring with "answered / total" (lessons.js adds it).
+   Tap it: the full score and the "Check my answers" button open above. */
+.scorebar{position:fixed;left:16px;bottom:16px;z-index:30;max-width:calc(100% - 32px);color:#fff;font-weight:800;font-size:15px}
+.scorebar .wrap{padding:0;margin:0;max-width:none;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.scorebar:not(.open) .wrap > :not(.sb-mini){display:none}
+.scorebar.open .wrap{
+  width:min(340px,calc(100vw - 32px));align-items:stretch;background:var(--ink);border-radius:20px;padding:10px 14px 14px;
+  box-shadow:0 12px 32px rgba(22,33,62,.3)
 }
-.scorebar .wrap{padding:0;display:flex;gap:16px;align-items:center;flex-wrap:wrap;max-width:none;margin:0;width:100%}
-.meter{flex:1;min-width:120px;height:12px;border-radius:999px;background:rgba(255,255,255,.16);overflow:hidden}
+.sb-mini{
+  display:inline-flex;align-items:center;gap:8px;padding:5px 14px 5px 5px;border:none;border-radius:999px;
+  background:var(--ink);color:#fff;font-size:14px;font-weight:900;box-shadow:0 8px 20px rgba(22,33,62,.28)
+}
+.sb-mini:hover{background:#23357F}
+.scorebar.open .sb-mini{align-self:flex-start;background:transparent;box-shadow:none;padding-left:0}
+.sb-ring{
+  position:relative;width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  background:conic-gradient(var(--yellow) calc(var(--p,0) * 1%),rgba(255,255,255,.2) 0)
+}
+.sb-ring::after{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--ink)}
+.scorebar.open .sb-mini .sb-ring::after{background:var(--ink)}
+.meter{height:10px;border-radius:999px;background:rgba(255,255,255,.16);overflow:hidden}
 .meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--yellow),#7EE0B8);border-radius:999px;transition:width .3s ease}
 .scorebar .btn-primary{background:var(--yellow);border-color:var(--yellow);color:var(--ink);box-shadow:none}
 .scorebar .btn-primary:hover{background:#FFD466}
@@ -602,7 +647,6 @@ footer.site-footer{margin-top:46px;padding:18px 0 40px;border-top:1px solid var(
   .match-item{padding:10px 12px;font-size:15px}
   nav.chips .wrap,nav.parts .wrap{overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px}
   .part-tab{white-space:nowrap}
-  .scorebar{font-size:14px;gap:10px}
 }
 
 /* ============================================================
@@ -648,11 +692,14 @@ footer.site-footer{margin-top:46px;padding:18px 0 40px;border-top:1px solid var(
 
 /* German trap box (orange) */
 .trap{
-  position:relative;background:var(--orange-soft);border:1px solid #FFD3BF;border-radius:14px;
-  padding:12px 16px 12px 48px;margin-top:16px;font-size:16px
+  position:relative;margin-top:18px;padding:14px 18px 14px 66px;border-radius:18px;font-size:16px;font-weight:700;
+  background:linear-gradient(135deg,#FFE9DD 0%,#FFF3EC 100%);border:2px solid #FFB894;box-shadow:0 6px 18px rgba(255,122,69,.16)
 }
-.trap::before{content:"⚠️";position:absolute;left:15px;top:11px;font-size:19px}
-.trap-title{display:block;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.09em;color:#B6461A;margin-bottom:2px}
+.trap::before{
+  content:"⚠️";position:absolute;left:14px;top:12px;width:38px;height:38px;display:grid;place-items:center;
+  font-size:20px;background:#fff;border-radius:12px;box-shadow:0 2px 6px rgba(22,33,62,.14);transform:rotate(6deg)
+}
+.trap-title{display:block;font-family:var(--font-head);font-size:18px;font-weight:800;color:#B6461A;margin-bottom:3px}
 .trap .say{font-size:15px;padding:3px 11px 3px 8px}
 .trap .say::before{width:16px;height:16px}
 .bad{color:var(--red-ink);text-decoration:line-through;text-decoration-thickness:2px;font-weight:800}
@@ -709,6 +756,54 @@ footer.site-footer{margin-top:46px;padding:18px 0 40px;border-top:1px solid var(
 .sort-row .say{min-width:110px}
 
 /* ============================================================
+   VOCABULARY BLOCKS (Lesson 3 onwards)
+   ============================================================ */
+/* put-in-order list: number box + word (months 1–12) */
+.month-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-flow:column;grid-template-rows:repeat(4,auto);gap:10px 18px;margin:12px 0 4px}
+.month-item{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px}
+.blank.num{min-width:0;width:54px;padding:5px 4px}
+.num-given{
+  display:inline-grid;place-items:center;width:54px;height:42px;flex-shrink:0;border-radius:10px;
+  background:var(--green-soft);border:2px dashed var(--green);color:var(--green-ink);font-weight:900
+}
+@media(max-width:620px){.month-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(6,auto)}}
+
+/* coursebook "Get it right!" box */
+.get-right{
+  margin-top:20px;padding:16px 18px 14px;border:3px dashed var(--blue);border-radius:18px;background:#fff;
+  font-size:16px;font-weight:700;box-shadow:0 6px 18px rgba(51,82,224,.12)
+}
+.get-right p{margin:.45em 0 0}
+.get-right-title{
+  display:table;margin:-31px 0 8px;padding:3px 14px;border-radius:999px;background:var(--yellow);color:var(--ink);
+  font-family:var(--font-head);font-size:16px;font-weight:800;box-shadow:2px 2px 0 var(--ink);border:2px solid var(--ink)
+}
+
+/* number → word grid (cue-input boxes in rows) */
+.ord-grid{display:flex;flex-wrap:wrap;gap:14px 4px;margin:10px 0}
+
+/* colour mixing: two circles + their overlap */
+.mix-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:12px}
+.mix-item{
+  position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 10px;
+  border:1px solid var(--border);border-radius:16px;background:#FBFCFF
+}
+.mix-num{
+  position:absolute;top:8px;left:10px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+  background:var(--blue);color:#fff;font-size:13px;font-weight:900
+}
+.mix-svg{width:124px;height:80px}
+.mix-sum{font-weight:800;color:var(--muted)}
+.mix-item .blank{min-width:0;width:130px}
+.mix-item .given{
+  display:inline-block;width:130px;text-align:center;font-weight:800;background:var(--green-soft);
+  border:2px dashed var(--green);border-radius:10px;padding:5px 10px;color:var(--green-ink)
+}
+
+/* audio player whose file isn't there yet (lessons.js) */
+.ap.ap-missing{justify-content:center;padding:12px 16px;color:var(--muted);font-size:15px;font-weight:800;background:#F6F8FD;border-style:dashed}
+
+/* ============================================================
    MY DICTIONARY (dictionary.html + the "+ Word" button, dictionary.js)
    ============================================================ */
 .dict-field{display:block;margin:0 0 14px;text-align:left}
@@ -751,7 +846,6 @@ footer.site-footer{margin-top:46px;padding:18px 0 40px;border-top:1px solid var(
   background:var(--violet);border-color:var(--violet);color:#fff;box-shadow:0 10px 24px rgba(123,92,230,.38)
 }
 .dict-fab:hover{background:#6A4BD6}
-body:has(.scorebar[style*="flex"]) .dict-fab{bottom:96px}
 
 /* "Add to dictionary" bubble under selected text */
 .dict-pop{

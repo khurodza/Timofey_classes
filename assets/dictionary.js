@@ -405,10 +405,8 @@
       pop.hidden = false;
       const w = pop.offsetWidth, h = pop.offsetHeight;
       // below the selection (above it near the bottom of the screen); phone menus sit above
-      const bar = document.getElementById('scoreBar');   // lesson score bar at the bottom
-      const floor = bar && bar.offsetParent ? bar.getBoundingClientRect().top : innerHeight;
       let top = last.bottom + 10;
-      if (top + h > floor - 8) top = first.top - h - 10;
+      if (top + h > innerHeight - 70) top = first.top - h - 10;   // keep clear of the corner buttons
       const mid = (Math.min(first.left, last.left) + Math.max(first.right, last.right)) / 2;
       pop.style.left = Math.max(8, Math.min(innerWidth - w - 8, mid - w / 2)) + 'px';
       pop.style.top = Math.max(8, top) + 'px';

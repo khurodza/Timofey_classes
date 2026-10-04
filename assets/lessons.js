@@ -313,7 +313,20 @@ function updateScoreBar() {
   });
 
   if (total === 0) { bar.style.display = 'none'; return; }
-  bar.style.display = 'flex';
+  bar.style.display = 'block';
+
+  // folded view: a small ring + "answered / total"; tap to open the full score
+  let mini = bar.querySelector('.sb-mini');
+  if (!mini) {
+    mini = document.createElement('button');
+    mini.type = 'button';
+    mini.className = 'sb-mini';
+    mini.addEventListener('click', () => bar.classList.toggle('open'));
+    document.addEventListener('click', e => { if (!bar.contains(e.target)) bar.classList.remove('open'); });
+    bar.querySelector('.wrap').prepend(mini);
+  }
+  mini.innerHTML = '<span class="sb-ring" style="--p:' + Math.round(done / total * 100) + '"></span>' + done + ' / ' + total;
+  mini.setAttribute('aria-label', 'Progress: ' + done + ' of ' + total + ' answered, ' + correct + ' correct. Show score');
 
   document.getElementById('scoreCorrect').textContent = correct;
   document.getElementById('scoreDone').textContent = done;
@@ -491,6 +504,13 @@ function setupAudio() {
     audio.addEventListener('pause', () => setPlaying(false));
     audio.addEventListener('ended', () => { setPlaying(false); audio.currentTime = 0; render(); });
     if (audio.readyState >= 1) dur.textContent = fmtTime(audio.duration);
+
+    // file not uploaded yet → a calm note instead of a dead player
+    const missing = () => { ui.className = 'ap ap-missing'; ui.textContent = '🎧 Audio coming soon'; };
+    const sources = audio.querySelectorAll('source');
+    audio.addEventListener('error', missing);
+    if (sources.length) sources[sources.length - 1].addEventListener('error', missing);
+    if (audio.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) missing();
   });
 }
 
