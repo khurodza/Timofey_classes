@@ -20,6 +20,7 @@
           <span class="badge">Starter: Welcome!</span>
           <span class="badge">Vocabulary</span>
           <span class="badge">Pronunciation: i · t</span>
+          <span class="badge">Homework</span>
         </div>
       </div>
     </div>
@@ -37,6 +38,7 @@
   <div class="wrap">
     <button class="part-tab" data-part="part-vocab" onclick="showPart('part-vocab')">Vocabulary</button>
     <button class="part-tab" data-part="part-it" onclick="showPart('part-it')">Pronunciation: i · t</button>
+    <button class="part-tab hw" data-part="part-homework" onclick="showPart('part-homework')">Homework</button>
   </div>
 </nav>
 
@@ -112,9 +114,76 @@
       <div class="step-num">2</div>
       <div>
         <div class="step-meta">Vocabulary</div>
-        <h2>Cardinal and ordinal numbers</h2>
+        <h2>Numbers</h2>
       </div>
     </div>
+    <div class="card">
+      <div class="exercise-label">Warm-up 1 · Numbers 1–10</div>
+      <h3>Tap each number. Listen and repeat.</h3>
+      <div class="num-tiles">
+        <button class="say num-tile" data-say="one" data-file="num-1"><span class="nt-digit">1</span><span class="nt-word">one</span></button>
+        <button class="say num-tile" data-say="two" data-file="num-2"><span class="nt-digit">2</span><span class="nt-word">two</span></button>
+        <button class="say num-tile" data-say="three" data-file="num-3"><span class="nt-digit">3</span><span class="nt-word">three</span></button>
+        <button class="say num-tile" data-say="four" data-file="num-4"><span class="nt-digit">4</span><span class="nt-word">four</span></button>
+        <button class="say num-tile" data-say="five" data-file="num-5"><span class="nt-digit">5</span><span class="nt-word">five</span></button>
+        <button class="say num-tile" data-say="six" data-file="num-6"><span class="nt-digit">6</span><span class="nt-word">six</span></button>
+        <button class="say num-tile" data-say="seven" data-file="num-7"><span class="nt-digit">7</span><span class="nt-word">seven</span></button>
+        <button class="say num-tile" data-say="eight" data-file="num-8"><span class="nt-digit">8</span><span class="nt-word">eight</span></button>
+        <button class="say num-tile" data-say="nine" data-file="num-9"><span class="nt-digit">9</span><span class="nt-word">nine</span></button>
+        <button class="say num-tile" data-say="ten" data-file="num-10"><span class="nt-digit">10</span><span class="nt-word">ten</span></button>
+      </div>
+      <div class="tip rule"><span class="tip-title">Three tricky sounds</span>
+        <div class="rule-grid">
+          <div><small>one sounds like “wan”</small><button class="say" data-say="one" data-file="num-1">1 one</button></div>
+          <div><small>three: tongue between your teeth</small><button class="say" data-say="three" data-file="num-3">3 three</button></div>
+          <div><small>eight sounds like “ate”</small><button class="say" data-say="eight" data-file="num-8">8 eight</button></div>
+        </div>
+      </div>
+      <p style="margin-top:16px"><b>Now you!</b> Count from 1 to 10 aloud and record yourself. Then compare with the numbers above.</p>
+      <div class="rec"></div>
+    </div>
+
+    <div class="card" id="ex-w-listen">
+      <div class="exercise-label">Warm-up 2</div>
+      <h3>Press ▶, listen and write the number.</h3>
+      <div class="listen-cols">
+        <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="three" data-file="num-3" aria-label="Listen"></button><input class="blank" id="w-l1" data-answer="3|three" placeholder="number" inputmode="numeric" autocomplete="off" style="min-width:110px;width:110px"></div>
+        <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="seven" data-file="num-7" aria-label="Listen"></button><input class="blank" id="w-l2" data-answer="7|seven" placeholder="number" inputmode="numeric" autocomplete="off" style="min-width:110px;width:110px"></div>
+        <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="one" data-file="num-1" aria-label="Listen"></button><input class="blank" id="w-l3" data-answer="1|one" placeholder="number" inputmode="numeric" autocomplete="off" style="min-width:110px;width:110px"></div>
+        <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="nine" data-file="num-9" aria-label="Listen"></button><input class="blank" id="w-l4" data-answer="9|nine" placeholder="number" inputmode="numeric" autocomplete="off" style="min-width:110px;width:110px"></div>
+        <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="four" data-file="num-4" aria-label="Listen"></button><input class="blank" id="w-l5" data-answer="4|four" placeholder="number" inputmode="numeric" autocomplete="off" style="min-width:110px;width:110px"></div>
+        <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="ten" data-file="num-10" aria-label="Listen"></button><input class="blank" id="w-l6" data-answer="10|ten" placeholder="number" inputmode="numeric" autocomplete="off" style="min-width:110px;width:110px"></div>
+        <div class="listen-q"><span class="num">7.</span><button class="say say-big" data-say="six" data-file="num-6" aria-label="Listen"></button><input class="blank" id="w-l7" data-answer="6|six" placeholder="number" inputmode="numeric" autocomplete="off" style="min-width:110px;width:110px"></div>
+        <div class="listen-q"><span class="num">8.</span><button class="say say-big" data-say="two" data-file="num-2" aria-label="Listen"></button><input class="blank" id="w-l8" data-answer="2|two" placeholder="number" inputmode="numeric" autocomplete="off" style="min-width:110px;width:110px"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-w-listen')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-w-listen')">Try again</button>
+      </div>
+    </div>
+
+    <div class="card" id="ex-w-write">
+      <div class="exercise-label">Warm-up 3</div>
+      <h3>Write the numbers in words.</h3>
+      <div class="ord-grid">
+      <span class="cue-input"><span class="cue-lab">1</span><span class="given">one</span></span>
+      <span class="cue-input"><span class="cue-lab">2</span><input class="blank" id="w-w2" data-answer="two" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></span>
+      <span class="cue-input"><span class="cue-lab">3</span><input class="blank" id="w-w3" data-answer="three" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></span>
+      <span class="cue-input"><span class="cue-lab">4</span><input class="blank" id="w-w4" data-answer="four" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></span>
+      <span class="cue-input"><span class="cue-lab">5</span><input class="blank" id="w-w5" data-answer="five" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></span>
+      <span class="cue-input"><span class="cue-lab">6</span><input class="blank" id="w-w6" data-answer="six" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></span>
+      <span class="cue-input"><span class="cue-lab">7</span><input class="blank" id="w-w7" data-answer="seven" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></span>
+      <span class="cue-input"><span class="cue-lab">8</span><input class="blank" id="w-w8" data-answer="eight" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></span>
+      <span class="cue-input"><span class="cue-lab">9</span><input class="blank" id="w-w9" data-answer="nine" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></span>
+      <span class="cue-input"><span class="cue-lab">10</span><input class="blank" id="w-w10" data-answer="ten" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></span>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-w-write')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-w-write')">Try again</button>
+      </div>
+      <div class="tip"><span class="tip-title">Spelling traps</span><span class="key">t<b>w</b>o</span> silent w · <span class="key">f<b>ou</b>r</span> ou · <span class="key"><b>eigh</b>t</span> eigh · <span class="key">nin<b>e</b></span> e at the end</div>
+    </div>
+
     <div class="card">
       <div class="exercise-label">Exercise 3</div>
       <h3>Write the numbers.</h3>
@@ -278,51 +347,52 @@
       <div class="step-num">5</div>
       <div>
         <div class="step-meta">Vocabulary</div>
-        <h2>The great big number quiz!!</h2>
+        <h2>Number quiz</h2>
       </div>
     </div>
-    <div class="card" id="ex-v-quiz">
-      <div class="exercise-label">Exercise 9</div>
-      <h3>Do the quiz. Choose the correct answers. Then listen and check.</h3>
-
-      <p style="font-weight:800;margin-bottom:4px">1. The number of countries in the world is …</p>
-      <div class="mc-options" data-correct="a">
-        <label class="mc-option"><input type="radio" name="q-mc1" value="a"><span class="mc-bullet">A</span> 195</label>
-        <label class="mc-option"><input type="radio" name="q-mc1" value="b"><span class="mc-bullet">B</span> 100</label>
-        <label class="mc-option"><input type="radio" name="q-mc1" value="c"><span class="mc-bullet">C</span> 95</label>
+    <div class="card quiz-card" id="ex-v-quiz">
+      <div class="quiz-head">
+        <span class="quiz-badge">Exercise 9 · Quiz time</span>
+        <h3 class="quiz-title">The great big number quiz!!</h3>
+        <p>4 questions. Guess first, then check. How many can you get?</p>
       </div>
-
-      <p style="font-weight:800;margin:20px 0 4px">2. … million people speak English as their first language.</p>
-      <div class="mc-options" data-correct="c">
-        <label class="mc-option"><input type="radio" name="q-mc2" value="a"><span class="mc-bullet">A</span> 3</label>
-        <label class="mc-option"><input type="radio" name="q-mc2" value="b"><span class="mc-bullet">B</span> 36</label>
-        <label class="mc-option"><input type="radio" name="q-mc2" value="c"><span class="mc-bullet">C</span> 360</label>
+      <div class="quiz-q">
+        <span class="quiz-num">1</span>
+        <p class="quiz-text">The number of countries in the world is …</p>
+        <div class="mc-options quiz-options" data-correct="a"><label class="mc-option"><input type="radio" name="q-mc1" value="a"><span class="mc-bullet">A</span> <span>195</span></label><label class="mc-option"><input type="radio" name="q-mc1" value="b"><span class="mc-bullet">B</span> <span>100</span></label><label class="mc-option"><input type="radio" name="q-mc1" value="c"><span class="mc-bullet">C</span> <span>95</span></label></div>
+        <p class="quiz-fact" hidden><span>🌍</span> 193 countries are in the United Nations, plus 2 more: the Vatican and Palestine.</p>
       </div>
-
-      <p style="font-weight:800;margin:20px 0 4px">3. There are … seconds in a year.</p>
-      <div class="mc-options" data-correct="b">
-        <label class="mc-option"><input type="radio" name="q-mc3" value="a"><span class="mc-bullet">A</span> 36,536,000</label>
-        <label class="mc-option"><input type="radio" name="q-mc3" value="b"><span class="mc-bullet">B</span> 31,536,000</label>
-        <label class="mc-option"><input type="radio" name="q-mc3" value="c"><span class="mc-bullet">C</span> 35,636,000</label>
+      <div class="quiz-q">
+        <span class="quiz-num">2</span>
+        <p class="quiz-text">… million people speak English as their first language.</p>
+        <div class="mc-options quiz-options" data-correct="c"><label class="mc-option"><input type="radio" name="q-mc2" value="a"><span class="mc-bullet">A</span> <span>3</span></label><label class="mc-option"><input type="radio" name="q-mc2" value="b"><span class="mc-bullet">B</span> <span>36</span></label><label class="mc-option"><input type="radio" name="q-mc2" value="c"><span class="mc-bullet">C</span> <span>360</span></label></div>
+        <p class="quiz-fact" hidden><span>🗣️</span> And over <b>1.5 billion</b> people speak English as a second language. Like you!</p>
       </div>
-
-      <p style="font-weight:800;margin:20px 0 4px">4. … million people have the same birthday as you.</p>
-      <div class="mc-options" data-correct="a">
-        <label class="mc-option"><input type="radio" name="q-mc4" value="a"><span class="mc-bullet">A</span> 20</label>
-        <label class="mc-option"><input type="radio" name="q-mc4" value="b"><span class="mc-bullet">B</span> 6</label>
-        <label class="mc-option"><input type="radio" name="q-mc4" value="c"><span class="mc-bullet">C</span> 10</label>
+      <div class="quiz-q">
+        <span class="quiz-num">3</span>
+        <p class="quiz-text">There are … seconds in a year.</p>
+        <div class="mc-options quiz-options" data-correct="b"><label class="mc-option"><input type="radio" name="q-mc3" value="a"><span class="mc-bullet">A</span> <span>36,536,000</span></label><label class="mc-option"><input type="radio" name="q-mc3" value="b"><span class="mc-bullet">B</span> <span>31,536,000</span></label><label class="mc-option"><input type="radio" name="q-mc3" value="c"><span class="mc-bullet">C</span> <span>35,636,000</span></label></div>
+        <p class="quiz-fact" hidden><span>⏱️</span> 365 days × 24 hours × 60 minutes × 60 seconds = <b>31,536,000</b>.</p>
       </div>
-
+      <div class="quiz-q">
+        <span class="quiz-num">4</span>
+        <p class="quiz-text">… million people have the same birthday as you.</p>
+        <div class="mc-options quiz-options" data-correct="a"><label class="mc-option"><input type="radio" name="q-mc4" value="a"><span class="mc-bullet">A</span> <span>20</span></label><label class="mc-option"><input type="radio" name="q-mc4" value="b"><span class="mc-bullet">B</span> <span>6</span></label><label class="mc-option"><input type="radio" name="q-mc4" value="c"><span class="mc-bullet">C</span> <span>10</span></label></div>
+        <p class="quiz-fact" hidden><span>🎂</span> About 8 billion people ÷ 365 days ≈ <b>20 million</b> birthday twins!</p>
+      </div>
       <div class="btn-row">
-        <button class="btn-primary" onclick="checkMC('ex-v-quiz')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetMC('ex-v-quiz')">Try again</button>
+        <button class="btn-warm quiz-check" onclick="checkQuiz()">Show my score 🎯</button>
+        <button class="btn-ghost" onclick="resetQuiz()">Try again</button>
       </div>
-      <h3 style="margin-top:22px">Listen and check.</h3>
+      <div class="quiz-result" hidden></div>
+      <div class="quiz-listen">
+        <h3>🎧 Listen and check.</h3>
       <div class="audio-wrap">
         <audio controls preload="metadata">
           <source src="audio/lesson-03-s05.m4a" type="audio/mp4">
           Your browser does not support audio.
         </audio>
+      </div>
       </div>
       <div class="tip"><span class="tip-title">Say the big numbers</span><button class="say" data-say="one hundred and ninety-five">195</button> <button class="say" data-say="three hundred and sixty million">360,000,000</button> <button class="say" data-say="thirty-one million, five hundred and thirty-six thousand">31,536,000</button>
         <p>British English: hundred <span class="key">and</span> ninety-five.</p>
@@ -346,7 +416,8 @@
     <a href="#b3">3 · Hunt</a>
     <a href="#b4">4 · Build</a>
     <a href="#b5">5 · Read</a>
-    <a href="#b6">6 · Finish</a>
+    <a href="#b6">6 · Story</a>
+    <a href="#b7">7 · Итог</a>
   </div>
 </nav>
 
@@ -364,7 +435,8 @@
       <div class="sound-card">
         <div class="sound-head">
           <div class="sound-letter">Ii</div>
-          <div><div class="ipa">/ɪ/</div><div class="sound-name">short i — as in <b>it</b></div></div>
+          <div><div class="ipa">/ɪ/</div><div class="sound-name">short i — as in <b>i</b>nsect</div></div>
+          <figure class="sound-pic"><img src="images/phonics/insect.png" alt="a friendly bee"><button class="say" data-say="insect"><span><b>i</b>nsect</span></button></figure>
         </div>
         <div class="sound-body">
           <h4>How to say it</h4>
@@ -377,7 +449,8 @@
       <div class="sound-card">
         <div class="sound-head">
           <div class="sound-letter">Tt</div>
-          <div><div class="ipa">/t/</div><div class="sound-name">t — as in <b>top</b></div></div>
+          <div><div class="ipa">/t/</div><div class="sound-name">t — as in <b>t</b>iger</div></div>
+          <figure class="sound-pic"><img src="images/phonics/tiger.png" alt="a friendly tiger"><button class="say" data-say="tiger"><span><b>t</b>iger</span></button></figure>
         </div>
         <div class="sound-body">
           <h4>How to say it</h4>
@@ -519,21 +592,216 @@
     <div class="step-head">
       <div class="step-num">6</div>
       <div>
-        <div class="step-meta">Finish</div>
-        <h2>What can you do now?</h2>
+        <div class="step-meta">Reading</div>
+        <h2>Pip the insect</h2>
       </div>
     </div>
     <div class="card">
-      <h3>Now I…</h3>
-      <div class="reflect-list">
-        <label class="reflect-item"><input type="checkbox" id="r1"><span class="check-box"></span><span class="reflect-text">can say the twelve months in the right order</span></label>
-        <label class="reflect-item"><input type="checkbox" id="r2"><span class="check-box"></span><span class="reflect-text">write months with a capital letter: <b>J</b>anuary</span></label>
-        <label class="reflect-item"><input type="checkbox" id="r3"><span class="check-box"></span><span class="reflect-text">can say ordinal numbers: first, second, third, twenty-first</span></label>
-        <label class="reflect-item"><input type="checkbox" id="r4"><span class="check-box"></span><span class="reflect-text">can say a date: the twenty-fourth of July</span></label>
-        <label class="reflect-item"><input type="checkbox" id="r5"><span class="check-box"></span><span class="reflect-text">know the colours, and red + blue = purple</span></label>
-        <label class="reflect-item"><input type="checkbox" id="r6"><span class="check-box"></span><span class="reflect-text">can hear short <span class="ipa">/ɪ/</span> and long <span class="ipa">/iː/</span>: ship or sheep</span></label>
-        <label class="reflect-item"><input type="checkbox" id="r7"><span class="check-box"></span><span class="reflect-text">can read words with <b>i</b> and <b>t</b> aloud: <i>Six big pink fish sit in a tin.</i></span></label>
+      <div class="exercise-label">Read a story</div>
+      <h3>Read the story aloud. Tap a line to check.</h3>
+      <div class="comic-strip">
+          <img src="images/story/panel-1.svg" alt="Tim, a boy with a 6 on his T-shirt, stands next to a big tin">
+          <img src="images/story/panel-2.svg" alt="Pip, a little bee, looks out of the tin and says: Hi! I'm Pip!">
+          <img src="images/story/panel-3.svg" alt="Tim points and says: Sit, Pip, sit! Pip buzzes above the tin">
+          <img src="images/story/panel-4.svg" alt="The tin shakes: TIP! TIP! TIP!">
+          <img src="images/story/panel-5.svg" alt="Pip sits on Tim's fist in the sun">
       </div>
+      <div class="story">
+        <div class="story-lines">
+          <button class="say sentence" data-say="Tim is six." data-file="l03-read-1"><span><span class="lt">T</span><span class="li">i</span>m <span class="li">i</span>s s<span class="li">i</span>x.</span></button>
+          <button class="say sentence" data-say="Tim has a big tin." data-file="l03-read-2"><span><span class="lt">T</span><span class="li">i</span>m has a b<span class="li">i</span>g <span class="lt">t</span><span class="li">i</span>n.</span></button>
+          <button class="say sentence" data-say="In the tin is an insect." data-file="l03-read-3"><span><span class="li">I</span>n <span class="lt">t</span>he <span class="lt">t</span><span class="li">i</span>n <span class="li">i</span>s an <span class="li">i</span>nsec<span class="lt">t</span>.</span></button>
+          <button class="say sentence" data-say="It is Pip, Pip is a little insect." data-file="l03-read-4"><span><span class="li">I</span><span class="lt">t</span> <span class="li">i</span>s P<span class="li">i</span>p, P<span class="li">i</span>p <span class="li">i</span>s a l<span class="li">i</span><span class="lt">t</span><span class="lt">t</span>le <span class="li">i</span>nsec<span class="lt">t</span>.</span></button>
+          <button class="say sentence" data-say="Pip sits in the tin." data-file="l03-read-5"><span>P<span class="li">i</span>p s<span class="li">i</span><span class="lt">t</span>s <span class="li">i</span>n <span class="lt">t</span>he <span class="lt">t</span><span class="li">i</span>n.</span></button>
+          <button class="say sentence" data-say="Sit, Pip, sit! says Tim." data-file="l03-read-6"><span>“S<span class="li">i</span><span class="lt">t</span>, P<span class="li">i</span>p, s<span class="li">i</span><span class="lt">t</span>!” says <span class="lt">T</span><span class="li">i</span>m.</span></button>
+          <button class="say sentence" data-say="But Pip cannot sit still." data-file="l03-read-7"><span>Bu<span class="lt">t</span> P<span class="li">i</span>p canno<span class="lt">t</span> s<span class="li">i</span><span class="lt">t</span> s<span class="lt">t</span><span class="li">i</span>ll.</span></button>
+          <button class="say sentence" data-say="Tip, tip, tip! Pip hits the lid." data-file="l03-read-8"><span><span class="lt">T</span><span class="li">i</span>p, <span class="lt">t</span><span class="li">i</span>p, <span class="lt">t</span><span class="li">i</span>p! P<span class="li">i</span>p h<span class="li">i</span><span class="lt">t</span>s <span class="lt">t</span>he l<span class="li">i</span>d.</span></button>
+          <button class="say sentence" data-say="Tim lifts the lid." data-file="l03-read-9"><span><span class="lt">T</span><span class="li">i</span>m l<span class="li">i</span>f<span class="lt">t</span>s <span class="lt">t</span>he l<span class="li">i</span>d.</span></button>
+          <button class="say sentence" data-say="Pip sits on Tim’s fist." data-file="l03-read-10"><span>P<span class="li">i</span>p s<span class="li">i</span><span class="lt">t</span>s on <span class="lt">T</span><span class="li">i</span>m’s f<span class="li">i</span>s<span class="lt">t</span>.</span></button>
+          <button class="say sentence" data-say="Tim and Pip sit in the sun." data-file="l03-read-11"><span><span class="lt">T</span><span class="li">i</span>m and P<span class="li">i</span>p s<span class="li">i</span><span class="lt">t</span> <span class="li">i</span>n <span class="lt">t</span>he sun.</span></button>
+        </div>
+      </div>
+      <div class="tip"><span class="tip-title">Spot the letters</span>Every <span class="key"><span class="li">i</span></span> in this story is short <span class="ipa">/ɪ/</span>, like in <i>it</i>. Every <span class="key"><span class="lt">t</span></span> is a clear <span class="ipa">/t/</span>.</div>
+      <p style="margin-top:16px"><b>Now you!</b> Record yourself reading the whole story. Listen: is every <b>i</b> short?</p>
+      <div class="rec"></div>
+    </div>
+    <div class="card" id="ex-b-read">
+      <div class="exercise-label">Check</div>
+      <h3>Choose the right answer.</h3>
+      <p style="font-weight:800;margin:0 0 4px">1. Tim is …</p>
+      <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="r-mc1" value="a"><span class="mc-bullet">A</span> five</label><label class="mc-option"><input type="radio" name="r-mc1" value="b"><span class="mc-bullet">B</span> six</label><label class="mc-option"><input type="radio" name="r-mc1" value="c"><span class="mc-bullet">C</span> ten</label></div>
+      <p style="font-weight:800;margin:18px 0 4px">2. Pip is …</p>
+      <div class="mc-options" data-correct="c"><label class="mc-option"><input type="radio" name="r-mc2" value="a"><span class="mc-bullet">A</span> a cat</label><label class="mc-option"><input type="radio" name="r-mc2" value="b"><span class="mc-bullet">B</span> a tiger</label><label class="mc-option"><input type="radio" name="r-mc2" value="c"><span class="mc-bullet">C</span> an insect</label></div>
+      <p style="font-weight:800;margin:18px 0 4px">3. Pip is in …</p>
+      <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="r-mc3" value="a"><span class="mc-bullet">A</span> a big tin</label><label class="mc-option"><input type="radio" name="r-mc3" value="b"><span class="mc-bullet">B</span> a big box</label><label class="mc-option"><input type="radio" name="r-mc3" value="c"><span class="mc-bullet">C</span> a hat</label></div>
+      <p style="font-weight:800;margin:18px 0 4px">4. At the end, Pip sits …</p>
+      <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="r-mc4" value="a"><span class="mc-bullet">A</span> on the lid</label><label class="mc-option"><input type="radio" name="r-mc4" value="b"><span class="mc-bullet">B</span> on Tim’s fist</label><label class="mc-option"><input type="radio" name="r-mc4" value="c"><span class="mc-bullet">C</span> in the tin</label></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-b-read')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-b-read')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="b7">
+    <div class="step-head">
+      <div class="step-num">7</div>
+      <div>
+        <div class="step-meta">Итог</div>
+        <h2>Что ты теперь умеешь?</h2>
+      </div>
+    </div>
+    <div class="card fun-check" lang="ru" id="fun-check">
+      <div class="fc-head">
+        <h3>Теперь я…</h3>
+        <span class="fc-count"><b>0</b> / 8 ⭐</span>
+      </div>
+      <div class="fc-meter"><i></i></div>
+      <p class="fc-hint">Отметь всё, что уже получается!</p>
+      <div class="reflect-list">
+        <label class="reflect-item"><input type="checkbox" id="r1"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">📅</span><span class="reflect-text">умею называть двенадцать месяцев по порядку</span></label>
+        <label class="reflect-item"><input type="checkbox" id="r2"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🔠</span><span class="reflect-text">пишу названия месяцев с большой буквы: <b>J</b>anuary</span></label>
+        <label class="reflect-item"><input type="checkbox" id="r3"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🥇</span><span class="reflect-text">умею называть порядковые числительные: <i lang="en">first, second, third, twenty-first</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="r4"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🎂</span><span class="reflect-text">умею называть дату: <i lang="en">the twenty-fourth of July</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="r5"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🎨</span><span class="reflect-text">знаю цвета и что <i lang="en">red + blue = purple</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="r6"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">👂</span><span class="reflect-text">слышу разницу между коротким <span class="ipa">/ɪ/</span> и долгим <span class="ipa">/iː/</span>: <i lang="en">ship</i> или <i lang="en">sheep</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="r7"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🗣️</span><span class="reflect-text">умею читать вслух слова с <b>i</b> и <b>t</b>: <i lang="en">Six big pink fish sit in a tin.</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="r8"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">📖</span><span class="reflect-text">могу прочитать короткий рассказ: <i lang="en">Pip the insect</i></span></label>
+      </div>
+      <div class="fc-done" hidden><span class="fc-trophy">🏆</span><span><b>Супер!</b> Урок 3 пройден. Так держать!</span></div>
+    </div>
+    <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+      <button class="btn-accent" onclick="showPart('part-homework');window.scrollTo(0,0)">Go to homework →</button>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="lesson-part" id="part-homework">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#h1">1 · Game</a>
+    <a href="#h2">2 · Months</a>
+    <a href="#h3">3 · Colours</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="h1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Homework</div>
+        <h2>Numbers game</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label hw">Wordwall game</div>
+      <h3>Play the game. Can you do numbers 1–10 with no mistakes?</h3>
+      <a class="wordwall-btn" href="https://wordwall.net/resource/6590253/numbers-1-10" target="_blank" rel="noopener">▶ Play: Numbers 1–10</a>
+    </div>
+  </section>
+
+  <section class="step" id="h2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Homework · Task 1</div>
+        <h2>Months and ordinal numbers</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-hw-months">
+      <div class="exercise-label hw">Fill in the blanks</div>
+      <h3>Complete the sentences with the months in the box and ordinal numbers.</h3>
+      <div class="word-bank-ref"><span>April</span> <span>August</span> <span>February</span> <span class="crossed">January</span> <span>June</span> <span>March</span> <span>November</span> <span>October</span></div>
+      <div class="example-row"><span class="ex-tag">Example</span><span>1. <b>January</b> is the first month.</span></div>
+      <p class="gap-line"><span class="num">2.</span> <input class="blank" id="hw-m2" data-answer="february" placeholder="month" autocomplete="off"> is the <input class="blank" id="hw-o2" data-answer="second" placeholder="?" autocomplete="off" autocapitalize="off"> month.</p>
+      <p class="gap-line"><span class="num">3.</span> <input class="blank" id="hw-m3" data-answer="march" placeholder="month" autocomplete="off"> is the third month.</p>
+      <p class="gap-line"><span class="num">4.</span> <input class="blank" id="hw-m4" data-answer="april" placeholder="month" autocomplete="off"> is the <input class="blank" id="hw-o4" data-answer="fourth" placeholder="?" autocomplete="off" autocapitalize="off"> month.</p>
+      <p class="gap-line"><span class="num">5.</span> May is the <input class="blank" id="hw-o5" data-answer="fifth" placeholder="?" autocomplete="off" autocapitalize="off"> month.</p>
+      <p class="gap-line"><span class="num">6.</span> <input class="blank" id="hw-m6" data-answer="june" placeholder="month" autocomplete="off"> is the sixth month.</p>
+      <p class="gap-line"><span class="num">7.</span> July is the <input class="blank" id="hw-o7" data-answer="seventh" placeholder="?" autocomplete="off" autocapitalize="off"> month.</p>
+      <p class="gap-line"><span class="num">8.</span> <input class="blank" id="hw-m8" data-answer="august" placeholder="month" autocomplete="off"> is the <input class="blank" id="hw-o8" data-answer="eighth" placeholder="?" autocomplete="off" autocapitalize="off"> month.</p>
+      <p class="gap-line"><span class="num">9.</span> September is the <input class="blank" id="hw-o9" data-answer="ninth" placeholder="?" autocomplete="off" autocapitalize="off"> month.</p>
+      <p class="gap-line"><span class="num">10.</span> <input class="blank" id="hw-m10" data-answer="october" placeholder="month" autocomplete="off"> is the tenth month.</p>
+      <p class="gap-line"><span class="num">11.</span> <input class="blank" id="hw-m11" data-answer="november" placeholder="month" autocomplete="off"> is the <input class="blank" id="hw-o11" data-answer="eleventh" placeholder="?" autocomplete="off" autocapitalize="off"> month.</p>
+      <p class="gap-line"><span class="num">12.</span> December is the <input class="blank" id="hw-o12" data-answer="twelfth" placeholder="?" autocomplete="off" autocapitalize="off"> month.</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-hw-months')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw-months')">Try again</button>
+      </div>
+      <div class="tip">Tap a month in the box when you use it. It gets crossed out.</div>
+    </div>
+  </section>
+
+  <section class="step" id="h3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Homework · Task 2</div>
+        <h2>Colour crossword</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-hw-xw">
+      <div class="exercise-label hw">Crossword</div>
+      <h3>Complete the crossword. Write seven more colours.</h3>
+      <div class="xw-wrap">
+        <div class="crossword-scroll">
+          <div class="xw-grid xw-sparse" style="grid-template-columns:repeat(10,38px);grid-template-rows:repeat(9,38px)">
+        <div class="xw-cell xw-given" style="grid-column:4;grid-row:1"><span class="xw-num">1</span><span class="xw-letter">G</span></div>
+        <div class="xw-cell xw-given" style="grid-column:4;grid-row:2"><span class="xw-num">2</span><span class="xw-letter">R</span></div>
+        <div class="xw-cell" style="grid-column:5;grid-row:2"><input type="text" class="xw-blank" maxlength="1" id="xw-c4-r1" data-answer="E" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:6;grid-row:2"><input type="text" class="xw-blank" maxlength="1" id="xw-c5-r1" data-answer="D" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:1;grid-row:3"><span class="xw-num">3</span><input type="text" class="xw-blank" maxlength="1" id="xw-c0-r2" data-answer="B" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:2;grid-row:3"><input type="text" class="xw-blank" maxlength="1" id="xw-c1-r2" data-answer="L" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:3;grid-row:3"><input type="text" class="xw-blank" maxlength="1" id="xw-c2-r2" data-answer="U" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell xw-given" style="grid-column:4;grid-row:3"><span class="xw-letter">E</span></div>
+        <div class="xw-cell xw-given" style="grid-column:4;grid-row:4"><span class="xw-letter">E</span></div>
+        <div class="xw-cell" style="grid-column:6;grid-row:4"><span class="xw-num">5</span><input type="text" class="xw-blank" maxlength="1" id="xw-c5-r3" data-answer="Y" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:9;grid-row:4"><span class="xw-num">6</span><input type="text" class="xw-blank" maxlength="1" id="xw-c8-r3" data-answer="P" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:1;grid-row:5"><span class="xw-num">4</span><input type="text" class="xw-blank" maxlength="1" id="xw-c0-r4" data-answer="O" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:2;grid-row:5"><input type="text" class="xw-blank" maxlength="1" id="xw-c1-r4" data-answer="R" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:3;grid-row:5"><input type="text" class="xw-blank" maxlength="1" id="xw-c2-r4" data-answer="A" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell xw-given" style="grid-column:4;grid-row:5"><span class="xw-letter">N</span></div>
+        <div class="xw-cell" style="grid-column:5;grid-row:5"><input type="text" class="xw-blank" maxlength="1" id="xw-c4-r4" data-answer="G" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:6;grid-row:5"><input type="text" class="xw-blank" maxlength="1" id="xw-c5-r4" data-answer="E" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:9;grid-row:5"><input type="text" class="xw-blank" maxlength="1" id="xw-c8-r4" data-answer="I" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:6;grid-row:6"><input type="text" class="xw-blank" maxlength="1" id="xw-c5-r5" data-answer="L" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:9;grid-row:6"><input type="text" class="xw-blank" maxlength="1" id="xw-c8-r5" data-answer="N" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:5;grid-row:7"><span class="xw-num">7</span><input type="text" class="xw-blank" maxlength="1" id="xw-c4-r6" data-answer="B" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:6;grid-row:7"><input type="text" class="xw-blank" maxlength="1" id="xw-c5-r6" data-answer="L" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:7;grid-row:7"><input type="text" class="xw-blank" maxlength="1" id="xw-c6-r6" data-answer="A" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:8;grid-row:7"><input type="text" class="xw-blank" maxlength="1" id="xw-c7-r6" data-answer="C" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:9;grid-row:7"><input type="text" class="xw-blank" maxlength="1" id="xw-c8-r6" data-answer="K" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:6;grid-row:8"><input type="text" class="xw-blank" maxlength="1" id="xw-c5-r7" data-answer="O" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:6;grid-row:9"><span class="xw-num">8</span><input type="text" class="xw-blank" maxlength="1" id="xw-c5-r8" data-answer="W" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:7;grid-row:9"><input type="text" class="xw-blank" maxlength="1" id="xw-c6-r8" data-answer="H" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:8;grid-row:9"><input type="text" class="xw-blank" maxlength="1" id="xw-c7-r8" data-answer="I" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:9;grid-row:9"><input type="text" class="xw-blank" maxlength="1" id="xw-c8-r8" data-answer="T" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:10;grid-row:9"><input type="text" class="xw-blank" maxlength="1" id="xw-c9-r8" data-answer="E" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+          </div>
+        </div>
+        <div class="xw-clues">
+          <h4>Across →</h4>
+          <p>2 three letters <span class="swatch" style="background:#E53935"></span></p>
+          <p>3 four letters <span class="swatch" style="background:#1E88E5"></span></p>
+          <p>4 six letters <span class="swatch" style="background:#FB8C00"></span></p>
+          <p>7 five letters <span class="swatch" style="background:#222"></span></p>
+          <p>8 five letters <span class="swatch" style="background:#fff"></span></p>
+          <h4>Down ↓</h4>
+          <p>1 five letters <span class="swatch" style="background:#43A047"></span> <i>green</i></p>
+          <p>5 six letters <span class="swatch" style="background:#FDD835"></span></p>
+          <p>6 four letters <span class="swatch" style="background:#F48FB1"></span></p>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-hw-xw','xw-blank')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw-xw','xw-blank')">Try again</button>
+      </div>
+      <div class="tip">Stuck? The little colour next to each clue is a hint.</div>
     </div>
   </section>
 
@@ -554,5 +822,67 @@
 <script src="../assets/matching.js"></script>
 <script src="../assets/name.js"></script>
 <script src="../assets/dictionary.js"></script>
+<script>
+/* Lesson 3 quiz: score message + fun facts after checking */
+function checkQuiz() {
+  checkMC('ex-v-quiz');
+  const box = document.getElementById('ex-v-quiz');
+  const groups = box.querySelectorAll('.quiz-options');
+  let right = 0, answered = 0;
+  groups.forEach(g => {
+    const sel = g.querySelector('.mc-option.selected');
+    if (sel) answered++;
+    if (g.querySelector('.mc-option.correct.selected')) right++;
+    g.parentElement.querySelector('.quiz-fact').hidden = !sel;
+  });
+  const res = box.querySelector('.quiz-result');
+  if (!answered) { res.hidden = true; return; }
+  const msg = right === 4 ? ['🏆', 'Number genius!'] : right === 3 ? ['🎉', 'Great job!']
+            : right === 2 ? ['👍', 'Not bad! Listen and check.'] : ['💪', 'Listen to the answers and try again!'];
+  res.innerHTML = '<span class="quiz-result-ico">' + msg[0] + '</span><span><b>' + right + ' / 4</b> ' + msg[1] + '</span>';
+  res.hidden = false;
+  res.classList.remove('pop'); void res.offsetWidth; res.classList.add('pop');
+}
+function resetQuiz() {
+  resetMC('ex-v-quiz');
+  const box = document.getElementById('ex-v-quiz');
+  box.querySelectorAll('.quiz-fact').forEach(f => { f.hidden = true; });
+  box.querySelector('.quiz-result').hidden = true;
+}
+</script>
+<script>
+/* Lesson 3 "Итог": star counter, progress bar and confetti when everything is ticked */
+(function () {
+  const box = document.getElementById('fun-check');
+  const boxes = [...box.querySelectorAll('input[type=checkbox]')];
+  let celebrated = false;
+  function confetti() {
+    const colours = ['#FFC53D', '#FF7A45', '#3352E0', '#12A374', '#7B5CE6', '#E03E52'];
+    for (let i = 0; i < 40; i++) {
+      const c = document.createElement('i');
+      c.className = 'fc-confetti';
+      c.style.left = Math.random() * 100 + '%';
+      c.style.background = colours[i % colours.length];
+      c.style.animationDelay = Math.random() * 0.4 + 's';
+      c.style.setProperty('--x', (Math.random() * 160 - 80) + 'px');
+      c.style.setProperty('--r', (Math.random() * 720 - 360) + 'deg');
+      box.appendChild(c);
+      setTimeout(() => c.remove(), 2200);
+    }
+  }
+  function update(animate) {
+    const n = boxes.filter(b => b.checked).length;
+    box.querySelector('.fc-count b').textContent = n;
+    box.querySelector('.fc-meter i').style.width = (n / boxes.length * 100) + '%';
+    const done = n === boxes.length;
+    box.querySelector('.fc-done').hidden = !done;
+    box.classList.toggle('all-done', done);
+    if (done && animate && !celebrated) confetti();
+    celebrated = done;
+  }
+  boxes.forEach(b => b.addEventListener('change', () => update(true)));
+  document.addEventListener('DOMContentLoaded', () => setTimeout(() => update(false), 0));
+})();
+</script>
 </body>
 </html>

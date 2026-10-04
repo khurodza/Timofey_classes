@@ -372,8 +372,9 @@ separately, since they're separate pages.
 
 ## Picture credits
 
-The class-English pictures in `lessons/images/class-english/` are Microsoft
-Fluent Emoji (MIT licence, see the licence file in that folder).
+The class-English pictures in `lessons/images/class-english/` and the phonics
+pictures in `lessons/images/phonics/` (bee for *i*, tiger for *t*) are Microsoft
+Fluent Emoji (MIT licence, see the licence file in each folder).
 
 ---
 

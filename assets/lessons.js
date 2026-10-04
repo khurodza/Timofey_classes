@@ -277,16 +277,38 @@ function setupBlanks(cls) {
    ============================================================ */
 function setupCrossword() {
   setupBlanks('xw-blank');
+  const pos = el => (el.id.match(/^xw-c(\d+)-r(\d+)$/) || []).slice(1).map(Number);
+  const cell = (c, r) => document.getElementById(`xw-c${c}-r${r}`);
+  let dir = 'down', last = null;
   document.querySelectorAll('.xw-blank').forEach(el => {
+    // typing direction: follow the way the student is moving; on a fresh tap,
+    // go across if the word runs left-right here, otherwise down
+    el.addEventListener('focus', () => {
+      const [c, r] = pos(el);
+      if (c === undefined) return;
+      const [lc, lr] = last ? pos(last) : [];
+      if (lr === r && lc === c - 1) dir = 'across';
+      else if (lc === c && lr === r - 1) dir = 'down';
+      else dir = (cell(c + 1, r) || cell(c - 1, r)) && !cell(c, r + 1) && !cell(c, r - 1) ? 'across'
+               : cell(c, r + 1) || cell(c, r - 1) ? 'down' : 'across';
+      last = el;
+      el.select();   // typing replaces a letter that's already there
+    });
     el.addEventListener('input', () => {
       if (!el.value) return;
-      const m = el.id.match(/^xw-c(\d+)-r(\d+)$/);
-      if (!m) return;
-      const next = document.getElementById(`xw-c${m[1]}-r${Number(m[2]) + 1}`);
+      const [c, r] = pos(el);
+      if (c === undefined) return;
+      const next = dir === 'across' ? cell(c + 1, r) : cell(c, r + 1);
       if (next) next.focus();
     });
   });
 }
+
+/* word box: tap a word to cross it out once it's used */
+document.addEventListener('click', e => {
+  const w = e.target.closest('.word-bank-ref span');
+  if (w) w.classList.toggle('crossed');
+});
 
 /* ============================================================
    STICKY SCORE BAR — counts every auto-checkable exercise
@@ -510,7 +532,9 @@ function setupAudio() {
     const sources = audio.querySelectorAll('source');
     audio.addEventListener('error', missing);
     if (sources.length) sources[sources.length - 1].addEventListener('error', missing);
-    if (audio.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) missing();
+    // start loading again now that we're listening, so an early failure isn't missed
+    // (networkState can't be trusted here: it reads "no source" while the browser is still choosing one)
+    audio.load();
   });
 }
 
