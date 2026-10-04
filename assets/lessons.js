@@ -209,6 +209,23 @@ function checkWords(exId) {
   updateScoreBar();
 }
 
+function resetWords(exId) {
+  document.getElementById(exId).querySelectorAll('.word-choice').forEach(span => {
+    span.querySelectorAll('.word-choice-btn').forEach(b => b.classList.remove('selected', 'correct', 'wrong'));
+    save({ [span.id]: '' });
+  });
+}
+
+function restoreWords() {
+  document.querySelectorAll('.word-choice[id]').forEach(span => {
+    const saved = data[span.id];
+    if (!saved) return;
+    span.querySelectorAll('.word-choice-btn').forEach(b => {
+      if (b.textContent.trim() === saved) b.classList.add('selected');
+    });
+  });
+}
+
 /* ============================================================
    FREE WRITING — autosaves on every keystroke, no checking
    ============================================================ */
@@ -478,6 +495,125 @@ function setupAudio() {
 }
 
 /* ============================================================
+   SOUND BUTTONS — tap a word to hear it.
+   <button class="say" data-say="sit">sit</button>
+   <button class="say say-big" data-say="sheep" aria-label="Listen"></button>
+   Plays lessons/audio/words/<name>.m4a, where <name> is the
+   data-say text in lowercase, spaces → "-", punctuation removed
+   ("Is it a cat?" → is-it-a-cat.m4a). data-file="…" overrides it.
+   No file yet? The browser's own English voice reads the text.
+   ============================================================ */
+const WORDS_AUDIO = (() => {
+  const s = document.currentScript && document.currentScript.src;
+  return s ? new URL('../lessons/audio/words/', s).href : 'audio/words/';
+})();
+
+function sayFile(text) {
+  return text.toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
+let sayAudio = null, sayBtn = null;
+
+function sayStop() {
+  if (sayAudio) { sayAudio.pause(); sayAudio = null; }
+  if (window.speechSynthesis) speechSynthesis.cancel();
+  if (sayBtn) sayBtn.classList.remove('playing');
+  sayBtn = null;
+}
+
+function sayFallback(text, btn) {
+  if (!window.speechSynthesis) { btn.classList.remove('playing'); sayBtn = null; return; }
+  const u = new SpeechSynthesisUtterance(text);
+  const voices = speechSynthesis.getVoices();
+  const v = voices.find(v => v.lang === 'en-GB') || voices.find(v => /^en/.test(v.lang));
+  if (v) u.voice = v;
+  u.lang = v ? v.lang : 'en-GB';
+  u.rate = 0.85;
+  u.onend = u.onerror = () => { btn.classList.remove('playing'); if (sayBtn === btn) sayBtn = null; };
+  speechSynthesis.speak(u);
+}
+
+function say(btn) {
+  const same = sayBtn === btn;
+  sayStop();
+  if (same) return;
+  document.querySelectorAll('.audio-wrap audio').forEach(a => a.pause());
+  const text = btn.dataset.say;
+  sayBtn = btn;
+  btn.classList.add('playing');
+  const a = new Audio(WORDS_AUDIO + (btn.dataset.file || sayFile(text)) + '.m4a');
+  sayAudio = a;
+  a.onended = () => { btn.classList.remove('playing'); if (sayAudio === a) { sayAudio = null; sayBtn = null; } };
+  a.onerror = () => { if (sayAudio === a) { sayAudio = null; sayFallback(text, btn); } };
+  a.play().catch(() => {});
+}
+
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.say');
+  if (btn) { e.preventDefault(); say(btn); }
+});
+
+/* ============================================================
+   RECORD YOURSELF — <div class="rec"></div>
+   Builds a small recorder: press Record, read aloud, press Stop,
+   then play it back and compare with the model. Recordings are
+   not saved anywhere (they disappear when the page is closed).
+   ============================================================ */
+const REC_MAX = 60;   // seconds
+
+function setupRecorders() {
+  document.querySelectorAll('.rec').forEach(box => {
+    if (!(navigator.mediaDevices && window.MediaRecorder)) {
+      box.innerHTML = '<span class="rec-note">Recording doesn’t work in this browser. Try Chrome or Safari.</span>';
+      return;
+    }
+    box.innerHTML =
+      '<button type="button" class="rec-btn">● Record</button>' +
+      '<button type="button" class="rec-play" disabled>▶ My voice</button>' +
+      '<span class="rec-note">Press Record and read aloud.</span>';
+    const btn = box.querySelector('.rec-btn'), play = box.querySelector('.rec-play'), note = box.querySelector('.rec-note');
+    let rec = null, chunks = [], url = null, player = null, timer = null;
+
+    const stop = () => { if (rec && rec.state === 'recording') rec.stop(); };
+
+    btn.addEventListener('click', async () => {
+      if (rec && rec.state === 'recording') { stop(); return; }
+      sayStop();
+      if (player) player.pause();
+      let stream;
+      try { stream = await navigator.mediaDevices.getUserMedia({ audio: true }); }
+      catch (e) { note.textContent = 'No microphone. Allow the microphone and try again.'; return; }
+      chunks = [];
+      rec = new MediaRecorder(stream);
+      rec.ondataavailable = e => chunks.push(e.data);
+      rec.onstop = () => {
+        clearTimeout(timer);
+        stream.getTracks().forEach(t => t.stop());
+        if (url) URL.revokeObjectURL(url);
+        url = URL.createObjectURL(new Blob(chunks, { type: rec.mimeType }));
+        box.classList.remove('recording');
+        btn.textContent = '● Record again';
+        play.disabled = false;
+        note.textContent = 'Listen to yourself. Then listen to the model again.';
+      };
+      rec.start();
+      timer = setTimeout(stop, REC_MAX * 1000);
+      box.classList.add('recording');
+      btn.textContent = '■ Stop';
+      note.textContent = 'Recording… read now.';
+    });
+
+    play.addEventListener('click', () => {
+      if (!url) return;
+      sayStop();
+      if (player) player.pause();
+      player = new Audio(url);
+      player.play();
+    });
+  });
+}
+
+/* ============================================================
    INIT — runs on every lesson page
    ============================================================ */
 function initLesson() {
@@ -489,7 +625,9 @@ function initLesson() {
   restoreMC();
   restoreMatching();
   restoreTap();
+  restoreWords();
   setupAudio();
+  setupRecorders();
   updateScoreBar();
 }
 

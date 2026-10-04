@@ -5,15 +5,19 @@
 ```
 website/
 ├── index.html              ← Home page (greets by name, lists all lessons)
+├── dictionary.html         ← My Dictionary (personal word list, see "My Dictionary")
 ├── GUIDE.md                 ← This file
 ├── assets/
 │   ├── style.css             ← All shared visual styles — don't touch unless redesigning
-│   └── lessons.js             ← All shared exercise logic — don't touch unless changing behaviour
+│   ├── lessons.js             ← All shared exercise logic — don't touch unless changing behaviour
+│   └── dictionary.js          ← My Dictionary + the "+ Word" button on every page
 └── lessons/
     ├── lesson-template.html   ← Blank class-lesson template — copy this for a new lesson
     ├── lesson-01.html          ← Lesson 1: site tour + placement test + 4 follow-up tabs
+    ├── lesson-02.html          ← Lesson 2: reading & pronunciation (phonics: i t s a c n o p e)
     ├── images/                 ← Put lesson images here
     ├── audio/                  ← Put lesson audio files here
+    │   └── words/               ← One short clip per sound button (see "Sound buttons")
     └── homework/
         ├── homework-template.html   ← Blank homework template — copy this for new homework
 ```
@@ -236,6 +240,52 @@ step numbering starting from 1. The open tab is remembered per lesson.
   find carry `data-key`. Tapping underlines; checking marks green/red.
 - Selections autosave; the container needs a unique `id`.
 
+### Sound buttons (tap a word to hear it)
+
+```html
+<button class="say" data-say="sit">sit</button>
+<button class="say say-big" data-say="sheep" aria-label="Listen"></button>
+<button class="say sentence" data-say="Is it a cat?">Is it a cat?</button>
+```
+
+- Plays `lessons/audio/words/<name>.m4a`. The file name is the `data-say`
+  text in lowercase, spaces and punctuation → `-`: *Is it a cat?* →
+  `is-it-a-cat.m4a`. For long texts give the file a short name with
+  `data-file="l02-stan-1"`.
+- `say-big` is a round ▶ button with no text: use it when the word must stay
+  hidden (listen-and-choose, dictation).
+- **No file yet?** The button still works: the browser's own English voice
+  reads the text (quality depends on the device). The clips in Lesson 2 were
+  made with the Kokoro voice *af_bella* (American English); ask Claude to make clips for
+  new words so they sound the same.
+- Clips are shared, so a word recorded for one lesson works on every page.
+
+### Record yourself
+
+```html
+<div class="rec"></div>
+```
+
+Turns into Record / Stop / ▶ My voice. The student reads aloud, then listens
+to himself and compares with the sound buttons. Nothing is saved or sent
+anywhere; the recording disappears when the page is closed. The browser asks
+for microphone permission the first time.
+
+### Pronunciation blocks (Lesson 2)
+
+- `.sound-card` — big letter, IPA symbol, how to say it, words to repeat.
+- `.trap` — orange "German trap" box (`<span class="trap-title">…</span>` + text).
+- `.pairs` > `.pair` — minimal pairs (*ship* or *sheep*) with two sound buttons.
+- `.blend` — letter tiles `s + a + t → sat` (`.tile`, `.tile.v` = vowel,
+  `.tile.silent` = silent e).
+- `.listen-q` — one row of a listen-and-choose or dictation exercise: a
+  `say-big` button + `.mc-options` (or a `.blank`). Checked like normal
+  multiple choice / fill-in.
+- `.sort-row` — a word + word-choice buttons, e.g. `/s/` or `/z/`.
+  Word-choice selections now save and come back on the next visit;
+  reset with `resetWords('exercise-id')`.
+- `.ipa` — use it around phonetic symbols so they show in a font that has them.
+
 ### Reflection checklist (Finish step)
 
 ```html
@@ -309,6 +359,34 @@ Fluent Emoji (MIT licence, see the licence file in that folder).
 
 ---
 
+## My Dictionary
+
+`dictionary.html` is Timofey's personal word list: English word or phrase,
+German translation, an optional note, and a 🔊 button. Every page that loads
+`assets/dictionary.js` also shows a violet **+ Word** button in the corner.
+If he selects a word in the lesson text first, it's filled in for him.
+
+- **Where the words are stored:** in a Google Sheet ("Timofey Dictionary")
+  in your Google Drive. Columns: `id | word | translation | note | added`. You
+  can open it any time to see, fix or delete words. A copy is also kept in
+  the browser, so the list opens instantly and words added offline are sent
+  later.
+- **Adding words yourself in the sheet:** type the word and translation
+  in a new row, and put anything unique in `id` (e.g. `t1`, `t2`). Rows with
+  an empty `id` show up on the site but can't be deleted there.
+- **Translation:** the **Suggest** button asks MyMemory (free, no key)
+  for German options. He can also type his own.
+- **Pronunciation:** the 🔊 button plays `lessons/audio/words/<word>.m4a` if it
+  exists, else a real recording from dictionaryapi.dev (single words only),
+  else the browser's English voice.
+- **Settings** are at the top of `assets/dictionary.js`: `API` (the web app
+  URL of the Apps Script), `KEY` (must equal `SECRET` in the Apps Script) and
+  `LANG` (translation language).
+- **New lesson / homework pages:** the templates already load
+  `dictionary.js`. Keep the `<script src="…/assets/dictionary.js">` line.
+
+---
+
 ## Publishing to GitHub Pages
 
 1. Upload the whole `website` folder to a GitHub repository.
@@ -332,6 +410,7 @@ Commit to main → Push origin**.
 - [ ] Updated the lesson number in both files' cross-links (lesson → homework, homework → lesson)
 - [ ] Added a `.lesson-card` block in `index.html` with both the lesson and homework `href`s
 - [ ] Placed any images in `lessons/images/`, audio in `lessons/audio/`
+- [ ] Every sound button has its clip in `lessons/audio/words/` (or is fine with the browser voice)
 - [ ] Every exercise container has a unique `id`
 - [ ] Every input/textarea has a unique `id`
 - [ ] Every MC question group has a unique `name="mcX"`

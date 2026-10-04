@@ -26,6 +26,19 @@
     <input type="text" id="studentName" placeholder="Type your name…" autocomplete="off">
   </div>
 
+  <div class="lesson-list">
+    <div class="lesson-card dict-card">
+      <span class="lesson-num" aria-hidden="true">📖</span>
+      <div class="lesson-info">
+        <span class="lesson-topic">My Dictionary</span>
+        <span class="lesson-date">Your own words with translation and sound. Tap <b>+ Word</b> on any page to add one.</span>
+      </div>
+      <div class="lesson-actions">
+        <a class="btn-primary" href="dictionary.html">Open →</a>
+      </div>
+    </div>
+  </div>
+
   <!-- ══════════════════════════════════════════════════════════
        ADD NEW LESSONS BELOW THIS LINE
        Copy one .lesson-card block and update:
@@ -41,6 +54,24 @@
   <div class="lesson-list" id="lessonList">
 
     <!-- ADD NEW LESSON CARDS HERE (newest lesson goes first / at the top) -->
+
+    <!-- LESSON 2 -->
+    <div class="lesson-card">
+      <span class="lesson-num">2</span>
+      <div class="lesson-info">
+        <span class="lesson-topic">Read it right: first sounds</span>
+        <div class="lesson-tags">
+          <span class="lesson-tag">i t s a c n o p e</span>
+          <span class="lesson-tag">short vowels</span>
+          <span class="lesson-tag">magic e</span>
+          <span class="lesson-tag">pronunciation</span>
+        </div>
+        <span class="lesson-date">Reading &amp; pronunciation</span>
+      </div>
+      <div class="lesson-actions">
+        <a class="btn-primary" href="lessons/lesson-02.html">Lesson →</a>
+      </div>
+    </div>
 
     <!-- LESSON 1 -->
     <div class="lesson-card">
@@ -66,6 +97,7 @@
 <footer class="site-footer name-slot" data-with="{name}'s English Lessons" data-without="My English Lessons">My English Lessons</footer>
 
 <script src="assets/name.js"></script>
+<script src="assets/dictionary.js"></script>
 <script>
   /* the name box keeps the saved name in sync (name.js asks for it on the first visit) */
   const nameInput = document.getElementById('studentName');

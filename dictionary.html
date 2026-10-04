@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Dictionary</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="back-home" href="index.html">← All lessons</a>
+    <div class="hero-grid">
+      <div>
+        <h1 class="name-slot" data-with="{name}'s Dictionary" data-without="My Dictionary">My Dictionary</h1>
+        <p>Every new word in one place, with its translation and how it sounds.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Everything inside #dictPage is filled in by assets/dictionary.js -->
+<div class="wrap" id="dictPage">
+
+  <section class="step">
+    <div class="card">
+      <span class="exercise-label">Add a new word</span>
+      <form class="dict-form" autocomplete="off"></form>
+      <div class="tip">On a lesson page, <b>select a word</b> in the text and tap the <b>+ Word</b> button in the corner. It goes straight into your dictionary.</div>
+    </div>
+  </section>
+
+  <section class="step">
+    <div class="card">
+      <div class="dict-head">
+        <span class="exercise-label">My words · <span class="dict-count">0 words</span></span>
+        <input type="search" class="dict-search" placeholder="Search…" aria-label="Search my words">
+      </div>
+      <p class="dict-status"></p>
+      <div class="dict-list"></div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="site-footer">Translations suggested by <a href="https://mymemory.translated.net/">MyMemory</a> · Recordings from <a href="https://dictionaryapi.dev/">Free Dictionary API</a></footer>
+
+<script src="assets/name.js"></script>
+<script src="assets/dictionary.js"></script>
+</body>
+</html>

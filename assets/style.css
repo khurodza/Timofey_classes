@@ -605,8 +605,191 @@ footer.site-footer{margin-top:46px;padding:18px 0 40px;border-top:1px solid var(
   .scorebar{font-size:14px;gap:10px}
 }
 
+/* ============================================================
+   PHONICS / PRONUNCIATION (Lesson 2 onwards)
+   ============================================================ */
+/* sound button: <button class="say" data-say="sit">sit</button> */
+.say{
+  display:inline-flex;align-items:center;gap:7px;padding:6px 14px 6px 10px;border-radius:999px;
+  border:2px solid var(--border);background:var(--paper);color:var(--ink);box-shadow:none;
+  font-size:17px;font-weight:800;line-height:1.3;vertical-align:middle
+}
+.say::before{
+  content:"";width:20px;height:20px;flex-shrink:0;background:var(--blue);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 9v6h4l5 4V5L8 9H4zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 9v6h4l5 4V5L8 9H4zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z'/%3E%3C/svg%3E") center/contain no-repeat
+}
+.say:hover{border-color:var(--blue);background:#F7F9FF}
+.say.playing{border-color:var(--orange);background:var(--orange-soft)}
+.say.playing::before{background:var(--orange)}
+.say.say-big{width:58px;height:58px;padding:0;justify-content:center;flex-shrink:0;background:var(--blue);border-color:var(--blue);box-shadow:0 6px 14px rgba(51,82,224,.28)}
+.say.say-big::before{width:28px;height:28px;background:#fff}
+.say.say-big.playing{background:var(--orange);border-color:var(--orange)}
+.say.say-big.playing::before{background:#fff}
+.say.sentence{font-size:19px;padding:8px 18px 8px 12px;text-align:left}
+.word-row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+
+/* IPA symbols: use a font that has them */
+.ipa{font-family:"Charis SIL","Doulos SIL","Gentium Plus","Lucida Grande","Segoe UI",system-ui,sans-serif;font-weight:700;white-space:nowrap}
+
+/* sound card: big letter, IPA, how to make it, example words */
+.sound-card{border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-top:16px;background:var(--paper)}
+.sound-head{display:flex;align-items:center;gap:18px;padding:16px 20px;background:linear-gradient(135deg,var(--blue-soft),#F6F8FD)}
+.sound-letter{
+  font-family:var(--font-head);font-size:52px;font-weight:800;line-height:1;color:var(--blue);
+  background:var(--paper);border-radius:18px;padding:10px 16px;box-shadow:var(--shadow-sm);letter-spacing:.02em
+}
+.sound-head .ipa{font-size:30px;color:var(--ink)}
+.sound-name{font-size:14px;font-weight:800;color:var(--muted);margin-top:2px}
+.sound-body{padding:6px 20px 18px}
+.sound-body h4{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin:16px 0 4px}
+.sound-body ul{margin:.3em 0;padding-left:1.2em}
+.sound-body li{margin:.25em 0}
+
+/* German trap box (orange) */
+.trap{
+  position:relative;background:var(--orange-soft);border:1px solid #FFD3BF;border-radius:14px;
+  padding:12px 16px 12px 48px;margin-top:16px;font-size:16px
+}
+.trap::before{content:"⚠️";position:absolute;left:15px;top:11px;font-size:19px}
+.trap-title{display:block;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.09em;color:#B6461A;margin-bottom:2px}
+.trap .say{font-size:15px;padding:3px 11px 3px 8px}
+.trap .say::before{width:16px;height:16px}
+.bad{color:var(--red-ink);text-decoration:line-through;text-decoration-thickness:2px;font-weight:800}
+.good{color:var(--green-ink);font-weight:900}
+
+/* minimal pair: ship ↔ sheep */
+.pairs{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin-top:12px}
+.pair{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px;border:1px solid var(--border);border-radius:14px;background:#F6F8FD}
+.pair .vs{font-size:13px;font-weight:900;color:var(--muted)}
+
+/* blending: s + a + t → sat */
+.blend-list{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.blend{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tile{
+  min-width:44px;height:48px;display:inline-grid;place-items:center;padding:0 8px;border-radius:12px;
+  background:var(--paper);border:2px solid var(--border-strong);border-bottom-width:4px;
+  font-family:var(--font-head);font-size:26px;font-weight:800;color:var(--ink)
+}
+.tile.v{background:var(--yellow-soft);border-color:#F1C659;color:#8A5A00}
+.tile.silent{opacity:.45;border-style:dashed}
+.blend .op{font-weight:900;color:var(--muted);font-size:20px}
+
+/* listen-and-choose question: big play button + options in a row */
+.listen-q{display:flex;align-items:center;gap:14px;padding:12px 0}
+.listen-q + .listen-q{border-top:1px solid var(--border)}
+.listen-q .num{font-weight:900;color:var(--muted);min-width:22px}
+.listen-q .mc-options{flex-direction:row;flex-wrap:wrap;margin-top:0;flex:1}
+.listen-q .mc-option{padding:8px 16px;font-size:18px}
+@media(max-width:560px){.listen-q{flex-wrap:wrap}}
+
+/* reading text: bigger, airy */
+.read-text{font-size:21px;line-height:2;margin:10px 0}
+.read-text p{margin:.3em 0}
+
+/* riddle cards */
+.riddle{border:1px solid var(--border);border-radius:16px;padding:14px 18px;margin-top:14px;background:#F6F8FD}
+.riddle .read-text{font-size:19px;line-height:1.8;margin:0 0 6px}
+
+/* record-yourself widget (built by lessons.js) */
+.rec{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px;padding:10px 14px;
+  border:1px dashed var(--border-strong);border-radius:16px;background:#FBFCFF
+}
+.rec button{padding:8px 16px;font-size:15px}
+.rec-btn{background:var(--red);border-color:var(--red);color:#fff}
+.rec.recording .rec-btn{animation:recPulse 1s ease-in-out infinite}
+.rec-play:disabled{opacity:.45;cursor:default;transform:none}
+.rec-note{font-size:14px;color:var(--muted);font-weight:700}
+@keyframes recPulse{50%{box-shadow:0 0 0 8px rgba(224,62,82,.18)}}
+
+/* sorting rows (word + choice buttons) */
+.sort-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:8px 0}
+.sort-row + .sort-row{border-top:1px solid var(--border)}
+.sort-row .say{min-width:110px}
+
+/* ============================================================
+   MY DICTIONARY (dictionary.html + the "+ Word" button, dictionary.js)
+   ============================================================ */
+.dict-field{display:block;margin:0 0 14px;text-align:left}
+.dict-field > span:first-child{display:block;font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
+.dict-field i{text-transform:none;letter-spacing:0;font-weight:700}
+.dict-input-row{display:flex;gap:8px;align-items:center}
+.dict-field input{
+  flex:1;min-width:0;width:100%;font:inherit;font-size:18px;font-weight:800;color:var(--ink);
+  border:2px solid var(--border);border-radius:14px;padding:10px 14px;background:var(--bg);outline:none
+}
+.dict-field input:focus{border-color:var(--blue);background:var(--paper)}
+.dict-field input.shake{animation:shake .3s;border-color:var(--red)}
+.dict-field .say-big{width:48px;height:48px}
+.dict-suggest{flex-shrink:0;padding:10px 16px;font-size:15px}
+.dict-suggest:disabled{opacity:.6;cursor:default;transform:none}
+.dict-suggestions{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:-6px 0 14px;text-align:left}
+.dict-suggestions[hidden]{display:none}
+.dict-sug-label{font-size:13px;font-weight:800;color:var(--muted);margin-right:2px}
+.dict-msg{min-height:0;margin:0;font-size:14px;font-weight:800;text-align:left}
+.dict-msg.warn{color:var(--yellow-ink);background:var(--yellow-soft);border-radius:10px;padding:6px 12px;margin-bottom:6px}
+.dict-form .btn-row{margin-top:8px}
+
+/* pop-up window on lesson pages (reuses the name-window overlay) */
+.dict-dialog{position:relative;width:min(480px,100%);text-align:left;padding:26px 24px 22px}
+.dict-dialog h2{margin-bottom:16px;padding-right:36px}
+.dict-dialog .btn-row button{width:100%;margin-top:0}
+.dict-dialog .dict-suggest{width:auto;margin-top:0;padding:10px 16px;font-size:15px}
+.dict-dialog .dict-suggestions .word-choice-btn{width:auto;margin-top:0;padding:5px 14px;font-size:15px}
+.dict-dialog .dict-field .say-big{margin-top:0}
+.dict-dialog .dict-field input{text-align:left;font-size:18px}
+.dict-close{
+  position:absolute;top:14px;right:14px;width:38px!important;height:38px;padding:0!important;margin:0!important;
+  border-radius:50%;font-size:22px!important;line-height:1;box-shadow:none;color:var(--muted)
+}
+.dict-open-link{display:block;margin-top:14px;text-align:center;font-size:14px;font-weight:800;color:var(--blue)}
+
+/* floating button */
+.dict-fab{
+  position:fixed;right:16px;bottom:16px;z-index:35;border-radius:999px;padding:12px 20px;
+  background:var(--violet);border-color:var(--violet);color:#fff;box-shadow:0 10px 24px rgba(123,92,230,.38)
+}
+.dict-fab:hover{background:#6A4BD6}
+body:has(.scorebar[style*="flex"]) .dict-fab{bottom:96px}
+
+/* word list */
+.dict-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:space-between}
+.dict-head .exercise-label{margin-bottom:0}
+.dict-search{
+  flex:0 1 260px;min-width:0;font:inherit;font-weight:700;border:2px solid var(--border);border-radius:999px;
+  padding:7px 16px;background:var(--bg);outline:none;color:var(--ink)
+}
+.dict-search:focus{background:var(--paper);border-color:var(--blue)}
+.dict-status{font-size:13px;font-weight:800;color:var(--muted);margin:10px 0 4px;min-height:1.6em}
+.dict-status.offline{color:var(--yellow-ink)}
+.dict-list{display:flex;flex-direction:column}
+.dict-item{display:flex;align-items:center;gap:14px;padding:12px 0;border-top:1px solid var(--border)}
+.dict-item:first-child{border-top:none}
+.dict-item .say-big{width:46px;height:46px}
+.dict-item .say-big::before{width:22px;height:22px}
+.dict-text{flex:1;min-width:0;display:flex;flex-direction:column}
+.dict-word{font-family:var(--font-head);font-size:20px;font-weight:700;line-height:1.25;overflow-wrap:anywhere}
+.dict-tr{font-size:16px;font-weight:700;color:var(--muted);overflow-wrap:anywhere}
+.dict-tr::before{content:'= ';color:var(--blue);font-weight:900}
+.dict-note{font-size:13px;font-weight:700;color:var(--muted);font-style:italic;margin-top:2px}
+.dict-side{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.dict-date{font-size:12px;font-weight:800;color:#A3ACC6;white-space:nowrap}
+.dict-del{
+  width:34px;height:34px;padding:0;border-radius:50%;font-size:20px;line-height:1;color:var(--muted);
+  box-shadow:none;border-color:var(--border)
+}
+.dict-del:hover{background:var(--red-soft);border-color:var(--red);color:var(--red)}
+@media(max-width:560px){
+  .dict-date{display:none}
+  .dict-search{flex-basis:100%}
+}
+
+/* home-page card */
+.dict-card .lesson-num{background:linear-gradient(135deg,#7B5CE6,#3352E0)!important;font-size:26px}
+
 @media print{
-  nav.chips,nav.parts,button,.scorebar,.toast{display:none!important}
+  nav.chips,nav.parts,button,.scorebar,.toast,.dict-fab{display:none!important}
   header.hero::before,header.hero::after{display:none}
   .lesson-part{display:block}
   .card{box-shadow:none;break-inside:avoid}
