@@ -16,8 +16,8 @@
   /* ---- settings ---- */
   const API = 'https://script.google.com/macros/s/AKfycby_7NBmrIFDhg0Sury5GiKOc9QcFqJV5dTpSgvnOG38iqXuc1bgjBSJbWHbJt5KY2D9bg/exec';
   const KEY = 'LKJZyy7CDAFsEJ4XoE9o6oKUGlv-eQuF';   // must match SECRET in the Apps Script
-  const LANG = 'de';                                       // translate into German
-  const LANG_NAME = 'German';
+  const LANG = 'ru';                                       // translate into Russian
+  const LANG_NAME = 'Russian';
 
   const CACHE_KEY = 'dictionary-words';
   const QUEUE_KEY = 'dictionary-queue';
@@ -324,7 +324,7 @@
       else word.focus();
     });
 
-    return { word, tr };
+    return { word, tr, sugBtn };
   }
 
   /* ============================================================
@@ -362,6 +362,17 @@
 
     const f = buildForm(overlay.querySelector('.dict-form'), { word: prefill, onAdded: close });
     setTimeout(() => (prefill ? f.tr : f.word).focus(), 50);
+    if (prefill && !find(prefill)) f.sugBtn.click();   // selected text: fetch a translation straight away
+  }
+
+  /* the selected text, tidied: "  cat." → "cat"; '' if nothing usable */
+  function selectedText() {
+    const sel = window.getSelection();
+    if (!sel || sel.isCollapsed || !sel.rangeCount) return '';
+    const node = sel.anchorNode && (sel.anchorNode.nodeType === 1 ? sel.anchorNode : sel.anchorNode.parentElement);
+    if (node && node.closest('input, textarea, .name-overlay, .dict-pop')) return '';
+    const t = String(sel).replace(/\s+/g, ' ').replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}’']+$/gu, '').replace(/[’']+$/, '');
+    return t.length <= 80 && /\p{L}/u.test(t) ? t : '';
   }
 
   function addFloatingButton() {
@@ -370,12 +381,61 @@
     fab.title = 'Add a word to my dictionary (select a word in the text first)';
     let picked = '';
     // read the selection before the tap clears it
-    fab.addEventListener('pointerdown', () => {
-      picked = String(window.getSelection() || '').trim().replace(/\s+/g, ' ');
-      if (picked.length > 80) picked = '';
-    });
+    fab.addEventListener('pointerdown', () => { picked = selectedText(); });
     fab.addEventListener('click', () => { openDialog(picked); picked = ''; });
     document.body.appendChild(fab);
+  }
+
+  /* ============================================================
+     SELECTION BUBBLE — select a word or phrase anywhere in the
+     text and an "Add to dictionary" button appears right below it.
+     ============================================================ */
+  function addSelectionBubble() {
+    const pop = el('button', 'dict-pop', '📖 Add to dictionary');
+    pop.type = 'button';
+    pop.hidden = true;
+    document.body.appendChild(pop);
+    let text = '', timer = null;
+
+    function place() {
+      const sel = window.getSelection();
+      const rects = sel.rangeCount ? sel.getRangeAt(0).getClientRects() : [];
+      if (!rects.length) { pop.hidden = true; return; }
+      const first = rects[0], last = rects[rects.length - 1];
+      pop.hidden = false;
+      const w = pop.offsetWidth, h = pop.offsetHeight;
+      // below the selection (above it near the bottom of the screen); phone menus sit above
+      const bar = document.getElementById('scoreBar');   // lesson score bar at the bottom
+      const floor = bar && bar.offsetParent ? bar.getBoundingClientRect().top : innerHeight;
+      let top = last.bottom + 10;
+      if (top + h > floor - 8) top = first.top - h - 10;
+      const mid = (Math.min(first.left, last.left) + Math.max(first.right, last.right)) / 2;
+      pop.style.left = Math.max(8, Math.min(innerWidth - w - 8, mid - w / 2)) + 'px';
+      pop.style.top = Math.max(8, top) + 'px';
+    }
+
+    function update() {
+      text = selectedText();
+      if (!text || document.querySelector('.name-overlay')) { pop.hidden = true; return; }
+      place();
+    }
+
+    document.addEventListener('selectionchange', () => {
+      clearTimeout(timer);
+      // hide a moment later: on phones, tapping the bubble clears the selection just before the click
+      if (!selectedText()) { timer = setTimeout(() => { pop.hidden = true; }, 400); return; }
+      timer = setTimeout(update, 250);   // wait until the student stops dragging
+    });
+    addEventListener('scroll', () => { if (!pop.hidden) place(); }, { passive: true });
+    addEventListener('resize', () => { if (!pop.hidden) place(); });
+
+    pop.addEventListener('pointerdown', e => e.preventDefault());   // keep the selection on desktop
+    pop.addEventListener('click', () => {
+      const t = text;
+      pop.hidden = true;
+      window.getSelection().removeAllRanges();
+      if (t) openDialog(t);
+    });
   }
 
   /* ============================================================
@@ -450,7 +510,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     const page = document.getElementById('dictPage');
     if (page) setupPage(page);
-    else addFloatingButton();
+    else { addFloatingButton(); addSelectionBubble(); }
     sync();
   });
   window.addEventListener('online', () => sync());

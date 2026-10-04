@@ -362,9 +362,13 @@ Fluent Emoji (MIT licence, see the licence file in that folder).
 ## My Dictionary
 
 `dictionary.html` is Timofey's personal word list: English word or phrase,
-German translation, an optional note, and a 🔊 button. Every page that loads
-`assets/dictionary.js` also shows a violet **+ Word** button in the corner.
-If he selects a word in the lesson text first, it's filled in for him.
+Russian translation, an optional note, and a 🔊 button. Every page that loads
+`assets/dictionary.js` lets him add words in two ways:
+
+- **Select a word or phrase** in any text: an **📖 Add to dictionary** button
+  appears right next to it. Tapping it opens the "New word" window with the
+  word filled in and a Russian translation already suggested.
+- The violet **+ Word** button in the corner opens the same window empty.
 
 - **Where the words are stored:** in a Google Sheet ("Timofey Dictionary")
   in your Google Drive. Columns: `id | word | translation | note | added`. You
@@ -375,7 +379,7 @@ If he selects a word in the lesson text first, it's filled in for him.
   in a new row, and put anything unique in `id` (e.g. `t1`, `t2`). Rows with
   an empty `id` show up on the site but can't be deleted there.
 - **Translation:** the **Suggest** button asks MyMemory (free, no key)
-  for German options. He can also type his own.
+  for Russian options. He can also type his own.
 - **Pronunciation:** the 🔊 button plays `lessons/audio/words/<word>.m4a` if it
   exists, else a real recording from dictionaryapi.dev (single words only),
   else the browser's English voice.
