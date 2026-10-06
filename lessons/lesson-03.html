@@ -14,9 +14,10 @@
     <div class="hero-grid">
       <div>
         <h1 class="name-slot" data-with="Lesson 3: Welcome, {name}!" data-without="Lesson 3: Welcome!">Lesson 3: Welcome!</h1>
-        <p>Months, numbers, dates and colours. Then the sounds of <b>i</b> and <b>t</b>.</p>
+        <p>The alphabet, colours, international words, <i>a / an</i> and the day. Then the sounds of <b>i</b> and <b>t</b>.</p>
         <div class="hero-badges">
           <span class="badge">Lesson 3</span>
+          <span class="badge">Welcome</span>
           <span class="badge">Starter: Welcome!</span>
           <span class="badge">Vocabulary</span>
           <span class="badge">Pronunciation: i · t</span>
@@ -36,14 +37,258 @@
 ══════════════════════════════════════════════════════════ -->
 <nav class="parts">
   <div class="wrap">
-    <button class="part-tab" data-part="part-vocab" onclick="showPart('part-vocab')">Vocabulary</button>
+    <button class="part-tab" data-part="part-welcome" onclick="showPart('part-welcome')">Welcome</button>
+    <!-- HIDDEN: Vocabulary tab. To show it again, delete these comment marks and change <template id="hidden-part-vocab"> back below.
+    <button class="part-tab" data-part="part-vocab" onclick="showPart('part-vocab')">Vocabulary</button> -->
     <button class="part-tab" data-part="part-it" onclick="showPart('part-it')">Pronunciation: i · t</button>
     <button class="part-tab hw" data-part="part-homework" onclick="showPart('part-homework')">Homework</button>
   </div>
 </nav>
 
+<!-- ══════════════════════════════════════════════════════════
+     WELCOME follows the coursebook pages "Welcome" (pp. 4–6).
+     Coursebook recordings W.01–W.03 go in
+     lessons/audio/lesson-03-w01.m4a … -w03.m4a
+     (until then the players show "Audio coming soon").
+══════════════════════════════════════════════════════════ -->
+<div class="lesson-part" id="part-welcome">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#wc1">1 · Alphabet</a>
+    <a href="#wc2">2 · Colours</a>
+    <a href="#wc3">3 · International words</a>
+    <a href="#wc4">4 · a / an</a>
+    <a href="#wc5">5 · The day</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="wc1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Part 1</div>
+        <h2>The alphabet</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Exercise 1</div>
+      <h3>Listen to the alphabet. Then listen again and repeat.</h3>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-03-w01.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div class="abc-board"><span style="color:#8C8C8C">Aa</span><span style="color:#43A047">Bb</span><span style="color:#43A047">Cc</span><span style="color:#43A047">Dd</span><span style="color:#43A047">Ee</span><span style="color:#E53935">Ff</span><span style="color:#43A047">Gg</span><span style="color:#8C8C8C">Hh</span><span style="color:#FFFFFF">Ii</span><span style="color:#8C8C8C">Jj</span><span style="color:#8C8C8C">Kk</span><span style="color:#E53935">Ll</span><span style="color:#E53935">Mm</span><span style="color:#E53935">Nn</span><span style="color:#FDD835">Oo</span><span style="color:#43A047">Pp</span><span style="color:#1E88E5">Qq</span><span style="color:#A0522D">Rr</span><span style="color:#E53935">Ss</span><span style="color:#43A047">Tt</span><span style="color:#1E88E5">Uu</span><span style="color:#43A047">Vv</span><span style="color:#1E88E5">Ww</span><span style="color:#E53935">Xx</span><span style="color:#FFFFFF">Yy</span><span style="color:#E53935">Zz</span></div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Exercise 2</div>
+      <h3>Listen to the sounds and repeat.</h3>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-03-w02.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div class="abc-sounds"><div class="abc-sound"><span class="ipa">/eɪ/</span><p>a h j k</p></div><div class="abc-sound"><span class="ipa">/iː/</span><p>b c d e g p t v</p></div><div class="abc-sound"><span class="ipa">/e/</span><p>f l m n s x z</p></div><div class="abc-sound"><span class="ipa">/aɪ/</span><p>i y</p></div><div class="abc-sound"><span class="ipa">/əʊ/</span><p>o</p></div><div class="abc-sound"><span class="ipa">/uː/</span><p>q u w</p></div><div class="abc-sound"><span class="ipa">/ɑː/</span><p>r</p></div></div>
+      <div class="tip"><span class="tip-title">German trap!</span>English <span class="key">e</span> sounds like German <i>i</i>, English <span class="key">i</span> sounds like German <i>ei</i>, and English <span class="key">a</span> sounds like German <i>eh</i>.</div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Exercise 3 · Speaking</div>
+      <h3>Spell your name to your teacher. Your teacher writes your name. Is it correct?</h3>
+      <div class="tip class-note"><span class="tip-title">In class: spell it!</span>“My name is Timofey. <span class="key">T – I – M – O – F – E – Y</span>.”</div>
+      <p>Practise first: record yourself spelling your name. Then listen.</p>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+  <section class="step" id="wc2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Part 2</div>
+        <h2>Colours</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-wc-colours">
+      <div class="exercise-label">Exercise 4</div>
+      <h3>Write the colours in the correct places in the key.</h3>
+      <div class="word-bank-ref"><span>black</span> <span>blue</span> <span>brown</span> <span>green</span> <span>grey</span> <span>orange</span> <span>pink</span> <span>purple</span> <span>red</span> <span class="crossed">white</span> <span>yellow</span></div>
+      <div class="mix-grid">
+        <div class="mix-item"><span class="mix-num">0</span><svg class="mix-svg" viewBox="0 0 100 80" aria-hidden="true"><path d="M50 6c14 0 18 10 28 12s16 14 10 26-2 22-16 26-22-2-30 2-24 0-30-12 2-18-2-28S36 6 50 6z" fill="#FFFFFF" stroke="#C3CCE4" stroke-width="2"/></svg><span class="given">white</span></div>
+        <div class="mix-item"><span class="mix-num">1</span><svg class="mix-svg" viewBox="0 0 100 80" aria-hidden="true"><path d="M50 6c14 0 18 10 28 12s16 14 10 26-2 22-16 26-22-2-30 2-24 0-30-12 2-18-2-28S36 6 50 6z" fill="#1E88E5" stroke="#C3CCE4" stroke-width="2"/></svg><input class="blank" id="wc-k1" data-answer="blue" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="mix-item"><span class="mix-num">2</span><svg class="mix-svg" viewBox="0 0 100 80" aria-hidden="true"><path d="M50 6c14 0 18 10 28 12s16 14 10 26-2 22-16 26-22-2-30 2-24 0-30-12 2-18-2-28S36 6 50 6z" fill="#43A047" stroke="#C3CCE4" stroke-width="2"/></svg><input class="blank" id="wc-k2" data-answer="green" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="mix-item"><span class="mix-num">3</span><svg class="mix-svg" viewBox="0 0 100 80" aria-hidden="true"><path d="M50 6c14 0 18 10 28 12s16 14 10 26-2 22-16 26-22-2-30 2-24 0-30-12 2-18-2-28S36 6 50 6z" fill="#E53935" stroke="#C3CCE4" stroke-width="2"/></svg><input class="blank" id="wc-k3" data-answer="red" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="mix-item"><span class="mix-num">4</span><svg class="mix-svg" viewBox="0 0 100 80" aria-hidden="true"><path d="M50 6c14 0 18 10 28 12s16 14 10 26-2 22-16 26-22-2-30 2-24 0-30-12 2-18-2-28S36 6 50 6z" fill="#8D5524" stroke="#C3CCE4" stroke-width="2"/></svg><input class="blank" id="wc-k4" data-answer="brown" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="mix-item"><span class="mix-num">5</span><svg class="mix-svg" viewBox="0 0 100 80" aria-hidden="true"><path d="M50 6c14 0 18 10 28 12s16 14 10 26-2 22-16 26-22-2-30 2-24 0-30-12 2-18-2-28S36 6 50 6z" fill="#7E57C2" stroke="#C3CCE4" stroke-width="2"/></svg><input class="blank" id="wc-k5" data-answer="purple" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="mix-item"><span class="mix-num">6</span><svg class="mix-svg" viewBox="0 0 100 80" aria-hidden="true"><path d="M50 6c14 0 18 10 28 12s16 14 10 26-2 22-16 26-22-2-30 2-24 0-30-12 2-18-2-28S36 6 50 6z" fill="#9E9E9E" stroke="#C3CCE4" stroke-width="2"/></svg><input class="blank" id="wc-k6" data-answer="grey|gray" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="mix-item"><span class="mix-num">7</span><svg class="mix-svg" viewBox="0 0 100 80" aria-hidden="true"><path d="M50 6c14 0 18 10 28 12s16 14 10 26-2 22-16 26-22-2-30 2-24 0-30-12 2-18-2-28S36 6 50 6z" fill="#212121" stroke="#C3CCE4" stroke-width="2"/></svg><input class="blank" id="wc-k7" data-answer="black" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="mix-item"><span class="mix-num">8</span><svg class="mix-svg" viewBox="0 0 100 80" aria-hidden="true"><path d="M50 6c14 0 18 10 28 12s16 14 10 26-2 22-16 26-22-2-30 2-24 0-30-12 2-18-2-28S36 6 50 6z" fill="#FB8C00" stroke="#C3CCE4" stroke-width="2"/></svg><input class="blank" id="wc-k8" data-answer="orange" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="mix-item"><span class="mix-num">9</span><svg class="mix-svg" viewBox="0 0 100 80" aria-hidden="true"><path d="M50 6c14 0 18 10 28 12s16 14 10 26-2 22-16 26-22-2-30 2-24 0-30-12 2-18-2-28S36 6 50 6z" fill="#FDD835" stroke="#C3CCE4" stroke-width="2"/></svg><input class="blank" id="wc-k9" data-answer="yellow" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="mix-item"><span class="mix-num">10</span><svg class="mix-svg" viewBox="0 0 100 80" aria-hidden="true"><path d="M50 6c14 0 18 10 28 12s16 14 10 26-2 22-16 26-22-2-30 2-24 0-30-12 2-18-2-28S36 6 50 6z" fill="#F48FB1" stroke="#C3CCE4" stroke-width="2"/></svg><input class="blank" id="wc-k10" data-answer="pink" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-wc-colours')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-wc-colours')">Try again</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Exercise 5 · Speaking</div>
+      <h3>What colours can you see around you? Tell your teacher.</h3>
+      <div class="tip class-note"><span class="tip-title">In class: look around!</span>“I can see a <span class="key">black</span> phone and a <span class="key">blue</span> T-shirt.”</div>
+    </div>
+  </section>
+
+  <section class="step" id="wc3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Part 3</div>
+        <h2>International words</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-wc-words">
+      <div class="exercise-label">Exercise 6</div>
+      <h3>Match the words in the list with the pictures. Write 1–16 in the boxes.</h3>
+      <ol class="num-list"><li><b>1</b>airport</li><li><b>2</b>bus</li><li><b>3</b>café</li><li><b>4</b>park</li><li><b>5</b>football</li><li><b>6</b>hamburger</li><li><b>7</b>hotel</li><li><b>8</b>phone</li><li><b>9</b>pizza</li><li><b>10</b>restaurant</li><li><b>11</b>sandwich</li><li><b>12</b>T-shirt</li><li><b>13</b>taxi</li><li><b>14</b>city</li><li><b>15</b>tablet</li><li><b>16</b>wi-fi</li></ol>
+      <div class="pic-grid">
+        <div class="pic-item"><span class="pic-letter">A</span><img src="images/welcome/wifi.png" alt="wi-fi"><input class="blank num" id="wc-pa" data-answer="16" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off"></div>
+        <div class="pic-item"><span class="pic-letter">B</span><img src="images/welcome/park.png" alt="a park"><input class="blank num" id="wc-pb" data-answer="4" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off"></div>
+        <div class="pic-item"><span class="pic-letter">C</span><img src="images/welcome/airport.png" alt="a plane at an airport"><input class="blank num" id="wc-pc" data-answer="1" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off"></div>
+        <div class="pic-item"><span class="pic-letter">D</span><img src="images/welcome/hotel.png" alt="a hotel"><input class="blank num" id="wc-pd" data-answer="7" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off"></div>
+        <div class="pic-item"><span class="pic-letter">E</span><img src="images/welcome/restaurant.png" alt="a plate, a fork and a knife"><input class="blank num" id="wc-pe" data-answer="10" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off"></div>
+        <div class="pic-item"><span class="pic-letter">F</span><img src="images/welcome/bus.png" alt="a bus"><input class="blank num" id="wc-pf" data-answer="2" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off"></div>
+        <div class="pic-item"><span class="pic-letter">G</span><img src="images/welcome/pizza.png" alt="a pizza"><input class="blank num" id="wc-pg" data-answer="9" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off"></div>
+        <div class="pic-item"><span class="pic-letter">H</span><img src="images/welcome/phone.png" alt="a phone"><input class="blank num" id="wc-ph" data-answer="8" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off"></div>
+        <div class="pic-item"><span class="pic-letter">I</span><img src="images/welcome/cafe.png" alt="a cup of coffee"><input class="blank num" id="wc-pi" data-answer="3" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off"></div>
+        <div class="pic-item"><span class="pic-letter">J</span><img src="images/welcome/football.png" alt="a football"><input class="blank num" id="wc-pj" data-answer="5" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off"></div>
+        <div class="pic-item"><span class="pic-letter">K</span><img src="images/welcome/tablet.png" alt="a tablet"><input class="blank num" id="wc-pk" data-answer="15" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off"></div>
+        <div class="pic-item"><span class="pic-letter">L</span><img src="images/welcome/hamburger.png" alt="a hamburger"><input class="blank num" id="wc-pl" data-answer="6" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off"></div>
+        <div class="pic-item"><span class="pic-letter">M</span><img src="images/welcome/taxi.png" alt="a taxi"><input class="blank num" id="wc-pm" data-answer="13" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off"></div>
+        <div class="pic-item"><span class="pic-letter">N</span><img src="images/welcome/tshirt.png" alt="a T-shirt"><input class="blank num" id="wc-pn" data-answer="12" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off"></div>
+        <div class="pic-item"><span class="pic-letter">O</span><img src="images/welcome/sandwich.png" alt="a sandwich"><input class="blank num" id="wc-po" data-answer="11" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off"></div>
+        <div class="pic-item"><span class="pic-letter">P</span><img src="images/welcome/city.png" alt="a city"><input class="blank num" id="wc-pp" data-answer="14" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-wc-words')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-wc-words')">Try again</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Exercise 7</div>
+      <h3>Listen, check and repeat.</h3>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-03-w03.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Exercise 8 · Speaking</div>
+      <h3>Choose one of the words in Exercise 6 and spell it to your teacher. Your teacher writes the word. Is it correct?</h3>
+      <div class="tip class-note"><span class="tip-title">In class: then swap!</span>Now your teacher spells a word, and <b>you</b> write it.</div>
+      <h3 style="margin-top:20px">Write the words your teacher spells.</h3>
+      <p class="gap-line"><span class="num">1.</span> <input class="blank" id="wc-sp1" placeholder="word" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:180px"></p>
+      <p class="gap-line"><span class="num">2.</span> <input class="blank" id="wc-sp2" placeholder="word" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:180px"></p>
+      <p class="gap-line"><span class="num">3.</span> <input class="blank" id="wc-sp3" placeholder="word" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:180px"></p>
+      <p class="gap-line"><span class="num">4.</span> <input class="blank" id="wc-sp4" placeholder="word" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:180px"></p>
+      <p class="gap-line"><span class="num">5.</span> <input class="blank" id="wc-sp5" placeholder="word" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:180px"></p>
+    </div>
+  </section>
+
+  <section class="step" id="wc4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Part 4</div>
+        <h2>Articles: <i>a</i> and <i>an</i></h2>
+      </div>
+    </div>
+    <div class="card" id="ex-wc-shirts">
+      <div class="exercise-label">Exercise 1</div>
+      <h3>Match the sentences in the list with the pictures. Write 1–4 in the boxes.</h3>
+      <ol class="num-list" style="columns:1"><li><b>1</b>It’s a red T-shirt.</li><li><b>2</b>It’s a black and green T-shirt.</li><li><b>3</b>It’s an orange T-shirt.</li><li><b>4</b>It’s a blue T-shirt.</li></ol>
+      <div class="pic-grid">
+        <div class="pic-item"><span class="pic-letter">A</span><svg viewBox="0 0 100 100" aria-hidden="true"><defs><clipPath id="wc-shirt0"><path d="M32 12 L42 8 Q50 16 58 8 L68 12 L92 28 L82 46 L72 40 L72 94 L28 94 L28 40 L18 46 L8 28 Z"/></clipPath></defs><g clip-path="url(#wc-shirt0)"><rect width="100" height="100" fill="#29B6F6"/><path d="M14 30 L30 18 M18 36 L33 24 M86 30 L70 18 M82 36 L67 24" stroke="#fff" stroke-width="3"/></g><path d="M32 12 L42 8 Q50 16 58 8 L68 12 L92 28 L82 46 L72 40 L72 94 L28 94 L28 40 L18 46 L8 28 Z" fill="none" stroke="#16213E" stroke-width="2.5" stroke-linejoin="round"/></svg><input class="blank num" id="wc-ta" data-answer="4" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" aria-label="blue T-shirt"></div>
+        <div class="pic-item"><span class="pic-letter">B</span><svg viewBox="0 0 100 100" aria-hidden="true"><defs><clipPath id="wc-shirt1"><path d="M32 12 L42 8 Q50 16 58 8 L68 12 L92 28 L82 46 L72 40 L72 94 L28 94 L28 40 L18 46 L8 28 Z"/></clipPath></defs><g clip-path="url(#wc-shirt1)"><rect width="100" height="100" fill="#FB8C00"/><rect x="0" y="20" width="100" height="4" fill="#FFB74D"/><rect x="0" y="31" width="100" height="4" fill="#FFB74D"/><rect x="0" y="42" width="100" height="4" fill="#FFB74D"/><rect x="0" y="53" width="100" height="4" fill="#FFB74D"/><rect x="0" y="64" width="100" height="4" fill="#FFB74D"/><rect x="0" y="75" width="100" height="4" fill="#FFB74D"/><rect x="0" y="86" width="100" height="4" fill="#FFB74D"/></g><path d="M32 12 L42 8 Q50 16 58 8 L68 12 L92 28 L82 46 L72 40 L72 94 L28 94 L28 40 L18 46 L8 28 Z" fill="none" stroke="#16213E" stroke-width="2.5" stroke-linejoin="round"/></svg><input class="blank num" id="wc-tb" data-answer="3" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" aria-label="orange T-shirt"></div>
+        <div class="pic-item"><span class="pic-letter">C</span><svg viewBox="0 0 100 100" aria-hidden="true"><defs><clipPath id="wc-shirt2"><path d="M32 12 L42 8 Q50 16 58 8 L68 12 L92 28 L82 46 L72 40 L72 94 L28 94 L28 40 L18 46 L8 28 Z"/></clipPath></defs><g clip-path="url(#wc-shirt2)"><rect width="100" height="100" fill="#E53935"/><circle cx="50" cy="44" r="13" fill="#FDD835" stroke="#fff" stroke-width="3"/></g><path d="M32 12 L42 8 Q50 16 58 8 L68 12 L92 28 L82 46 L72 40 L72 94 L28 94 L28 40 L18 46 L8 28 Z" fill="none" stroke="#16213E" stroke-width="2.5" stroke-linejoin="round"/></svg><input class="blank num" id="wc-tc" data-answer="1" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" aria-label="red T-shirt"></div>
+        <div class="pic-item"><span class="pic-letter">D</span><svg viewBox="0 0 100 100" aria-hidden="true"><defs><clipPath id="wc-shirt3"><path d="M32 12 L42 8 Q50 16 58 8 L68 12 L92 28 L82 46 L72 40 L72 94 L28 94 L28 40 L18 46 L8 28 Z"/></clipPath></defs><g clip-path="url(#wc-shirt3)"><rect width="100" height="100" fill="#8BC34A"/><rect x="0" y="62" width="100" height="40" fill="#1B3B1B"/><path d="M8 28 L32 12 L32 22 L16 46 Z M92 28 L68 12 L68 22 L84 46 Z" fill="#212121"/></g><path d="M32 12 L42 8 Q50 16 58 8 L68 12 L92 28 L82 46 L72 40 L72 94 L28 94 L28 40 L18 46 L8 28 Z" fill="none" stroke="#16213E" stroke-width="2.5" stroke-linejoin="round"/></svg><input class="blank num" id="wc-td" data-answer="2" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" aria-label="black and green T-shirt"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-wc-shirts')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-wc-shirts')">Try again</button>
+      </div>
+      <div class="tip rule"><span class="tip-title">a or an? Listen to the first sound!</span>
+        <div class="rule-grid">
+          <div><small>a + consonant sound</small><span class="key">a red T-shirt</span> <span class="key">a blue T-shirt</span></div>
+          <div><small>an + vowel sound (a, e, i, o, u)</small><span class="key">an orange T-shirt</span> <span class="key">an airport</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="ex-wc-aan">
+      <div class="exercise-label">Exercise 2</div>
+      <h3>Write <i>a</i> or <i>an</i>.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>0. <b>an</b> airport</span></div>
+      <p class="gap-line"><span class="num">1.</span> <input class="blank" id="wc-a1" data-answer="an" placeholder="?" autocomplete="off" autocapitalize="off" style="min-width:70px;width:70px"> Indian restaurant</p>
+      <p class="gap-line"><span class="num">2.</span> <input class="blank" id="wc-a2" data-answer="a" placeholder="?" autocomplete="off" autocapitalize="off" style="min-width:70px;width:70px"> red bus</p>
+      <p class="gap-line"><span class="num">3.</span> <input class="blank" id="wc-a3" data-answer="a" placeholder="?" autocomplete="off" autocapitalize="off" style="min-width:70px;width:70px"> pizza</p>
+      <p class="gap-line"><span class="num">4.</span> <input class="blank" id="wc-a4" data-answer="a" placeholder="?" autocomplete="off" autocapitalize="off" style="min-width:70px;width:70px"> black taxi</p>
+      <p class="gap-line"><span class="num">5.</span> <input class="blank" id="wc-a5" data-answer="an" placeholder="?" autocomplete="off" autocapitalize="off" style="min-width:70px;width:70px"> orange phone</p>
+      <p class="gap-line"><span class="num">6.</span> <input class="blank" id="wc-a6" data-answer="an" placeholder="?" autocomplete="off" autocapitalize="off" style="min-width:70px;width:70px"> American football player</p>
+      <p class="gap-line"><span class="num">7.</span> <input class="blank" id="wc-a7" data-answer="an" placeholder="?" autocomplete="off" autocapitalize="off" style="min-width:70px;width:70px"> internet page</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-wc-aan')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-wc-aan')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="wc5">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Part 5</div>
+        <h2>The day</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-wc-day">
+      <div class="exercise-label">Exercise 3</div>
+      <h3>Write the words in the list under the pictures.</h3>
+      <div class="word-bank-ref"><span>afternoon</span> <span class="crossed">evening</span> <span>morning</span> <span>night</span></div>
+      <div class="pic-grid wide">
+        <div class="pic-item"><span class="pic-letter">1</span><svg viewBox="0 0 240 150" aria-hidden="true"><defs><linearGradient id="wc-sky1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5B4B9A"/><stop offset="1" stop-color="#FF9E5E"/></linearGradient></defs><rect width="240" height="150" rx="12" fill="url(#wc-sky1)"/><circle cx="80" cy="118" r="16" fill="#FF7043"/><rect x="116" y="60" width="104" height="90" fill="#B5533C"/><rect x="110" y="54" width="116" height="10" rx="3" fill="#E53935"/><rect x="128" y="78" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="128" y="104" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="158" y="78" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="158" y="104" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="188" y="78" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="188" y="104" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="0" y="138" width="240" height="12" fill="#6D7A8C"/><circle cx="38" cy="38" r="20" fill="#fff" stroke="#16213E" stroke-width="3"/><line x1="38" y1="38" x2="32.5" y2="47.5" stroke="#E53935" stroke-width="3" stroke-linecap="round"/><line x1="38" y1="38" x2="38" y2="22" stroke="#16213E" stroke-width="2" stroke-linecap="round"/><circle cx="38" cy="38" r="2" fill="#16213E"/></svg><span class="given">evening</span></div>
+        <div class="pic-item"><span class="pic-letter">2</span><svg viewBox="0 0 240 150" aria-hidden="true"><defs><linearGradient id="wc-sky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0D1B3E"/><stop offset="1" stop-color="#26355F"/></linearGradient></defs><rect width="240" height="150" rx="12" fill="url(#wc-sky2)"/><circle cx="80" cy="20" r="1.6" fill="#fff"/><circle cx="100" cy="44" r="1.6" fill="#fff"/><circle cx="150" cy="18" r="1.6" fill="#fff"/><circle cx="200" cy="30" r="1.6" fill="#fff"/><circle cx="70" cy="70" r="1.6" fill="#fff"/><circle cx="228" cy="14" r="1.6" fill="#fff"/><circle cx="120" cy="34" r="1.6" fill="#fff"/><circle cx="90" cy="30" r="12" fill="#FFF3B0"/><circle cx="96" cy="26" r="11" fill="#0F1E43"/><rect x="116" y="60" width="104" height="90" fill="#B5533C"/><rect x="110" y="54" width="116" height="10" rx="3" fill="#E53935"/><rect x="128" y="78" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="128" y="104" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="158" y="78" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="158" y="104" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="188" y="78" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="188" y="104" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="0" y="138" width="240" height="12" fill="#6D7A8C"/><circle cx="38" cy="38" r="20" fill="#fff" stroke="#16213E" stroke-width="3"/><line x1="38" y1="38" x2="38.0" y2="27.0" stroke="#E53935" stroke-width="3" stroke-linecap="round"/><line x1="38" y1="38" x2="38" y2="22" stroke="#16213E" stroke-width="2" stroke-linecap="round"/><circle cx="38" cy="38" r="2" fill="#16213E"/></svg><input class="blank" id="wc-d2" data-answer="night" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">3</span><svg viewBox="0 0 240 150" aria-hidden="true"><defs><linearGradient id="wc-sky3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#BFE3FF"/><stop offset="1" stop-color="#FFE7A8"/></linearGradient></defs><rect width="240" height="150" rx="12" fill="url(#wc-sky3)"/><circle cx="78" cy="112" r="15" fill="#FFB300"/><rect x="116" y="60" width="104" height="90" fill="#B5533C"/><rect x="110" y="54" width="116" height="10" rx="3" fill="#E53935"/><rect x="128" y="78" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="128" y="104" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="158" y="78" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="158" y="104" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="188" y="78" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="188" y="104" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="0" y="138" width="240" height="12" fill="#6D7A8C"/><circle cx="38" cy="38" r="20" fill="#fff" stroke="#16213E" stroke-width="3"/><line x1="38" y1="38" x2="28.5" y2="43.5" stroke="#E53935" stroke-width="3" stroke-linecap="round"/><line x1="38" y1="38" x2="38" y2="22" stroke="#16213E" stroke-width="2" stroke-linecap="round"/><circle cx="38" cy="38" r="2" fill="#16213E"/></svg><input class="blank" id="wc-d3" data-answer="morning" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">4</span><svg viewBox="0 0 240 150" aria-hidden="true"><defs><linearGradient id="wc-sky4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5DB8F5"/><stop offset="1" stop-color="#CDEEFF"/></linearGradient></defs><rect width="240" height="150" rx="12" fill="url(#wc-sky4)"/><circle cx="90" cy="26" r="15" fill="#FFD54F"/><rect x="116" y="60" width="104" height="90" fill="#B5533C"/><rect x="110" y="54" width="116" height="10" rx="3" fill="#E53935"/><rect x="128" y="78" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="128" y="104" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="158" y="78" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="158" y="104" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="188" y="78" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="188" y="104" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="0" y="138" width="240" height="12" fill="#6D7A8C"/><circle cx="38" cy="38" r="20" fill="#fff" stroke="#16213E" stroke-width="3"/><line x1="38" y1="38" x2="49.0" y2="38.0" stroke="#E53935" stroke-width="3" stroke-linecap="round"/><line x1="38" y1="38" x2="38" y2="22" stroke="#16213E" stroke-width="2" stroke-linecap="round"/><circle cx="38" cy="38" r="2" fill="#16213E"/></svg><input class="blank" id="wc-d4" data-answer="afternoon" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-wc-day')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-wc-day')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-it');window.scrollTo(0,0)">Next: Pronunciation i · t →</button>
+  </div>
+
+</div>
+</div>
+
 <!-- ══════════════════════════════════════════════════════════ -->
-<div class="lesson-part" id="part-vocab">
+<!-- HIDDEN: the Vocabulary part (months, numbers, dates, colours). To show it again:
+     change <template id="hidden-part-vocab"> back to <div class="lesson-part" id="part-vocab">,
+     the closing </template> back to </div>, and un-comment its tab button at the top. -->
+<template id="hidden-part-vocab">
 <nav class="chips">
   <div class="wrap">
     <a href="#v1">1 · Months</a>
@@ -405,7 +650,7 @@
   </div>
 
 </div>
-</div>
+</template>
 
 <!-- ══════════════════════════════════════════════════════════ -->
 <div class="lesson-part" id="part-it">
@@ -654,19 +899,20 @@
     <div class="card fun-check" lang="ru" id="fun-check">
       <div class="fc-head">
         <h3>Теперь я…</h3>
-        <span class="fc-count"><b>0</b> / 8 ⭐</span>
+        <span class="fc-count"><b>0</b> / 9 ⭐</span>
       </div>
       <div class="fc-meter"><i></i></div>
       <p class="fc-hint">Отметь всё, что уже получается!</p>
       <div class="reflect-list">
-        <label class="reflect-item"><input type="checkbox" id="r1"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">📅</span><span class="reflect-text">умею называть двенадцать месяцев по порядку</span></label>
-        <label class="reflect-item"><input type="checkbox" id="r2"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🔠</span><span class="reflect-text">пишу названия месяцев с большой буквы: <b>J</b>anuary</span></label>
-        <label class="reflect-item"><input type="checkbox" id="r3"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🥇</span><span class="reflect-text">умею называть порядковые числительные: <i lang="en">first, second, third, twenty-first</i></span></label>
-        <label class="reflect-item"><input type="checkbox" id="r4"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🎂</span><span class="reflect-text">умею называть дату: <i lang="en">the twenty-fourth of July</i></span></label>
-        <label class="reflect-item"><input type="checkbox" id="r5"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🎨</span><span class="reflect-text">знаю цвета и что <i lang="en">red + blue = purple</i></span></label>
-        <label class="reflect-item"><input type="checkbox" id="r6"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">👂</span><span class="reflect-text">слышу разницу между коротким <span class="ipa">/ɪ/</span> и долгим <span class="ipa">/iː/</span>: <i lang="en">ship</i> или <i lang="en">sheep</i></span></label>
-        <label class="reflect-item"><input type="checkbox" id="r7"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🗣️</span><span class="reflect-text">умею читать вслух слова с <b>i</b> и <b>t</b>: <i lang="en">Six big pink fish sit in a tin.</i></span></label>
-        <label class="reflect-item"><input type="checkbox" id="r8"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">📖</span><span class="reflect-text">могу прочитать короткий рассказ: <i lang="en">Pip the insect</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="rw1"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🔤</span><span class="reflect-text">знаю алфавит</span></label>
+        <label class="reflect-item"><input type="checkbox" id="rw2"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">✍️</span><span class="reflect-text">могу назвать имя по буквам</span></label>
+        <label class="reflect-item"><input type="checkbox" id="rw3"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🎨</span><span class="reflect-text">знаю цвета</span></label>
+        <label class="reflect-item"><input type="checkbox" id="rw4"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🌍</span><span class="reflect-text">знаю интернациональные слова</span></label>
+        <label class="reflect-item"><input type="checkbox" id="rw5"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">👕</span><span class="reflect-text">знаю, когда <i lang="en">a</i>, а когда <i lang="en">an</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="rw6"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🌙</span><span class="reflect-text">знаю время суток</span></label>
+        <label class="reflect-item"><input type="checkbox" id="r6"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">👂</span><span class="reflect-text">слышу <i lang="en">ship</i> или <i lang="en">sheep</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="r7"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🗣️</span><span class="reflect-text">читаю вслух слова с <b>i</b> и <b>t</b></span></label>
+        <label class="reflect-item"><input type="checkbox" id="r8"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">📖</span><span class="reflect-text">могу прочитать рассказ</span></label>
       </div>
       <div class="fc-done" hidden><span class="fc-trophy">🏆</span><span><b>Супер!</b> Урок 3 пройден. Так держать!</span></div>
     </div>

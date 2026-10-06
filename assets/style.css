@@ -1021,6 +1021,42 @@ footer.site-footer{margin-top:46px;padding:18px 0 40px;border-top:1px solid var(
 /* home-page card */
 .dict-card .lesson-num{background:linear-gradient(135deg,#7B5CE6,#3352E0)!important;font-size:26px}
 
+/* Lesson 3 "Welcome" tab: alphabet board, letter sounds, picture grids */
+.abc-board{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px;margin-top:12px;
+  padding:16px;border-radius:18px;background:#EBD6EE
+}
+.abc-board span{
+  display:grid;place-items:center;height:58px;
+  font-family:var(--font-head);font-size:36px;font-weight:800;letter-spacing:1px;
+  -webkit-text-stroke:2px #4A4F5C;paint-order:stroke fill;text-shadow:2px 3px 0 rgba(22,33,62,.25)
+}
+.abc-sounds{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px;margin-top:12px}
+.abc-sound{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--paper);text-align:center}
+.abc-sound .ipa{display:block;background:var(--green-soft);color:var(--green-ink);padding:6px;font-size:18px}
+.abc-sound p{margin:0;padding:8px 6px;font-family:var(--font-head);font-size:22px;font-weight:700;letter-spacing:4px}
+.pic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;margin-top:12px}
+.pic-grid.wide{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.pic-item{
+  position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 8px 10px;
+  border:1px solid var(--border);border-radius:16px;background:#FBFCFF
+}
+.pic-item img,.pic-item svg{width:96px;height:96px;object-fit:contain}
+.pic-grid.wide .pic-item svg{width:100%;height:auto;max-width:280px}
+.pic-letter{
+  position:absolute;top:8px;left:10px;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;
+  background:var(--green);color:#fff;font-size:14px;font-weight:900;z-index:1
+}
+.pic-item .blank:not(.num){min-width:0;width:150px}
+.pic-item .given{
+  display:inline-block;width:150px;text-align:center;font-weight:800;background:var(--green-soft);
+  border:2px dashed var(--green);border-radius:10px;padding:5px 10px;color:var(--green-ink)
+}
+.num-list{columns:3 150px;column-gap:20px;margin:10px 0 4px;padding:0;list-style:none;font-weight:800}
+.num-list li{padding:2px 0}
+.num-list b{display:inline-block;min-width:26px;color:var(--green)}
+@media(max-width:560px){.pic-grid{grid-template-columns:repeat(2,1fr)}}
+
 @media print{
   nav.chips,nav.parts,button,.scorebar,.toast,.dict-fab,.dict-pop{display:none!important}
   header.hero::before,header.hero::after{display:none}
