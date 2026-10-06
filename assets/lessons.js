@@ -413,8 +413,8 @@ function restoreTap() {
    LESSON PARTS (tabs)
    <nav class="parts"><button class="part-tab" data-part="part-a" onclick="showPart('part-a')">…</button></nav>
    <div class="lesson-part" id="part-a"> …chips + steps… </div>
-   The open tab is remembered per lesson; a #hash into a hidden
-   part opens that part first.
+   A lesson always opens on its first tab; a #hash into a hidden
+   part opens that part instead.
    ============================================================ */
 function showPart(id) {
   document.querySelectorAll('.lesson-part').forEach(p => p.classList.toggle('active', p.id === id));
@@ -425,11 +425,10 @@ function showPart(id) {
 function initParts() {
   const parts = document.querySelectorAll('.lesson-part');
   if (!parts.length) return;
-  let id = localStorage.getItem('part-' + LESSON_KEY);
+  let id = parts[0].id;
   let target = null;
   try { target = location.hash && document.querySelector(location.hash); } catch (e) {}
   if (target && target.closest('.lesson-part')) id = target.closest('.lesson-part').id;
-  if (!id || !document.getElementById(id)) id = parts[0].id;
   showPart(id);
   if (target) target.scrollIntoView();
 }
