@@ -334,6 +334,11 @@ function updateScoreBar() {
     if (group.querySelector('.mc-option.correct.selected')) correct++;
   });
 
+  if (window.woScore) {   // word-order questions (assets/wordorder.js)
+    const w = woScore();
+    total += w.total; done += w.done; correct += w.correct;
+  }
+
   if (total === 0) { bar.style.display = 'none'; return; }
   bar.style.display = 'block';
 

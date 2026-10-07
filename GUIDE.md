@@ -155,6 +155,24 @@ soft yellow background, so it's obvious at a glance which lines need answers.
   partner so the pair sits side by side (`assets/matching.js`, loaded after
   `lessons.js` — the templates already include it).
 
+### Word order (put the words in order)
+
+```html
+<div class="card" id="ex-wo-01">
+  <div class="wo-line"><span class="num">1.</span><div class="wo-q" id="wo-01-1" data-answer="What’s your name ?"><span class="wo-tile">your</span><span class="wo-tile">name</span><span class="wo-tile">What’s</span><span class="wo-tile">?</span></div></div>
+  <div class="btn-row">
+    <button class="btn-primary" onclick="checkWordOrder('ex-wo-01')">Check ✓</button>
+    <button class="btn-ghost" onclick="resetWordOrder('ex-wo-01')">Try again</button>
+  </div>
+</div>
+```
+
+- Write the tiles in jumbled order; `data-answer` is the correct sentence,
+  words separated by single spaces (punctuation like `?` is its own tile).
+- The student drags a word to move it, or taps a word and then taps where it goes.
+- Needs `assets/wordorder.js` loaded after `lessons.js`. It saves the order
+  and counts in the score badge. Example: Lesson 3, Homework Task 7.
+
 ### Word choice (inline buttons, e.g. take/give)
 
 ```html
