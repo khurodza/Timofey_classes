@@ -131,18 +131,53 @@
     sync();
   }
 
-  /* ---- translation suggestions (MyMemory, free, no key) ---- */
-  async function suggest(text) {
+  /* ---- translation suggestions ----
+     Google Translate's free web endpoint (no key): the main translation,
+     then alternatives labelled by part of speech (noun / verb / adj.).
+     If it fails, MyMemory (also free, no key) is used instead.
+     Each suggestion is { text, pos }. */
+  const POS = { noun: 'noun', verb: 'verb', adjective: 'adj.', adverb: 'adv.', pronoun: 'pron.',
+    preposition: 'prep.', conjunction: 'conj.', interjection: 'interj.', abbreviation: 'abbr.', phrase: 'phrase' };
+
+  function addSuggestion(out, text, pos) {
+    text = String(text || '').trim();
+    const key = s => s.toLowerCase().replace(/[.,!?;:]+/g, '').trim();   // "ночи!" = "ночи"
+    if (text && !out.some(o => key(o.text) === key(text))) out.push({ text, pos: pos || '' });
+  }
+
+  async function suggestGoogle(text) {
+    const url = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=' + LANG +
+      '&dt=t&dt=bd&q=' + encodeURIComponent(text);
+    const res = await (await fetch(url)).json();
+    const out = [];
+    const main = (res[0] || []).map(s => s[0]).join('');
+    const groups = (res[1] || []).map(g => ({ pos: POS[g[0]] || g[0] || '', words: g[1] || [] }));
+    // main translation, labelled with its part of speech when we can tell
+    const mainGroup = groups.find(g => g.words.some(w => w.toLowerCase() === main.trim().toLowerCase()));
+    addSuggestion(out, main, mainGroup ? mainGroup.pos : (groups[0] && groups[0].pos));
+    // then the top word of each part of speech, then the next ones
+    for (let i = 0; i < 3 && out.length < 4; i++) {
+      groups.forEach(g => { if (out.length < 4 && g.words[i]) addSuggestion(out, g.words[i], g.pos); });
+    }
+    return out;
+  }
+
+  async function suggestMyMemory(text) {
     const url = 'https://api.mymemory.translated.net/get?langpair=en|' + LANG + '&q=' + encodeURIComponent(text);
     const res = await (await fetch(url)).json();
     const out = [];
-    const push = t => {
-      t = String(t || '').trim();
-      if (t && !/MYMEMORY|QUERY LENGTH/i.test(t) && !out.some(o => o.toLowerCase() === t.toLowerCase())) out.push(t);
-    };
+    const push = t => { if (!/MYMEMORY|QUERY LENGTH/i.test(String(t || ''))) addSuggestion(out, t); };
     push(res.responseData && res.responseData.translatedText);
     (res.matches || []).sort((a, b) => b.match - a.match).forEach(m => push(m.translation));
     return out.slice(0, 4);
+  }
+
+  async function suggest(text) {
+    try {
+      const list = await suggestGoogle(text);
+      if (list.length) return list;
+    } catch (e) {}
+    return suggestMyMemory(text);
   }
 
   /* ---- pronunciation ---- */
@@ -291,13 +326,14 @@
         sug.innerHTML = '';
         if (!list.length) throw new Error();
         sug.appendChild(el('span', 'dict-sug-label', 'Tap one:'));
-        list.forEach(t => {
-          const b = el('button', 'word-choice-btn', t);
+        list.forEach(s => {
+          const b = el('button', 'word-choice-btn', s.text);
           b.type = 'button';
-          b.addEventListener('click', () => { tr.value = t; sug.hidden = true; tr.focus(); });
+          if (s.pos) b.appendChild(el('small', 'dict-pos', s.pos));
+          b.addEventListener('click', () => { tr.value = s.text; sug.hidden = true; tr.focus(); });
           sug.appendChild(b);
         });
-        if (!tr.value) tr.value = list[0];
+        if (!tr.value) tr.value = list[0].text;
         sug.hidden = false;
       } catch (e) {
         msg.className = 'dict-msg warn';

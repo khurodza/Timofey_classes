@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 4 – Colours game, a / an and the day</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="back-home" href="../index.html">← All lessons</a>
+    <div class="hero-grid">
+      <div>
+        <h1 class="name-slot" data-with="Lesson 4: Ready, {name}?" data-without="Lesson 4: Ready?">Lesson 4: Ready?</h1>
+        <p>A colour and spelling game, <i>a / an</i> and the day. Then read aloud with <b>i</b> and <b>t</b>.</p>
+        <div class="hero-badges">
+          <span class="badge">Lesson 4</span>
+          <span class="badge">Starter: Welcome!</span>
+          <span class="badge">Reading: i · t</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     PART 1: warm-up game (revises Lesson 3 colours + alphabet),
+     then "a / an" and "The day" moved here from Lesson 3.
+     PART 2: "Say it like a native" and "Pip the insect"
+     moved here from Lesson 3's "Pronunciation: i · t" tab.
+══════════════════════════════════════════════════════════ -->
+<nav class="parts">
+  <div class="wrap">
+    <button class="part-tab" data-part="part-welcome" onclick="showPart('part-welcome')">Welcome</button>
+    <button class="part-tab" data-part="part-read" onclick="showPart('part-read')">Reading: i · t</button>
+  </div>
+</nav>
+
+<div class="lesson-part" id="part-welcome">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#wc0">1 · Warm-up game</a>
+    <a href="#wc4">2 · a / an</a>
+    <a href="#wc5">3 · The day</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="wc0">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Warm-up</div>
+        <h2>Colour Spell Race</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Game · Colours and the alphabet</div>
+      <h3>Two rounds. Be fast and win points!</h3>
+      <div class="tip class-note"><span class="tip-title">In class: say it aloud!</span>Say every letter <b>in English</b> when you see it or tap it: <span class="key">B – L – U – E</span>. Your teacher listens!</div>
+
+      <div class="csr" id="csr">
+        <div class="csr-bar">
+          <span class="csr-round" id="csr-round">Colour Spell Race</span>
+          <span class="csr-dots" id="csr-dots"></span>
+          <span class="csr-score">⭐ <b id="csr-score">0</b></span>
+        </div>
+
+        <!-- start screen -->
+        <div class="csr-screen" id="csr-start">
+          <div class="csr-splats" aria-hidden="true">
+            <i style="--c:#E53935"></i><i style="--c:#FDD835"></i><i style="--c:#1E88E5"></i><i style="--c:#43A047"></i><i style="--c:#7E57C2"></i><i style="--c:#FB8C00"></i>
+          </div>
+          <div class="csr-rules">
+            <p><b>Round 1 · Guess the colour.</b> Letters appear one by one. Say them! Tap the right paint pot — the faster, the more points.</p>
+            <p><b>Round 2 · Spell the splat.</b> Look at the colour. Tap the letters in the right order. Say each letter!</p>
+          </div>
+          <button class="btn-accent csr-big" onclick="csrStart()">Start ▶</button>
+          <p class="csr-best" id="csr-best"></p>
+        </div>
+
+        <!-- round 1 -->
+        <div class="csr-screen" id="csr-r1" hidden>
+          <div class="csr-slots" id="csr-r1-slots"></div>
+          <div class="csr-hint">Which colour is it? Tap the paint pot!</div>
+          <div class="csr-pots" id="csr-pots"></div>
+        </div>
+
+        <!-- round 2 -->
+        <div class="csr-screen" id="csr-r2" hidden>
+          <svg class="csr-splat" id="csr-splat" viewBox="0 0 100 80" aria-hidden="true"><path d="M50 6c14 0 18 10 28 12s16 14 10 26-2 22-16 26-22-2-30 2-24 0-30-12 2-18-2-28S36 6 50 6z" stroke="#C3CCE4" stroke-width="2"/></svg>
+          <div class="csr-slots" id="csr-r2-slots"></div>
+          <div class="csr-tiles" id="csr-tiles"></div>
+        </div>
+
+        <!-- between rounds / end -->
+        <div class="csr-screen" id="csr-msg" hidden>
+          <div class="csr-msg-ico" id="csr-msg-ico">🎉</div>
+          <p class="csr-msg-text" id="csr-msg-text"></p>
+          <button class="btn-accent csr-big" id="csr-msg-btn">Next ▶</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="wc4">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Grammar</div>
+        <h2>Articles: <i>a</i> and <i>an</i></h2>
+      </div>
+    </div>
+    <div class="card" id="ex-wc-shirts">
+      <div class="exercise-label">Exercise 1</div>
+      <h3>Match the sentences in the list with the pictures. Write 1–4 in the boxes.</h3>
+      <ol class="num-list" style="columns:1"><li><b>1</b>It’s a red T-shirt.</li><li><b>2</b>It’s a black and green T-shirt.</li><li><b>3</b>It’s an orange T-shirt.</li><li><b>4</b>It’s a blue T-shirt.</li></ol>
+      <div class="pic-grid">
+        <div class="pic-item"><span class="pic-letter">A</span><svg viewBox="0 0 100 100" aria-hidden="true"><defs><clipPath id="wc-shirt0"><path d="M32 12 L42 8 Q50 16 58 8 L68 12 L92 28 L82 46 L72 40 L72 94 L28 94 L28 40 L18 46 L8 28 Z"/></clipPath></defs><g clip-path="url(#wc-shirt0)"><rect width="100" height="100" fill="#29B6F6"/><path d="M14 30 L30 18 M18 36 L33 24 M86 30 L70 18 M82 36 L67 24" stroke="#fff" stroke-width="3"/></g><path d="M32 12 L42 8 Q50 16 58 8 L68 12 L92 28 L82 46 L72 40 L72 94 L28 94 L28 40 L18 46 L8 28 Z" fill="none" stroke="#16213E" stroke-width="2.5" stroke-linejoin="round"/></svg><input class="blank num" id="wc-ta" data-answer="4" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" aria-label="blue T-shirt"></div>
+        <div class="pic-item"><span class="pic-letter">B</span><svg viewBox="0 0 100 100" aria-hidden="true"><defs><clipPath id="wc-shirt1"><path d="M32 12 L42 8 Q50 16 58 8 L68 12 L92 28 L82 46 L72 40 L72 94 L28 94 L28 40 L18 46 L8 28 Z"/></clipPath></defs><g clip-path="url(#wc-shirt1)"><rect width="100" height="100" fill="#FB8C00"/><rect x="0" y="20" width="100" height="4" fill="#FFB74D"/><rect x="0" y="31" width="100" height="4" fill="#FFB74D"/><rect x="0" y="42" width="100" height="4" fill="#FFB74D"/><rect x="0" y="53" width="100" height="4" fill="#FFB74D"/><rect x="0" y="64" width="100" height="4" fill="#FFB74D"/><rect x="0" y="75" width="100" height="4" fill="#FFB74D"/><rect x="0" y="86" width="100" height="4" fill="#FFB74D"/></g><path d="M32 12 L42 8 Q50 16 58 8 L68 12 L92 28 L82 46 L72 40 L72 94 L28 94 L28 40 L18 46 L8 28 Z" fill="none" stroke="#16213E" stroke-width="2.5" stroke-linejoin="round"/></svg><input class="blank num" id="wc-tb" data-answer="3" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" aria-label="orange T-shirt"></div>
+        <div class="pic-item"><span class="pic-letter">C</span><svg viewBox="0 0 100 100" aria-hidden="true"><defs><clipPath id="wc-shirt2"><path d="M32 12 L42 8 Q50 16 58 8 L68 12 L92 28 L82 46 L72 40 L72 94 L28 94 L28 40 L18 46 L8 28 Z"/></clipPath></defs><g clip-path="url(#wc-shirt2)"><rect width="100" height="100" fill="#E53935"/><circle cx="50" cy="44" r="13" fill="#FDD835" stroke="#fff" stroke-width="3"/></g><path d="M32 12 L42 8 Q50 16 58 8 L68 12 L92 28 L82 46 L72 40 L72 94 L28 94 L28 40 L18 46 L8 28 Z" fill="none" stroke="#16213E" stroke-width="2.5" stroke-linejoin="round"/></svg><input class="blank num" id="wc-tc" data-answer="1" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" aria-label="red T-shirt"></div>
+        <div class="pic-item"><span class="pic-letter">D</span><svg viewBox="0 0 100 100" aria-hidden="true"><defs><clipPath id="wc-shirt3"><path d="M32 12 L42 8 Q50 16 58 8 L68 12 L92 28 L82 46 L72 40 L72 94 L28 94 L28 40 L18 46 L8 28 Z"/></clipPath></defs><g clip-path="url(#wc-shirt3)"><rect width="100" height="100" fill="#8BC34A"/><rect x="0" y="62" width="100" height="40" fill="#1B3B1B"/><path d="M8 28 L32 12 L32 22 L16 46 Z M92 28 L68 12 L68 22 L84 46 Z" fill="#212121"/></g><path d="M32 12 L42 8 Q50 16 58 8 L68 12 L92 28 L82 46 L72 40 L72 94 L28 94 L28 40 L18 46 L8 28 Z" fill="none" stroke="#16213E" stroke-width="2.5" stroke-linejoin="round"/></svg><input class="blank num" id="wc-td" data-answer="2" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" aria-label="black and green T-shirt"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-wc-shirts')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-wc-shirts')">Try again</button>
+      </div>
+      <div class="tip rule"><span class="tip-title">a or an? Listen to the first sound!</span>
+        <div class="rule-grid">
+          <div><small>a + consonant sound</small><span class="key">a red T-shirt</span> <span class="key">a blue T-shirt</span></div>
+          <div><small>an + vowel sound (a, e, i, o, u)</small><span class="key">an orange T-shirt</span> <span class="key">an airport</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="ex-wc-aan">
+      <div class="exercise-label">Exercise 2</div>
+      <h3>Write <i>a</i> or <i>an</i>.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>0. <b>an</b> airport</span></div>
+      <p class="gap-line"><span class="num">1.</span> <input class="blank" id="wc-a1" data-answer="an" placeholder="?" autocomplete="off" autocapitalize="off" style="min-width:70px;width:70px"> Indian restaurant</p>
+      <p class="gap-line"><span class="num">2.</span> <input class="blank" id="wc-a2" data-answer="a" placeholder="?" autocomplete="off" autocapitalize="off" style="min-width:70px;width:70px"> red bus</p>
+      <p class="gap-line"><span class="num">3.</span> <input class="blank" id="wc-a3" data-answer="a" placeholder="?" autocomplete="off" autocapitalize="off" style="min-width:70px;width:70px"> pizza</p>
+      <p class="gap-line"><span class="num">4.</span> <input class="blank" id="wc-a4" data-answer="a" placeholder="?" autocomplete="off" autocapitalize="off" style="min-width:70px;width:70px"> black taxi</p>
+      <p class="gap-line"><span class="num">5.</span> <input class="blank" id="wc-a5" data-answer="an" placeholder="?" autocomplete="off" autocapitalize="off" style="min-width:70px;width:70px"> orange phone</p>
+      <p class="gap-line"><span class="num">6.</span> <input class="blank" id="wc-a6" data-answer="an" placeholder="?" autocomplete="off" autocapitalize="off" style="min-width:70px;width:70px"> American football player</p>
+      <p class="gap-line"><span class="num">7.</span> <input class="blank" id="wc-a7" data-answer="an" placeholder="?" autocomplete="off" autocapitalize="off" style="min-width:70px;width:70px"> internet page</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-wc-aan')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-wc-aan')">Try again</button>
+      </div>
+    </div>
+
+
+    <div class="card" id="ex-aa-tap">
+      <div class="exercise-label">Exercise 3</div>
+      <h3>Нажми на все слова, перед которыми нужно <i>an</i>.</h3>
+      <div class="tip"><span class="tip-title">Подсказка</span>Слово начинается на <span class="key">a</span> <span class="key">e</span> <span class="key">i</span> <span class="key">o</span> <span class="key">u</span>? Тогда <b>an</b>!</div>
+      <p class="read-text"><span class="tap" data-key onclick="toggleTap(this)">airport</span> · <span class="tap" onclick="toggleTap(this)">bus</span> · <span class="tap" data-key onclick="toggleTap(this)">egg</span> · <span class="tap" onclick="toggleTap(this)">hotel</span> · <span class="tap" data-key onclick="toggleTap(this)">orange</span> · <span class="tap" onclick="toggleTap(this)">pizza</span> · <span class="tap" data-key onclick="toggleTap(this)">umbrella</span> · <span class="tap" onclick="toggleTap(this)">café</span> · <span class="tap" data-key onclick="toggleTap(this)">ice cream</span> · <span class="tap" onclick="toggleTap(this)">T-shirt</span> · <span class="tap" data-key onclick="toggleTap(this)">Indian restaurant</span> · <span class="tap" onclick="toggleTap(this)">phone</span></p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkTap('ex-aa-tap')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetTap('ex-aa-tap')">Try again</button>
+      </div>
+    </div>
+
+    <div class="card" id="ex-aa-colour">
+      <div class="exercise-label">Exercise 4</div>
+      <h3>Цвет всё меняет! Напиши <i>a</i> или <i>an</i>.</h3>
+      <div class="tip rule"><span class="tip-title">Смотри на слово сразу после a / an</span><span class="key">an apple</span> → <span class="key">a red apple</span></div>
+      <div class="example-row"><span class="ex-tag">Example</span><span>0. <b>an</b> airport → <b>a</b> big airport</span></div>
+      <div class="aa-pair"><span class="num">1.</span><span><input class="blank aa-art" id="aa-c1a" data-answer="an" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"> apple</span><span class="op">→</span><span><input class="blank aa-art" id="aa-c1b" data-answer="a" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"> red apple</span></div>
+      <div class="aa-pair"><span class="num">2.</span><span><input class="blank aa-art" id="aa-c2a" data-answer="a" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"> T-shirt</span><span class="op">→</span><span><input class="blank aa-art" id="aa-c2b" data-answer="an" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"> orange T-shirt</span></div>
+      <div class="aa-pair"><span class="num">3.</span><span><input class="blank aa-art" id="aa-c3a" data-answer="an" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"> egg</span><span class="op">→</span><span><input class="blank aa-art" id="aa-c3b" data-answer="a" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"> brown egg</span></div>
+      <div class="aa-pair"><span class="num">4.</span><span><input class="blank aa-art" id="aa-c4a" data-answer="an" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"> umbrella</span><span class="op">→</span><span><input class="blank aa-art" id="aa-c4b" data-answer="a" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"> black umbrella</span></div>
+      <div class="aa-pair"><span class="num">5.</span><span><input class="blank aa-art" id="aa-c5a" data-answer="an" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"> elephant</span><span class="op">→</span><span><input class="blank aa-art" id="aa-c5b" data-answer="a" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"> grey elephant</span></div>
+      <div class="aa-pair"><span class="num">6.</span><span><input class="blank aa-art" id="aa-c6a" data-answer="a" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"> phone</span><span class="op">→</span><span><input class="blank aa-art" id="aa-c6b" data-answer="an" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"> orange phone</span></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-aa-colour')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-aa-colour')">Try again</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Exercise 5 · Speaking</div>
+      <h3>Что у тебя в комнате? Покажи и скажи учителю.</h3>
+      <div class="tip class-note"><span class="tip-title">In class: show and say!</span>“It’s <span class="key">a</span> blue pen.” “It’s <span class="key">an</span> orange book.”</div>
+      <p>Потренируйся: запиши себя и послушай.</p>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+  <section class="step" id="wc5">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Vocabulary</div>
+        <h2>The day</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-wc-day">
+      <div class="exercise-label">Exercise 3</div>
+      <h3>Write the words in the list under the pictures.</h3>
+      <div class="word-bank-ref"><span>afternoon</span> <span class="crossed">evening</span> <span>morning</span> <span>night</span></div>
+      <div class="pic-grid wide">
+        <div class="pic-item"><span class="pic-letter">1</span><svg viewBox="0 0 240 150" aria-hidden="true"><defs><linearGradient id="wc-sky1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5B4B9A"/><stop offset="1" stop-color="#FF9E5E"/></linearGradient></defs><rect width="240" height="150" rx="12" fill="url(#wc-sky1)"/><circle cx="80" cy="118" r="16" fill="#FF7043"/><rect x="116" y="60" width="104" height="90" fill="#B5533C"/><rect x="110" y="54" width="116" height="10" rx="3" fill="#E53935"/><rect x="128" y="78" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="128" y="104" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="158" y="78" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="158" y="104" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="188" y="78" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="188" y="104" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="0" y="138" width="240" height="12" fill="#6D7A8C"/><circle cx="38" cy="38" r="20" fill="#fff" stroke="#16213E" stroke-width="3"/><line x1="38" y1="38" x2="32.5" y2="47.5" stroke="#E53935" stroke-width="3" stroke-linecap="round"/><line x1="38" y1="38" x2="38" y2="22" stroke="#16213E" stroke-width="2" stroke-linecap="round"/><circle cx="38" cy="38" r="2" fill="#16213E"/></svg><span class="given">evening</span></div>
+        <div class="pic-item"><span class="pic-letter">2</span><svg viewBox="0 0 240 150" aria-hidden="true"><defs><linearGradient id="wc-sky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0D1B3E"/><stop offset="1" stop-color="#26355F"/></linearGradient></defs><rect width="240" height="150" rx="12" fill="url(#wc-sky2)"/><circle cx="80" cy="20" r="1.6" fill="#fff"/><circle cx="100" cy="44" r="1.6" fill="#fff"/><circle cx="150" cy="18" r="1.6" fill="#fff"/><circle cx="200" cy="30" r="1.6" fill="#fff"/><circle cx="70" cy="70" r="1.6" fill="#fff"/><circle cx="228" cy="14" r="1.6" fill="#fff"/><circle cx="120" cy="34" r="1.6" fill="#fff"/><circle cx="90" cy="30" r="12" fill="#FFF3B0"/><circle cx="96" cy="26" r="11" fill="#0F1E43"/><rect x="116" y="60" width="104" height="90" fill="#B5533C"/><rect x="110" y="54" width="116" height="10" rx="3" fill="#E53935"/><rect x="128" y="78" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="128" y="104" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="158" y="78" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="158" y="104" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="188" y="78" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="188" y="104" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="0" y="138" width="240" height="12" fill="#6D7A8C"/><circle cx="38" cy="38" r="20" fill="#fff" stroke="#16213E" stroke-width="3"/><line x1="38" y1="38" x2="38.0" y2="27.0" stroke="#E53935" stroke-width="3" stroke-linecap="round"/><line x1="38" y1="38" x2="38" y2="22" stroke="#16213E" stroke-width="2" stroke-linecap="round"/><circle cx="38" cy="38" r="2" fill="#16213E"/></svg><input class="blank" id="wc-d2" data-answer="night" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">3</span><svg viewBox="0 0 240 150" aria-hidden="true"><defs><linearGradient id="wc-sky3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#BFE3FF"/><stop offset="1" stop-color="#FFE7A8"/></linearGradient></defs><rect width="240" height="150" rx="12" fill="url(#wc-sky3)"/><circle cx="78" cy="112" r="15" fill="#FFB300"/><rect x="116" y="60" width="104" height="90" fill="#B5533C"/><rect x="110" y="54" width="116" height="10" rx="3" fill="#E53935"/><rect x="128" y="78" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="128" y="104" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="158" y="78" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="158" y="104" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="188" y="78" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="188" y="104" width="18" height="16" rx="2" fill="#3A4A6B"/><rect x="0" y="138" width="240" height="12" fill="#6D7A8C"/><circle cx="38" cy="38" r="20" fill="#fff" stroke="#16213E" stroke-width="3"/><line x1="38" y1="38" x2="28.5" y2="43.5" stroke="#E53935" stroke-width="3" stroke-linecap="round"/><line x1="38" y1="38" x2="38" y2="22" stroke="#16213E" stroke-width="2" stroke-linecap="round"/><circle cx="38" cy="38" r="2" fill="#16213E"/></svg><input class="blank" id="wc-d3" data-answer="morning" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">4</span><svg viewBox="0 0 240 150" aria-hidden="true"><defs><linearGradient id="wc-sky4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5DB8F5"/><stop offset="1" stop-color="#CDEEFF"/></linearGradient></defs><rect width="240" height="150" rx="12" fill="url(#wc-sky4)"/><circle cx="90" cy="26" r="15" fill="#FFD54F"/><rect x="116" y="60" width="104" height="90" fill="#B5533C"/><rect x="110" y="54" width="116" height="10" rx="3" fill="#E53935"/><rect x="128" y="78" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="128" y="104" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="158" y="78" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="158" y="104" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="188" y="78" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="188" y="104" width="18" height="16" rx="2" fill="#FFD54F"/><rect x="0" y="138" width="240" height="12" fill="#6D7A8C"/><circle cx="38" cy="38" r="20" fill="#fff" stroke="#16213E" stroke-width="3"/><line x1="38" y1="38" x2="49.0" y2="38.0" stroke="#E53935" stroke-width="3" stroke-linecap="round"/><line x1="38" y1="38" x2="38" y2="22" stroke="#16213E" stroke-width="2" stroke-linecap="round"/><circle cx="38" cy="38" r="2" fill="#16213E"/></svg><input class="blank" id="wc-d4" data-answer="afternoon" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-wc-day')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-wc-day')">Try again</button>
+      </div>
+    </div>
+
+    <div class="card" id="ex-day-time">
+      <div class="exercise-label">Exercise 4</div>
+      <h3>Посмотри на часы. Какая это часть дня?</h3>
+      <div class="listen-q"><span class="num">1.</span><span class="emo-time"><span aria-hidden="true">🕗</span> 08:00</span>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="day-mc1" value="a"><span class="mc-bullet">A</span> morning</label><label class="mc-option"><input type="radio" name="day-mc1" value="b"><span class="mc-bullet">B</span> afternoon</label><label class="mc-option"><input type="radio" name="day-mc1" value="c"><span class="mc-bullet">C</span> evening</label><label class="mc-option"><input type="radio" name="day-mc1" value="d"><span class="mc-bullet">D</span> night</label></div></div>
+      <div class="listen-q"><span class="num">2.</span><span class="emo-time"><span aria-hidden="true">🕒</span> 15:00</span>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="day-mc2" value="a"><span class="mc-bullet">A</span> morning</label><label class="mc-option"><input type="radio" name="day-mc2" value="b"><span class="mc-bullet">B</span> afternoon</label><label class="mc-option"><input type="radio" name="day-mc2" value="c"><span class="mc-bullet">C</span> evening</label><label class="mc-option"><input type="radio" name="day-mc2" value="d"><span class="mc-bullet">D</span> night</label></div></div>
+      <div class="listen-q"><span class="num">3.</span><span class="emo-time"><span aria-hidden="true">🕗</span> 20:00</span>
+        <div class="mc-options" data-correct="c"><label class="mc-option"><input type="radio" name="day-mc3" value="a"><span class="mc-bullet">A</span> morning</label><label class="mc-option"><input type="radio" name="day-mc3" value="b"><span class="mc-bullet">B</span> afternoon</label><label class="mc-option"><input type="radio" name="day-mc3" value="c"><span class="mc-bullet">C</span> evening</label><label class="mc-option"><input type="radio" name="day-mc3" value="d"><span class="mc-bullet">D</span> night</label></div></div>
+      <div class="listen-q"><span class="num">4.</span><span class="emo-time"><span aria-hidden="true">🕑</span> 02:00</span>
+        <div class="mc-options" data-correct="d"><label class="mc-option"><input type="radio" name="day-mc4" value="a"><span class="mc-bullet">A</span> morning</label><label class="mc-option"><input type="radio" name="day-mc4" value="b"><span class="mc-bullet">B</span> afternoon</label><label class="mc-option"><input type="radio" name="day-mc4" value="c"><span class="mc-bullet">C</span> evening</label><label class="mc-option"><input type="radio" name="day-mc4" value="d"><span class="mc-bullet">D</span> night</label></div></div>
+      <div class="listen-q"><span class="num">5.</span><span class="emo-time"><span aria-hidden="true">🕙</span> 10:00</span>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="day-mc5" value="a"><span class="mc-bullet">A</span> morning</label><label class="mc-option"><input type="radio" name="day-mc5" value="b"><span class="mc-bullet">B</span> afternoon</label><label class="mc-option"><input type="radio" name="day-mc5" value="c"><span class="mc-bullet">C</span> evening</label><label class="mc-option"><input type="radio" name="day-mc5" value="d"><span class="mc-bullet">D</span> night</label></div></div>
+      <div class="listen-q"><span class="num">6.</span><span class="emo-time"><span aria-hidden="true">🕐</span> 13:00</span>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="day-mc6" value="a"><span class="mc-bullet">A</span> morning</label><label class="mc-option"><input type="radio" name="day-mc6" value="b"><span class="mc-bullet">B</span> afternoon</label><label class="mc-option"><input type="radio" name="day-mc6" value="c"><span class="mc-bullet">C</span> evening</label><label class="mc-option"><input type="radio" name="day-mc6" value="d"><span class="mc-bullet">D</span> night</label></div></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-day-time')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-day-time')">Try again</button>
+      </div>
+    </div>
+
+    <div class="card" id="ex-day-greet">
+      <div class="exercise-label">Exercise 5</div>
+      <h3>Что ты скажешь? Выбери.</h3>
+      <p style="font-weight:800;margin:0 0 4px">1. <span aria-hidden="true">🏫☀️</span> Утро. Ты приходишь в школу.</p>
+      <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="gr-mc1" value="a"><span class="mc-bullet">A</span> Good morning</label><label class="mc-option"><input type="radio" name="gr-mc1" value="b"><span class="mc-bullet">B</span> Good afternoon</label><label class="mc-option"><input type="radio" name="gr-mc1" value="c"><span class="mc-bullet">C</span> Good evening</label><label class="mc-option"><input type="radio" name="gr-mc1" value="d"><span class="mc-bullet">D</span> Good night</label></div>
+      <p style="font-weight:800;margin:18px 0 4px">2. <span aria-hidden="true">🛏️🌙</span> Ты идёшь спать.</p>
+      <div class="mc-options" data-correct="d"><label class="mc-option"><input type="radio" name="gr-mc2" value="a"><span class="mc-bullet">A</span> Good morning</label><label class="mc-option"><input type="radio" name="gr-mc2" value="b"><span class="mc-bullet">B</span> Good afternoon</label><label class="mc-option"><input type="radio" name="gr-mc2" value="c"><span class="mc-bullet">C</span> Good evening</label><label class="mc-option"><input type="radio" name="gr-mc2" value="d"><span class="mc-bullet">D</span> Good night</label></div>
+      <p style="font-weight:800;margin:18px 0 4px">3. <span aria-hidden="true">⚽🌤️</span> 16:00. Ты приходишь на футбол.</p>
+      <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="gr-mc3" value="a"><span class="mc-bullet">A</span> Good morning</label><label class="mc-option"><input type="radio" name="gr-mc3" value="b"><span class="mc-bullet">B</span> Good afternoon</label><label class="mc-option"><input type="radio" name="gr-mc3" value="c"><span class="mc-bullet">C</span> Good evening</label><label class="mc-option"><input type="radio" name="gr-mc3" value="d"><span class="mc-bullet">D</span> Good night</label></div>
+      <p style="font-weight:800;margin:18px 0 4px">4. <span aria-hidden="true">🏠🌆</span> 19:00. Ты приходишь в гости.</p>
+      <div class="mc-options" data-correct="c"><label class="mc-option"><input type="radio" name="gr-mc4" value="a"><span class="mc-bullet">A</span> Good morning</label><label class="mc-option"><input type="radio" name="gr-mc4" value="b"><span class="mc-bullet">B</span> Good afternoon</label><label class="mc-option"><input type="radio" name="gr-mc4" value="c"><span class="mc-bullet">C</span> Good evening</label><label class="mc-option"><input type="radio" name="gr-mc4" value="d"><span class="mc-bullet">D</span> Good night</label></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-day-greet')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-day-greet')">Try again</button>
+      </div>
+      <div class="tip"><span class="tip-title">Осторожно!</span><span class="key">Good night</span> — это «спокойной ночи», а не «привет». Вечером при встрече говорим <span class="key">Good evening</span>.</div>
+    </div>
+
+    <div class="card" id="ex-day-prep">
+      <div class="exercise-label">Exercise 6</div>
+      <h3><i>in</i> или <i>at</i>? Выбери.</h3>
+      <div class="tip rule"><span class="tip-title">Запомни</span>
+        <div class="rule-grid">
+          <div><small>in the …</small><span class="key">in the morning</span> <span class="key">in the afternoon</span> <span class="key">in the evening</span></div>
+          <div><small>но!</small><span class="key">at night</span></div>
+        </div>
+      </div>
+      <div class="sort-row"><span class="num">1.</span><span class="emo" aria-hidden="true">🏫</span>I go to school <span class="word-choice" id="day-p1" data-answer="in"><button class="word-choice-btn" onclick="selectWord(this)">in</button><button class="word-choice-btn" onclick="selectWord(this)">at</button></span> the morning.</div>
+      <div class="sort-row"><span class="num">2.</span><span class="emo" aria-hidden="true">😴</span>I sleep <span class="word-choice" id="day-p2" data-answer="at"><button class="word-choice-btn" onclick="selectWord(this)">in</button><button class="word-choice-btn" onclick="selectWord(this)">at</button></span> night.</div>
+      <div class="sort-row"><span class="num">3.</span><span class="emo" aria-hidden="true">⚽</span>I play football <span class="word-choice" id="day-p3" data-answer="in"><button class="word-choice-btn" onclick="selectWord(this)">in</button><button class="word-choice-btn" onclick="selectWord(this)">at</button></span> the afternoon.</div>
+      <div class="sort-row"><span class="num">4.</span><span class="emo" aria-hidden="true">📺</span>I watch TV <span class="word-choice" id="day-p4" data-answer="in"><button class="word-choice-btn" onclick="selectWord(this)">in</button><button class="word-choice-btn" onclick="selectWord(this)">at</button></span> the evening.</div>
+      <div class="sort-row"><span class="num">5.</span><span class="emo" aria-hidden="true">🌙</span>I can see the moon <span class="word-choice" id="day-p5" data-answer="at"><button class="word-choice-btn" onclick="selectWord(this)">in</button><button class="word-choice-btn" onclick="selectWord(this)">at</button></span> night.</div>
+      <div class="sort-row"><span class="num">6.</span><span class="emo" aria-hidden="true">🥣</span>I have breakfast <span class="word-choice" id="day-p6" data-answer="in"><button class="word-choice-btn" onclick="selectWord(this)">in</button><button class="word-choice-btn" onclick="selectWord(this)">at</button></span> the morning.</div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-day-prep')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-day-prep')">Try again</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Exercise 7 · Speaking</div>
+      <h3>Расскажи учителю о своём дне.</h3>
+      <div class="tip class-note"><span class="tip-title">In class: my day</span>“<span class="key">In the morning</span> I go to school. <span class="key">In the evening</span> I play games. <span class="key">At night</span> I sleep.”</div>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-read');window.scrollTo(0,0)">Next: Reading i · t →</button>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="lesson-part" id="part-read">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#b5">1 · Read</a>
+    <a href="#b6">2 · Story</a>
+    <a href="#b7">3 · Итог</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="b5">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Read and record</div>
+        <h2>Say it like a native</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Read aloud</div>
+      <h3>Listen, then read each line aloud.</h3>
+      <div class="word-row" style="flex-direction:column;align-items:flex-start">
+        <button class="say sentence" data-say="It is big.">It is big.</button>
+        <button class="say sentence" data-say="Tim is in it.">Tim is in it.</button>
+        <button class="say sentence" data-say="Is it in the tin?">Is it in the tin?</button>
+        <button class="say sentence" data-say="Sit, Tim! Sit!">Sit, Tim! Sit!</button>
+        <button class="say sentence" data-say="Six big pink fish sit in a tin.">Six big pink fish sit in a tin.</button>
+      </div>
+      <p><b>Now record yourself</b> reading the last line. Listen. Is every <b>i</b> short?</p>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+  <section class="step" id="b6">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Reading</div>
+        <h2>Pip the insect</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Read a story</div>
+      <h3>Read the story aloud. Tap a line to check.</h3>
+      <div class="comic-strip">
+          <img src="images/story/panel-1.svg" alt="Tim, a boy with a 6 on his T-shirt, stands next to a big tin">
+          <img src="images/story/panel-2.svg" alt="Pip, a little bee, looks out of the tin and says: Hi! I'm Pip!">
+          <img src="images/story/panel-3.svg" alt="Tim points and says: Sit, Pip, sit! Pip buzzes above the tin">
+          <img src="images/story/panel-4.svg" alt="The tin shakes: TIP! TIP! TIP!">
+          <img src="images/story/panel-5.svg" alt="Pip sits on Tim's fist in the sun">
+      </div>
+      <div class="story">
+        <div class="story-lines">
+          <button class="say sentence" data-say="Tim is six." data-file="l03-read-1"><span><span class="lt">T</span><span class="li">i</span>m <span class="li">i</span>s s<span class="li">i</span>x.</span></button>
+          <button class="say sentence" data-say="Tim has a big tin." data-file="l03-read-2"><span><span class="lt">T</span><span class="li">i</span>m has a b<span class="li">i</span>g <span class="lt">t</span><span class="li">i</span>n.</span></button>
+          <button class="say sentence" data-say="In the tin is an insect." data-file="l03-read-3"><span><span class="li">I</span>n <span class="lt">t</span>he <span class="lt">t</span><span class="li">i</span>n <span class="li">i</span>s an <span class="li">i</span>nsec<span class="lt">t</span>.</span></button>
+          <button class="say sentence" data-say="It is Pip, Pip is a little insect." data-file="l03-read-4"><span><span class="li">I</span><span class="lt">t</span> <span class="li">i</span>s P<span class="li">i</span>p, P<span class="li">i</span>p <span class="li">i</span>s a l<span class="li">i</span><span class="lt">t</span><span class="lt">t</span>le <span class="li">i</span>nsec<span class="lt">t</span>.</span></button>
+          <button class="say sentence" data-say="Pip sits in the tin." data-file="l03-read-5"><span>P<span class="li">i</span>p s<span class="li">i</span><span class="lt">t</span>s <span class="li">i</span>n <span class="lt">t</span>he <span class="lt">t</span><span class="li">i</span>n.</span></button>
+          <button class="say sentence" data-say="Sit, Pip, sit! says Tim." data-file="l03-read-6"><span>“S<span class="li">i</span><span class="lt">t</span>, P<span class="li">i</span>p, s<span class="li">i</span><span class="lt">t</span>!” says <span class="lt">T</span><span class="li">i</span>m.</span></button>
+          <button class="say sentence" data-say="But Pip cannot sit still." data-file="l03-read-7"><span>Bu<span class="lt">t</span> P<span class="li">i</span>p canno<span class="lt">t</span> s<span class="li">i</span><span class="lt">t</span> s<span class="lt">t</span><span class="li">i</span>ll.</span></button>
+          <button class="say sentence" data-say="Tip, tip, tip! Pip hits the lid." data-file="l03-read-8"><span><span class="lt">T</span><span class="li">i</span>p, <span class="lt">t</span><span class="li">i</span>p, <span class="lt">t</span><span class="li">i</span>p! P<span class="li">i</span>p h<span class="li">i</span><span class="lt">t</span>s <span class="lt">t</span>he l<span class="li">i</span>d.</span></button>
+          <button class="say sentence" data-say="Tim lifts the lid." data-file="l03-read-9"><span><span class="lt">T</span><span class="li">i</span>m l<span class="li">i</span>f<span class="lt">t</span>s <span class="lt">t</span>he l<span class="li">i</span>d.</span></button>
+          <button class="say sentence" data-say="Pip sits on Tim’s fist." data-file="l03-read-10"><span>P<span class="li">i</span>p s<span class="li">i</span><span class="lt">t</span>s on <span class="lt">T</span><span class="li">i</span>m’s f<span class="li">i</span>s<span class="lt">t</span>.</span></button>
+          <button class="say sentence" data-say="Tim and Pip sit in the sun." data-file="l03-read-11"><span><span class="lt">T</span><span class="li">i</span>m and P<span class="li">i</span>p s<span class="li">i</span><span class="lt">t</span> <span class="li">i</span>n <span class="lt">t</span>he sun.</span></button>
+        </div>
+      </div>
+      <div class="tip"><span class="tip-title">Spot the letters</span>Every <span class="key"><span class="li">i</span></span> in this story is short <span class="ipa">/ɪ/</span>, like in <i>it</i>. Every <span class="key"><span class="lt">t</span></span> is a clear <span class="ipa">/t/</span>.</div>
+      <p style="margin-top:16px"><b>Now you!</b> Record yourself reading the whole story. Listen: is every <b>i</b> short?</p>
+      <div class="rec"></div>
+    </div>
+    <div class="card" id="ex-b-read">
+      <div class="exercise-label">Check</div>
+      <h3>Choose the right answer.</h3>
+      <p style="font-weight:800;margin:0 0 4px">1. Tim is …</p>
+      <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="r-mc1" value="a"><span class="mc-bullet">A</span> five</label><label class="mc-option"><input type="radio" name="r-mc1" value="b"><span class="mc-bullet">B</span> six</label><label class="mc-option"><input type="radio" name="r-mc1" value="c"><span class="mc-bullet">C</span> ten</label></div>
+      <p style="font-weight:800;margin:18px 0 4px">2. Pip is …</p>
+      <div class="mc-options" data-correct="c"><label class="mc-option"><input type="radio" name="r-mc2" value="a"><span class="mc-bullet">A</span> a cat</label><label class="mc-option"><input type="radio" name="r-mc2" value="b"><span class="mc-bullet">B</span> a tiger</label><label class="mc-option"><input type="radio" name="r-mc2" value="c"><span class="mc-bullet">C</span> an insect</label></div>
+      <p style="font-weight:800;margin:18px 0 4px">3. Pip is in …</p>
+      <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="r-mc3" value="a"><span class="mc-bullet">A</span> a big tin</label><label class="mc-option"><input type="radio" name="r-mc3" value="b"><span class="mc-bullet">B</span> a big box</label><label class="mc-option"><input type="radio" name="r-mc3" value="c"><span class="mc-bullet">C</span> a hat</label></div>
+      <p style="font-weight:800;margin:18px 0 4px">4. At the end, Pip sits …</p>
+      <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="r-mc4" value="a"><span class="mc-bullet">A</span> on the lid</label><label class="mc-option"><input type="radio" name="r-mc4" value="b"><span class="mc-bullet">B</span> on Tim’s fist</label><label class="mc-option"><input type="radio" name="r-mc4" value="c"><span class="mc-bullet">C</span> in the tin</label></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-b-read')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-b-read')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="b7">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Итог</div>
+        <h2>Что ты теперь умеешь?</h2>
+      </div>
+    </div>
+    <div class="card fun-check" lang="ru" id="fun-check">
+      <div class="fc-head">
+        <h3>Теперь я…</h3>
+        <span class="fc-count"><b>0</b> / 5 ⭐</span>
+      </div>
+      <div class="fc-meter"><i></i></div>
+      <p class="fc-hint">Отметь всё, что уже получается!</p>
+      <div class="reflect-list">
+        <label class="reflect-item"><input type="checkbox" id="rw1"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🎨</span><span class="reflect-text">называю цвета по буквам</span></label>
+        <label class="reflect-item"><input type="checkbox" id="rw5"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">👕</span><span class="reflect-text">знаю, когда <i lang="en">a</i>, а когда <i lang="en">an</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="rw6"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🌙</span><span class="reflect-text">знаю время суток</span></label>
+        <label class="reflect-item"><input type="checkbox" id="r7"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🗣️</span><span class="reflect-text">читаю вслух предложения с <b>i</b> и <b>t</b></span></label>
+        <label class="reflect-item"><input type="checkbox" id="r8"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">📖</span><span class="reflect-text">могу прочитать рассказ</span></label>
+      </div>
+      <div class="fc-done" hidden><span class="fc-trophy">🏆</span><span><b>Супер!</b> Урок 4 пройден. Так держать!</span></div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<div class="scorebar" id="scoreBar" style="display:none">
+  <div class="wrap">
+    <span>Score: <span id="scoreCorrect">0</span> correct · <span id="scoreDone">0</span>/<span id="scoreTotal">0</span> answered</span>
+    <div class="meter"><i id="scoreMeter"></i></div>
+    <button class="btn-primary" onclick="checkAll()">Check my answers ✓</button>
+  </div>
+</div>
+
+<script src="../assets/lessons.js"></script>
+<script src="../assets/name.js"></script>
+<script src="../assets/dictionary.js"></script>
+<script>
+/* Warm-up game "Colour Spell Race".
+   Round 1: a colour's letters appear one by one, tap the matching paint pot (fewer letters seen = more points).
+   Round 2: a paint splat is shown, tap the scrambled letters in order (1 point per letter, wrong taps cost the bonus). */
+(function () {
+  const COLOURS = {black:'#212121', blue:'#1E88E5', brown:'#8D5524', green:'#43A047', grey:'#9E9E9E', orange:'#FB8C00',
+    pink:'#F48FB1', purple:'#7E57C2', red:'#E53935', white:'#FFFFFF', yellow:'#FDD835'};
+  const NAMES = Object.keys(COLOURS);
+  const HAS_CLIP = ['black','blue','green','orange','pink','purple','red','white','yellow'];
+  const PER_ROUND = 6, REVEAL_MS = 2200;
+  const $ = id => document.getElementById(id);
+  let round = 0, queue = [], idx = 0, score = 0, timer = null, shown = 0, typed = 0, misses = 0, busy = false;
+
+  const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  function play(word) {
+    if (!HAS_CLIP.includes(word)) return;
+    try { new Audio('audio/words/' + word + '.m4a').play().catch(() => {}); } catch (e) {}
+  }
+  function getBest() { try { return +localStorage.getItem('csr-best') || 0; } catch (e) { return 0; } }
+  function setBest(n) { try { localStorage.setItem('csr-best', n); } catch (e) {} }
+  function show(id) { ['csr-start', 'csr-r1', 'csr-r2', 'csr-msg'].forEach(s => { $(s).hidden = s !== id; }); }
+  function addScore(n) {
+    score += n; $('csr-score').textContent = score;
+    const s = $('csr-score').parentElement; s.classList.remove('csr-pop'); void s.offsetWidth; s.classList.add('csr-pop');
+  }
+  function dots() {
+    $('csr-dots').innerHTML = queue.map((c, i) => `<i class="${i < idx ? 'done' : i === idx ? 'now' : ''}"></i>`).join('');
+  }
+  function slots(el, word) {
+    el.innerHTML = [...word].map(() => '<span class="csr-slot"></span>').join('');
+    return [...el.children];
+  }
+  function msg(ico, html, btn, next) {
+    show('csr-msg'); $('csr-msg-ico').textContent = ico; $('csr-msg-text').innerHTML = html;
+    $('csr-msg-btn').textContent = btn; $('csr-msg-btn').onclick = next;
+  }
+  function confetti() {
+    const box = $('csr'), cols = Object.values(COLOURS);
+    for (let i = 0; i < 40; i++) {
+      const c = document.createElement('i'); c.className = 'fc-confetti';
+      c.style.left = Math.random() * 100 + '%'; c.style.background = cols[i % cols.length];
+      c.style.animationDelay = Math.random() * 0.4 + 's';
+      c.style.setProperty('--x', (Math.random() * 160 - 80) + 'px'); c.style.setProperty('--r', (Math.random() * 720 - 360) + 'deg');
+      box.appendChild(c); setTimeout(() => c.remove(), 2200);
+    }
+  }
+
+  /* ---------- round 1: guess the colour ---------- */
+  function r1Next() {
+    clearInterval(timer);
+    if (idx >= queue.length) return endRound();
+    dots(); busy = false; shown = 0;
+    const word = queue[idx], cells = slots($('csr-r1-slots'), word);
+    $('csr-pots').querySelectorAll('.csr-pot').forEach(p => p.classList.remove('wrong', 'right', 'dim'));
+    const reveal = () => { if (shown < word.length) { cells[shown].textContent = word[shown].toUpperCase(); cells[shown].classList.add('in'); shown++; } };
+    reveal();
+    timer = setInterval(() => { reveal(); if (shown >= word.length) clearInterval(timer); }, REVEAL_MS);
+  }
+  function r1Tap(pot) {
+    if (busy) return;
+    const word = queue[idx];
+    if (pot.dataset.c !== word) { pot.classList.remove('wrong'); void pot.offsetWidth; pot.classList.add('wrong'); return; }
+    busy = true; clearInterval(timer);
+    const pts = word.length - shown + 1;
+    [...$('csr-r1-slots').children].forEach((c, i) => { c.textContent = word[i].toUpperCase(); c.classList.add('in', 'ok'); });
+    pot.classList.add('right');
+    $('csr-pots').querySelectorAll('.csr-pot').forEach(p => { if (p !== pot) p.classList.add('dim'); });
+    addScore(pts); play(word);
+    if (window.toast) toast('+' + pts + (pts >= word.length - 1 ? ' ⚡ Super fast!' : ''));
+    idx++; setTimeout(r1Next, 1500);
+  }
+
+  /* ---------- round 2: spell the splat ---------- */
+  function r2Next() {
+    if (idx >= queue.length) return endRound();
+    dots(); busy = false; typed = 0; misses = 0;
+    const word = queue[idx];
+    const path = $('csr-splat').querySelector('path');
+    path.setAttribute('fill', COLOURS[word]);
+    $('csr-splat').classList.remove('csr-done'); $('csr-splat').classList.add('csr-in');
+    setTimeout(() => $('csr-splat').classList.remove('csr-in'), 400);
+    slots($('csr-r2-slots'), word);
+    let letters = shuffle([...word]);
+    while (word.length > 1 && letters.join('') === word) letters = shuffle([...word]);
+    $('csr-tiles').innerHTML = letters.map(l => `<button class="csr-tile" data-l="${l}">${l.toUpperCase()}</button>`).join('');
+  }
+  function r2Tap(tile) {
+    if (busy || tile.disabled) return;
+    const word = queue[idx];
+    if (tile.dataset.l !== word[typed]) { misses++; tile.classList.remove('wrong'); void tile.offsetWidth; tile.classList.add('wrong'); return; }
+    tile.disabled = true;
+    const cell = $('csr-r2-slots').children[typed];
+    cell.textContent = word[typed].toUpperCase(); cell.classList.add('in');
+    typed++;
+    if (typed < word.length) return;
+    busy = true;
+    [...$('csr-r2-slots').children].forEach(c => c.classList.add('ok'));
+    $('csr-splat').classList.add('csr-done');
+    const pts = word.length + (misses ? 0 : 2);
+    addScore(pts); play(word);
+    if (window.toast) toast('+' + pts + (misses ? '' : ' 🎯 No mistakes!'));
+    idx++; setTimeout(r2Next, 1500);
+  }
+
+  /* ---------- flow ---------- */
+  function startRound(n) {
+    round = n; idx = 0; queue = shuffle(NAMES).slice(0, PER_ROUND);
+    $('csr-round').textContent = n === 1 ? 'Round 1 · Guess the colour' : 'Round 2 · Spell the splat';
+    show(n === 1 ? 'csr-r1' : 'csr-r2');
+    n === 1 ? r1Next() : r2Next();
+  }
+  function endRound() {
+    clearInterval(timer); dots();
+    if (round === 1) return msg('🎨', `Round 1 done! You have <b>${score}</b> points.<br>Now spell the colours!`, 'Round 2 ▶', () => startRound(2));
+    const best = getBest(), record = score > best;
+    if (record) setBest(score);
+    $('csr-round').textContent = 'Finished!';
+    msg(record ? '🏆' : '⭐', `You got <b>${score}</b> points!` + (record ? '<br>New best score!' : `<br>Best score: ${best}`), 'Play again ↻', csrStart);
+    confetti();
+  }
+  window.csrStart = function () { score = 0; $('csr-score').textContent = 0; startRound(1); };
+
+  $('csr-pots').innerHTML = NAMES.map(c => `<button class="csr-pot" data-c="${c}" aria-label="paint pot"><i style="--c:${COLOURS[c]}"></i></button>`).join('');
+  $('csr-pots').addEventListener('click', e => { const p = e.target.closest('.csr-pot'); if (p) r1Tap(p); });
+  $('csr-tiles').addEventListener('click', e => { const t = e.target.closest('.csr-tile'); if (t) r2Tap(t); });
+  const best = getBest(); if (best) $('csr-best').textContent = 'Best score: ' + best + ' ⭐';
+})();
+</script>
+<script>
+/* "Итог": star counter, progress bar and confetti when everything is ticked (same as Lesson 3) */
+(function () {
+  const box = document.getElementById('fun-check');
+  const boxes = [...box.querySelectorAll('input[type=checkbox]')];
+  let celebrated = false;
+  function confetti() {
+    const colours = ['#FFC53D', '#FF7A45', '#3352E0', '#12A374', '#7B5CE6', '#E03E52'];
+    for (let i = 0; i < 40; i++) {
+      const c = document.createElement('i');
+      c.className = 'fc-confetti';
+      c.style.left = Math.random() * 100 + '%';
+      c.style.background = colours[i % colours.length];
+      c.style.animationDelay = Math.random() * 0.4 + 's';
+      c.style.setProperty('--x', (Math.random() * 160 - 80) + 'px');
+      c.style.setProperty('--r', (Math.random() * 720 - 360) + 'deg');
+      box.appendChild(c);
+      setTimeout(() => c.remove(), 2200);
+    }
+  }
+  function update(animate) {
+    const n = boxes.filter(b => b.checked).length;
+    box.querySelector('.fc-count b').textContent = n;
+    box.querySelector('.fc-meter i').style.width = (n / boxes.length * 100) + '%';
+    const done = n === boxes.length;
+    box.querySelector('.fc-done').hidden = !done;
+    box.classList.toggle('all-done', done);
+    if (done && animate && !celebrated) confetti();
+    celebrated = done;
+  }
+  boxes.forEach(b => b.addEventListener('change', () => update(true)));
+  document.addEventListener('DOMContentLoaded', () => setTimeout(() => update(false), 0));
+})();
+</script>
+</body>
+</html>

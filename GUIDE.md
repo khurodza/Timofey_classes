@@ -16,6 +16,7 @@ website/
     ├── lesson-01.html          ← Lesson 1: site tour + placement test + 4 follow-up tabs
     ├── lesson-02.html          ← Lesson 2: reading & pronunciation (phonics: s a c n o p e)
     ├── lesson-03.html          ← Lesson 3: Starter "Welcome!" vocabulary (months, numbers, dates, colours) + phonics i · t
+    ├── lesson-04.html          ← Lesson 4: "Colour Spell Race" warm-up game, a / an, the day + reading i · t
     ├── images/                 ← Put lesson images here
     ├── audio/                  ← Put lesson audio files here
     │   └── words/               ← One short clip per sound button (see "Sound buttons")
@@ -415,8 +416,10 @@ Russian translation, an optional note, and a 🔊 button. Every page that loads
 - **Adding words yourself in the sheet:** type the word and translation
   in a new row, and put anything unique in `id` (e.g. `t1`, `t2`). Rows with
   an empty `id` show up on the site but can't be deleted there.
-- **Translation:** the **Suggest** button asks MyMemory (free, no key)
-  for Russian options. He can also type his own.
+- **Translation:** the **Suggest** button asks Google Translate (free web
+  address, no key) for Russian options: the main translation first, then
+  others labelled by part of speech (*noun*, *verb*, *adj.*). If Google
+  doesn't answer, MyMemory (also free) is asked instead. He can also type his own.
 - **Pronunciation:** the 🔊 button plays `lessons/audio/words/<word>.m4a` if it
   exists, else a real recording from dictionaryapi.dev (single words only),
   else the browser's English voice.
