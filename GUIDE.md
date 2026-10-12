@@ -174,6 +174,27 @@ soft yellow background, so it's obvious at a glance which lines need answers.
 - Needs `assets/wordorder.js` loaded after `lessons.js`. It saves the order
   and counts in the score badge. Example: Lesson 3, Homework Task 7.
 
+### Sort into columns (drag words into a table)
+
+```html
+<div class="card" id="ex-sort">
+  <div class="sc-bank" id="sc-01">
+    <span class="sc-tile" data-col="an">actor</span><span class="sc-tile" data-col="a">hotel</span>
+  </div>
+  <div class="sc-cols">
+    <div class="sc-col" data-col="a"><div class="sc-head">a</div>
+      <div class="sc-drop"><span class="sc-tile given">city</span></div></div>
+    <div class="sc-col" data-col="an"><div class="sc-head">an</div><div class="sc-drop"></div></div>
+  </div>
+  <button class="btn-primary" onclick="checkSort('ex-sort')">Check ✓</button>
+  <button class="btn-ghost" onclick="resetSort('ex-sort')">Try again</button>
+</div>
+```
+
+- Each word's `data-col` is the column it belongs in; `.given` = the example word.
+- He drags a word into a column (or taps the word, then the column). Places save.
+- Needs `assets/sortcols.js` loaded after `lessons.js`. Example: Lesson 4, Homework Task 1.
+
 ### Word choice (inline buttons, e.g. take/give)
 
 ```html

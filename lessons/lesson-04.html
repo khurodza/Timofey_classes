@@ -19,6 +19,7 @@
           <span class="badge">Lesson 4</span>
           <span class="badge">Starter: Welcome!</span>
           <span class="badge">Reading: i · t</span>
+          <span class="badge">Homework</span>
         </div>
       </div>
     </div>
@@ -35,6 +36,7 @@
   <div class="wrap">
     <button class="part-tab" data-part="part-welcome" onclick="showPart('part-welcome')">Welcome</button>
     <button class="part-tab" data-part="part-read" onclick="showPart('part-read')">Reading: i · t</button>
+    <button class="part-tab hw" data-part="part-homework" onclick="showPart('part-homework')">Homework</button>
   </div>
 </nav>
 
@@ -404,6 +406,334 @@
       </div>
       <div class="fc-done" hidden><span class="fc-trophy">🏆</span><span><b>Супер!</b> Урок 4 пройден. Так держать!</span></div>
     </div>
+    <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+      <button class="btn-accent" onclick="showPart('part-homework');window.scrollTo(0,0)">Go to homework →</button>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     HOMEWORK: Think Starter Workbook, Welcome unit
+     (a / an, The day, Saying Hello and Goodbye, Summing up 5–6)
+══════════════════════════════════════════════════════════ -->
+<div class="lesson-part" id="part-homework">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#h1">1 · a / an</a>
+    <a href="#h2">2 · The day</a>
+    <a href="#h3">3 · Hello &amp; Goodbye</a>
+    <a href="#h4">4 · Conversations</a>
+    <a href="#h5">5 · Write dialogues</a>
+    <a href="#h6">6 · Spelling</a>
+    <a href="#h7">7 · Sounds /ɪ/ /iː/ /t/</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="h1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Homework · Task 1</div>
+        <h2>Articles: <i>a</i> and <i>an</i></h2>
+      </div>
+    </div>
+    <div class="card" id="ex-hw-aan">
+      <div class="exercise-label hw">Exercise 1</div>
+      <h3>Choose the correct option.</h3>
+      <p class="ru-hint" lang="ru">Выбери правильный вариант: <i lang="en">a</i> или <i lang="en">an</i>.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>0. <b>an</b> orange bus</span></div>
+      <div class="sort-row"><span class="num">1.</span><span class="word-choice" id="hw-aan1" data-answer="a"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> grey airport</div>
+      <div class="sort-row"><span class="num">2.</span><span class="word-choice" id="hw-aan2" data-answer="an"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> American TV</div>
+      <div class="sort-row"><span class="num">3.</span><span class="word-choice" id="hw-aan3" data-answer="a"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> white tablet</div>
+      <div class="sort-row"><span class="num">4.</span><span class="word-choice" id="hw-aan4" data-answer="an"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> English actor</div>
+      <div class="sort-row"><span class="num">5.</span><span class="word-choice" id="hw-aan5" data-answer="a"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> hamburger</div>
+      <div class="sort-row"><span class="num">6.</span><span class="word-choice" id="hw-aan6" data-answer="a"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> black taxi</div>
+      <div class="sort-row"><span class="num">7.</span><span class="word-choice" id="hw-aan7" data-answer="a"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> phone</div>
+      <div class="sort-row"><span class="num">8.</span><span class="word-choice" id="hw-aan8" data-answer="an"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> Italian car</div>
+      <div class="sort-row"><span class="num">9.</span><span class="word-choice" id="hw-aan9" data-answer="a"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> red bus</div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-hw-aan')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-hw-aan')">Try again</button>
+      </div>
+    </div>
+
+    <div class="card" id="ex-hw-cols">
+      <div class="exercise-label hw">Exercise 2</div>
+      <h3>Drag the words to the correct column. Then write five more words in each column.</h3>
+      <p class="ru-hint" lang="ru">Перетащи слова в правильную колонку. Потом напиши ещё по пять слов в каждую колонку.</p>
+      <p class="wo-help">Drag a word into <i>a</i> or <i>an</i> — or tap a word, then tap the column.<br><span lang="ru">Перетащи слово в колонку <i lang="en">a</i> или <i lang="en">an</i> — или нажми на слово, а потом на колонку.</span></p>
+      <div class="sc-bank" id="hw-sort-aan">
+        <span class="sc-tile" data-col="an">actor</span><span class="sc-tile" data-col="an">airport</span><span class="sc-tile" data-col="an">apple</span><span class="sc-tile" data-col="a">hamburger</span><span class="sc-tile" data-col="a">hotel</span><span class="sc-tile" data-col="an">orange</span><span class="sc-tile" data-col="a">taxi</span>
+      </div>
+      <div class="sc-cols">
+        <div class="sc-col" data-col="a">
+          <div class="sc-head">a</div>
+          <div class="sc-drop"><span class="sc-tile given">city</span></div>
+          <textarea class="free-write sc-more" id="fw-hw-a" placeholder="+ 5 more words: cat, …" rows="3"></textarea>
+        </div>
+        <div class="sc-col" data-col="an">
+          <div class="sc-head">an</div>
+          <div class="sc-drop"></div>
+          <textarea class="free-write sc-more" id="fw-hw-an" placeholder="+ 5 more words: egg, …" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkSort('ex-hw-cols')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetSort('ex-hw-cols')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="h2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Homework · Task 2</div>
+        <h2>The day</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-hw-day">
+      <div class="exercise-label hw">Exercise 1</div>
+      <h3>Look at the pictures and complete the phrases.</h3>
+      <p class="ru-hint" lang="ru">Посмотри на картинки и допиши фразы.</p>
+      <div class="pic-grid photo">
+        <div class="pic-item"><span class="pic-letter">0</span><img src="images/hello-goodbye/day-morning.jpg" alt="Morning: a boy and his mum at breakfast"><span>Good <span class="given">morning</span></span></div>
+        <div class="pic-item"><span class="pic-letter">1</span><img src="images/hello-goodbye/day-evening.jpg" alt="Evening: a waiter at a restaurant"><span>Good <input class="blank" id="hw-day1" data-answer="evening" placeholder="_ _ _ _ _ _ _" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+        <div class="pic-item"><span class="pic-letter">2</span><img src="images/hello-goodbye/day-night.jpg" alt="Night: a boy goes upstairs to bed"><span>Good <input class="blank" id="hw-day2" data-answer="night" placeholder="_ _ _ _ _" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+        <div class="pic-item"><span class="pic-letter">3</span><img src="images/hello-goodbye/day-afternoon.jpg" alt="Afternoon: a teacher in class, the clock says three o'clock"><span>Good <input class="blank" id="hw-day3" data-answer="afternoon" placeholder="_ _ _ _ _ _ _ _ _" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-hw-day')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw-day')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="h3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Homework · Task 3</div>
+        <h2>Saying <i>Hello</i> and <i>Goodbye</i></h2>
+      </div>
+    </div>
+    <div class="card" id="ex-hw-hibye">
+      <div class="exercise-label hw">Exercise 1</div>
+      <h3>Look at the pictures. Is it <i>Hello</i> (A) or <i>Goodbye</i> (B)?</h3>
+      <p class="ru-hint" lang="ru">Посмотри на картинки. Это приветствие (<i lang="en">Hello</i>, A) или прощание (<i lang="en">Goodbye</i>, B)?</p>
+      <div class="pic-grid photo wide">
+        <div class="pic-item"><img src="images/hello-goodbye/photo-a.jpg" alt="A: two women shake hands"><b>A · Hello</b></div>
+        <div class="pic-item"><img src="images/hello-goodbye/photo-b.jpg" alt="B: a man waves at a woman at the station"><b>B · Goodbye</b></div>
+      </div>
+      <div class="example-row" style="margin-top:14px"><span class="ex-tag">Example</span><span>0. Hello → <b>Hello</b></span></div>
+      <div class="sort-row"><span class="num">1.</span><span class="word-choice" id="hw-hb1" data-answer="goodbye"><button class="word-choice-btn" onclick="selectWord(this)">Hello</button><button class="word-choice-btn" onclick="selectWord(this)">Goodbye</button></span> Bye</div>
+      <div class="sort-row"><span class="num">2.</span><span class="word-choice" id="hw-hb2" data-answer="hello"><button class="word-choice-btn" onclick="selectWord(this)">Hello</button><button class="word-choice-btn" onclick="selectWord(this)">Goodbye</button></span> Good afternoon</div>
+      <div class="sort-row"><span class="num">3.</span><span class="word-choice" id="hw-hb3" data-answer="hello"><button class="word-choice-btn" onclick="selectWord(this)">Hello</button><button class="word-choice-btn" onclick="selectWord(this)">Goodbye</button></span> Good evening</div>
+      <div class="sort-row"><span class="num">4.</span><span class="word-choice" id="hw-hb4" data-answer="hello"><button class="word-choice-btn" onclick="selectWord(this)">Hello</button><button class="word-choice-btn" onclick="selectWord(this)">Goodbye</button></span> Good morning</div>
+      <div class="sort-row"><span class="num">5.</span><span class="word-choice" id="hw-hb5" data-answer="goodbye"><button class="word-choice-btn" onclick="selectWord(this)">Hello</button><button class="word-choice-btn" onclick="selectWord(this)">Goodbye</button></span> Good night</div>
+      <div class="sort-row"><span class="num">6.</span><span class="word-choice" id="hw-hb6" data-answer="hello"><button class="word-choice-btn" onclick="selectWord(this)">Hello</button><button class="word-choice-btn" onclick="selectWord(this)">Goodbye</button></span> Hi</div>
+      <div class="sort-row"><span class="num">7.</span><span class="word-choice" id="hw-hb7" data-answer="goodbye"><button class="word-choice-btn" onclick="selectWord(this)">Hello</button><button class="word-choice-btn" onclick="selectWord(this)">Goodbye</button></span> See you</div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-hw-hibye')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-hw-hibye')">Try again</button>
+      </div>
+      <div class="tip"><span class="tip-title">Remember!</span><span class="key">Good night</span> = goodbye before bed. To say hello in the evening: <span class="key">Good evening</span></div>
+    </div>
+  </section>
+
+  <section class="step" id="h4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Homework · Task 4</div>
+        <h2>Conversations</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-hw-order">
+      <div class="exercise-label hw">Exercise 1 · Listening</div>
+      <h3>Put the conversations in order. Write 1, 2, 3… Then listen and check.</h3>
+      <p class="ru-hint" lang="ru">Расставь реплики в правильном порядке: напиши 1, 2, 3… Потом послушай и проверь.</p>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-04-hw01.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <h4>Conversation 1</h4>
+      <div class="ord-row"><input class="blank num" id="hw-o1a" data-answer="1" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off"><span class="dl-name">Holly</span><span>Good morning, Mr Wood.</span></div>
+      <div class="ord-row"><input class="blank num" id="hw-o1b" data-answer="3" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off"><span class="dl-name">Holly</span><span>I’m fine. And you?</span></div>
+      <div class="ord-row"><input class="blank num" id="hw-o1c" data-answer="2" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off"><span class="dl-name two">Mr Wood</span><span>Hello, Holly. How are you?</span></div>
+      <div class="ord-row"><input class="blank num" id="hw-o1d" data-answer="4" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off"><span class="dl-name two">Mr Wood</span><span>I’m great, thanks.</span></div>
+      <h4>Conversation 2</h4>
+      <div class="ord-row"><input class="blank num" id="hw-o2a" data-answer="3" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off"><span class="dl-name">Nick</span><span>Yeah, have a good day.</span></div>
+      <div class="ord-row"><input class="blank num" id="hw-o2b" data-answer="1" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off"><span class="dl-name">Nick</span><span>Bye, Jodie.</span></div>
+      <div class="ord-row"><input class="blank num" id="hw-o2c" data-answer="2" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off"><span class="dl-name two">Jodie</span><span>Bye, Nick. See you later.</span></div>
+      <h4>Conversation 3</h4>
+      <div class="ord-row"><input class="blank num" id="hw-o3a" data-answer="3" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off"><span class="dl-name">Alex</span><span>I’m fine, thank you.</span></div>
+      <div class="ord-row"><input class="blank num" id="hw-o3b" data-answer="5" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off"><span class="dl-name">Alex</span><span>Bye, Mrs Young.</span></div>
+      <div class="ord-row"><input class="blank num" id="hw-o3c" data-answer="1" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off"><span class="dl-name">Alex</span><span>Good afternoon, Mrs Young.</span></div>
+      <div class="ord-row"><input class="blank num" id="hw-o3d" data-answer="4" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off"><span class="dl-name two">Mrs Young</span><span>Good. I’ll see you in class.</span></div>
+      <div class="ord-row"><input class="blank num" id="hw-o3e" data-answer="2" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off"><span class="dl-name two">Mrs Young</span><span>Hello, Alex. How are you?</span></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-hw-order')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw-order')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="h5">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Homework · Task 5</div>
+        <h2>Write short dialogues</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label hw">Exercise 1 · Writing</div>
+      <h3>Look at the pictures. What do they say? Write.</h3>
+      <p class="ru-hint" lang="ru">Посмотри на картинки. Что говорят люди? Напиши короткие диалоги.</p>
+      <img class="hw-photo" src="images/hello-goodbye/friends-school.jpg" alt="Carmen, Leo and Jake walk down a school corridor">
+      <div class="dialogue">
+        <span class="dl-name">Carmen</span><p class="dl-text"><span class="given">Hello.</span></p>
+        <span class="dl-name two">Leo</span><p class="dl-text ask"><input class="free-write line" id="fw-hw-d1" placeholder="Write here…" autocomplete="off"></p>
+        <span class="dl-name two">Jake</span><p class="dl-text ask"><input class="free-write line" id="fw-hw-d2" placeholder="Write here…" autocomplete="off"></p>
+        <span class="dl-name">Carmen</span><p class="dl-text ask"><input class="free-write line" id="fw-hw-d3" placeholder="Write here…" autocomplete="off"></p>
+      </div>
+      <img class="hw-photo" src="images/hello-goodbye/dad-bedtime.jpg" alt="Dad says goodnight to Dora in bed" style="margin-top:22px">
+      <div class="dialogue">
+        <span class="dl-name">Dora</span><p class="dl-text ask"><input class="free-write line" id="fw-hw-d4" placeholder="Write here…" autocomplete="off"></p>
+        <span class="dl-name two">Dad</span><p class="dl-text ask"><input class="free-write line" id="fw-hw-d5" placeholder="Write here…" autocomplete="off"></p>
+      </div>
+      <div class="tip"><span class="tip-title">Подсказка</span>Используй фразы из заданий 3 и 4: <span class="key">Hi!</span> <span class="key">How are you?</span> <span class="key">I’m fine, thanks.</span> <span class="key">Good night!</span></div>
+    </div>
+  </section>
+
+  <section class="step" id="h6">
+    <div class="step-head">
+      <div class="step-num">6</div>
+      <div>
+        <div class="step-meta">Homework · Task 6</div>
+        <h2>Spelling</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-hw-spell">
+      <div class="exercise-label hw">Exercise 1 · Listening</div>
+      <h3>Listen to the letters. Write the word.</h3>
+      <p class="ru-hint" lang="ru">Послушай, как слово называют по буквам. Напиши слово.</p>
+      <div class="spell-q"><span class="num">1.</span>
+        <div class="audio-wrap"><audio controls preload="metadata"><source src="audio/lesson-04-hw-spell1.m4a" type="audio/mp4">Your browser does not support audio.</audio></div>
+        <input class="blank" id="hw-sp1" data-answer="bike" placeholder="word" autocomplete="off" autocapitalize="off" spellcheck="false">
+      </div>
+      <div class="spell-q"><span class="num">2.</span>
+        <div class="audio-wrap"><audio controls preload="metadata"><source src="audio/lesson-04-hw-spell2.m4a" type="audio/mp4">Your browser does not support audio.</audio></div>
+        <input class="blank" id="hw-sp2" data-answer="green" placeholder="word" autocomplete="off" autocapitalize="off" spellcheck="false">
+      </div>
+      <div class="spell-q"><span class="num">3.</span>
+        <div class="audio-wrap"><audio controls preload="metadata"><source src="audio/lesson-04-hw-spell3.m4a" type="audio/mp4">Your browser does not support audio.</audio></div>
+        <input class="blank" id="hw-sp3" data-answer="juice" placeholder="word" autocomplete="off" autocapitalize="off" spellcheck="false">
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-hw-spell')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw-spell')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="h7">
+    <div class="step-head">
+      <div class="step-num">7</div>
+      <div>
+        <div class="step-meta">Homework · Task 7</div>
+        <h2>Sounds: <span class="ipa">/ɪ/</span>, <span class="ipa">/iː/</span> and <span class="ipa">/t/</span></h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label hw">Exercise 1 · Listen and repeat</div>
+      <h3>Listen and repeat. Short <span class="ipa">/ɪ/</span> or long <span class="ipa">/iː/</span>?</h3>
+      <p class="ru-hint" lang="ru">Послушай и повтори. Короткий звук <span class="ipa">/ɪ/</span> или длинный <span class="ipa">/iː/</span>?</p>
+      <div class="two-col">
+        <div>
+          <h4>Short <span class="ipa">/ɪ/</span> — sit</h4>
+          <div class="word-row"><button class="say" data-say="it">it</button> <button class="say" data-say="sit">sit</button> <button class="say" data-say="big">big</button> <button class="say" data-say="six">six</button> <button class="say" data-say="fish">fish</button> <button class="say" data-say="milk">milk</button></div>
+        </div>
+        <div>
+          <h4>Long <span class="ipa">/iː/</span> — see</h4>
+          <div class="word-row"><button class="say" data-say="eat">eat</button> <button class="say" data-say="seat">seat</button> <button class="say" data-say="see">see</button> <button class="say" data-say="tree">tree</button> <button class="say" data-say="green">green</button> <button class="say" data-say="sheep">sheep</button></div>
+        </div>
+      </div>
+      <div class="tip"><span class="tip-title">Short or long?</span><span class="ipa">/ɪ/</span> is short and relaxed. <span class="ipa">/iː/</span> is long — smile a little: <span class="key">ee</span> <span class="key">ea</span>.<br><span lang="ru"><span class="ipa">/ɪ/</span> — короткий и расслабленный. <span class="ipa">/iː/</span> — длинный, губы чуть улыбаются. Обычно пишется <b>ee</b> или <b>ea</b>.</span></div>
+      <div class="pairs">
+        <div class="pair"><button class="say" data-say="ship">ship</button><span class="vs">or</span><button class="say" data-say="sheep">sheep</button></div>
+        <div class="pair"><button class="say" data-say="sit">sit</button><span class="vs">or</span><button class="say" data-say="seat">seat</button></div>
+        <div class="pair"><button class="say" data-say="fit">fit</button><span class="vs">or</span><button class="say" data-say="feet">feet</button></div>
+        <div class="pair"><button class="say" data-say="hit">hit</button><span class="vs">or</span><button class="say" data-say="heat">heat</button></div>
+      </div>
+    </div>
+
+    <div class="card" id="ex-hw-ii">
+      <div class="exercise-label hw">Exercise 2 · Listening</div>
+      <h3>Listen. Which word do you hear?</h3>
+      <p class="ru-hint" lang="ru">Послушай. Какое слово ты слышишь?</p>
+      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="sheep" aria-label="Listen"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="hw-iq1" value="a"><span class="mc-bullet">A</span> sheep</label><label class="mc-option"><input type="radio" name="hw-iq1" value="b"><span class="mc-bullet">B</span> ship</label></div></div>
+      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="seat" aria-label="Listen"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="hw-iq2" value="a"><span class="mc-bullet">A</span> sit</label><label class="mc-option"><input type="radio" name="hw-iq2" value="b"><span class="mc-bullet">B</span> seat</label></div></div>
+      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="fill" aria-label="Listen"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="hw-iq3" value="a"><span class="mc-bullet">A</span> feel</label><label class="mc-option"><input type="radio" name="hw-iq3" value="b"><span class="mc-bullet">B</span> fill</label></div></div>
+      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="bean" aria-label="Listen"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="hw-iq4" value="a"><span class="mc-bullet">A</span> bean</label><label class="mc-option"><input type="radio" name="hw-iq4" value="b"><span class="mc-bullet">B</span> bin</label></div></div>
+      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="hit" aria-label="Listen"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="hw-iq5" value="a"><span class="mc-bullet">A</span> hit</label><label class="mc-option"><input type="radio" name="hw-iq5" value="b"><span class="mc-bullet">B</span> heat</label></div></div>
+      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="feet" aria-label="Listen"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="hw-iq6" value="a"><span class="mc-bullet">A</span> fit</label><label class="mc-option"><input type="radio" name="hw-iq6" value="b"><span class="mc-bullet">B</span> feet</label></div></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-hw-ii')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-hw-ii')">Try again</button>
+      </div>
+    </div>
+
+    <div class="card" id="ex-hw-iisort">
+      <div class="exercise-label hw">Exercise 3</div>
+      <h3>Say the words. Drag them to the correct column.</h3>
+      <p class="ru-hint" lang="ru">Произнеси слова вслух. Перетащи их в правильную колонку.</p>
+      <div class="sc-bank" id="hw-sort-ii">
+        <span class="sc-tile" data-col="i">six</span><span class="sc-tile" data-col="ii">green</span><span class="sc-tile" data-col="i">fish</span><span class="sc-tile" data-col="ii">tree</span><span class="sc-tile" data-col="i">milk</span><span class="sc-tile" data-col="ii">sheep</span><span class="sc-tile" data-col="i">big</span><span class="sc-tile" data-col="ii">eat</span><span class="sc-tile" data-col="i">pink</span><span class="sc-tile" data-col="ii">see</span>
+      </div>
+      <div class="sc-cols">
+        <div class="sc-col" data-col="i"><div class="sc-head"><span class="ipa">/ɪ/</span> short</div><div class="sc-drop"><span class="sc-tile given">sit</span></div></div>
+        <div class="sc-col" data-col="ii"><div class="sc-head"><span class="ipa">/iː/</span> long</div><div class="sc-drop"><span class="sc-tile given">seat</span></div></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkSort('ex-hw-iisort')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetSort('ex-hw-iisort')">Try again</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label hw">Exercise 4 · The sound /t/</div>
+      <h3>Listen and repeat. Say every <b>t</b> clearly!</h3>
+      <p class="ru-hint" lang="ru">Послушай и повтори. Чётко произноси каждый звук <b>t</b>!</p>
+      <div class="tip rule"><span class="tip-title">How to say /t/</span><span lang="ru">Кончик языка — на бугорке <b>за</b> верхними зубами (а не на зубах, как в русском «т»), и лёгкий выдох: <b>t!</b> Не «глотай» t в конце слова.</span></div>
+      <h4>t at the start</h4>
+      <div class="word-row"><button class="say" data-say="ten">ten</button> <button class="say" data-say="top">top</button> <button class="say" data-say="tree">tree</button> <button class="say" data-say="time">time</button> <button class="say" data-say="tiger">tiger</button> <button class="say" data-say="tennis">tennis</button></div>
+      <h4>t at the end</h4>
+      <div class="word-row"><button class="say" data-say="it">it</button> <button class="say" data-say="sit">sit</button> <button class="say" data-say="eat">eat</button> <button class="say" data-say="seat">seat</button> <button class="say" data-say="cat">cat</button> <button class="say" data-say="hat">hat</button></div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label hw">Exercise 5 · Speaking</div>
+      <h3>Read the sentences aloud. Record yourself and compare.</h3>
+      <p class="ru-hint" lang="ru">Прочитай предложения вслух. Запиши себя и сравни с образцом.</p>
+      <p class="read-text"><button class="say sentence" data-say="Tim sits on a green seat.">Tim sits on a green seat.</button></p>
+      <p class="read-text"><button class="say sentence" data-say="Pete eats six sweets.">Pete eats six sweets.</button></p>
+      <p class="read-text"><button class="say sentence" data-say="Tim sees a big green tree.">Tim sees a big green tree.</button></p>
+      <div class="rec"></div>
+    </div>
   </section>
 
 </div>
@@ -418,6 +748,7 @@
 </div>
 
 <script src="../assets/lessons.js"></script>
+<script src="../assets/sortcols.js"></script>
 <script src="../assets/name.js"></script>
 <script src="../assets/dictionary.js"></script>
 <script>
