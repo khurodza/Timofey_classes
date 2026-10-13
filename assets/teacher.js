@@ -284,8 +284,16 @@ function showPage(sid, page, path, part, highlight) {
 function viewerDataChanged(sid) {
   if (!viewing || viewing.s !== sid || !viewing.page) return;
   const r = pages[sid][viewing.page];
-  if (r && r.json !== viewing.json) showPage(sid, viewing.page, viewing.path, viewing.part, r.dev === 'teacher' ? null : r.changed);
-  else renderViewerBar();
+  if (!r || r.json === viewing.json) return renderViewerBar();
+  // first try to change the answers on the open page in place; reload in the background only if that isn't possible
+  let w; try { w = frames[front].contentWindow; } catch (e) {}
+  let done = false; try { done = !!(w && w.__watch && w.__watch.ready && w.__watch.apply(r.json)); } catch (e) {}
+  if (!done) return showPage(sid, viewing.page, viewing.path, viewing.part, r.dev === 'teacher' ? null : r.changed);
+  viewing.json = r.json;
+  storeAnswers(sid, viewing.page);
+  markSeen(sid, viewing.page);
+  try { if (r.dev !== 'teacher' && r.changed) w.__watch.highlight(r.changed); w.__watch.setNotes(notes[sid][viewing.page]); } catch (e) {}
+  renderViewerBar();
 }
 function viewerNotesChanged(sid) {
   if (!viewing || viewing.s !== sid) return;

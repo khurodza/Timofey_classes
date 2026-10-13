@@ -89,7 +89,7 @@
     const count = (done, ok) => { total++; if (done) answered++; if (ok) right++; };
     document.querySelectorAll('input[data-answer]:not(.xw-blank), textarea[data-answer], select[data-answer]').forEach(el =>
       count(!!el.value.trim(), matches(el.value, el.dataset.answer, el.dataset.check === 'contains')));
-    document.querySelectorAll('.mc-options[data-correct]').forEach(g => { const c = g.querySelector('input:checked'); count(!!c, c && c.value === g.dataset.correct); });
+    document.querySelectorAll('.mc-options[data-correct]').forEach(g => { const c = g.querySelector('input:checked') || g.querySelector('.mc-option.selected input'); count(!!c, c && c.value === g.dataset.correct); });
     document.querySelectorAll('.choice-group[data-correct]').forEach(g => { const c = g.querySelector('.choice-btn.selected'); count(!!c, c && c.dataset.value === g.dataset.correct); });
     document.querySelectorAll('.word-choice[data-answer]').forEach(g => { const c = g.querySelector('.selected'); count(!!c, c && c.textContent.trim().toLowerCase() === g.dataset.answer.toLowerCase()); });
     return { total, answered, right };
@@ -129,8 +129,13 @@
   if (WATCH) {
     // answers come from teacher.html through sessionStorage (shared by the page and its frame)
     const name = params.get('name') || WATCH;
+    let shown = null;                   // the answers currently on screen (to work out what changed)
     Storage.prototype.getItem = function (k) {
-      if (this === store && IS_ANSWERS(k)) return sessionStorage.getItem('watch-' + WATCH + '-' + k);
+      if (this === store && IS_ANSWERS(k)) {
+        const v = sessionStorage.getItem('watch-' + WATCH + '-' + k);
+        if (shown === null) { try { shown = JSON.parse(v || '{}') || {}; } catch (e) { shown = {}; } }
+        return v;
+      }
       if (this === store && k === NAME_KEY) return name;
       if (this === store && k === 'studentNameEntered') return '1';
       return rawGet.call(this, k);
@@ -167,8 +172,55 @@
       return [...keys];
     }
 
+    // set one saved answer on the page the way the site itself restores it; false = unknown kind of answer
+    function applyKey(k, v) {
+      const val = v == null ? '' : v;
+      const fire = el => { el.dispatchEvent(new Event('input', { bubbles: true })); el.dispatchEvent(new Event('change', { bubbles: true })); };
+      const el = document.getElementById(k);
+      if (el) {
+        if (el.matches('input[type=checkbox]')) { el.checked = !!v; return true; }
+        if (el.matches('input[type=radio]')) return false;
+        if (el.matches('input, textarea, select')) {
+          el.value = val;
+          el.classList.remove('correct', 'wrong', 'is-right', 'is-wrong');
+          if (el.classList.contains('xw-blank')) { const g = el.closest('.xw-grid'); if (g) g.dispatchEvent(new Event('input', { bubbles: true })); }
+          else fire(el);                  // word counters, word boxes etc. update themselves
+          return true;
+        }
+        if (el.classList.contains('word-choice')) {
+          el.querySelectorAll('.word-choice-btn').forEach(b => { b.classList.toggle('selected', b.textContent.trim() === val); b.classList.remove('correct', 'wrong'); });
+          return true;
+        }
+        if (el.classList.contains('choice-group')) {
+          el.querySelectorAll('.choice-btn').forEach(b => { b.classList.toggle('selected', b.dataset.value === val); b.classList.remove('is-right', 'is-wrong'); });
+          return true;
+        }
+        return false;
+      }
+      if (k.startsWith('mc-')) {
+        const radios = document.querySelectorAll('input[name="' + cssId(k.slice(3)) + '"]');
+        if (!radios.length) return false;
+        radios.forEach(r => { r.checked = r.value === val; const l = r.closest('.mc-option'); if (l) { l.classList.toggle('selected', r.value === val); l.classList.remove('correct', 'wrong'); } });
+        return true;
+      }
+      const dk = document.querySelector('[data-key="' + cssId(k) + '"]');
+      if (dk && dk.matches('input, textarea, select')) { dk.value = val; fire(dk); return true; }
+      return false;
+    }
+
     let latest = [];
     window.__watch = {
+      // new answers from the student → change only what changed, without reloading; false = please reload
+      apply(json) {
+        let next; try { next = JSON.parse(json || '{}') || {}; } catch (e) { return false; }
+        const prev = shown || {};
+        const diff = [...new Set([...Object.keys(prev), ...Object.keys(next)])].filter(k => JSON.stringify(prev[k]) !== JSON.stringify(next[k]));
+        for (const k of diff) if (!applyKey(k, next[k])) return false;
+        shown = next;
+        try { if (typeof data === 'object' && data) { Object.keys(data).forEach(k => delete data[k]); Object.assign(data, next); } } catch (e) {}   // the page's own copy
+        if (params.get('check') === '1') showRightWrong();
+        return true;
+      },
       ready: false,
       highlight(keys) {                 // outline the field(s) the student changed last
         document.querySelectorAll('.w-latest').forEach(e => e.classList.remove('w-latest'));
@@ -183,6 +235,7 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       document.documentElement.classList.add('watching');
+      window.toast = () => {};
       addCss(NOTE_CSS +
         '.watch-bar{position:sticky;top:0;z-index:9999;padding:7px 16px;background:#1F7A5A;color:#fff;font:700 14px/1.3 system-ui,sans-serif;text-align:center;letter-spacing:.02em}' +
         'html.watching .rec,html.watching .dict-fab{display:none}' +
