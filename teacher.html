@@ -176,7 +176,8 @@ function show(page, path, part) {
 function storeAnswers() {
   const p = pages[shownPage];
   const json = p ? p.json : '{}';
-  sessionStorage.setItem(`watch-${current}-answers-${shownPage}`, json);
+  const key = (p && p.key) || 'answers-' + shownPage;   // each site names its saved answers differently
+  sessionStorage.setItem(`watch-${current}-${key}`, json);
   const changed = json !== lastJson; lastJson = json; return changed;
 }
 

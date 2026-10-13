@@ -506,7 +506,7 @@ reports which page and tab is open.
 - **Security rules** are in `firebase-rules.json` (next to the `website`
   folder, not published). Paste them into Firebase → Realtime Database →
   Rules → Publish whenever they change.
-- **New student site:** copy `assets/sync.js`, change `STUDENT` at the top,
+- **New student site:** copy `assets/sync.js`, change the settings block at the top (`STUDENT`, `IS_ANSWERS`, `NAME_KEY`),
   add the `<script src="../assets/sync.js">` line before `lessons.js` on
   every lesson page, and add the student to `STUDENTS` in `teacher.html` and
   to the name list in `firebase-rules.json`.
