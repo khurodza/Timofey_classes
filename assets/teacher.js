@@ -255,8 +255,10 @@ function showPage(sid, page, path, part, highlight) {
   storeAnswers(sid, page);
   markSeen(sid, page);
   $('v-empty').hidden = true;
-  const url = path + '?watch=' + sid + '&name=' + encodeURIComponent(s.name) + ($('check').checked ? '&check=1' : '') + (part ? '#' + part : '');
-  const vis = frames[front], back = frames[1 - front], token = ++loadToken;
+  const token = ++loadToken;
+  // "&v=" makes every load a real reload: with only a "#tab" change the browser would just jump inside the old copy
+  const url = path + '?watch=' + sid + '&name=' + encodeURIComponent(s.name) + ($('check').checked ? '&check=1' : '') + '&v=' + token + (part ? '#' + part : '');
+  const vis = frames[front], back = frames[1 - front];
   let y = 0; try { if (samePage && !vis.hidden) y = vis.contentWindow.scrollY; } catch (e) {}
   back.hidden = false; back.classList.add('back');
   back.src = url;
@@ -264,7 +266,8 @@ function showPage(sid, page, path, part, highlight) {
   const wait = setInterval(() => {
     if (token !== loadToken) return clearInterval(wait);
     let w; try { w = back.contentWindow; } catch (e) {}
-    const ready = w && w.__watch && w.__watch.ready;
+    let fresh = false; try { fresh = new URLSearchParams(w.location.search).get('v') === String(token); } catch (e) {}   // not the previous copy still sitting in this frame
+    const ready = fresh && w.__watch && w.__watch.ready;
     if (!ready && Date.now() - t0 < 6000) return;
     clearInterval(wait);
     try {
