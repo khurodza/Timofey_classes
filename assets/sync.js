@@ -175,6 +175,7 @@
     // set one saved answer on the page the way the site itself restores it; false = unknown kind of answer
     function applyKey(k, v) {
       const val = v == null ? '' : v;
+      if (k === 'activeTab' || k.startsWith('chk-')) return true;   // only which tab is open / that Check was pressed: nothing to show
       const fire = el => { el.dispatchEvent(new Event('input', { bubbles: true })); el.dispatchEvent(new Event('change', { bubbles: true })); };
       const el = document.getElementById(k);
       if (el) {
@@ -188,7 +189,7 @@
           return true;
         }
         if (el.classList.contains('word-choice')) {
-          el.querySelectorAll('.word-choice-btn').forEach(b => { b.classList.toggle('selected', b.textContent.trim() === val); b.classList.remove('correct', 'wrong'); });
+          el.querySelectorAll('.word-choice-btn').forEach(b => { b.classList.toggle('selected', (b.dataset.val ?? b.dataset.value ?? b.textContent.trim()) === val); b.classList.remove('correct', 'wrong'); });
           return true;
         }
         if (el.classList.contains('choice-group')) {
@@ -196,6 +197,10 @@
           return true;
         }
         return false;
+      }
+      if (k.startsWith('st-') && document.getElementById(k.slice(3))) {   // Polina: stressed syllable picked by number
+        document.getElementById(k.slice(3)).querySelectorAll('.syl').forEach((x, i) => { x.classList.toggle('picked', i === v); x.classList.remove('ok', 'no'); });
+        return true;
       }
       if (k.startsWith('mc-')) {
         const radios = document.querySelectorAll('input[name="' + cssId(k.slice(3)) + '"]');
