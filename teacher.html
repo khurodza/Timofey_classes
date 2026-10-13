@@ -3,199 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Teacher – live answers</title>
+<title>Teacher desk</title>
 <meta name="robots" content="noindex">
-<link rel="stylesheet" href="assets/style.css">
-<style>
-  body{margin:0;background:var(--paper,#F3F5FB)}
-  .t-top{display:flex;align-items:center;gap:14px;padding:12px 20px;background:var(--ink,#16213E);color:#fff}
-  .t-top h1{font-size:20px;margin:0;flex:1;color:#fff}
-  .t-top .who{font-size:14px;opacity:.85}
-  .t-top button{border:0;border-radius:99px;padding:8px 16px;font:inherit;font-weight:800;cursor:pointer}
-  .t-signin{max-width:440px;margin:80px auto;text-align:center;background:#fff;border-radius:20px;padding:32px;box-shadow:0 10px 30px rgba(22,33,62,.12)}
-  .t-signin p{color:var(--muted,#5B6785)}
-  .t-err{color:#C62828;font-weight:800}
-  .t-main{display:grid;grid-template-columns:280px 1fr;height:calc(100vh - 58px)}
-  .t-side{overflow:auto;padding:14px;border-right:1px solid var(--border,#DDE3F3);background:#fff}
-  .t-side h2{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted,#5B6785);margin:14px 4px 8px}
-  .t-stu{display:block;width:100%;text-align:left;border:2px solid transparent;background:#F3F5FB;border-radius:14px;padding:10px 12px;margin-bottom:8px;cursor:pointer;font:inherit}
-  .t-stu.on{border-color:var(--blue,#3352E0);background:#EEF2FF}
-  .t-stu b{display:flex;align-items:center;gap:8px;font-size:16px}
-  .t-stu small{display:block;color:var(--muted,#5B6785);margin-top:3px}
-  .dot{width:10px;height:10px;border-radius:50%;background:#C3CCE4;flex:none}
-  .dot.live{background:#12A374;box-shadow:0 0 0 4px rgba(18,163,116,.2);animation:tPulse 1.6s infinite}
-  @keyframes tPulse{50%{box-shadow:0 0 0 7px rgba(18,163,116,.08)}}
-  .t-page{display:block;width:100%;text-align:left;border:1px solid var(--border,#DDE3F3);background:#fff;border-radius:12px;padding:8px 10px;margin-bottom:6px;cursor:pointer;font:inherit;font-size:14px}
-  .t-page.on{border-color:var(--blue,#3352E0);box-shadow:0 0 0 2px #DCE3FF}
-  .t-page small{display:block;color:var(--muted,#5B6785)}
-  .t-page .flash{color:#12A374;font-weight:800}
-  .t-view{display:flex;flex-direction:column;min-width:0}
-  .t-tools{display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding:10px 16px;border-bottom:1px solid var(--border,#DDE3F3);background:#fff;font-size:14px}
-  .t-tools label{display:flex;align-items:center;gap:6px;cursor:pointer;font-weight:700}
-  .t-tools .t-title{flex:1;font-weight:800;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .t-view iframe{flex:1;border:0;width:100%;background:#fff}
-  .t-empty{margin:60px auto;color:var(--muted,#5B6785);text-align:center;max-width:420px}
-  @media(max-width:760px){.t-main{grid-template-columns:1fr;height:auto}.t-side{border-right:0}.t-view iframe{height:80vh}}
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/teacher.css">
 </head>
 <body>
 
-<div class="t-top">
-  <h1>👩‍🏫 Live answers</h1>
-  <span class="who" id="who"></span>
-  <button id="out" hidden>Sign out</button>
+<!-- sign-in -->
+<div class="signin" id="signin" hidden>
+  <div class="signin-card">
+    <div class="logo">✦</div>
+    <h1>Teacher desk</h1>
+    <p>Sign in with your Google account to see your students’ work.</p>
+    <button class="btn primary" id="in">Sign in with Google</button>
+    <p class="err" id="err"></p>
+  </div>
 </div>
 
-<div class="t-signin" id="signin" hidden>
-  <h2>Teacher sign-in</h2>
-  <p>Sign in with your Google account to see your students’ answers live.</p>
-  <button class="btn-primary" id="in">Sign in with Google</button>
-  <p class="t-err" id="err"></p>
-</div>
-
-<div class="t-main" id="main" hidden>
-  <aside class="t-side">
-    <h2>Students</h2>
-    <div id="students"></div>
-    <h2 id="pages-h" hidden>Pages</h2>
-    <div id="pages"></div>
-  </aside>
-  <section class="t-view">
-    <div class="t-tools">
-      <span class="t-title" id="title">Choose a student</span>
-      <label><input type="checkbox" id="follow" checked> Follow the student</label>
-      <label><input type="checkbox" id="check" checked> Show right / wrong</label>
+<div class="app" id="app" hidden>
+  <!-- sidebar (collapsible) -->
+  <aside class="side" id="side">
+    <div class="side-top">
+      <button class="brand" data-go="overview" title="Overview"><span class="logo">✦</span><span class="hide-mini">Teacher desk</span></button>
+      <button class="icon-btn collapse" id="collapse" title="Collapse the list">‹</button>
     </div>
-    <div class="t-empty" id="empty">Choose a student on the left. When they open a lesson, it appears here and updates while they work.</div>
-    <iframe id="frame" hidden title="Student page"></iframe>
-  </section>
+    <button class="nav-item" data-go="overview"><span class="ico">⌂</span><span class="hide-mini">All students</span></button>
+    <div class="side-label hide-mini">Students</div>
+    <nav id="students"></nav>
+    <div class="side-foot">
+      <span class="who hide-mini" id="who"></span>
+      <button class="icon-btn" id="out" title="Sign out">⏻</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <!-- overview -->
+    <section class="view" id="v-overview">
+      <header class="head">
+        <div>
+          <p class="eyebrow" id="today"></p>
+          <h1>Your students</h1>
+        </div>
+      </header>
+      <div class="grid-cards" id="overview"></div>
+    </section>
+
+    <!-- one student's dashboard -->
+    <section class="view" id="v-dash" hidden>
+      <header class="head">
+        <div class="head-left">
+          <div class="avatar big" id="d-avatar"></div>
+          <div>
+            <p class="eyebrow" id="d-status"></p>
+            <h1 id="d-name"></h1>
+          </div>
+        </div>
+        <div class="head-actions">
+          <button class="btn" id="d-report">📄 Progress report</button>
+          <button class="btn primary" id="d-live">● Watch live</button>
+        </div>
+      </header>
+      <div class="tiles" id="d-tiles"></div>
+      <div id="d-pages"></div>
+    </section>
+
+    <!-- live view of one page -->
+    <section class="view viewer" id="v-view" hidden>
+      <header class="viewer-bar">
+        <button class="btn ghost" id="v-back">← Dashboard</button>
+        <div class="viewer-title"><span class="avatar small" id="v-avatar"></span><b id="v-title"></b><span class="pill" id="v-live"></span></div>
+        <div class="viewer-tools">
+          <label class="switch"><input type="checkbox" id="follow" checked><span></span>Follow</label>
+          <label class="switch"><input type="checkbox" id="check" checked><span></span>Right / wrong</label>
+          <button class="btn ghost" id="v-latest" title="Scroll to the answer that changed last">✨ Latest answer</button>
+          <button class="btn ghost danger" id="v-reset">↺ Reset page</button>
+        </div>
+      </header>
+      <div class="frames">
+        <iframe class="frame" id="frame-a" title="Student page"></iframe>
+        <iframe class="frame" id="frame-b" title="Student page" hidden></iframe>
+        <div class="frame-empty" id="v-empty">Waiting for the student to open a page…</div>
+      </div>
+    </section>
+
+    <!-- printable progress report (Russian) -->
+    <section class="view" id="v-report" hidden>
+      <header class="head no-print">
+        <div>
+          <p class="eyebrow">Progress report · edit any text, it’s saved automatically</p>
+          <h1 id="r-heading"></h1>
+        </div>
+        <div class="head-actions">
+          <button class="btn" id="r-back">← Dashboard</button>
+          <button class="btn primary" id="r-print">🖨 Print / PDF</button>
+        </div>
+      </header>
+      <article class="report" id="report"></article>
+    </section>
+  </main>
 </div>
 
-<script type="module">
-/* ============================================================
-   Teacher page: shows each student's answers live.
-   Data comes from Firebase (written by assets/sync.js on the
-   students' sites). The lesson page is shown in a frame in
-   "watch" mode, so it looks exactly like the student's screen.
-   ============================================================ */
-const TEACHER = 'nkomlyakova15@gmail.com';
-const STUDENTS = [
-  { id: 'timofey', name: 'Timofey', site: '/Timofey_classes/' },
-  { id: 'polina',  name: 'Polina',  site: '/Polina_classes/' },
-  { id: 'matvey',  name: 'Matvey',  site: '/Matvey_classes/' },
-  { id: 'ksyusha', name: 'Ksyusha', site: '/Ksyusha_classes/' }
-];
-const FIREBASE = {
-  apiKey: 'AIzaSyAHX47UEkMuLtZS4LrxIKiFQtThG4beysQ',
-  authDomain: 'english-classes-37405.firebaseapp.com',
-  databaseURL: 'https://english-classes-37405-default-rtdb.europe-west1.firebasedatabase.app',
-  projectId: 'english-classes-37405',
-  appId: '1:229340805566:web:df26380fbf8de9f152a1ef'
-};
-const SDK = 'https://www.gstatic.com/firebasejs/10.12.2/';
-const { initializeApp } = await import(SDK + 'firebase-app.js');
-const { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } = await import(SDK + 'firebase-auth.js');
-const { getDatabase, ref, onValue } = await import(SDK + 'firebase-database.js');
+<!-- mark / comment dialog -->
+<dialog class="dlg" id="note-dlg">
+  <form method="dialog" class="dlg-body">
+    <h2>Mark this answer</h2>
+    <p class="dlg-answer" id="note-answer"></p>
+    <div class="marks">
+      <label><input type="radio" name="mark" value="right"><span class="mark r">✓ Right</span></label>
+      <label><input type="radio" name="mark" value="wrong"><span class="mark w">✗ Wrong</span></label>
+      <label><input type="radio" name="mark" value=""><span class="mark n">No mark</span></label>
+    </div>
+    <label class="field">Comment for the student <small>(shown under the answer on their page)</small>
+      <textarea id="note-text" rows="3" placeholder="e.g. Check the spelling!"></textarea>
+    </label>
+    <div class="dlg-actions">
+      <button class="btn ghost danger" value="delete" id="note-del">Delete</button>
+      <span class="spacer"></span>
+      <button class="btn ghost" value="cancel">Cancel</button>
+      <button class="btn primary" value="save">Save</button>
+    </div>
+  </form>
+</dialog>
 
-const app = initializeApp(FIREBASE), auth = getAuth(app), db = getDatabase(app);
-const $ = id => document.getElementById(id);
-const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const ago = t => { if (!t) return ''; const s = Math.round((Date.now() - t) / 1000);
-  return s < 10 ? 'just now' : s < 60 ? s + ' s ago' : s < 3600 ? Math.round(s / 60) + ' min ago' : s < 86400 ? Math.round(s / 3600) + ' h ago' : new Date(t).toLocaleDateString(); };
-const filled = json => { try { return Object.values(JSON.parse(json)).filter(v => v !== '' && v !== false && v != null && !(Array.isArray(v) && !v.length)).length; } catch (e) { return 0; } };
+<div class="toast" id="toast"></div>
 
-$('in').onclick = () => signInWithPopup(auth, new GoogleAuthProvider()).catch(e => { $('err').textContent = e.message; });
-$('out').onclick = () => signOut(auth);
-
-let presence = {}, pages = {}, current = null, shownPage = null, unsubPages = null, lastJson = null;
-
-onAuthStateChanged(auth, user => {
-  const ok = user && !user.isAnonymous && user.email && user.email.toLowerCase() === TEACHER;
-  $('signin').hidden = !!ok; $('main').hidden = !ok; $('out').hidden = !user || user.isAnonymous;
-  $('who').textContent = user && !user.isAnonymous ? user.email : '';
-  $('err').textContent = user && !user.isAnonymous && !ok ? 'This Google account is not the teacher account.' : '';
-  if (ok) start();
-});
-
-let started = false;
-function start() {
-  if (started) return; started = true;
-  STUDENTS.forEach(s => onValue(ref(db, `students/${s.id}/presence`), snap => { presence[s.id] = snap.val(); drawStudents(); if (current === s.id) followIfNeeded(); }));
-  drawStudents();
-  setInterval(() => { drawStudents(); drawPages(); }, 15000);   // keep "2 min ago" fresh
-}
-
-function drawStudents() {
-  $('students').innerHTML = STUDENTS.map(s => {
-    const p = presence[s.id], live = p && p.online && Date.now() - p.at < 6 * 3600e3;
-    const where = p ? (live ? 'now: ' : 'last: ') + esc(p.title || p.page) + ' · ' + ago(p.at) : 'not connected yet';
-    return `<button class="t-stu ${current === s.id ? 'on' : ''}" data-id="${s.id}"><b><span class="dot ${live ? 'live' : ''}"></span>${esc(s.name)}</b><small>${where}</small></button>`;
-  }).join('');
-  $('students').querySelectorAll('.t-stu').forEach(b => b.onclick = () => choose(b.dataset.id));
-}
-
-function choose(id) {
-  current = id; shownPage = null; lastJson = null; pages = {};
-  if (unsubPages) unsubPages();
-  unsubPages = onValue(ref(db, `students/${id}/pages`), snap => {
-    const old = pages; pages = snap.val() || {};
-    drawPages(Object.keys(pages).filter(k => !old[k] || old[k].at !== pages[k].at));
-    if (shownPage && pages[shownPage]) refresh();
-    else followIfNeeded();
-  });
-  drawStudents();
-}
-
-function drawPages(changed = []) {
-  $('pages-h').hidden = !current;
-  const list = Object.entries(pages).sort((a, b) => b[1].at - a[1].at);
-  $('pages').innerHTML = list.length ? list.map(([k, p]) =>
-    `<button class="t-page ${k === shownPage ? 'on' : ''}" data-k="${esc(k)}">${esc(p.title || k)}<small>${filled(p.json)} answers · <span class="${changed.includes(k) ? 'flash' : ''}">${ago(p.at)}</span></small></button>`).join('')
-    : (current ? '<p class="t-empty" style="margin:10px 4px">No answers yet.</p>' : '');
-  $('pages').querySelectorAll('.t-page').forEach(b => b.onclick = () => { $('follow').checked = false; show(b.dataset.k); });
-}
-
-function followIfNeeded() {
-  const p = presence[current];
-  if ($('follow').checked && p && p.page && (p.page !== shownPage || p.part !== shownPart)) show(p.page, p.path, p.part);
-}
-
-let shownPart = null;
-function show(page, path, part) {
-  const s = STUDENTS.find(x => x.id === current);
-  path = path || (pages[page] && pages[page].path) || s.site + 'lessons/' + page + '.html';
-  shownPage = page; shownPart = part || null; lastJson = null;
-  storeAnswers();
-  const url = path + '?watch=' + s.id + '&name=' + encodeURIComponent(s.name) + ($('check').checked ? '&check=1' : '') + (part ? '#' + part : '');
-  $('frame').hidden = false; $('empty').hidden = true;
-  $('frame').src = url;
-  $('title').textContent = s.name + ' · ' + ((pages[page] && pages[page].title) || page);
-  drawPages();
-}
-
-function storeAnswers() {
-  const p = pages[shownPage];
-  const json = p ? p.json : '{}';
-  const key = (p && p.key) || 'answers-' + shownPage;   // each site names its saved answers differently
-  sessionStorage.setItem(`watch-${current}-${key}`, json);
-  const changed = json !== lastJson; lastJson = json; return changed;
-}
-
-// new answers on the page that is open → reload the frame, keeping the scroll position
-let reloadTimer = null;
-function refresh() {
-  if (!storeAnswers()) return;
-  clearTimeout(reloadTimer);
-  reloadTimer = setTimeout(() => {
-    const w = $('frame').contentWindow; if (!w) return;
-    const y = w.scrollY;
-    $('frame').onload = () => { $('frame').contentWindow.scrollTo(0, y); $('frame').onload = null; };
-    w.location.reload();
-  }, 300);
-}
-
-$('check').onchange = () => shownPage && show(shownPage, null, shownPart);
-$('follow').onchange = () => followIfNeeded();
-</script>
+<script type="module" src="assets/teacher.js"></script>
 </body>
 </html>

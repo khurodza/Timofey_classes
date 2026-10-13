@@ -511,3 +511,23 @@ reports which page and tab is open.
   every lesson page, and add the student to `STUDENTS` in `teacher.html` and
   to the name list in `firebase-rules.json`.
 - New lesson pages made from the templates already include `sync.js`.
+
+### Teacher desk (teacher.html)
+
+- **All students** (home): who is online, what they work on, "N new" badges.
+- **Dashboard** per student: every lesson / homework page with a progress bar
+  (green = right, yellow = answered but not right), last activity, NEW badge
+  for changes since you last looked, 💬 count, Open and Reset.
+- **Live view:** the page exactly as the student sees it; updates smoothly;
+  the answer that changed last glows orange (✨ *Latest answer* scrolls to
+  it). *Follow* jumps to whatever the student opens.
+- **Mark / comment:** point at any answer → ✎ → ✓ / ✗ / comment. The student
+  sees it under the answer on their own page at once.
+- **Reset:** the whole page (dashboard or live view) or one task (hover a
+  task in the live view → ↺ Reset task). The student's open page updates.
+- **Progress report** (Russian, printable): topics and skills per lesson
+  come from `assets/curriculum.js`; edit any text on the report screen —
+  edits are saved in Firebase. ✕ removes a lesson from the report.
+  When you add a lesson, add its Russian summary to `assets/curriculum.js`.
+- The ‹ button at the top of the sidebar folds the student list away.
+- Code: `teacher.html`, `assets/teacher.css`, `assets/teacher.js`.
