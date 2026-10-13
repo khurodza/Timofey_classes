@@ -39,7 +39,7 @@ body{
   font:18px/1.6 var(--font-body);font-weight:600;
   -webkit-font-smoothing:antialiased;
 }
-.wrap{max-width:1000px;margin:0 auto;padding:0 20px 80px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px 80px}
 h1,h2,h3{font-family:var(--font-head);line-height:1.2;margin:0;font-weight:700}
 h1{font-size:clamp(30px,4.6vw,46px);letter-spacing:-.02em}
 h2{font-size:clamp(21px,3vw,28px);letter-spacing:-.01em}
@@ -1199,3 +1199,34 @@ footer.site-footer{margin-top:46px;padding:18px 0 40px;border-top:1px solid var(
 .spell-q .blank{width:150px;min-width:0}
 @media(max-width:560px){.spell-q{grid-template-columns:auto 1fr}.spell-q .blank{grid-column:2}}
 .sc-head .ipa{font-style:normal}
+
+/* ── Lesson 5 warm-up: "Remember Quiz Show" (reuses the .csr game frame) ── */
+.wu-timer{height:6px;background:rgba(22,33,62,.08)}
+.wu-timer i{display:block;height:100%;width:100%;background:var(--yellow);transition:width .08s linear}
+.wu-timer i.slow{background:var(--border-strong)}
+.wu-rounds{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:560px;margin:0 auto 6px}
+.wu-round-card{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 6px;border:1px solid var(--border);border-radius:14px;background:#fff;box-shadow:var(--shadow-sm)}
+.wu-round-card span{font-size:30px;line-height:1;animation:csrBob 1.6s ease-in-out infinite}
+.wu-round-card:nth-child(2n) span{animation-delay:.4s}
+.wu-in{animation:quizPop .35s}
+.wu-pic{min-height:96px;display:grid;place-items:center;margin-bottom:6px}
+.wu-splat{width:130px;height:104px}
+.wu-emo{font-size:68px;line-height:1.2}
+.wu-emo.wu-time{font-size:44px;font-family:var(--font-head);font-weight:800;color:var(--ink)}
+.wu-letters{font:800 46px/1.2 var(--font-head);letter-spacing:.18em;color:var(--ink)}
+.wu-letters b{color:var(--blue)}
+.wu-prompt{font:700 22px/1.35 var(--font-head);color:var(--ink);margin:4px 0 18px}
+.wu-gap{display:inline-block;min-width:56px;padding:0 8px;border-bottom:3px solid var(--blue);color:var(--blue)}
+.wu-opts{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;max-width:680px;margin:0 auto}
+.wu-opt{display:inline-flex;align-items:center;gap:10px;min-width:120px;justify-content:center;padding:14px 22px;border-radius:14px;border:1px solid var(--border);background:var(--yellow-soft);box-shadow:0 3px 0 rgba(22,33,62,.15);font:800 22px/1 var(--font-head);color:var(--ink);cursor:pointer;transition:transform .12s,opacity .2s}
+.wu-opt:hover{transform:translateY(-3px)}
+.wu-opt i{width:22px;height:22px;border-radius:40% 60% 55% 45%;background:var(--c);border:2px solid rgba(22,33,62,.15)}
+.wu-opts.big .wu-opt{font-size:40px;min-width:96px;padding:14px 18px}
+.wu-listen{width:96px;height:96px;border-radius:50%;border:none;background:var(--blue);color:#fff;font-size:42px;cursor:pointer;box-shadow:0 6px 0 rgba(22,33,62,.2);transition:transform .12s}
+.wu-listen:hover{transform:scale(1.06)}
+.wu-opt.wrong{animation:shake .35s;background:var(--red-soft)}
+.wu-opt.right{background:var(--green-soft);border-color:var(--green);color:var(--green-ink);transform:scale(1.08)}
+.wu-opt.dim{opacity:.35}
+@media(max-width:560px){.wu-rounds{grid-template-columns:repeat(2,1fr)}.wu-opt{min-width:0;padding:12px 16px;font-size:19px}.wu-letters{font-size:36px}.wu-prompt{font-size:19px}}
+.num-tiles.n21{grid-template-columns:repeat(7,1fr)}
+@media(max-width:560px){.num-tiles.n21{grid-template-columns:repeat(3,1fr)}}
