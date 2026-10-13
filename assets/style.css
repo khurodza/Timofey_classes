@@ -1230,3 +1230,38 @@ footer.site-footer{margin-top:46px;padding:18px 0 40px;border-top:1px solid var(
 @media(max-width:560px){.wu-rounds{grid-template-columns:repeat(2,1fr)}.wu-opt{min-width:0;padding:12px 16px;font-size:19px}.wu-letters{font-size:36px}.wu-prompt{font-size:19px}}
 .num-tiles.n21{grid-template-columns:repeat(7,1fr)}
 @media(max-width:560px){.num-tiles.n21{grid-template-columns:repeat(3,1fr)}}
+
+/* picture on the left, task on the right (Lesson 5 homework, plurals) */
+.pic-task{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px;align-items:start;margin-top:12px}
+.pic-task-pic img{display:block;width:100%;max-width:none;height:auto;margin:0;border-radius:14px;position:sticky;top:90px}
+.pic-task-list .gap-line{display:flex;align-items:center;gap:8px;margin:0 0 10px}
+.pic-task-list .pt-n{display:inline-block;min-width:76px}
+.pic-task-list .blank,.pic-task-list .given{flex:1;min-width:0;max-width:220px}
+@media(max-width:700px){.pic-task{grid-template-columns:1fr}.pic-task-pic img{position:static}}
+.pic-task-list .num{min-width:30px}
+
+/* fun crossword (Lesson 5 homework): rounded tiles, words light up, wave + confetti at the end */
+.xw-grid.xw-fun{gap:0;padding:4px}
+.xw-fun .xw-cell{margin:2px;border-radius:10px;background:#fff;box-shadow:0 0 0 2px #C9D2EE,0 3px 0 2px #C9D2EE;transition:background .3s,box-shadow .3s}
+.xw-fun .xw-cell .xw-blank{border-radius:10px;font-size:20px}
+.xw-fun .xw-cell .xw-num{font-size:10px;color:var(--blue);top:2px;left:4px}
+.xw-fun .xw-cell.xw-given{background:#EEF2FB}
+.xw-fun .xw-cell.xw-word{background:var(--wc);box-shadow:0 0 0 2px var(--wc),0 3px 0 2px rgba(22,33,62,.25)}
+.xw-fun .xw-cell.xw-word .xw-blank,.xw-fun .xw-cell.xw-word .xw-letter,.xw-fun .xw-cell.xw-word .xw-num{color:#fff;background:transparent}
+.xw-fun .xw-cell.xw-pop{animation:xwPop .45s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes xwPop{0%{transform:scale(1)}40%{transform:scale(1.28) rotate(-6deg)}100%{transform:scale(1)}}
+.xw-fun.xw-wave .xw-cell{animation:xwWave .7s ease-in-out var(--d) 2 both}
+@keyframes xwWave{0%,100%{transform:translateY(0)}35%{transform:translateY(-12px) rotate(5deg) scale(1.08)}70%{transform:translateY(3px)}}
+.xw-key{display:grid;grid-template-columns:repeat(2,minmax(0,120px));gap:8px;align-content:start}
+.xw-key h4{grid-column:1/-1;margin:0 0 2px;font-family:var(--font-head)}
+.xw-key-item{position:relative;display:flex;align-items:center;gap:6px;padding:4px 8px 4px 4px;border:2px solid var(--border);border-radius:12px;background:#fff;transition:border-color .3s,transform .3s}
+.xw-key-item img{width:52px;height:40px;object-fit:contain}
+.xw-key-item b{font:800 18px/1 var(--font-head);color:var(--ink)}
+.xw-key-arrow{color:var(--muted);font-weight:800}
+.xw-key-item.done{border-color:var(--wc);background:color-mix(in srgb,var(--wc) 12%,#fff)}
+.xw-key-item.done::after{content:"✓";position:absolute;top:-8px;right:-8px;width:22px;height:22px;border-radius:50%;background:var(--wc);color:#fff;font-weight:900;font-size:13px;display:grid;place-items:center;animation:quizPop .4s}
+.xw-party{display:flex;align-items:center;gap:14px;margin-top:16px;padding:14px 18px;border-radius:16px;background:linear-gradient(90deg,#FFF4D6,#E8F7EF);border:2px solid #FFD46B;font-size:17px;animation:quizPop .5s}
+.xw-party-ico{font-size:44px;animation:csrBob 1.4s ease-in-out infinite}
+#ex-hw-xw{position:relative;overflow:hidden}
+@media(max-width:560px){.xw-fun .xw-cell .xw-blank{font-size:16px}}
+.xw-party[hidden]{display:none}

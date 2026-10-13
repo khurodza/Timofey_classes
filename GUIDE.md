@@ -17,7 +17,8 @@ website/
     ├── lesson-02.html          ← Lesson 2: reading & pronunciation (phonics: s a c n o p e)
     ├── lesson-03.html          ← Lesson 3: Starter "Welcome!" vocabulary (months, numbers, dates, colours) + phonics i · t
     ├── lesson-04.html          ← Lesson 4: "Colour Spell Race" warm-up game, a / an, the day + reading i · t
-    ├── lesson-05.html          ← Lesson 5: "Remember Quiz Show" warm-up, s · a (from Lesson 2), Student's Book p. 8–9 (classroom)
+    ├── lesson-05.html          ← Lesson 5: "Remember Quiz Show" warm-up, s · a (from Lesson 2), Student's Book p. 8 (classroom)
+    ├── lesson-06.html          ← Lesson 6: classroom language (Student's Book p. 9)
     ├── images/                 ← Put lesson images here
     ├── audio/                  ← Put lesson audio files here
     │   └── words/               ← One short clip per sound button (see "Sound buttons")

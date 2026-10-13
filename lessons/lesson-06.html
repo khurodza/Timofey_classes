@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 6 – Classroom language</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="back-home" href="../index.html">← All lessons</a>
+    <div class="hero-grid">
+      <div>
+        <h1 class="name-slot" data-with="Lesson 6: Listen, {name}!" data-without="Lesson 6: Listen!">Lesson 6: Listen!</h1>
+        <p>Warm up with short dialogues, then classroom English: what your teacher says and what you can say in class.</p>
+        <div class="hero-badges">
+          <span class="badge">Lesson 6</span>
+          <span class="badge">Warm-up: dialogues</span>
+          <span class="badge">Starter: Welcome!</span>
+          <span class="badge">Student’s Book p. 9</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     PART 1: warm-up, short dialogues revising Lesson 5.
+     PART 2: Student's Book Welcome p. 9, classroom language
+     (tracks W.08–W.09), moved here from Lesson 5.
+══════════════════════════════════════════════════════════ -->
+<nav class="parts">
+  <div class="wrap">
+    <button class="part-tab" data-part="part-warm" onclick="showPart('part-warm')">Warm-up</button>
+    <button class="part-tab" data-part="part-cl" onclick="showPart('part-cl')">Classroom language</button>
+  </div>
+</nav>
+
+<div class="lesson-part" id="part-warm">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#wm1">1 · What’s this?</a>
+    <a href="#wm2">2 · How many?</a>
+    <a href="#wm3">3 · Phone number</a>
+    <a href="#wm4">4 · Your turn</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="wm1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Warm-up · Lesson 5</div>
+        <h2>What’s this in English?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-wm-obj">
+      <div class="exercise-label">Exercise 1 · Short dialogues</div>
+      <h3>Look at the photo. Complete B’s answer. Then read the dialogue aloud with your teacher.</h3>
+      <p class="ru-hint" lang="ru">Допиши ответ B, потом прочитайте диалог вслух: ты — A, учитель — B, потом наоборот.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>A: What’s this in English? B: It’s a <b>door</b>.</span></div>
+      <div class="pic-grid photo wide">
+        <div class="pic-item"><span class="pic-letter">1</span><img src="images/classroom/obj-board.jpg" alt="classroom object 1">
+          <div class="dialogue" style="width:100%;text-align:left">
+            <span class="dl-name">A</span><p class="dl-text">What’s this in English?</p>
+            <span class="dl-name two">B</span><p class="dl-text ask">It’s a <input class="blank" id="wm-o1" data-answer="board" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px;min-width:0">.</p>
+          </div></div>
+        <div class="pic-item"><span class="pic-letter">2</span><img src="images/classroom/obj-computer.jpg" alt="classroom object 2">
+          <div class="dialogue" style="width:100%;text-align:left">
+            <span class="dl-name">A</span><p class="dl-text">What’s this in English?</p>
+            <span class="dl-name two">B</span><p class="dl-text ask">It’s a <input class="blank" id="wm-o2" data-answer="computer" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px;min-width:0">.</p>
+          </div></div>
+        <div class="pic-item"><span class="pic-letter">3</span><img src="images/classroom/obj-window.jpg" alt="classroom object 3">
+          <div class="dialogue" style="width:100%;text-align:left">
+            <span class="dl-name">A</span><p class="dl-text">What’s this in English?</p>
+            <span class="dl-name two">B</span><p class="dl-text ask">It’s a <input class="blank" id="wm-o3" data-answer="window" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px;min-width:0">.</p>
+          </div></div>
+        <div class="pic-item"><span class="pic-letter">4</span><img src="images/classroom/obj-chair.jpg" alt="classroom object 4">
+          <div class="dialogue" style="width:100%;text-align:left">
+            <span class="dl-name">A</span><p class="dl-text">What’s this in English?</p>
+            <span class="dl-name two">B</span><p class="dl-text ask">It’s a <input class="blank" id="wm-o4" data-answer="chair" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px;min-width:0">.</p>
+          </div></div>
+        <div class="pic-item"><span class="pic-letter">5</span><img src="images/classroom/obj-projector.jpg" alt="classroom object 5">
+          <div class="dialogue" style="width:100%;text-align:left">
+            <span class="dl-name">A</span><p class="dl-text">What’s this in English?</p>
+            <span class="dl-name two">B</span><p class="dl-text ask">It’s a <input class="blank" id="wm-o5" data-answer="projector" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px;min-width:0">.</p>
+          </div></div>
+        <div class="pic-item"><span class="pic-letter">6</span><img src="images/classroom/obj-pencil.jpg" alt="classroom object 6">
+          <div class="dialogue" style="width:100%;text-align:left">
+            <span class="dl-name">A</span><p class="dl-text">What’s this in English?</p>
+            <span class="dl-name two">B</span><p class="dl-text ask">It’s a <input class="blank" id="wm-o6" data-answer="pencil" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px;min-width:0">.</p>
+          </div></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-wm-obj')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-wm-obj')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="wm2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Warm-up · Lesson 5</div>
+        <h2>How many?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-wm-pl">
+      <div class="exercise-label">Exercise 2 · Short dialogues</div>
+      <h3>Count. Write the number in words. Then ask and answer with your teacher.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>A: How many desks? B: <b>Two</b> desks.</span></div>
+      <div class="pic-grid photo wide">
+        <div class="pic-item"><span class="pic-letter">1</span><img src="images/classroom/pl-books.jpg" alt="books">
+          <div class="dialogue" style="width:100%;text-align:left">
+            <span class="dl-name">A</span><p class="dl-text">How many books?</p>
+            <span class="dl-name two">B</span><p class="dl-text ask"><input class="blank" id="wm-p1" data-answer="eight" placeholder="number" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:100px;min-width:0"> books.</p>
+          </div></div>
+        <div class="pic-item"><span class="pic-letter">2</span><img src="images/classroom/pl-sandwiches.jpg" alt="sandwiches">
+          <div class="dialogue" style="width:100%;text-align:left">
+            <span class="dl-name">A</span><p class="dl-text">How many sandwiches?</p>
+            <span class="dl-name two">B</span><p class="dl-text ask"><input class="blank" id="wm-p2" data-answer="three" placeholder="number" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:100px;min-width:0"> sandwiches.</p>
+          </div></div>
+        <div class="pic-item"><span class="pic-letter">3</span><img src="images/classroom/pl-phones.jpg" alt="phones">
+          <div class="dialogue" style="width:100%;text-align:left">
+            <span class="dl-name">A</span><p class="dl-text">How many phones?</p>
+            <span class="dl-name two">B</span><p class="dl-text ask"><input class="blank" id="wm-p3" data-answer="four" placeholder="number" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:100px;min-width:0"> phones.</p>
+          </div></div>
+        <div class="pic-item"><span class="pic-letter">4</span><img src="images/classroom/pl-pens.jpg" alt="pens">
+          <div class="dialogue" style="width:100%;text-align:left">
+            <span class="dl-name">A</span><p class="dl-text">How many pens?</p>
+            <span class="dl-name two">B</span><p class="dl-text ask"><input class="blank" id="wm-p4" data-answer="six" placeholder="number" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:100px;min-width:0"> pens.</p>
+          </div></div>
+        <div class="pic-item"><span class="pic-letter">5</span><img src="images/classroom/pl-tshirts.jpg" alt="T-shirts">
+          <div class="dialogue" style="width:100%;text-align:left">
+            <span class="dl-name">A</span><p class="dl-text">How many T-shirts?</p>
+            <span class="dl-name two">B</span><p class="dl-text ask"><input class="blank" id="wm-p5" data-answer="five" placeholder="number" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:100px;min-width:0"> <span style="white-space:nowrap">T-shirts.</span></p>
+          </div></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-wm-pl')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-wm-pl')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="wm3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Warm-up · Lesson 5</div>
+        <h2>What’s your phone number?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-wm-dlg">
+      <div class="exercise-label">Exercise 3 · Put the dialogue in order</div>
+      <h3>Number the lines 1–6. Then read the dialogue with your teacher.</h3>
+      <p class="ru-hint" lang="ru">Расставь реплики по порядку (1–6). Первая — с приветствия.</p>
+      <div class="sort-row"><input class="blank num" id="wm-d1" data-answer="3" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" style="width:56px;min-width:56px"> <span>Sorry? 672 …?</span></div>
+      <div class="sort-row"><input class="blank num" id="wm-d2" data-answer="5" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" style="width:56px;min-width:56px"> <span>Thanks, Jamie! Bye!</span></div>
+      <div class="sort-row"><input class="blank num" id="wm-d3" data-answer="1" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" style="width:56px;min-width:56px"> <span>Hi, Jamie! What’s your phone number?</span></div>
+      <div class="sort-row"><input class="blank num" id="wm-d4" data-answer="6" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" style="width:56px;min-width:56px"> <span>Bye!</span></div>
+      <div class="sort-row"><input class="blank num" id="wm-d5" data-answer="4" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" style="width:56px;min-width:56px"> <span>8076.</span></div>
+      <div class="sort-row"><input class="blank num" id="wm-d6" data-answer="2" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" style="width:56px;min-width:56px"> <span>It’s 672 8076.</span></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-wm-dlg')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-wm-dlg')">Try again</button>
+      </div>
+      <div class="tip"><span class="tip-title">Phone numbers</span>Say every number one by one: <span class="key">six – seven – two</span>. <b>0</b> is often “oh”.</div>
+    </div>
+  </section>
+
+  <section class="step" id="wm4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Speaking</div>
+        <h2>Your turn</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Exercise 4 · Role-play</div>
+      <h3>Make short dialogues with your teacher. Use the cards.</h3>
+      <p class="ru-hint" lang="ru">Разыграйте мини-диалоги с учителем: сначала спрашиваешь ты, потом учитель.</p>
+      <div class="dialogue">
+        <span class="dl-name">1</span><p class="dl-text">Point to something in your room. — <i>What’s this in English?</i> — <i>It’s a / an …</i></p>
+        <span class="dl-name">2</span><p class="dl-text">Count things on your desk. — <i>How many pens?</i> — <i>… pens.</i></p>
+        <span class="dl-name">3</span><p class="dl-text">Make up a phone number. — <i>What’s your phone number?</i> — <i>It’s …</i></p>
+        <span class="dl-name">4</span><p class="dl-text">— <i>What colour is your bag?</i> — <i>It’s …</i> — <i>How do you spell it?</i> — <i>B – L – …</i></p>
+      </div>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-cl');window.scrollTo(0,0)">Next: Classroom language →</button>
+  </div>
+
+</div>
+</div>
+
+<div class="lesson-part" id="part-cl">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#m1">1 · Classroom language</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="m1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Classroom language · Student’s Book p. 9</div>
+        <h2>Classroom language</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-k-cl">
+      <div class="exercise-label">Exercise 12 · W.08</div>
+      <h3>Listen and number the phrases in the order you hear them. Write 1–10 in the boxes.</h3>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-06-w08.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div class="pic-grid photo wide">
+        <div class="pic-item"><span class="pic-letter">a</span><img src="images/classroom/cl-a.jpg" alt="Hands open a book"><span>Open your books.</span><input class="blank num" id="k-cl-a" data-answer="5" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" aria-label="Open your books"></div>
+        <div class="pic-item"><span class="pic-letter">b</span><img src="images/classroom/cl-b.jpg" alt="A girl puts her hand to her ear"><span>Listen!</span><input class="blank num" id="k-cl-b" data-answer="3" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" aria-label="Listen"></div>
+        <div class="pic-item"><span class="pic-letter">c</span><img src="images/classroom/cl-c.jpg" alt="A hand goes up"><span>Put your hand up.</span><input class="blank num" id="k-cl-c" data-answer="4" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" aria-label="Put your hand up"></div>
+        <div class="pic-item"><span class="pic-letter">d</span><img src="images/classroom/cl-d.jpg" alt="A teacher shows a picture in a book"><span>Look at the picture.</span><input class="blank num" id="k-cl-d" data-answer="7" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" aria-label="Look at the picture"></div>
+        <div class="pic-item"><span class="pic-letter">e</span><img src="images/classroom/cl-e.jpg" alt="A girl points to a question mark in her book"><span>What does this mean?</span><input class="blank num" id="k-cl-e" data-answer="9" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" aria-label="What does this mean"></div>
+        <div class="pic-item"><span class="pic-letter">f</span><img src="images/classroom/cl-f.jpg" alt="A boy shrugs, confused"><span>Sorry, I don’t understand.</span><input class="blank num" id="k-cl-f" data-answer="10" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" aria-label="Sorry, I don't understand"></div>
+        <div class="pic-item"><span class="pic-letter">g</span><img src="images/classroom/cl-g.jpg" alt="A green tick"><span>That’s right.</span><input class="blank num" id="k-cl-g" data-answer="2" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" aria-label="That's right"></div>
+        <div class="pic-item"><span class="pic-letter">h</span><img src="images/classroom/cl-h.jpg" alt="A red cross"><span>That’s wrong.</span><input class="blank num" id="k-cl-h" data-answer="8" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" aria-label="That's wrong"></div>
+        <div class="pic-item"><span class="pic-letter">i</span><img src="images/classroom/cl-i.jpg" alt="A hand closes a book"><span>Close your books.</span><input class="blank num" id="k-cl-i" data-answer="1" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" aria-label="Close your books"></div>
+        <div class="pic-item"><span class="pic-letter">j</span><img src="images/classroom/cl-j.jpg" alt="A boy and a girl work together"><span>Work with a partner.</span><input class="blank num" id="k-cl-j" data-answer="6" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" aria-label="Work with a partner"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-k-cl')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-k-cl')">Try again</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Exercise 13 · W.09</div>
+      <h3>Listen again and repeat.</h3>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-06-w09.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <p>Or tap one phrase at a time:</p>
+      <div class="word-row">
+        <button class="say sentence" data-say="Open your books.">Open your books.</button>
+        <button class="say sentence" data-say="Listen!">Listen!</button>
+        <button class="say sentence" data-say="Put your hand up.">Put your hand up.</button>
+        <button class="say sentence" data-say="Look at the picture.">Look at the picture.</button>
+        <button class="say sentence" data-say="What does this mean?">What does this mean?</button>
+        <button class="say sentence" data-say="Sorry, I don’t understand." data-file="sorry-i-dont-understand">Sorry, I don’t understand.</button>
+        <button class="say sentence" data-say="That’s right." data-file="thats-right">That’s right.</button>
+        <button class="say sentence" data-say="That’s wrong." data-file="thats-wrong">That’s wrong.</button>
+        <button class="say sentence" data-say="Close your books.">Close your books.</button>
+        <button class="say sentence" data-say="Work with a partner.">Work with a partner.</button>
+      </div>
+      <div class="tip class-note"><span class="tip-title">In class: Teacher says…</span>Your teacher says a phrase — you do it! Then you are the teacher. When you don’t understand, say: <span class="key">Sorry, I don’t understand.</span></div>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<script src="../assets/lessons.js"></script>
+<script src="../assets/matching.js"></script>
+<script src="../assets/name.js"></script>
+<script src="../assets/dictionary.js"></script>
+</body>
+</html>

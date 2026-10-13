@@ -14,12 +14,13 @@
     <div class="hero-grid">
       <div>
         <h1 class="name-slot" data-with="Lesson 5: Let’s go, {name}!" data-without="Lesson 5: Let’s go!">Lesson 5: Let’s go!</h1>
-        <p>A quiz show on everything we know, then the classroom: objects, numbers 0–20, plurals and classroom English. Last: the sounds <b>s</b> and <b>a</b>.</p>
+        <p>A quiz show on everything we know, then the classroom: objects, numbers 0–20 and plurals. Last: the sounds <b>s</b> and <b>a</b>.</p>
         <div class="hero-badges">
           <span class="badge">Lesson 5</span>
           <span class="badge">Starter: Welcome!</span>
           <span class="badge">Reading: s · a</span>
-          <span class="badge">Student’s Book p. 8–9</span>
+          <span class="badge">Student’s Book p. 8</span>
+          <span class="badge">Homework</span>
         </div>
       </div>
     </div>
@@ -29,7 +30,7 @@
 <!-- ══════════════════════════════════════════════════════════
      PART 1: warm-up quiz show (revises Lessons 3–4: colours,
      a / an, parts of the day, alphabet).
-     PART 2: Student's Book Welcome p. 8–9 (tracks W.05–W.09).
+     PART 2: Student's Book Welcome p. 8 (tracks W.05–W.07); p. 9 is in Lesson 6.
      PART 3: "s · a" copied from Lesson 2 ("Read it right") + Итог.
 ══════════════════════════════════════════════════════════ -->
 <nav class="parts">
@@ -37,6 +38,7 @@
     <button class="part-tab" data-part="part-warm" onclick="showPart('part-warm')">Warm-up</button>
     <button class="part-tab" data-part="part-class" onclick="showPart('part-class')">The classroom</button>
     <button class="part-tab" data-part="part-sa" onclick="showPart('part-sa')">Read it right: s · a</button>
+    <button class="part-tab hw" data-part="part-homework" onclick="showPart('part-homework')">Homework</button>
   </div>
 </nav>
 
@@ -155,7 +157,6 @@
     <a href="#k1">1 · Classroom objects</a>
     <a href="#k2">2 · Numbers 0–20</a>
     <a href="#k3">3 · Plural nouns</a>
-    <a href="#k4">4 · Classroom language</a>
   </div>
 </nav>
 
@@ -366,67 +367,6 @@
     </div>
   </section>
 
-  <section class="step" id="k4">
-    <div class="step-head">
-      <div class="step-num">4</div>
-      <div>
-        <div class="step-meta">Classroom language · Student’s Book p. 9</div>
-        <h2>Classroom language</h2>
-      </div>
-    </div>
-    <div class="card" id="ex-k-cl">
-      <div class="exercise-label">Exercise 12 · W.08</div>
-      <h3>Listen and number the phrases in the order you hear them. Write 1–10 in the boxes.</h3>
-      <div class="audio-wrap">
-        <audio controls preload="metadata">
-          <source src="audio/lesson-05-w08.m4a" type="audio/mp4">
-          Your browser does not support audio.
-        </audio>
-      </div>
-      <div class="pic-grid photo wide">
-        <div class="pic-item"><span class="pic-letter">a</span><img src="images/classroom/cl-a.jpg" alt="Hands open a book"><span>Open your books.</span><input class="blank num" id="k-cl-a" data-answer="5" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" aria-label="Open your books"></div>
-        <div class="pic-item"><span class="pic-letter">b</span><img src="images/classroom/cl-b.jpg" alt="A girl puts her hand to her ear"><span>Listen!</span><input class="blank num" id="k-cl-b" data-answer="3" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" aria-label="Listen"></div>
-        <div class="pic-item"><span class="pic-letter">c</span><img src="images/classroom/cl-c.jpg" alt="A hand goes up"><span>Put your hand up.</span><input class="blank num" id="k-cl-c" data-answer="4" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" aria-label="Put your hand up"></div>
-        <div class="pic-item"><span class="pic-letter">d</span><img src="images/classroom/cl-d.jpg" alt="A teacher shows a picture in a book"><span>Look at the picture.</span><input class="blank num" id="k-cl-d" data-answer="7" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" aria-label="Look at the picture"></div>
-        <div class="pic-item"><span class="pic-letter">e</span><img src="images/classroom/cl-e.jpg" alt="A girl points to a question mark in her book"><span>What does this mean?</span><input class="blank num" id="k-cl-e" data-answer="9" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" aria-label="What does this mean"></div>
-        <div class="pic-item"><span class="pic-letter">f</span><img src="images/classroom/cl-f.jpg" alt="A boy shrugs, confused"><span>Sorry, I don’t understand.</span><input class="blank num" id="k-cl-f" data-answer="10" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" aria-label="Sorry, I don't understand"></div>
-        <div class="pic-item"><span class="pic-letter">g</span><img src="images/classroom/cl-g.jpg" alt="A green tick"><span>That’s right.</span><input class="blank num" id="k-cl-g" data-answer="2" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" aria-label="That's right"></div>
-        <div class="pic-item"><span class="pic-letter">h</span><img src="images/classroom/cl-h.jpg" alt="A red cross"><span>That’s wrong.</span><input class="blank num" id="k-cl-h" data-answer="8" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" aria-label="That's wrong"></div>
-        <div class="pic-item"><span class="pic-letter">i</span><img src="images/classroom/cl-i.jpg" alt="A hand closes a book"><span>Close your books.</span><input class="blank num" id="k-cl-i" data-answer="1" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" aria-label="Close your books"></div>
-        <div class="pic-item"><span class="pic-letter">j</span><img src="images/classroom/cl-j.jpg" alt="A boy and a girl work together"><span>Work with a partner.</span><input class="blank num" id="k-cl-j" data-answer="6" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" aria-label="Work with a partner"></div>
-      </div>
-      <div class="btn-row">
-        <button class="btn-primary" onclick="checkBlanks('ex-k-cl')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetBlanks('ex-k-cl')">Try again</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="exercise-label">Exercise 13 · W.09</div>
-      <h3>Listen again and repeat.</h3>
-      <div class="audio-wrap">
-        <audio controls preload="metadata">
-          <source src="audio/lesson-05-w09.m4a" type="audio/mp4">
-          Your browser does not support audio.
-        </audio>
-      </div>
-      <p>Or tap one phrase at a time:</p>
-      <div class="word-row">
-        <button class="say sentence" data-say="Open your books.">Open your books.</button>
-        <button class="say sentence" data-say="Listen!">Listen!</button>
-        <button class="say sentence" data-say="Put your hand up.">Put your hand up.</button>
-        <button class="say sentence" data-say="Look at the picture.">Look at the picture.</button>
-        <button class="say sentence" data-say="What does this mean?">What does this mean?</button>
-        <button class="say sentence" data-say="Sorry, I don’t understand." data-file="sorry-i-dont-understand">Sorry, I don’t understand.</button>
-        <button class="say sentence" data-say="That’s right." data-file="thats-right">That’s right.</button>
-        <button class="say sentence" data-say="That’s wrong." data-file="thats-wrong">That’s wrong.</button>
-        <button class="say sentence" data-say="Close your books.">Close your books.</button>
-        <button class="say sentence" data-say="Work with a partner.">Work with a partner.</button>
-      </div>
-      <div class="tip class-note"><span class="tip-title">In class: Teacher says…</span>Your teacher says a phrase — you do it! Then you are the teacher. When you don’t understand, say: <span class="key">Sorry, I don’t understand.</span></div>
-      <div class="rec"></div>
-    </div>
-  </section>
 
   <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
     <button class="btn-accent" onclick="showPart('part-sa');window.scrollTo(0,0)">Next: Read it right s · a →</button>
@@ -444,10 +384,6 @@
   <div class="wrap">
     <a href="#c1">1 · Meet</a>
     <a href="#c2">2 · Hear</a>
-    <a href="#c3">3 · Hunt</a>
-    <a href="#c4">4 · Build</a>
-    <a href="#c5">5 · Read</a>
-    <a href="#k5">6 · Итог</a>
   </div>
 </nav>
 
@@ -554,16 +490,234 @@
     </div>
   </section>
 
-  <section class="step" id="c3">
+
+
+
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-homework');window.scrollTo(0,0)">Go to homework →</button>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     HOMEWORK: Workbook p. 7–8 (classroom objects, numbers 0–20,
+     plural nouns) + s · a practice and Итог moved from the s · a tab
+══════════════════════════════════════════════════════════ -->
+<div class="lesson-part" id="part-homework">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#h1">1 · Classroom objects</a>
+    <a href="#h2">2 · Numbers</a>
+    <a href="#h3">3 · Plurals</a>
+    <a href="#c3">4 · s or z?</a>
+    <a href="#c4">5 · Build words</a>
+    <a href="#c5">6 · Read</a>
+    <a href="#k5">7 · Итог</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="h1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Homework · Task 1 · Workbook p. 7</div>
+        <h2>Classroom objects</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-hw-obj">
+      <div class="exercise-label hw">Workbook p. 7 · Exercise 1</div>
+      <h3>Look at the pictures. Write the word under each picture.</h3>
+      <p class="ru-hint" lang="ru">Напиши слово целиком под каждой картинкой. Слова — в списке.</p>
+      <div class="word-bank-ref"><span>book</span> <span>chair</span> <span>computer</span> <span class="crossed">desk</span> <span>door</span> <span>pen</span> <span>pencil</span> <span>projector</span> <span>board</span> <span>window</span></div>
+      <div class="pic-grid photo">
+        <div class="pic-item"><span class="pic-letter">A</span><img src="images/classroom/wb-a.jpg" alt="a desk"><span class="given">desk</span></div>
+        <div class="pic-item"><span class="pic-letter">B</span><img src="images/classroom/wb-b.jpg" alt="classroom object B"><input class="blank" id="hw-ob" data-answer="window" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">C</span><img src="images/classroom/wb-c.jpg" alt="classroom object C"><input class="blank" id="hw-oc" data-answer="board" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">D</span><img src="images/classroom/wb-d.jpg" alt="classroom object D"><input class="blank" id="hw-od" data-answer="door" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">E</span><img src="images/classroom/wb-e.jpg" alt="classroom object E"><input class="blank" id="hw-oe" data-answer="computer" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">F</span><img src="images/classroom/wb-f.jpg" alt="classroom object F"><input class="blank" id="hw-of" data-answer="chair" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">G</span><img src="images/classroom/wb-g.jpg" alt="classroom object G"><input class="blank" id="hw-og" data-answer="pen" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">H</span><img src="images/classroom/wb-h.jpg" alt="classroom object H"><input class="blank" id="hw-oh" data-answer="pencil" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">I</span><img src="images/classroom/wb-i.jpg" alt="classroom object I"><input class="blank" id="hw-oi" data-answer="projector" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">J</span><img src="images/classroom/wb-j.jpg" alt="classroom object J"><input class="blank" id="hw-oj" data-answer="book" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-hw-obj')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw-obj')">Try again</button>
+      </div>
+    </div>
+
+    <div class="card" id="ex-hw-xw">
+      <div class="exercise-label hw">Workbook p. 7 · Exercise 2</div>
+      <h3>Use the letters from Exercise 1 to complete the crossword.</h3>
+      <p class="ru-hint" lang="ru">Буква в клетке — это картинка из упражнения 1 (A — парта, B — …). → пишем слева направо, ↓ — сверху вниз.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>J ↓ = <b>book</b></span></div>
+      <div class="xw-wrap">
+        <div class="crossword-scroll">
+          <div class="xw-grid xw-sparse xw-fun" id="xw-fun" style="grid-template-columns:repeat(10,44px);grid-template-rows:repeat(11,44px)">
+            <div class="xw-cell" style="grid-column:7;grid-row:1"><span class="xw-num">E↓</span><input type="text" class="xw-blank" maxlength="1" id="xw-c6-r0" data-answer="C" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:3;grid-row:2"><span class="xw-num">B↓</span><input type="text" class="xw-blank" maxlength="1" id="xw-c2-r1" data-answer="W" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:7;grid-row:2"><input type="text" class="xw-blank" maxlength="1" id="xw-c6-r1" data-answer="O" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:9;grid-row:2"><span class="xw-num">F↓</span><input type="text" class="xw-blank" maxlength="1" id="xw-c8-r1" data-answer="C" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:3;grid-row:3"><input type="text" class="xw-blank" maxlength="1" id="xw-c2-r2" data-answer="I" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:7;grid-row:3"><input type="text" class="xw-blank" maxlength="1" id="xw-c6-r2" data-answer="M" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:9;grid-row:3"><input type="text" class="xw-blank" maxlength="1" id="xw-c8-r2" data-answer="H" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:1;grid-row:4"><span class="xw-num">G→</span><input type="text" class="xw-blank" maxlength="1" id="xw-c0-r3" data-answer="P" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:2;grid-row:4"><input type="text" class="xw-blank" maxlength="1" id="xw-c1-r3" data-answer="E" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:3;grid-row:4"><input type="text" class="xw-blank" maxlength="1" id="xw-c2-r3" data-answer="N" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:7;grid-row:4"><input type="text" class="xw-blank" maxlength="1" id="xw-c6-r3" data-answer="P" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:9;grid-row:4"><input type="text" class="xw-blank" maxlength="1" id="xw-c8-r3" data-answer="A" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:3;grid-row:5"><input type="text" class="xw-blank" maxlength="1" id="xw-c2-r4" data-answer="D" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:7;grid-row:5"><input type="text" class="xw-blank" maxlength="1" id="xw-c6-r4" data-answer="U" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:9;grid-row:5"><input type="text" class="xw-blank" maxlength="1" id="xw-c8-r4" data-answer="I" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:1;grid-row:6"><span class="xw-num">H↓ I→</span><input type="text" class="xw-blank" maxlength="1" id="xw-c0-r5" data-answer="P" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:2;grid-row:6"><input type="text" class="xw-blank" maxlength="1" id="xw-c1-r5" data-answer="R" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:3;grid-row:6"><input type="text" class="xw-blank" maxlength="1" id="xw-c2-r5" data-answer="O" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:4;grid-row:6"><input type="text" class="xw-blank" maxlength="1" id="xw-c3-r5" data-answer="J" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:5;grid-row:6"><input type="text" class="xw-blank" maxlength="1" id="xw-c4-r5" data-answer="E" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:6;grid-row:6"><input type="text" class="xw-blank" maxlength="1" id="xw-c5-r5" data-answer="C" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:7;grid-row:6"><input type="text" class="xw-blank" maxlength="1" id="xw-c6-r5" data-answer="T" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:8;grid-row:6"><input type="text" class="xw-blank" maxlength="1" id="xw-c7-r5" data-answer="O" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:9;grid-row:6"><input type="text" class="xw-blank" maxlength="1" id="xw-c8-r5" data-answer="R" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:1;grid-row:7"><input type="text" class="xw-blank" maxlength="1" id="xw-c0-r6" data-answer="E" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:3;grid-row:7"><input type="text" class="xw-blank" maxlength="1" id="xw-c2-r6" data-answer="W" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:7;grid-row:7"><input type="text" class="xw-blank" maxlength="1" id="xw-c6-r6" data-answer="E" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:1;grid-row:8"><input type="text" class="xw-blank" maxlength="1" id="xw-c0-r7" data-answer="N" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell xw-given" style="grid-column:4;grid-row:8"><span class="xw-num">C→ J↓</span><span class="xw-letter">B</span></div>
+            <div class="xw-cell" style="grid-column:5;grid-row:8"><input type="text" class="xw-blank" maxlength="1" id="xw-c4-r7" data-answer="O" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:6;grid-row:8"><input type="text" class="xw-blank" maxlength="1" id="xw-c5-r7" data-answer="A" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:7;grid-row:8"><input type="text" class="xw-blank" maxlength="1" id="xw-c6-r7" data-answer="R" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:8;grid-row:8"><span class="xw-num">A↓</span><input type="text" class="xw-blank" maxlength="1" id="xw-c7-r7" data-answer="D" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:1;grid-row:9"><input type="text" class="xw-blank" maxlength="1" id="xw-c0-r8" data-answer="C" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell xw-given" style="grid-column:4;grid-row:9"><span class="xw-letter">O</span></div>
+            <div class="xw-cell" style="grid-column:8;grid-row:9"><input type="text" class="xw-blank" maxlength="1" id="xw-c7-r8" data-answer="E" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:1;grid-row:10"><input type="text" class="xw-blank" maxlength="1" id="xw-c0-r9" data-answer="I" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:3;grid-row:10"><span class="xw-num">D→</span><input type="text" class="xw-blank" maxlength="1" id="xw-c2-r9" data-answer="D" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell xw-given" style="grid-column:4;grid-row:10"><span class="xw-letter">O</span></div>
+            <div class="xw-cell" style="grid-column:5;grid-row:10"><input type="text" class="xw-blank" maxlength="1" id="xw-c4-r9" data-answer="O" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:6;grid-row:10"><input type="text" class="xw-blank" maxlength="1" id="xw-c5-r9" data-answer="R" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:8;grid-row:10"><input type="text" class="xw-blank" maxlength="1" id="xw-c7-r9" data-answer="S" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell" style="grid-column:1;grid-row:11"><input type="text" class="xw-blank" maxlength="1" id="xw-c0-r10" data-answer="L" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+            <div class="xw-cell xw-given" style="grid-column:4;grid-row:11"><span class="xw-letter">K</span></div>
+            <div class="xw-cell" style="grid-column:8;grid-row:11"><input type="text" class="xw-blank" maxlength="1" id="xw-c7-r10" data-answer="K" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+          </div>
+        </div>
+        <div class="xw-key" aria-label="Picture key">
+          <h4>Picture key</h4>
+          <div class="xw-key-item" data-w="desk" data-at="7,7,d,4"><img src="images/classroom/wb-a.jpg" alt=""><b>A</b><span class="xw-key-arrow">↓</span></div>
+          <div class="xw-key-item" data-w="window" data-at="2,1,d,6"><img src="images/classroom/wb-b.jpg" alt=""><b>B</b><span class="xw-key-arrow">↓</span></div>
+          <div class="xw-key-item" data-w="board" data-at="3,7,a,5"><img src="images/classroom/wb-c.jpg" alt=""><b>C</b><span class="xw-key-arrow">→</span></div>
+          <div class="xw-key-item" data-w="door" data-at="2,9,a,4"><img src="images/classroom/wb-d.jpg" alt=""><b>D</b><span class="xw-key-arrow">→</span></div>
+          <div class="xw-key-item" data-w="computer" data-at="6,0,d,8"><img src="images/classroom/wb-e.jpg" alt=""><b>E</b><span class="xw-key-arrow">↓</span></div>
+          <div class="xw-key-item" data-w="chair" data-at="8,1,d,5"><img src="images/classroom/wb-f.jpg" alt=""><b>F</b><span class="xw-key-arrow">↓</span></div>
+          <div class="xw-key-item" data-w="pen" data-at="0,3,a,3"><img src="images/classroom/wb-g.jpg" alt=""><b>G</b><span class="xw-key-arrow">→</span></div>
+          <div class="xw-key-item" data-w="pencil" data-at="0,5,d,6"><img src="images/classroom/wb-h.jpg" alt=""><b>H</b><span class="xw-key-arrow">↓</span></div>
+          <div class="xw-key-item" data-w="projector" data-at="0,5,a,9"><img src="images/classroom/wb-i.jpg" alt=""><b>I</b><span class="xw-key-arrow">→</span></div>
+          <div class="xw-key-item" data-w="book" data-at="3,7,d,4"><img src="images/classroom/wb-j.jpg" alt=""><b>J</b><span class="xw-key-arrow">↓</span></div>
+        </div>
+      </div>
+      <div class="xw-party" id="xw-party" hidden><span class="xw-party-ico">🏆</span><div><b>Crossword complete!</b><br>All 10 words are right. Super!</div></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-hw-xw','xw-blank')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw-xw','xw-blank')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="h2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Homework · Task 2 · Workbook p. 8</div>
+        <h2>Numbers 0–20</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-hw-num">
+      <div class="exercise-label hw">Workbook p. 8 · Exercise 3</div>
+      <h3>Write the numbers.</h3>
+      <div class="two-col">
+        <p class="gap-line"><span class="num">0.</span> four → <span class="given">4</span></p>
+        <p class="gap-line"><span class="num">1.</span> eight → <input class="blank num" id="hw-n1" data-answer="8" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">2.</span> twenty → <input class="blank num" id="hw-n2" data-answer="20" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">3.</span> five → <input class="blank num" id="hw-n3" data-answer="5" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">4.</span> twelve → <input class="blank num" id="hw-n4" data-answer="12" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">5.</span> six → <input class="blank num" id="hw-n5" data-answer="6" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">6.</span> eleven → <input class="blank num" id="hw-n6" data-answer="11" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">7.</span> one → <input class="blank num" id="hw-n7" data-answer="1" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">8.</span> fifteen → <input class="blank num" id="hw-n8" data-answer="15" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">9.</span> nineteen → <input class="blank num" id="hw-n9" data-answer="19" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">10.</span> zero → <input class="blank num" id="hw-n10" data-answer="0" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">11.</span> seven → <input class="blank num" id="hw-n11" data-answer="7" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">12.</span> sixteen → <input class="blank num" id="hw-n12" data-answer="16" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">13.</span> eighteen → <input class="blank num" id="hw-n13" data-answer="18" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">14.</span> ten → <input class="blank num" id="hw-n14" data-answer="10" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">15.</span> fourteen → <input class="blank num" id="hw-n15" data-answer="14" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">16.</span> three → <input class="blank num" id="hw-n16" data-answer="3" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">17.</span> thirteen → <input class="blank num" id="hw-n17" data-answer="13" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">18.</span> seventeen → <input class="blank num" id="hw-n18" data-answer="17" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">19.</span> two → <input class="blank num" id="hw-n19" data-answer="2" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">20.</span> nine → <input class="blank num" id="hw-n20" data-answer="9" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-hw-num')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw-num')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="h3">
     <div class="step-head">
       <div class="step-num">3</div>
       <div>
-        <div class="step-meta">Sound hunt</div>
+        <div class="step-meta">Homework · Task 3 · Workbook p. 8</div>
+        <h2>Plural nouns</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-hw-pl">
+      <div class="exercise-label hw">Workbook p. 8 · Exercise 4</div>
+      <h3>How many do you see? Look, count and write the plurals.</h3>
+      <p class="ru-hint" lang="ru">Посчитай предметы и людей на картинке. Число уже написано — допиши слово во множественном числе.</p>
+      <div class="word-bank-ref"><span>book</span> <span>chair</span> <span>child</span> <span>computer</span> <span>door</span> <span class="crossed">man</span> <span>pencil</span> <span>pen</span> <span>phone</span> <span>window</span> <span>woman</span></div>
+      <div class="pic-task">
+        <div class="pic-task-pic">
+  <img class="hw-photo" src="images/classroom/wb-scene.jpg" alt="A busy library with people, books, computers, pens and pencils">
+        </div>
+        <div class="pic-task-list">
+      <p class="gap-line"><span class="num">0.</span> <span class="pt-n">eight</span> <span class="given">men</span></p>
+      <p class="gap-line"><span class="num">1.</span> <span class="pt-n">three</span> <input class="blank" id="hw-pl1" data-answer="women" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+      <p class="gap-line"><span class="num">2.</span> <span class="pt-n">seven</span> <input class="blank" id="hw-pl2" data-answer="books" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+      <p class="gap-line"><span class="num">3.</span> <span class="pt-n">fifteen</span> <input class="blank" id="hw-pl3" data-answer="pencils" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+      <p class="gap-line"><span class="num">4.</span> <span class="pt-n">eighteen</span> <input class="blank" id="hw-pl4" data-answer="pens" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+      <p class="gap-line"><span class="num">5.</span> <span class="pt-n">two</span> <input class="blank" id="hw-pl5" data-answer="chairs" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+      <p class="gap-line"><span class="num">6.</span> <span class="pt-n">one</span> <input class="blank" id="hw-pl6" data-answer="door" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+      <p class="gap-line"><span class="num">7.</span> <span class="pt-n">zero</span> <input class="blank" id="hw-pl7" data-answer="windows" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+      <p class="gap-line"><span class="num">8.</span> <span class="pt-n">twelve</span> <input class="blank" id="hw-pl8" data-answer="children" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+      <p class="gap-line"><span class="num">9.</span> <span class="pt-n">four</span> <input class="blank" id="hw-pl9" data-answer="computers" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+      <p class="gap-line"><span class="num">10.</span> <span class="pt-n">six</span> <input class="blank" id="hw-pl10" data-answer="phones" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+        </div>
+      </div>
+      <div class="tip"><span class="tip-title">Careful!</span><b>one</b> → no -s: <span class="key">one door</span>. <b>zero</b> → plural: <span class="key">zero windows</span>. And remember: <span class="key">man → men</span>, <span class="key">woman → women</span>, <span class="key">child → children</span>.</div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-hw-pl')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw-pl')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="c3">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Homework · Task 4 · Sound hunt</div>
         <h2>Snake <span class="ipa">/s/</span> or bee <span class="ipa">/z/</span>?</h2>
       </div>
     </div>
     <div class="card" id="ex-c-sz">
-      <div class="exercise-label">Choose the sound</div>
+      <div class="exercise-label hw">Choose the sound</div>
       <h3>Listen to each word. Does the <b>s</b> hiss <span class="ipa">/s/</span> or buzz <span class="ipa">/z/</span>?</h3>
       <div class="sort-row"><button class="say" data-say="sit">sit</button><span class="word-choice" id="c-sz1" data-answer="/s/"><button class="word-choice-btn" onclick="selectWord(this)">/s/</button><button class="word-choice-btn" onclick="selectWord(this)">/z/</button></span></div>
       <div class="sort-row"><button class="say" data-say="is">is</button><span class="word-choice" id="c-sz2" data-answer="/z/"><button class="word-choice-btn" onclick="selectWord(this)">/s/</button><button class="word-choice-btn" onclick="selectWord(this)">/z/</button></span></div>
@@ -587,9 +741,9 @@
 
   <section class="step" id="c4">
     <div class="step-head">
-      <div class="step-num">4</div>
+      <div class="step-num">5</div>
       <div>
-        <div class="step-meta">Build words</div>
+        <div class="step-meta">Homework · Task 5 · Build words</div>
         <h2>Blend the sounds</h2>
       </div>
     </div>
@@ -609,7 +763,7 @@
       </div>
     </div>
     <div class="card" id="ex-c-dict">
-      <div class="exercise-label">Dictation</div>
+      <div class="exercise-label hw">Dictation</div>
       <h3>Listen and write the word.</h3>
       <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="sat"></button><input class="blank" id="c-d1" data-answer="sat" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
       <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="map"></button><input class="blank" id="c-d2" data-answer="map" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
@@ -626,15 +780,16 @@
 
   <section class="step" id="c5">
     <div class="step-head">
-      <div class="step-num">5</div>
+      <div class="step-num">6</div>
       <div>
-        <div class="step-meta">Read and record</div>
+        <div class="step-meta">Homework · Task 6 · Read and record</div>
         <h2>It is a…</h2>
       </div>
     </div>
     <div class="card" id="ex-c-it">
-      <div class="exercise-label">Write</div>
+      <div class="exercise-label hw">Write</div>
       <h3>What is it? Write one word.</h3>
+      <div class="tip"><span class="tip-title">Don’t know the word? Find it!</span>Open the <a href="https://dictionary.reverso.net/russian-english/" target="_blank" rel="noopener">Reverso dictionary</a>, type the word in Russian (e.g. <i lang="ru">шляпа</i>) and find the English word. Then write it here.<br><span lang="ru">Не знаешь слово? Открой <a href="https://dictionary.reverso.net/russian-english/" target="_blank" rel="noopener">словарь Reverso</a>, напиши слово по-русски (например, <i>шляпа</i>) и найди английское слово. Потом впиши его сюда.</span></div>
       <p class="gap-line"><span class="num">1.</span> <span style="font-size:30px;vertical-align:middle">🎩</span> It is a <input class="blank" id="c-e1" data-answer="hat" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false">.</p>
       <p class="gap-line"><span class="num">2.</span> <span style="font-size:30px;vertical-align:middle">🗺️</span> It is a <input class="blank" id="c-e2" data-answer="map" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false">.</p>
       <p class="gap-line"><span class="num">3.</span> <span style="font-size:30px;vertical-align:middle">🎒</span> It is a <input class="blank" id="c-e3" data-answer="bag" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false">.</p>
@@ -645,7 +800,7 @@
       </div>
     </div>
     <div class="card">
-      <div class="exercise-label">Read aloud</div>
+      <div class="exercise-label hw">Read aloud</div>
       <h3>Listen, then read each line aloud. Watch the s at the start!</h3>
       <div class="word-row" style="flex-direction:column;align-items:flex-start">
         <button class="say sentence" data-say="Sam sat.">Sam sat.</button>
@@ -661,7 +816,7 @@
 
   <section class="step" id="k5">
     <div class="step-head">
-      <div class="step-num">6</div>
+      <div class="step-num">7</div>
       <div>
         <div class="step-meta">Итог</div>
         <h2>Что ты теперь умеешь?</h2>
@@ -670,7 +825,7 @@
     <div class="card fun-check" lang="ru" id="fun-check">
       <div class="fc-head">
         <h3>Теперь я…</h3>
-        <span class="fc-count"><b>0</b> / 6 ⭐</span>
+        <span class="fc-count"><b>0</b> / 5 ⭐</span>
       </div>
       <div class="fc-meter"><i></i></div>
       <p class="fc-hint">Отметь всё, что уже получается!</p>
@@ -680,12 +835,10 @@
         <label class="reflect-item"><input type="checkbox" id="rk3"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🔢</span><span class="reflect-text">считаю от 0 до 20</span></label>
         <label class="reflect-item"><input type="checkbox" id="rk4"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">📞</span><span class="reflect-text">понимаю номер телефона на слух</span></label>
         <label class="reflect-item"><input type="checkbox" id="rk5"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">👨‍👩‍👧</span><span class="reflect-text">знаю множественное число: <i lang="en">pens, men, children</i></span></label>
-        <label class="reflect-item"><input type="checkbox" id="rk6"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🙋</span><span class="reflect-text">понимаю фразы учителя на уроке</span></label>
       </div>
       <div class="fc-done" hidden><span class="fc-trophy">🏆</span><span><b>Супер!</b> Урок 5 пройден. Так держать!</span></div>
     </div>
   </section>
-
 </div>
 </div>
 
@@ -846,6 +999,53 @@
   }
   boxes.forEach(b => b.addEventListener('change', () => update(true)));
   document.addEventListener('DOMContentLoaded', () => setTimeout(() => update(false), 0));
+})();
+</script>
+<script>
+/* Homework crossword: each finished word lights up in its own colour (and ticks its picture in the key);
+   when every word is right the tiles do a wave, confetti falls and a trophy message appears. */
+(function () {
+  const grid = document.getElementById('xw-fun'); if (!grid) return;
+  const card = document.getElementById('ex-hw-xw'), party = document.getElementById('xw-party');
+  const COLS = ['#FF7A45', '#3352E0', '#12A374', '#7B5CE6', '#E03E52', '#FFB300', '#00A3C4', '#D6409F', '#6BAA1E', '#8D5524'];
+  const tile = (c, r) => grid.querySelector(`.xw-cell[style*="grid-column:${c + 1};grid-row:${r + 1}"]`);
+  const letter = el => { const i = el.querySelector('input'); return i ? i.value.trim().toUpperCase() : el.textContent.replace(/[^A-Z]/gi, '').slice(-1).toUpperCase(); };
+  const keys = [...card.querySelectorAll('.xw-key-item')].map((k, n) => {
+    const [c, r, d, len] = k.dataset.at.split(','); const cells = [];
+    for (let i = 0; i < +len; i++) cells.push(tile(d === 'a' ? +c + i : +c, d === 'a' ? +r : +r + i));
+    return { k, w: k.dataset.w.toUpperCase(), cells, col: COLS[n], done: false };
+  });
+  grid.querySelectorAll('.xw-cell').forEach(c => c.style.setProperty('--d', (parseInt(c.style.gridColumn) + parseInt(c.style.gridRow)) * 45 + 'ms'));
+  let won = false;
+  function confetti() {
+    for (let i = 0; i < 70; i++) {
+      const c = document.createElement('i'); c.className = 'fc-confetti';
+      c.style.left = Math.random() * 100 + '%'; c.style.background = COLS[i % COLS.length]; c.style.animationDelay = Math.random() * 0.6 + 's';
+      c.style.setProperty('--x', (Math.random() * 200 - 100) + 'px'); c.style.setProperty('--r', (Math.random() * 720 - 360) + 'deg');
+      card.appendChild(c); setTimeout(() => c.remove(), 2800);
+    }
+  }
+  function update(animate) {
+    keys.forEach(o => {
+      const ok = o.cells.map(letter).join('') === o.w;
+      if (ok && !o.done && animate) o.cells.forEach((c, i) => { c.style.setProperty('--wc', o.col); c.classList.remove('xw-pop'); void c.offsetWidth; c.style.animationDelay = i * 60 + 'ms'; c.classList.add('xw-pop'); });
+      if (ok) o.cells.forEach(c => { c.style.setProperty('--wc', o.col); c.classList.add('xw-word'); });
+      o.k.classList.toggle('done', ok); o.k.style.setProperty('--wc', o.col);
+      o.done = ok;
+    });
+    keys.forEach(o => { if (!o.done) o.cells.forEach(c => { if (!keys.some(x => x.done && x.cells.includes(c))) c.classList.remove('xw-word'); }); });
+    const all = keys.every(o => o.done);
+    party.hidden = !all;
+    if (all && !won && animate) {
+      grid.querySelectorAll('.xw-cell').forEach(c => { c.classList.remove('xw-pop'); c.style.animationDelay = ''; });
+      grid.classList.remove('xw-wave'); void grid.offsetWidth; grid.classList.add('xw-wave');
+      confetti(); if (window.toast) toast('🏆 Crossword complete!');
+    }
+    won = all;
+  }
+  grid.addEventListener('input', () => update(true));
+  document.addEventListener('DOMContentLoaded', () => setTimeout(() => update(false), 50));
+  card.querySelectorAll('.btn-ghost').forEach(b => b.addEventListener('click', () => setTimeout(() => update(false), 0)));
 })();
 </script>
 </body>
