@@ -1265,3 +1265,7 @@ footer.site-footer{margin-top:46px;padding:18px 0 40px;border-top:1px solid var(
 #ex-hw-xw{position:relative;overflow:hidden}
 @media(max-width:560px){.xw-fun .xw-cell .xw-blank{font-size:16px}}
 .xw-party[hidden]{display:none}
+
+/* teacher.html "watch" mode (assets/sync.js): banner on top of the student's page */
+.watch-bar{position:sticky;top:0;z-index:50;padding:8px 16px;background:#12A374;color:#fff;font-weight:800;text-align:center}
+html.watching .rec,html.watching .dict-fab{display:none}

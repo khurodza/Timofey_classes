@@ -482,3 +482,32 @@ Commit to main → Push origin**.
 - [ ] Every input/textarea has a unique `id`
 - [ ] Every MC question group has a unique `name="mcX"`
 - [ ] Every matching container's `id` starts with `ex-match`
+
+---
+
+## Live answers (Firebase)
+
+Every lesson page loads `assets/sync.js` **before** `lessons.js`. It copies
+the student's saved answers to Firebase (project `english-classes-37405`,
+Realtime Database in Belgium) about half a second after each change, and
+reports which page and tab is open.
+
+- **Teacher page:** `teacher.html` (not linked from the home page). Open it
+  online, e.g. `https://khurodza.github.io/Timofey_classes/teacher.html`, and
+  sign in with nkomlyakova15@gmail.com. Choose a student: the lesson they
+  have open appears in a frame and updates while they work. *Follow the
+  student* jumps to whatever page/tab they open; *Show right / wrong* colours
+  the answers. Nothing you click there changes the student's work.
+- **Several devices:** answers are also pulled from Firebase when a page
+  opens, so the newest version follows the student between devices.
+- **Only online:** it works from the GitHub Pages address, not from files
+  opened on the computer. Offline changes are uploaded next time the page
+  opens.
+- **Security rules** are in `firebase-rules.json` (next to the `website`
+  folder, not published). Paste them into Firebase → Realtime Database →
+  Rules → Publish whenever they change.
+- **New student site:** copy `assets/sync.js`, change `STUDENT` at the top,
+  add the `<script src="../assets/sync.js">` line before `lessons.js` on
+  every lesson page, and add the student to `STUDENTS` in `teacher.html` and
+  to the name list in `firebase-rules.json`.
+- New lesson pages made from the templates already include `sync.js`.
