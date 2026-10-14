@@ -8,6 +8,7 @@
      teacher/schedule/<id>  { student, start (ms), minutes, weekly, until, skip:{yyyy-mm-dd:true},
                               zoom, page, note }
      teacher/links/<student> { zoom }        default Zoom link per student
+     teacher/held/<id>/<yyyy-mm-dd>  'held' | 'cancelled'   the teacher's answer after each class
      teacher/homework/<student>/<yyyy-mm-dd> { text, at }   homework set in the class on that day
    ============================================================ */
 export function initSchedule(ctx) {
@@ -24,7 +25,8 @@ export function initSchedule(ctx) {
   onValue(ref(db, 'teacher/schedule'), snap => { events = snap.val() || {}; ctx.onChange(); });
   onValue(ref(db, 'teacher/links'), snap => { links = snap.val() || {}; ctx.onChange(); });
   onValue(ref(db, 'teacher/rates'), snap => { rates = snap.val() || {}; ctx.onChange(); });
-  let homework = {};
+  let homework = {}, status = {};
+  onValue(ref(db, 'teacher/held'), snap => { status = snap.val() || {}; ctx.onChange(); });
   onValue(ref(db, 'teacher/homework'), snap => { homework = snap.val() || {}; ctx.onChange(); if (ctx.onHomework) ctx.onHomework(); });
   onValue(ref(db, 'teacher/earned'), snap => { earnedByHand = snap.val() || {}; ctx.onChange(); });
   // money earned before lessons were in the schedule, entered by hand per month: { amount, upTo: 'yyyy-mm-dd' }
@@ -88,14 +90,23 @@ export function initSchedule(ctx) {
   const shortT = t => String(t || '').replace(/^Lesson (\d+)\s*[–—-]\s*/i, 'L$1 · ');
 
   /* ---------- "Up next" card on the home screen ---------- */
+  function askBlock() {
+    const list = toConfirm();
+    if (!list.length) return '';
+    return `<div class="ask-held"><span class="lab">Did ${list.length === 1 ? 'this class' : 'these classes'} happen?</span>
+      ${list.map(o => { const s = stu(o.e.student), d = new Date(o.at);
+        return `<div class="ask-row"><span class="avatar small" style="--c:${s.color}">${s.name[0]}</span>
+          <b>${esc(s.name)}</b><span class="when">${d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' })}, ${fmtTime(o.at)} · ${rub(rateOf(s.id))}</span>
+          <span class="ask-btns">${heldButtons(o)}</span></div>`; }).join('')}</div>`;
+  }
   ctx.renderUpNext = el => {
-    const o = ctx.nextLesson();
-    if (!o) { el.innerHTML = `<div class="upnext empty-next"><span class="lab">Up next</span><span>No lessons planned — <a href="#/schedule">open the schedule</a> to add one.</span></div>`; return; }
+    const o = ctx.nextLesson(), ask = askBlock();
+    if (!o) { el.innerHTML = ask + `<div class="upnext empty-next"><span class="lab">Up next</span><span>No lessons planned — <a href="#/schedule">open the schedule</a> to add one.</span></div>`; wire(el); return; }
     const s = stu(o.e.student), start = new Date(o.at), live = Date.now() >= o.at - 10 * 6e4;
     const prev = occurrences(new Date(o.at - 60 * 864e5), new Date(o.at)).filter(x => x.e.student === s.id).pop();
     const prevHw = prev && hwOf(s.id, dayKey(new Date(prev.at)));
     const when = sameDay(start, new Date()) ? 'Today' : start.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'short' });
-    el.innerHTML = `<div class="upnext ${live ? 'soon' : ''}">
+    el.innerHTML = ask + `<div class="upnext ${live ? 'soon' : ''}">
       <span class="avatar" style="--c:${s.color}">${s.name[0]}</span>
       <div class="un-text"><span class="lab">Up next${live ? ' · starting now' : ''}</span>
         <b>${esc(s.name)} · ${when}, ${fmtTime(o.at)}</b>
@@ -122,10 +133,11 @@ export function initSchedule(ctx) {
       const items = occ.filter(o => sameDay(new Date(o.at), d));
       html += `<div class="day ${sameDay(d, today) ? 'today' : ''}">
         <div class="day-head"><span>${d.toLocaleDateString('en-GB', { weekday: 'short' })}</span><b>${d.getDate()}</b></div>
-        ${items.map(o => { const s = stu(o.e.student); return `<div class="ev" style="--c:${s.color}">
+        ${items.map(o => { const s = stu(o.e.student); return `<div class="ev ${statusOf(o) === 'cancelled' ? 'cancelled' : ''}" style="--c:${s.color}">
           <div class="ev-top"><span class="avatar small" style="--c:${s.color}">${s.name[0]}</span><b>${esc(s.name)}</b>${o.e.weekly ? '<span class="tag-rep" title="Every week">↻</span>' : ''}</div>
           <div class="ev-time">${fmtTime(o.at)}<small>${fmtTime(o.at, MOSCOW)} in Moscow · ${o.e.minutes || 60} min</small></div>
-          <div class="ev-price ${held(o) ? 'held' : ''}">${rub(rateOf(o.e.student))}${held(o) ? ' · earned' : ''}</div>
+          <div class="ev-price ${held(o) ? 'held' : ''}">${rub(rateOf(o.e.student))}${{ held: ' · earned', cancelled: ' · cancelled', ask: ' · held?' }[statusOf(o)] || ''}</div>
+          ${ended(o) ? `<div class="ev-held">${heldButtons(o)}</div>` : ''}
           ${o.e.note ? `<div class="ev-note">${esc(o.e.note)}</div>` : ''}
           ${hwBox(o)}
           ${lessonLinks(o)}
@@ -148,6 +160,7 @@ export function initSchedule(ctx) {
     root.querySelectorAll('[data-add]').forEach(b => b.onclick = () => openEvent(null, b.dataset.add));
     root.querySelectorAll('[data-edit]').forEach(b => b.onclick = () => openEvent(b.dataset.edit));
     root.querySelectorAll('[data-skip]').forEach(b => b.onclick = () => { const [id, day] = b.dataset.skip.split('|'); set(ref(db, `teacher/schedule/${id}/skip/${day}`), true).then(() => toast('Skipped this week')); });
+    root.querySelectorAll('[data-held]').forEach(b => b.onclick = () => { const [id, day, v] = b.dataset.held.split('|'); setStatus(id, day, v); });
     root.querySelectorAll('[data-hw]').forEach(t => t.onchange = () => { const [sid, day] = t.dataset.hw.split('|'); saveHw(sid, day, t.value.trim()); });
     root.querySelectorAll('[data-setzoom]').forEach(b => b.onclick = () => go('#/schedule'));
   }
@@ -159,15 +172,28 @@ export function initSchedule(ctx) {
   $('money-next').onclick = () => { monthStart = new Date(monthStart.getFullYear(), monthStart.getMonth() + 1, 1); renderMoney(); };
 
   /* ---------- earnings ---------- */
-  // a lesson counts as earned once it has ended (skipped weeks are not in the calendar, so they never count)
-  function held(o) { return o.at + (o.e.minutes || 60) * 6e4 <= Date.now(); }
+  // after a class ends the teacher answers "held" or "cancelled"; only held classes count as earned
+  // (classes that ended before ASK_FROM count as held: they were in the totals before this question existed)
+  const ASK_FROM = '2026-10-14';
+  const ended = o => o.at + (o.e.minutes || 60) * 6e4 <= Date.now();
+  const statusOf = o => { const day = dayKey(new Date(o.at)), s = (status[o.id] || {})[day];
+    return s || (!ended(o) ? 'planned' : day < ASK_FROM ? 'held' : 'ask'); };
+  function held(o) { return statusOf(o) === 'held'; }
+  const setStatus = (id, day, v) => set(ref(db, `teacher/held/${id}/${day}`), v).then(() => toast(v === 'held' ? 'Counted as held ✓' : 'Marked as cancelled'));
+  // ended classes still waiting for an answer (last 60 days)
+  const toConfirm = () => occurrences(new Date(Date.now() - 60 * 864e5), new Date()).filter(o => statusOf(o) === 'ask');
+  const heldButtons = o => { const k = o.id + '|' + dayKey(new Date(o.at)), st = statusOf(o);
+    return `<button class="btn small ${st === 'held' ? 'on-held' : ''}" data-held="${k}|held">✓ Held</button><button class="btn small ${st === 'cancelled' ? 'on-cancel' : ''}" data-held="${k}|cancelled">✗ Cancelled</button>`; };
   function money(list) {
-    const per = {}; let earned = 0, planned = 0;
+    const per = {}; let earned = 0, planned = 0, waiting = 0;
     list.forEach(o => { const h = handFor(new Date(o.at));
       if (h && h.upTo && dayKey(new Date(o.at)) <= h.upTo) return;        // already inside the amount entered by hand
       const r = rateOf(o.e.student), p = per[o.e.student] = per[o.e.student] || { held: 0, planned: 0 };
-      if (held(o)) { p.held++; earned += r; } else { p.planned++; planned += r; } });
-    return { per, earned, planned };
+      const st = statusOf(o);
+      if (st === 'held') { p.held++; earned += r; }
+      else if (st === 'planned') { p.planned++; planned += r; }
+      else if (st === 'ask') { p.ask = (p.ask || 0) + 1; waiting += r; } });
+    return { per, earned, planned, waiting };
   }
   function renderMoney() {
     const end = new Date(monthStart.getFullYear(), monthStart.getMonth() + 1, 1);
@@ -185,7 +211,8 @@ export function initSchedule(ctx) {
       <div class="money-rows">${STUDENTS.map(s => { const p = m.per[s.id] || { held: 0, planned: 0 }, r = rateOf(s.id);
         return `<div class="mr"><span class="avatar small" style="--c:${s.color}">${s.name[0]}</span><b>${esc(s.name)}</b>
           <span class="calc">${p.held} × ${rub(r)}</span><span class="sum">${rub(p.held * r)}</span>
-          <span class="plan">${p.planned ? `+ ${p.planned} planned (${rub(p.planned * r)})` : ''}</span></div>`; }).join('')}</div>
+          <span class="plan">${p.planned ? `+ ${p.planned} planned (${rub(p.planned * r)})` : ''}${p.ask ? ` <a href="#/" class="ask-link">${p.ask} to confirm</a>` : ''}</span></div>`; }).join('')}</div>
+      ${m.waiting ? `<p class="money-wait">${rub(m.waiting)} waiting for your answer — <a href="#/">say which classes happened</a>.</p>` : ''}
       <form class="hand" id="hand-form">
         <span class="lab">Earned outside the schedule</span>
         <label><input type="number" min="0" step="100" id="hand-amt" value="${handAmt || ''}" placeholder="0"> ₽</label>

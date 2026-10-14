@@ -615,3 +615,16 @@ a.btn{text-decoration:none;color:var(--ink)}
 .hw-row.next b{color:var(--pink-2)}
 .hw-row textarea{flex:1;min-width:0;border:1.5px solid rgba(30,44,77,.25);border-radius:10px;padding:6px 9px;font:400 15px/1.4 var(--soft)!important;background:#fff;resize:vertical}
 @media (max-width:600px){.hw-row{flex-direction:column;gap:4px}.hw-row b{width:auto;padding:0}}
+
+/* "Did this class happen?" — held / cancelled after each class */
+.ask-held{margin-bottom:16px;padding:16px 18px;background:var(--pink-soft);border:2.5px solid var(--ink);border-radius:24px;box-shadow:5px 5px 0 var(--pink-2);display:flex;flex-direction:column;gap:10px}
+.ask-held .lab{font:700 12px/1.3 var(--poster);letter-spacing:.2em;text-transform:uppercase;color:var(--pink-2)}
+.ask-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ask-row .when{color:var(--muted);font-size:14px;flex:1;min-width:150px}
+.ask-btns,.ev-held{display:flex;gap:6px;flex-wrap:wrap}
+.btn.on-held{background:var(--sage);border-color:#2E7D5B}
+.btn.on-cancel{background:#F6D3CF;border-color:#A33B2E}
+.ev.cancelled{opacity:.55}
+.ev.cancelled .ev-time{text-decoration:line-through}
+.money-wait{margin:10px 0 0;font-weight:700;color:var(--pink-2)}
+.ask-link{color:var(--pink-2);font-weight:700}
