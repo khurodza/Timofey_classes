@@ -278,6 +278,18 @@ function openLive(sid) {
   else if (!viewing || viewing.s !== sid) { const last = pageList(sid).filter(x => x.rec).sort((a, b) => b.rec.at - a.rec.at)[0]; if (last) showPage(sid, last.page, last.path); else { viewing = { s: sid }; frames.forEach(f => f.hidden = true); $('v-empty').hidden = false; } }
   renderViewerBar();
 }
+// ✎ Notes: side panel next to the student's page (stays open between visits)
+const notesPanel = $('v-notes-panel');
+function liveNotes() { if (viewing && !notesPanel.hidden) ctx.renderLiveNotes(notesPanel, viewing.s); }
+ctx.refreshLiveNotes = () => route.view === 'live' && liveNotes();
+$('v-notes').onclick = () => {
+  notesPanel.hidden = !notesPanel.hidden;
+  $('v-notes').classList.toggle('on', !notesPanel.hidden);
+  try { localStorage.setItem('teacher-live-notes', notesPanel.hidden ? '0' : '1'); } catch (e) {}
+  liveNotes();
+  if (!notesPanel.hidden) setTimeout(() => { const i = $('ln-text'); if (i) i.focus(); }, 50);
+};
+try { if (localStorage.getItem('teacher-live-notes') === '1') { notesPanel.hidden = false; $('v-notes').classList.add('on'); } } catch (e) {}
 function closeViewer() { viewing = null; frames.forEach(f => { f.hidden = true; f.removeAttribute('src'); }); }
 function renderViewerBar() {
   if (!viewing) return;
@@ -288,6 +300,7 @@ function renderViewerBar() {
   $('v-live').className = 'pill ' + (here ? 'live' : '');
   $('v-live').textContent = here ? 'on this page now' : isLive(p) ? 'online · elsewhere' : p ? 'offline · ' + ago(p.at) : 'offline';
   $('v-reset').hidden = !r;
+  liveNotes();
 }
 function storeAnswers(sid, page) {
   const r = pages[sid][page], key = (r && r.key) || 'answers-' + page;

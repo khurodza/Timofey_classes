@@ -101,12 +101,16 @@
           <label class="switch"><input type="checkbox" id="check" checked><span></span>Right / wrong</label>
           <button class="btn ghost" id="v-latest" title="Scroll to the answer that changed last">✨ Latest answer</button>
           <button class="btn ghost danger" id="v-reset">↺ Reset page</button>
+          <button class="btn ghost" id="v-notes" title="Quick notes without leaving the class">✎ Notes</button>
         </div>
       </header>
-      <div class="frames">
-        <iframe class="frame" id="frame-a" title="Student page"></iframe>
-        <iframe class="frame" id="frame-b" title="Student page" hidden></iframe>
-        <div class="frame-empty" id="v-empty">Waiting for the student to open a page…</div>
+      <div class="viewer-body">
+        <div class="frames">
+          <iframe class="frame" id="frame-a" title="Student page"></iframe>
+          <iframe class="frame" id="frame-b" title="Student page" hidden></iframe>
+          <div class="frame-empty" id="v-empty">Waiting for the student to open a page…</div>
+        </div>
+        <aside class="live-notes" id="v-notes-panel" hidden></aside>
       </div>
     </section>
 

@@ -13,6 +13,7 @@ export function initNotes(ctx) {
   onValue(ref(db, 'teacher/notes'), snap => {
     notes = snap.val() || {};
     ctx.onChange();
+    if (ctx.refreshLiveNotes) ctx.refreshLiveNotes();
     if (ctx.route().view === 'notes' && !typing) ctx.renderNotes();
   });
   const list = (sid, kind) => Object.entries((notes[sid] || {})[kind] || {}).sort((a, b) => a[1].at - b[1].at);
@@ -94,4 +95,34 @@ export function initNotes(ctx) {
     el.querySelectorAll('[data-sdone]').forEach(c => c.onchange = () => set(ref(db, `teacher/notes/${sid}/todo/${c.dataset.sdone}/done`), c.checked).then(() => toast('Done ✓')));
   };
   ctx.openTodoCount = sid => openTodos(sid).length;
+
+  // quick notes panel inside the live view (teacher.html → ✎ Notes), same notebook as the Notes page
+  let liveKind = 'todo';
+  ctx.renderLiveNotes = (el, sid) => {
+    if (el.contains(document.activeElement) && document.activeElement.matches('input, textarea')) return;   // don't redraw under typing
+    const s = stu(sid), today = ctx.dayKey(new Date());
+    const items = BOXES.flatMap(([kind, title]) => list(sid, kind).map(([id, it]) => ({ id, kind, title, ...it }))).sort((a, b) => b.at - a.at);
+    el.innerHTML = `<div class="ln-head"><b>Notes · ${esc(s.name)}</b><a href="#/notes/${sid}" title="Open the full notebook">all →</a></div>
+      <form class="ln-add" id="ln-add">
+        <div class="ln-kinds">${BOXES.map(([kind, title]) => `<button type="button" class="ln-kind ${kind === liveKind ? 'on' : ''}" data-kind="${kind}">${title}</button>`).join('')}</div>
+        <input id="ln-text" placeholder="Type a note, press Enter" autocomplete="off">
+      </form>
+      <label class="ln-hw"><span>📝 Homework for today</span><textarea rows="2" data-hw="${sid}|${today}" placeholder="What did you set?">${esc(ctx.homeworkOf ? ctx.homeworkOf(sid, today) : '')}</textarea></label>
+      <ul class="ln-list">${items.map(it => `<li class="k-${it.kind} ${it.done ? 'done' : ''}">
+        ${it.kind === 'todo' ? `<input type="checkbox" data-ldone="${it.id}" ${it.done ? 'checked' : ''}>` : '<span class="dot-i"></span>'}
+        <span class="txt">${esc(it.text)}<small>${it.title} · ${when(it.at)}</small></span>
+        <button class="x" data-ldel="${it.kind}/${it.id}" title="Delete">✕</button></li>`).join('') || '<li class="none">No notes yet.</li>'}</ul>`;
+    const base = `teacher/notes/${sid}`;
+    el.querySelectorAll('[data-kind]').forEach(b => b.onclick = () => {
+      liveKind = b.dataset.kind; el.querySelectorAll('[data-kind]').forEach(x => x.classList.toggle('on', x === b)); $('ln-text').focus(); });
+    $('ln-add').onsubmit = e => {
+      e.preventDefault();
+      const input = $('ln-text'), text = input.value.trim(); if (!text) return;
+      set(push(ref(db, `${base}/${liveKind}`)), { text, at: Date.now(), ...(liveKind === 'todo' ? { done: false } : {}) }).then(() => toast('Note added'));
+      input.value = '';
+    };
+    el.querySelectorAll('[data-ldone]').forEach(c => c.onchange = () => set(ref(db, `${base}/todo/${c.dataset.ldone}/done`), c.checked));
+    el.querySelectorAll('[data-ldel]').forEach(b => b.onclick = () => remove(ref(db, `${base}/${b.dataset.ldel}`)));
+    el.querySelectorAll('[data-hw]').forEach(t => t.onchange = () => { const [s2, day] = t.dataset.hw.split('|'); ctx.saveHomework(s2, day, t.value.trim()); });
+  };
 }
