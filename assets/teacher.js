@@ -16,7 +16,7 @@
    ============================================================ */
 import CURRICULUM from './curriculum.js';
 import { initSchedule } from './schedule.js';
-import { initPlanner } from './planner.js';
+import { initNotes } from './notes.js';
 
 const TEACHER = 'nkomlyakova15@gmail.com';
 const STUDENTS = [
@@ -75,7 +75,7 @@ const ctx = { db, ref, onValue, set, remove, push, STUDENTS, $, esc, toast,
   pageList: sid => pageList(sid), go: h => go(h), route: () => route, onChange: () => refresh() };
 function start() {
   if (started) return; started = true;
-  initPlanner(ctx);            // lesson planner (assets/planner.js)
+  initNotes(ctx);              // notes about each student (assets/notes.js)
   initSchedule(ctx);           // schedule (assets/schedule.js)
   $('today').textContent = new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
   STUDENTS.forEach(s => {
@@ -162,10 +162,10 @@ function readHash() {
   const [, top, sid, sub] = (location.hash || '#/').split('/');
   if (top === 's' && sid && stu(sid)) route = { view: sub === 'live' ? 'live' : sub === 'report' ? 'report' : 'dash', s: sid };
   else if (top === 'schedule') route = { view: 'schedule' };
-  else if (top === 'plans') route = { view: 'plans', plan: sid || null };
+  else if (top === 'notes') route = { view: 'notes', student: sid || null };
   else route = { view: 'overview' };
-  ['overview', 'dash', 'view', 'report', 'schedule', 'plans'].forEach(v => $('v-' + v).hidden = v !== ({ overview: 'overview', dash: 'dash', live: 'view', report: 'report', schedule: 'schedule', plans: 'plans' })[route.view]);
-  if (route.view === 'plans') ctx.renderPlans();
+  ['overview', 'dash', 'view', 'report', 'schedule', 'notes'].forEach(v => $('v-' + v).hidden = v !== ({ overview: 'overview', dash: 'dash', live: 'view', report: 'report', schedule: 'schedule', notes: 'notes' })[route.view]);
+  if (route.view === 'notes') ctx.renderNotes();
   if (route.view !== 'live') closeViewer();
   if (route.view === 'live') openLive(route.s);
   if (route.view === 'report') renderReport();
@@ -260,6 +260,7 @@ function renderDash() {
   $('d-pages').querySelectorAll('[data-reset]').forEach(b => b.onclick = () => resetPage(s.id, b.dataset.reset));
   $('d-live').onclick = () => { $('follow').checked = true; go('#/s/' + s.id + '/live'); };
   $('d-fresh').onclick = () => startFresh(s.id);
+  ctx.renderNextClass($('d-next'), s.id);
   $('d-report').onclick = () => go('#/s/' + s.id + '/report');
 }
 

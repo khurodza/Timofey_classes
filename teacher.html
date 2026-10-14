@@ -44,7 +44,7 @@
       <span class="hide-mini">All students</span><span class="arrow hide-mini">→</span>
     </button>
     <button class="nav-item" data-go="schedule" title="Schedule"><span class="ico">▦</span><span class="hide-mini">Schedule</span></button>
-    <button class="nav-item" data-go="plans" title="Lesson planner"><span class="ico">✎</span><span class="hide-mini">Lesson planner</span></button>
+    <button class="nav-item" data-go="notes" title="Notes"><span class="ico">✎</span><span class="hide-mini">Notes</span></button>
     <div class="side-label hide-mini">Students</div>
     <nav id="students"></nav>
     <div class="side-foot">
@@ -87,6 +87,7 @@
         </div>
       </header>
       <div class="tiles" id="d-tiles"></div>
+      <div id="d-next"></div>
       <div id="d-pages"></div>
     </section>
 
@@ -121,20 +122,24 @@
         </div>
       </header>
       <p class="sch-range" id="sch-range"></p>
+      <p class="sch-week-money" id="sch-week-money"></p>
       <div class="week" id="sch-week"></div>
+      <div class="group-title">Earnings</div>
+      <div class="money">
+        <div class="money-head"><button class="btn small" id="money-prev" title="Previous month">‹</button><b id="money-month"></b><button class="btn small" id="money-next" title="Next month">›</button></div>
+        <div id="money-body"></div>
+      </div>
       <div class="group-title">Student links</div>
       <div class="zoom-links" id="sch-links"></div>
     </section>
 
-    <!-- lesson planner -->
-    <section class="view" id="v-plans" hidden>
-      <header class="head no-print">
-        <div><p class="eyebrow">Communicative + lexical approach</p><h1>Lesson planner</h1></div>
+    <!-- notes about each student -->
+    <section class="view" id="v-notes" hidden>
+      <header class="head">
+        <div><p class="eyebrow">Strong points · to work on · next class</p><h1>Notes</h1></div>
       </header>
-      <div class="planner">
-        <aside class="pl-list no-print" id="pl-list"></aside>
-        <div class="pl-editor" id="pl-editor"></div>
-      </div>
+      <nav class="nt-tabs" id="nt-tabs"></nav>
+      <div id="nt-body"></div>
     </section>
 
     <!-- printable progress report (Russian) -->
