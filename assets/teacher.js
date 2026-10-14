@@ -274,7 +274,7 @@ window.__teacher = {                             // called from the page inside 
 function openLive(sid) {
   const p = presence[sid];
   if (viewing && viewing.s === sid) return renderViewerBar();
-  if ($('follow').checked && p && p.page) showPage(sid, p.page, p.path, p.part);
+  if ($('follow').checked && isLive(p) && p.page) showPage(sid, p.page, p.path, p.part);
   else if (!viewing || viewing.s !== sid) { const last = pageList(sid).filter(x => x.rec).sort((a, b) => b.rec.at - a.rec.at)[0]; if (last) showPage(sid, last.page, last.path); else { viewing = { s: sid }; frames.forEach(f => f.hidden = true); $('v-empty').hidden = false; } }
   renderViewerBar();
 }
@@ -295,8 +295,10 @@ function storeAnswers(sid, page) {
 }
 function showPage(sid, page, path, part, highlight) {
   const s = stu(sid);
-  path = path || (pages[sid][page] || {}).path || (pageList(sid).find(x => x.page === page) || {}).path;
-  if (!path) return;
+  // prefer the path from the student's own site list; a saved path can come from a local copy of the site (→ 404)
+  const listed = (siteLists[sid] || []).find(x => x.page === page);
+  path = (listed && listed.path) || path || (pages[sid][page] || {}).path;
+  if (!path || !path.startsWith(s.site)) return;
   const samePage = viewing && viewing.s === sid && viewing.page === page;
   viewing = { s: sid, page, path, part: part || null, json: (pages[sid][page] || {}).json };
   storeAnswers(sid, page);
@@ -349,7 +351,7 @@ function viewerNotesChanged(sid) {
 function followStudent(sid) {
   if (route.view !== 'live' || !viewing || viewing.s !== sid || !$('follow').checked) return renderViewerBar();
   const p = presence[sid];
-  if (p && p.page && (p.page !== viewing.page || (p.part || null) !== viewing.part)) showPage(sid, p.page, p.path, p.part);
+  if (isLive(p) && p.page && (p.page !== viewing.page || (p.part || null) !== viewing.part)) showPage(sid, p.page, p.path, p.part);
   else renderViewerBar();
 }
 function markSeen(sid, page) {

@@ -358,6 +358,7 @@
   }
 
   async function start() {
+    if (location.hostname !== 'khurodza.github.io') return;   // local copy / preview: don't write to the students' live data
     const [app, auth, db] = await Promise.all([
       import(SDK + 'firebase-app.js'), import(SDK + 'firebase-auth.js'), import(SDK + 'firebase-database.js')]);
     const a = app.initializeApp(FIREBASE);

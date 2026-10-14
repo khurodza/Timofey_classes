@@ -40,10 +40,23 @@ export function initNotes(ctx) {
         <form class="nt-add" data-add="${kind}"><input placeholder="${esc(ph)}"><button class="btn small">Add</button></form>
         ${kind === 'todo' && done ? `<button class="nt-clear" id="nt-clear">Clear ${done} done</button>` : ''}
       </section>`).join('')}</div>
+      <section class="nt-free nt-hw"><h3>Homework by class</h3>
+        ${hwRows(sid)}</section>
       <section class="nt-free"><h3>Free notes</h3>
         <textarea id="nt-free" rows="6" placeholder="Anything else about ${esc(s.name)}: interests, parents’ wishes, exam dates…">${esc((notes[sid] || {}).free || '')}</textarea></section>`;
     wire(sid);
   };
+
+  // one row per class (past ones and the coming week), newest first
+  function hwRows(sid) {
+    const day = t => new Date(t).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+    const classes = (ctx.lessonsFor ? ctx.lessonsFor(sid) : []).filter(o => o.at < Date.now() + 7 * 864e5).reverse();
+    if (!classes.length) return '<p class="none">No classes in the schedule yet.</p>';
+    return classes.map(o => { const k = ctx.dayKey(new Date(o.at));
+      return `<label class="hw-row ${o.at > Date.now() ? 'next' : ''}"><b>${day(o.at)}</b><textarea rows="1" data-hw="${sid}|${k}" placeholder="What did you set?">${esc(ctx.homeworkOf(sid, k))}</textarea></label>`; }).join('');
+  }
+  ctx.onHomework = () => { const a = document.activeElement;
+    if (ctx.route().view === 'notes' && !typing && !(a && a.matches && a.matches('textarea, input, [contenteditable]'))) ctx.renderNotes(); };
 
   function wire(sid) {
     const base = `teacher/notes/${sid}`, body = $('nt-body');
@@ -63,6 +76,7 @@ export function initNotes(ctx) {
       el.onblur = () => { typing = false; const t = el.innerText.trim();
         if (t) set(ref(db, `${base}/${el.dataset.edit}/text`), t); else remove(ref(db, `${base}/${el.dataset.edit}`)); };
     });
+    body.querySelectorAll('[data-hw]').forEach(t => t.onchange = () => { const [s2, day] = t.dataset.hw.split('|'); ctx.saveHomework(s2, day, t.value.trim()); });
     const clr = $('nt-clear');
     if (clr) clr.onclick = () => list(sid, 'todo').filter(([, t]) => t.done).forEach(([id]) => remove(ref(db, `${base}/todo/${id}`)));
     const free = $('nt-free'); let t;

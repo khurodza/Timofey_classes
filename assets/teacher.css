@@ -601,3 +601,17 @@ a.btn{text-decoration:none;color:var(--ink)}
 .hand input{font:600 14px var(--font);padding:6px 10px;border:2px solid var(--ink);border-radius:10px;background:var(--paper)}
 .hand input[type=number]{width:110px;text-align:right}
 .hand small{color:var(--muted);font:400 13px var(--soft)}
+
+/* homework set in each class (schedule cards, Up next, Notes) */
+.ev-hw{display:flex;flex-direction:column;gap:3px;font:700 11px/1.2 var(--font);color:var(--muted)}
+.ev-hw textarea{width:100%;min-width:0;border:1.5px solid rgba(30,44,77,.25);border-radius:10px;padding:5px 7px;font:400 13px/1.35 var(--soft);color:var(--ink);background:var(--paper);resize:vertical}
+.ev-hw textarea:focus,.hw-row textarea:focus{outline:2px solid var(--pink);border-color:var(--ink)}
+.un-hw{display:block;margin-top:3px;color:var(--ink)!important}
+.nt-hw{background:var(--paper)}
+.nt-hw .none{color:var(--muted);margin:0}
+.hw-row{display:flex;align-items:flex-start;gap:12px;padding:7px 0;border-bottom:1.5px dashed rgba(30,44,77,.18)}
+.hw-row:last-child{border-bottom:0}
+.hw-row b{flex:none;width:96px;padding-top:6px;font-size:13px;color:var(--blue)}
+.hw-row.next b{color:var(--pink-2)}
+.hw-row textarea{flex:1;min-width:0;border:1.5px solid rgba(30,44,77,.25);border-radius:10px;padding:6px 9px;font:400 15px/1.4 var(--soft)!important;background:#fff;resize:vertical}
+@media (max-width:600px){.hw-row{flex-direction:column;gap:4px}.hw-row b{width:auto;padding:0}}

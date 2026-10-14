@@ -8,6 +8,7 @@
      teacher/schedule/<id>  { student, start (ms), minutes, weekly, until, skip:{yyyy-mm-dd:true},
                               zoom, page, note }
      teacher/links/<student> { zoom }        default Zoom link per student
+     teacher/homework/<student>/<yyyy-mm-dd> { text, at }   homework set in the class on that day
    ============================================================ */
 export function initSchedule(ctx) {
   const { db, ref, onValue, set, remove, push, STUDENTS, $, esc, toast, pageList, go } = ctx;
@@ -23,6 +24,8 @@ export function initSchedule(ctx) {
   onValue(ref(db, 'teacher/schedule'), snap => { events = snap.val() || {}; ctx.onChange(); });
   onValue(ref(db, 'teacher/links'), snap => { links = snap.val() || {}; ctx.onChange(); });
   onValue(ref(db, 'teacher/rates'), snap => { rates = snap.val() || {}; ctx.onChange(); });
+  let homework = {};
+  onValue(ref(db, 'teacher/homework'), snap => { homework = snap.val() || {}; ctx.onChange(); if (ctx.onHomework) ctx.onHomework(); });
   onValue(ref(db, 'teacher/earned'), snap => { earnedByHand = snap.val() || {}; ctx.onChange(); });
   // money earned before lessons were in the schedule, entered by hand per month: { amount, upTo: 'yyyy-mm-dd' }
   // (lessons in the schedule on or before upTo are then not counted again)
@@ -70,6 +73,18 @@ export function initSchedule(ctx) {
       ${ctx.openTodoCount && ctx.openTodoCount(s.id) ? `<a class="btn small" href="#/notes/${s.id}">✎ ${ctx.openTodoCount(s.id)} to do</a>` : `<a class="btn small ghost" href="#/notes/${s.id}">✎ Notes</a>`}
     </div>`;
   }
+  // homework set in a class (one per student per day, so every week of a repeating lesson has its own)
+  const hwOf = (sid, day) => (((homework[sid] || {})[day]) || {}).text || '';
+  function saveHw(sid, day, text) {
+    const r = ref(db, `teacher/homework/${sid}/${day}`);
+    if (text === hwOf(sid, day)) return;
+    (text ? set(r, { text, at: Date.now() }) : remove(r)).then(() => toast(text ? 'Homework saved' : 'Homework removed'));
+  }
+  const hwBox = o => { const day = dayKey(new Date(o.at));
+    return `<label class="ev-hw"><span>📝 Homework</span><textarea rows="2" data-hw="${o.e.student}|${day}" placeholder="What did you set?">${esc(hwOf(o.e.student, day))}</textarea></label>`; };
+  const typingHw = () => document.activeElement && document.activeElement.matches && document.activeElement.matches('[data-hw]');
+  ctx.homeworkOf = hwOf;
+  ctx.saveHomework = saveHw;
   const shortT = t => String(t || '').replace(/^Lesson (\d+)\s*[–—-]\s*/i, 'L$1 · ');
 
   /* ---------- "Up next" card on the home screen ---------- */
@@ -77,18 +92,22 @@ export function initSchedule(ctx) {
     const o = ctx.nextLesson();
     if (!o) { el.innerHTML = `<div class="upnext empty-next"><span class="lab">Up next</span><span>No lessons planned — <a href="#/schedule">open the schedule</a> to add one.</span></div>`; return; }
     const s = stu(o.e.student), start = new Date(o.at), live = Date.now() >= o.at - 10 * 6e4;
+    const prev = occurrences(new Date(o.at - 60 * 864e5), new Date(o.at)).filter(x => x.e.student === s.id).pop();
+    const prevHw = prev && hwOf(s.id, dayKey(new Date(prev.at)));
     const when = sameDay(start, new Date()) ? 'Today' : start.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'short' });
     el.innerHTML = `<div class="upnext ${live ? 'soon' : ''}">
       <span class="avatar" style="--c:${s.color}">${s.name[0]}</span>
       <div class="un-text"><span class="lab">Up next${live ? ' · starting now' : ''}</span>
         <b>${esc(s.name)} · ${when}, ${fmtTime(o.at)}</b>
-        <small>${fmtTime(o.at, MOSCOW)} in Moscow · ${o.e.minutes || 60} min${o.e.note ? ' · ' + esc(o.e.note) : ''}</small></div>
+        <small>${fmtTime(o.at, MOSCOW)} in Moscow · ${o.e.minutes || 60} min${o.e.note ? ' · ' + esc(o.e.note) : ''}</small>
+        ${prevHw ? `<small class="un-hw">📝 Homework from ${new Date(prev.at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}: ${esc(prevHw)}</small>` : ''}</div>
       ${lessonLinks(o)}</div>`;
     wire(el);
   };
 
   /* ---------- the week view ---------- */
   ctx.renderSchedule = () => {
+    if (typingHw()) return;                      // don't redraw under the teacher's typing
     const end = new Date(weekStart); end.setDate(end.getDate() + 7);
     const occ = occurrences(weekStart, end), today = new Date();
     const fmt = d => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
@@ -108,6 +127,7 @@ export function initSchedule(ctx) {
           <div class="ev-time">${fmtTime(o.at)}<small>${fmtTime(o.at, MOSCOW)} in Moscow · ${o.e.minutes || 60} min</small></div>
           <div class="ev-price ${held(o) ? 'held' : ''}">${rub(rateOf(o.e.student))}${held(o) ? ' · earned' : ''}</div>
           ${o.e.note ? `<div class="ev-note">${esc(o.e.note)}</div>` : ''}
+          ${hwBox(o)}
           ${lessonLinks(o)}
           <div class="ev-edit"><button data-edit="${o.id}">Edit</button>${o.e.weekly ? `<button data-skip="${o.id}|${dayKey(new Date(o.at))}">Skip week</button>` : ''}</div>
         </div>`; }).join('')}
@@ -128,6 +148,7 @@ export function initSchedule(ctx) {
     root.querySelectorAll('[data-add]').forEach(b => b.onclick = () => openEvent(null, b.dataset.add));
     root.querySelectorAll('[data-edit]').forEach(b => b.onclick = () => openEvent(b.dataset.edit));
     root.querySelectorAll('[data-skip]').forEach(b => b.onclick = () => { const [id, day] = b.dataset.skip.split('|'); set(ref(db, `teacher/schedule/${id}/skip/${day}`), true).then(() => toast('Skipped this week')); });
+    root.querySelectorAll('[data-hw]').forEach(t => t.onchange = () => { const [sid, day] = t.dataset.hw.split('|'); saveHw(sid, day, t.value.trim()); });
     root.querySelectorAll('[data-setzoom]').forEach(b => b.onclick = () => go('#/schedule'));
   }
   $('sch-prev').onclick = () => { weekStart.setDate(weekStart.getDate() - 7); ctx.renderSchedule(); };
