@@ -18,10 +18,10 @@ import CURRICULUM from './curriculum.js';
 
 const TEACHER = 'nkomlyakova15@gmail.com';
 const STUDENTS = [
-  { id: 'timofey', name: 'Timofey', ru: 'Тимофей', female: false, site: '/Timofey_classes/', color: '#4C6FD8' },
-  { id: 'polina',  name: 'Polina',  ru: 'Полина',  female: true,  site: '/Polina_classes/',  color: '#C2549B' },
-  { id: 'matvey',  name: 'Matvey',  ru: 'Матвей',  female: false, site: '/Matvey_classes/',  color: '#2E9E6B' },
-  { id: 'ksyusha', name: 'Ksyusha', ru: 'Ксюша',   female: true,  site: '/Ksyusha_classes/', color: '#E8664A' }
+  { id: 'timofey', name: 'Timofey', ru: 'Тимофей', female: false, site: '/Timofey_classes/', color: '#2D5DA8' },
+  { id: 'polina',  name: 'Polina',  ru: 'Полина',  female: true,  site: '/Polina_classes/',  color: '#D9628F' },
+  { id: 'matvey',  name: 'Matvey',  ru: 'Матвей',  female: false, site: '/Matvey_classes/',  color: '#A99A3C' },
+  { id: 'ksyusha', name: 'Ksyusha', ru: 'Ксюша',   female: true,  site: '/Ksyusha_classes/', color: '#5F8FC9' }
 ];
 const FIREBASE = {
   apiKey: 'AIzaSyAHX47UEkMuLtZS4LrxIKiFQtThG4beysQ',
@@ -175,7 +175,7 @@ function renderOverview() {
   $('overview').innerHTML = STUDENTS.map(s => {
     const p = presence[s.id], t = totals(s.id), n = newCount(s.id);
     const now = isLive(p) ? `<span class="pill live">Online · ${esc(shortTitle(p.title || p.page))}</span>` : p ? `Last seen ${ago(p.at)}` : 'Not connected yet';
-    return `<div class="s-card">
+    return `<div class="s-card" style="--c:${s.color}">
       <div class="top">${avatar(s)}<div style="flex:1"><h2>${esc(s.name)}</h2><div class="now">${now}</div></div>${n ? `<span class="badge-new">${n} new</span>` : ''}</div>
       <div>${bar(t)}<div class="legend"><span>${t.answered} answers</span><span>${pct(t.right, t.answered)}% right</span></div></div>
       <div class="row"><button class="btn" data-dash="${s.id}">Dashboard</button><button class="btn primary" data-live="${s.id}">● Live</button></div>

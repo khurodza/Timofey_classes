@@ -7,14 +7,23 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Space+Grotesk:wght@400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/teacher.css">
 </head>
 <body>
 
+<!-- decorative shapes (used by the CSS through <use>) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="sun" viewBox="0 0 200 200"><path d="M100 4l13 33 26-25 3 36 34-12-11 34 36 4-26 25 33 14-34 13 26 25-36 4 11 34-34-12-3 36-26-25-13 33-13-33-26 25-3-36-34 12 11-34-36-4 26-25-33-13 33-14-26-25 36-4-11-34 34 12 3-36 26 25z"/></symbol>
+    <symbol id="blob" viewBox="0 0 200 200"><path d="M104 8c34 2 66 22 80 54s8 72-16 98-62 36-96 30S8 158 6 120 18 44 44 24 70 6 104 8z"/></symbol>
+  </defs>
+</svg>
+
 <!-- sign-in -->
 <div class="signin" id="signin" hidden>
   <div class="signin-card">
+    <svg class="deco-sun" aria-hidden="true"><use href="#sun"/></svg>
     <div class="logo">✦</div>
     <h1>Teacher desk</h1>
     <p>Sign in with your Google account to see your students’ work.</p>
@@ -42,12 +51,16 @@
   <main class="main">
     <!-- overview -->
     <section class="view" id="v-overview">
-      <header class="head">
-        <div>
+      <header class="hero">
+        <svg class="hero-blob" aria-hidden="true"><use href="#blob"/></svg>
+        <svg class="hero-sun" aria-hidden="true"><use href="#sun"/></svg>
+        <div class="hero-text">
           <p class="eyebrow" id="today"></p>
-          <h1>Your students</h1>
+          <h1>there’s no class<br>like this class.</h1>
+          <p class="hero-sub">Who’s online, what they’re working on, and what’s new since you last looked.</p>
         </div>
       </header>
+      <div class="ribbon" aria-hidden="true"><div class="ribbon-track"><span>your students</span><span>✦</span><span>live answers</span><span>✦</span><span>marks &amp; comments</span><span>✦</span><span>progress reports</span><span>✦</span><span>your students</span><span>✦</span><span>live answers</span><span>✦</span><span>marks &amp; comments</span><span>✦</span><span>progress reports</span><span>✦</span></div></div>
       <div class="grid-cards" id="overview"></div>
     </section>
 
