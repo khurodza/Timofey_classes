@@ -530,4 +530,14 @@ reports which page and tab is open.
   edits are saved in Firebase. ✕ removes a lesson from the report.
   When you add a lesson, add its Russian summary to `assets/curriculum.js`.
 - The ‹ button at the top of the sidebar folds the student list away.
-- Code: `teacher.html`, `assets/teacher.css`, `assets/teacher.js`.
+- Code: `teacher.html`, `assets/teacher.css`, `assets/teacher.js`, `assets/schedule.js`, `assets/planner.js`.
+- **Schedule** (side menu): week calendar of lessons, your time + Moscow
+  time, weekly repeats ("Skip this week" for holidays), Join Zoom / student
+  site / lesson page / plan buttons. Each student's default Zoom link is set
+  under *Student links*. The home screen shows **Up next**.
+  Code: `assets/schedule.js`.
+- **Lesson planner** (side menu): plans for a communicative + lexical
+  approach — can-do outcome, target chunks (with "recycle from earlier
+  lessons"), timed stages with tips, a principles checklist, homework and
+  reflection; link a plan to a lesson in the schedule; print it.
+  Lesson shapes and tips live in `assets/planner.js` (`TEMPLATES`, `PRINCIPLES`).

@@ -15,6 +15,8 @@
      teacher/reports/<id>/...     the teacher's edits of the report
    ============================================================ */
 import CURRICULUM from './curriculum.js';
+import { initSchedule } from './schedule.js';
+import { initPlanner } from './planner.js';
 
 const TEACHER = 'nkomlyakova15@gmail.com';
 const STUDENTS = [
@@ -33,7 +35,7 @@ const FIREBASE = {
 const SDK = 'https://www.gstatic.com/firebasejs/10.12.2/';
 const { initializeApp } = await import(SDK + 'firebase-app.js');
 const { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } = await import(SDK + 'firebase-auth.js');
-const { getDatabase, ref, onValue, set, update, remove } = await import(SDK + 'firebase-database.js');
+const { getDatabase, ref, onValue, set, update, remove, push } = await import(SDK + 'firebase-database.js');
 const app = initializeApp(FIREBASE), auth = getAuth(app), db = getDatabase(app);
 
 /* ---------------- small helpers ---------------- */
@@ -54,7 +56,7 @@ function avatar(s, cls = '', withDot = true) {
 }
 
 /* ---------------- state ---------------- */
-const presence = {}, pages = {}, seen = {}, notes = {}, reports = {}, siteLists = {};
+const presence = {}, pages = {}, seen = {}, notes = {}, reports = {}, siteLists = {}, tracking = {};
 STUDENTS.forEach(s => { pages[s.id] = {}; seen[s.id] = {}; notes[s.id] = {}; reports[s.id] = {}; });
 let route = { view: 'overview' };
 
@@ -69,8 +71,12 @@ onAuthStateChanged(auth, user => {
 });
 
 let started = false;
+const ctx = { db, ref, onValue, set, remove, push, STUDENTS, $, esc, toast,
+  pageList: sid => pageList(sid), go: h => go(h), route: () => route, onChange: () => refresh() };
 function start() {
   if (started) return; started = true;
+  initPlanner(ctx);            // lesson planner (assets/planner.js)
+  initSchedule(ctx);           // schedule (assets/schedule.js)
   $('today').textContent = new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
   STUDENTS.forEach(s => {
     onValue(ref(db, `students/${s.id}/presence`), snap => { presence[s.id] = snap.val(); refresh(); followStudent(s.id); });
@@ -78,7 +84,8 @@ function start() {
     onValue(ref(db, `students/${s.id}/notes`), snap => { notes[s.id] = snap.val() || {}; refresh(); viewerNotesChanged(s.id); });
     onValue(ref(db, `teacher/seen/${s.id}`), snap => { seen[s.id] = snap.val() || {}; refresh(); });
     onValue(ref(db, `teacher/reports/${s.id}`), snap => { reports[s.id] = snap.val() || {}; if (route.view === 'report' && route.s === s.id && !reportEditing) renderReport(); });
-    loadSiteList(s).then(refresh);
+    onValue(ref(db, `teacher/tracking/${s.id}`), snap => { tracking[s.id] = snap.val(); initTracking(s.id); refresh(); });
+    loadSiteList(s).then(() => { initTracking(s.id); refresh(); });
   });
   window.addEventListener('hashchange', readHash);
   readHash();
@@ -121,11 +128,26 @@ function pageList(sid) {               // site pages + any page with saved answe
     .sort((a, b) => b.page.localeCompare(a.page, undefined, { numeric: true }));
 }
 const isNew = (sid, page) => { const r = pages[sid][page]; return !!(r && r.at > (seen[sid][page] || 0) && r.dev !== 'teacher'); };
-const newCount = sid => Object.keys(pages[sid]).filter(p => isNew(sid, p)).length;
+const newCount = sid => Object.keys(pages[sid]).filter(p => isNew(sid, p) && isTracked(sid, p)).length;
+// Counting starts at each student's newest lesson that existed when tracking began (and lessons after it);
+// work saved before that moment isn't counted. teacher/tracking/<id> = { from: lesson number, since: time }
+const pageNo = page => +((String(page).match(/\d+/) || [])[0] || 0);
+function initTracking(sid) {
+  if (tracking[sid] !== null || !siteLists[sid] || !siteLists[sid].length) return;   // already set, or not loaded yet
+  const from = Math.max(...siteLists[sid].filter(p => !/homework|^hw-/.test(p.path + p.page)).map(p => pageNo(p.page)));
+  tracking[sid] = { from, since: Date.now() };
+  set(ref(db, `teacher/tracking/${sid}`), tracking[sid]);
+}
+const isTracked = (sid, page) => !!tracking[sid] && pageNo(page) >= tracking[sid].from;
+const counts = (sid, rec) => !!(rec && tracking[sid] && rec.at >= tracking[sid].since);
 function totals(sid) {
-  let total = 0, answered = 0, right = 0, started = 0;
-  Object.values(pages[sid]).forEach(r => { if (!r.stats) return; total += r.stats.total; answered += r.stats.answered; right += r.stats.right; if (r.stats.answered) started++; });
-  return { total, answered, right, started };
+  let total = 0, answered = 0, right = 0, started = 0, pagesCounted = 0;
+  pageList(sid).filter(p => isTracked(sid, p.page)).forEach(p => {
+    pagesCounted++;
+    const r = p.rec; if (!counts(sid, r) || !r.stats) return;
+    total += r.stats.total; answered += r.stats.answered; right += r.stats.right; if (r.stats.answered) started++;
+  });
+  return { total, answered, right, started, pagesCounted };
 }
 const noteCount = (sid, page) => Object.values(notes[sid][page] || {}).length;
 function bar(st) {
@@ -137,17 +159,20 @@ const shortTitle = t => String(t || '').replace(/^Lesson (\d+)\s*[–—-]\s*/i,
 /* ---------------- routing: #/  #/s/<id>  #/s/<id>/live  #/s/<id>/report ---------------- */
 function go(hash) { if (location.hash === hash) readHash(); else location.hash = hash; }
 function readHash() {
-  const [, , sid, sub] = (location.hash || '#/').split('/');
-  if (sid && stu(sid)) route = { view: sub === 'live' ? 'live' : sub === 'report' ? 'report' : 'dash', s: sid };
+  const [, top, sid, sub] = (location.hash || '#/').split('/');
+  if (top === 's' && sid && stu(sid)) route = { view: sub === 'live' ? 'live' : sub === 'report' ? 'report' : 'dash', s: sid };
+  else if (top === 'schedule') route = { view: 'schedule' };
+  else if (top === 'plans') route = { view: 'plans', plan: sid || null };
   else route = { view: 'overview' };
-  ['overview', 'dash', 'view', 'report'].forEach(v => $('v-' + v).hidden = v !== ({ overview: 'overview', dash: 'dash', live: 'view', report: 'report' })[route.view]);
+  ['overview', 'dash', 'view', 'report', 'schedule', 'plans'].forEach(v => $('v-' + v).hidden = v !== ({ overview: 'overview', dash: 'dash', live: 'view', report: 'report', schedule: 'schedule', plans: 'plans' })[route.view]);
+  if (route.view === 'plans') ctx.renderPlans();
   if (route.view !== 'live') closeViewer();
   if (route.view === 'live') openLive(route.s);
   if (route.view === 'report') renderReport();
   refresh();
   document.querySelector('.main').scrollTop = 0;
 }
-document.querySelectorAll('[data-go=overview]').forEach(b => b.onclick = () => go('#/'));
+document.querySelectorAll('[data-go]').forEach(b => b.onclick = () => go(b.dataset.go === 'overview' ? '#/' : '#/' + b.dataset.go));
 
 /* ---------------- sidebar ---------------- */
 const side = $('side');
@@ -164,10 +189,13 @@ function refresh() {
       <span class="meta hide-mini"><b>${esc(s.name)}</b><small>${esc(status)}</small></span>${n ? `<span class="badge-new">${n}</span>` : ''}</button>`;
   }).join('');
   $('students').querySelectorAll('.stu').forEach(b => b.onclick = () => go('#/s/' + b.dataset.s));
-  document.querySelector('.nav-item[data-go=overview]').classList.toggle('on', route.view === 'overview');
+  document.querySelectorAll('.nav-item[data-go]').forEach(b => b.classList.toggle('on', b.dataset.go === route.view));
+  if (route.view === 'schedule') ctx.renderSchedule();
+  if (route.view === 'overview') ctx.renderUpNext($('upnext'));
   if (route.view === 'overview') renderOverview();
   if (route.view === 'dash') renderDash();
   if (route.view === 'live') renderViewerBar();
+  if (route.view === 'report' && !reportEditing) renderReport();   // the lesson list and scores may arrive after the report was drawn
 }
 
 /* ---------------- overview ---------------- */
@@ -191,29 +219,47 @@ function renderDash() {
   $('d-avatar').outerHTML = `<span id="d-avatar">${avatar(s, 'big', false)}</span>`;
   $('d-name').textContent = s.name;
   $('d-status').innerHTML = isLive(p) ? `<span class="pill live">Online now · ${esc(shortTitle(p.title || p.page))}</span>` : p ? 'Last seen ' + ago(p.at) : 'Not connected yet';
-  const notesTotal = Object.values(notes[s.id]).reduce((n, o) => n + Object.keys(o || {}).length, 0);
-  $('d-tiles').innerHTML = `
-    <div class="tile"><b>${Object.keys(pages[s.id]).length}<small style="font-size:16px;color:var(--muted)"> / ${list.length}</small></b><span>pages worked on</span></div>
-    <div class="tile"><b>${t.answered}</b><span>answers given</span></div>
-    <div class="tile"><b>${t.answered ? pct(t.right, t.answered) + '%' : '—'}</b><span>right (where there is a key)</span></div>
-    <div class="tile"><b>${notesTotal}</b><span>your marks & comments</span></div>`;
-  const card = pg => {
-    const r = pg.rec, st = r && r.stats, nw = isNew(s.id, pg.page), nc = noteCount(s.id, pg.page);
+  // index cards: big number, label and a short note, all from counted work
+  const allNotes = Object.values(notes[s.id]).flatMap(o => Object.values(o || {}));
+  const marks = allNotes.filter(n => n.mark).length, comments = allNotes.filter(n => n.comment).length;
+  const counted = list.filter(p => isTracked(s.id, p.page) && counts(s.id, p.rec));
+  const lastAt = counted.length ? Math.max(...counted.map(p => p.rec.at)) : 0;
+  const doing = counted.find(p => p.rec.stats && p.rec.stats.answered && p.rec.stats.answered < p.rec.stats.total);
+  const ix = (n, label, note, tape, rot) => `<div class="tile ix" style="--tape:${tape};--rot:${rot}deg"><b>${n}</b><span class="lab">${label}</span><span class="note">${note}</span></div>`;
+  $('d-tiles').innerHTML =
+    ix(`${t.started}<small> / ${t.pagesCounted}</small>`, 'pages worked on', doing ? esc(shortTitle(doing.title || doing.page)) + ' in progress' : t.started ? 'all started pages finished' : 'nothing started yet', 'var(--pink)', -1.6) +
+    ix(t.answered, 'answers given', lastAt ? 'last answer ' + ago(lastAt) : 'none yet', 'var(--olive)', 1.2) +
+    ix(t.answered ? pct(t.right, t.answered) + '%' : '—', 'right', t.answered ? `${t.right} of ${t.answered} answers` : 'nothing to check yet', 'var(--sky)', -0.8) +
+    ix(marks + comments, 'marks &amp; comments', marks + comments ? `${marks} marks · ${comments} comments` : 'none yet', 'var(--sage)', 1.6);
+  const card = (pg, i = 0) => {
+    const r = counts(s.id, pg.rec) || !isTracked(s.id, pg.page) ? pg.rec : null;   // counted work only (older test answers ignored)
+    const st = r && r.stats, nw = isNew(s.id, pg.page), nc = noteCount(s.id, pg.page);
     const info = !r ? 'Not opened yet' : st && st.total ? `${st.answered} / ${st.total} answered · ${st.right} right` : 'answers saved';
-    return `<div class="p-card ${nw ? 'is-new' : ''} ${r ? '' : 'untouched'}">
-      <div class="t"><b>${esc(pg.title || pg.page)}</b>${nw ? '<span class="badge-new">NEW</span>' : ''}</div>
-      ${bar(st)}
+    const rot = [-1.2, 0.9, -0.6, 1.3, -0.9, 0.5][i % 6];
+    return `<div class="p-card ${nw ? 'is-new' : ''} ${r ? '' : 'untouched'}" style="--rot:${rot}deg">
+      <div class="t"><b>${esc(pg.title || pg.page)}</b>${pg.hw ? '<span class="tag-hw">HW</span>' : ''}${nw ? '<span class="badge-new">NEW</span>' : ''}</div>
+      ${r ? bar(st) : ''}
       <div class="sub"><span>${info}</span>${r ? `<span>🕑 ${ago(r.at)}</span>` : ''}${nc ? `<span>💬 ${nc}</span>` : ''}</div>
       <div class="acts">${r ? `<button class="btn small ghost danger" data-reset="${esc(pg.page)}">↺ Reset</button>` : ''}<button class="btn small" data-open="${esc(pg.page)}" data-path="${esc(pg.path)}">Open →</button></div>
     </div>`;
   };
-  const lessons = list.filter(p => !p.hw), hws = list.filter(p => p.hw);
-  $('d-pages').innerHTML = (lessons.length ? `<div class="group-title">Lessons</div><div class="pages">${lessons.map(card).join('')}</div>` : '')
-    + (hws.length ? `<div class="group-title">Homework</div><div class="pages">${hws.map(card).join('')}</div>` : '')
+  // board: To do → In progress → Done, worked out from the counted answers
+  const stage = pg => {
+    const r = counts(s.id, pg.rec) ? pg.rec : null, st = r && r.stats;
+    if (!r || (st && !st.answered)) return 'todo';
+    if (st && st.total && st.answered >= st.total) return 'done';
+    return 'doing';
+  };
+  const now = list.filter(p => isTracked(s.id, p.page)).reverse(), earlier = list.filter(p => !isTracked(s.id, p.page));
+  const col = (key, title) => { const items = now.filter(p => stage(p) === key);
+    return `<div class="col col-${key}"><h3>${title}<span>${items.length}</span></h3>${items.map(card).join('') || '<p class="col-empty">—</p>'}</div>`; };
+  $('d-pages').innerHTML = (now.length ? `<div class="board">${col('todo', 'To do')}${col('doing', 'In progress')}${col('done', 'Done')}</div>` : '')
+    + (earlier.length ? `<details class="earlier"><summary class="group-title">Earlier lessons · not counted (${earlier.length})</summary><div class="pages">${earlier.map(card).join('')}</div></details>` : '')
     + (list.length ? '' : '<p class="empty">Loading the lessons…</p>');
   $('d-pages').querySelectorAll('[data-open]').forEach(b => b.onclick = () => { $('follow').checked = false; go('#/s/' + s.id + '/live'); showPage(s.id, b.dataset.open, b.dataset.path); });
   $('d-pages').querySelectorAll('[data-reset]').forEach(b => b.onclick = () => resetPage(s.id, b.dataset.reset));
   $('d-live').onclick = () => { $('follow').checked = true; go('#/s/' + s.id + '/live'); };
+  $('d-fresh').onclick = () => startFresh(s.id);
   $('d-report').onclick = () => go('#/s/' + s.id + '/report');
 }
 
@@ -340,6 +386,19 @@ $('note-dlg').addEventListener('close', () => {
 });
 
 /* ---------------- resets ---------------- */
+// clear a student's progress: answers, counts, NEW badges and marks. Old answers still saved on the
+// student's own device are not counted again (sync.js skips anything older than resetAt).
+function startFresh(sid) {
+  const s = stu(sid);
+  if (!confirm(`Start fresh for ${s.name}?\n\nThis clears ${s.name}’s answers, progress counts, NEW badges and your marks and comments on every page. Only work done from now on will count. This can’t be undone.`)) return;
+  Promise.all([
+    remove(ref(db, `students/${sid}/pages`)),
+    remove(ref(db, `students/${sid}/notes`)),
+    remove(ref(db, `teacher/seen/${sid}`)),
+    set(ref(db, `students/${sid}/resetAt`), Date.now()),
+    tracking[sid] && set(ref(db, `teacher/tracking/${sid}/since`), Date.now())
+  ]).then(() => toast(`${s.name} starts fresh`));
+}
 function resetPage(sid, page) {
   const r = pages[sid][page], s = stu(sid);
   if (!r || !confirm(`Clear all of ${s.name}’s answers on “${r.title || page}”?\nYour marks and comments on this page are removed too. This can’t be undone.`)) return;
@@ -372,44 +431,49 @@ function reportPages(sid) {
         topics: e.topics ?? (c.topics || []).join('; '), skills: e.skills ?? (c.skills || []).join('; ') };
     });
 }
+// **word** in the summaries = a highlighted key word (Cmd+B while editing does the same)
+const hl = text => esc(text).replace(/\*\*(.+?)\*\*/g, '<b class="hl">$1</b>');
+function unhl(el) {                    // back from the edited text to "**word**" form
+  let out = '';
+  el.childNodes.forEach(n => {
+    if (n.nodeType === 3) out += n.textContent;
+    else if (/^(B|STRONG)$/.test(n.nodeName) || (n.classList && n.classList.contains('hl'))) out += '**' + n.textContent + '**';
+    else if (n.nodeName === 'BR') out += ' ';
+    else out += unhl(n);
+  });
+  return out.replace(/\*\*\s*\*\*/g, '').replace(/\s+/g, ' ');
+}
 function renderReport() {
   const s = stu(route.s), sid = s.id, meta = (reports[sid] || {})._meta || {};
   const list = reportPages(sid), shown = list.filter(p => !p.skip);
   const recs = Object.values(pages[sid]);
   const firstAt = recs.length ? Math.min(...recs.map(r => r.at)) : Date.now();
-  let total = 0, answered = 0, right = 0;
-  shown.forEach(p => { const st = p.rec && p.rec.stats; if (st) { total += st.total; answered += st.answered; right += st.right; } });
   const skills = [...new Set(shown.flatMap(p => p.skills.split(';').map(x => x.trim()).filter(Boolean)))];
   $('r-heading').textContent = s.name + ' — report';
-  const ed = (field, text, cls = '', tag = 'span') => `<${tag} class="${cls}" contenteditable="true" data-field="${field}">${esc(text)}</${tag}>`;
+  const ed = (field, text, cls = '', tag = 'span', rich = false) =>
+    `<${tag} class="${cls}" contenteditable="true" data-field="${field}"${rich ? ' data-rich="1"' : ''}>${rich ? hl(text) : esc(text)}</${tag}>`;
   $('report').innerHTML = `
     <div class="r-top">
-      <div><p class="eyebrow">Английский язык</p><h1>Отчёт об успехах</h1><div style="font:600 20px/1.3 var(--serif);margin-top:4px">${esc(s.ru)}</div></div>
-      <div class="r-meta">Дата: ${ruDate(Date.now())}<br>Период: ${ed('_meta.period', meta.period || 'с ' + ruDate(firstAt) + ' по ' + ruDate(Date.now()))}<br>Преподаватель: ${ed('_meta.teacher', meta.teacher || '')}</div>
-    </div>
-    <div class="r-sum">
-      <div><b>${shown.length}</b><span>уроков и заданий пройдено</span></div>
-      <div><b>${answered}${total ? ' / ' + total : ''}</b><span>заданий выполнено на сайте</span></div>
-      <div><b>${answered ? pct(right, answered) + '%' : '—'}</b><span>правильных ответов</span></div>
+      <div><p class="eyebrow">Английский язык</p><h1>Отчёт об успехах</h1><div style="font:800 24px/1.3 var(--ru-head);margin-top:6px;color:var(--pink-2)">${esc(s.ru)}</div></div>
+      <div class="r-meta">Дата: ${ruDate(Date.now())}<br>Период: ${ed('_meta.period', meta.period || 'с ' + ruDate(firstAt) + ' по ' + ruDate(Date.now()))}<br><span class="r-count">Пройдено уроков: <b>${shown.length}</b></span></div>
     </div>
     <h2>Чему ${s.female ? 'научилась' : 'научился'} ${esc(s.ru)}</h2>
-    <ul class="r-skills">${skills.map(x => `<li>${esc(x)}</li>`).join('') || '<li>—</li>'}</ul>
+    <ul class="r-skills">${skills.map(x => `<li>${hl(x)}</li>`).join('') || '<li>—</li>'}</ul>
     <h2>Пройденные темы</h2>
-    ${shown.map(p => { const st = p.rec && p.rec.stats;
-      const stat = st && st.total ? `выполнено ${st.answered} из ${st.total}, верно ${pct(st.right, st.answered || 1)}%` : p.rec ? 'выполнено на сайте' : '';
-      return `<div class="r-lesson"><button class="r-skip no-print" data-skip="${esc(p.page)}" title="Убрать из отчёта">✕ убрать</button>
-        <div class="r-h">${ed(p.page + '.title', p.title, '', 'h3')}<span class="r-stat">${stat}</span></div>
-        <div class="r-lines"><span>Темы</span>${ed(p.page + '.topics', p.topics)}<span>Умения</span>${ed(p.page + '.skills', p.skills)}</div></div>`; }).join('')}
+    ${shown.map(p => `<div class="r-lesson"><button class="r-skip no-print" data-skip="${esc(p.page)}" title="Убрать из отчёта">✕ убрать</button>
+        <div class="r-h">${ed(p.page + '.title', p.title, '', 'h3')}</div>
+        <div class="r-lines"><span>Темы</span>${ed(p.page + '.topics', p.topics, 'r-topics', 'span', true)}<span>Умения</span>${ed(p.page + '.skills', p.skills, '', 'span', true)}</div></div>`).join('')}
     ${list.some(p => p.skip) ? `<p class="no-print" style="color:var(--muted);font-size:13px">Убрано из отчёта: ${list.filter(p => p.skip).map(p => `<a href="#" data-unskip="${esc(p.page)}">${esc(p.title)}</a>`).join(', ')}</p>` : ''}
+    <p class="no-print r-tip">Совет: выделите слово и нажмите <b>⌘ + B</b> (Ctrl + B), чтобы подсветить его.</p>
     <h2>Комментарий преподавателя</h2>
-    ${ed('_meta.comment', meta.comment || '', 'r-comment', 'div')}
-    <div class="r-sign"><span>Подпись преподавателя: ____________________</span><span>${ruDate(Date.now())}</span></div>`;
+    ${ed('_meta.comment', meta.comment || '', 'r-comment', 'div')}`;
   $('report').querySelectorAll('[contenteditable]').forEach(el => {
     el.addEventListener('focus', () => { reportEditing = true; });
     el.addEventListener('blur', () => {
       reportEditing = false;
       const [page, field] = el.dataset.field.split('.');
-      set(ref(db, `teacher/reports/${sid}/${page}/${field}`), el.innerText.trim()).then(() => toast('Saved'));
+      const value = el.dataset.rich ? unhl(el).trim() : el.innerText.trim();
+      set(ref(db, `teacher/reports/${sid}/${page}/${field}`), value).then(() => toast('Saved'));
     });
   });
   $('report').querySelectorAll('[data-skip]').forEach(b => b.onclick = () => set(ref(db, `teacher/reports/${sid}/${b.dataset.skip}/skip`), true));

@@ -370,6 +370,9 @@
 
     await db.set(db.ref(d, `devices/${uid}`), STUDENT);           // this device belongs to this student
 
+    // "Start fresh" by the teacher: answers saved on this device before that moment are not counted again
+    const resetAt = +((await db.get(db.ref(d, `students/${STUDENT}/resetAt`))).val() || 0);
+
     // answers changed somewhere else (another device, or a reset by the teacher) → use them
     let first = true;
     db.onValue(db.ref(d, `students/${STUDENT}/pages/${PAGE}`), snap => {
@@ -382,7 +385,7 @@
         location.reload();
         return;
       }
-      if (first && KEY && local && (!remote || localAt > remote.at)) upload();   // changes made offline, or before syncing existed
+      if (first && KEY && local && localAt > resetAt && (!remote || localAt > remote.at)) upload();   // changes made offline, or before syncing existed
       else if (first && KEY && remote && !remote.stats) setTimeout(upload, 800); // older record: add the progress count
       first = false;
     });

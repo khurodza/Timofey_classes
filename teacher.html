@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Space+Grotesk:wght@400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Unbounded:wght@600;700;800;900&family=Josefin+Sans:wght@600;700&family=Young+Serif&family=Outfit:wght@400;500;600;700&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/teacher.css">
 </head>
 <body>
@@ -39,7 +39,12 @@
       <button class="brand" data-go="overview" title="Overview"><span class="logo">✦</span><span class="hide-mini">Teacher desk</span></button>
       <button class="icon-btn collapse" id="collapse" title="Collapse the list">‹</button>
     </div>
-    <button class="nav-item" data-go="overview"><span class="ico">⌂</span><span class="hide-mini">All students</span></button>
+    <button class="nav-item all-btn" data-go="overview" title="All students">
+      <span class="stack" aria-hidden="true"><i style="--c:#2D5DA8">T</i><i style="--c:#D9628F">P</i><i style="--c:#A99A3C">M</i><i style="--c:#5F8FC9">K</i></span>
+      <span class="hide-mini">All students</span><span class="arrow hide-mini">→</span>
+    </button>
+    <button class="nav-item" data-go="schedule" title="Schedule"><span class="ico">▦</span><span class="hide-mini">Schedule</span></button>
+    <button class="nav-item" data-go="plans" title="Lesson planner"><span class="ico">✎</span><span class="hide-mini">Lesson planner</span></button>
     <div class="side-label hide-mini">Students</div>
     <nav id="students"></nav>
     <div class="side-foot">
@@ -61,6 +66,7 @@
         </div>
       </header>
       <div class="ribbon" aria-hidden="true"><div class="ribbon-track"><span>your students</span><span>✦</span><span>live answers</span><span>✦</span><span>marks &amp; comments</span><span>✦</span><span>progress reports</span><span>✦</span><span>your students</span><span>✦</span><span>live answers</span><span>✦</span><span>marks &amp; comments</span><span>✦</span><span>progress reports</span><span>✦</span></div></div>
+      <div id="upnext"></div>
       <div class="grid-cards" id="overview"></div>
     </section>
 
@@ -75,6 +81,7 @@
           </div>
         </div>
         <div class="head-actions">
+          <button class="btn ghost danger" id="d-fresh" title="Clear all answers and counts for this student">↺ Start fresh</button>
           <button class="btn" id="d-report">📄 Progress report</button>
           <button class="btn primary" id="d-live">● Watch live</button>
         </div>
@@ -99,6 +106,34 @@
         <iframe class="frame" id="frame-a" title="Student page"></iframe>
         <iframe class="frame" id="frame-b" title="Student page" hidden></iframe>
         <div class="frame-empty" id="v-empty">Waiting for the student to open a page…</div>
+      </div>
+    </section>
+
+    <!-- schedule -->
+    <section class="view" id="v-schedule" hidden>
+      <header class="head">
+        <div><p class="eyebrow" id="sch-zones"></p><h1>Schedule</h1></div>
+        <div class="head-actions">
+          <button class="btn" id="sch-prev" title="Previous week">‹</button>
+          <button class="btn" id="sch-today">This week</button>
+          <button class="btn" id="sch-next" title="Next week">›</button>
+          <button class="btn primary" id="sch-new">+ Lesson</button>
+        </div>
+      </header>
+      <p class="sch-range" id="sch-range"></p>
+      <div class="week" id="sch-week"></div>
+      <div class="group-title">Student links</div>
+      <div class="zoom-links" id="sch-links"></div>
+    </section>
+
+    <!-- lesson planner -->
+    <section class="view" id="v-plans" hidden>
+      <header class="head no-print">
+        <div><p class="eyebrow">Communicative + lexical approach</p><h1>Lesson planner</h1></div>
+      </header>
+      <div class="planner">
+        <aside class="pl-list no-print" id="pl-list"></aside>
+        <div class="pl-editor" id="pl-editor"></div>
       </div>
     </section>
 
@@ -134,6 +169,31 @@
     </label>
     <div class="dlg-actions">
       <button class="btn ghost danger" value="delete" id="note-del">Delete</button>
+      <span class="spacer"></span>
+      <button class="btn ghost" value="cancel">Cancel</button>
+      <button class="btn primary" value="save">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- add / edit a lesson in the schedule -->
+<dialog class="dlg" id="ev-dlg">
+  <form method="dialog" class="dlg-body">
+    <h2 id="ev-title">New lesson</h2>
+    <div class="ev-grid">
+      <label class="field">Student<select id="ev-student"></select></label>
+      <label class="field">Length, min<input type="number" id="ev-min" min="15" step="5"></label>
+      <label class="field">Date<input type="date" id="ev-date"></label>
+      <label class="field">Your time<input type="time" id="ev-time"></label>
+    </div>
+    <p class="ev-msk" id="ev-msk"></p>
+    <label class="ck"><input type="checkbox" id="ev-weekly"><span>Repeat every week</span></label>
+    <label class="field">Repeat until <small>(optional)</small><input type="date" id="ev-until"></label>
+    <label class="field">Lesson page<select id="ev-page"></select></label>
+    <label class="field">Zoom link <small>(leave empty to use the student’s saved link)</small><input type="url" id="ev-zoom"></label>
+    <label class="field">Note<input id="ev-note" placeholder="e.g. Lesson 6 + check homework"></label>
+    <div class="dlg-actions">
+      <button class="btn ghost danger" value="delete" id="ev-del">Delete</button>
       <span class="spacer"></span>
       <button class="btn ghost" value="cancel">Cancel</button>
       <button class="btn primary" value="save">Save</button>
