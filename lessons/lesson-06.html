@@ -14,12 +14,13 @@
     <div class="hero-grid">
       <div>
         <h1 class="name-slot" data-with="Lesson 6: Listen, {name}!" data-without="Lesson 6: Listen!">Lesson 6: Listen!</h1>
-        <p>Warm up with short dialogues, then classroom English: what your teacher says and what you can say in class.</p>
+        <p>Warm up with short dialogues, classroom English, numbers 20–100 and reading c and n.</p>
         <div class="hero-badges">
           <span class="badge">Lesson 6</span>
           <span class="badge">Warm-up: dialogues</span>
           <span class="badge">Starter: Welcome!</span>
-          <span class="badge">Student’s Book p. 9</span>
+          <span class="badge">Student’s Book pp. 9–10</span>
+          <span class="badge">Read it right: c · n</span>
         </div>
       </div>
     </div>
@@ -30,11 +31,15 @@
      PART 1: warm-up, short dialogues revising Lesson 5.
      PART 2: Student's Book Welcome p. 9, classroom language
      (tracks W.08–W.09), moved here from Lesson 5.
+     PART 3: Student's Book p. 10, numbers 20–100 + messages (W.10–W.13).
+     PART 4: "c · n" copied from Lesson 2 ("Read it right").
 ══════════════════════════════════════════════════════════ -->
 <nav class="parts">
   <div class="wrap">
     <button class="part-tab" data-part="part-warm" onclick="showPart('part-warm')">Warm-up</button>
     <button class="part-tab" data-part="part-cl" onclick="showPart('part-cl')">Classroom language</button>
+    <button class="part-tab" data-part="part-num" onclick="showPart('part-num')">Numbers 20–100</button>
+    <button class="part-tab" data-part="part-cn" onclick="showPart('part-cn')">Read it right: c · n</button>
   </div>
 </nav>
 
@@ -274,8 +279,382 @@
     </div>
   </section>
 
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-num');window.scrollTo(0,0)">Next: Numbers 20–100 →</button>
+  </div>
+
 </div>
 </div>
+
+<div class="lesson-part" id="part-num">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#n1">1 · Match</a>
+    <a href="#n2">2 · Say them</a>
+    <a href="#n3">3 · Write</a>
+    <a href="#n4">4 · Messages</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="n1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Numbers 20–100 · Student’s Book p. 10</div>
+        <h2>Numbers 20–100</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-match-n1">
+      <div class="exercise-label">Exercise 1 · W.10</div>
+      <h3>Match the numbers with the words. Listen and check.</h3>
+      <div class="match-grid">
+        <div class="match-col" data-side="left">
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-n1')">20</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-n1')">30</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-n1')">40</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-n1')">50</div>
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-n1')">60</div>
+          <div class="match-item" data-pair="6" onclick="selectMatch(this,'ex-match-n1')">70</div>
+          <div class="match-item" data-pair="7" onclick="selectMatch(this,'ex-match-n1')">80</div>
+          <div class="match-item" data-pair="8" onclick="selectMatch(this,'ex-match-n1')">90</div>
+          <div class="match-item" data-pair="9" onclick="selectMatch(this,'ex-match-n1')">100</div>
+        </div>
+        <div class="match-col" data-side="right">
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-n1')">fifty</div>
+          <div class="match-item" data-pair="7" onclick="selectMatch(this,'ex-match-n1')">eighty</div>
+          <div class="match-item" data-pair="8" onclick="selectMatch(this,'ex-match-n1')">ninety</div>
+          <div class="match-item" data-pair="6" onclick="selectMatch(this,'ex-match-n1')">seventy</div>
+          <div class="match-item" data-pair="9" onclick="selectMatch(this,'ex-match-n1')">one hundred</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-n1')">thirty</div>
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-n1')">twenty</div>
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-n1')">sixty</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-n1')">forty</div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-ghost" onclick="resetMatchEx('ex-match-n1')">Reset</button>
+      </div>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-06-w10.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div class="tip rule"><span class="tip-title">Look!</span>Tens + one number, with a hyphen: <button class="say" data-say="forty-three">43 = forty-three</button> <button class="say" data-say="eighty-five">85 = eighty-five</button> <button class="say" data-say="seventy-seven">77 = seventy-seven</button></div>
+      <div class="tip"><span class="tip-title">Careful: forty</span>four → <span class="key">forty</span> (no <b>u</b>!). <b>-teen</b> or <b>-ty</b>? <button class="say" data-say="thirteen">13 thirteen</button> <button class="say" data-say="thirty">30 thirty</button></div>
+    </div>
+  </section>
+
+  <section class="step" id="n2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Pronunciation · Student’s Book p. 10</div>
+        <h2>How do you say these numbers?</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Exercise 2 · W.11</div>
+      <h3>Say the numbers. Then listen, check and repeat.</h3>
+      <p class="ru-hint" lang="ru">Сначала скажи число сам, потом нажми и проверь.</p>
+      <div class="word-row">
+        <button class="say" data-say="twenty-four">24</button>
+        <button class="say" data-say="eighty-seven">87</button>
+        <button class="say" data-say="thirty-three">33</button>
+        <button class="say" data-say="forty-nine">49</button>
+        <button class="say" data-say="fifty-four">54</button>
+        <button class="say" data-say="sixty-two">62</button>
+        <button class="say" data-say="seventy-four">74</button>
+        <button class="say" data-say="ninety-five">95</button>
+      </div>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-06-w11.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+  <section class="step" id="n3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Writing · Student’s Book p. 10</div>
+        <h2>Write the numbers</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-n3">
+      <div class="exercise-label">Exercise 3</div>
+      <h3>Write the numbers in words.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>0. 23 → <b>twenty-three</b></span></div>
+      <p class="gap-line"><span class="num">1.</span> <b style="display:inline-block;width:36px">47</b> <input class="blank" id="n3-1" data-answer="forty-seven|forty seven" placeholder="in words" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+      <p class="gap-line"><span class="num">2.</span> <b style="display:inline-block;width:36px">60</b> <input class="blank" id="n3-2" data-answer="sixty|sixty" placeholder="in words" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+      <p class="gap-line"><span class="num">3.</span> <b style="display:inline-block;width:36px">89</b> <input class="blank" id="n3-3" data-answer="eighty-nine|eighty nine" placeholder="in words" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+      <p class="gap-line"><span class="num">4.</span> <b style="display:inline-block;width:36px">34</b> <input class="blank" id="n3-4" data-answer="thirty-four|thirty four" placeholder="in words" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+      <p class="gap-line"><span class="num">5.</span> <b style="display:inline-block;width:36px">58</b> <input class="blank" id="n3-5" data-answer="fifty-eight|fifty eight" placeholder="in words" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+      <p class="gap-line"><span class="num">6.</span> <b style="display:inline-block;width:36px">72</b> <input class="blank" id="n3-6" data-answer="seventy-two|seventy two" placeholder="in words" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+      <p class="gap-line"><span class="num">7.</span> <b style="display:inline-block;width:36px">91</b> <input class="blank" id="n3-7" data-answer="ninety-one|ninety one" placeholder="in words" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-n3')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-n3')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="n4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Messages · Student’s Book p. 10</div>
+        <h2>Messages</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-n4">
+      <div class="exercise-label">Exercise 4 · W.12</div>
+      <h3>Read and listen to the message. Complete the message to Alex.</h3>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-06-w12.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div class="tip" style="font-size:18px">
+        <span class="tip-title">Alex — Message from Jamie</span>
+        <p class="gap-line">His house number is <sup>1</sup> <input class="blank" id="n4-1" data-answer="32|thirty-two|thirty two" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px;min-width:0">.</p>
+        <p class="gap-line">The bus number is <sup>2</sup> <input class="blank" id="n4-2" data-answer="12|twelve" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px;min-width:0">.</p>
+        <p class="gap-line">His phone number is <sup>3</sup> <input class="blank" id="n4-3" data-answer="07913 65826|0791365826|07913-65826|07913 658 26" placeholder="phone" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:170px;min-width:0">.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-n4')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-n4')">Try again</button>
+      </div>
+    </div>
+
+    <div class="card" id="ex-n5">
+      <div class="exercise-label">Exercise 5 · W.13</div>
+      <h3>Now read, listen and complete the message to Molly.</h3>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-06-w13.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div class="tip" style="font-size:18px">
+        <span class="tip-title">Molly — Message from Mrs Smith</span>
+        <p class="gap-line">Her address is <sup>1</sup> <input class="blank" id="n5-1" data-answer="25|twenty-five|twenty five" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px;min-width:0"> Main Street, flat number <sup>2</sup> <input class="blank" id="n5-2" data-answer="51|fifty-one|fifty one" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px;min-width:0">.</p>
+        <p class="gap-line">Her telephone number is <sup>3</sup> <input class="blank" id="n5-3" data-answer="0820 515327|0820515327|0820 515 327|0820-515327|08205 15327" placeholder="phone" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:170px;min-width:0">.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-n5')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-n5')">Try again</button>
+      </div>
+      <div class="tip class-note"><span class="tip-title">In class: your message</span>Leave your teacher a message: your house number, your flat number and a phone number (you can make it up!). Your teacher writes it down — is it right?</div>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-cn');window.scrollTo(0,0)">Next: Read it right c · n →</button>
+  </div>
+
+</div>
+</div>
+
+<!-- copied from Lesson 2 ("c · n" tab) -->
+<div class="lesson-part" id="part-cn">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#d1">1 · Meet</a>
+    <a href="#d2">2 · c = k or s?</a>
+    <a href="#d3">3 · a or an?</a>
+    <a href="#d4">4 · Build</a>
+    <a href="#d5">5 · Read</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="d1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Meet the sounds</div>
+        <h2>c and n</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="sound-card">
+        <div class="sound-head">
+          <div class="sound-letter">Cc</div>
+          <div><div class="ipa">/k/</div><div class="sound-name">c — as in <b>cat</b></div></div>
+        </div>
+        <div class="sound-body">
+          <h4>How to say it</h4>
+          <p>The back of your tongue goes up, then a puff of air: <b>k!</b> Usually the letter <b>c</b> sounds just like <b>k</b>.</p>
+          <h4>Listen and repeat</h4>
+          <div class="word-row"><button class="say" data-say="cat">cat</button> <button class="say" data-say="can">can</button> <button class="say" data-say="cap">cap</button> <button class="say" data-say="camp">camp</button> <button class="say" data-say="cost">cost</button> <button class="say" data-say="comic">comic</button> <button class="say" data-say="picnic">picnic</button> <button class="say" data-say="cactus">cactus</button></div>
+      <div class="trap"><span class="trap-title">German trap: c = “ts”?</span>German eyes read <b>c</b> before <b>e / i</b> as “ts” (<i>Cäsar</i>). In English it is <span class="ipa">/s/</span>: <button class="say" data-say="city">city</button> <button class="say" data-say="cent">cent</button> <button class="say" data-say="pencil">pencil</button> <button class="say" data-say="cinema">cinema</button> <button class="say" data-say="ice">ice</button> <button class="say" data-say="nice">nice</button><br><b>Rule:</b> c + <b>a, o, u</b> → <span class="ipa">/k/</span> · c + <b>e, i, y</b> → <span class="ipa">/s/</span> · never “ts”!</div>
+        </div>
+      </div>
+      <div class="sound-card">
+        <div class="sound-head">
+          <div class="sound-letter">Nn</div>
+          <div><div class="ipa">/n/</div><div class="sound-name">n — as in <b>net</b></div></div>
+        </div>
+        <div class="sound-body">
+          <h4>How to say it</h4>
+          <p>The tip of your tongue goes up behind your top teeth. The sound comes out through your nose. The same as German!</p>
+          <h4>Listen and repeat</h4>
+          <div class="word-row"><button class="say" data-say="net">net</button> <button class="say" data-say="nap">nap</button> <button class="say" data-say="in">in</button> <button class="say" data-say="an">an</button> <button class="say" data-say="on">on</button> <button class="say" data-say="ten">ten</button> <button class="say" data-say="pen">pen</button> <button class="say" data-say="can">can</button> <button class="say" data-say="tent">tent</button> <button class="say" data-say="snack">snack</button></div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="d2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Sound hunt</div>
+        <h2>Does c say <span class="ipa">/k/</span> or <span class="ipa">/s/</span>?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-d-cs">
+      <div class="exercise-label">Choose the sound</div>
+      <h3>Look at the letter after the <b>c</b>. Decide, then press 🔊 to check.</h3>
+      <div class="sort-row"><button class="say" data-say="cat">cat</button><span class="word-choice" id="d-cs1" data-answer="/k/"><button class="word-choice-btn" onclick="selectWord(this)">/k/</button><button class="word-choice-btn" onclick="selectWord(this)">/s/</button></span></div>
+      <div class="sort-row"><button class="say" data-say="city">city</button><span class="word-choice" id="d-cs2" data-answer="/s/"><button class="word-choice-btn" onclick="selectWord(this)">/k/</button><button class="word-choice-btn" onclick="selectWord(this)">/s/</button></span></div>
+      <div class="sort-row"><button class="say" data-say="can">can</button><span class="word-choice" id="d-cs3" data-answer="/k/"><button class="word-choice-btn" onclick="selectWord(this)">/k/</button><button class="word-choice-btn" onclick="selectWord(this)">/s/</button></span></div>
+      <div class="sort-row"><button class="say" data-say="cent">cent</button><span class="word-choice" id="d-cs4" data-answer="/s/"><button class="word-choice-btn" onclick="selectWord(this)">/k/</button><button class="word-choice-btn" onclick="selectWord(this)">/s/</button></span></div>
+      <div class="sort-row"><button class="say" data-say="pencil">pencil</button><span class="word-choice" id="d-cs5" data-answer="/s/"><button class="word-choice-btn" onclick="selectWord(this)">/k/</button><button class="word-choice-btn" onclick="selectWord(this)">/s/</button></span></div>
+      <div class="sort-row"><button class="say" data-say="comic">comic</button><span class="word-choice" id="d-cs6" data-answer="/k/"><button class="word-choice-btn" onclick="selectWord(this)">/k/</button><button class="word-choice-btn" onclick="selectWord(this)">/s/</button></span></div>
+      <div class="sort-row"><button class="say" data-say="cinema">cinema</button><span class="word-choice" id="d-cs7" data-answer="/s/"><button class="word-choice-btn" onclick="selectWord(this)">/k/</button><button class="word-choice-btn" onclick="selectWord(this)">/s/</button></span></div>
+      <div class="sort-row"><button class="say" data-say="cactus">cactus</button><span class="word-choice" id="d-cs8" data-answer="/k/"><button class="word-choice-btn" onclick="selectWord(this)">/k/</button><button class="word-choice-btn" onclick="selectWord(this)">/s/</button></span></div>
+      <div class="sort-row"><button class="say" data-say="ice">ice</button><span class="word-choice" id="d-cs9" data-answer="/s/"><button class="word-choice-btn" onclick="selectWord(this)">/k/</button><button class="word-choice-btn" onclick="selectWord(this)">/s/</button></span></div>
+      <div class="sort-row"><button class="say" data-say="picnic">picnic</button><span class="word-choice" id="d-cs10" data-answer="/k/"><button class="word-choice-btn" onclick="selectWord(this)">/k/</button><button class="word-choice-btn" onclick="selectWord(this)">/s/</button></span></div>
+      <div class="sort-row"><button class="say" data-say="cycle">cycle</button><span class="word-choice" id="d-cs11" data-answer="/s/"><button class="word-choice-btn" onclick="selectWord(this)">/k/</button><button class="word-choice-btn" onclick="selectWord(this)">/s/</button></span></div>
+      <div class="sort-row"><button class="say" data-say="act">act</button><span class="word-choice" id="d-cs12" data-answer="/k/"><button class="word-choice-btn" onclick="selectWord(this)">/k/</button><button class="word-choice-btn" onclick="selectWord(this)">/s/</button></span></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-d-cs')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-d-cs')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="d3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Sound grammar</div>
+        <h2>a or an?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-d-an">
+      <div class="exercise-label">Choose</div>
+      <h3>It’s about the <b>first sound</b>, not the first letter.</h3>
+      <p><b>a</b> + consonant sound: <button class="say" data-say="a cat">a cat</button> <button class="say" data-say="a tent">a tent</button> &nbsp; · &nbsp; <b>an</b> + vowel sound: <button class="say" data-say="an ant">an ant</button> <button class="say" data-say="an egg">an egg</button></p>
+      <div class="sort-row"><span class="word-choice" id="d-an1" data-answer="a"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> <b style="font-size:19px">cat</b></div>
+      <div class="sort-row"><span class="word-choice" id="d-an2" data-answer="an"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> <b style="font-size:19px">ant</b></div>
+      <div class="sort-row"><span class="word-choice" id="d-an3" data-answer="an"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> <b style="font-size:19px">insect</b></div>
+      <div class="sort-row"><span class="word-choice" id="d-an4" data-answer="a"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> <b style="font-size:19px">tent</b></div>
+      <div class="sort-row"><span class="word-choice" id="d-an5" data-answer="an"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> <b style="font-size:19px">apple</b></div>
+      <div class="sort-row"><span class="word-choice" id="d-an6" data-answer="an"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> <b style="font-size:19px">octopus</b></div>
+      <div class="sort-row"><span class="word-choice" id="d-an7" data-answer="a"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> <b style="font-size:19px">pen</b></div>
+      <div class="sort-row"><span class="word-choice" id="d-an8" data-answer="an"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> <b style="font-size:19px">egg</b></div>
+      <div class="sort-row"><span class="word-choice" id="d-an9" data-answer="an"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> <b style="font-size:19px">hour</b></div>
+      <div class="sort-row"><span class="word-choice" id="d-an10" data-answer="a"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">an</button></span> <b style="font-size:19px">uniform</b></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-d-an')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-d-an')">Try again</button>
+      </div>
+      <div class="tip"><b>Tricky:</b> <button class="say" data-say="an hour">an hour</button> — the h is silent, so the first sound is a vowel. <button class="say" data-say="a uniform">a uniform</button> — u says “you”, so the first sound is <span class="ipa">/j/</span>.</div>
+    </div>
+  </section>
+
+  <section class="step" id="d4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Build words</div>
+        <h2>Blend the sounds</h2>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Say each sound, then push them together. Check with 🔊.</h3>
+      <div class="blend-list">
+        <div class="blend"><span class="tile v">a</span><span class="op">+</span><span class="tile">n</span><span class="op">→</span><button class="say" data-say="an">an</button></div>
+        <div class="blend"><span class="tile">c</span><span class="op">+</span><span class="tile v">a</span><span class="op">+</span><span class="tile">n</span><span class="op">→</span><button class="say" data-say="can">can</button></div>
+        <div class="blend"><span class="tile">c</span><span class="op">+</span><span class="tile v">a</span><span class="op">+</span><span class="tile">t</span><span class="op">→</span><button class="say" data-say="cat">cat</button></div>
+        <div class="blend"><span class="tile v">a</span><span class="op">+</span><span class="tile">n</span><span class="op">+</span><span class="tile">t</span><span class="op">→</span><button class="say" data-say="ant">ant</button></div>
+        <div class="blend"><span class="tile">t</span><span class="op">+</span><span class="tile v">i</span><span class="op">+</span><span class="tile">n</span><span class="op">→</span><button class="say" data-say="tin">tin</button></div>
+        <div class="blend"><span class="tile">s</span><span class="op">+</span><span class="tile">c</span><span class="op">+</span><span class="tile v">a</span><span class="op">+</span><span class="tile">n</span><span class="op">→</span><button class="say" data-say="scan">scan</button></div>
+        <div class="blend"><span class="tile">s</span><span class="op">+</span><span class="tile">n</span><span class="op">+</span><span class="tile v">a</span><span class="op">+</span><span class="tile">ck</span><span class="op">→</span><button class="say" data-say="snack">snack</button></div>
+        <div class="blend"><span class="tile">c</span><span class="op">+</span><span class="tile v">a</span><span class="op">+</span><span class="tile">m</span><span class="op">+</span><span class="tile">p</span><span class="op">→</span><button class="say" data-say="camp">camp</button></div>
+      </div>
+    </div>
+    <div class="card" id="ex-d-dict">
+      <div class="exercise-label">Dictation</div>
+      <h3>Listen and write the word. Careful: one is a <b>c</b> that says <span class="ipa">/s/</span>!</h3>
+      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="can"></button><input class="blank" id="d-d1" data-answer="can" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="ant"></button><input class="blank" id="d-d2" data-answer="ant" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="snip"></button><input class="blank" id="d-d3" data-answer="snip" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="scan"></button><input class="blank" id="d-d4" data-answer="scan" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="camp"></button><input class="blank" id="d-d5" data-answer="camp" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="city"></button><input class="blank" id="d-d6" data-answer="city" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-d-dict')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-d-dict')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="d5">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Read and record</div>
+        <h2>It is a… / It is an…</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-d-it">
+      <div class="exercise-label">Write</div>
+      <h3>What is it? Write <b>a</b> or <b>an</b> + the word.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>🐱 It is <b>a cat</b>.</span></div>
+      <p class="gap-line"><span class="num">1.</span> <span style="font-size:30px;vertical-align:middle">🐜</span> It is <input class="blank" id="d-e1" data-answer="an ant" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false">.</p>
+      <p class="gap-line"><span class="num">2.</span> <span style="font-size:30px;vertical-align:middle">🍎</span> It is <input class="blank" id="d-e2" data-answer="an apple" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false">.</p>
+      <p class="gap-line"><span class="num">3.</span> <span style="font-size:30px;vertical-align:middle">⛺</span> It is <input class="blank" id="d-e3" data-answer="a tent" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false">.</p>
+      <p class="gap-line"><span class="num">4.</span> <span style="font-size:30px;vertical-align:middle">🐙</span> It is <input class="blank" id="d-e4" data-answer="an octopus" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false">.</p>
+      <p class="gap-line"><span class="num">5.</span> <span style="font-size:30px;vertical-align:middle">🥚</span> It is <input class="blank" id="d-e5" data-answer="an egg" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false">.</p>
+      <p class="gap-line"><span class="num">6.</span> <span style="font-size:30px;vertical-align:middle">🌵</span> It is <input class="blank" id="d-e6" data-answer="a cactus" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false">.</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-d-it')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-d-it')">Try again</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Read aloud</div>
+      <h3>Listen, then read each line aloud.</h3>
+      <div class="word-row" style="flex-direction:column;align-items:flex-start">
+        <button class="say sentence" data-say="It is a cat.">It is a cat.</button>
+        <button class="say sentence" data-say="It is an ant.">It is an ant.</button>
+        <button class="say sentence" data-say="Can a cat sit in a tin can?">Can a cat sit in a tin can?</button>
+        <button class="say sentence" data-say="An ant can sit on a cat.">An ant can sit on a cat.</button>
+        <button class="say sentence" data-say="Nick can act in the city cinema.">Nick can act in the city cinema.</button>
+      </div>
+      <p><b>Record yourself</b> reading the last line. Listen: are the two <b>c</b>s in <i>city cinema</i> an <span class="ipa">/s/</span>?</p>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+
+</div>
+</div>
+
 
 <script src="../assets/sync.js"></script>
 <script src="../assets/lessons.js"></script>

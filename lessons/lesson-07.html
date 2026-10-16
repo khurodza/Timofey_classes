@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 7 – Review</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="back-home" href="../index.html">← All lessons</a>
+    <div class="hero-grid">
+      <div>
+        <h1 class="name-slot" data-with="Lesson 7: Review time, {name}!" data-without="Lesson 7: Review time!">Lesson 7: Review time!</h1>
+        <p>Everything from the Welcome unit: letters, colours, numbers, classroom words and short dialogues.</p>
+        <div class="hero-badges">
+          <span class="badge">Lesson 7</span>
+          <span class="badge">Starter: Welcome! Review</span>
+          <span class="badge">Student’s Book p. 11</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     Student's Book Welcome p. 11 "Review": exercises 6–9 (track W.14).
+     Pictures for ex. 9 are from pp. 10–11 (images/review/sp-1…8.jpg).
+══════════════════════════════════════════════════════════ -->
+<nav class="chips">
+  <div class="wrap">
+    <a href="#r1">1 · First letter game</a>
+    <a href="#r2">2 · Missing vowels</a>
+    <a href="#r3">3 · Dialogues</a>
+    <a href="#r4">4 · Spell it</a>
+    <a href="#r5">5 · Итог</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="r1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Review · Student’s Book p. 11</div>
+        <h2>The ‘first letter’ game</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-r1">
+      <div class="exercise-label">Exercise 6 · W.14</div>
+      <h3>Listen to the letters of the alphabet. Write them down.</h3>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-07-w14.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div class="example-row"><span class="ex-tag">Example</span><span>0. <b>P</b></span></div>
+      <div class="listen-q"><span class="num">1.</span><input class="blank" id="g6-l1" data-answer="b" placeholder="letter" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:80px;min-width:0"></div>
+      <div class="listen-q"><span class="num">2.</span><input class="blank" id="g6-l2" data-answer="s" placeholder="letter" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:80px;min-width:0"></div>
+      <div class="listen-q"><span class="num">3.</span><input class="blank" id="g6-l3" data-answer="r" placeholder="letter" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:80px;min-width:0"></div>
+      <div class="listen-q"><span class="num">4.</span><input class="blank" id="g6-l4" data-answer="w" placeholder="letter" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:80px;min-width:0"></div>
+      <div class="listen-q"><span class="num">5.</span><input class="blank" id="g6-l5" data-answer="t" placeholder="letter" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:80px;min-width:0"></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-r1')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-r1')">Try again</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Now play! How many words can you find for each letter? One point for each correct word.</h3>
+      <p class="ru-hint" lang="ru">Для каждой буквы найди слова на эту букву: цвет, актёр, предмет в классе, число до 20, интернациональное слово. Кто наберёт больше очков — ты или учитель?</p>
+      <div style="overflow-x:auto">
+        <table class="ref-table" style="min-width:860px">
+          <tr><th></th><th>0 · P</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+          <tr><td class="label">Colour</td><td><i>pink, purple</i></td><td><input class="blank" id="g6-1-1" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td><td><input class="blank" id="g6-1-2" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td><td><input class="blank" id="g6-1-3" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td><td><input class="blank" id="g6-1-4" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td><td><input class="blank" id="g6-1-5" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td></tr>
+          <tr><td class="label">Actor</td><td><i>Natalie Portman, Brad Pitt</i></td><td><input class="blank" id="g6-2-1" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td><td><input class="blank" id="g6-2-2" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td><td><input class="blank" id="g6-2-3" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td><td><input class="blank" id="g6-2-4" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td><td><input class="blank" id="g6-2-5" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td></tr>
+          <tr><td class="label">Classroom object</td><td><i>pen, pencil</i></td><td><input class="blank" id="g6-3-1" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td><td><input class="blank" id="g6-3-2" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td><td><input class="blank" id="g6-3-3" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td><td><input class="blank" id="g6-3-4" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td><td><input class="blank" id="g6-3-5" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td></tr>
+          <tr><td class="label">Number (0–20)</td><td><i>–</i></td><td><input class="blank" id="g6-4-1" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td><td><input class="blank" id="g6-4-2" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td><td><input class="blank" id="g6-4-3" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td><td><input class="blank" id="g6-4-4" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td><td><input class="blank" id="g6-4-5" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td></tr>
+          <tr><td class="label">International word</td><td><i>pizza, phone</i></td><td><input class="blank" id="g6-5-1" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td><td><input class="blank" id="g6-5-2" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td><td><input class="blank" id="g6-5-3" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td><td><input class="blank" id="g6-5-4" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td><td><input class="blank" id="g6-5-5" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;min-width:0"></td></tr>
+        </table>
+      </div>
+      <div class="tip class-note"><span class="tip-title">In class: race!</span>You and your teacher play at the same time. 2 minutes for each letter. Then compare: one point for each correct word.</div>
+    </div>
+  </section>
+
+  <section class="step" id="r2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Review · Student’s Book p. 11</div>
+        <h2>Missing vowels</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-r2">
+      <div class="exercise-label">Exercise 7</div>
+      <h3>Complete the words with the missing vowels (a, e, i, o, u). Write the whole word.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>0. f _ _ t b a l l → <b>football</b></span></div>
+      <p class="gap-line"><span class="num">1.</span> <b style="display:inline-block;min-width:150px;letter-spacing:1px">d _ _ r</b> <input class="blank" id="g7-1" data-answer="door" placeholder="word" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"></p>
+      <p class="gap-line"><span class="num">2.</span> <b style="display:inline-block;min-width:150px;letter-spacing:1px">r _ s t _ _ r _ n t</b> <input class="blank" id="g7-2" data-answer="restaurant" placeholder="word" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"></p>
+      <p class="gap-line"><span class="num">3.</span> <b style="display:inline-block;min-width:150px;letter-spacing:1px">_ r _ n g _</b> <input class="blank" id="g7-3" data-answer="orange" placeholder="word" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"></p>
+      <p class="gap-line"><span class="num">4.</span> <b style="display:inline-block;min-width:150px;letter-spacing:1px">p _ n</b> <input class="blank" id="g7-4" data-answer="pen" placeholder="word" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"></p>
+      <p class="gap-line"><span class="num">5.</span> <b style="display:inline-block;min-width:150px;letter-spacing:1px">n _ n _</b> <input class="blank" id="g7-5" data-answer="nine" placeholder="word" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"></p>
+      <p class="gap-line"><span class="num">6.</span> <b style="display:inline-block;min-width:150px;letter-spacing:1px">c h _ _ r</b> <input class="blank" id="g7-6" data-answer="chair" placeholder="word" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"></p>
+      <p class="gap-line"><span class="num">7.</span> <b style="display:inline-block;min-width:150px;letter-spacing:1px">f _ v _</b> <input class="blank" id="g7-7" data-answer="five" placeholder="word" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"></p>
+      <p class="gap-line"><span class="num">8.</span> <b style="display:inline-block;min-width:150px;letter-spacing:1px">y _ l l _ w</b> <input class="blank" id="g7-8" data-answer="yellow" placeholder="word" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"></p>
+      <p class="gap-line"><span class="num">9.</span> <b style="display:inline-block;min-width:150px;letter-spacing:1px">_ _ r p _ r t</b> <input class="blank" id="g7-9" data-answer="airport" placeholder="word" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"></p>
+      <p class="gap-line"><span class="num">10.</span> <b style="display:inline-block;min-width:150px;letter-spacing:1px">g r _ _ n</b> <input class="blank" id="g7-10" data-answer="green" placeholder="word" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"></p>
+      <p class="gap-line"><span class="num">11.</span> <b style="display:inline-block;min-width:150px;letter-spacing:1px">_ _ g h t</b> <input class="blank" id="g7-11" data-answer="eight" placeholder="word" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"></p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-r2')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-r2')">Try again</button>
+      </div>
+    </div>
+    <div class="card" id="ex-r2-sort">
+      <h3>Then complete the table. Drag each word into the right column.</h3>
+      <div class="sc-bank" id="sc-r2"><span class="sc-tile" data-col="num">nine</span><span class="sc-tile" data-col="cl">door</span><span class="sc-tile" data-col="col">yellow</span><span class="sc-tile" data-col="int">airport</span><span class="sc-tile" data-col="cl">pen</span><span class="sc-tile" data-col="col">green</span><span class="sc-tile" data-col="num">five</span><span class="sc-tile" data-col="int">restaurant</span><span class="sc-tile" data-col="cl">chair</span><span class="sc-tile" data-col="col">orange</span><span class="sc-tile" data-col="num">eight</span></div>
+      <div class="sc-cols">
+        <div class="sc-col" data-col="int"><div class="sc-head">International words</div>
+          <div class="sc-drop"><span class="sc-tile given">football</span></div></div>
+        <div class="sc-col" data-col="col"><div class="sc-head">Colours</div><div class="sc-drop"></div></div>
+        <div class="sc-col" data-col="num"><div class="sc-head">Numbers</div><div class="sc-drop"></div></div>
+        <div class="sc-col" data-col="cl"><div class="sc-head">Classroom objects</div><div class="sc-drop"></div></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkSort('ex-r2-sort')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetSort('ex-r2-sort')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="r3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Review · Student’s Book p. 11</div>
+        <h2>Put the dialogues in order</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-r3">
+      <div class="exercise-label">Exercise 8</div>
+      <h3>Put the dialogues in order. Write 1–4 and 1–3 in the boxes.</h3>
+      <p class="ru-hint" lang="ru">Расставь реплики по порядку. Потом прочитайте диалоги вслух с учителем.</p>
+      <h4 style="margin:16px 0 6px">Dialogue 1</h4>
+      <div class="sort-row"><input class="blank num" id="g8-1-1" data-answer="3" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" style="width:56px;min-width:56px"> <span class="dl-name" style="min-width:64px">Tom</span> <span>Great, thanks. And you?</span></div>
+      <div class="sort-row"><span class="given" style="display:inline-block;width:56px;text-align:center">1</span> <span class="dl-name" style="min-width:64px">Tom</span> <span>Good morning, Harry.</span></div>
+      <div class="sort-row"><input class="blank num" id="g8-1-3" data-answer="4" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" style="width:56px;min-width:56px"> <span class="dl-name two" style="min-width:64px">Harry</span> <span>I’m fine, thanks.</span></div>
+      <div class="sort-row"><input class="blank num" id="g8-1-4" data-answer="2" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" style="width:56px;min-width:56px"> <span class="dl-name two" style="min-width:64px">Harry</span> <span>Hi, Tom. How are you?</span></div>
+      <h4 style="margin:16px 0 6px">Dialogue 2</h4>
+      <div class="sort-row"><input class="blank num" id="g8-2-1" data-answer="3" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" style="width:56px;min-width:56px"> <span class="dl-name" style="min-width:64px">Amy</span> <span>Yeah, have a good day.</span></div>
+      <div class="sort-row"><input class="blank num" id="g8-2-2" data-answer="1" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" style="width:56px;min-width:56px"> <span class="dl-name" style="min-width:64px">Amy</span> <span>Bye, Paul.</span></div>
+      <div class="sort-row"><input class="blank num" id="g8-2-3" data-answer="2" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" style="width:56px;min-width:56px"> <span class="dl-name two" style="min-width:64px">Paul</span> <span>Bye, Amy. See you later.</span></div>
+      <h4 style="margin:16px 0 6px">Dialogue 3</h4>
+      <div class="sort-row"><input class="blank num" id="g8-3-1" data-answer="3" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" style="width:56px;min-width:56px"> <span class="dl-name" style="min-width:64px">Dad</span> <span>Good night, Lars. Sleep well.</span></div>
+      <div class="sort-row"><input class="blank num" id="g8-3-2" data-answer="1" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" style="width:56px;min-width:56px"> <span class="dl-name" style="min-width:64px">Dad</span> <span>It’s bedtime.</span></div>
+      <div class="sort-row"><input class="blank num" id="g8-3-3" data-answer="2" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off" style="width:56px;min-width:56px"> <span class="dl-name two" style="min-width:64px">Lars</span> <span>OK. Good night, Dad.</span></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-r3')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-r3')">Try again</button>
+      </div>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+  <section class="step" id="r4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Speaking · Student’s Book p. 11</div>
+        <h2>Spell it!</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-r4">
+      <div class="exercise-label">Exercise 9 · Speaking</div>
+      <h3>Choose three pictures and spell the words for your teacher to write. Is your teacher correct? Then write all eight words.</h3>
+      <p class="ru-hint" lang="ru">Выбери три картинки и продиктуй слова по буквам — учитель пишет. Правильно? Потом поменяйтесь ролями.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>A: <i>R – E – D.</i> B: <i>Red!</i></span></div>
+      <div class="pic-grid photo">
+        <div class="pic-item"><span class="pic-letter">1</span><img src="images/review/sp-1.jpg" alt="picture 1"><input class="blank" id="g9-1" data-answer="red" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">2</span><img src="images/review/sp-2.jpg" alt="picture 2"><input class="blank" id="g9-2" data-answer="hotel" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">3</span><img src="images/review/sp-3.jpg" alt="picture 3"><input class="blank" id="g9-3" data-answer="computer" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">4</span><img src="images/review/sp-4.jpg" alt="picture 4"><input class="blank" id="g9-4" data-answer="desk|chair|desk and chair|a desk|a chair" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">5</span><img src="images/review/sp-5.jpg" alt="picture 5"><input class="blank" id="g9-5" data-answer="black" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">6</span><img src="images/review/sp-6.jpg" alt="picture 6"><input class="blank" id="g9-6" data-answer="one" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">7</span><img src="images/review/sp-7.jpg" alt="picture 7"><input class="blank" id="g9-7" data-answer="burger|hamburger|a burger|a hamburger" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">8</span><img src="images/review/sp-8.jpg" alt="picture 8"><input class="blank" id="g9-8" data-answer="four" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-r4')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-r4')">Try again</button>
+      </div>
+      <div class="tip"><span class="tip-title">Double letters</span>Say <span class="key">double O</span>: <i>b – double O – k</i> = book.</div>
+    </div>
+  </section>
+
+  <section class="step" id="r5">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Итог</div>
+        <h2>Что ты теперь умеешь?</h2>
+      </div>
+    </div>
+    <div class="card fun-check" lang="ru" id="fun-check">
+      <div class="fc-head">
+        <h3>Теперь я…</h3>
+        <span class="fc-count"><b>0</b> / 5 ⭐</span>
+      </div>
+      <div class="fc-meter"><i></i></div>
+      <p class="fc-hint">Отметь всё, что уже получается!</p>
+      <div class="reflect-list">
+        <label class="reflect-item"><input type="checkbox" id="rr1"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🔤</span><span class="reflect-text">понимаю буквы алфавита на слух</span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr2"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🎨</span><span class="reflect-text">пишу цвета, числа и предметы в классе без ошибок</span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr3"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">💬</span><span class="reflect-text">здороваюсь, прощаюсь и говорю «спокойной ночи»</span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr4"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🗣️</span><span class="reflect-text">диктую слово по буквам</span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr5"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🌍</span><span class="reflect-text">знаю интернациональные слова: <i lang="en">football, restaurant, airport</i></span></label>
+      </div>
+      <div class="fc-done" hidden><span class="fc-trophy">🏆</span><span><b>Супер!</b> Раздел Welcome пройден. Так держать!</span></div>
+    </div>
+  </section>
+
+</div>
+
+<script src="../assets/sync.js"></script>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/sortcols.js"></script>
+<script src="../assets/name.js"></script>
+<script src="../assets/dictionary.js"></script>
+<script>
+/* "Итог": star counter, progress bar and confetti when everything is ticked (same as Lessons 3–5) */
+(function () {
+  const box = document.getElementById('fun-check');
+  const boxes = [...box.querySelectorAll('input[type=checkbox]')];
+  let celebrated = false;
+  function confetti() {
+    const colours = ['#FFC53D', '#FF7A45', '#3352E0', '#12A374', '#7B5CE6', '#E03E52'];
+    for (let i = 0; i < 40; i++) {
+      const c = document.createElement('i');
+      c.className = 'fc-confetti';
+      c.style.left = Math.random() * 100 + '%';
+      c.style.background = colours[i % colours.length];
+      c.style.animationDelay = Math.random() * 0.4 + 's';
+      c.style.setProperty('--x', (Math.random() * 160 - 80) + 'px');
+      c.style.setProperty('--r', (Math.random() * 720 - 360) + 'deg');
+      box.appendChild(c);
+      setTimeout(() => c.remove(), 2200);
+    }
+  }
+  function update(animate) {
+    const n = boxes.filter(b => b.checked).length;
+    box.querySelector('.fc-count b').textContent = n;
+    box.querySelector('.fc-meter i').style.width = (n / boxes.length * 100) + '%';
+    const done = n === boxes.length;
+    box.querySelector('.fc-done').hidden = !done;
+    box.classList.toggle('all-done', done);
+    if (done && animate && !celebrated) confetti();
+    celebrated = done;
+  }
+  boxes.forEach(b => b.addEventListener('change', () => update(true)));
+  document.addEventListener('DOMContentLoaded', () => setTimeout(() => update(false), 0));
+})();
+</script>
+</body>
+</html>

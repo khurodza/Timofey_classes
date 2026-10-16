@@ -18,7 +18,8 @@ website/
     ├── lesson-03.html          ← Lesson 3: Starter "Welcome!" vocabulary (months, numbers, dates, colours) + phonics i · t
     ├── lesson-04.html          ← Lesson 4: "Colour Spell Race" warm-up game, a / an, the day + reading i · t
     ├── lesson-05.html          ← Lesson 5: "Remember Quiz Show" warm-up, s · a (from Lesson 2), Student's Book p. 8 (classroom)
-    ├── lesson-06.html          ← Lesson 6: classroom language (Student's Book p. 9)
+    ├── lesson-06.html          ← Lesson 6: classroom language, numbers 20–100 + messages (Student's Book pp. 9–10), c · n (from Lesson 2)
+    ├── lesson-07.html          ← Lesson 7: Welcome review (Student's Book p. 11)
     ├── images/                 ← Put lesson images here
     ├── audio/                  ← Put lesson audio files here
     │   └── words/               ← One short clip per sound button (see "Sound buttons")
