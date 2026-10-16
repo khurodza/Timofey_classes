@@ -282,14 +282,14 @@ function openLive(sid) {
 const notesPanel = $('v-notes-panel');
 function liveNotes() { if (viewing && !notesPanel.hidden) ctx.renderLiveNotes(notesPanel, viewing.s); }
 ctx.refreshLiveNotes = () => route.view === 'live' && liveNotes();
-$('v-notes').onclick = () => {
+$('v-notes-btn').onclick = () => {
   notesPanel.hidden = !notesPanel.hidden;
-  $('v-notes').classList.toggle('on', !notesPanel.hidden);
+  $('v-notes-btn').classList.toggle('on', !notesPanel.hidden);
   try { localStorage.setItem('teacher-live-notes', notesPanel.hidden ? '0' : '1'); } catch (e) {}
   liveNotes();
   if (!notesPanel.hidden) setTimeout(() => { const i = $('ln-text'); if (i) i.focus(); }, 50);
 };
-try { if (localStorage.getItem('teacher-live-notes') === '1') { notesPanel.hidden = false; $('v-notes').classList.add('on'); } } catch (e) {}
+try { if (localStorage.getItem('teacher-live-notes') === '1') { notesPanel.hidden = false; $('v-notes-btn').classList.add('on'); } } catch (e) {}
 function closeViewer() { viewing = null; frames.forEach(f => { f.hidden = true; f.removeAttribute('src'); }); }
 function renderViewerBar() {
   if (!viewing) return;
