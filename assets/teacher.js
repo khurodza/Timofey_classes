@@ -11,6 +11,7 @@
      students/<id>/pages/<page>   answers + progress, written by the student's page
      students/<id>/presence       which page is open right now
      students/<id>/notes/<page>   the teacher's marks and comments
+     students/<id>/flashcards/<deck>  flashcard progress (known / still learning / Learn stage), written by the student's site
      teacher/seen/<id>/<page>     when the teacher last looked (for "new")
      teacher/reports/<id>/...     the teacher's edits of the report
    ============================================================ */
@@ -57,6 +58,7 @@ function avatar(s, cls = '', withDot = true) {
 
 /* ---------------- state ---------------- */
 const presence = {}, pages = {}, seen = {}, notes = {}, reports = {}, siteLists = {}, tracking = {};
+const flash = {}, deckLists = {}, openDecks = new Set();   // flashcard progress + each site's decks.js
 STUDENTS.forEach(s => { pages[s.id] = {}; seen[s.id] = {}; notes[s.id] = {}; reports[s.id] = {}; });
 let route = { view: 'overview' };
 
@@ -82,6 +84,7 @@ function start() {
     onValue(ref(db, `students/${s.id}/presence`), snap => { presence[s.id] = snap.val(); refresh(); followStudent(s.id); });
     onValue(ref(db, `students/${s.id}/pages`), snap => { pages[s.id] = snap.val() || {}; refresh(); viewerDataChanged(s.id); });
     onValue(ref(db, `students/${s.id}/notes`), snap => { notes[s.id] = snap.val() || {}; refresh(); viewerNotesChanged(s.id); });
+    onValue(ref(db, `students/${s.id}/flashcards`), snap => { flash[s.id] = snap.val() || {}; if (Object.keys(flash[s.id]).length) loadDecks(s); refresh(); });
     onValue(ref(db, `teacher/seen/${s.id}`), snap => { seen[s.id] = snap.val() || {}; refresh(); });
     onValue(ref(db, `teacher/reports/${s.id}`), snap => { reports[s.id] = snap.val() || {}; if (route.view === 'report' && route.s === s.id && !reportEditing) renderReport(); });
     onValue(ref(db, `teacher/tracking/${s.id}`), snap => { tracking[s.id] = snap.val(); initTracking(s.id); refresh(); });
@@ -213,6 +216,39 @@ function renderOverview() {
   $('overview').querySelectorAll('[data-live]').forEach(b => b.onclick = () => go('#/s/' + b.dataset.live + '/live'));
 }
 
+/* ---------------- flashcards: which words she knows ---------------- */
+// the student's own decks.js gives the full word list (words she hasn't seen yet, translations)
+async function loadDecks(s) {
+  if (deckLists[s.id]) return;
+  deckLists[s.id] = [];
+  try {
+    const w = {};
+    new Function('window', await (await fetch(s.site + 'decks.js')).text())(w);
+    deckLists[s.id] = w.DECKS || [];
+    refresh();
+  } catch (e) {}
+}
+function renderCards(s) {
+  const data = flash[s.id] || {}, ids = Object.keys(data);
+  if (!ids.length) return '';
+  const decks = deckLists[s.id] || [];
+  const deckCards = ids.map(id => {
+    let st = {}; try { st = JSON.parse(data[id].json || '{}'); } catch (e) {}
+    const known = st.known || {}, stage = st.stage || {};
+    const deck = decks.find(d => d.id === id);
+    const words = deck ? deck.cards : [...new Set([...Object.keys(known), ...Object.keys(stage)])].map(w => ({ w }));
+    const chip = c => `<span class="fc-chip${stage[c.w] === 2 ? ' mastered' : ''}" title="${esc(c.t || '')}">${esc(c.w)}${stage[c.w] === 2 ? ' 🏆' : ''}</span>`;
+    const yes = words.filter(c => known[c.w] === true), no = words.filter(c => known[c.w] === false), unseen = words.filter(c => known[c.w] === undefined);
+    const mastered = words.filter(c => stage[c.w] === 2).length;
+    const group = (cls, title, list) => list.length ? `<div class="fc-group ${cls}"><h4>${title} <span>${list.length}</span></h4><div class="fc-chips">${list.map(chip).join('')}</div></div>` : '';
+    return { at: data[id].at || 0, html: `<details class="fc-deck" data-deck="${esc(id)}"${openDecks.has(s.id + id) ? ' open' : ''}>
+      <summary><b>${esc(deck ? deck.name : id)}</b><span class="fc-sum"><span class="no">✗ ${no.length} still learning</span><span class="yes">✓ ${yes.length} know</span>${mastered ? `<span class="m">🏆 ${mastered} mastered</span>` : ''}${unseen.length ? `<span class="un">${unseen.length} not marked yet</span>` : ''}</span><span class="fc-at">🕑 ${ago(data[id].at)}</span></summary>
+      ${group('no', '✗ Still learning', no)}${group('yes', '✓ Knows', yes)}${group('un', 'Not marked yet', unseen)}
+    </details>` };
+  }).sort((a, b) => b.at - a.at);
+  return `<h2 class="group-title fc-title">🃏 Flashcards</h2><p class="fc-help">What she marks in Flashcards mode (✓ Know / ✗ Still learning); a wrong answer in Test moves a word back to “still learning”. 🏆 = mastered in Learn mode. Point at a word to see its translation.</p>${deckCards.map(d => d.html).join('')}`;
+}
+
 /* ---------------- one student's dashboard ---------------- */
 function renderDash() {
   const s = stu(route.s), p = presence[s.id], t = totals(s.id), list = pageList(s.id);
@@ -256,6 +292,8 @@ function renderDash() {
   $('d-pages').innerHTML = (now.length ? `<div class="board">${col('todo', 'To do')}${col('doing', 'In progress')}${col('done', 'Done')}</div>` : '')
     + (earlier.length ? `<details class="earlier"><summary class="group-title">Earlier lessons · not counted (${earlier.length})</summary><div class="pages">${earlier.map(card).join('')}</div></details>` : '')
     + (list.length ? '' : '<p class="empty">Loading the lessons…</p>');
+  $('d-cards').innerHTML = renderCards(s);
+  $('d-cards').querySelectorAll('.fc-deck').forEach(d => d.addEventListener('toggle', () => { d.open ? openDecks.add(s.id + d.dataset.deck) : openDecks.delete(s.id + d.dataset.deck); }));
   $('d-pages').querySelectorAll('[data-open]').forEach(b => b.onclick = () => { $('follow').checked = false; go('#/s/' + s.id + '/live'); showPage(s.id, b.dataset.open, b.dataset.path); });
   $('d-pages').querySelectorAll('[data-reset]').forEach(b => b.onclick = () => resetPage(s.id, b.dataset.reset));
   $('d-live').onclick = () => { $('follow').checked = true; go('#/s/' + s.id + '/live'); };
