@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 8 – All together</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+/* Lesson 8: the "Crazy about music" website (SB p. 13) and /h/ /w/ colours */
+.web-page{margin-top:14px;border-radius:18px;overflow:hidden;background:#7B4FA8;padding:0 0 12px}
+.web-head img{width:100%;display:block}
+.web-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}
+.web-card{background:#EEF4C9;border-radius:14px;padding:14px 16px;overflow:hidden}
+.web-card img{float:right;width:38%;max-width:150px;margin:0 0 8px 10px;border-radius:12px}
+.web-card .wq{margin:0;color:#6A3C9A;font-weight:800}
+.web-card .wa{margin:0 0 8px}
+@media(max-width:620px){.web-grid{grid-template-columns:1fr}}
+.hw-h{color:#E0662B}
+.hw-w{color:#2F6FD6}
+/* Interactive map (SB p. 12 ex. 1): country tiles dropped on the white boxes; each box keeps a hidden .blank for saving/scoring */
+.map-bank{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.map-tile{border:2px solid var(--border);background:var(--yellow-soft);border-radius:999px;padding:6px 14px;font:inherit;font-size:15px;font-weight:800;cursor:grab;touch-action:none;user-select:none}
+.map-tile.picked{background:var(--blue);border-color:var(--blue);color:#fff}
+.map-tile.used{display:none}
+.map-tile{display:inline-flex;align-items:center;gap:6px;padding-left:6px}
+.map-tile .map-say{width:26px;height:26px;padding:0;min-width:0;justify-content:center;flex-shrink:0;border-radius:50%;cursor:pointer}
+.map-tile .map-say::before{margin:0}
+.map-tile.ghost{position:fixed;z-index:1000;pointer-events:none;opacity:.9;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.map-scroll{overflow-x:auto;border-radius:14px;max-width:calc(100vw - 72px)}
+#ex-map{min-width:0}
+.map-box{position:relative;min-width:640px;user-select:none}
+.map-box img{width:100%;display:block;border-radius:14px}
+.map-slot{position:absolute;min-width:2.4%;height:3.9%;min-height:20px;display:flex;align-items:center;cursor:pointer;
+  background:#fff;border:2px dashed #8CC63F;border-radius:6px;padding:0 6px;font-size:13px;font-weight:800;white-space:nowrap;color:var(--ink)}
+.map-slot.over,.map-box.picking .map-slot:not(.filled){border-color:var(--blue);border-style:solid;box-shadow:0 0 0 3px rgba(51,82,224,.25)}
+.map-slot.filled{border-style:solid;border-color:var(--blue);background:#EEF2FF;z-index:2}
+.map-slot input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.map-slot:has(input.correct){border-color:var(--green);background:#E3F6EE}
+.map-slot:has(input.wrong){border-color:var(--red);background:#FDE7EA}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="back-home" href="../index.html">← All lessons</a>
+    <div class="hero-grid">
+      <div>
+        <h1 class="name-slot" data-with="Lesson 8: Where are you from, {name}?" data-without="Lesson 8: Where are you from?">Lesson 8: Where are you from?</h1>
+        <p>Unit 1 “All together”: countries and nationalities, a music website and question words.</p>
+        <div class="hero-badges">
+          <span class="badge">Lesson 8</span>
+          <span class="badge">Unit 1: All together</span>
+          <span class="badge">Student’s Book pp. 12–14</span>
+          <span class="badge">Pronunciation p. 120</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     Student's Book Unit 1 pp. 12–14 (+ pronunciation p. 120).
+     PART 1: Get thinking video 01 (video/unit-01-documentary.mp4) with the
+             Documentary Video worksheet tasks; map ex. 1–2.
+     PART 2: Reading ex. 3 (track 1.01 → audio/lesson-08-1-01) + Think values ex. 4–5.
+     PART 3: Vocabulary ex. 1–3 (track 1.02 → lesson-08-1-02), flags in images/unit1/.
+     PART 4: Grammar rap video 02, question words ex. 4–6, pronunciation (1.03–1.04), Итог.
+══════════════════════════════════════════════════════════ -->
+<nav class="parts">
+  <div class="wrap">
+    <button class="part-tab" data-part="part-think" onclick="showPart('part-think')">Get thinking</button>
+    <button class="part-tab" data-part="part-music" onclick="showPart('part-music')">Crazy about music</button>
+    <button class="part-tab" data-part="part-countries" onclick="showPart('part-countries')">Countries &amp; nationalities</button>
+    <button class="part-tab" data-part="part-questions" onclick="showPart('part-questions')">Question words</button>
+  </div>
+</nav>
+
+<div class="lesson-part" id="part-think">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#a1">1 · Video</a>
+    <a href="#a2">2 · Map</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="a1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Get thinking · Student’s Book p. 12 · Video 01</div>
+        <h2>Where do you live?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-v1">
+      <div class="exercise-label">Video · Documentary</div>
+      <h3>Watch the video and think: where do you live?</h3>
+      <p class="ru-hint" lang="ru">Посмотри видео: люди из разных стран. Где живут они — и где живёшь ты?</p>
+      <div class="video-wrap">
+        <video controls preload="metadata" playsinline>
+          <source src="video/unit-01-documentary.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="gap-line" style="margin-top:14px"><b>I live in</b> …</p>
+      <textarea class="free-write" id="fw-live" placeholder="I live in … . I’m from … ." rows="2"></textarea>
+      <div class="char-count" id="cc-fw-live">0 characters</div>
+    </div>
+    <div class="card" id="ex-v3">
+      <div class="exercise-label">Video · Exercise 1</div>
+      <h3>Watch the video. Do you see these things? Tick (✓) or cross (✗).</h3>
+      <p class="ru-hint" lang="ru">Нажми на слово, чтобы услышать, как его произносят носители языка.</p>
+      <div class="sort-row"><span class="word-choice" id="v3-1" data-answer="✓"><button class="word-choice-btn" onclick="selectWord(this)">✓</button><button class="word-choice-btn" onclick="selectWord(this)">✗</button></span> <button class="say" data-say="city" data-file="real-city">city</button></div>
+      <div class="sort-row"><span class="word-choice" id="v3-2" data-answer="✓"><button class="word-choice-btn" onclick="selectWord(this)">✓</button><button class="word-choice-btn" onclick="selectWord(this)">✗</button></span> <button class="say" data-say="desert" data-file="real-desert">desert</button></div>
+      <div class="sort-row"><span class="word-choice" id="v3-3" data-answer="✓"><button class="word-choice-btn" onclick="selectWord(this)">✓</button><button class="word-choice-btn" onclick="selectWord(this)">✗</button></span> <button class="say" data-say="forest" data-file="real-forest">forest</button></div>
+      <div class="sort-row"><span class="word-choice" id="v3-4" data-answer="✗"><button class="word-choice-btn" onclick="selectWord(this)">✓</button><button class="word-choice-btn" onclick="selectWord(this)">✗</button></span> <button class="say" data-say="garden" data-file="real-garden">garden</button></div>
+      <div class="sort-row"><span class="word-choice" id="v3-5" data-answer="✓"><button class="word-choice-btn" onclick="selectWord(this)">✓</button><button class="word-choice-btn" onclick="selectWord(this)">✗</button></span> <button class="say" data-say="market" data-file="real-market">market</button></div>
+      <div class="sort-row"><span class="word-choice" id="v3-6" data-answer="✓"><button class="word-choice-btn" onclick="selectWord(this)">✓</button><button class="word-choice-btn" onclick="selectWord(this)">✗</button></span> <button class="say" data-say="mountain" data-file="real-mountain">mountain</button></div>
+      <div class="sort-row"><span class="word-choice" id="v3-7" data-answer="✓"><button class="word-choice-btn" onclick="selectWord(this)">✓</button><button class="word-choice-btn" onclick="selectWord(this)">✗</button></span> <button class="say" data-say="park" data-file="real-park">park</button></div>
+      <div class="sort-row"><span class="word-choice" id="v3-8" data-answer="✓"><button class="word-choice-btn" onclick="selectWord(this)">✓</button><button class="word-choice-btn" onclick="selectWord(this)">✗</button></span> <button class="say" data-say="sea" data-file="real-sea">sea</button></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-v3')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-v3')">Try again</button>
+      </div>
+    </div>
+    <div class="card" id="ex-v4">
+      <div class="exercise-label">Video · Exercise 2</div>
+      <h3>What’s the video about? Watch again and check.</h3>
+      <p class="gap-line">The video is about …</p>
+      <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="v4" value="a"><span class="mc-bullet">A</span> how our world is the same.</label><label class="mc-option"><input type="radio" name="v4" value="b"><span class="mc-bullet">B</span> how our world is different.</label><label class="mc-option"><input type="radio" name="v4" value="c"><span class="mc-bullet">C</span> how our world is changing.</label></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-v4')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-v4')">Try again</button>
+      </div>
+    </div>
+    <div class="card" id="ex-v5">
+      <div class="exercise-label">Video · Exercise 3</div>
+      <h3>Choose the correct option A, B or C. Watch again and check.</h3>
+      <div class="mc-question"><p class="gap-line"><span class="num">1.</span> Sevengül is from …</p>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="v5-1" value="a"><span class="mc-bullet">A</span> Mexico.</label><label class="mc-option"><input type="radio" name="v5-1" value="b"><span class="mc-bullet">B</span> Turkey.</label><label class="mc-option"><input type="radio" name="v5-1" value="c"><span class="mc-bullet">C</span> South Africa.</label></div></div>
+      <div class="mc-question"><p class="gap-line"><span class="num">2.</span> Cooper lives in …</p>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="v5-2" value="a"><span class="mc-bullet">A</span> the US.</label><label class="mc-option"><input type="radio" name="v5-2" value="b"><span class="mc-bullet">B</span> the UK.</label><label class="mc-option"><input type="radio" name="v5-2" value="c"><span class="mc-bullet">C</span> China.</label></div></div>
+      <div class="mc-question"><p class="gap-line"><span class="num">3.</span> Themba is …</p>
+        <div class="mc-options" data-correct="c"><label class="mc-option"><input type="radio" name="v5-3" value="a"><span class="mc-bullet">A</span> 13 years old.</label><label class="mc-option"><input type="radio" name="v5-3" value="b"><span class="mc-bullet">B</span> 15 years old.</label><label class="mc-option"><input type="radio" name="v5-3" value="c"><span class="mc-bullet">C</span> 14 years old.</label></div></div>
+      <div class="mc-question"><p class="gap-line"><span class="num">4.</span> Miguel speaks …</p>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="v5-4" value="a"><span class="mc-bullet">A</span> English.</label><label class="mc-option"><input type="radio" name="v5-4" value="b"><span class="mc-bullet">B</span> Spanish.</label><label class="mc-option"><input type="radio" name="v5-4" value="c"><span class="mc-bullet">C</span> Mandarin.</label></div></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-v5')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-v5')">Try again</button>
+      </div>
+    </div>
+    <div class="card" id="ex-v6">
+      <div class="exercise-label">Video · Exercise 4</div>
+      <h3>Complete the text with the words in the list.</h3>
+      <div class="word-bank-ref"><span>deserts</span> <span>forests</span> <span>mountains</span> <span>places</span> <span>seas</span></div>
+      <p class="gap-line" style="font-size:18px;line-height:2.2">High white <sup>1</sup> <input class="blank" id="v6-1" data-answer="mountains" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0">, deep blue <sup>2</sup> <input class="blank" id="v6-2" data-answer="seas" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0">, amazing green <sup>3</sup> <input class="blank" id="v6-3" data-answer="forests" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"> and yellow <sup>4</sup> <input class="blank" id="v6-4" data-answer="deserts" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0">. Colours change in the day and at night. Different <sup>5</sup> <input class="blank" id="v6-5" data-answer="places" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"> have different colours, and people live in these different kinds of places.</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-v6')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-v6')">Try again</button>
+      </div>
+    </div>
+  </section>
+  <section class="step" id="a2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Reading · Student’s Book p. 12</div>
+        <h2>Countries on the map</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-map">
+      <div class="exercise-label">Exercise 1</div>
+      <h3>Match the names of the countries with the places on the map. Drag each country to its box.</h3>
+      <p class="ru-hint" lang="ru">Перетащи страну в белый квадрат на карте (или нажми на страну, потом на квадрат). Нажми на заполненный квадрат, чтобы убрать страну.</p>
+      <div class="map-bank" id="map-bank"><button type="button" class="map-tile" data-n="1"><span class="say map-say" data-say="Brazil" data-file="real-brazil" aria-label="Listen: Brazil"></span>1 Brazil</button><button type="button" class="map-tile" data-n="2"><span class="say map-say" data-say="Ecuador" data-file="real-ecuador" aria-label="Listen: Ecuador"></span>2 Ecuador</button><button type="button" class="map-tile" data-n="3"><span class="say map-say" data-say="Indonesia" data-file="real-indonesia" aria-label="Listen: Indonesia"></span>3 Indonesia</button><button type="button" class="map-tile" data-n="4"><span class="say map-say" data-say="Japan" data-file="real-japan" aria-label="Listen: Japan"></span>4 Japan</button><button type="button" class="map-tile" data-n="5"><span class="say map-say" data-say="Mexico" data-file="real-mexico" aria-label="Listen: Mexico"></span>5 Mexico</button><button type="button" class="map-tile" data-n="6"><span class="say map-say" data-say="Russia" data-file="real-russia" aria-label="Listen: Russia"></span>6 Russia</button><button type="button" class="map-tile" data-n="7"><span class="say map-say" data-say="South Africa" data-file="real-south-africa" aria-label="Listen: South Africa"></span>7 South Africa</button><button type="button" class="map-tile" data-n="8"><span class="say map-say" data-say="Spain" data-file="real-spain" aria-label="Listen: Spain"></span>8 Spain</button><button type="button" class="map-tile" data-n="9"><span class="say map-say" data-say="Sudan" data-file="real-sudan" aria-label="Listen: Sudan"></span>9 Sudan</button><button type="button" class="map-tile" data-n="10"><span class="say map-say" data-say="Turkey" data-file="real-turkey" aria-label="Listen: Turkey"></span>10 Turkey</button><button type="button" class="map-tile" data-n="11"><span class="say map-say" data-say="the UK" data-file="real-the-uk" aria-label="Listen: the UK"></span>11 the UK</button><button type="button" class="map-tile" data-n="12"><span class="say map-say" data-say="the US" data-file="real-the-us" aria-label="Listen: the US"></span>12 the US</button></div>
+      <div class="map-scroll">
+        <div class="map-box" id="map-box">
+          <img src="images/unit1/map.jpg" alt="World map with twelve countries marked A to L" draggable="false">
+          <div class="map-slot" style="left:15.07%;top:47.66%" data-letter="A"><input class="blank num" id="m-a" data-answer="5" readonly tabindex="-1" aria-label="A"><span class="ms-label"></span></div>
+          <div class="map-slot" style="left:21.00%;top:55.61%" data-letter="B"><input class="blank num" id="m-b" data-answer="2" readonly tabindex="-1" aria-label="B"><span class="ms-label"></span></div>
+          <div class="map-slot" style="left:28.36%;top:37.97%" data-letter="C"><input class="blank num" id="m-c" data-answer="12" readonly tabindex="-1" aria-label="C"><span class="ms-label"></span></div>
+          <div class="map-slot" style="left:40.14%;top:59.93%" data-letter="D"><input class="blank num" id="m-d" data-answer="1" readonly tabindex="-1" aria-label="D"><span class="ms-label"></span></div>
+          <div class="map-slot" style="left:39.79%;top:21.73%" data-letter="E"><input class="blank num" id="m-e" data-answer="11" readonly tabindex="-1" aria-label="E"><span class="ms-label"></span></div>
+          <div class="map-slot" style="left:39.79%;top:31.31%" data-letter="F"><input class="blank num" id="m-f" data-answer="8" readonly tabindex="-1" aria-label="F"><span class="ms-label"></span></div>
+          <div class="map-slot" style="left:52.14%;top:77.57%" data-letter="G"><input class="blank num" id="m-g" data-answer="7" readonly tabindex="-1" aria-label="G"><span class="ms-label"></span></div>
+          <div class="map-slot" style="left:61.86%;top:37.38%" data-letter="H"><input class="blank num" id="m-h" data-answer="10" readonly tabindex="-1" aria-label="H"><span class="ms-label"></span></div>
+          <div class="map-slot" style="left:67.00%;top:4.44%" data-letter="I"><input class="blank num" id="m-i" data-answer="6" readonly tabindex="-1" aria-label="I"><span class="ms-label"></span></div>
+          <div class="map-slot" style="left:72.14%;top:62.27%" data-letter="J"><input class="blank num" id="m-j" data-answer="3" readonly tabindex="-1" aria-label="J"><span class="ms-label"></span></div>
+          <div class="map-slot" style="left:61.50%;top:55.49%" data-letter="K"><input class="blank num" id="m-k" data-answer="9" readonly tabindex="-1" aria-label="K"><span class="ms-label"></span></div>
+          <div class="map-slot" style="left:86.07%;top:39.37%" data-letter="L"><input class="blank num" id="m-l" data-answer="4" readonly tabindex="-1" aria-label="L"><span class="ms-label"></span></div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-map');mapRender()">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-map');mapRender()">Try again</button>
+      </div>
+      <div class="tip"><span class="tip-title">Big letter, please!</span>Countries start with a capital: <span class="key">Brazil</span>, <span class="key">Russia</span>. And we say <span class="key">the UK</span>, <span class="key">the US</span> — with <i>the</i>.</div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Exercise 2 · Speaking</div>
+      <h3>Talk about famous people from different countries.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span><i>Rafael Nadal is from Spain.</i></span></div>
+      <div class="tip class-note"><span class="tip-title">In class: who is it?</span>Take turns. Say a famous person — your partner says the country. One point for each right answer!</div>
+      <textarea class="free-write" id="fw-famous" placeholder="… is from … ." rows="3"></textarea>
+      <div class="char-count" id="cc-fw-famous">0 characters</div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<div class="lesson-part" id="part-music">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#b1">1 · Read & listen</a>
+    <a href="#b2">2 · Slogan</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="b1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Reading · Student’s Book pp. 12–13 · 1.01</div>
+        <h2>Crazy about music!</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-r3">
+      <div class="exercise-label">Exercise 3 · 1.01</div>
+      <h3>Read and listen to the website. Then choose the correct words.</h3>
+      <p class="ru-hint" lang="ru">Сайт о музыке: четверо ребят рассказывают о себе и о любимом музыканте. Читай и слушай.</p>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-08-1-01.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div class="web-page">
+        <div class="web-head"><img src="images/unit1/music-banner.jpg" alt="Crazy about music — tell us about your favourite musician!"></div>
+        <div class="web-grid">
+        <div class="web-card">
+          <img src="images/unit1/kid-cenc.jpg" alt="Cenc">
+          <p class="wq">What’s your name?</p><p class="wa">Cenc.</p><p class="wq">Where are you from?</p><p class="wa">I’m Turkish. I’m from a city called Izmir.</p><p class="wq">How old are you?</p><p class="wa">I’m ten.</p><p class="wq">Who’s your favourite musician?</p><p class="wa">Ed Sheeran. He’s a singer and a guitar player.</p><p class="wq">Why is he your favourite musician?</p><p class="wa">Because he’s great!</p>
+        </div>
+        <div class="web-card">
+          <img src="images/unit1/kid-jess.jpg" alt="Jess">
+          <p class="wq">What’s your name?</p><p class="wa">My name is Jess.</p><p class="wq">Where are you from?</p><p class="wa">I’m British. I’m from Newcastle.</p><p class="wq">How old are you?</p><p class="wa">I’m 12.</p><p class="wq">Who’s your favourite musician?</p><p class="wa">Bruno Mars. He’s a singer from the US.</p><p class="wq">Why is he your favourite musician?</p><p class="wa">Because he’s awesome!</p>
+        </div>
+        <div class="web-card">
+          <img src="images/unit1/kid-flavia.jpg" alt="Flavia">
+          <p class="wq">What’s your name?</p><p class="wa">I’m Flavia.</p><p class="wq">Where are you from?</p><p class="wa">I’m from Brazil. I live in Fortaleza.</p><p class="wq">How old are you?</p><p class="wa">I’m 11.</p><p class="wq">Who are your favourite musicians?</p><p class="wa">Blackpink. They’re a girl group from South Korea.</p><p class="wq">Why are they your favourite musicians?</p><p class="wa">Because they’re great!</p>
+        </div>
+        <div class="web-card">
+          <img src="images/unit1/kid-lijun.jpg" alt="Li Jun">
+          <p class="wq">What’s your name?</p><p class="wa">My name is Li Jun.</p><p class="wq">Where are you from?</p><p class="wa">I’m from Indonesia. I live in Jakarta.</p><p class="wq">How old are you?</p><p class="wa">I’m 11.</p><p class="wq">Who’s your favourite musician?</p><p class="wa">Yuja Wang. She’s a pianist from China.</p><p class="wq">Why is she your favourite musician?</p><p class="wa">Because she’s cool!</p>
+        </div>
+        </div>
+      </div>
+      <div class="example-row"><span class="ex-tag">Example</span><span>0. Cenc is from <s>Brazil</s> / <b>Turkey</b>.</span></div>
+      <p class="gap-line"><span class="num">1.</span> Cenc is <span class="word-choice" id="r3-1" data-answer="ten"><button class="word-choice-btn" onclick="selectWord(this)">ten</button><button class="word-choice-btn" onclick="selectWord(this)">11</button></span>.</p>
+      <p class="gap-line"><span class="num">2.</span> Jess is from <span class="word-choice" id="r3-2" data-answer="Newcastle"><button class="word-choice-btn" onclick="selectWord(this)">Newcastle</button><button class="word-choice-btn" onclick="selectWord(this)">Manchester</button></span>.</p>
+      <p class="gap-line"><span class="num">3.</span> Bruno Mars is a <span class="word-choice" id="r3-3" data-answer="singer"><button class="word-choice-btn" onclick="selectWord(this)">singer</button><button class="word-choice-btn" onclick="selectWord(this)">tennis player</button></span>.</p>
+      <p class="gap-line"><span class="num">4.</span> Flavia is <span class="word-choice" id="r3-4" data-answer="Brazilian"><button class="word-choice-btn" onclick="selectWord(this)">Brazilian</button><button class="word-choice-btn" onclick="selectWord(this)">Russian</button></span>.</p>
+      <p class="gap-line"><span class="num">5.</span> Flavia is <span class="word-choice" id="r3-5" data-answer="11"><button class="word-choice-btn" onclick="selectWord(this)">11</button><button class="word-choice-btn" onclick="selectWord(this)">12</button></span>.</p>
+      <p class="gap-line"><span class="num">6.</span> Li Jun is from <span class="word-choice" id="r3-6" data-answer="Indonesia"><button class="word-choice-btn" onclick="selectWord(this)">Japan</button><button class="word-choice-btn" onclick="selectWord(this)">Indonesia</button></span>.</p>
+      <p class="gap-line"><span class="num">7.</span> Yuja Wang is a <span class="word-choice" id="r3-7" data-answer="pianist"><button class="word-choice-btn" onclick="selectWord(this)">singer</button><button class="word-choice-btn" onclick="selectWord(this)">pianist</button></span>.</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-r3')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-r3')">Try again</button>
+      </div>
+      <div class="rec"></div>
+    </div>
+  </section>
+  <section class="step" id="b2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Think values · Student’s Book p. 13</div>
+        <h2>Don’t stop the music!</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Exercise 4</div>
+      <h3>Choose a slogan for the website.</h3>
+      <label class="reflect-item"><input type="checkbox" id="sl1"><span class="check-box"></span><span class="reflect-text">One world together.</span></label>
+      <label class="reflect-item"><input type="checkbox" id="sl2"><span class="check-box"></span><span class="reflect-text">Music is great.</span></label>
+      <label class="reflect-item"><input type="checkbox" id="sl3"><span class="check-box"></span><span class="reflect-text">Sing, sing, sing!</span></label>
+      <p class="gap-line" style="margin-top:12px">Or make your own slogan:</p>
+      <textarea class="free-write" id="fw-slogan" placeholder="My slogan is …" rows="2"></textarea>
+      <div class="char-count" id="cc-fw-slogan">0 characters</div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Exercise 5 · Speaking</div>
+      <h3>Work in pairs and compare your answers.</h3>
+      <div class="dialogue">
+        <span class="dl-name">You</span>
+        <p class="dl-text">My slogan is ‘One world together.’</p>
+        <span class="dl-name two">Teacher</span>
+        <p class="dl-text">Mine is ‘Music is great.’</p>
+      </div>
+      <div class="tip class-note"><span class="tip-title">In class: your turn!</span>Answer the five questions from the website about you. Your teacher asks — you answer. Then swap!</div>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<div class="lesson-part" id="part-countries">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#c1">1 · Flags</a>
+    <a href="#c2">2 · Nationalities</a>
+    <a href="#c3">3 · Guess the flag</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="c1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Vocabulary · Student’s Book p. 14 · 1.02</div>
+        <h2>Whose flag is it?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-fl">
+      <div class="exercise-label">Exercise 1 · 1.02</div>
+      <h3>Write the country under the flag. Listen and check.</h3>
+      <div class="say-row" style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0"><button class="say" data-say="Brazil" data-file="real-brazil" style="text-decoration:line-through;opacity:.6">Brazil</button><button class="say" data-say="Ecuador" data-file="real-ecuador">Ecuador</button><button class="say" data-say="Indonesia" data-file="real-indonesia">Indonesia</button><button class="say" data-say="Japan" data-file="real-japan">Japan</button><button class="say" data-say="Mexico" data-file="real-mexico">Mexico</button><button class="say" data-say="Russia" data-file="real-russia">Russia</button><button class="say" data-say="South Africa" data-file="real-south-africa">South Africa</button><button class="say" data-say="Spain" data-file="real-spain">Spain</button><button class="say" data-say="Sudan" data-file="real-sudan">Sudan</button><button class="say" data-say="Turkey" data-file="real-turkey">Turkey</button><button class="say" data-say="the UK" data-file="real-the-uk">the UK</button><button class="say" data-say="the US" data-file="real-the-us">the US</button></div>
+      <div class="pic-grid">
+        <div class="pic-item"><span class="pic-letter">0</span><img src="images/unit1/flag-0.jpg" alt="flag 0"><span class="given">Brazil</span></div>
+        <div class="pic-item"><span class="pic-letter">1</span><img src="images/unit1/flag-1.jpg" alt="flag 1"><input class="blank" id="fl-1" data-answer="the UK|UK" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">2</span><img src="images/unit1/flag-2.jpg" alt="flag 2"><input class="blank" id="fl-2" data-answer="the US|US" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">3</span><img src="images/unit1/flag-3.jpg" alt="flag 3"><input class="blank" id="fl-3" data-answer="Turkey" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">4</span><img src="images/unit1/flag-4.jpg" alt="flag 4"><input class="blank" id="fl-4" data-answer="Japan" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">5</span><img src="images/unit1/flag-5.jpg" alt="flag 5"><input class="blank" id="fl-5" data-answer="Mexico" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">6</span><img src="images/unit1/flag-6.jpg" alt="flag 6"><input class="blank" id="fl-6" data-answer="Russia" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">7</span><img src="images/unit1/flag-7.jpg" alt="flag 7"><input class="blank" id="fl-7" data-answer="Sudan" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">8</span><img src="images/unit1/flag-8.jpg" alt="flag 8"><input class="blank" id="fl-8" data-answer="Ecuador" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">9</span><img src="images/unit1/flag-9.jpg" alt="flag 9"><input class="blank" id="fl-9" data-answer="Indonesia" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">10</span><img src="images/unit1/flag-10.jpg" alt="flag 10"><input class="blank" id="fl-10" data-answer="South Africa" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">11</span><img src="images/unit1/flag-11.jpg" alt="flag 11"><input class="blank" id="fl-11" data-answer="Spain" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-fl')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-fl')">Try again</button>
+      </div>
+      <p class="gap-line" style="margin-top:14px"><b>Listen and check.</b></p>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-08-1-02.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+    </div>
+  </section>
+  <section class="step" id="c2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Vocabulary · Student’s Book p. 14</div>
+        <h2>Nationalities</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-nat">
+      <div class="exercise-label">Exercise 2</div>
+      <h3>Look at Exercise 1. Complete the table with the nationalities of the countries. Drag each word into the right column.</h3>
+      <p class="ru-hint" lang="ru">Страна → национальность: <i lang="en">Brazil → Brazilian</i>. Распредели по окончаниям.</p>
+      <div class="sc-bank" id="sc-nat"><span class="sc-tile" data-col="an">Ecuadorian</span><span class="sc-tile" data-col="ish">Turkish</span><span class="sc-tile" data-col="an">South African</span><span class="sc-tile" data-col="ese">Sudanese</span><span class="sc-tile" data-col="an">American</span><span class="sc-tile" data-col="ish">Spanish</span><span class="sc-tile" data-col="an">Russian</span><span class="sc-tile" data-col="an">Indonesian</span><span class="sc-tile" data-col="an">Mexican</span></div>
+      <div class="sc-cols">
+        <div class="sc-col" data-col="an"><div class="sc-head">-an / -ian</div><div class="sc-drop"><span class="sc-tile given">Brazilian</span></div></div>
+        <div class="sc-col" data-col="ish"><div class="sc-head">-ish</div><div class="sc-drop"><span class="sc-tile given">British</span></div></div>
+        <div class="sc-col" data-col="ese"><div class="sc-head">-ese</div><div class="sc-drop"><span class="sc-tile given">Japanese</span></div></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkSort('ex-nat')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetSort('ex-nat')">Try again</button>
+      </div>
+    </div>
+    <div class="card" id="ex-nat2">
+      <h3>Now write: country → nationality.</h3>
+      <div class="two-col">
+        <p class="gap-line"><span class="num">1.</span> the US → <input class="blank" id="na-1" data-answer="American" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"></p>
+        <p class="gap-line"><span class="num">2.</span> Turkey → <input class="blank" id="na-2" data-answer="Turkish" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"></p>
+        <p class="gap-line"><span class="num">3.</span> Mexico → <input class="blank" id="na-3" data-answer="Mexican" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"></p>
+        <p class="gap-line"><span class="num">4.</span> Russia → <input class="blank" id="na-4" data-answer="Russian" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"></p>
+        <p class="gap-line"><span class="num">5.</span> Sudan → <input class="blank" id="na-5" data-answer="Sudanese" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"></p>
+        <p class="gap-line"><span class="num">6.</span> Ecuador → <input class="blank" id="na-6" data-answer="Ecuadorian" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"></p>
+        <p class="gap-line"><span class="num">7.</span> Indonesia → <input class="blank" id="na-7" data-answer="Indonesian" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"></p>
+        <p class="gap-line"><span class="num">8.</span> Spain → <input class="blank" id="na-8" data-answer="Spanish" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-nat2')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-nat2')">Try again</button>
+      </div>
+      <div class="tip"><span class="tip-title">Big letter again!</span>Nationalities start with a capital too: <span class="key">Russian</span>, <span class="key">English</span>. In Russian it’s <span lang="ru">«русский»</span> with a small letter — in English it’s always big.</div>
+    </div>
+  </section>
+  <section class="step" id="c3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Speaking · Student’s Book p. 14</div>
+        <h2>Guess the flag</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-fg">
+      <div class="exercise-label">Exercise 3 · Speaking</div>
+      <h3>Read the description. Which flag is it?</h3>
+      <div class="mc-question"><p class="gap-line"><span class="num">1.</span> <i>This flag is red and white. It has got a red circle.</i></p>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="fg-1" value="a"><span class="mc-bullet">A</span> Turkey</label><label class="mc-option"><input type="radio" name="fg-1" value="b"><span class="mc-bullet">B</span> Japan</label><label class="mc-option"><input type="radio" name="fg-1" value="c"><span class="mc-bullet">C</span> Indonesia</label></div></div>
+      <div class="mc-question"><p class="gap-line"><span class="num">2.</span> <i>This flag is white, blue and red.</i></p>
+        <div class="mc-options" data-correct="c"><label class="mc-option"><input type="radio" name="fg-2" value="a"><span class="mc-bullet">A</span> Mexico</label><label class="mc-option"><input type="radio" name="fg-2" value="b"><span class="mc-bullet">B</span> Spain</label><label class="mc-option"><input type="radio" name="fg-2" value="c"><span class="mc-bullet">C</span> Russia</label></div></div>
+      <div class="mc-question"><p class="gap-line"><span class="num">3.</span> <i>This flag is red and yellow.</i></p>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="fg-3" value="a"><span class="mc-bullet">A</span> Spain</label><label class="mc-option"><input type="radio" name="fg-3" value="b"><span class="mc-bullet">B</span> Brazil</label><label class="mc-option"><input type="radio" name="fg-3" value="c"><span class="mc-bullet">C</span> Ecuador</label></div></div>
+      <div class="mc-question"><p class="gap-line"><span class="num">4.</span> <i>This flag is green, white and red.</i></p>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="fg-4" value="a"><span class="mc-bullet">A</span> Russia</label><label class="mc-option"><input type="radio" name="fg-4" value="b"><span class="mc-bullet">B</span> Mexico</label><label class="mc-option"><input type="radio" name="fg-4" value="c"><span class="mc-bullet">C</span> the UK</label></div></div>
+      <div class="mc-question"><p class="gap-line"><span class="num">5.</span> <i>This flag is red and white. It has got a white moon and a white star.</i></p>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="fg-5" value="a"><span class="mc-bullet">A</span> Turkey</label><label class="mc-option"><input type="radio" name="fg-5" value="b"><span class="mc-bullet">B</span> Japan</label><label class="mc-option"><input type="radio" name="fg-5" value="c"><span class="mc-bullet">C</span> Sudan</label></div></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-fg')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-fg')">Try again</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Now describe a flag for your partner to guess.</h3>
+      <div class="dialogue">
+        <span class="dl-name">A</span>
+        <p class="dl-text">This flag is yellow, green and blue.</p>
+        <span class="dl-name two">B</span>
+        <p class="dl-text">Is it the Brazilian flag?</p>
+        <span class="dl-name">A</span>
+        <p class="dl-text">Yes, it is.</p>
+      </div>
+      <div class="tip class-note"><span class="tip-title">In class: flag riddles</span>Describe three flags (colours!). Your teacher guesses: <i>Is it the … flag?</i> Use the nationality: <span class="key">the Russian flag</span>, not <s>the Russia flag</s>.</div>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<div class="lesson-part" id="part-questions">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#d1">1 · Grammar rap</a>
+    <a href="#d2">2 · Question words</a>
+    <a href="#d3">3 · Choose</a>
+    <a href="#d4">4 · /h/ or /w/</a>
+    <a href="#d5">5 · Итог</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="d1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Grammar · Student’s Book p. 14 · Video 02</div>
+        <h2>Grammar rap!</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Video · Grammar rap</div>
+      <h3>Watch and listen. Which question words do you hear?</h3>
+      <div class="video-wrap">
+        <video controls preload="metadata" playsinline>
+          <source src="video/unit-01-grammar-rap.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+  <section class="step" id="d2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Grammar · Student’s Book p. 14</div>
+        <h2>Question words</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-g4">
+      <div class="exercise-label">Exercise 4</div>
+      <h3>Look at the website (tab “Crazy about music”). Complete the questions with the words in the list.</h3>
+      <div class="word-bank-ref"><span>How</span> <span class="crossed">What</span> <span>Where</span> <span>Who</span> <span>Why</span></div>
+      <div class="example-row"><span class="ex-tag">Example</span><span>0. <b>What’s</b> your name?</span></div>
+      <p class="gap-line"><span class="num">1.</span> <input class="blank" id="g4-1" data-answer="Where" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"> are you from?</p>
+      <p class="gap-line"><span class="num">2.</span> <input class="blank" id="g4-2" data-answer="How" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"> old are you?</p>
+      <p class="gap-line"><span class="num">3.</span> <input class="blank" id="g4-3" data-answer="Who" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0">’s your favourite musician?</p>
+      <p class="gap-line"><span class="num">4.</span> <input class="blank" id="g4-4" data-answer="Why" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"> is he/she your favourite musician?</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-g4')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-g4')">Try again</button>
+      </div>
+    </div>
+    <div class="card" id="ex-g4r">
+      <div class="exercise-label">Rule</div>
+      <h3>Choose the correct words to complete the rule.</h3>
+      <div class="tip rule" style="font-size:18px">
+        <p class="gap-line"><i>How, Who, Where, What</i> and <i>Why</i> are <sup>5</sup> <span class="word-choice" id="g4-5" data-answer="question"><button class="word-choice-btn" onclick="selectWord(this)">question</button><button class="word-choice-btn" onclick="selectWord(this)">because</button></span> words.</p>
+        <p class="gap-line">We often use the word <sup>6</sup> <span class="word-choice" id="g4-6" data-answer="because"><button class="word-choice-btn" onclick="selectWord(this)">question</button><button class="word-choice-btn" onclick="selectWord(this)">because</button></span> to answer a <i>Why</i> question.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-g4r')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-g4r')">Try again</button>
+      </div>
+      <div class="ref-wrap" style="overflow-x:auto">
+        <table class="ref-table">
+          <tr><th>Question word</th><th>We ask about…</th><th lang="ru">По-русски</th></tr>
+          <tr><td class="label">What</td><td>a thing, a name</td><td lang="ru">что? какой?</td></tr>
+          <tr><td class="label">Who</td><td>a person</td><td lang="ru">кто?</td></tr>
+          <tr><td class="label">Where</td><td>a place</td><td lang="ru">где? откуда?</td></tr>
+          <tr><td class="label">How old</td><td>age</td><td lang="ru">сколько лет?</td></tr>
+          <tr><td class="label">Why</td><td>a reason → <i>Because…</i></td><td lang="ru">почему? → потому что…</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="step" id="d3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Grammar · Student’s Book p. 14</div>
+        <h2>Choose the question word</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-g5">
+      <div class="exercise-label">Exercise 5</div>
+      <h3>Choose the correct words.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>0. <b>How</b> / <s>Why</s> old is your best friend?</span></div>
+      <p class="gap-line"><span class="num">1.</span> <span class="word-choice" id="g5-1" data-answer="Where"><button class="word-choice-btn" onclick="selectWord(this)">What</button><button class="word-choice-btn" onclick="selectWord(this)">Where</button></span> is your mother from?</p>
+      <p class="gap-line"><span class="num">2.</span> <span class="word-choice" id="g5-2" data-answer="What’s"><button class="word-choice-btn" onclick="selectWord(this)">How’s</button><button class="word-choice-btn" onclick="selectWord(this)">What’s</button></span> your favourite colour?</p>
+      <p class="gap-line"><span class="num">3.</span> <span class="word-choice" id="g5-3" data-answer="Who"><button class="word-choice-btn" onclick="selectWord(this)">Where</button><button class="word-choice-btn" onclick="selectWord(this)">Who</button></span> is your favourite film star?</p>
+      <p class="gap-line"><span class="num">4.</span> <span class="word-choice" id="g5-4" data-answer="Why"><button class="word-choice-btn" onclick="selectWord(this)">Why</button><button class="word-choice-btn" onclick="selectWord(this)">Where</button></span> is he/she your favourite film star?</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-g5')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-g5')">Try again</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Exercise 6 · Speaking</div>
+      <h3>Ask and answer the questions in Exercises 4 and 5.</h3>
+      <div class="dialogue">
+        <span class="dl-name">A</span>
+        <p class="dl-text">What’s your name?</p>
+        <span class="dl-name two">B</span>
+        <p class="dl-text">My name is Andréa.</p>
+      </div>
+      <p class="gap-line" style="margin-top:12px">Write your answers first:</p>
+      <textarea class="free-write" id="fw-me" placeholder="My name is … . I’m from … . I’m … . My favourite musician is … because …" rows="4"></textarea>
+      <div class="char-count" id="cc-fw-me">0 characters</div>
+      <div class="rec"></div>
+    </div>
+  </section>
+  <section class="step" id="d4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Pronunciation · Student’s Book p. 120 · 1.03–1.04</div>
+        <h2>/h/ or /w/ in question words</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Exercise 1 · 1.03</div>
+      <h3>Read and listen to the questions.</h3>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-08-1-03.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div class="tip" style="font-size:19px">
+        <p class="gap-line"><b class="hw-h">How</b> old are you?</p>
+        <p class="gap-line"><b class="hw-w">Where</b> are you from?</p>
+        <p class="gap-line"><b class="hw-w">What</b>’s your favourite food?</p>
+        <p class="gap-line"><b class="hw-h">Who</b>’s your favourite football player?</p>
+        <p class="gap-line"><b class="hw-w">Why</b> do you like him?</p>
+      </div>
+      <div class="tip"><span class="tip-title">Two sounds, not three!</span><span class="key">Who</span> and <span class="key">How</span> start with <span class="ipa">/h/</span> — just a soft breath, like warming your hands. Not a hard Russian <span lang="ru">«х»</span>!<br><span class="key">What, Where, Why</span> start with <span class="ipa">/w/</span> — round your lips like for <span lang="ru">«у»</span>. Not <span lang="ru">«в»</span>: your teeth don’t touch your lip.<br>Careful: <b>Wh</b>o is <span class="ipa">/huː/</span> — the <i>w</i> is silent.</div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Exercise 2 · 1.04</div>
+      <h3>Listen again and repeat. Then record yourself and compare.</h3>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-08-1-04.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div class="rec"></div>
+    </div>
+  </section>
+  <section class="step" id="d5">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Итог</div>
+        <h2>Что ты теперь умеешь?</h2>
+      </div>
+    </div>
+    <div class="card fun-check" lang="ru" id="fun-check">
+      <div class="fc-head">
+        <h3>Теперь я…</h3>
+        <span class="fc-count"><b>0</b> / 5 ⭐</span>
+      </div>
+      <div class="fc-meter"><i></i></div>
+      <p class="fc-hint">Отметь всё, что уже получается!</p>
+      <div class="reflect-list">
+        <label class="reflect-item"><input type="checkbox" id="rr1"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🌍</span><span class="reflect-text">называю <b>12 стран</b> на английском и нахожу их на карте</span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr2"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🚩</span><span class="reflect-text">говорю национальность: <i lang="en">Russian, British, Japanese</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr3"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🎵</span><span class="reflect-text">понимаю короткий текст о ребятах и их любимых музыкантах</span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr4"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">❓</span><span class="reflect-text">задаю вопросы с <i lang="en">What, Where, Who, How old, Why</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr5"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🗣️</span><span class="reflect-text">различаю звуки <span class="ipa">/h/</span> и <span class="ipa">/w/</span></span></label>
+      </div>
+      <div class="fc-done" hidden><span class="fc-trophy">🏆</span><span><b>Супер!</b> Первый урок раздела «All together» пройден!</span></div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<script src="../assets/sync.js"></script>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/sortcols.js"></script>
+<script src="../assets/name.js"></script>
+<script src="../assets/dictionary.js"></script>
+<script>
+/* Interactive map: drag a country tile onto a box (or tap tile, then box). The box's hidden
+   .blank gets the country number, so saving, the score badge and live sync work as usual. */
+(function () {
+  const bank = document.getElementById('map-bank'), box = document.getElementById('map-box');
+  const tiles = [...bank.querySelectorAll('.map-tile')], slots = [...box.querySelectorAll('.map-slot')];
+  const name = n => { const t = tiles.find(t => t.dataset.n === n); return t ? t.textContent.trim() : ''; };
+  let picked = null;
+  function render() {
+    const used = new Set();
+    slots.forEach(s => {
+      const v = s.querySelector('input').value.trim();
+      s.querySelector('.ms-label').textContent = v ? name(v) : '';
+      s.classList.toggle('filled', !!v);
+      if (v) used.add(v);
+    });
+    tiles.forEach(t => t.classList.toggle('used', used.has(t.dataset.n)));
+  }
+  window.mapRender = render;
+  function put(slot, n) {
+    slots.forEach(s => { const i = s.querySelector('input'); if (n && i.value === n && s !== slot) set(i, ''); });
+    set(slot.querySelector('input'), n);
+    pick(null); render();
+  }
+  function set(inp, v) { inp.value = v; inp.classList.remove('correct', 'wrong'); inp.dispatchEvent(new Event('input', { bubbles: true })); }
+  function pick(t) {
+    tiles.forEach(x => x.classList.remove('picked'));
+    picked = t; if (t) t.classList.add('picked');
+    box.classList.toggle('picking', !!t);
+  }
+  slots.forEach(s => s.addEventListener('click', () => {
+    if (picked) put(s, picked.dataset.n);
+    else if (s.classList.contains('filled')) put(s, '');
+  }));
+  // drag with mouse or finger; a short tap counts as "pick"
+  tiles.forEach(t => t.addEventListener('pointerdown', e => {
+    if (e.target.closest('.say')) return;   // the speaker icon just plays the word
+    e.preventDefault();
+    const x0 = e.clientX, y0 = e.clientY; let ghost = null, over = null;
+    const slotAt = (x, y) => { const el = document.elementFromPoint(x, y); return el && el.closest('.map-slot'); };
+    const move = ev => {
+      if (!ghost && Math.hypot(ev.clientX - x0, ev.clientY - y0) > 6) {
+        ghost = t.cloneNode(true); ghost.classList.add('ghost'); ghost.classList.remove('picked'); document.body.appendChild(ghost);
+      }
+      if (!ghost) return;
+      ghost.style.left = ev.clientX - ghost.offsetWidth / 2 + 'px'; ghost.style.top = ev.clientY - ghost.offsetHeight / 2 + 'px';
+      const s = slotAt(ev.clientX, ev.clientY);
+      if (over && over !== s) over.classList.remove('over');
+      over = s; if (s) s.classList.add('over');
+    };
+    const up = ev => {
+      document.removeEventListener('pointermove', move); document.removeEventListener('pointerup', up);
+      if (over) over.classList.remove('over');
+      if (ghost) { ghost.remove(); const s = slotAt(ev.clientX, ev.clientY); if (s) put(s, t.dataset.n); }
+      else pick(picked === t ? null : t);
+    };
+    document.addEventListener('pointermove', move); document.addEventListener('pointerup', up);
+  }));
+  // saved answers / live sync fill the hidden inputs: redraw the boxes
+  slots.forEach(s => s.querySelector('input').addEventListener('input', render));
+  document.addEventListener('DOMContentLoaded', () => setTimeout(render, 0));
+})();
+</script>
+<script>
+/* "Итог": star counter, progress bar and confetti when everything is ticked (same as Lessons 3–7) */
+(function () {
+  const box = document.getElementById('fun-check');
+  const boxes = [...box.querySelectorAll('input[type=checkbox]')];
+  let celebrated = false;
+  function confetti() {
+    const colours = ['#FFC53D', '#FF7A45', '#3352E0', '#12A374', '#7B5CE6', '#E03E52'];
+    for (let i = 0; i < 40; i++) {
+      const c = document.createElement('i');
+      c.className = 'fc-confetti';
+      c.style.left = Math.random() * 100 + '%';
+      c.style.background = colours[i % colours.length];
+      c.style.animationDelay = Math.random() * 0.4 + 's';
+      c.style.setProperty('--x', (Math.random() * 160 - 80) + 'px');
+      c.style.setProperty('--r', (Math.random() * 720 - 360) + 'deg');
+      box.appendChild(c);
+      setTimeout(() => c.remove(), 2200);
+    }
+  }
+  function update(animate) {
+    const n = boxes.filter(b => b.checked).length;
+    box.querySelector('.fc-count b').textContent = n;
+    box.querySelector('.fc-meter i').style.width = (n / boxes.length * 100) + '%';
+    const done = n === boxes.length;
+    box.querySelector('.fc-done').hidden = !done;
+    box.classList.toggle('all-done', done);
+    if (done && animate && !celebrated) confetti();
+    celebrated = done;
+  }
+  boxes.forEach(b => b.addEventListener('change', () => update(true)));
+  document.addEventListener('DOMContentLoaded', () => setTimeout(() => update(false), 0));
+})();
+</script>
+</body>
+</html>
