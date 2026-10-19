@@ -681,3 +681,9 @@ a.btn{text-decoration:none;color:var(--ink)}
 .fc-group.yes .fc-chip{background:var(--sky-soft);border-color:var(--sky)}
 .fc-group.un .fc-chip{color:var(--muted)}
 .fc-chip.mastered{border-color:var(--olive-2);background:var(--olive-soft)}
+
+/* overview card: a long page title is cut with … instead of running out of the card under the NEW badge */
+.s-card .now .pill{max-width:100%;box-sizing:border-box}
+.s-card .now .pill-t{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.s-card .now .pill.live::before{flex:none}
+.s-card .top .badge-new{flex:none}

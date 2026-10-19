@@ -19,6 +19,7 @@
           <span class="badge">Lesson 7</span>
           <span class="badge">Starter: Welcome! Review</span>
           <span class="badge">Student’s Book p. 11</span>
+          <span class="badge">Workbook pp. 8–9</span>
         </div>
       </div>
     </div>
@@ -28,14 +29,18 @@
 <!-- ══════════════════════════════════════════════════════════
      Student's Book Welcome p. 11 "Review": exercises 6–9 (track W.14).
      Pictures for ex. 9 are from pp. 10–11 (images/review/sp-1…8.jpg).
+     Also Workbook p. 8 ex. 6 + p. 9 ex. 1–4 (tracks W.06–W.09 → audio/lesson-07-hw06…09), sorted by topic.
 ══════════════════════════════════════════════════════════ -->
 <nav class="chips">
   <div class="wrap">
-    <a href="#r1">1 · First letter game</a>
-    <a href="#r2">2 · Missing vowels</a>
-    <a href="#r3">3 · Dialogues</a>
-    <a href="#r4">4 · Spell it</a>
-    <a href="#r5">5 · Итог</a>
+    <a href="#r1">1 · Letters</a>
+    <a href="#r4">2 · Spell it</a>
+    <a href="#r2">3 · Words</a>
+    <a href="#hw2">4 · Numbers</a>
+    <a href="#hw1">5 · Classroom</a>
+    <a href="#r3">6 · Greetings</a>
+    <a href="#hw4">7 · Messages</a>
+    <a href="#r5">8 · Итог</a>
   </div>
 </nav>
 
@@ -45,7 +50,7 @@
     <div class="step-head">
       <div class="step-num">1</div>
       <div>
-        <div class="step-meta">Review · Student’s Book p. 11</div>
+        <div class="step-meta">Letters · Student’s Book p. 11</div>
         <h2>The ‘first letter’ game</h2>
       </div>
     </div>
@@ -86,11 +91,42 @@
     </div>
   </section>
 
-  <section class="step" id="r2">
+  <section class="step" id="r4">
     <div class="step-head">
       <div class="step-num">2</div>
       <div>
-        <div class="step-meta">Review · Student’s Book p. 11</div>
+        <div class="step-meta">Spelling · Student’s Book p. 11</div>
+        <h2>Spell it!</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-r4">
+      <div class="exercise-label">Exercise 9 · Speaking</div>
+      <h3>Choose three pictures and spell the words for your teacher to write. Is your teacher correct? Then write all eight words.</h3>
+      <p class="ru-hint" lang="ru">Выбери три картинки и продиктуй слова по буквам — учитель пишет. Правильно? Потом поменяйтесь ролями.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>A: <i>R – E – D.</i> B: <i>Red!</i></span></div>
+      <div class="pic-grid photo">
+        <div class="pic-item"><span class="pic-letter">1</span><img src="images/review/sp-1.jpg" alt="picture 1"><input class="blank" id="g9-1" data-answer="red" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">2</span><img src="images/review/sp-2.jpg" alt="picture 2"><input class="blank" id="g9-2" data-answer="hotel" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">3</span><img src="images/review/sp-3.jpg" alt="picture 3"><input class="blank" id="g9-3" data-answer="computer" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">4</span><img src="images/review/sp-4.jpg" alt="picture 4"><input class="blank" id="g9-4" data-answer="desk|chair|desk and chair|a desk|a chair" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">5</span><img src="images/review/sp-5.jpg" alt="picture 5"><input class="blank" id="g9-5" data-answer="black" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">6</span><img src="images/review/sp-6.jpg" alt="picture 6"><input class="blank" id="g9-6" data-answer="one" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">7</span><img src="images/review/sp-7.jpg" alt="picture 7"><input class="blank" id="g9-7" data-answer="burger|hamburger|a burger|a hamburger" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="pic-item"><span class="pic-letter">8</span><img src="images/review/sp-8.jpg" alt="picture 8"><input class="blank" id="g9-8" data-answer="four" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-r4')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-r4')">Try again</button>
+      </div>
+      <div class="tip"><span class="tip-title">Double letters</span>Say <span class="key">double O</span>: <i>b – double O – k</i> = book.</div>
+    </div>
+  </section>
+
+  <section class="step" id="r2">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Vocabulary · Student’s Book p. 11</div>
         <h2>Missing vowels</h2>
       </div>
     </div>
@@ -131,11 +167,104 @@
     </div>
   </section>
 
+  <section class="step" id="hw2">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Numbers 20–100 · Workbook p. 9</div>
+        <h2>Numbers 20–100</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-hw9a">
+      <div class="exercise-label">Workbook p. 9 · Exercise 1</div>
+      <h3>Write the numbers.</h3>
+      <div class="two-col">
+        <p class="gap-line"><span class="num">0.</span> seventy → <span class="given">70</span></p>
+        <p class="gap-line"><span class="num">1.</span> thirty → <input class="blank num" id="hw9a-1" data-answer="30" inputmode="numeric" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">2.</span> forty → <input class="blank num" id="hw9a-2" data-answer="40" inputmode="numeric" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">3.</span> ninety → <input class="blank num" id="hw9a-3" data-answer="90" inputmode="numeric" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">4.</span> a hundred → <input class="blank num" id="hw9a-4" data-answer="100" inputmode="numeric" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">5.</span> fifty → <input class="blank num" id="hw9a-5" data-answer="50" inputmode="numeric" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">6.</span> twenty → <input class="blank num" id="hw9a-6" data-answer="20" inputmode="numeric" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">7.</span> sixty → <input class="blank num" id="hw9a-7" data-answer="60" inputmode="numeric" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">8.</span> eighty → <input class="blank num" id="hw9a-8" data-answer="80" inputmode="numeric" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">9.</span> thirty-four → <input class="blank num" id="hw9a-9" data-answer="34" inputmode="numeric" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">10.</span> sixty-eight → <input class="blank num" id="hw9a-10" data-answer="68" inputmode="numeric" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">11.</span> twenty-one → <input class="blank num" id="hw9a-11" data-answer="21" inputmode="numeric" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">12.</span> ninety-nine → <input class="blank num" id="hw9a-12" data-answer="99" inputmode="numeric" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+        <p class="gap-line"><span class="num">13.</span> fifty-three → <input class="blank num" id="hw9a-13" data-answer="53" inputmode="numeric" placeholder="?" autocomplete="off" style="width:70px;min-width:70px"></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-hw9a')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw9a')">Try again</button>
+      </div>
+    </div>
+    <div class="card" id="ex-hw9b">
+      <div class="exercise-label">Workbook p. 9 · Exercise 2 · W.07</div>
+      <h3>Listen and write the numbers.</h3>
+      <p class="ru-hint" lang="ru">Пиши числа словами, через дефис: <i lang="en">thirty-four</i>.</p>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-07-hw07.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div class="example-row"><span class="ex-tag">Example</span><span>0. <b>thirty-four</b></span></div>
+      <div class="listen-q"><span class="num">a.</span><input class="blank" id="hw9b-a" data-answer="sixty-two|sixty two|62" placeholder="in words" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:180px;min-width:0"></div>
+      <div class="listen-q"><span class="num">b.</span><input class="blank" id="hw9b-b" data-answer="ninety-eight|ninety eight|98" placeholder="in words" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:180px;min-width:0"></div>
+      <div class="listen-q"><span class="num">c.</span><input class="blank" id="hw9b-c" data-answer="forty|40" placeholder="in words" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:180px;min-width:0"></div>
+      <div class="listen-q"><span class="num">d.</span><input class="blank" id="hw9b-d" data-answer="forty-three|forty three|43" placeholder="in words" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:180px;min-width:0"></div>
+      <div class="listen-q"><span class="num">e.</span><input class="blank" id="hw9b-e" data-answer="twenty-seven|twenty seven|27" placeholder="in words" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:180px;min-width:0"></div>
+      <div class="listen-q"><span class="num">f.</span><input class="blank" id="hw9b-f" data-answer="seventy-six|seventy six|76" placeholder="in words" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:180px;min-width:0"></div>
+      <div class="listen-q"><span class="num">g.</span><input class="blank" id="hw9b-g" data-answer="fifty-one|fifty one|51" placeholder="in words" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:180px;min-width:0"></div>
+      <div class="listen-q"><span class="num">h.</span><input class="blank" id="hw9b-h" data-answer="sixty-nine|sixty nine|69" placeholder="in words" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:180px;min-width:0"></div>
+      <div class="listen-q"><span class="num">i.</span><input class="blank" id="hw9b-i" data-answer="eighty-five|eighty five|85" placeholder="in words" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:180px;min-width:0"></div>
+      <div class="listen-q"><span class="num">j.</span><input class="blank" id="hw9b-j" data-answer="seventy-one|seventy one|71" placeholder="in words" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:180px;min-width:0"></div>
+      <div class="listen-q"><span class="num">k.</span><input class="blank" id="hw9b-k" data-answer="a hundred|one hundred|hundred|100" placeholder="in words" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:180px;min-width:0"></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-hw9b')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw9b')">Try again</button>
+      </div>
+      <div class="tip"><span class="tip-title">-teen or -ty?</span><span class="key">forty</span> — stress at the start: <b>FOR</b>-ty. <span class="key">fourteen</span> — stress at the end: four-<b>TEEN</b>.</div>
+    </div>
+  </section>
+
+  <section class="step" id="hw1">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Classroom language · Workbook p. 8</div>
+        <h2>Listen and tick</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-hw6">
+      <div class="exercise-label">Workbook p. 8 · Exercise 6 · W.06</div>
+      <h3>Listen and tick (✓) the sentences that you hear.</h3>
+      <p class="ru-hint" lang="ru">Слушай внимательно: некоторые предложения звучат чуть-чуть иначе. Услышал точно такое же — ставь ✓, если нет — ✗.</p>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-07-hw06.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div class="sort-row"><span class="num">1.</span> <span class="word-choice" id="hw6-1" data-answer="✗"><button class="word-choice-btn" onclick="selectWord(this)">✓</button><button class="word-choice-btn" onclick="selectWord(this)">✗</button></span> <span>There are three books.</span></div>
+      <div class="sort-row"><span class="num">2.</span> <span class="word-choice" id="hw6-2" data-answer="✗"><button class="word-choice-btn" onclick="selectWord(this)">✓</button><button class="word-choice-btn" onclick="selectWord(this)">✗</button></span> <span>Open your books.</span></div>
+      <div class="sort-row"><span class="num">3.</span> <span class="word-choice" id="hw6-3" data-answer="✓"><button class="word-choice-btn" onclick="selectWord(this)">✓</button><button class="word-choice-btn" onclick="selectWord(this)">✗</button></span> <span>There are 20 children in the class.</span></div>
+      <div class="sort-row"><span class="num">4.</span> <span class="word-choice" id="hw6-4" data-answer="✓"><button class="word-choice-btn" onclick="selectWord(this)">✓</button><button class="word-choice-btn" onclick="selectWord(this)">✗</button></span> <span>What does this mean?</span></div>
+      <div class="sort-row"><span class="num">5.</span> <span class="word-choice" id="hw6-5" data-answer="✗"><button class="word-choice-btn" onclick="selectWord(this)">✓</button><button class="word-choice-btn" onclick="selectWord(this)">✗</button></span> <span>There are two windows.</span></div>
+      <div class="sort-row"><span class="num">6.</span> <span class="word-choice" id="hw6-6" data-answer="✓"><button class="word-choice-btn" onclick="selectWord(this)">✓</button><button class="word-choice-btn" onclick="selectWord(this)">✗</button></span> <span>Put up your hand.</span></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-hw6')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-hw6')">Try again</button>
+      </div>
+    </div>
+  </section>
+
   <section class="step" id="r3">
     <div class="step-head">
-      <div class="step-num">3</div>
+      <div class="step-num">6</div>
       <div>
-        <div class="step-meta">Review · Student’s Book p. 11</div>
+        <div class="step-meta">Greetings · Student’s Book p. 11</div>
         <h2>Put the dialogues in order</h2>
       </div>
     </div>
@@ -164,40 +293,81 @@
     </div>
   </section>
 
-  <section class="step" id="r4">
+  <section class="step" id="hw4">
     <div class="step-head">
-      <div class="step-num">4</div>
+      <div class="step-num">7</div>
       <div>
-        <div class="step-meta">Speaking · Student’s Book p. 11</div>
-        <h2>Spell it!</h2>
+        <div class="step-meta">Messages · Workbook p. 9</div>
+        <h2>Messages</h2>
       </div>
     </div>
-    <div class="card" id="ex-r4">
-      <div class="exercise-label">Exercise 9 · Speaking</div>
-      <h3>Choose three pictures and spell the words for your teacher to write. Is your teacher correct? Then write all eight words.</h3>
-      <p class="ru-hint" lang="ru">Выбери три картинки и продиктуй слова по буквам — учитель пишет. Правильно? Потом поменяйтесь ролями.</p>
-      <div class="example-row"><span class="ex-tag">Example</span><span>A: <i>R – E – D.</i> B: <i>Red!</i></span></div>
-      <div class="pic-grid photo">
-        <div class="pic-item"><span class="pic-letter">1</span><img src="images/review/sp-1.jpg" alt="picture 1"><input class="blank" id="g9-1" data-answer="red" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
-        <div class="pic-item"><span class="pic-letter">2</span><img src="images/review/sp-2.jpg" alt="picture 2"><input class="blank" id="g9-2" data-answer="hotel" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
-        <div class="pic-item"><span class="pic-letter">3</span><img src="images/review/sp-3.jpg" alt="picture 3"><input class="blank" id="g9-3" data-answer="computer" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
-        <div class="pic-item"><span class="pic-letter">4</span><img src="images/review/sp-4.jpg" alt="picture 4"><input class="blank" id="g9-4" data-answer="desk|chair|desk and chair|a desk|a chair" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
-        <div class="pic-item"><span class="pic-letter">5</span><img src="images/review/sp-5.jpg" alt="picture 5"><input class="blank" id="g9-5" data-answer="black" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
-        <div class="pic-item"><span class="pic-letter">6</span><img src="images/review/sp-6.jpg" alt="picture 6"><input class="blank" id="g9-6" data-answer="one" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
-        <div class="pic-item"><span class="pic-letter">7</span><img src="images/review/sp-7.jpg" alt="picture 7"><input class="blank" id="g9-7" data-answer="burger|hamburger|a burger|a hamburger" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
-        <div class="pic-item"><span class="pic-letter">8</span><img src="images/review/sp-8.jpg" alt="picture 8"><input class="blank" id="g9-8" data-answer="four" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+    <div class="card" id="ex-hw9c">
+      <div class="exercise-label">Workbook p. 9 · Exercise 3 · W.08</div>
+      <h3>Listen to the messages and choose the correct options.</h3>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-07-hw08.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div class="tip" style="font-size:18px">
+        <span class="tip-title">Message 1</span>
+        <p class="gap-line">Message for Joe from David <sup>0</sup> <s>Jones</s> / <b>James</b>.</p>
+        <p class="gap-line">His office is at number <sup>1</sup> <span class="word-choice" id="hw9c-1" data-answer="7"><button class="word-choice-btn" onclick="selectWord(this)">6</button><button class="word-choice-btn" onclick="selectWord(this)">7</button></span>,</p>
+        <p class="gap-line"><sup>2</sup> <span class="word-choice" id="hw9c-2" data-answer="Thames"><button class="word-choice-btn" onclick="selectWord(this)">Thames</button><button class="word-choice-btn" onclick="selectWord(this)">Temms</button></span> Road.</p>
+        <p class="gap-line">The train station is <sup>3</sup> <span class="word-choice" id="hw9c-3" data-answer="Kew"><button class="word-choice-btn" onclick="selectWord(this)">Cue</button><button class="word-choice-btn" onclick="selectWord(this)">Kew</button></span> Bridge.</p>
+        <p class="gap-line">His phone number is <sup>4</sup> <span class="word-choice" id="hw9c-4" data-answer="0208686758"><button class="word-choice-btn" onclick="selectWord(this)">0207328759</button><button class="word-choice-btn" onclick="selectWord(this)">0208686758</button></span>.</p>
+      </div>
+      <div class="tip" style="font-size:18px">
+        <span class="tip-title">Message 2</span>
+        <p class="gap-line">Debbie’s message from Claire Greene.</p>
+        <p class="gap-line">The party is at the <sup>5</sup> <span class="word-choice" id="hw9c-5" data-answer="Britannia"><button class="word-choice-btn" onclick="selectWord(this)">Britannia</button><button class="word-choice-btn" onclick="selectWord(this)">Breton</button></span> Hotel.</p>
+        <p class="gap-line">The address of the hotel is <sup>6</sup> <span class="word-choice" id="hw9c-6" data-answer="34"><button class="word-choice-btn" onclick="selectWord(this)">44</button><button class="word-choice-btn" onclick="selectWord(this)">34</button></span>, South Street.</p>
+        <p class="gap-line">The bus number is <sup>7</sup> <span class="word-choice" id="hw9c-7" data-answer="15"><button class="word-choice-btn" onclick="selectWord(this)">15</button><button class="word-choice-btn" onclick="selectWord(this)">16</button></span>.</p>
+        <p class="gap-line">Her phone number is 01244 <sup>8</sup> <span class="word-choice" id="hw9c-8" data-answer="5634453"><button class="word-choice-btn" onclick="selectWord(this)">5564456</button><button class="word-choice-btn" onclick="selectWord(this)">5634453</button></span>.</p>
       </div>
       <div class="btn-row">
-        <button class="btn-primary" onclick="checkBlanks('ex-r4')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetBlanks('ex-r4')">Try again</button>
+        <button class="btn-primary" onclick="checkWords('ex-hw9c')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-hw9c')">Try again</button>
       </div>
-      <div class="tip"><span class="tip-title">Double letters</span>Say <span class="key">double O</span>: <i>b – double O – k</i> = book.</div>
+    </div>
+    <div class="card" id="ex-hw9d">
+      <div class="exercise-label">Workbook p. 9 · Exercise 4 · W.09</div>
+      <h3>Listen and complete the messages.</h3>
+      <p class="ru-hint" lang="ru">Имена диктуют по буквам — записывай каждую букву.</p>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-07-hw09.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div class="tip" style="font-size:18px">
+        <span class="tip-title">Message 1</span>
+        <p class="gap-line">Hi Daniel,</p>
+        <p class="gap-line">Message from Mr <sup>0</sup> <span class="given">Cleverly</span>.</p>
+        <p class="gap-line">His address is <sup>1</sup> <input class="blank" id="hw9d-1" data-answer="19|nineteen" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px;min-width:0">, King Street.</p>
+        <p class="gap-line">The bus to get is number <sup>2</sup> <input class="blank" id="hw9d-2" data-answer="3|three" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px;min-width:0">.</p>
+        <p class="gap-line">His phone number is <sup>3</sup> <input class="blank" id="hw9d-3" data-answer="0231|0 2 3 1" placeholder="phone" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;min-width:0"> 676 745.</p>
+      </div>
+      <div class="tip" style="font-size:18px">
+        <span class="tip-title">Message 2</span>
+        <p class="gap-line">Hi Erica,</p>
+        <p class="gap-line">Message from Jane <sup>4</sup> <input class="blank" id="hw9d-4" data-answer="Donaldson" placeholder="name" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:170px;min-width:0">.</p>
+        <p class="gap-line">Her house number is <sup>5</sup> <input class="blank" id="hw9d-5" data-answer="12|twelve" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px;min-width:0"> on Linton Road.</p>
+        <p class="gap-line">The name of the station is <sup>6</sup> <input class="blank" id="hw9d-6" data-answer="White|White City" placeholder="name" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;min-width:0"> City.</p>
+        <p class="gap-line">Her phone number is 07837 <sup>7</sup> <input class="blank" id="hw9d-7" data-answer="348383|348 383|34 83 83|3 4 8 3 8 3" placeholder="phone" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;min-width:0">.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-hw9d')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw9d')">Try again</button>
+      </div>
+      <div class="tip"><span class="tip-title">Phone numbers</span>We say each number: <i>0-7-8-3-7</i> = <span class="key">oh seven eight three seven</span>. <b>0</b> in a phone number is often <b>“oh”</b>.</div>
     </div>
   </section>
 
   <section class="step" id="r5">
     <div class="step-head">
-      <div class="step-num">5</div>
+      <div class="step-num">8</div>
       <div>
         <div class="step-meta">Итог</div>
         <h2>Что ты теперь умеешь?</h2>

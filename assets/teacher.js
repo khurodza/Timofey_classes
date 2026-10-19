@@ -205,7 +205,8 @@ function refresh() {
 function renderOverview() {
   $('overview').innerHTML = STUDENTS.map(s => {
     const p = presence[s.id], t = totals(s.id), n = newCount(s.id);
-    const now = isLive(p) ? `<span class="pill live">Online · ${esc(shortTitle(p.title || p.page))}</span>` : p ? `Last seen ${ago(p.at)}` : 'Not connected yet';
+    const where = isLive(p) && esc(shortTitle(p.title || p.page));
+    const now = isLive(p) ? `<span class="pill live" title="${where}"><span class="pill-t">Online · ${where}</span></span>` : p ? `Last seen ${ago(p.at)}` : 'Not connected yet';
     return `<div class="s-card" style="--c:${s.color}">
       <div class="top">${avatar(s)}<div style="flex:1"><h2>${esc(s.name)}</h2><div class="now">${now}</div></div>${n ? `<span class="badge-new">${n} new</span>` : ''}</div>
       <div>${bar(t)}<div class="legend"><span>${t.answered} answers</span><span>${pct(t.right, t.answered)}% right</span></div></div>
