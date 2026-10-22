@@ -14,6 +14,7 @@
      students/<id>/flashcards/<deck>  flashcard progress (known / still learning / Learn stage), written by the student's site
      teacher/seen/<id>/<page>     when the teacher last looked (for "new")
      teacher/reports/<id>/...     the teacher's edits of the report
+     teacher/done/<id>/<page>     pages the teacher marked as done by hand (time)
    ============================================================ */
 import CURRICULUM from './curriculum.js';
 import { initSchedule } from './schedule.js';
@@ -57,9 +58,9 @@ function avatar(s, cls = '', withDot = true) {
 }
 
 /* ---------------- state ---------------- */
-const presence = {}, pages = {}, seen = {}, notes = {}, reports = {}, siteLists = {}, tracking = {};
+const presence = {}, pages = {}, seen = {}, notes = {}, reports = {}, siteLists = {}, tracking = {}, markedDone = {};
 const flash = {}, deckLists = {}, openDecks = new Set();   // flashcard progress + each site's decks.js
-STUDENTS.forEach(s => { pages[s.id] = {}; seen[s.id] = {}; notes[s.id] = {}; reports[s.id] = {}; });
+STUDENTS.forEach(s => { pages[s.id] = {}; seen[s.id] = {}; notes[s.id] = {}; reports[s.id] = {}; markedDone[s.id] = {}; });
 let route = { view: 'overview' };
 
 /* ---------------- sign-in ---------------- */
@@ -87,6 +88,7 @@ function start() {
     onValue(ref(db, `students/${s.id}/flashcards`), snap => { flash[s.id] = snap.val() || {}; if (Object.keys(flash[s.id]).length) loadDecks(s); refresh(); });
     onValue(ref(db, `teacher/seen/${s.id}`), snap => { seen[s.id] = snap.val() || {}; refresh(); });
     onValue(ref(db, `teacher/reports/${s.id}`), snap => { reports[s.id] = snap.val() || {}; if (route.view === 'report' && route.s === s.id && !reportEditing) renderReport(); });
+    onValue(ref(db, `teacher/done/${s.id}`), snap => { markedDone[s.id] = snap.val() || {}; refresh(); });
     onValue(ref(db, `teacher/tracking/${s.id}`), snap => { tracking[s.id] = snap.val(); initTracking(s.id); refresh(); });
     loadSiteList(s).then(() => { initTracking(s.id); refresh(); });
   });
@@ -261,7 +263,7 @@ function renderDash() {
   const marks = allNotes.filter(n => n.mark).length, comments = allNotes.filter(n => n.comment).length;
   const counted = list.filter(p => isTracked(s.id, p.page) && counts(s.id, p.rec));
   const lastAt = counted.length ? Math.max(...counted.map(p => p.rec.at)) : 0;
-  const doing = counted.find(p => p.rec.stats && p.rec.stats.answered && p.rec.stats.answered < p.rec.stats.total);
+  const doing = counted.find(p => !markedDone[s.id][p.page] && p.rec.stats && p.rec.stats.answered && p.rec.stats.answered < p.rec.stats.total);
   const ix = (n, label, note, tape, rot) => `<div class="tile ix" style="--tape:${tape};--rot:${rot}deg"><b>${n}</b><span class="lab">${label}</span><span class="note">${note}</span></div>`;
   $('d-tiles').innerHTML =
     ix(`${t.started}<small> / ${t.pagesCounted}</small>`, 'pages worked on', doing ? esc(shortTitle(doing.title || doing.page)) + ' in progress' : t.started ? 'all started pages finished' : 'nothing started yet', 'var(--pink)', -1.6) +
@@ -272,16 +274,19 @@ function renderDash() {
     const r = counts(s.id, pg.rec) || !isTracked(s.id, pg.page) ? pg.rec : null;   // counted work only (older test answers ignored)
     const st = r && r.stats, nw = isNew(s.id, pg.page), nc = noteCount(s.id, pg.page);
     const info = !r ? 'Not opened yet' : st && st.total ? `${st.answered} / ${st.total} answered · ${st.right} right` : 'answers saved';
-    const rot = [-1.2, 0.9, -0.6, 1.3, -0.9, 0.5][i % 6];
+    const rot = [-1.2, 0.9, -0.6, 1.3, -0.9, 0.5][i % 6], md = markedDone[s.id][pg.page];
+    const doneBtn = !isTracked(s.id, pg.page) ? '' : md ? `<button class="btn small ghost" data-undone="${esc(pg.page)}" title="Marked done by you ${ago(md)}">↩ Not done</button>`
+      : stage(pg) !== 'done' ? `<button class="btn small ghost" data-done="${esc(pg.page)}">✓ Mark done</button>` : '';
     return `<div class="p-card ${nw ? 'is-new' : ''} ${r ? '' : 'untouched'}" style="--rot:${rot}deg">
-      <div class="t"><b>${esc(pg.title || pg.page)}</b>${pg.hw ? '<span class="tag-hw">HW</span>' : ''}${nw ? '<span class="badge-new">NEW</span>' : ''}</div>
+      <div class="t"><b>${esc(pg.title || pg.page)}</b>${pg.hw ? '<span class="tag-hw">HW</span>' : ''}${md ? '<span class="tag-hw tag-done" title="Marked done by you">✓ BY YOU</span>' : ''}${nw ? '<span class="badge-new">NEW</span>' : ''}</div>
       ${r ? bar(st) : ''}
       <div class="sub"><span>${info}</span>${r ? `<span>🕑 ${ago(r.at)}</span>` : ''}${nc ? `<span>💬 ${nc}</span>` : ''}</div>
-      <div class="acts">${r ? `<button class="btn small ghost danger" data-reset="${esc(pg.page)}">↺ Reset</button>` : ''}<button class="btn small" data-open="${esc(pg.page)}" data-path="${esc(pg.path)}">Open →</button></div>
+      <div class="acts">${doneBtn}${r ? `<button class="btn small ghost danger" data-reset="${esc(pg.page)}">↺ Reset</button>` : ''}<button class="btn small" data-open="${esc(pg.page)}" data-path="${esc(pg.path)}">Open →</button></div>
     </div>`;
   };
-  // board: To do → In progress → Done, worked out from the counted answers
+  // board: To do → In progress → Done, worked out from the counted answers (or marked done by hand)
   const stage = pg => {
+    if (markedDone[s.id][pg.page]) return 'done';
     const r = counts(s.id, pg.rec) ? pg.rec : null, st = r && r.stats;
     if (!r || (st && !st.answered)) return 'todo';
     if (st && st.total && st.answered >= st.total) return 'done';
@@ -296,6 +301,8 @@ function renderDash() {
   $('d-cards').innerHTML = renderCards(s);
   $('d-cards').querySelectorAll('.fc-deck').forEach(d => d.addEventListener('toggle', () => { d.open ? openDecks.add(s.id + d.dataset.deck) : openDecks.delete(s.id + d.dataset.deck); }));
   $('d-pages').querySelectorAll('[data-open]').forEach(b => b.onclick = () => { $('follow').checked = false; go('#/s/' + s.id + '/live'); showPage(s.id, b.dataset.open, b.dataset.path); });
+  $('d-pages').querySelectorAll('[data-done]').forEach(b => b.onclick = () => set(ref(db, `teacher/done/${s.id}/${b.dataset.done}`), Date.now()).then(() => toast('Marked done')));
+  $('d-pages').querySelectorAll('[data-undone]').forEach(b => b.onclick = () => remove(ref(db, `teacher/done/${s.id}/${b.dataset.undone}`)).then(() => toast('Back on the board')));
   $('d-pages').querySelectorAll('[data-reset]').forEach(b => b.onclick = () => resetPage(s.id, b.dataset.reset));
   $('d-live').onclick = () => { $('follow').checked = true; go('#/s/' + s.id + '/live'); };
   $('d-fresh').onclick = () => startFresh(s.id);
@@ -450,6 +457,7 @@ function startFresh(sid) {
     remove(ref(db, `students/${sid}/pages`)),
     remove(ref(db, `students/${sid}/notes`)),
     remove(ref(db, `teacher/seen/${sid}`)),
+    remove(ref(db, `teacher/done/${sid}`)),
     set(ref(db, `students/${sid}/resetAt`), Date.now()),
     tracking[sid] && set(ref(db, `teacher/tracking/${sid}/since`), Date.now())
   ]).then(() => toast(`${s.name} starts fresh`));
