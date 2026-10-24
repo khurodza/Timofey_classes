@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 9 – Numbers, question words and to be</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+/* Lesson 9 */
+.hw-h{color:#E0662B}
+.hw-w{color:#2F6FD6}
+/* warm-up game: flag pictures inside the quiz (reuses the .csr / .wu game frame) */
+.wu-flag{width:170px;max-width:60%;height:auto;display:block;margin:0 auto}
+.wu-num{font:800 64px/1.1 var(--font-head);color:var(--ink);letter-spacing:.02em}
+.wu-opt .st{color:var(--blue)}
+.wu-rule{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center;margin:0 auto 14px;font-weight:700}
+.wu-rule b{color:var(--blue)}
+/* teen / -ty pairs */
+.l9-pairs{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.l9-pairs .pair{flex-wrap:wrap}
+.pair .say b{font-size:20px;margin-right:4px}
+.stress{color:var(--blue);font-weight:900}
+/* flag choices with pictures (Guess the flag, SB p. 15 ex. 7) */
+.mc-option.flag-opt{flex-direction:column;gap:6px;padding:10px;text-align:center}
+.mc-option.flag-opt img{width:100%;max-width:150px;height:auto}
+.flag-opts{flex-direction:row;flex-wrap:wrap}
+.flag-opts .mc-option{flex:1 1 140px}
+.fl-row{display:grid;grid-template-columns:1fr minmax(0,230px) 1fr;gap:12px;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+.fl-row .fl-photo{position:relative}
+.fl-row .fl-photo img{width:100%;display:block;border-radius:12px}
+.fl-row .mc-option{flex-direction:column;gap:4px;padding:8px}
+.fl-row .mc-option img{width:100%;max-width:160px;height:auto}
+.fl-row.mc-options{flex-direction:row;display:grid}
+@media(max-width:560px){.fl-row{grid-template-columns:1fr 1fr}.fl-row .fl-photo{grid-column:1 / -1;order:-1}}
+/* match sentences to 4 items (SB p. 15 ex. 12) */
+.sc-cols.four{grid-template-columns:repeat(4,1fr)}
+.sc-cols.four .sc-head{font-size:16px;font-style:normal;display:flex;align-items:center;gap:8px}
+.sc-cols.four .sc-head img{width:38px;height:38px;object-fit:cover;border-radius:50%;border:2px solid #fff}
+.sc-cols.four .sc-col + .sc-col{border-left:2px solid #fff}
+@media(max-width:700px){.sc-cols.four{grid-template-columns:1fr 1fr}.sc-cols.four .sc-col:nth-child(3){border-left:none}.sc-cols.four .sc-col:nth-child(n+3){border-top:2px solid #fff}}
+/* flag designer (SB p. 15 ex. 9–11) */
+.fd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;margin-top:12px}
+.fd h4{margin:10px 0 6px}
+.fd-swatches,.fd-stickers,.fd-patterns{display:flex;flex-wrap:wrap;gap:8px}
+.fd-sw{width:40px;height:40px;border-radius:50%;border:2px solid var(--border);background:var(--c);cursor:pointer;position:relative}
+.fd-sw.on{box-shadow:0 0 0 4px var(--blue)}
+.fd-sw .n{position:absolute;right:-6px;top:-6px;width:20px;height:20px;border-radius:50%;background:var(--blue);color:#fff;font-size:12px;font-weight:900;display:grid;place-items:center}
+.fd-st,.fd-pt{border:2px solid var(--border);background:#fff;border-radius:12px;padding:6px 10px;font:inherit;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.fd-st span{font-size:26px;line-height:1}
+.fd-st.on,.fd-pt.on{border-color:var(--blue);background:var(--blue-soft)}
+.fd-flag{aspect-ratio:3/2;width:100%;border-radius:10px;border:2px solid var(--ink);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;gap:4%;font-size:min(13vw,64px)}
+.fd-flag span{position:relative;filter:drop-shadow(0 2px 2px rgba(0,0,0,.25))}
+.fd-say{margin-top:10px;font-size:18px;line-height:1.6}
+.fd-say i{color:var(--muted)}
+@media(max-width:700px){.fd{grid-template-columns:1fr}}
+/* Spot the lie */
+.lie-list .gap-line{display:flex;align-items:center;gap:10px}
+.lie-list .blank{flex:1;min-width:0;width:auto}
+/* Workbook p. 10 ex. 3 and p. 11 ex. 5 */
+.wb-pic{display:grid;grid-template-columns:200px 1fr;gap:14px;align-items:center;padding:10px 0;border-top:1px solid var(--border)}
+.wb-pic img{width:100%;border-radius:10px;display:block}
+@media(max-width:560px){.wb-pic{grid-template-columns:1fr}}
+.be-table td .blank{width:110px;min-width:0}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="back-home" href="../index.html">← All lessons</a>
+    <div class="hero-grid">
+      <div>
+        <h1 class="name-slot" data-with="Lesson 9: Who are you, {name}?" data-without="Lesson 9: Who are you?">Lesson 9: Who are you?</h1>
+        <p>A numbers and flags quiz show, question words, the verb <b>to be</b> — and the sounds <b>o</b> and <b>p</b>.</p>
+        <div class="hero-badges">
+          <span class="badge">Lesson 9</span>
+          <span class="badge">Unit 1: All together</span>
+          <span class="badge">Student’s Book pp. 14–15</span>
+          <span class="badge">Reading: o · p</span>
+          <span class="badge">Homework: Workbook pp. 10–11</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     PART 1: warm-up — teen / -ty numbers, "Numbers & Flags Quiz Show",
+             Guess the flag (SB p. 14 ex. 3, now with flag pictures).
+     PART 2: Question words — moved here from Lesson 8 (SB p. 14 ex. 4–6,
+             Grammar rap video 02, pronunciation p. 120 tracks 1.03–1.04).
+     PART 3: Student's Book p. 15 (Teacher's Book T15): flags listening
+             (track 1.05 → audio/lesson-09-1-05), flag designer, to be,
+             + "Spot the lie" (five true sentences and one false one).
+     PART 4: "o · p" copied from Lesson 2 ("Read it right").
+     HOMEWORK: Workbook pp. 10–11 + Итог.
+══════════════════════════════════════════════════════════ -->
+<nav class="parts">
+  <div class="wrap">
+    <button class="part-tab" data-part="part-warm" onclick="showPart('part-warm')">Warm-up</button>
+    <button class="part-tab" data-part="part-questions" onclick="showPart('part-questions')">Question words</button>
+    <button class="part-tab" data-part="part-be" onclick="showPart('part-be')">Flags &amp; to be</button>
+    <button class="part-tab" data-part="part-op" onclick="showPart('part-op')">Read it right: o · p</button>
+    <button class="part-tab hw" data-part="part-homework" onclick="showPart('part-homework')">Homework</button>
+  </div>
+</nav>
+
+<div class="lesson-part" id="part-warm">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#w1">1 · Teen or -ty?</a>
+    <a href="#w2">2 · Quiz show</a>
+    <a href="#w3">3 · Guess the flag</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="w1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Warm-up · Numbers</div>
+        <h2>Teen or -ty?</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Listen and repeat</div>
+      <h3>Listen to the pairs. Where is the strong part of the word?</h3>
+      <p class="ru-hint" lang="ru">13 и 30 звучат похоже! Слушай, где ударение: <i lang="en">thirTEEN</i> — в конце, <i lang="en">THIRty</i> — в начале.</p>
+      <div class="pairs l9-pairs">
+        <div class="pair"><button class="say" data-say="thirteen" data-file="num-13"><b>13</b> thir<span class="stress">TEEN</span></button><span class="vs">or</span><button class="say" data-say="thirty" data-file="thirty"><b>30</b> <span class="stress">THIR</span>ty</button></div>
+        <div class="pair"><button class="say" data-say="fourteen" data-file="num-14"><b>14</b> four<span class="stress">TEEN</span></button><span class="vs">or</span><button class="say" data-say="forty" data-file="forty"><b>40</b> <span class="stress">FOR</span>ty</button></div>
+        <div class="pair"><button class="say" data-say="fifteen" data-file="num-15"><b>15</b> fif<span class="stress">TEEN</span></button><span class="vs">or</span><button class="say" data-say="fifty" data-file="fifty"><b>50</b> <span class="stress">FIF</span>ty</button></div>
+        <div class="pair"><button class="say" data-say="sixteen" data-file="num-16"><b>16</b> six<span class="stress">TEEN</span></button><span class="vs">or</span><button class="say" data-say="sixty" data-file="sixty"><b>60</b> <span class="stress">SIX</span>ty</button></div>
+        <div class="pair"><button class="say" data-say="seventeen" data-file="num-17"><b>17</b> seven<span class="stress">TEEN</span></button><span class="vs">or</span><button class="say" data-say="seventy" data-file="seventy"><b>70</b> <span class="stress">SEV</span>enty</button></div>
+        <div class="pair"><button class="say" data-say="eighteen" data-file="num-18"><b>18</b> eigh<span class="stress">TEEN</span></button><span class="vs">or</span><button class="say" data-say="eighty" data-file="eighty"><b>80</b> <span class="stress">EIGH</span>ty</button></div>
+        <div class="pair"><button class="say" data-say="nineteen" data-file="num-19"><b>19</b> nine<span class="stress">TEEN</span></button><span class="vs">or</span><button class="say" data-say="ninety" data-file="ninety"><b>90</b> <span class="stress">NINE</span>ty</button></div>
+      </div>
+      <div class="tip"><span class="tip-title">Two tricks</span><b>-teen</b> is long and strong: <span class="ipa">/tiːn/</span>. <b>-ty</b> is short and quick: <span class="ipa">/ti/</span>.<br>And the <b>t</b> in the middle of <i>thirty, forty</i> is soft — never a Russian <span lang="ru">«д»</span>. Spelling trap: <span class="key">forty</span> has no <b>u</b> (but <span class="key">four</span>, <span class="key">fourteen</span> do!).</div>
+      <div class="tip class-note"><span class="tip-title">In class: number ping-pong</span>Your teacher says a number — you say it back and write it in the air. Then swap: you say, your teacher writes. Was it <i>teen</i> or <i>-ty</i>?</div>
+    </div>
+  </section>
+
+  <section class="step" id="w2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Warm-up · Game</div>
+        <h2>Numbers &amp; Flags Quiz Show</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Game · Numbers and flags</div>
+      <h3>Four rounds. Listen, think, answer fast — and win points!</h3>
+      <div class="tip class-note"><span class="tip-title">In class: say it aloud!</span>Say every number <b>in English</b> before you tap. Your teacher listens: is it <i>teen</i> or <i>-ty</i>?</div>
+
+      <div class="csr wu" id="wu">
+        <div class="csr-bar">
+          <span class="csr-round" id="wu-round">Numbers &amp; Flags Quiz Show</span>
+          <span class="csr-dots" id="wu-dots"></span>
+          <span class="csr-score">⭐ <b id="wu-score">0</b></span>
+        </div>
+        <div class="wu-timer" id="wu-timer" hidden><i></i></div>
+
+        <!-- start screen -->
+        <div class="csr-screen" id="wu-start">
+          <div class="wu-rounds">
+            <div class="wu-round-card"><span>🎧</span><b>What do you hear?</b></div>
+            <div class="wu-round-card"><span>🗣️</span><b>Strong part</b></div>
+            <div class="wu-round-card"><span>✏️</span><b>Spell it</b></div>
+            <div class="wu-round-card"><span>🚩</span><b>Flag numbers</b></div>
+          </div>
+          <div class="csr-rules">
+            <p>Every round has <b>5 questions</b>. A right answer = <b>2 points</b>, a fast answer = <b>+1 bonus</b> ⚡. A wrong tap costs the bonus, so think first!</p>
+          </div>
+          <button class="btn-accent csr-big" onclick="wuStart()">Start ▶</button>
+          <p class="csr-best" id="wu-best"></p>
+        </div>
+
+        <!-- question -->
+        <div class="csr-screen" id="wu-q" hidden>
+          <div class="wu-pic" id="wu-pic"></div>
+          <div class="wu-prompt" id="wu-prompt"></div>
+          <div class="wu-opts" id="wu-opts"></div>
+        </div>
+
+        <!-- between rounds / end -->
+        <div class="csr-screen" id="wu-msg" hidden>
+          <div class="csr-msg-ico" id="wu-msg-ico">🎉</div>
+          <p class="csr-msg-text" id="wu-msg-text"></p>
+          <button class="btn-accent csr-big" id="wu-msg-btn">Next ▶</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="w3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Speaking · Student’s Book p. 14</div>
+        <h2>Guess the flag</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-fg">
+      <div class="exercise-label">Exercise 3 · Speaking</div>
+      <h3>Read the description. Which flag is it?</h3>
+      <div class="mc-question"><p class="gap-line"><span class="num">1.</span> <i>This flag is red and white. It has got a red circle.</i></p>
+        <div class="mc-options flag-opts" data-correct="b"><label class="mc-option flag-opt"><input type="radio" name="fg-1" value="a"><img src="images/unit1/flag-3.jpg" alt=""><span><span class="mc-bullet">A</span> Turkey</span></label><label class="mc-option flag-opt"><input type="radio" name="fg-1" value="b"><img src="images/unit1/flag-4.jpg" alt=""><span><span class="mc-bullet">B</span> Japan</span></label><label class="mc-option flag-opt"><input type="radio" name="fg-1" value="c"><img src="images/unit1/flag-9.jpg" alt=""><span><span class="mc-bullet">C</span> Indonesia</span></label></div></div>
+      <div class="mc-question"><p class="gap-line"><span class="num">2.</span> <i>This flag is white, blue and red.</i></p>
+        <div class="mc-options flag-opts" data-correct="c"><label class="mc-option flag-opt"><input type="radio" name="fg-2" value="a"><img src="images/unit1/flag-5.jpg" alt=""><span><span class="mc-bullet">A</span> Mexico</span></label><label class="mc-option flag-opt"><input type="radio" name="fg-2" value="b"><img src="images/unit1/flag-11.jpg" alt=""><span><span class="mc-bullet">B</span> Spain</span></label><label class="mc-option flag-opt"><input type="radio" name="fg-2" value="c"><img src="images/unit1/flag-6.jpg" alt=""><span><span class="mc-bullet">C</span> Russia</span></label></div></div>
+      <div class="mc-question"><p class="gap-line"><span class="num">3.</span> <i>This flag is red and yellow.</i></p>
+        <div class="mc-options flag-opts" data-correct="a"><label class="mc-option flag-opt"><input type="radio" name="fg-3" value="a"><img src="images/unit1/flag-11.jpg" alt=""><span><span class="mc-bullet">A</span> Spain</span></label><label class="mc-option flag-opt"><input type="radio" name="fg-3" value="b"><img src="images/unit1/flag-0.jpg" alt=""><span><span class="mc-bullet">B</span> Brazil</span></label><label class="mc-option flag-opt"><input type="radio" name="fg-3" value="c"><img src="images/unit1/flag-8.jpg" alt=""><span><span class="mc-bullet">C</span> Ecuador</span></label></div></div>
+      <div class="mc-question"><p class="gap-line"><span class="num">4.</span> <i>This flag is green, white and red.</i></p>
+        <div class="mc-options flag-opts" data-correct="b"><label class="mc-option flag-opt"><input type="radio" name="fg-4" value="a"><img src="images/unit1/flag-6.jpg" alt=""><span><span class="mc-bullet">A</span> Russia</span></label><label class="mc-option flag-opt"><input type="radio" name="fg-4" value="b"><img src="images/unit1/flag-5.jpg" alt=""><span><span class="mc-bullet">B</span> Mexico</span></label><label class="mc-option flag-opt"><input type="radio" name="fg-4" value="c"><img src="images/unit1/flag-1.jpg" alt=""><span><span class="mc-bullet">C</span> the UK</span></label></div></div>
+      <div class="mc-question"><p class="gap-line"><span class="num">5.</span> <i>This flag is red and white. It has got a white moon and a white star.</i></p>
+        <div class="mc-options flag-opts" data-correct="a"><label class="mc-option flag-opt"><input type="radio" name="fg-5" value="a"><img src="images/unit1/flag-3.jpg" alt=""><span><span class="mc-bullet">A</span> Turkey</span></label><label class="mc-option flag-opt"><input type="radio" name="fg-5" value="b"><img src="images/unit1/flag-4.jpg" alt=""><span><span class="mc-bullet">B</span> Japan</span></label><label class="mc-option flag-opt"><input type="radio" name="fg-5" value="c"><img src="images/unit1/flag-7.jpg" alt=""><span><span class="mc-bullet">C</span> Sudan</span></label></div></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-fg')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-fg')">Try again</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Now describe a flag for your partner to guess.</h3>
+      <div class="dialogue">
+        <span class="dl-name">A</span>
+        <p class="dl-text">This flag is yellow, green and blue.</p>
+        <span class="dl-name two">B</span>
+        <p class="dl-text">Is it the Brazilian flag?</p>
+        <span class="dl-name">A</span>
+        <p class="dl-text">Yes, it is.</p>
+      </div>
+      <div class="tip class-note"><span class="tip-title">In class: flag riddles with numbers</span>Describe three flags — colours <b>and numbers</b>: <i>This flag is red, white and blue. It has got 50 stars and 13 stripes.</i> Your teacher guesses: <i>Is it the … flag?</i> Use the nationality: <span class="key">the Japanese flag</span>, not <s>the Japan flag</s>.</div>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-questions');window.scrollTo(0,0)">Next: Question words →</button>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PART 2: Question words — moved here from Lesson 8
+══════════════════════════════════════════════════════════ -->
+<div class="lesson-part" id="part-questions">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#d1">1 · Grammar rap</a>
+    <a href="#d2">2 · Question words</a>
+    <a href="#d3">3 · Choose</a>
+    <a href="#d4">4 · /h/ or /w/</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="d1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Grammar · Student’s Book p. 14 · Video 02</div>
+        <h2>Grammar rap!</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Video · Grammar rap</div>
+      <h3>Watch and listen. Which question words do you hear?</h3>
+      <div class="video-wrap">
+        <video controls preload="metadata" playsinline>
+          <source src="video/unit-01-grammar-rap.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+  <section class="step" id="d2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Grammar · Student’s Book p. 14</div>
+        <h2>Question words</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-g4">
+      <div class="exercise-label">Exercise 4</div>
+      <h3>Look at the website in <a href="lesson-08.html#part-music">Lesson 8 (“Crazy about music”)</a>. Complete the questions with the words in the list.</h3>
+      <div class="word-bank-ref"><span>How</span> <span class="crossed">What</span> <span>Where</span> <span>Who</span> <span>Why</span></div>
+      <div class="example-row"><span class="ex-tag">Example</span><span>0. <b>What’s</b> your name?</span></div>
+      <p class="gap-line"><span class="num">1.</span> <input class="blank" id="g4-1" data-answer="Where" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"> are you from?</p>
+      <p class="gap-line"><span class="num">2.</span> <input class="blank" id="g4-2" data-answer="How" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"> old are you?</p>
+      <p class="gap-line"><span class="num">3.</span> <input class="blank" id="g4-3" data-answer="Who" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0">’s your favourite musician?</p>
+      <p class="gap-line"><span class="num">4.</span> <input class="blank" id="g4-4" data-answer="Why" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"> is he/she your favourite musician?</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-g4')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-g4')">Try again</button>
+      </div>
+    </div>
+    <div class="card" id="ex-g4r">
+      <div class="exercise-label">Rule</div>
+      <h3>Choose the correct words to complete the rule.</h3>
+      <div class="tip rule" style="font-size:18px">
+        <p class="gap-line"><i>How, Who, Where, What</i> and <i>Why</i> are <sup>5</sup> <span class="word-choice" id="g4-5" data-answer="question"><button class="word-choice-btn" onclick="selectWord(this)">question</button><button class="word-choice-btn" onclick="selectWord(this)">because</button></span> words.</p>
+        <p class="gap-line">We often use the word <sup>6</sup> <span class="word-choice" id="g4-6" data-answer="because"><button class="word-choice-btn" onclick="selectWord(this)">question</button><button class="word-choice-btn" onclick="selectWord(this)">because</button></span> to answer a <i>Why</i> question.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-g4r')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-g4r')">Try again</button>
+      </div>
+      <div class="ref-wrap" style="overflow-x:auto">
+        <table class="ref-table">
+          <tr><th>Question word</th><th>We ask about…</th><th lang="ru">По-русски</th></tr>
+          <tr><td class="label">What</td><td>a thing, a name</td><td lang="ru">что? какой?</td></tr>
+          <tr><td class="label">Who</td><td>a person</td><td lang="ru">кто?</td></tr>
+          <tr><td class="label">Where</td><td>a place</td><td lang="ru">где? откуда?</td></tr>
+          <tr><td class="label">How old</td><td>age</td><td lang="ru">сколько лет?</td></tr>
+          <tr><td class="label">Why</td><td>a reason → <i>Because…</i></td><td lang="ru">почему? → потому что…</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="step" id="d3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Grammar · Student’s Book p. 14</div>
+        <h2>Choose the question word</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-g5">
+      <div class="exercise-label">Exercise 5</div>
+      <h3>Choose the correct words.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>0. <b>How</b> / <s>Why</s> old is your best friend?</span></div>
+      <p class="gap-line"><span class="num">1.</span> <span class="word-choice" id="g5-1" data-answer="Where"><button class="word-choice-btn" onclick="selectWord(this)">What</button><button class="word-choice-btn" onclick="selectWord(this)">Where</button></span> is your mother from?</p>
+      <p class="gap-line"><span class="num">2.</span> <span class="word-choice" id="g5-2" data-answer="What’s"><button class="word-choice-btn" onclick="selectWord(this)">How’s</button><button class="word-choice-btn" onclick="selectWord(this)">What’s</button></span> your favourite colour?</p>
+      <p class="gap-line"><span class="num">3.</span> <span class="word-choice" id="g5-3" data-answer="Who"><button class="word-choice-btn" onclick="selectWord(this)">Where</button><button class="word-choice-btn" onclick="selectWord(this)">Who</button></span> is your favourite film star?</p>
+      <p class="gap-line"><span class="num">4.</span> <span class="word-choice" id="g5-4" data-answer="Why"><button class="word-choice-btn" onclick="selectWord(this)">Why</button><button class="word-choice-btn" onclick="selectWord(this)">Where</button></span> is he/she your favourite film star?</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-g5')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-g5')">Try again</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Exercise 6 · Speaking</div>
+      <h3>Ask and answer the questions in Exercises 4 and 5.</h3>
+      <div class="dialogue">
+        <span class="dl-name">A</span>
+        <p class="dl-text">What’s your name?</p>
+        <span class="dl-name two">B</span>
+        <p class="dl-text">My name is Andréa.</p>
+      </div>
+      <p class="gap-line" style="margin-top:12px">Write your answers first:</p>
+      <textarea class="free-write" id="fw-me" placeholder="My name is … . I’m from … . I’m … . My favourite musician is … because …" rows="4"></textarea>
+      <div class="char-count" id="cc-fw-me">0 characters</div>
+      <div class="rec"></div>
+    </div>
+  </section>
+  <section class="step" id="d4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Pronunciation · Student’s Book p. 120 · 1.03–1.04</div>
+        <h2>/h/ or /w/ in question words</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Exercise 1 · 1.03</div>
+      <h3>Read and listen to the questions.</h3>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-08-1-03.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div class="tip" style="font-size:19px">
+        <p class="gap-line"><b class="hw-h">How</b> old are you?</p>
+        <p class="gap-line"><b class="hw-w">Where</b> are you from?</p>
+        <p class="gap-line"><b class="hw-w">What</b>’s your favourite food?</p>
+        <p class="gap-line"><b class="hw-h">Who</b>’s your favourite football player?</p>
+        <p class="gap-line"><b class="hw-w">Why</b> do you like him?</p>
+      </div>
+      <div class="tip"><span class="tip-title">Two sounds, not three!</span><span class="key">Who</span> and <span class="key">How</span> start with <span class="ipa">/h/</span> — just a soft breath, like warming your hands. Not a hard Russian <span lang="ru">«х»</span>!<br><span class="key">What, Where, Why</span> start with <span class="ipa">/w/</span> — round your lips like for <span lang="ru">«у»</span>. Not <span lang="ru">«в»</span>: your teeth don’t touch your lip.<br>Careful: <b>Wh</b>o is <span class="ipa">/huː/</span> — the <i>w</i> is silent.</div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Exercise 2 · 1.04</div>
+      <h3>Listen again and repeat. Then record yourself and compare.</h3>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-08-1-04.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-be');window.scrollTo(0,0)">Next: Flags &amp; to be →</button>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PART 3: Student's Book p. 15 (Teacher's Book T15)
+══════════════════════════════════════════════════════════ -->
+<div class="lesson-part" id="part-be">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#b1">1 · Whose flag?</a>
+    <a href="#b2">2 · My flag</a>
+    <a href="#b3">3 · to be</a>
+    <a href="#b4">4 · Spot the lie</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="b1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Listening · Student’s Book p. 15 · 1.05</div>
+        <h2>Which flag goes with the photo?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-l7">
+      <div class="exercise-label">Exercise 7</div>
+      <h3>Work in pairs. Look at the photos and choose the correct flag (A or B) for each photo.</h3>
+      <p class="ru-hint" lang="ru">Посмотри на фото и выбери флаг A или B. Скажи, что это за страна и национальность: <i lang="en">It’s the Spanish flag.</i></p>
+      <div class="mc-options fl-row" data-correct="b">
+        <label class="mc-option"><input type="radio" name="l7-1" value="a"><img src="images/unit1/flag-1.jpg" alt="flag A"><span class="mc-bullet">A</span></label>
+        <div class="fl-photo"><img src="images/unit1/p15-photo-1.jpg" alt="photo 1: a young tennis player"></div>
+        <label class="mc-option"><input type="radio" name="l7-1" value="b"><img src="images/unit1/flag-2.jpg" alt="flag B"><span class="mc-bullet">B</span></label>
+      </div>
+      <div class="mc-options fl-row" data-correct="b">
+        <label class="mc-option"><input type="radio" name="l7-2" value="a"><img src="images/unit1/flag-8.jpg" alt="flag A"><span class="mc-bullet">A</span></label>
+        <div class="fl-photo"><img src="images/unit1/p15-photo-2.jpg" alt="photo 2: a dish of rice and seafood"></div>
+        <label class="mc-option"><input type="radio" name="l7-2" value="b"><img src="images/unit1/flag-11.jpg" alt="flag B"><span class="mc-bullet">B</span></label>
+      </div>
+      <div class="mc-options fl-row" data-correct="b">
+        <label class="mc-option"><input type="radio" name="l7-3" value="a"><img src="images/unit1/flag-4.jpg" alt="flag A"><span class="mc-bullet">A</span></label>
+        <div class="fl-photo"><img src="images/unit1/p15-photo-3.jpg" alt="photo 3: a city by the sea under a flat mountain"></div>
+        <label class="mc-option"><input type="radio" name="l7-3" value="b"><img src="images/unit1/flag-10.jpg" alt="flag B"><span class="mc-bullet">B</span></label>
+      </div>
+      <div class="mc-options fl-row" data-correct="a">
+        <label class="mc-option"><input type="radio" name="l7-4" value="a"><img src="images/unit1/flag-0.jpg" alt="flag A"><span class="mc-bullet">A</span></label>
+        <div class="fl-photo"><img src="images/unit1/p15-photo-4.jpg" alt="photo 4: carnival dancers"></div>
+        <label class="mc-option"><input type="radio" name="l7-4" value="b"><img src="images/unit1/flag-9.jpg" alt="flag B"><span class="mc-bullet">B</span></label>
+      </div>
+      <div class="mc-options fl-row" data-correct="b">
+        <label class="mc-option"><input type="radio" name="l7-5" value="a"><img src="images/unit1/flag-6.jpg" alt="flag A"><span class="mc-bullet">A</span></label>
+        <div class="fl-photo"><img src="images/unit1/p15-photo-5.jpg" alt="photo 5: a young woman in a colourful dress"></div>
+        <label class="mc-option"><input type="radio" name="l7-5" value="b"><img src="images/unit1/flag-5.jpg" alt="flag B"><span class="mc-bullet">B</span></label>
+      </div>
+      <div class="tip class-note"><span class="tip-title">In class: don’t check yet!</span>Say your ideas first: <i>I think photo 1 is American. It’s the American flag.</i> Then listen to the radio quiz in Exercise 8.</div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Exercise 8 · 1.05</div>
+      <h3>Listen to a radio quiz called <i>One-Minute Challenge</i> and check your answers.</h3>
+      <p class="ru-hint" lang="ru">Не страшно, если понятны не все слова. Слушай названия стран и национальностей.</p>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-09-1-05.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-l7')">Check Exercise 7 ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-l7')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="b2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Speaking · Student’s Book p. 15</div>
+        <h2>My flag</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-fd">
+      <div class="exercise-label">Exercises 9–10</div>
+      <h3>Choose things that you like: two colours, two activities and one animal. Use your ideas to make a flag.</h3>
+      <p class="ru-hint" lang="ru">Выбери 2 любимых цвета, 2 занятия и 1 животное — и собери свой флаг.</p>
+      <div class="fd">
+        <div>
+          <h4>Two colours</h4>
+          <div class="fd-swatches" id="fd-colours"></div>
+          <h4>Stripes</h4>
+          <div class="fd-patterns" id="fd-patterns"></div>
+          <h4>Two activities</h4>
+          <div class="fd-stickers" id="fd-acts"></div>
+          <h4>One animal</h4>
+          <div class="fd-stickers" id="fd-animals"></div>
+        </div>
+        <div>
+          <div class="fd-flag" id="fd-flag" aria-label="My flag"></div>
+          <div class="fd-say" id="fd-say"></div>
+        </div>
+      </div>
+      <div class="tip">Want to draw it on paper too? Here’s the flag from the Student’s Book:<br><img src="images/unit1/p15-my-flag.jpg" alt="A blue flag with music notes, a football and a lion" style="max-width:260px;width:100%;margin-top:8px;border-radius:10px"></div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Exercise 11 · Speaking</div>
+      <h3>Tell your partner about your flag.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span><i>My flag is blue and yellow. They’re my favourite colours. Here is a football. It’s my favourite sport. Here is music. I love music. Here is a lion. It’s my favourite animal.</i></span></div>
+      <textarea class="free-write" id="fw-myflag" placeholder="My flag is … and … . They’re my favourite colours. Here is … . It’s my favourite … ." rows="5"></textarea>
+      <div class="char-count" id="cc-fw-myflag">0 characters</div>
+      <div class="tip class-note"><span class="tip-title">In class: famous flags</span>Make a flag for a famous person. Your teacher guesses: <i>Is it Messi’s flag?</i></div>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+  <section class="step" id="b3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Grammar · Student’s Book p. 15</div>
+        <h2><i>to be</i>: am, is, are</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-g12">
+      <div class="exercise-label">Exercise 12</div>
+      <h3>Match sentences a–h with items 1–4. Drag each sentence to the right column (two for each).</h3>
+      <p class="ru-hint" lang="ru">Подсказка: посмотри на фото в упражнении 7. Одно фото лишнее — Кейптаун.</p>
+      <div class="sc-bank" id="sc-g12"><span class="sc-tile" data-col="coco">a She’s American.</span><span class="sc-tile" data-col="paella">b It’s Spanish.</span><span class="sc-tile" data-col="rio">c They’re Brazilian.</span><span class="sc-tile" data-col="paella">d It’s food.</span><span class="sc-tile" data-col="yal">e She’s an actor.</span><span class="sc-tile" data-col="rio">f They’re from Rio.</span><span class="sc-tile" data-col="coco">g She’s a tennis player.</span><span class="sc-tile" data-col="yal">h She’s Mexican.</span></div>
+      <div class="sc-cols four">
+        <div class="sc-col" data-col="coco"><div class="sc-head"><img src="images/unit1/p15-photo-1.jpg" alt="">1 Coco Gauff</div><div class="sc-drop"></div></div>
+        <div class="sc-col" data-col="paella"><div class="sc-head"><img src="images/unit1/p15-photo-2.jpg" alt="">2 paella</div><div class="sc-drop"></div></div>
+        <div class="sc-col" data-col="rio"><div class="sc-head"><img src="images/unit1/p15-photo-4.jpg" alt="">3 Cariocas</div><div class="sc-drop"></div></div>
+        <div class="sc-col" data-col="yal"><div class="sc-head"><img src="images/unit1/p15-photo-5.jpg" alt="">4 Yalitza Aparicio</div><div class="sc-drop"></div></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkSort('ex-g12')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetSort('ex-g12')">Try again</button>
+      </div>
+      <div class="tip"><b>’s</b> = <b>is</b>: <i>She’s American</i> = <i>She is American</i>. <b>’re</b> = <b>are</b>: <i>They’re Brazilian</i> = <i>They are Brazilian</i>.</div>
+    </div>
+    <div class="card" id="ex-g13">
+      <div class="exercise-label">Exercise 13</div>
+      <h3>Look at the sentences from the radio quiz. Choose the correct words. Then complete the rule.</h3>
+      <p class="gap-line"><span class="num">1.</span> I <span class="word-choice" id="g13-1" data-answer="am"><button class="word-choice-btn" onclick="selectWord(this)">am</button><button class="word-choice-btn" onclick="selectWord(this)">are</button></span> from Birmingham.</p>
+      <p class="gap-line"><span class="num">2.</span> You <span class="word-choice" id="g13-2" data-answer="are"><button class="word-choice-btn" onclick="selectWord(this)">am</button><button class="word-choice-btn" onclick="selectWord(this)">are</button></span> wrong.</p>
+      <p class="gap-line"><span class="num">3.</span> It <span class="word-choice" id="g13-3" data-answer="is"><button class="word-choice-btn" onclick="selectWord(this)">is</button><button class="word-choice-btn" onclick="selectWord(this)">are</button></span> a Spanish dish.</p>
+      <div class="tip rule" style="font-size:18px">
+        <p class="gap-line"><b>RULE:</b> The verb <b><i>to be</i></b> changes for different subject pronouns.</p>
+        <p class="gap-line"><i>I <b>am</b> American.</i></p>
+        <p class="gap-line"><i>You / We / They</i> <sup>4</sup> <span class="word-choice" id="g13-4" data-answer="are"><button class="word-choice-btn" onclick="selectWord(this)">am</button><button class="word-choice-btn" onclick="selectWord(this)">is</button><button class="word-choice-btn" onclick="selectWord(this)">are</button></span> <i>American.</i></p>
+        <p class="gap-line"><i>He / She / It</i> <sup>5</sup> <span class="word-choice" id="g13-5" data-answer="is"><button class="word-choice-btn" onclick="selectWord(this)">am</button><button class="word-choice-btn" onclick="selectWord(this)">is</button><button class="word-choice-btn" onclick="selectWord(this)">are</button></span> <i>American.</i></p>
+        <p class="gap-line">We often use contracted forms after pronouns:<br><i>I am = I’m · You / We / They are = You’re / We’re / They’re · He / She / It is = He’s / She’s / It’s</i></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-g13')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-g13')">Try again</button>
+      </div>
+      <div class="ref-wrap" style="overflow-x:auto">
+        <table class="ref-table">
+          <tr><th>Look!</th><th>Singular</th><th>Plural</th></tr>
+          <tr><td class="label">1st</td><td>I <b>am</b> → I’m</td><td>we <b>are</b> → we’re</td></tr>
+          <tr><td class="label">2nd</td><td>you <b>are</b> → you’re</td><td>you <b>are</b> → you’re</td></tr>
+          <tr><td class="label">3rd</td><td>he / she / it <b>is</b> → he’s / she’s / it’s</td><td>they <b>are</b> → they’re</td></tr>
+        </table>
+      </div>
+      <div class="tip"><span class="tip-title">Say it short — and soft</span>In speaking we nearly always say the short form: <button class="say" data-say="I’m">I’m</button> <button class="say" data-say="you’re">you’re</button> <button class="say" data-say="she’s">she’s</button> <button class="say" data-say="they’re">they’re</button>. Don’t make <i>am / is / are</i> strong.<br>But with names, no short <i>are</i>: <span class="key">Liam and Ben are friends</span>, not <s>Liam and Ben’re</s>.</div>
+    </div>
+    <div class="card" id="ex-g14">
+      <div class="exercise-label">Exercise 14</div>
+      <h3>Complete the sentences. Use contracted forms where possible.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>0. I<b>’m</b> from New York.</span></div>
+      <p class="gap-line"><span class="num">1.</span> She <input class="blank" id="g14-1" data-answer="’s|'s|is" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:90px;min-width:0"> a famous actor.</p>
+      <p class="gap-line"><span class="num">2.</span> Liam and Ben <input class="blank" id="g14-2" data-answer="are" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:90px;min-width:0"> my best friends.</p>
+      <p class="gap-line"><span class="num">3.</span> We <input class="blank" id="g14-3" data-answer="’re|'re|are" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:90px;min-width:0"> in Class 2B.</p>
+      <p class="gap-line"><span class="num">4.</span> You <input class="blank" id="g14-4" data-answer="’re|'re|are" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:90px;min-width:0"> wrong. Sorry.</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-g14')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-g14')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="b4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Writing &amp; speaking · <i>to be</i></div>
+        <h2>Spot the lie!</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-lie">
+      <div class="exercise-label">Five true, one false</div>
+      <h3>Write five true sentences and one false one about you, your friends and your family. Use the correct form of <i>to be</i>.</h3>
+      <p class="ru-hint" lang="ru">Напиши 6 предложений с <i lang="en">am / is / are</i>: пять правдивых и одно ложное. Отметь, какое ложное — учитель будет угадывать!</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span><i>I’m 12. My sister is a doctor. My best friends are Turkish.</i></span></div>
+      <div class="lie-list">
+        <p class="gap-line"><span class="num">1.</span> <input class="blank" id="lie-1" placeholder="I’m …" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">2.</span> <input class="blank" id="lie-2" placeholder="My mum is …" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">3.</span> <input class="blank" id="lie-3" placeholder="My best friend is …" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">4.</span> <input class="blank" id="lie-4" placeholder="We are …" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">5.</span> <input class="blank" id="lie-5" placeholder="My grandparents are …" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">6.</span> <input class="blank" id="lie-6" placeholder="My favourite … is …" autocomplete="off" spellcheck="false"></p>
+      </div>
+      <p class="gap-line" style="margin-top:10px"><b>My false sentence is number</b> <span class="word-choice" id="lie-x"><button class="word-choice-btn" onclick="selectWord(this)">1</button><button class="word-choice-btn" onclick="selectWord(this)">2</button><button class="word-choice-btn" onclick="selectWord(this)">3</button><button class="word-choice-btn" onclick="selectWord(this)">4</button><button class="word-choice-btn" onclick="selectWord(this)">5</button><button class="word-choice-btn" onclick="selectWord(this)">6</button></span> <span style="color:var(--muted)">(secret — don’t tell!)</span></p>
+      <div class="tip class-note"><span class="tip-title">In class: which one is false?</span>Read your six sentences aloud. Your teacher asks questions — <i>Is your sister a doctor? How old is she?</i> — and guesses the false one. Then your teacher reads six sentences, and you guess!</div>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-op');window.scrollTo(0,0)">Next: Read it right o · p →</button>
+  </div>
+
+</div>
+</div>
+
+
+<!-- copied from Lesson 2 ("o · p" tab) -->
+<div class="lesson-part" id="part-op">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#e1">1 · Meet</a>
+    <a href="#e2">2 · Hear</a>
+    <a href="#e3">3 · Hunt</a>
+    <a href="#e4">4 · Build</a>
+    <a href="#e5">5 · Read</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="e1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Meet the sounds</div>
+        <h2>o and p</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="sound-card">
+        <div class="sound-head">
+          <div class="sound-letter">Oo</div>
+          <div><div class="ipa">/ɑ/</div><div class="sound-name">short o — as in <b>hot</b></div></div>
+        </div>
+        <div class="sound-body">
+          <h4>How to say it</h4>
+          <p>Open your mouth wide and relax, like at the doctor’s: “Say ah!” It is close to the <b>a</b> in German <i>Mann, hat</i>. Yes: English <b>hot</b> sounds almost like German <b>hat</b>!</p>
+          <h4>Listen and repeat</h4>
+          <div class="word-row"><button class="say" data-say="on">on</button> <button class="say" data-say="not">not</button> <button class="say" data-say="hot">hot</button> <button class="say" data-say="top">top</button> <button class="say" data-say="pot">pot</button> <button class="say" data-say="dog">dog</button> <button class="say" data-say="stop">stop</button> <button class="say" data-say="spot">spot</button> <button class="say" data-say="box">box</button> <button class="say" data-say="clock">clock</button></div>
+      <div class="trap"><span class="trap-title">German trap: long “oh”</span>German eyes read <b>o</b> as “oh”, like in <i>Boot, Ofen</i>. In a short English word, <b>o</b> is an open “ah”: <button class="say" data-say="not">not</button> is not <button class="say" data-say="note">note</button>, <button class="say" data-say="cot">cot</button> is not <button class="say" data-say="coat">coat</button>.</div>
+      <div class="tip">At the end of short words, <b>o</b> says its name <span class="ipa">/oʊ/</span>: <button class="say" data-say="no">no</button> <button class="say" data-say="go">go</button> <button class="say" data-say="so">so</button> — not a German “oh”: the sound glides to “u”.</div>
+        </div>
+      </div>
+      <div class="sound-card">
+        <div class="sound-head">
+          <div class="sound-letter">Pp</div>
+          <div><div class="ipa">/p/</div><div class="sound-name">p — as in <b>pen</b></div></div>
+        </div>
+        <div class="sound-body">
+          <h4>How to say it</h4>
+          <p>Lips together, then a strong puff of air. Hold a sheet of paper in front of your mouth: it should move!</p>
+          <h4>Listen and repeat</h4>
+          <div class="word-row"><button class="say" data-say="pen">pen</button> <button class="say" data-say="pin">pin</button> <button class="say" data-say="pot">pot</button> <button class="say" data-say="top">top</button> <button class="say" data-say="tap">tap</button> <button class="say" data-say="map">map</button> <button class="say" data-say="stop">stop</button> <button class="say" data-say="spin">spin</button> <button class="say" data-say="spot">spot</button> <button class="say" data-say="apple">apple</button></div>
+      <div class="trap"><span class="trap-title">German trap again: sp</span>Clean <b>s + p</b>, no “shp”: <button class="say" data-say="spin">spin</button> <button class="say" data-say="spot">spot</button> <button class="say" data-say="sport">sport</button> <button class="say" data-say="speak">speak</button>.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="e2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Hear the difference</div>
+        <h2><span class="ipa">/ɑ/</span>, <span class="ipa">/oʊ/</span> or <span class="ipa">/æ/</span>?</h2>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Listen to the pairs.</h3>
+      <div class="pairs">
+        <div class="pair"><button class="say" data-say="not">not</button><span class="vs">or</span><button class="say" data-say="note">note</button></div>
+        <div class="pair"><button class="say" data-say="cot">cot</button><span class="vs">or</span><button class="say" data-say="coat">coat</button></div>
+        <div class="pair"><button class="say" data-say="hop">hop</button><span class="vs">or</span><button class="say" data-say="hope">hope</button></div>
+        <div class="pair"><button class="say" data-say="cost">cost</button><span class="vs">or</span><button class="say" data-say="coast">coast</button></div>
+        <div class="pair"><button class="say" data-say="top">top</button><span class="vs">or</span><button class="say" data-say="tap">tap</button></div>
+        <div class="pair"><button class="say" data-say="pot">pot</button><span class="vs">or</span><button class="say" data-say="pat">pat</button></div>
+        <div class="pair"><button class="say" data-say="hot">hot</button><span class="vs">or</span><button class="say" data-say="hat">hat</button></div>
+        <div class="pair"><button class="say" data-say="cop">cop</button><span class="vs">or</span><button class="say" data-say="cap">cap</button></div>
+      </div>
+    </div>
+    <div class="card" id="ex-e-hear">
+      <div class="exercise-label">Listen and choose</div>
+      <h3>Press ▶, listen, and choose the word you hear.</h3>
+      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="note"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="e-mc1" value="a"><span class="mc-bullet">A</span> not</label><label class="mc-option"><input type="radio" name="e-mc1" value="b"><span class="mc-bullet">B</span> note</label></div></div>
+      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="cot"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="e-mc2" value="a"><span class="mc-bullet">A</span> cot</label><label class="mc-option"><input type="radio" name="e-mc2" value="b"><span class="mc-bullet">B</span> coat</label></div></div>
+      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="hope"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="e-mc3" value="a"><span class="mc-bullet">A</span> hop</label><label class="mc-option"><input type="radio" name="e-mc3" value="b"><span class="mc-bullet">B</span> hope</label></div></div>
+      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="cost"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="e-mc4" value="a"><span class="mc-bullet">A</span> cost</label><label class="mc-option"><input type="radio" name="e-mc4" value="b"><span class="mc-bullet">B</span> coast</label></div></div>
+      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="tap"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="e-mc5" value="a"><span class="mc-bullet">A</span> top</label><label class="mc-option"><input type="radio" name="e-mc5" value="b"><span class="mc-bullet">B</span> tap</label></div></div>
+      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="pot"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="e-mc6" value="a"><span class="mc-bullet">A</span> pot</label><label class="mc-option"><input type="radio" name="e-mc6" value="b"><span class="mc-bullet">B</span> pat</label></div></div>
+      <div class="listen-q"><span class="num">7.</span><button class="say say-big" data-say="hat"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="e-mc7" value="a"><span class="mc-bullet">A</span> hot</label><label class="mc-option"><input type="radio" name="e-mc7" value="b"><span class="mc-bullet">B</span> hat</label></div></div>
+      <div class="listen-q"><span class="num">8.</span><button class="say say-big" data-say="cop"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="e-mc8" value="a"><span class="mc-bullet">A</span> cop</label><label class="mc-option"><input type="radio" name="e-mc8" value="b"><span class="mc-bullet">B</span> cap</label></div></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-e-hear')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-e-hear')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="e3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Sound hunt</div>
+        <h2>Where does o say <span class="ipa">/ɑ/</span>?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-e-hunt">
+      <div class="exercise-label">Tap the words</div>
+      <h3>Tap every word where <b>o</b> says short <span class="ipa">/ɑ/</span>, like in <i>hot</i>. Read them aloud first!</h3>
+      <p class="read-text"><span class="tap" data-key onclick="toggleTap(this)">not</span> · <span class="tap" onclick="toggleTap(this)">no</span> · <span class="tap" data-key onclick="toggleTap(this)">top</span> · <span class="tap" onclick="toggleTap(this)">go</span> · <span class="tap" data-key onclick="toggleTap(this)">stop</span> · <span class="tap" onclick="toggleTap(this)">so</span> · <span class="tap" data-key onclick="toggleTap(this)">hot</span> · <span class="tap" onclick="toggleTap(this)">hope</span> · <span class="tap" data-key onclick="toggleTap(this)">pot</span> · <span class="tap" onclick="toggleTap(this)">note</span> · <span class="tap" data-key onclick="toggleTap(this)">spot</span> · <span class="tap" onclick="toggleTap(this)">home</span> · <span class="tap" data-key onclick="toggleTap(this)">dog</span> · <span class="tap" onclick="toggleTap(this)">nose</span> · <span class="tap" data-key onclick="toggleTap(this)">clock</span></p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkTap('ex-e-hunt')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetTap('ex-e-hunt')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="e4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Build words</div>
+        <h2>Blend the sounds</h2>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Say each sound, then push them together. Check with 🔊.</h3>
+      <div class="blend-list">
+        <div class="blend"><span class="tile">n</span><span class="op">+</span><span class="tile v">o</span><span class="op">+</span><span class="tile">t</span><span class="op">→</span><button class="say" data-say="not">not</button></div>
+        <div class="blend"><span class="tile">t</span><span class="op">+</span><span class="tile v">o</span><span class="op">+</span><span class="tile">p</span><span class="op">→</span><button class="say" data-say="top">top</button></div>
+        <div class="blend"><span class="tile">p</span><span class="op">+</span><span class="tile v">o</span><span class="op">+</span><span class="tile">t</span><span class="op">→</span><button class="say" data-say="pot">pot</button></div>
+        <div class="blend"><span class="tile">s</span><span class="op">+</span><span class="tile">t</span><span class="op">+</span><span class="tile v">o</span><span class="op">+</span><span class="tile">p</span><span class="op">→</span><button class="say" data-say="stop">stop</button></div>
+        <div class="blend"><span class="tile">s</span><span class="op">+</span><span class="tile">p</span><span class="op">+</span><span class="tile v">o</span><span class="op">+</span><span class="tile">t</span><span class="op">→</span><button class="say" data-say="spot">spot</button></div>
+        <div class="blend"><span class="tile">s</span><span class="op">+</span><span class="tile">p</span><span class="op">+</span><span class="tile v">i</span><span class="op">+</span><span class="tile">n</span><span class="op">→</span><button class="say" data-say="spin">spin</button></div>
+        <div class="blend"><span class="tile">s</span><span class="op">+</span><span class="tile">n</span><span class="op">+</span><span class="tile v">a</span><span class="op">+</span><span class="tile">p</span><span class="op">→</span><button class="say" data-say="snap">snap</button></div>
+        <div class="blend"><span class="tile">p</span><span class="op">+</span><span class="tile v">o</span><span class="op">+</span><span class="tile">n</span><span class="op">+</span><span class="tile">d</span><span class="op">→</span><button class="say" data-say="pond">pond</button></div>
+      </div>
+    </div>
+    <div class="card" id="ex-e-dict">
+      <div class="exercise-label">Dictation</div>
+      <h3>Only the vowel changes! Listen carefully and write the word.</h3>
+      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="top"></button><input class="blank" id="e-d1" data-answer="top" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="tap"></button><input class="blank" id="e-d2" data-answer="tap" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="tip"></button><input class="blank" id="e-d3" data-answer="tip" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="pot"></button><input class="blank" id="e-d4" data-answer="pot" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="pit"></button><input class="blank" id="e-d5" data-answer="pit" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="pat"></button><input class="blank" id="e-d6" data-answer="pat" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">7.</span><button class="say say-big" data-say="spot"></button><input class="blank" id="e-d7" data-answer="spot" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">8.</span><button class="say say-big" data-say="snap"></button><input class="blank" id="e-d8" data-answer="snap" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-e-dict')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-e-dict')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="e5">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Read and record</div>
+        <h2>Stop it, Pip!</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Read aloud</div>
+      <h3>Listen to the story, then read it aloud.</h3>
+      <div class="word-row" style="flex-direction:column;align-items:flex-start">
+        <button class="say sentence" data-say="Pip is a cat.">Pip is a cat.</button>
+        <button class="say sentence" data-say="Pip sits on top of a pot.">Pip sits on top of a pot.</button>
+        <button class="say sentence" data-say="“Stop it, Pip!”">“Stop it, Pip!”</button>
+        <button class="say sentence" data-say="Pip is not on the pot now.">Pip is not on the pot now.</button>
+        <button class="say sentence" data-say="Pip is in a pan!">Pip is in a pan!</button>
+        <button class="say sentence" data-say="“Pip! Stop it!”">“Pip! Stop it!”</button>
+        <button class="say sentence" data-say="Pip naps in the pan. It is a top spot.">Pip naps in the pan. It is a top spot.</button>
+      </div>
+      <p><b>Record yourself</b> reading the whole story. Check: short <span class="ipa">/ɑ/</span> in <i>not, pot, top, stop</i>? Clean <b>st</b> and <b>sp</b>?</p>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-homework');window.scrollTo(0,0)">Go to homework →</button>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     HOMEWORK: Workbook pp. 10–11 (question words, to be) + Итог
+══════════════════════════════════════════════════════════ -->
+<div class="lesson-part" id="part-homework">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#h1">1 · Question words</a>
+    <a href="#h2">2 · He, she, we…</a>
+    <a href="#h3">3 · am, is, are</a>
+    <a href="#h4">4 · Short forms</a>
+    <a href="#h5">5 · Get it right!</a>
+    <a href="#h6">6 · Итог</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="h1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Homework · Task 1 · Workbook p. 10</div>
+        <h2>Question words</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-hw1">
+      <div class="exercise-label hw">Workbook p. 10 · Exercise 1</div>
+      <h3>Complete the sentences with the correct question words.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>0. <b>What</b> is your name?</span></div>
+      <p class="gap-line"><span class="num">1.</span> <input class="blank" id="hw1-1" data-answer="How" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px;min-width:0"> old are you?</p>
+      <p class="gap-line"><span class="num">2.</span> <input class="blank" id="hw1-2" data-answer="Where" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px;min-width:0"> are you from?</p>
+      <p class="gap-line"><span class="num">3.</span> <input class="blank" id="hw1-3" data-answer="Who" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px;min-width:0"> is your favourite athlete?</p>
+      <p class="gap-line"><span class="num">4.</span> <input class="blank" id="hw1-4" data-answer="Why" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px;min-width:0"> is he / she your favourite athlete?</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-hw1')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw1')">Try again</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label hw">Workbook p. 10 · Exercise 2</div>
+      <h3>Write answers to the questions in Exercise 1 so they are true for you.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>0. <i>My name is …</i></span></div>
+      <textarea class="free-write" id="fw-hw2" placeholder="1. I’m … years old.&#10;2. I’m from … .&#10;3. My favourite athlete is … .&#10;4. Because …" rows="5"></textarea>
+      <div class="char-count" id="cc-fw-hw2">0 characters</div>
+      <p style="margin-top:12px"><b>Say it too:</b> record your answers. Remember: <span class="hw-h">How, Who</span> = <span class="ipa">/h/</span>, <span class="hw-w">Where, Why, What</span> = <span class="ipa">/w/</span>.</p>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+  <section class="step" id="h2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Homework · Task 2 · Workbook p. 10</div>
+        <h2>He, she, we or they?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-hw3">
+      <div class="exercise-label hw">Workbook p. 10 · Exercise 3</div>
+      <h3>Look at the pictures and choose the correct words.</h3>
+      <div class="wb-pic"><img src="images/unit1/wb10-3-0.jpg" alt="Sonia points at a happy girl"><p class="gap-line"><span class="num">0.</span> <s>He</s> / <b>She</b> / <s>It</s> is happy.</p></div>
+      <div class="wb-pic"><img src="images/unit1/wb10-3-1.jpg" alt="Sonia and her friend hug"><p class="gap-line"><span class="num">1.</span> <span class="word-choice" id="hw3-1" data-answer="We"><button class="word-choice-btn" onclick="selectWord(this)">We</button><button class="word-choice-btn" onclick="selectWord(this)">You</button><button class="word-choice-btn" onclick="selectWord(this)">I</button></span> are friends.</p></div>
+      <div class="wb-pic"><img src="images/unit1/wb10-3-2.jpg" alt="Sonia points at two boys with a Brazilian flag"><p class="gap-line"><span class="num">2.</span> <span class="word-choice" id="hw3-2" data-answer="They"><button class="word-choice-btn" onclick="selectWord(this)">They</button><button class="word-choice-btn" onclick="selectWord(this)">We</button><button class="word-choice-btn" onclick="selectWord(this)">You</button></span> are Brazilian.</p></div>
+      <div class="wb-pic"><img src="images/unit1/wb10-3-3.jpg" alt="Sonia points at a boy at his birthday party"><p class="gap-line"><span class="num">3.</span> <span class="word-choice" id="hw3-3" data-answer="He"><button class="word-choice-btn" onclick="selectWord(this)">She</button><button class="word-choice-btn" onclick="selectWord(this)">He</button><button class="word-choice-btn" onclick="selectWord(this)">It</button></span> is eleven.</p></div>
+      <div class="wb-pic"><img src="images/unit1/wb10-3-4.jpg" alt="Sonia points at herself"><p class="gap-line"><span class="num">4.</span> <span class="word-choice" id="hw3-4" data-answer="I"><button class="word-choice-btn" onclick="selectWord(this)">I</button><button class="word-choice-btn" onclick="selectWord(this)">She</button><button class="word-choice-btn" onclick="selectWord(this)">We</button></span> am Sonia.</p></div>
+      <div class="wb-pic"><img src="images/unit1/wb10-3-5.jpg" alt="Sonia talks to a boy"><p class="gap-line"><span class="num">5.</span> <span class="word-choice" id="hw3-5" data-answer="You"><button class="word-choice-btn" onclick="selectWord(this)">We</button><button class="word-choice-btn" onclick="selectWord(this)">They</button><button class="word-choice-btn" onclick="selectWord(this)">You</button></span> are Mario.</p></div>
+      <div class="wb-pic"><img src="images/unit1/wb10-3-6.jpg" alt="Sonia points at two girls"><p class="gap-line"><span class="num">6.</span> <span class="word-choice" id="hw3-6" data-answer="They"><button class="word-choice-btn" onclick="selectWord(this)">We</button><button class="word-choice-btn" onclick="selectWord(this)">I</button><button class="word-choice-btn" onclick="selectWord(this)">They</button></span> are sisters.</p></div>
+      <div class="wb-pic"><img src="images/unit1/wb10-3-7.jpg" alt="Sonia points at a flag"><p class="gap-line"><span class="num">7.</span> <span class="word-choice" id="hw3-7" data-answer="It"><button class="word-choice-btn" onclick="selectWord(this)">I</button><button class="word-choice-btn" onclick="selectWord(this)">It</button><button class="word-choice-btn" onclick="selectWord(this)">You</button></span> is the Turkish flag.</p></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-hw3')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-hw3')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="h3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Homework · Task 3 · Workbook p. 11</div>
+        <h2>am, is or are?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-hw4">
+      <div class="exercise-label hw">Workbook p. 11 · Exercise 4</div>
+      <h3>Complete the table with the words in the list.</h3>
+      <div class="word-bank-ref"><span class="crossed">am</span> <span>are</span> <span>are</span> <span>are</span> <span>is</span> <span>is</span> <span>is</span></div>
+      <div class="ref-wrap" style="overflow-x:auto">
+        <table class="ref-table be-table">
+          <tr><td class="label">0 I</td><td><b>am</b></td><td>Jon.</td></tr>
+          <tr><td class="label">1 You</td><td><input class="blank" id="hw4-1" data-answer="are" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></td><td>thirteen.</td></tr>
+          <tr><td class="label">2 He</td><td><input class="blank" id="hw4-2" data-answer="is" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></td><td>happy.</td></tr>
+          <tr><td class="label">3 She</td><td><input class="blank" id="hw4-3" data-answer="is" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></td><td>from Spain.</td></tr>
+          <tr><td class="label">4 It</td><td><input class="blank" id="hw4-4" data-answer="is" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></td><td>Indonesian.</td></tr>
+          <tr><td class="label">5 We</td><td><input class="blank" id="hw4-5" data-answer="are" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></td><td>sisters.</td></tr>
+          <tr><td class="label">6 They</td><td><input class="blank" id="hw4-6" data-answer="are" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false"></td><td>friends.</td></tr>
+        </table>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-hw4')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw4')">Try again</button>
+      </div>
+    </div>
+    <div class="card" id="ex-hw5">
+      <div class="exercise-label hw">Workbook p. 11 · Exercise 5</div>
+      <h3>Complete the sentences with the correct form of the verb <i>to be</i>. Use contracted forms.</h3>
+      <div class="wb-pic"><img src="images/unit1/wb11-5-0.jpg" alt="A woman with a Spanish flag"><p class="gap-line"><span class="num">0.</span> You<b>’re</b> Spanish.</p></div>
+      <div class="wb-pic"><img src="images/unit1/wb11-5-1.jpg" alt="A man with a Mexican flag"><p class="gap-line"><span class="num">1.</span> I<input class="blank" id="hw5-1" data-answer="’m|'m" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:70px;min-width:0"> Mexican.</p></div>
+      <div class="wb-pic"><img src="images/unit1/wb11-5-2.jpg" alt="Friends with a Russian flag"><p class="gap-line"><span class="num">2.</span> We<input class="blank" id="hw5-2" data-answer="’re|'re" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:70px;min-width:0"> Russian.</p></div>
+      <div class="wb-pic"><img src="images/unit1/wb11-5-3.jpg" alt="Five girls with an Indonesian flag"><p class="gap-line"><span class="num">3.</span> They<input class="blank" id="hw5-3" data-answer="’re|'re" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:70px;min-width:0"> Indonesian.</p></div>
+      <div class="wb-pic"><img src="images/unit1/wb11-5-4.jpg" alt="A boy with an American flag"><p class="gap-line"><span class="num">4.</span> He<input class="blank" id="hw5-4" data-answer="’s|'s" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:70px;min-width:0"> American.</p></div>
+      <div class="wb-pic"><img src="images/unit1/wb11-5-5.jpg" alt="A woman with a Brazilian flag"><p class="gap-line"><span class="num">5.</span> She<input class="blank" id="hw5-5" data-answer="’s|'s" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:70px;min-width:0"> Brazilian.</p></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-hw5')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw5')">Try again</button>
+      </div>
+      <div class="tip">Type the apostrophe and the letters: <span class="key">'m</span> <span class="key">'re</span> <span class="key">'s</span>.</div>
+    </div>
+  </section>
+
+  <section class="step" id="h4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Homework · Task 4 · Workbook p. 11</div>
+        <h2>Make it short</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-hw6">
+      <div class="exercise-label hw">Workbook p. 11 · Exercise 6</div>
+      <h3>Rewrite the sentences using contracted forms.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>0. It is a Japanese flag. → <b>It’s a Japanese flag.</b></span></div>
+      <p class="gap-line"><span class="num">1.</span> She is Sudanese. → <input class="blank" id="hw6-1" data-answer="She’s Sudanese.|She's Sudanese.|She’s Sudanese|She's Sudanese" placeholder="?" autocomplete="off" spellcheck="false" style="width:300px;min-width:0"></p>
+      <p class="gap-line"><span class="num">2.</span> You are a good friend. → <input class="blank" id="hw6-2" data-answer="You’re a good friend.|You're a good friend.|You’re a good friend|You're a good friend" placeholder="?" autocomplete="off" spellcheck="false" style="width:300px;min-width:0"></p>
+      <p class="gap-line"><span class="num">3.</span> They are British. → <input class="blank" id="hw6-3" data-answer="They’re British.|They're British.|They’re British|They're British" placeholder="?" autocomplete="off" spellcheck="false" style="width:300px;min-width:0"></p>
+      <p class="gap-line"><span class="num">4.</span> We are from New York. → <input class="blank" id="hw6-4" data-answer="We’re from New York.|We're from New York.|We’re from New York|We're from New York" placeholder="?" autocomplete="off" spellcheck="false" style="width:300px;min-width:0"></p>
+      <p class="gap-line"><span class="num">5.</span> I am Andres. What is your name? → <input class="blank" id="hw6-5" data-answer="I’m Andres. What’s your name?|I'm Andres. What's your name?|I’m Andres. What's your name?|I'm Andres. What’s your name?" placeholder="?" autocomplete="off" spellcheck="false" style="width:340px;min-width:0"></p>
+      <p class="gap-line"><span class="num">6.</span> He is 12 today. → <input class="blank" id="hw6-6" data-answer="He’s 12 today.|He's 12 today.|He’s 12 today|He's 12 today" placeholder="?" autocomplete="off" spellcheck="false" style="width:300px;min-width:0"></p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-hw6')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw6')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="h5">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Homework · Task 5 · Workbook p. 11</div>
+        <h2>Get it right!</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-hw7">
+      <div class="exercise-label hw">Workbook p. 11 · Subject–verb agreement with <i>be</i></div>
+      <h3>We use the form of <i>be</i> that agrees with the subject. Correct the sentences.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>✓ <i>They are from Italy.</i> ✗ <s>They is from Italy.</s></span></div>
+      <div class="example-row"><span class="ex-tag">0</span><span>There are a beautiful beach. → <b>There is a beautiful beach.</b></span></div>
+      <p class="gap-line"><span class="num">1.</span> The lessons is for two hours. → <input class="blank" id="hw7-1" data-answer="The lessons are for two hours.|The lessons are for two hours|The lesson is for two hours.|The lesson is for two hours" placeholder="?" autocomplete="off" spellcheck="false" style="width:320px;min-width:0"></p>
+      <p class="gap-line"><span class="num">2.</span> It are cold today. → <input class="blank" id="hw7-2" data-answer="It is cold today.|It is cold today|It’s cold today.|It's cold today.|It’s cold today|It's cold today" placeholder="?" autocomplete="off" spellcheck="false" style="width:320px;min-width:0"></p>
+      <p class="gap-line"><span class="num">3.</span> Are the English player good? → <input class="blank" id="hw7-3" data-answer="Is the English player good?|Is the English player good|Are the English players good?|Are the English players good" placeholder="?" autocomplete="off" spellcheck="false" style="width:320px;min-width:0"></p>
+      <p class="gap-line"><span class="num">4.</span> We’s from Mexico. → <input class="blank" id="hw7-4" data-answer="We’re from Mexico.|We're from Mexico.|We’re from Mexico|We're from Mexico|We are from Mexico.|We are from Mexico" placeholder="?" autocomplete="off" spellcheck="false" style="width:320px;min-width:0"></p>
+      <p class="gap-line"><span class="num">5.</span> My favourite country are Japan. → <input class="blank" id="hw7-5" data-answer="My favourite country is Japan.|My favourite country is Japan" placeholder="?" autocomplete="off" spellcheck="false" style="width:320px;min-width:0"></p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-hw7')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw7')">Try again</button>
+      </div>
+      <div class="tip">Write the whole sentence with a full stop or question mark at the end.</div>
+    </div>
+  </section>
+
+  <section class="step" id="h6">
+    <div class="step-head">
+      <div class="step-num">6</div>
+      <div>
+        <div class="step-meta">Итог</div>
+        <h2>Что ты теперь умеешь?</h2>
+      </div>
+    </div>
+    <div class="card fun-check" lang="ru" id="fun-check">
+      <div class="fc-head">
+        <h3>Теперь я…</h3>
+        <span class="fc-count"><b>0</b> / 5 ⭐</span>
+      </div>
+      <div class="fc-meter"><i></i></div>
+      <p class="fc-hint">Отметь всё, что уже получается!</p>
+      <div class="reflect-list">
+        <label class="reflect-item"><input type="checkbox" id="rr1"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🔢</span><span class="reflect-text">различаю на слух <i lang="en">thirteen</i> и <i lang="en">thirty</i> и правильно ставлю ударение</span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr2"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">❓</span><span class="reflect-text">задаю вопросы с <i lang="en">What, Where, Who, How old, Why</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr3"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🗣️</span><span class="reflect-text">различаю звуки <span class="ipa">/h/</span> и <span class="ipa">/w/</span></span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr4"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">✅</span><span class="reflect-text">выбираю <i lang="en">am, is, are</i> и говорю коротко: <i lang="en">I’m, she’s, they’re</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr5"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🍲</span><span class="reflect-text">читаю <b>o</b> коротко, как в <i lang="en">hot</i>, а <b>p</b> — с выдохом</span></label>
+      </div>
+      <div class="fc-done" hidden><span class="fc-trophy">🏆</span><span><b>Супер!</b> Урок 9 пройден. Так держать!</span></div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+
+<script src="../assets/sync.js"></script>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/sortcols.js"></script>
+<script src="../assets/name.js"></script>
+<script src="../assets/dictionary.js"></script>
+<script>
+/* Warm-up game "Numbers & Flags Quiz Show" (same engine as the Lesson 5 quiz show):
+   4 rounds × 5 questions — hear teen / -ty, find the stress, spell it, flag numbers.
+   Right answer = 2 points, +1 if answered in the first 6 seconds with no wrong tap. */
+(function () {
+  const PER_ROUND = 5, FAST_MS = 6000;
+  const $ = id => document.getElementById(id);
+  const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const pick = (arr, n) => shuffle(arr).slice(0, n);
+  // number → recording in audio/words (anything else: the browser's voice)
+  const TENS = { 20: 'twenty', 30: 'thirty', 40: 'forty', 50: 'fifty', 60: 'sixty', 70: 'seventy', 80: 'eighty', 90: 'ninety', 100: 'one-hundred', 27: 'twenty-seven' };
+  const clip = n => 'audio/words/' + (n <= 20 ? 'num-' + n : TENS[n]) + '.m4a';
+  const STEM = { 3: 'thir', 4: 'four', 5: 'fif', 6: 'six', 7: 'seven', 8: 'eigh', 9: 'nine' };
+
+  /* ---------- question banks ---------- */
+  // Round 1: hear a teen or a -ty number, tap it
+  const hearQs = () => pick([3, 4, 5, 6, 7, 8, 9], PER_ROUND).map(b => {
+    const n = Math.random() < 0.5 ? 10 + b : 10 * b;
+    return { clip: clip(n), pic: '<button class="wu-listen" aria-label="Listen again">🔊</button>',
+      prompt: 'Listen. Which number is it? Say it too!', answer: String(n), opts: [String(10 + b), String(10 * b), String(b)], big: true };
+  });
+  // Round 2: where is the strong part? 13 → thir·TEEN, 30 → THIR·ty
+  const stressQs = () => pick([3, 4, 5, 6, 7, 8, 9], PER_ROUND).map(b => {
+    const teen = Math.random() < 0.5, n = teen ? 10 + b : 10 * b, s = STEM[b] === 'four' && !teen ? 'for' : STEM[b];
+    const right = teen ? `${s}·<span class="st">TEEN</span>` : `<span class="st">${s.toUpperCase()}</span>·ty`;
+    const wrong = teen ? `<span class="st">${s.toUpperCase()}</span>·teen` : `${s}·<span class="st">TY</span>`;
+    return { after: clip(n), pic: `<span class="wu-num">${n}</span>`, prompt: 'Where is the strong part? Say it aloud, then tap!', answer: right, opts: [right, wrong] };
+  });
+  // Round 3: spelling traps
+  const SPELL = [[40, 'forty', ['fourty', 'fortie']], [14, 'fourteen', ['forteen', 'fourtin']], [90, 'ninety', ['ninty', 'ninedy']], [19, 'nineteen', ['ninteen', 'ninetin']],
+    [15, 'fifteen', ['fiveteen', 'fifty']], [50, 'fifty', ['fivety', 'fifteen']], [18, 'eighteen', ['eightteen', 'eighty']], [80, 'eighty', ['eigthy', 'eightty']],
+    [12, 'twelve', ['twelf', 'twenty']], [13, 'thirteen', ['threeteen', 'thirty']], [30, 'thirty', ['threety', 'thirteen']], [100, 'one hundred', ['one hundret', 'one handred']]];
+  const spellQs = () => pick(SPELL, PER_ROUND).map(([n, ans, bad]) => ({ after: clip(n), pic: `<span class="wu-num">${n}</span>`,
+    prompt: 'How do you write it? Say it, then tap!', answer: ans, opts: [ans, ...bad] }));
+  // Round 4: count on the flags (images from Lesson 8)
+  const FLAGS = [[2, 'How many <b>stripes</b> has the American flag got?', 13, [30, 3]], [2, 'How many <b>stars</b> has the American flag got?', 50, [15, 5]],
+    [0, 'How many <b>stars</b> has the Brazilian flag got?', 27, [7, 70]], [3, 'How many <b>stars</b> has the Turkish flag got?', 1, [2, 3]],
+    [10, 'How many <b>colours</b> has the South African flag got?', 6, [16, 60]], [6, 'How many <b>stripes</b> has the Russian flag got?', 3, [13, 30]],
+    [7, 'How many <b>colours</b> has the Sudanese flag got?', 4, [14, 40]], [4, 'How many <b>colours</b> has the Japanese flag got?', 2, [12, 20]],
+    [9, 'How many <b>stripes</b> has the Indonesian flag got?', 2, [12, 20]], [1, 'How many <b>colours</b> has the British flag got?', 3, [13, 30]]];
+  const flagQs = () => pick(FLAGS, PER_ROUND).map(([f, p, n, bad]) => ({ after: clip(n), pic: `<img class="wu-flag" src="images/unit1/flag-${f}.jpg" alt="">`,
+    prompt: p, answer: String(n), opts: [n, ...bad].map(String), big: true }));
+  const ROUNDS = [['🎧', 'Round 1 · What do you hear?', hearQs], ['🗣️', 'Round 2 · Strong part', stressQs], ['✏️', 'Round 3 · Spell it', spellQs], ['🚩', 'Round 4 · Flag numbers', flagQs]];
+
+  /* ---------- engine ---------- */
+  let round = 0, queue = [], idx = 0, score = 0, t0 = 0, missed = false, busy = false, tick = null;
+  function getBest() { try { return +localStorage.getItem('wu9-best') || 0; } catch (e) { return 0; } }
+  function setBest(n) { try { localStorage.setItem('wu9-best', n); } catch (e) {} }
+  function show(id) { ['wu-start', 'wu-q', 'wu-msg'].forEach(s => { $(s).hidden = s !== id; }); $('wu-timer').hidden = id !== 'wu-q'; }
+  function playSrc(src) { try { new Audio(src).play().catch(() => {}); } catch (e) {} }
+  function addScore(n) { score += n; $('wu-score').textContent = score; const s = $('wu-score').parentElement; s.classList.remove('csr-pop'); void s.offsetWidth; s.classList.add('csr-pop'); }
+  function dots() { $('wu-dots').innerHTML = queue.map((c, i) => `<i class="${i < idx ? 'done' : i === idx ? 'now' : ''}"></i>`).join(''); }
+  function msg(ico, html, btn, next) { show('wu-msg'); $('wu-msg-ico').textContent = ico; $('wu-msg-text').innerHTML = html; $('wu-msg-btn').textContent = btn; $('wu-msg-btn').onclick = next; }
+  function confetti() {
+    const box = $('wu'), cols = ['#FFC53D', '#FF7A45', '#3352E0', '#12A374', '#7B5CE6', '#E03E52'];
+    for (let i = 0; i < 40; i++) {
+      const c = document.createElement('i'); c.className = 'fc-confetti';
+      c.style.left = Math.random() * 100 + '%'; c.style.background = cols[i % cols.length]; c.style.animationDelay = Math.random() * 0.4 + 's';
+      c.style.setProperty('--x', (Math.random() * 160 - 80) + 'px'); c.style.setProperty('--r', (Math.random() * 720 - 360) + 'deg');
+      box.appendChild(c); setTimeout(() => c.remove(), 2200);
+    }
+  }
+  function timerBar() {
+    const bar = $('wu-timer').firstElementChild;
+    clearInterval(tick);
+    tick = setInterval(() => { const left = Math.max(0, 1 - (Date.now() - t0) / FAST_MS); bar.style.width = left * 100 + '%'; bar.classList.toggle('slow', left === 0 || missed); }, 80);
+  }
+  function nextQ() {
+    if (idx >= queue.length) return endRound();
+    dots(); busy = false; missed = false;
+    const q = queue[idx];
+    $('wu-pic').innerHTML = q.pic; $('wu-prompt').innerHTML = q.prompt;
+    $('wu-opts').className = 'wu-opts' + (q.big ? ' big' : '');
+    $('wu-opts').innerHTML = shuffle(q.opts).map(o => `<button class="wu-opt" data-i="${q.opts.indexOf(o)}"><span>${o}</span></button>`).join('');
+    if (q.clip) { setTimeout(() => playSrc(q.clip), 350); $('wu-pic').querySelector('.wu-listen').onclick = () => playSrc(q.clip); }
+    $('wu-q').classList.remove('wu-in'); void $('wu-q').offsetWidth; $('wu-q').classList.add('wu-in');
+    t0 = Date.now(); timerBar();
+  }
+  function tap(btn) {
+    if (busy) return;
+    const q = queue[idx];
+    if (q.opts[btn.dataset.i] !== q.answer) { missed = true; btn.classList.remove('wrong'); void btn.offsetWidth; btn.classList.add('wrong'); return; }
+    busy = true; clearInterval(tick);
+    const fast = !missed && Date.now() - t0 < FAST_MS, pts = 2 + (fast ? 1 : 0);
+    btn.classList.add('right');
+    $('wu-opts').querySelectorAll('.wu-opt').forEach(b => { if (b !== btn) b.classList.add('dim'); });
+    addScore(pts); playSrc(q.after || q.clip);
+    if (window.toast) toast('+' + pts + (fast ? ' ⚡ Fast!' : ''));
+    idx++; setTimeout(nextQ, 1500);
+  }
+  function startRound(n) {
+    round = n; idx = 0; queue = ROUNDS[n][2]().slice(0, PER_ROUND);
+    $('wu-round').textContent = ROUNDS[n][1];
+    show('wu-q'); nextQ();
+  }
+  function endRound() {
+    clearInterval(tick); dots();
+    if (round < ROUNDS.length - 1) {
+      const [ico, title] = ROUNDS[round + 1];
+      return msg('🎉', `Round ${round + 1} done! You have <b>${score}</b> points.<br>Next: ${ico} <b>${title.split('· ')[1]}</b>`, 'Next round ▶', () => startRound(round + 1));
+    }
+    const best = getBest(), record = score > best;
+    if (record) setBest(score);
+    $('wu-round').textContent = 'Finished!';
+    msg(record ? '🏆' : '⭐', `You got <b>${score}</b> of 60 points!` + (record ? '<br>New best score!' : `<br>Best score: ${best}`), 'Play again ↻', wuStart);
+    confetti();
+  }
+  window.wuStart = function () { score = 0; $('wu-score').textContent = 0; startRound(0); };
+  $('wu-opts').addEventListener('click', e => { const b = e.target.closest('.wu-opt'); if (b) tap(b); });
+  const best = getBest(); if (best) $('wu-best').textContent = 'Best score: ' + best + ' ⭐';
+})();
+</script>
+<script>
+/* "My flag" (SB p. 15 ex. 9–11): pick two colours, stripes, two activities and one animal.
+   The flag and an example text are drawn from the choices; saved like the other answers. */
+(function () {
+  const COLOURS = { red: '#E53935', orange: '#FB8C00', yellow: '#FDD835', green: '#43A047', blue: '#1E88E5', purple: '#7E57C2', pink: '#F48FB1', black: '#212121', white: '#FFFFFF' };
+  // each pattern turns two colours into a CSS background with real stripes
+  const PATTERNS = {
+    h: ['▤ across', (a, b) => `linear-gradient(to bottom, ${a} 0 33.4%, ${b} 33.4% 66.6%, ${a} 66.6%)`],
+    v: ['▥ up and down', (a, b) => `linear-gradient(to right, ${a} 0 33.4%, ${b} 33.4% 66.6%, ${a} 66.6%)`],
+    m: ['☰ lots of stripes', (a, b) => `repeating-linear-gradient(to bottom, ${a} 0 14.3%, ${b} 14.3% 28.6%)`],
+    d: ['◩ corner to corner', (a, b) => `repeating-linear-gradient(135deg, ${a} 0 40px, ${b} 40px 80px)`] };
+  const ACTS = { football: ['⚽', 'Here is a football. It’s my favourite sport.'], music: ['🎵', 'Here is music. I love music.'], basketball: ['🏀', 'Here is a basketball. It’s my favourite sport.'],
+    swimming: ['🏊', 'Here is a swimmer. I love swimming.'], games: ['🎮', 'Here is a game controller. I love video games.'], books: ['📚', 'Here are books. I love reading.'],
+    cycling: ['🚲', 'Here is a bike. I love cycling.'], art: ['🎨', 'Here is a paintbrush. I love art.'], tennis: ['🎾', 'Here is a tennis ball. It’s my favourite sport.'], dancing: ['💃', 'Here is a dancer. I love dancing.'] };
+  const ANIMALS = { lion: '🦁', cat: '🐱', dog: '🐶', horse: '🐴', dolphin: '🐬', panda: '🐼', fox: '🦊', eagle: '🦅', owl: '🦉' };
+  const $ = id => document.getElementById(id);
+  let st = { c: [], p: 'h', a: [], an: '' };
+  function load() { try { const s = JSON.parse((typeof data !== 'undefined' && data['flag-design']) || 'null'); if (s) st = Object.assign(st, s); } catch (e) {} }
+  function store() { if (typeof save === 'function') save({ 'flag-design': JSON.stringify(st) }); }
+  const toggle = (list, v, max) => list.includes(v) ? list.filter(x => x !== v) : [...list, v].slice(-max);
+  function render() {
+    $('fd-colours').innerHTML = Object.entries(COLOURS).map(([n, c]) => { const i = st.c.indexOf(n);
+      return `<button type="button" class="fd-sw ${i >= 0 ? 'on' : ''}" style="--c:${c}" data-c="${n}" title="${n}" aria-label="${n}">${i >= 0 ? `<span class="n">${i + 1}</span>` : ''}</button>`; }).join('');
+    $('fd-patterns').innerHTML = Object.entries(PATTERNS).map(([k, [label]]) => `<button type="button" class="fd-pt ${st.p === k ? 'on' : ''}" data-p="${k}">${label}</button>`).join('');
+    $('fd-acts').innerHTML = Object.entries(ACTS).map(([k, [e]]) => `<button type="button" class="fd-st ${st.a.includes(k) ? 'on' : ''}" data-a="${k}"><span>${e}</span>${k === 'games' ? 'video games' : k === 'books' ? 'reading' : k}</button>`).join('');
+    $('fd-animals').innerHTML = Object.entries(ANIMALS).map(([k, e]) => `<button type="button" class="fd-st ${st.an === k ? 'on' : ''}" data-an="${k}"><span>${e}</span>${k}</button>`).join('');
+    // no colours yet → grey preview stripes; one colour → it stripes with white
+    const c1 = st.c[0] ? COLOURS[st.c[0]] : '#C9D1E3', c2 = st.c[1] ? COLOURS[st.c[1]] : st.c[0] && st.c[0] !== 'white' ? '#FFFFFF' : '#EEF1F8';
+    $('fd-flag').style.background = (PATTERNS[st.p] || PATTERNS.h)[1](c1, c2);
+    $('fd-flag').innerHTML = [...st.a.map(k => ACTS[k][0]), st.an && ANIMALS[st.an]].filter(Boolean).map(e => `<span>${e}</span>`).join('');
+    const lines = [];
+    if (st.c.length) lines.push(`My flag is ${st.c.join(' and ')}. ${st.c.length > 1 ? 'They’re my favourite colours.' : 'It’s my favourite colour.'}`);
+    st.a.forEach(k => lines.push(ACTS[k][1]));
+    if (st.an) lines.push(`Here is ${/^[aeiou]/.test(st.an) ? 'an' : 'a'} ${st.an}. It’s my favourite animal.`);
+    $('fd-say').innerHTML = lines.length ? lines.join(' ') : '<i>Choose your colours, activities and animal — your flag appears here.</i>';
+  }
+  $('ex-fd').addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    if (b.dataset.c) { st.c = toggle(st.c, b.dataset.c, 2); const a = new Audio('audio/words/' + b.dataset.c + '.m4a'); a.play().catch(() => {}); }
+    else if (b.dataset.p) st.p = b.dataset.p;
+    else if (b.dataset.a) st.a = toggle(st.a, b.dataset.a, 2);
+    else if (b.dataset.an) st.an = st.an === b.dataset.an ? '' : b.dataset.an;
+    else return;
+    store(); render();
+  });
+  document.addEventListener('DOMContentLoaded', () => setTimeout(() => { load(); render(); }, 0));
+  render();
+})();
+</script>
+<script>
+/* "Итог": star counter, progress bar and confetti when everything is ticked (same as Lessons 3–8) */
+(function () {
+  const box = document.getElementById('fun-check');
+  const boxes = [...box.querySelectorAll('input[type=checkbox]')];
+  let celebrated = false;
+  function confetti() {
+    const colours = ['#FFC53D', '#FF7A45', '#3352E0', '#12A374', '#7B5CE6', '#E03E52'];
+    for (let i = 0; i < 40; i++) {
+      const c = document.createElement('i');
+      c.className = 'fc-confetti';
+      c.style.left = Math.random() * 100 + '%';
+      c.style.background = colours[i % colours.length];
+      c.style.animationDelay = Math.random() * 0.4 + 's';
+      c.style.setProperty('--x', (Math.random() * 160 - 80) + 'px');
+      c.style.setProperty('--r', (Math.random() * 720 - 360) + 'deg');
+      box.appendChild(c);
+      setTimeout(() => c.remove(), 2200);
+    }
+  }
+  function update(animate) {
+    const n = boxes.filter(b => b.checked).length;
+    box.querySelector('.fc-count b').textContent = n;
+    box.querySelector('.fc-meter i').style.width = (n / boxes.length * 100) + '%';
+    const done = n === boxes.length;
+    box.querySelector('.fc-done').hidden = !done;
+    box.classList.toggle('all-done', done);
+    if (done && animate && !celebrated) confetti();
+    celebrated = done;
+  }
+  boxes.forEach(b => b.addEventListener('change', () => update(true)));
+  document.addEventListener('DOMContentLoaded', () => setTimeout(() => update(false), 0));
+})();
+</script>
+</body>
+</html>

@@ -20,6 +20,8 @@ website/
     ├── lesson-05.html          ← Lesson 5: "Remember Quiz Show" warm-up, s · a (from Lesson 2), Student's Book p. 8 (classroom)
     ├── lesson-06.html          ← Lesson 6: classroom language, numbers 20–100 + messages (Student's Book pp. 9–10), c · n (from Lesson 2)
     ├── lesson-07.html          ← Lesson 7: Welcome review (Student's Book p. 11)
+    ├── lesson-08.html          ← Lesson 8: Unit 1 countries, nationalities, music website (Student's Book pp. 12–14)
+    ├── lesson-09.html          ← Lesson 9: numbers & flags warm-up, question words, to be (Student's Book pp. 14–15), o · p (from Lesson 2), homework Workbook pp. 10–11
     ├── images/                 ← Put lesson images here
     ├── audio/                  ← Put lesson audio files here
     │   └── words/               ← One short clip per sound button (see "Sound buttons")

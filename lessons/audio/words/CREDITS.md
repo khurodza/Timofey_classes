@@ -39,3 +39,5 @@ text-to-speech voice *af_bella*.
 
 CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/ — the trimmed versions here are
 shared under the same licence.
+
+twenty-seven.m4a (Lesson 9 warm-up) was made with the Microsoft Edge text-to-speech voice *en-US-AvaNeural* (edge-tts).

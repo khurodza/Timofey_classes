@@ -6,7 +6,7 @@
 <title>Lesson 8 – All together</title>
 <link rel="stylesheet" href="../assets/style.css">
 <style>
-/* Lesson 8: the "Crazy about music" website (SB p. 13) and /h/ /w/ colours */
+/* Lesson 8: the "Crazy about music" website (SB p. 13) */
 .web-page{margin-top:14px;border-radius:18px;overflow:hidden;background:#7B4FA8;padding:0 0 12px}
 .web-head img{width:100%;display:block}
 .web-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}
@@ -15,8 +15,6 @@
 .web-card .wq{margin:0;color:#6A3C9A;font-weight:800}
 .web-card .wa{margin:0 0 8px}
 @media(max-width:620px){.web-grid{grid-template-columns:1fr}}
-.hw-h{color:#E0662B}
-.hw-w{color:#2F6FD6}
 /* Interactive map (SB p. 12 ex. 1): country tiles dropped on the white boxes; each box keeps a hidden .blank for saving/scoring */
 .map-bank{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
 .map-tile{border:2px solid var(--border);background:var(--yellow-soft);border-radius:999px;padding:6px 14px;font:inherit;font-size:15px;font-weight:800;cursor:grab;touch-action:none;user-select:none}
@@ -47,12 +45,11 @@
     <div class="hero-grid">
       <div>
         <h1 class="name-slot" data-with="Lesson 8: Where are you from, {name}?" data-without="Lesson 8: Where are you from?">Lesson 8: Where are you from?</h1>
-        <p>Unit 1 “All together”: countries and nationalities, a music website and question words.</p>
+        <p>Unit 1 “All together”: countries and nationalities and a music website.</p>
         <div class="hero-badges">
           <span class="badge">Lesson 8</span>
           <span class="badge">Unit 1: All together</span>
           <span class="badge">Student’s Book pp. 12–14</span>
-          <span class="badge">Pronunciation p. 120</span>
         </div>
       </div>
     </div>
@@ -65,14 +62,14 @@
              Documentary Video worksheet tasks; map ex. 1–2.
      PART 2: Reading ex. 3 (track 1.01 → audio/lesson-08-1-01) + Think values ex. 4–5.
      PART 3: Vocabulary ex. 1–3 (track 1.02 → lesson-08-1-02), flags in images/unit1/.
-     PART 4: Grammar rap video 02, question words ex. 4–6, pronunciation (1.03–1.04), Итог.
+     PART 3 ends with the Итог. Question words (Grammar rap, ex. 4–6, pronunciation
+     1.03–1.04) moved to Lesson 9.
 ══════════════════════════════════════════════════════════ -->
 <nav class="parts">
   <div class="wrap">
     <button class="part-tab" data-part="part-think" onclick="showPart('part-think')">Get thinking</button>
     <button class="part-tab" data-part="part-music" onclick="showPart('part-music')">Crazy about music</button>
     <button class="part-tab" data-part="part-countries" onclick="showPart('part-countries')">Countries &amp; nationalities</button>
-    <button class="part-tab" data-part="part-questions" onclick="showPart('part-questions')">Question words</button>
   </div>
 </nav>
 
@@ -315,6 +312,7 @@
     <a href="#c1">1 · Flags</a>
     <a href="#c2">2 · Nationalities</a>
     <a href="#c3">3 · Guess the flag</a>
+    <a href="#c4">4 · Итог</a>
   </div>
 </nav>
 
@@ -441,163 +439,9 @@
       <div class="rec"></div>
     </div>
   </section>
-
-</div>
-</div>
-
-<div class="lesson-part" id="part-questions">
-<nav class="chips">
-  <div class="wrap">
-    <a href="#d1">1 · Grammar rap</a>
-    <a href="#d2">2 · Question words</a>
-    <a href="#d3">3 · Choose</a>
-    <a href="#d4">4 · /h/ or /w/</a>
-    <a href="#d5">5 · Итог</a>
-  </div>
-</nav>
-
-<div class="wrap">
-
-  <section class="step" id="d1">
-    <div class="step-head">
-      <div class="step-num">1</div>
-      <div>
-        <div class="step-meta">Grammar · Student’s Book p. 14 · Video 02</div>
-        <h2>Grammar rap!</h2>
-      </div>
-    </div>
-    <div class="card">
-      <div class="exercise-label">Video · Grammar rap</div>
-      <h3>Watch and listen. Which question words do you hear?</h3>
-      <div class="video-wrap">
-        <video controls preload="metadata" playsinline>
-          <source src="video/unit-01-grammar-rap.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-  </section>
-  <section class="step" id="d2">
-    <div class="step-head">
-      <div class="step-num">2</div>
-      <div>
-        <div class="step-meta">Grammar · Student’s Book p. 14</div>
-        <h2>Question words</h2>
-      </div>
-    </div>
-    <div class="card" id="ex-g4">
-      <div class="exercise-label">Exercise 4</div>
-      <h3>Look at the website (tab “Crazy about music”). Complete the questions with the words in the list.</h3>
-      <div class="word-bank-ref"><span>How</span> <span class="crossed">What</span> <span>Where</span> <span>Who</span> <span>Why</span></div>
-      <div class="example-row"><span class="ex-tag">Example</span><span>0. <b>What’s</b> your name?</span></div>
-      <p class="gap-line"><span class="num">1.</span> <input class="blank" id="g4-1" data-answer="Where" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"> are you from?</p>
-      <p class="gap-line"><span class="num">2.</span> <input class="blank" id="g4-2" data-answer="How" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"> old are you?</p>
-      <p class="gap-line"><span class="num">3.</span> <input class="blank" id="g4-3" data-answer="Who" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0">’s your favourite musician?</p>
-      <p class="gap-line"><span class="num">4.</span> <input class="blank" id="g4-4" data-answer="Why" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;min-width:0"> is he/she your favourite musician?</p>
-      <div class="btn-row">
-        <button class="btn-primary" onclick="checkBlanks('ex-g4')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetBlanks('ex-g4')">Try again</button>
-      </div>
-    </div>
-    <div class="card" id="ex-g4r">
-      <div class="exercise-label">Rule</div>
-      <h3>Choose the correct words to complete the rule.</h3>
-      <div class="tip rule" style="font-size:18px">
-        <p class="gap-line"><i>How, Who, Where, What</i> and <i>Why</i> are <sup>5</sup> <span class="word-choice" id="g4-5" data-answer="question"><button class="word-choice-btn" onclick="selectWord(this)">question</button><button class="word-choice-btn" onclick="selectWord(this)">because</button></span> words.</p>
-        <p class="gap-line">We often use the word <sup>6</sup> <span class="word-choice" id="g4-6" data-answer="because"><button class="word-choice-btn" onclick="selectWord(this)">question</button><button class="word-choice-btn" onclick="selectWord(this)">because</button></span> to answer a <i>Why</i> question.</p>
-      </div>
-      <div class="btn-row">
-        <button class="btn-primary" onclick="checkWords('ex-g4r')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetWords('ex-g4r')">Try again</button>
-      </div>
-      <div class="ref-wrap" style="overflow-x:auto">
-        <table class="ref-table">
-          <tr><th>Question word</th><th>We ask about…</th><th lang="ru">По-русски</th></tr>
-          <tr><td class="label">What</td><td>a thing, a name</td><td lang="ru">что? какой?</td></tr>
-          <tr><td class="label">Who</td><td>a person</td><td lang="ru">кто?</td></tr>
-          <tr><td class="label">Where</td><td>a place</td><td lang="ru">где? откуда?</td></tr>
-          <tr><td class="label">How old</td><td>age</td><td lang="ru">сколько лет?</td></tr>
-          <tr><td class="label">Why</td><td>a reason → <i>Because…</i></td><td lang="ru">почему? → потому что…</td></tr>
-        </table>
-      </div>
-    </div>
-  </section>
-  <section class="step" id="d3">
-    <div class="step-head">
-      <div class="step-num">3</div>
-      <div>
-        <div class="step-meta">Grammar · Student’s Book p. 14</div>
-        <h2>Choose the question word</h2>
-      </div>
-    </div>
-    <div class="card" id="ex-g5">
-      <div class="exercise-label">Exercise 5</div>
-      <h3>Choose the correct words.</h3>
-      <div class="example-row"><span class="ex-tag">Example</span><span>0. <b>How</b> / <s>Why</s> old is your best friend?</span></div>
-      <p class="gap-line"><span class="num">1.</span> <span class="word-choice" id="g5-1" data-answer="Where"><button class="word-choice-btn" onclick="selectWord(this)">What</button><button class="word-choice-btn" onclick="selectWord(this)">Where</button></span> is your mother from?</p>
-      <p class="gap-line"><span class="num">2.</span> <span class="word-choice" id="g5-2" data-answer="What’s"><button class="word-choice-btn" onclick="selectWord(this)">How’s</button><button class="word-choice-btn" onclick="selectWord(this)">What’s</button></span> your favourite colour?</p>
-      <p class="gap-line"><span class="num">3.</span> <span class="word-choice" id="g5-3" data-answer="Who"><button class="word-choice-btn" onclick="selectWord(this)">Where</button><button class="word-choice-btn" onclick="selectWord(this)">Who</button></span> is your favourite film star?</p>
-      <p class="gap-line"><span class="num">4.</span> <span class="word-choice" id="g5-4" data-answer="Why"><button class="word-choice-btn" onclick="selectWord(this)">Why</button><button class="word-choice-btn" onclick="selectWord(this)">Where</button></span> is he/she your favourite film star?</p>
-      <div class="btn-row">
-        <button class="btn-primary" onclick="checkWords('ex-g5')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetWords('ex-g5')">Try again</button>
-      </div>
-    </div>
-    <div class="card">
-      <div class="exercise-label">Exercise 6 · Speaking</div>
-      <h3>Ask and answer the questions in Exercises 4 and 5.</h3>
-      <div class="dialogue">
-        <span class="dl-name">A</span>
-        <p class="dl-text">What’s your name?</p>
-        <span class="dl-name two">B</span>
-        <p class="dl-text">My name is Andréa.</p>
-      </div>
-      <p class="gap-line" style="margin-top:12px">Write your answers first:</p>
-      <textarea class="free-write" id="fw-me" placeholder="My name is … . I’m from … . I’m … . My favourite musician is … because …" rows="4"></textarea>
-      <div class="char-count" id="cc-fw-me">0 characters</div>
-      <div class="rec"></div>
-    </div>
-  </section>
-  <section class="step" id="d4">
+  <section class="step" id="c4">
     <div class="step-head">
       <div class="step-num">4</div>
-      <div>
-        <div class="step-meta">Pronunciation · Student’s Book p. 120 · 1.03–1.04</div>
-        <h2>/h/ or /w/ in question words</h2>
-      </div>
-    </div>
-    <div class="card">
-      <div class="exercise-label">Exercise 1 · 1.03</div>
-      <h3>Read and listen to the questions.</h3>
-      <div class="audio-wrap">
-        <audio controls preload="metadata">
-          <source src="audio/lesson-08-1-03.m4a" type="audio/mp4">
-          Your browser does not support audio.
-        </audio>
-      </div>
-      <div class="tip" style="font-size:19px">
-        <p class="gap-line"><b class="hw-h">How</b> old are you?</p>
-        <p class="gap-line"><b class="hw-w">Where</b> are you from?</p>
-        <p class="gap-line"><b class="hw-w">What</b>’s your favourite food?</p>
-        <p class="gap-line"><b class="hw-h">Who</b>’s your favourite football player?</p>
-        <p class="gap-line"><b class="hw-w">Why</b> do you like him?</p>
-      </div>
-      <div class="tip"><span class="tip-title">Two sounds, not three!</span><span class="key">Who</span> and <span class="key">How</span> start with <span class="ipa">/h/</span> — just a soft breath, like warming your hands. Not a hard Russian <span lang="ru">«х»</span>!<br><span class="key">What, Where, Why</span> start with <span class="ipa">/w/</span> — round your lips like for <span lang="ru">«у»</span>. Not <span lang="ru">«в»</span>: your teeth don’t touch your lip.<br>Careful: <b>Wh</b>o is <span class="ipa">/huː/</span> — the <i>w</i> is silent.</div>
-    </div>
-    <div class="card">
-      <div class="exercise-label">Exercise 2 · 1.04</div>
-      <h3>Listen again and repeat. Then record yourself and compare.</h3>
-      <div class="audio-wrap">
-        <audio controls preload="metadata">
-          <source src="audio/lesson-08-1-04.m4a" type="audio/mp4">
-          Your browser does not support audio.
-        </audio>
-      </div>
-      <div class="rec"></div>
-    </div>
-  </section>
-  <section class="step" id="d5">
-    <div class="step-head">
-      <div class="step-num">5</div>
       <div>
         <div class="step-meta">Итог</div>
         <h2>Что ты теперь умеешь?</h2>
@@ -606,7 +450,7 @@
     <div class="card fun-check" lang="ru" id="fun-check">
       <div class="fc-head">
         <h3>Теперь я…</h3>
-        <span class="fc-count"><b>0</b> / 5 ⭐</span>
+        <span class="fc-count"><b>0</b> / 3 ⭐</span>
       </div>
       <div class="fc-meter"><i></i></div>
       <p class="fc-hint">Отметь всё, что уже получается!</p>
@@ -614,8 +458,6 @@
         <label class="reflect-item"><input type="checkbox" id="rr1"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🌍</span><span class="reflect-text">называю <b>12 стран</b> на английском и нахожу их на карте</span></label>
         <label class="reflect-item"><input type="checkbox" id="rr2"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🚩</span><span class="reflect-text">говорю национальность: <i lang="en">Russian, British, Japanese</i></span></label>
         <label class="reflect-item"><input type="checkbox" id="rr3"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🎵</span><span class="reflect-text">понимаю короткий текст о ребятах и их любимых музыкантах</span></label>
-        <label class="reflect-item"><input type="checkbox" id="rr4"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">❓</span><span class="reflect-text">задаю вопросы с <i lang="en">What, Where, Who, How old, Why</i></span></label>
-        <label class="reflect-item"><input type="checkbox" id="rr5"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🗣️</span><span class="reflect-text">различаю звуки <span class="ipa">/h/</span> и <span class="ipa">/w/</span></span></label>
       </div>
       <div class="fc-done" hidden><span class="fc-trophy">🏆</span><span><b>Супер!</b> Первый урок раздела «All together» пройден!</span></div>
     </div>
