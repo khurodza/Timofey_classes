@@ -22,6 +22,7 @@ website/
     ├── lesson-07.html          ← Lesson 7: Welcome review (Student's Book p. 11)
     ├── lesson-08.html          ← Lesson 8: Unit 1 countries, nationalities, music website (Student's Book pp. 12–14)
     ├── lesson-09.html          ← Lesson 9: numbers & flags warm-up, question words, to be (Student's Book pp. 14–15), o · p (from Lesson 2), homework Workbook pp. 10–11
+    ├── lesson-10.html          ← Lesson 10: Lesson 9 quiz show, football stars, Student's Book p. 16 (getting to know someone), e (from Lesson 2), homework Workbook p. 14, teacher-only notes
     ├── images/                 ← Put lesson images here
     ├── audio/                  ← Put lesson audio files here
     │   └── words/               ← One short clip per sound button (see "Sound buttons")
@@ -332,6 +333,18 @@ for microphone permission the first time.
   reset with `resetWords('exercise-id')`.
 - `.ipa` — use it around phonetic symbols so they show in a font that has them.
 
+### Teacher-only notes
+
+```html
+<div class="teacher-only"><div class="to-label">👩‍🏫 Teacher only · Exercise 4</div>…</div>
+```
+
+Hidden on the student's page; shown only when the page is open inside
+`teacher.html` (`sync.js` adds `html.watching`). Used in Lesson 10 for the
+Teacher's Book notes, answers and the lesson plan. The CSS is in the page's
+own `<style>` block. The text is still in the page source, so don't put
+anything there the student must never see.
+
 ### Note boxes
 
 ```html
@@ -420,6 +433,10 @@ separately, since they're separate pages.
 The class-English pictures in `lessons/images/class-english/` and the phonics
 pictures in `lessons/images/phonics/` (bee for *i*, tiger for *t*) are Microsoft
 Fluent Emoji (MIT licence, see the licence file in each folder).
+
+The athlete photos in `lessons/images/sport/` are from Wikimedia Commons
+(CC BY / CC BY-SA / GFDL). Authors and licences are in
+`lessons/images/sport/CREDITS.md` and in a small caption under each photo.
 
 ---
 

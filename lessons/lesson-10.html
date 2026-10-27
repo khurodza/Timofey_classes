@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 10 – Nice to meet you!</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+/* Lesson 10 */
+/* teacher-only notes: hidden on the student's page, shown inside teacher.html (sync.js adds html.watching) */
+.teacher-only{display:none}
+html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;border:2px dashed #D9628F;border-radius:var(--radius);padding:12px 16px;line-height:1.7;font-size:16px}
+.teacher-only .to-label{font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#B0416C;margin-bottom:6px}
+.teacher-only b{color:#9A3F64}
+.teacher-only ul,.teacher-only ol{margin:4px 0 0 20px}
+.teacher-only table{border-collapse:collapse;margin-top:6px}
+.teacher-only td{padding:2px 10px 2px 0;vertical-align:top}
+/* warm-up quiz: a sentence with a gap */
+.wu-ans{display:block;margin-top:8px;font-size:18px;font-weight:600;color:var(--muted)}
+.wo-line{flex-wrap:wrap}
+.wo-ans{color:var(--muted);font-style:italic}
+.wu-flag{width:170px;max-width:60%;height:auto;display:block;margin:0 auto}
+.wu-full{font:800 40px/1.2 var(--font-head);color:var(--ink)}
+/* football warmer: who is this? */
+.fb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin-top:12px}
+.fb-card{border:1px solid var(--border);border-radius:16px;background:#fff;padding:10px 10px 12px;box-shadow:var(--shadow-sm)}
+.fb-card img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border-radius:12px;display:block}
+.fb-card .mc-options{gap:6px;margin-top:8px}
+.fb-card .mc-option{padding:7px 10px;font-size:16px}
+.fb-card .gap-line{margin:10px 0 0;font-size:17px;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.fb-card .word-choice{display:inline-flex;flex-wrap:wrap;gap:6px}
+.credit{display:block;font-size:11px;line-height:1.3;color:var(--muted);margin-top:4px}
+.credit a{color:inherit}
+/* reading: picture + listening questions */
+.rd-grid{display:grid;grid-template-columns:minmax(0,260px) 1fr;gap:18px;align-items:start}
+.rd-grid img{width:100%;border-radius:14px;display:block}
+@media(max-width:620px){.rd-grid{grid-template-columns:1fr}.rd-grid img{max-width:260px}}
+details.cover{margin-top:14px;border:2px dashed var(--border);border-radius:14px;padding:10px 14px;background:#fff}
+details.cover summary{cursor:pointer;font-weight:800;color:var(--blue)}
+details.cover[open] summary{margin-bottom:10px}
+/* true / false rows */
+.tf-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--border)}
+.tf-row:first-of-type{border-top:0}
+.tf-row .word-choice{flex-shrink:0}
+/* put the dialogue in order */
+.ord-dlg{display:grid;grid-template-columns:auto auto 1fr;gap:8px 12px;align-items:center;margin-top:10px}
+.ord-dlg .blank{width:56px;min-width:0;text-align:center}
+.ord-dlg .given{display:inline-block;width:56px;text-align:center;padding:6px 0;border:2px dashed var(--border);border-radius:10px;font-weight:800}
+.ord-dlg .dl-name{justify-self:start}
+/* homework: athletes */
+.ath{display:grid;grid-template-columns:1fr 150px;gap:16px;align-items:center;padding:14px 0;border-top:1px solid var(--border)}
+.ath:first-of-type{border-top:0}
+.ath .read-text{font-size:19px;line-height:1.7;margin:0}
+.ath figure{margin:0}
+.ath img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border-radius:12px;display:block}
+.ath figcaption{font-weight:800;font-size:14px;margin-top:4px;text-align:center}
+@media(max-width:560px){.ath{grid-template-columns:1fr 110px;gap:10px}.ath .read-text{font-size:17px}}
+.ct-list .gap-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.ct-list .blank{flex:1 1 220px;min-width:0;width:auto}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="back-home" href="../index.html">← All lessons</a>
+    <div class="hero-grid">
+      <div>
+        <h1 class="name-slot" data-with="Lesson 10: Nice to meet you, {name}!" data-without="Lesson 10: Nice to meet you!">Lesson 10: Nice to meet you!</h1>
+        <p>A Lesson 9 quiz show, football stars, a dialogue about music, how to <b>get to know someone</b>, and the sound <b>e</b>.</p>
+        <div class="hero-badges">
+          <span class="badge">Lesson 10</span>
+          <span class="badge">Unit 1: All together</span>
+          <span class="badge">Student’s Book p. 16</span>
+          <span class="badge">Reading: e</span>
+          <span class="badge">Homework: grammar rap + Workbook p. 14</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     PART 1: warm-up — review of Lesson 9: "Lesson 9 Quiz Show"
+             (question words, am / is / are, short forms, nationalities)
+             + "Make the question" (word order, prepares SB p. 16 ex. 3).
+     PART 2: Student's Book p. 16 (Teacher's Book T16): football warmer
+             with photos, reading 1.06 (→ audio/lesson-10-1-06),
+             T/F, write the questions, functions 1.07 (→ audio/lesson-10-1-07),
+             act out + own dialogue.
+     PART 3: "e" copied from Lesson 2.
+     HOMEWORK: Grammar rap worksheet Unit 1 (tasks 2–6) + Workbook p. 14 (reading: favourite athletes) + Итог.
+     Teacher's notes are in .teacher-only boxes: visible only in teacher.html.
+     Photos of the athletes: Wikimedia Commons (see images/sport/CREDITS.md).
+══════════════════════════════════════════════════════════ -->
+<nav class="parts">
+  <div class="wrap">
+    <button class="part-tab" data-part="part-warm" onclick="showPart('part-warm')">Warm-up</button>
+    <button class="part-tab" data-part="part-meet" onclick="showPart('part-meet')">Nice to meet you!</button>
+    <button class="part-tab" data-part="part-e" onclick="showPart('part-e')">Read it right: e</button>
+    <button class="part-tab hw" data-part="part-homework" onclick="showPart('part-homework')">Homework</button>
+  </div>
+</nav>
+
+<div class="lesson-part" id="part-warm">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#w1">1 · Quiz show</a>
+    <a href="#w2">2 · Make the question</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="teacher-only">
+    <div class="to-label">👩‍🏫 Teacher only · plan for Lesson 10 (about 60 min)</div>
+    <table>
+      <tr><td><b>Warm-up</b></td><td>8–10 min</td><td>Quiz show (L9 review) + make the questions</td></tr>
+      <tr><td><b>Nice to meet you!</b></td><td>30–35 min</td><td>Football warmer → reading 1.06 → T/F → questions → functions 1.07 → act out → own dialogue</td></tr>
+      <tr><td><b>Read it right: e</b></td><td>10–12 min</td><td>Steps 1–3 in class; 4–5 can be finished at home if time is short</td></tr>
+      <tr><td><b>Homework</b></td><td>2 min</td><td>Show the Homework tab: Workbook p. 14, reading Ex. 1–3 (Teacher’s Book: <i>THINK more → Workbook Reading p14 Ex.1–3</i>)</td></tr>
+    </table>
+    <p style="margin-top:6px">Aims (Teacher’s Book T16): <b>Reading</b> a dialogue for gist and detail; <b>Functions</b>: getting to know someone (<i>What’s your name? Where are you from? Nice to meet you (too).</i>).</p>
+  </div>
+
+  <section class="step" id="w1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Warm-up · Lesson 9 review · Game</div>
+        <h2>Lesson 9 Quiz Show</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Game · Question words, <i>to be</i>, nationalities</div>
+      <h3>Four rounds. Read, think, answer fast — and win points!</h3>
+      <div class="tip class-note"><span class="tip-title">In class: read it aloud!</span>Read every sentence <b>aloud</b> with the right word before you tap. Say the short form: <i>she’s, they’re</i>.</div>
+
+      <div class="csr wu" id="wu">
+        <div class="csr-bar">
+          <span class="csr-round" id="wu-round">Lesson 9 Quiz Show</span>
+          <span class="csr-dots" id="wu-dots"></span>
+          <span class="csr-score">⭐ <b id="wu-score">0</b></span>
+        </div>
+        <div class="wu-timer" id="wu-timer" hidden><i></i></div>
+
+        <!-- start screen -->
+        <div class="csr-screen" id="wu-start">
+          <div class="wu-rounds">
+            <div class="wu-round-card"><span>❓</span><b>Question words</b></div>
+            <div class="wu-round-card"><span>✅</span><b>am · is · are</b></div>
+            <div class="wu-round-card"><span>✂️</span><b>Short forms</b></div>
+            <div class="wu-round-card"><span>🚩</span><b>Whose flag?</b></div>
+          </div>
+          <div class="csr-rules">
+            <p>Every round has <b>5 questions</b>. A right answer = <b>2 points</b>, a fast answer = <b>+1 bonus</b> ⚡. A wrong tap costs the bonus, so think first!</p>
+          </div>
+          <button class="btn-accent csr-big" onclick="wuStart()">Start ▶</button>
+          <p class="csr-best" id="wu-best"></p>
+        </div>
+
+        <!-- question -->
+        <div class="csr-screen" id="wu-q" hidden>
+          <div class="wu-pic" id="wu-pic"></div>
+          <div class="wu-prompt" id="wu-prompt"></div>
+          <div class="wu-opts" id="wu-opts"></div>
+        </div>
+
+        <!-- between rounds / end -->
+        <div class="csr-screen" id="wu-msg" hidden>
+          <div class="csr-msg-ico" id="wu-msg-ico">🎉</div>
+          <p class="csr-msg-text" id="wu-msg-text"></p>
+          <button class="btn-accent csr-big" id="wu-msg-btn">Next ▶</button>
+        </div>
+      </div>
+
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · warm-up</div>
+        Revises Lesson 9: <b>question words</b> (What, Where, Who, How old, Why), <b>am / is / are</b>, <b>contracted forms</b> and <b>nationalities</b> (<i>the Japanese flag</i>, not <s>the Japan flag</s>). Questions are random, so every game is different (max. 60 points).
+        <ul>
+          <li>Let him play round 1 alone, then ask him to read each sentence aloud <b>before</b> tapping in rounds 2–4.</li>
+          <li>Listen for: strong <i>am / is / are</i> instead of the short form; <i>Where</i> said with /h/; <i>-ese / -ish / -ian</i> endings.</li>
+          <li>Follow-up (1 min): ask him 3 of the round-1 questions for real: <i>How old is your best friend? Who’s your favourite singer? Why?</i></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="w2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Warm-up · Question words + <i>to be</i></div>
+        <h2>Make the question</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-wo-w2">
+      <div class="exercise-label">Put the words in order</div>
+      <h3>Read the answer. Put the words in order to make the question. Then ask your teacher!</h3>
+      <p class="ru-hint" lang="ru">Перетащи слова (или нажми на слово, а потом на место, куда его поставить). Вопросительное слово идёт первым.</p>
+      <div class="wo-line"><span class="num">1.</span><div class="wo-q" id="wo-w2-1" data-answer="What’s your name ?"><span class="wo-tile">name</span><span class="wo-tile">?</span><span class="wo-tile">What’s</span><span class="wo-tile">your</span></div><span class="wo-ans">— My name’s Coco.</span></div>
+      <div class="wo-line"><span class="num">2.</span><div class="wo-q" id="wo-w2-2" data-answer="How old are you ?"><span class="wo-tile">are</span><span class="wo-tile">you</span><span class="wo-tile">old</span><span class="wo-tile">?</span><span class="wo-tile">How</span></div><span class="wo-ans">— I’m 14.</span></div>
+      <div class="wo-line"><span class="num">3.</span><div class="wo-q" id="wo-w2-3" data-answer="Where is he from ?"><span class="wo-tile">from</span><span class="wo-tile">he</span><span class="wo-tile">Where</span><span class="wo-tile">?</span><span class="wo-tile">is</span></div><span class="wo-ans">— He’s from Canada.</span></div>
+      <div class="wo-line"><span class="num">4.</span><div class="wo-q" id="wo-w2-4" data-answer="Who is your favourite singer ?"><span class="wo-tile">favourite</span><span class="wo-tile">Who</span><span class="wo-tile">singer</span><span class="wo-tile">is</span><span class="wo-tile">?</span><span class="wo-tile">your</span></div><span class="wo-ans">— Billie Eilish.</span></div>
+      <div class="wo-line"><span class="num">5.</span><div class="wo-q" id="wo-w2-5" data-answer="Where are they from ?"><span class="wo-tile">they</span><span class="wo-tile">?</span><span class="wo-tile">from</span><span class="wo-tile">are</span><span class="wo-tile">Where</span></div><span class="wo-ans">— They’re from Brazil. They’re Brazilian.</span></div>
+      <div class="wo-line"><span class="num">6.</span><div class="wo-q" id="wo-w2-6" data-answer="Why is she your favourite athlete ?"><span class="wo-tile">your</span><span class="wo-tile">is</span><span class="wo-tile">athlete</span><span class="wo-tile">Why</span><span class="wo-tile">favourite</span><span class="wo-tile">?</span><span class="wo-tile">she</span></div><span class="wo-ans">— Because she’s really fast!</span></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWordOrder('ex-wo-w2')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWordOrder('ex-wo-w2')">Try again</button>
+      </div>
+      <div class="tip class-note"><span class="tip-title">In class: interview your teacher</span>Ask your teacher questions 1–4 (<i>What’s your name? How old are you? …</i>). Your teacher answers — and asks you too!</div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · make the question</div>
+        Prepares SB p. 16 <b>Exercise 3</b> (<i>Write the questions</i>). If he hesitates, point at the rule from Lesson 9: <b>question word + be + subject</b> (<i>Where <u>is</u> <u>he</u> from?</i>). In the interview, answer with a short form and a bit extra, so he hears a model: <i>I’m from … . It’s a beautiful city.</i> (this phrase comes back in Exercise 4).
+      </div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-meet');window.scrollTo(0,0)">Next: Nice to meet you! →</button>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PART 2: Student's Book p. 16 (Teacher's Book T16)
+══════════════════════════════════════════════════════════ -->
+<div class="lesson-part" id="part-meet">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#m1">1 · Football stars</a>
+    <a href="#m2">2 · Read &amp; listen</a>
+    <a href="#m3">3 · True or false?</a>
+    <a href="#m4">4 · The questions</a>
+    <a href="#m5">5 · Getting to know someone</a>
+    <a href="#m6">6 · Your dialogue</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="m1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Warmer · Speaking</div>
+        <h2>Football stars</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-fb">
+      <div class="exercise-label">Who is this?</div>
+      <h3>Look at the photos. Who is this? Choose the name. Then choose the nationality.</h3>
+      <p class="ru-hint" lang="ru">Сначала скажи вслух: <i lang="en">This is … . He’s / She’s …</i> — потом выбирай.</p>
+      <div class="fb-grid">
+        <div class="fb-card">
+          <img src="images/sport/messi.jpg" alt="A footballer in a blue and white shirt">
+          <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="fb-1" value="a"><span class="mc-bullet">A</span> Lionel Messi</label><label class="mc-option"><input type="radio" name="fb-1" value="b"><span class="mc-bullet">B</span> Cristiano Ronaldo</label><label class="mc-option"><input type="radio" name="fb-1" value="c"><span class="mc-bullet">C</span> Jamal Musiala</label></div>
+          <p class="gap-line">He’s <span class="word-choice" id="fb-n1" data-answer="Argentinian"><button class="word-choice-btn" onclick="selectWord(this)">Argentina</button><button class="word-choice-btn" onclick="selectWord(this)">Argentinian</button></span>.</p>
+          <span class="credit">Photo: Bryan Berlin, <a href="https://commons.wikimedia.org/wiki/File:Leo_Messi_Argentina_v_Egypt_7_July_2026-1.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></span>
+        </div>
+        <div class="fb-card">
+          <img src="images/sport/ronaldo.jpg" alt="A footballer with number 7">
+          <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="fb-2" value="a"><span class="mc-bullet">A</span> Erling Haaland</label><label class="mc-option"><input type="radio" name="fb-2" value="b"><span class="mc-bullet">B</span> Cristiano Ronaldo</label><label class="mc-option"><input type="radio" name="fb-2" value="c"><span class="mc-bullet">C</span> Kylian Mbappé</label></div>
+          <p class="gap-line">He’s <span class="word-choice" id="fb-n2" data-answer="Portuguese"><button class="word-choice-btn" onclick="selectWord(this)">Portuguese</button><button class="word-choice-btn" onclick="selectWord(this)">Portugal</button></span>.</p>
+          <span class="credit">Photo: Bryan Berlin, <a href="https://commons.wikimedia.org/wiki/File:Cristiano_Ronaldo_Croatia_v_Portugal_2_July_2026-075_(cropped).jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></span>
+        </div>
+        <div class="fb-card">
+          <img src="images/sport/mbappe.jpg" alt="A footballer in a dark blue shirt with number 10">
+          <div class="mc-options" data-correct="c"><label class="mc-option"><input type="radio" name="fb-3" value="a"><span class="mc-bullet">A</span> Lionel Messi</label><label class="mc-option"><input type="radio" name="fb-3" value="b"><span class="mc-bullet">B</span> Jamal Musiala</label><label class="mc-option"><input type="radio" name="fb-3" value="c"><span class="mc-bullet">C</span> Kylian Mbappé</label></div>
+          <p class="gap-line">He’s <span class="word-choice" id="fb-n3" data-answer="French"><button class="word-choice-btn" onclick="selectWord(this)">France</button><button class="word-choice-btn" onclick="selectWord(this)">French</button></span>.</p>
+          <span class="credit">Photo: Bryan Berlin, <a href="https://commons.wikimedia.org/wiki/File:Kylian_Mbappe_France_v_Senegal_16_June_2026-391_(cropped).jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></span>
+        </div>
+        <div class="fb-card">
+          <img src="images/sport/haaland.jpg" alt="A tall footballer in a white shirt with number 9">
+          <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="fb-4" value="a"><span class="mc-bullet">A</span> Erling Haaland</label><label class="mc-option"><input type="radio" name="fb-4" value="b"><span class="mc-bullet">B</span> Kylian Mbappé</label><label class="mc-option"><input type="radio" name="fb-4" value="c"><span class="mc-bullet">C</span> Cristiano Ronaldo</label></div>
+          <p class="gap-line">He’s <span class="word-choice" id="fb-n4" data-answer="Norwegian"><button class="word-choice-btn" onclick="selectWord(this)">Norwegian</button><button class="word-choice-btn" onclick="selectWord(this)">Norway</button></span>.</p>
+          <span class="credit">Photo: Bryan Berlin, <a href="https://commons.wikimedia.org/wiki/File:Erling_Haaland_Morocco_v_Norway_7_June_2026-51.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></span>
+        </div>
+        <div class="fb-card">
+          <img src="images/sport/putellas.jpg" alt="A woman with long brown hair">
+          <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="fb-5" value="a"><span class="mc-bullet">A</span> Sofia Kenin</label><label class="mc-option"><input type="radio" name="fb-5" value="b"><span class="mc-bullet">B</span> Alexia Putellas</label><label class="mc-option"><input type="radio" name="fb-5" value="c"><span class="mc-bullet">C</span> Ariana Grande</label></div>
+          <p class="gap-line">She’s <span class="word-choice" id="fb-n5" data-answer="Spanish"><button class="word-choice-btn" onclick="selectWord(this)">Spain</button><button class="word-choice-btn" onclick="selectWord(this)">Spanish</button></span>.</p>
+          <span class="credit">Photo: Pedro J Pacheco, <a href="https://commons.wikimedia.org/wiki/File:Premios_Goya_2026_-_Alexia_Putellas_(cropped).jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></span>
+        </div>
+        <div class="fb-card">
+          <img src="images/sport/musiala.jpg" alt="A young footballer in a dark green shirt with number 10">
+          <div class="mc-options" data-correct="c"><label class="mc-option"><input type="radio" name="fb-6" value="a"><span class="mc-bullet">A</span> Erling Haaland</label><label class="mc-option"><input type="radio" name="fb-6" value="b"><span class="mc-bullet">B</span> Lionel Messi</label><label class="mc-option"><input type="radio" name="fb-6" value="c"><span class="mc-bullet">C</span> Jamal Musiala</label></div>
+          <p class="gap-line">He’s <span class="word-choice" id="fb-n6" data-answer="German"><button class="word-choice-btn" onclick="selectWord(this)">German</button><button class="word-choice-btn" onclick="selectWord(this)">Germany</button></span>.</p>
+          <span class="credit">Photo: Bryan Berlin, <a href="https://commons.wikimedia.org/wiki/File:Jamal_Musiala_Ecuador_v_Germany_25_June_2026-174_(cropped).jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></span>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-fb');checkWords('ex-fb')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-fb');resetWords('ex-fb')">Try again</button>
+      </div>
+      <div class="tip">After <i>He’s / She’s</i> we use the <b>nationality</b>: <span class="key">He’s French.</span> After <i>from</i> we use the <b>country</b>: <span class="key">He’s from France.</span></div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Talk about football</div>
+      <h3>Answer the questions. Write short notes, then talk with your teacher.</h3>
+      <div class="tip"><span class="tip-title">New word: fan</span>A <b>fan</b> loves a team, a singer or a sport very much: <span class="key">I’m a Bayern Munich fan.</span> <span class="key">I’m an Ariana Grande fan.</span> <span lang="ru">(фанат, болельщик)</span> <button class="say" data-say="fan">fan</button></div>
+      <ol style="margin:10px 0 8px 22px;line-height:1.9;font-size:18px">
+        <li>Who is your favourite football player? Where is he / she from?</li>
+        <li>What is your favourite football team? Are you a fan?</li>
+        <li>Who knows more about football — boys or girls? Why?</li>
+      </ol>
+      <textarea class="free-write" id="fw-m1" placeholder="1. My favourite player is … . He’s / She’s …&#10;2. My favourite team is … . I’m a … fan.&#10;3. I think … know more about football, because …" rows="5"></textarea>
+      <div class="char-count" id="cc-fw-m1">0 characters</div>
+      <div class="tip class-note"><span class="tip-title">In class: who is it?</span>Think of a famous player. Your teacher asks: <i>Is he Spanish? Is he a goalkeeper? Is he 20?</i> Answer <i>Yes, he is. / No, he isn’t.</i> Then swap!</div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Warmer (Teacher’s Book T16)</div>
+        <b>Teacher’s Book:</b> <i>Ask students questions about football. You could show them photos of famous players and ask: Who is this? What is your favourite football team? Who knows more about football – boys or girls? Divide the class into pairs to discuss their answers. Listen to some of their ideas in open class.</i>
+        <ul>
+          <li>One-to-one: you are his partner. Do the photos first (he says <i>This is Messi. He’s Argentinian.</i>), then the three questions. Give your own answers too.</li>
+          <li>Pre-teach <b>fan</b> here — the Teacher’s Book checks it in Exercise 1 (<i>I’m an Ariana Grande fan</i>), so this saves time later.</li>
+          <li>Answers: 1 Messi – Argentinian · 2 Ronaldo – Portuguese · 3 Mbappé – French · 4 Haaland – Norwegian · 5 Alexia Putellas (Barcelona, two-time Ballon d’Or winner) – Spanish · 6 Jamal Musiala (Bayern Munich) – German.</li>
+          <li>New nationalities (not in Unit 1): <i>Argentinian, Portuguese, French, Norwegian, German</i> — let him notice the endings <i>-ian / -ese / -ish</i> from Lesson 8.</li>
+          <li><i>Is he …? Yes, he is.</i> previews the next lesson (to be: questions and short answers, SB p. 17). Keep it light, no grammar explanation yet.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="m2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Reading &amp; listening · Student’s Book p. 16 · 1.06</div>
+        <h2>Who knows more about music?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-m2">
+      <div class="exercise-label">Exercise 1 · 1.06</div>
+      <h3>Look at the picture. Don’t read yet — listen first!</h3>
+      <div class="rd-grid">
+        <img src="images/unit1/p16-steve-camila.jpg" alt="Steve in an orange hoodie and Camila in an Ariana Grande T-shirt">
+        <div>
+          <div class="audio-wrap">
+            <audio controls preload="metadata">
+              <source src="audio/lesson-10-1-06.m4a" type="audio/mp4">
+              Your browser does not support audio.
+            </audio>
+          </div>
+          <div class="mc-question"><p class="gap-line"><span class="num">1.</span> Which singer is on the girl’s T-shirt?</p>
+            <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="m2-1" value="a"><span class="mc-bullet">A</span> Taylor Swift</label><label class="mc-option"><input type="radio" name="m2-1" value="b"><span class="mc-bullet">B</span> Ariana Grande</label><label class="mc-option"><input type="radio" name="m2-1" value="c"><span class="mc-bullet">C</span> Billie Eilish</label></div></div>
+          <div class="mc-question"><p class="gap-line"><span class="num">2.</span> Who knows more about music, Steve or Camila?</p>
+            <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="m2-2" value="a"><span class="mc-bullet">A</span> Steve</label><label class="mc-option"><input type="radio" name="m2-2" value="b"><span class="mc-bullet">B</span> Camila</label></div></div>
+        </div>
+      </div>
+      <p class="ru-hint" lang="ru">Не страшно, если понятны не все слова. Слушай только ответы на два вопроса.</p>
+      <details class="cover">
+        <summary>📖 Now read and listen again</summary>
+        <div class="dialogue">
+          <span class="dl-name">Steve</span><p class="dl-text">Nice T-shirt.</p>
+          <span class="dl-name two">Camila</span><p class="dl-text">Thank you. It’s Ariana Grande.</p>
+          <span class="dl-name">Steve</span><p class="dl-text">I know. I’m an Ariana Grande fan, too. So, what’s your name?</p>
+          <span class="dl-name two">Camila</span><p class="dl-text">Camila. And what’s your name?</p>
+          <span class="dl-name">Steve</span><p class="dl-text">I’m Steve.</p>
+          <span class="dl-name two">Camila</span><p class="dl-text">Nice to meet you, Steve.</p>
+          <span class="dl-name">Steve</span><p class="dl-text">Nice to meet you, too, Camila. Where are you from?</p>
+          <span class="dl-name two">Camila</span><p class="dl-text">I’m from Spain. I’m from a small town called Teruel.</p>
+          <span class="dl-name">Steve</span><p class="dl-text">Spain is a beautiful country.</p>
+          <span class="dl-name two">Camila</span><p class="dl-text">Yes, it is. Who’s your favourite singer?</p>
+          <span class="dl-name">Steve</span><p class="dl-text">Umm … er … well, it’s that British guy, Shawn Mendes.</p>
+          <span class="dl-name two">Camila</span><p class="dl-text">Shawn Mendes?</p>
+          <span class="dl-name">Steve</span><p class="dl-text">Yes, he’s great.</p>
+          <span class="dl-name two">Camila</span><p class="dl-text">Yes, he is. But he isn’t a British singer.</p>
+          <span class="dl-name">Steve</span><p class="dl-text">No?</p>
+          <span class="dl-name two">Camila</span><p class="dl-text">No! He’s from Canada!</p>
+          <span class="dl-name">Steve</span><p class="dl-text">Oh!</p>
+          <span class="dl-name two">Camila</span><p class="dl-text">I need to go now. Bye, Steve.</p>
+          <span class="dl-name">Steve</span><p class="dl-text">Oh, OK! Bye!</p>
+        </div>
+      </details>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-m2')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-m2')">Try again</button>
+      </div>
+      <div class="tip"><span class="tip-title">Useful words</span><b>a small town</b> (маленький город) · <b>that British guy</b> = that British man · <b>I need to go now</b> = I must go now. <i>Umm … er … well</i> — Steve doesn’t know!</div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Exercise 1 (1.06)</div>
+        <b>Teacher’s Book:</b> <i>Check/clarify: fan. Tell students to cover the dialogue and ask “Which singer is on the girl’s T-shirt?” (Ariana Grande). Tell students not to focus on understanding every word for now, but to focus on listening for the answer.</i> Answer to the book question: <b>Camila</b>.
+        <ul>
+          <li>The dialogue is folded away on purpose (= “cover the dialogue”). First listening: picture + audio only. Second listening: he opens “Now read and listen again”.</li>
+          <li>Ask <i>Why Camila?</i> → Steve thinks Shawn Mendes is British; Camila knows he’s from Canada.</li>
+          <li>Ask him to find <b>three questions</b> in the dialogue (→ Exercise 3) and the phrase <i>Nice to meet you, too</i> (→ Exercise 4).</li>
+        </ul>
+        <b>Culture notes:</b> <b>Ariana Grande</b> — American singer-songwriter and actress, born 1993; famous from the TV series <i>Victorious</i> (Cat Valentine); first album <i>Yours Truly</i> (2013) went to number one. <b>Shawn Mendes</b> — Canadian singer-songwriter, born 1998; started by posting song covers online in 2013; album <i>Handwritten</i> (2015) went to number one before he was 18.
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="m3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Reading · Student’s Book p. 16</div>
+        <h2>True or false?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-m3">
+      <div class="exercise-label">Exercise 2</div>
+      <h3>Read the dialogue again. Mark the sentences T (true) or F (false). Then write the correct sentences.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>0. Steve is a Taylor Swift fan. <b>F</b> → <i>Steve is an Ariana Grande fan.</i></span></div>
+      <div class="tf-row"><span><span class="num">1.</span> Camila is Spanish.</span><span class="word-choice" id="m3-1" data-answer="T"><button class="word-choice-btn" onclick="selectWord(this)">T</button><button class="word-choice-btn" onclick="selectWord(this)">F</button></span></div>
+      <div class="tf-row"><span><span class="num">2.</span> Camila is from a big town.</span><span class="word-choice" id="m3-2" data-answer="F"><button class="word-choice-btn" onclick="selectWord(this)">T</button><button class="word-choice-btn" onclick="selectWord(this)">F</button></span></div>
+      <div class="tf-row"><span><span class="num">3.</span> Shawn Mendes is a singer.</span><span class="word-choice" id="m3-3" data-answer="T"><button class="word-choice-btn" onclick="selectWord(this)">T</button><button class="word-choice-btn" onclick="selectWord(this)">F</button></span></div>
+      <div class="tf-row"><span><span class="num">4.</span> Shawn Mendes is from the UK.</span><span class="word-choice" id="m3-4" data-answer="F"><button class="word-choice-btn" onclick="selectWord(this)">T</button><button class="word-choice-btn" onclick="selectWord(this)">F</button></span></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-m3')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-m3')">Try again</button>
+      </div>
+      <h3 style="margin-top:16px">Now write the correct sentences for the false ones.</h3>
+      <textarea class="free-write" id="fw-m3" placeholder="Camila is from … .&#10;Shawn Mendes is from … ." rows="3"></textarea>
+      <div class="char-count" id="cc-fw-m3">0 characters</div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Exercise 2</div>
+        <b>Teacher’s Book:</b> <i>Tell students to underline key information in the dialogue that helped them answer each question.</i> Ask him to show you the line for each answer.
+        <br><b>Answers:</b> 1 T · 2 F <i>Camila is from a small town.</i> · 3 T · 4 F <i>Shawn Mendes is from Canada.</i>
+        <br>Extra: <i>Is Teruel a city or a town? Is Steve British?</i> (we don’t know!)
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="m4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Writing · Student’s Book p. 16</div>
+        <h2>Write the questions</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-m4">
+      <div class="exercise-label">Exercise 3</div>
+      <h3>Write the questions from the dialogue.</h3>
+      <p class="gap-line"><span class="num">1.</span> Q: <input class="blank" id="m4-1" data-answer="What’s your name?|What's your name?|What is your name?|What’s your name|What's your name|What is your name|So, what’s your name?|So, what's your name?|And what’s your name?|And what's your name?" placeholder="?" autocomplete="off" spellcheck="false" style="width:280px;min-width:0"><br><span style="margin-left:28px">A: I’m Steve.</span></p>
+      <p class="gap-line"><span class="num">2.</span> Q: <input class="blank" id="m4-2" data-answer="Where are you from?|Where are you from" placeholder="?" autocomplete="off" spellcheck="false" style="width:280px;min-width:0"><br><span style="margin-left:28px">A: I’m from a small town called Teruel.</span></p>
+      <p class="gap-line"><span class="num">3.</span> Q: <input class="blank" id="m4-3" data-answer="Who’s your favourite singer?|Who's your favourite singer?|Who is your favourite singer?|Who’s your favourite singer|Who's your favourite singer|Who is your favourite singer" placeholder="?" autocomplete="off" spellcheck="false" style="width:280px;min-width:0"><br><span style="margin-left:28px">A: Shawn Mendes.</span></p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-m4')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-m4')">Try again</button>
+      </div>
+      <div class="tip">Don’t forget the question mark <b>?</b> — and say the questions with your voice going <b>down</b> at the end: <button class="say sentence" data-say="Where are you from?">Where are you from?</button></div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Exercise 3</div>
+        <b>Teacher’s Book:</b> <i>If necessary, tell students to look back at the dialogue to help them.</i>
+        <br><b>Answers:</b> 1 What’s your name? · 2 Where are you from? · 3 Who’s your favourite singer?
+        <br>Wh-questions have <b>falling</b> intonation — Russian speakers often rise at the end. Model it, then he repeats.
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="m5">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Functions · Getting to know someone · 1.07</div>
+        <h2>Put the dialogue in order</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-m5">
+      <div class="exercise-label">Exercise 4 · 1.07</div>
+      <h3>Put the dialogue in order. Write 1–9. Then listen and check.</h3>
+      <div class="rd-grid" style="grid-template-columns:1fr minmax(0,300px)">
+        <div class="ord-dlg">
+          <input class="blank" id="m5-1" data-answer="5" inputmode="numeric" placeholder="?" autocomplete="off"><span class="dl-name">Anna</span><span>Nice to meet you, too.</span>
+          <input class="blank" id="m5-2" data-answer="7" inputmode="numeric" placeholder="?" autocomplete="off"><span class="dl-name">Anna</span><span>I’m from Rome.</span>
+          <input class="blank" id="m5-3" data-answer="9" inputmode="numeric" placeholder="?" autocomplete="off"><span class="dl-name">Anna</span><span>Yes, it is.</span>
+          <input class="blank" id="m5-4" data-answer="3" inputmode="numeric" placeholder="?" autocomplete="off"><span class="dl-name">Anna</span><span>I’m Anna.</span>
+          <span class="given">1</span><span class="dl-name">Anna</span><span>What’s your name?</span>
+          <input class="blank" id="m5-6" data-answer="4" inputmode="numeric" placeholder="?" autocomplete="off"><span class="dl-name two">Manuel</span><span>Nice to meet you, Anna.</span>
+          <input class="blank" id="m5-7" data-answer="6" inputmode="numeric" placeholder="?" autocomplete="off"><span class="dl-name two">Manuel</span><span>Where are you from, Anna?</span>
+          <input class="blank" id="m5-8" data-answer="8" inputmode="numeric" placeholder="?" autocomplete="off"><span class="dl-name two">Manuel</span><span>Rome is a beautiful city.</span>
+          <input class="blank" id="m5-9" data-answer="2" inputmode="numeric" placeholder="?" autocomplete="off"><span class="dl-name two">Manuel</span><span>I’m Manuel. And you?</span>
+        </div>
+        <img src="images/unit1/p16-rome.jpg" alt="The Colosseum in Rome" style="width:100%;border-radius:14px">
+      </div>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-10-1-07.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-m5')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-m5')">Try again</button>
+      </div>
+      <div class="tip rule"><span class="tip-title">Getting to know someone</span>
+        <span class="key">What’s your name?</span> → <i>I’m Anna. / My name’s Anna.</i><br>
+        <span class="key">Nice to meet you.</span> → <i>Nice to meet you, too.</i><br>
+        <span class="key">Where are you from?</span> → <i>I’m from Rome.</i> → <i>Rome is a beautiful city.</i> → <i>Yes, it is.</i>
+      </div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Exercise 4 (1.07)</div>
+        <b>Teacher’s Book:</b> <i>Elicit things people might say to each other when they meet for the first time.</i> Before he starts, ask: <i>What do you say when you meet a new person?</i> (Hi / What’s your name? / Nice to meet you / Where are you from?…)
+        <br><b>Answers</b> (in the order printed): 5, 7, 9, 3, 1, 4, 6, 8, 2 → <i>What’s your name? – I’m Manuel. And you? – I’m Anna. – Nice to meet you, Anna. – Nice to meet you, too. – Where are you from, Anna? – I’m from Rome. – Rome is a beautiful city. – Yes, it is.</i>
+        <br>Point out <b>too</b> at the end (<i>Nice to meet you, too</i>) and <i>And you?</i> — a quick way to return the question.
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="m6">
+    <div class="step-head">
+      <div class="step-num">6</div>
+      <div>
+        <div class="step-meta">Speaking · Student’s Book p. 16</div>
+        <h2>Your dialogue</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Exercise 5 · Speaking</div>
+      <h3>Work in pairs. Act out the dialogue.</h3>
+      <p>First you are <b>Manuel</b> and your teacher is <b>Anna</b>. Then swap. Try not to look!</p>
+      <div class="tip class-note"><span class="tip-title">In class: sound interested!</span>Smile and say it like you mean it: <i>Nice to meet <b>you</b>! Rome is a <b>beautiful</b> city!</i></div>
+      <div class="rec"></div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Exercise 5</div>
+        <b>Teacher’s Book:</b> <i>Encourage students to express interest when asking questions and listening to answers. During feedback, check pronunciation and intonation.</i>
+        <br>Do it twice: once reading, once from memory. Check: falling intonation on wh-questions; stress on <i>too</i> in <i>Nice to meet you, <b>too</b></i>; <i>beautiful</i> = /ˈbjuːtɪfl/ (not “bea-u-ti-ful”).
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Exercise 6 · Speaking</div>
+      <h3>Work in pairs. Make your own dialogue.</h3>
+      <p class="ru-hint" lang="ru">Придумай свой диалог знакомства. Можно быть собой — или футболистом из шага 1!</p>
+      <div class="word-bank-ref"><span>What’s your name?</span> <span>I’m … . And you?</span> <span>Nice to meet you.</span> <span>Nice to meet you, too.</span> <span>Where are you from?</span> <span>I’m from … .</span> <span>… is a beautiful city / country.</span> <span>Yes, it is.</span> <span>Who’s your favourite singer / player?</span> <span>I need to go now. Bye!</span></div>
+      <textarea class="free-write" id="fw-m6" placeholder="A: Hi! What’s your name?&#10;B: I’m … . And you?&#10;A: I’m … .&#10;B: Nice to meet you, … .&#10;A: …" rows="8"></textarea>
+      <div class="char-count" id="cc-fw-m6">0 characters</div>
+      <div class="tip class-note"><span class="tip-title">In class: a famous guest</span>Be a famous footballer from Step 1. Your teacher asks the questions. Can your teacher guess who you are?</div>
+      <div class="rec"></div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Exercise 6</div>
+        <b>Teacher’s Book:</b> <i>Give students six to eight minutes to prepare their dialogues. Monitor to make sure all students are on task. Encourage them to use the key language.</i>
+        <br>One-to-one: 4–5 min to write, then act it out with you. Variation: he is Messi / Putellas / Musiala and you interview him (<i>Where are you from? Who’s your favourite player?</i>) — keeps the football theme from the warmer and recycles nationalities. Note mistakes with <i>be</i> for the next lesson.
+      </div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-e');window.scrollTo(0,0)">Next: Read it right e →</button>
+  </div>
+
+</div>
+</div>
+
+
+<!-- copied from Lesson 2 ("e" tab) -->
+<div class="lesson-part" id="part-e">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#f1">1 · Meet</a>
+    <a href="#f2">2 · Hear</a>
+    <a href="#f3">3 · Magic e</a>
+    <a href="#f4">4 · Build</a>
+    <a href="#f5">5 · Riddles</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="teacher-only">
+    <div class="to-label">👩‍🏫 Teacher only · Read it right: e (from Lesson 2)</div>
+    Same tab as in Lesson 2, continuing the order <i>s·a → c·n → o·p</i> (Lesson 9) <b>→ e</b>. Clips: Kokoro <i>af_bella</i> (American English), as in Lesson 2.
+    <ul>
+      <li><b>Steps 1–2:</b> short /e/ vs /æ/ (<i>pen / pan, bed / bad</i>) — open the mouth wider for /æ/. Check the four-vowel listening (<i>pit / pet / pat / pot</i>).</li>
+      <li><b>Step 3 (boss level):</b> magic silent e — <i>tap → tape, not → note</i>. Listen for a pronounced final “-eh” (<i>time</i> as “tee-meh”).</li>
+      <li><b>Steps 4–5:</b> dictation and riddles; if time is short, he finishes them at home.</li>
+      <li>Link to today: <i>tennis, best, Spain, name, Rome</i> — ask which words have a magic e (<i>name, Rome</i>).</li>
+    </ul>
+  </div>
+
+
+  <section class="step" id="f1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Meet the sound</div>
+        <h2>e</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="sound-card">
+        <div class="sound-head">
+          <div class="sound-letter">Ee</div>
+          <div><div class="ipa">/e/</div><div class="sound-name">short e — as in <b>pen</b></div></div>
+        </div>
+        <div class="sound-body">
+          <h4>How to say it</h4>
+          <p>Short, mouth a little open, a small smile. It is the <b>e</b> in German <i>Bett, Hemd, essen</i>.</p>
+          <h4>Listen and repeat</h4>
+          <div class="word-row"><button class="say" data-say="pen">pen</button> <button class="say" data-say="ten">ten</button> <button class="say" data-say="pet">pet</button> <button class="say" data-say="net">net</button> <button class="say" data-say="egg">egg</button> <button class="say" data-say="bed">bed</button> <button class="say" data-say="desk">desk</button> <button class="say" data-say="red">red</button> <button class="say" data-say="left">left</button> <button class="say" data-say="text">text</button> <button class="say" data-say="tennis">tennis</button> <button class="say" data-say="best">best</button></div>
+      <div class="trap"><span class="trap-title">German trap: long “eh”</span>German eyes read <b>e</b> long, like in <i>See, Tee</i>. In a short English word it is short: <button class="say" data-say="pen">pen</button>, <button class="say" data-say="bed">bed</button>, <button class="say" data-say="get">get</button> — not “payn”, “bayd”.</div>
+      <div class="trap"><span class="trap-title">Don’t mix e and a</span><button class="say" data-say="pen">pen</button> or <button class="say" data-say="pan">pan</button>, <button class="say" data-say="ten">ten</button> or <button class="say" data-say="tan">tan</button>, <button class="say" data-say="bed">bed</button> or <button class="say" data-say="bad">bad</button>. For <span class="ipa">/æ/</span> open your mouth much wider.</div>
+      <div class="tip"><b>ee</b> is a different sound — long <span class="ipa">/iː/</span>: <button class="say" data-say="see">see</button> <button class="say" data-say="tree">tree</button> <button class="say" data-say="feet">feet</button>.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="f2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Hear the difference</div>
+        <h2>Four short vowels</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-f-hear">
+      <div class="exercise-label">Listen and choose</div>
+      <h3>Press ▶ and choose the word you hear. Only the vowel is different!</h3>
+      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="pet"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="f-mc1" value="a"><span class="mc-bullet">A</span> pit</label><label class="mc-option"><input type="radio" name="f-mc1" value="b"><span class="mc-bullet">B</span> pet</label><label class="mc-option"><input type="radio" name="f-mc1" value="c"><span class="mc-bullet">C</span> pat</label><label class="mc-option"><input type="radio" name="f-mc1" value="d"><span class="mc-bullet">D</span> pot</label></div></div>
+      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="tap"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="f-mc2" value="a"><span class="mc-bullet">A</span> tip</label><label class="mc-option"><input type="radio" name="f-mc2" value="b"><span class="mc-bullet">B</span> tap</label><label class="mc-option"><input type="radio" name="f-mc2" value="c"><span class="mc-bullet">C</span> top</label></div></div>
+      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="pin"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="f-mc3" value="a"><span class="mc-bullet">A</span> pin</label><label class="mc-option"><input type="radio" name="f-mc3" value="b"><span class="mc-bullet">B</span> pen</label><label class="mc-option"><input type="radio" name="f-mc3" value="c"><span class="mc-bullet">C</span> pan</label></div></div>
+      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="set"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="f-mc4" value="a"><span class="mc-bullet">A</span> sit</label><label class="mc-option"><input type="radio" name="f-mc4" value="b"><span class="mc-bullet">B</span> set</label><label class="mc-option"><input type="radio" name="f-mc4" value="c"><span class="mc-bullet">C</span> sat</label></div></div>
+      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="bad"></button>
+        <div class="mc-options" data-correct="c"><label class="mc-option"><input type="radio" name="f-mc5" value="a"><span class="mc-bullet">A</span> bid</label><label class="mc-option"><input type="radio" name="f-mc5" value="b"><span class="mc-bullet">B</span> bed</label><label class="mc-option"><input type="radio" name="f-mc5" value="c"><span class="mc-bullet">C</span> bad</label></div></div>
+      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="not"></button>
+        <div class="mc-options" data-correct="c"><label class="mc-option"><input type="radio" name="f-mc6" value="a"><span class="mc-bullet">A</span> nit</label><label class="mc-option"><input type="radio" name="f-mc6" value="b"><span class="mc-bullet">B</span> net</label><label class="mc-option"><input type="radio" name="f-mc6" value="c"><span class="mc-bullet">C</span> not</label></div></div>
+      <div class="listen-q"><span class="num">7.</span><button class="say say-big" data-say="pan"></button>
+        <div class="mc-options" data-correct="c"><label class="mc-option"><input type="radio" name="f-mc7" value="a"><span class="mc-bullet">A</span> pin</label><label class="mc-option"><input type="radio" name="f-mc7" value="b"><span class="mc-bullet">B</span> pen</label><label class="mc-option"><input type="radio" name="f-mc7" value="c"><span class="mc-bullet">C</span> pan</label></div></div>
+      <div class="listen-q"><span class="num">8.</span><button class="say say-big" data-say="tip"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="f-mc8" value="a"><span class="mc-bullet">A</span> tip</label><label class="mc-option"><input type="radio" name="f-mc8" value="b"><span class="mc-bullet">B</span> tap</label><label class="mc-option"><input type="radio" name="f-mc8" value="c"><span class="mc-bullet">C</span> top</label></div></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-f-hear')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-f-hear')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="f3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Boss level</div>
+        <h2>The magic silent e</h2>
+      </div>
+    </div>
+    <div class="card">
+      <h3>In German you say every <b>e</b>: <i>Name, Hose, Katze</i>. In English, an <b>e</b> at the end is usually <b>silent</b>…</h3>
+      <p>…but it has a job: it makes the vowel before it say its <b>name</b>. <b>a</b> → “ay”, <b>i</b> → “eye”, <b>o</b> → “oh”, <b>e</b> → “ee”.</p>
+      <div class="blend-list">
+        <div class="blend"><span class="tile">t</span><span class="op">+</span><span class="tile v">a</span><span class="op">+</span><span class="tile">p</span><span class="op">→</span><button class="say" data-say="tap">tap</button></div>
+        <div class="blend"><span class="tile">t</span><span class="op">+</span><span class="tile v">a</span><span class="op">+</span><span class="tile">p</span><span class="op">+</span><span class="tile silent">e</span><span class="op">→</span><button class="say" data-say="tape">tape</button></div>
+        <div class="blend"><span class="tile">p</span><span class="op">+</span><span class="tile v">i</span><span class="op">+</span><span class="tile">n</span><span class="op">→</span><button class="say" data-say="pin">pin</button></div>
+        <div class="blend"><span class="tile">p</span><span class="op">+</span><span class="tile v">i</span><span class="op">+</span><span class="tile">n</span><span class="op">+</span><span class="tile silent">e</span><span class="op">→</span><button class="say" data-say="pine">pine</button></div>
+        <div class="blend"><span class="tile">n</span><span class="op">+</span><span class="tile v">o</span><span class="op">+</span><span class="tile">t</span><span class="op">→</span><button class="say" data-say="not">not</button></div>
+        <div class="blend"><span class="tile">n</span><span class="op">+</span><span class="tile v">o</span><span class="op">+</span><span class="tile">t</span><span class="op">+</span><span class="tile silent">e</span><span class="op">→</span><button class="say" data-say="note">note</button></div>
+      </div>
+      <div class="pairs">
+        <div class="pair"><button class="say" data-say="tap">tap</button><span class="vs">or</span><button class="say" data-say="tape">tape</button></div>
+        <div class="pair"><button class="say" data-say="pin">pin</button><span class="vs">or</span><button class="say" data-say="pine">pine</button></div>
+        <div class="pair"><button class="say" data-say="not">not</button><span class="vs">or</span><button class="say" data-say="note">note</button></div>
+        <div class="pair"><button class="say" data-say="cap">cap</button><span class="vs">or</span><button class="say" data-say="cape">cape</button></div>
+        <div class="pair"><button class="say" data-say="pet">pet</button><span class="vs">or</span><button class="say" data-say="Pete">Pete</button></div>
+        <div class="pair"><button class="say" data-say="sit">sit</button><span class="vs">or</span><button class="say" data-say="site">site</button></div>
+        <div class="pair"><button class="say" data-say="can">can</button><span class="vs">or</span><button class="say" data-say="cane">cane</button></div>
+        <div class="pair"><button class="say" data-say="hop">hop</button><span class="vs">or</span><button class="say" data-say="hope">hope</button></div>
+      </div>
+      <div class="tip">Remember <i>time</i> from the start? t · i · m · e — the <b>i</b> says “eye” and the <b>e</b> is silent: <button class="say" data-say="time">time</button>. Not “tee-meh”!</div>
+    </div>
+    <div class="card" id="ex-f-magic">
+      <div class="exercise-label">Listen and choose</div>
+      <h3>Press ▶ and choose the word you hear.</h3>
+      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="tape"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="f-mg1" value="a"><span class="mc-bullet">A</span> tap</label><label class="mc-option"><input type="radio" name="f-mg1" value="b"><span class="mc-bullet">B</span> tape</label></div></div>
+      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="pin"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="f-mg2" value="a"><span class="mc-bullet">A</span> pin</label><label class="mc-option"><input type="radio" name="f-mg2" value="b"><span class="mc-bullet">B</span> pine</label></div></div>
+      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="note"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="f-mg3" value="a"><span class="mc-bullet">A</span> not</label><label class="mc-option"><input type="radio" name="f-mg3" value="b"><span class="mc-bullet">B</span> note</label></div></div>
+      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="cap"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="f-mg4" value="a"><span class="mc-bullet">A</span> cap</label><label class="mc-option"><input type="radio" name="f-mg4" value="b"><span class="mc-bullet">B</span> cape</label></div></div>
+      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="site"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="f-mg5" value="a"><span class="mc-bullet">A</span> sit</label><label class="mc-option"><input type="radio" name="f-mg5" value="b"><span class="mc-bullet">B</span> site</label></div></div>
+      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="hope"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="f-mg6" value="a"><span class="mc-bullet">A</span> hop</label><label class="mc-option"><input type="radio" name="f-mg6" value="b"><span class="mc-bullet">B</span> hope</label></div></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-f-magic')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-f-magic')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="f4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Build words</div>
+        <h2>Blend the sounds</h2>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Say each sound, then push them together. Check with 🔊.</h3>
+      <div class="blend-list">
+        <div class="blend"><span class="tile">p</span><span class="op">+</span><span class="tile v">e</span><span class="op">+</span><span class="tile">n</span><span class="op">→</span><button class="say" data-say="pen">pen</button></div>
+        <div class="blend"><span class="tile">t</span><span class="op">+</span><span class="tile v">e</span><span class="op">+</span><span class="tile">n</span><span class="op">→</span><button class="say" data-say="ten">ten</button></div>
+        <div class="blend"><span class="tile">t</span><span class="op">+</span><span class="tile v">e</span><span class="op">+</span><span class="tile">n</span><span class="op">+</span><span class="tile">t</span><span class="op">→</span><button class="say" data-say="tent">tent</button></div>
+        <div class="blend"><span class="tile">n</span><span class="op">+</span><span class="tile v">e</span><span class="op">+</span><span class="tile">s</span><span class="op">+</span><span class="tile">t</span><span class="op">→</span><button class="say" data-say="nest">nest</button></div>
+        <div class="blend"><span class="tile">s</span><span class="op">+</span><span class="tile">t</span><span class="op">+</span><span class="tile v">e</span><span class="op">+</span><span class="tile">p</span><span class="op">→</span><button class="say" data-say="step">step</button></div>
+        <div class="blend"><span class="tile">s</span><span class="op">+</span><span class="tile">p</span><span class="op">+</span><span class="tile v">e</span><span class="op">+</span><span class="tile">n</span><span class="op">+</span><span class="tile">t</span><span class="op">→</span><button class="say" data-say="spent">spent</button></div>
+      </div>
+    </div>
+    <div class="card" id="ex-f-dict">
+      <div class="exercise-label">Dictation</div>
+      <h3>Listen and write the word. Two of them have a magic e!</h3>
+      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="pen"></button><input class="blank" id="f-d1" data-answer="pen" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="ten"></button><input class="blank" id="f-d2" data-answer="ten" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="nest"></button><input class="blank" id="f-d3" data-answer="nest" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="step"></button><input class="blank" id="f-d4" data-answer="step" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="tape"></button><input class="blank" id="f-d5" data-answer="tape" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="note"></button><input class="blank" id="f-d6" data-answer="note" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">7.</span><button class="say say-big" data-say="spent"></button><input class="blank" id="f-d7" data-answer="spent" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">8.</span><button class="say say-big" data-say="pet"></button><input class="blank" id="f-d8" data-answer="pet" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-f-dict')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-f-dict')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="f5">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Read and play</div>
+        <h2>What is it?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-f-riddle">
+      <div class="exercise-label">Riddles</div>
+      <h3>Read each riddle <b>aloud</b> first. Then guess. Check your reading with 🔊.</h3>
+      <div class="riddle">
+        <p class="read-text"><b>1.</b> Is it a cat? No, it is not a cat. You can sit in it. You can nap in it. You can set it up at a campsite.</p>
+        <button class="say" data-say="Is it a cat? No, it is not a cat. You can sit in it. You can nap in it. You can set it up at a campsite." data-file="l02-riddle-1">Listen</button>
+        <div class="mc-options" data-correct="a" style="flex-direction:row;flex-wrap:wrap"><label class="mc-option"><input type="radio" name="f-rd1" value="a"><span class="mc-bullet">A</span> a tent</label><label class="mc-option"><input type="radio" name="f-rd1" value="b"><span class="mc-bullet">B</span> a pan</label><label class="mc-option"><input type="radio" name="f-rd1" value="c"><span class="mc-bullet">C</span> a pet</label></div>
+      </div>
+      <div class="riddle">
+        <p class="read-text"><b>2.</b> It is not an ant. It is not a pot. It is thin. It has ink in it. You can tap it on a desk.</p>
+        <button class="say" data-say="It is not an ant. It is not a pot. It is thin. It has ink in it. You can tap it on a desk." data-file="l02-riddle-2">Listen</button>
+        <div class="mc-options" data-correct="b" style="flex-direction:row;flex-wrap:wrap"><label class="mc-option"><input type="radio" name="f-rd2" value="a"><span class="mc-bullet">A</span> a net</label><label class="mc-option"><input type="radio" name="f-rd2" value="b"><span class="mc-bullet">B</span> a pen</label><label class="mc-option"><input type="radio" name="f-rd2" value="c"><span class="mc-bullet">C</span> a top</label></div>
+      </div>
+      <div class="riddle">
+        <p class="read-text"><b>3.</b> It is not a cat. It is not a pen. It can spin and spin and spin… and then it stops.</p>
+        <button class="say" data-say="It is not a cat. It is not a pen. It can spin and spin and spin… and then it stops." data-file="l02-riddle-3">Listen</button>
+        <div class="mc-options" data-correct="a" style="flex-direction:row;flex-wrap:wrap"><label class="mc-option"><input type="radio" name="f-rd3" value="a"><span class="mc-bullet">A</span> a top</label><label class="mc-option"><input type="radio" name="f-rd3" value="b"><span class="mc-bullet">B</span> a tent</label><label class="mc-option"><input type="radio" name="f-rd3" value="c"><span class="mc-bullet">C</span> an egg</label></div>
+      </div>
+      <div class="riddle">
+        <p class="read-text"><b>4.</b> It is not six. It is not a pet. It is five plus five.</p>
+        <button class="say" data-say="It is not six. It is not a pet. It is five plus five." data-file="l02-riddle-4">Listen</button>
+        <div class="mc-options" data-correct="a" style="flex-direction:row;flex-wrap:wrap"><label class="mc-option"><input type="radio" name="f-rd4" value="a"><span class="mc-bullet">A</span> ten</label><label class="mc-option"><input type="radio" name="f-rd4" value="b"><span class="mc-bullet">B</span> ant</label><label class="mc-option"><input type="radio" name="f-rd4" value="c"><span class="mc-bullet">C</span> pin</label></div>
+      </div>
+      <div class="riddle">
+        <p class="read-text"><b>5.</b> You can see it in tennis. It is not a cap. It has lots of big holes in it.</p>
+        <button class="say" data-say="You can see it in tennis. It is not a cap. It has lots of big holes in it." data-file="l02-riddle-5">Listen</button>
+        <div class="mc-options" data-correct="b" style="flex-direction:row;flex-wrap:wrap"><label class="mc-option"><input type="radio" name="f-rd5" value="a"><span class="mc-bullet">A</span> a nest</label><label class="mc-option"><input type="radio" name="f-rd5" value="b"><span class="mc-bullet">B</span> a net</label><label class="mc-option"><input type="radio" name="f-rd5" value="c"><span class="mc-bullet">C</span> a pot</label></div>
+      </div>
+      <div class="riddle">
+        <p class="read-text"><b>6.</b> A cat, a dog, a rabbit: each one can be a…</p>
+        <button class="say" data-say="A cat, a dog, a rabbit: each one can be a…" data-file="l02-riddle-6">Listen</button>
+        <div class="mc-options" data-correct="a" style="flex-direction:row;flex-wrap:wrap"><label class="mc-option"><input type="radio" name="f-rd6" value="a"><span class="mc-bullet">A</span> pet</label><label class="mc-option"><input type="radio" name="f-rd6" value="b"><span class="mc-bullet">B</span> pen</label><label class="mc-option"><input type="radio" name="f-rd6" value="c"><span class="mc-bullet">C</span> pan</label></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-f-riddle')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-f-riddle')">Try again</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Writing</div>
+      <h3>Your turn! Write a riddle for your teacher. Use: <i>It is not a… · It can… · You can… · It has…</i></h3>
+      <textarea class="free-write" id="fw-f-riddle" placeholder="It is not a…" rows="4"></textarea>
+      <div class="char-count" id="cc-fw-f-riddle">0 characters</div>
+      <p><b>Record yourself</b> reading your riddle. Can your teacher guess it?</p>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-homework');window.scrollTo(0,0)">Go to homework →</button>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     HOMEWORK: Workbook p. 14 (reading: favourite athletes) + Итог
+══════════════════════════════════════════════════════════ -->
+<div class="lesson-part" id="part-homework">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#r1">1 · Watch and rap</a>
+    <a href="#r2">2 · Question words</a>
+    <a href="#r3">3 · Right or wrong?</a>
+    <a href="#r4">4 · Fiona and Penny</a>
+    <a href="#h1">5 · Read</a>
+    <a href="#h2">6 · Where from?</a>
+    <a href="#h3">7 · True or false?</a>
+    <a href="#h4">8 · My favourite athlete</a>
+    <a href="#h5">9 · Итог</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="r1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Homework · Task 1 · Grammar rap (Unit 1 video)</div>
+        <h2>Watch and rap</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label hw">Video · Grammar rap</div>
+      <h3>Watch the video. Stop when the rap ends (before the grammar part).</h3>
+      <div class="video-wrap">
+        <video controls preload="metadata" playsinline>
+          <source src="video/unit-01-grammar-rap.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="card" id="ex-rp2">
+      <div class="exercise-label hw">Exercise 2</div>
+      <h3>Watch the video and choose the correct answer. How many questions does the boy ask?</h3>
+      <div class="mc-options" data-correct="b" style="flex-direction:row;flex-wrap:wrap"><label class="mc-option"><input type="radio" name="rp2" value="a"><span class="mc-bullet">1</span> Five.</label><label class="mc-option"><input type="radio" name="rp2" value="b"><span class="mc-bullet">2</span> Six.</label><label class="mc-option"><input type="radio" name="rp2" value="c"><span class="mc-bullet">3</span> Seven.</label></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-rp2')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-rp2')">Try again</button>
+      </div>
+    </div>
+    <div class="card" id="ex-rp3">
+      <div class="exercise-label hw">Exercise 3</div>
+      <h3>Watch the video again. Complete the rap with the words in the list.</h3>
+      <div class="word-bank-ref"><span>How</span> <span class="crossed">What</span> <span>Where</span> <span>Where</span> <span>Who</span> <span>Why</span></div>
+      <div class="dialogue">
+        <span class="dl-name">Boy</span><p class="dl-text"><b>What</b>’s your name?</p>
+        <span class="dl-name two">Girl</span><p class="dl-text">My name’s Alicia.</p>
+        <span class="dl-name">Boy</span><p class="dl-text ask"><sup>1</sup> <input class="blank" id="rp3-1" data-answer="Where" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px;min-width:0"> are you from?</p>
+        <span class="dl-name two">Girl</span><p class="dl-text">From Galicia.</p>
+        <span class="dl-name">Boy</span><p class="dl-text ask"><sup>2</sup> <input class="blank" id="rp3-2" data-answer="Where" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px;min-width:0"> is that?</p>
+        <span class="dl-name two">Girl</span><p class="dl-text">It’s in Spain.</p>
+        <span class="dl-name">Boy</span><p class="dl-text ask"><sup>3</sup> <input class="blank" id="rp3-3" data-answer="How" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px;min-width:0"> old are you?</p>
+        <span class="dl-name two">Girl</span><p class="dl-text">I’m ten plus two.</p>
+        <span class="dl-name">Boy</span><p class="dl-text ask"><sup>4</sup> <input class="blank" id="rp3-4" data-answer="Who" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px;min-width:0">’s your best friend?</p>
+        <span class="dl-name two">Girl</span><p class="dl-text">I’ve got two, not one.</p>
+        <span class="dl-name">Boy</span><p class="dl-text ask"><sup>5</sup> <input class="blank" id="rp3-5" data-answer="Why" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px;min-width:0"> is that?</p>
+        <span class="dl-name two">Girl</span><p class="dl-text">They’re both fun!</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-rp3')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-rp3')">Try again</button>
+      </div>
+      <p style="margin-top:10px"><b>Rap along!</b> Play the video again, turn the sound off and rap the boy’s part — or both parts. Record yourself.</p>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+  <section class="step" id="r2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Homework · Task 2 · Grammar</div>
+        <h2>Question words</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-rp4">
+      <div class="exercise-label hw">Exercise 4</div>
+      <h3>Watch the grammar part of the video. Answer the questions.</h3>
+      <p class="gap-line"><b>1.</b> Which words do we use to make questions?</p>
+      <p class="gap-line">
+        <input class="blank" id="rp4-1" data-answer="How" placeholder="H…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:100px;min-width:0">
+        <input class="blank" id="rp4-2" data-answer="What|Where|Who|Why" placeholder="W…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:100px;min-width:0">
+        <input class="blank" id="rp4-3" data-answer="What|Where|Who|Why" placeholder="W…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:100px;min-width:0">
+        <input class="blank" id="rp4-4" data-answer="What|Where|Who|Why" placeholder="W…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:100px;min-width:0">
+        <input class="blank" id="rp4-5" data-answer="What|Where|Who|Why" placeholder="W…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:100px;min-width:0">
+      </p>
+      <p class="gap-line" style="margin-top:12px"><b>2.</b> Complete the questions.</p>
+      <p class="gap-line"><input class="blank" id="rp4-6" data-answer="How" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:100px;min-width:0"> are you?</p>
+      <p class="gap-line"><input class="blank" id="rp4-7" data-answer="What" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:100px;min-width:0">’s your name?</p>
+      <p class="gap-line"><input class="blank" id="rp4-8" data-answer="Where" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:100px;min-width:0"> are you from?</p>
+      <p class="gap-line"><input class="blank" id="rp4-9" data-answer="Who" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:100px;min-width:0">’s your favourite singer?</p>
+      <p class="gap-line"><input class="blank" id="rp4-10" data-answer="Why" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:100px;min-width:0"> is she your favourite singer?</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-rp4')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-rp4')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="r3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Homework · Task 3 · Practice</div>
+        <h2>Right or wrong?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-rp5">
+      <div class="exercise-label hw">Exercise 5</div>
+      <h3>Read the questions. Choose ✓ for the correct questions and ✗ for the incorrect questions.</h3>
+      <div class="tf-row"><span><span class="num">1.</span> Where are you from?</span><span class="word-choice" id="rp5-1" data-answer="✓"><button class="word-choice-btn" onclick="selectWord(this)">✓</button><button class="word-choice-btn" onclick="selectWord(this)">✗</button></span></div>
+      <div class="tf-row"><span><span class="num">2.</span> How old he is?</span><span class="word-choice" id="rp5-2" data-answer="✗"><button class="word-choice-btn" onclick="selectWord(this)">✓</button><button class="word-choice-btn" onclick="selectWord(this)">✗</button></span></div>
+      <div class="tf-row"><span><span class="num">3.</span> Why is his favourite colour?</span><span class="word-choice" id="rp5-3" data-answer="✗"><button class="word-choice-btn" onclick="selectWord(this)">✓</button><button class="word-choice-btn" onclick="selectWord(this)">✗</button></span></div>
+      <div class="tf-row"><span><span class="num">4.</span> Who’s your teacher?</span><span class="word-choice" id="rp5-4" data-answer="✓"><button class="word-choice-btn" onclick="selectWord(this)">✓</button><button class="word-choice-btn" onclick="selectWord(this)">✗</button></span></div>
+      <div class="tf-row"><span><span class="num">5.</span> What his name?</span><span class="word-choice" id="rp5-5" data-answer="✗"><button class="word-choice-btn" onclick="selectWord(this)">✓</button><button class="word-choice-btn" onclick="selectWord(this)">✗</button></span></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-rp5')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-rp5')">Try again</button>
+      </div>
+      <h3 style="margin-top:16px">Bonus: correct the three wrong questions.</h3>
+      <textarea class="free-write" id="fw-rp5" placeholder="How old … ?&#10;What … ?&#10;What … ?" rows="3"></textarea>
+      <div class="char-count" id="cc-fw-rp5">0 characters</div>
+    </div>
+  </section>
+
+  <section class="step" id="r4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Homework · Task 4 · Practice</div>
+        <h2>Fiona and Penny</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-rp6">
+      <div class="exercise-label hw">Exercise 6</div>
+      <h3>Complete the dialogue with the words in the list.</h3>
+      <div class="word-bank-ref"><span>from</span> <span>name</span> <span>old</span> <span>Where</span> <span>Who</span> <span>Why</span></div>
+      <div class="dialogue">
+        <span class="dl-name">Fiona</span><p class="dl-text ask">What’s your best friend’s <sup>1</sup> <input class="blank" id="rp6-1" data-answer="name" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px;min-width:0">?</p>
+        <span class="dl-name two">Penny</span><p class="dl-text">Her name’s Maria.</p>
+        <span class="dl-name">Fiona</span><p class="dl-text ask"><sup>2</sup> <input class="blank" id="rp6-2" data-answer="Where" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px;min-width:0">’s she from?</p>
+        <span class="dl-name two">Penny</span><p class="dl-text">She’s from Quito in Ecuador.</p>
+        <span class="dl-name">Fiona</span><p class="dl-text ask"><sup>3</sup> <input class="blank" id="rp6-3" data-answer="Who" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px;min-width:0">’s your favourite musician?</p>
+        <span class="dl-name two">Penny</span><p class="dl-text">Ed Sheeran.</p>
+        <span class="dl-name">Fiona</span><p class="dl-text ask">Where is he <sup>4</sup> <input class="blank" id="rp6-4" data-answer="from" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px;min-width:0">?</p>
+        <span class="dl-name two">Penny</span><p class="dl-text">He’s from London.</p>
+        <span class="dl-name">Fiona</span><p class="dl-text ask">How <sup>5</sup> <input class="blank" id="rp6-5" data-answer="old" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px;min-width:0"> is he?</p>
+        <span class="dl-name two">Penny</span><p class="dl-text">He’s 30 years old.</p>
+        <span class="dl-name">Fiona</span><p class="dl-text ask"><sup>6</sup> <input class="blank" id="rp6-6" data-answer="Why" placeholder="?" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px;min-width:0"> is he your favourite musician?</p>
+        <span class="dl-name two">Penny</span><p class="dl-text">Because he’s great.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-rp6')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-rp6')">Try again</button>
+      </div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · grammar rap worksheet (Unit 1), answers</div>
+        Source: <i>Think 1/Worksheets/Grammar/Thk2e_BrE_L0_Grammar_Rap_Unit_1.docx</i>, tasks 2–6 (task 1 is group speaking, “Over to you” is a class rap — left out). Answers checked against the video script (<i>Thk2e_BrE_L0_Videoscript.pdf</i>).
+        <br><b>Ex. 2:</b> 2 Six. <b>Ex. 3:</b> 1 Where · 2 Where · 3 How · 4 Who · 5 Why.
+        <br><b>Ex. 4:</b> 1 How, What, Where, Who, Why (W-words in any order) · 2 How / What / Where / Who / Why.
+        <br><b>Ex. 5:</b> 1 ✓ · 2 ✗ (How old is he?) · 3 ✗ (What is his favourite colour?) · 4 ✓ · 5 ✗ (What’s his name?).
+        <br><b>Ex. 6:</b> 1 name · 2 Where · 3 Who · 4 from · 5 old · 6 Why.
+        <br>He already watched this video in Lesson 9 — now it’s detail work and the word order <i>question word + be + subject</i>.
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="h1">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Homework · Task 5 · Workbook p. 14</div>
+        <h2>My favourite athlete</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label hw">Workbook p. 14 · Reading</div>
+      <h3>Five teenagers write about their favourite athletes. Read the texts.</h3>
+      <p class="ru-hint" lang="ru"><i lang="en">athlete</i> — спортсмен(ка).</p>
+      <div class="ath">
+        <div><p class="read-text">Hi, my name’s <b>Hugo</b>. I’m Mexican. I’m from Acapulco. I’m 12 years old. My favourite athlete is Ricky Rubio. He’s Spanish. He’s a basketball player in the NBA. He’s great.</p></div>
+        <figure><img src="images/sport/rubio.jpg" alt="Ricky Rubio with a basketball"><figcaption>Ricky Rubio</figcaption><span class="credit">Photo: Erik Drost, <a href="https://commons.wikimedia.org/wiki/File:Ricky_Rubio_(51657225617)_(cropped).jpg" target="_blank" rel="noopener">CC BY 2.0</a></span></figure>
+      </div>
+      <div class="ath">
+        <div><p class="read-text">My name’s <b>Maddison</b>. I’m ten years old. I’m Canadian, from Vancouver. My favourite athlete is Sofia Kenin. She’s a tennis player. She’s from the US. She’s awesome!</p></div>
+        <figure><img src="images/sport/kenin.jpg" alt="Sofia Kenin"><figcaption>Sofia Kenin</figcaption><span class="credit">Photo: Hameltion, <a href="https://commons.wikimedia.org/wiki/File:Sofia_Kenin_(2025_DC_Open)_05_(edited_and_cropped).jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></span></figure>
+      </div>
+      <div class="ath">
+        <div><p class="read-text">Hi, I’m <b>Yusuf</b>. I’m 13 years old. I’m Turkish. I’m from Ankara, the capital. My favourite athlete is Kylian Mbappé. He’s a footballer from Paris, in France. He’s an amazing player.</p></div>
+        <figure><img src="images/sport/mbappe.jpg" alt="Kylian Mbappé"><figcaption>Kylian Mbappé</figcaption><span class="credit">Photo: Bryan Berlin, <a href="https://commons.wikimedia.org/wiki/File:Kylian_Mbappe_France_v_Senegal_16_June_2026-391_(cropped).jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a></span></figure>
+      </div>
+      <div class="ath">
+        <div><p class="read-text">Hi there! My name’s <b>Mia</b>. I’m 12 years old. I’m South African, from the city of Cape Town. My favourite athlete is Adam Peaty. He’s a swimmer from the UK. He’s really fast.</p></div>
+        <figure><img src="images/sport/peaty.jpg" alt="Adam Peaty in the swimming pool"><figcaption>Adam Peaty</figcaption><span class="credit">Photo: Fernando Frazão / Agência Brasil, <a href="https://commons.wikimedia.org/wiki/File:Adam_Peaty_Olympics_2016_(cropped).jpg" target="_blank" rel="noopener">CC BY 3.0 BR</a></span></figure>
+      </div>
+      <div class="ath">
+        <div><p class="read-text">My name’s <b>Gabriella</b>. I’m 11 years old. I’m British, from London. I think my favourite athlete is Dina Asher-Smith. She’s a runner in the 100m and 200m races. She’s also from London, and she’s really fast!</p></div>
+        <figure><img src="images/sport/asher-smith.jpg" alt="Dina Asher-Smith on a running track"><figcaption>Dina Asher-Smith</figcaption><span class="credit">Photo: Erik van Leeuwen, <a href="https://commons.wikimedia.org/wiki/File:Dina_Asher-Smith_2_Oregon_2022_(cropped).jpg" target="_blank" rel="noopener">GFDL</a></span></figure>
+      </div>
+      <div class="tip"><span class="tip-title">New words</span><b>athlete</b> /ˈæθliːt/ — спортсмен · <b>basketball player</b> · <b>tennis player</b> · <b>footballer</b> · <b>swimmer</b> · <b>runner</b> · <b>the capital</b> — столица · <b>awesome / amazing</b> — потрясающий · <b>really fast</b> — очень быстрый</div>
+    </div>
+  </section>
+
+  <section class="step" id="h2">
+    <div class="step-head">
+      <div class="step-num">6</div>
+      <div>
+        <div class="step-meta">Homework · Task 6 · Workbook p. 14</div>
+        <h2>Where are they from?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-match-hw1">
+      <div class="exercise-label hw">Workbook p. 14 · Exercise 1</div>
+      <h3>Read the texts quickly. Where are they from? Match the names with the countries.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>0. Hugo → <b>Mexico</b></span></div>
+      <div class="match-grid">
+        <div class="match-col" data-side="left">
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-hw1')">Maddison</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-hw1')">Yusuf</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-hw1')">Mia</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-hw1')">Gabriella</div>
+        </div>
+        <div class="match-col" data-side="right">
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-hw1')">South Africa</div>
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-hw1')">Canada</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-hw1')">the UK</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-hw1')">Turkey</div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-ghost" onclick="resetMatchEx('ex-match-hw1')">Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="h3">
+    <div class="step-head">
+      <div class="step-num">7</div>
+      <div>
+        <div class="step-meta">Homework · Task 7 · Workbook p. 14</div>
+        <h2>True or false?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-hw2">
+      <div class="exercise-label hw">Workbook p. 14 · Exercise 2</div>
+      <h3>Read the texts again. Mark the sentences T (true) or F (false).</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>0. Hugo is from Mexico City. <b>F</b></span></div>
+      <div class="tf-row"><span><span class="num">1.</span> Hugo’s favourite athlete is a football player.</span><span class="word-choice" id="hw2-1" data-answer="F"><button class="word-choice-btn" onclick="selectWord(this)">T</button><button class="word-choice-btn" onclick="selectWord(this)">F</button></span></div>
+      <div class="tf-row"><span><span class="num">2.</span> Maddison is ten.</span><span class="word-choice" id="hw2-2" data-answer="T"><button class="word-choice-btn" onclick="selectWord(this)">T</button><button class="word-choice-btn" onclick="selectWord(this)">F</button></span></div>
+      <div class="tf-row"><span><span class="num">3.</span> Maddison’s favourite athlete is a Canadian tennis player.</span><span class="word-choice" id="hw2-3" data-answer="F"><button class="word-choice-btn" onclick="selectWord(this)">T</button><button class="word-choice-btn" onclick="selectWord(this)">F</button></span></div>
+      <div class="tf-row"><span><span class="num">4.</span> Yusuf is from the capital of Turkey.</span><span class="word-choice" id="hw2-4" data-answer="T"><button class="word-choice-btn" onclick="selectWord(this)">T</button><button class="word-choice-btn" onclick="selectWord(this)">F</button></span></div>
+      <div class="tf-row"><span><span class="num">5.</span> Yusuf’s favourite athlete is French.</span><span class="word-choice" id="hw2-5" data-answer="T"><button class="word-choice-btn" onclick="selectWord(this)">T</button><button class="word-choice-btn" onclick="selectWord(this)">F</button></span></div>
+      <div class="tf-row"><span><span class="num">6.</span> Mia is 11.</span><span class="word-choice" id="hw2-6" data-answer="F"><button class="word-choice-btn" onclick="selectWord(this)">T</button><button class="word-choice-btn" onclick="selectWord(this)">F</button></span></div>
+      <div class="tf-row"><span><span class="num">7.</span> Mia’s favourite athlete is British.</span><span class="word-choice" id="hw2-7" data-answer="T"><button class="word-choice-btn" onclick="selectWord(this)">T</button><button class="word-choice-btn" onclick="selectWord(this)">F</button></span></div>
+      <div class="tf-row"><span><span class="num">8.</span> Gabriella’s favourite athlete is a woman.</span><span class="word-choice" id="hw2-8" data-answer="T"><button class="word-choice-btn" onclick="selectWord(this)">T</button><button class="word-choice-btn" onclick="selectWord(this)">F</button></span></div>
+      <div class="tf-row"><span><span class="num">9.</span> Gabriella and Dina are from London.</span><span class="word-choice" id="hw2-9" data-answer="T"><button class="word-choice-btn" onclick="selectWord(this)">T</button><button class="word-choice-btn" onclick="selectWord(this)">F</button></span></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-hw2')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-hw2')">Try again</button>
+      </div>
+      <div class="tip">Careful with <b>Sofia Kenin</b>: Maddison is Canadian, but is Sofia Canadian too? Read again!</div>
+    </div>
+  </section>
+
+  <section class="step" id="h4">
+    <div class="step-head">
+      <div class="step-num">8</div>
+      <div>
+        <div class="step-meta">Homework · Task 8 · Workbook p. 14</div>
+        <h2>Your favourite athlete</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-hw3">
+      <div class="exercise-label hw">Workbook p. 14 · Exercise 3 · Critical thinking</div>
+      <h3>Now think about your favourite athlete and write.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span><i>His name is Jamal Musiala. He’s a footballer. He’s from Germany — he’s German. He’s my favourite athlete because he’s an amazing player.</i></span></div>
+      <div class="ct-list">
+        <p class="gap-line"><span class="num">1.</span> What’s his / her name? <input class="blank" id="hw3-1" placeholder="His / Her name is …" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">2.</span> What sport does he / she do? <input class="blank" id="hw3-2" placeholder="He’s / She’s a … player / runner / swimmer." autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">3.</span> Where is he / she from? <input class="blank" id="hw3-3" placeholder="He’s / She’s from … . He’s / She’s …" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">4.</span> Why is he / she your favourite athlete? <input class="blank" id="hw3-4" placeholder="Because he’s / she’s …" autocomplete="off" spellcheck="false"></p>
+      </div>
+      <p style="margin-top:12px"><b>Say it too:</b> record your four answers as a little talk: <i>My favourite athlete is …</i></p>
+      <div class="rec"></div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · homework answers (Workbook p. 14)</div>
+        <b>Ex. 1:</b> 0 c Mexico · 1 Maddison – e Canada · 2 Yusuf – d Turkey · 3 Mia – b South Africa · 4 Gabriella – a the UK
+        <br><b>Ex. 2:</b> 1 F (basketball player) · 2 T · 3 F (she’s from the US) · 4 T · 5 T · 6 F (she’s 12) · 7 T · 8 T · 9 T
+        <br><b>Ex. 3:</b> open answers — check <i>he’s / she’s</i>, country vs nationality (<i>from Germany / German</i>) and <i>because</i>. Use his answers to start the next lesson.
+        <br>The Workbook only has black-and-white photos of Mbappé and Kenin; the page shows colour photos of all five athletes (Wikimedia Commons, credits under each photo).
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="h5">
+    <div class="step-head">
+      <div class="step-num">9</div>
+      <div>
+        <div class="step-meta">Итог</div>
+        <h2>Что ты теперь умеешь?</h2>
+      </div>
+    </div>
+    <div class="card fun-check" lang="ru" id="fun-check">
+      <div class="fc-head">
+        <h3>Теперь я…</h3>
+        <span class="fc-count"><b>0</b> / 5 ⭐</span>
+      </div>
+      <div class="fc-meter"><i></i></div>
+      <p class="fc-hint">Отметь всё, что уже получается!</p>
+      <div class="reflect-list">
+        <label class="reflect-item"><input type="checkbox" id="rr1"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">❓</span><span class="reflect-text">задаю вопросы <i lang="en">What’s your name? Where are you from? Who’s your favourite …?</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr2"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🤝</span><span class="reflect-text">знакомлюсь по-английски: <i lang="en">Nice to meet you. — Nice to meet you, too.</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr3"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🎧</span><span class="reflect-text">понимаю диалог на слух, даже если знаю не все слова</span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr4"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">⚽</span><span class="reflect-text">рассказываю о любимом спортсмене: <i lang="en">He’s French. He’s from France.</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr5"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">✨</span><span class="reflect-text">читаю <b>e</b> коротко, как в <i lang="en">pen</i>, и знаю «волшебную» <b>e</b> на конце: <i lang="en">tap → tape</i></span></label>
+      </div>
+      <div class="fc-done" hidden><span class="fc-trophy">🏆</span><span><b>Супер!</b> Урок 10 пройден. Так держать!</span></div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+
+<script src="../assets/sync.js"></script>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/matching.js"></script>
+<script src="../assets/wordorder.js"></script>
+<script src="../assets/name.js"></script>
+<script src="../assets/dictionary.js"></script>
+<script>
+/* Warm-up game "Lesson 9 Quiz Show" (same engine as the Lesson 9 quiz show):
+   4 rounds × 5 questions — question words, am / is / are, short forms, nationalities.
+   Right answer = 2 points, +1 if answered in the first 6 seconds with no wrong tap. */
+(function () {
+  const PER_ROUND = 5, FAST_MS = 6000;
+  const $ = id => document.getElementById(id);
+  const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const pick = (arr, n) => shuffle(arr).slice(0, n);
+  const gap = '<span class="wu-gap">?</span>';
+
+  /* ---------- question banks ---------- */
+  // Round 1: which question word? [question with ___, answer]
+  const QW = [['___ old are you?', 'I’m twelve.', 'How'], ['___ is your name?', 'My name’s Max.', 'What'], ['___ are you from?', 'I’m from Spain.', 'Where'],
+    ['___ is your favourite singer?', 'Ariana Grande.', 'Who'], ['___ is he your favourite athlete?', 'Because he’s really fast!', 'Why'], ['___ is your favourite colour?', 'Blue.', 'What'],
+    ['___ is she from?', 'She’s from Canada.', 'Where'], ['___ old is your sister?', 'She’s nine.', 'How'], ['___ is your best friend?', 'Ben. He’s great!', 'Who'],
+    ['___ is she your favourite actor?', 'Because she’s funny.', 'Why']];
+  const qwQs = () => pick(QW, PER_ROUND).map(([q, a, ans]) => ({ pic: '<span class="wu-full">❓</span>',
+    prompt: q.replace('___', gap) + `<span class="wu-ans">— ${a}</span>`, answer: ans, opts: ['What', 'Where', 'Who', 'How', 'Why'] }));
+  // Round 2: am, is or are?
+  const BE = [['I ___ from Mexico.', 'am'], ['My best friends ___ Turkish.', 'are'], ['She ___ a tennis player.', 'is'], ['We ___ in Class 2B.', 'are'],
+    ['It ___ the Japanese flag.', 'is'], ['You ___ wrong. Sorry!', 'are'], ['Liam and Ben ___ my friends.', 'are'], ['Paella ___ Spanish food.', 'is'],
+    ['My mum ___ a doctor.', 'is'], ['I ___ twelve years old.', 'am'], ['They ___ from Rio.', 'are'], ['Shawn Mendes ___ Canadian.', 'is']];
+  const beQs = () => pick(BE, PER_ROUND).map(([s, ans]) => ({ pic: '<span class="wu-full">✅</span>', prompt: s.replace('___', gap), answer: ans, opts: ['am', 'is', 'are'], big: true }));
+  // Round 3: the short form
+  const SHORT = [['I am', 'I’m', ['Im’', 'I’s']], ['You are', 'You’re', ['Your’e', 'You’s']], ['He is', 'He’s', ['He’re', 'Hes’']], ['She is', 'She’s', ['Shes’', 'She’re']],
+    ['It is', 'It’s', ['Its’', 'It’m']], ['We are', 'We’re', ['Were’', 'We’s']], ['They are', 'They’re', ['Theyr’e', 'They’s']], ['What is', 'What’s', ['Whats’', 'What’re']]];
+  const shortQs = () => pick(SHORT, PER_ROUND).map(([full, ans, bad]) => ({ pic: `<span class="wu-full">${full}</span>`, prompt: 'Say it short! Which one is right?', answer: ans, opts: [ans, ...bad] }));
+  // Round 4: whose flag? (flag images from Lesson 8)
+  const FLAGS = [[4, 'Japanese', ['Japan', 'Japanish']], [0, 'Brazilian', ['Brazil', 'Brazilese']], [1, 'British', ['UK', 'Britainish']], [3, 'Turkish', ['Turkey', 'Turkese']],
+    [2, 'American', ['America', 'Americish']], [5, 'Mexican', ['Mexico', 'Mexicish']], [6, 'Russian', ['Russia', 'Russish']], [11, 'Spanish', ['Spain', 'Spainian']],
+    [9, 'Indonesian', ['Indonesia', 'Indonesish']], [10, 'South African', ['South Africa', 'South Africish']], [7, 'Sudanese', ['Sudan', 'Sudanian']], [8, 'Ecuadorian', ['Ecuador', 'Ecuadorese']]];
+  const flagQs = () => pick(FLAGS, PER_ROUND).map(([f, ans, bad]) => ({ pic: `<img class="wu-flag" src="images/unit1/flag-${f}.jpg" alt="">`,
+    prompt: `It’s the ${gap} flag.`, answer: ans, opts: [ans, ...bad] }));
+  const ROUNDS = [['❓', 'Round 1 · Question words', qwQs], ['✅', 'Round 2 · am · is · are', beQs], ['✂️', 'Round 3 · Short forms', shortQs], ['🚩', 'Round 4 · Whose flag?', flagQs]];
+
+  /* ---------- engine ---------- */
+  let round = 0, queue = [], idx = 0, score = 0, t0 = 0, missed = false, busy = false, tick = null;
+  function getBest() { try { return +localStorage.getItem('wu10-best') || 0; } catch (e) { return 0; } }
+  function setBest(n) { try { localStorage.setItem('wu10-best', n); } catch (e) {} }
+  function show(id) { ['wu-start', 'wu-q', 'wu-msg'].forEach(s => { $(s).hidden = s !== id; }); $('wu-timer').hidden = id !== 'wu-q'; }
+  function addScore(n) { score += n; $('wu-score').textContent = score; const s = $('wu-score').parentElement; s.classList.remove('csr-pop'); void s.offsetWidth; s.classList.add('csr-pop'); }
+  function dots() { $('wu-dots').innerHTML = queue.map((c, i) => `<i class="${i < idx ? 'done' : i === idx ? 'now' : ''}"></i>`).join(''); }
+  function msg(ico, html, btn, next) { show('wu-msg'); $('wu-msg-ico').textContent = ico; $('wu-msg-text').innerHTML = html; $('wu-msg-btn').textContent = btn; $('wu-msg-btn').onclick = next; }
+  function confetti() {
+    const box = $('wu'), cols = ['#FFC53D', '#FF7A45', '#3352E0', '#12A374', '#7B5CE6', '#E03E52'];
+    for (let i = 0; i < 40; i++) {
+      const c = document.createElement('i'); c.className = 'fc-confetti';
+      c.style.left = Math.random() * 100 + '%'; c.style.background = cols[i % cols.length]; c.style.animationDelay = Math.random() * 0.4 + 's';
+      c.style.setProperty('--x', (Math.random() * 160 - 80) + 'px'); c.style.setProperty('--r', (Math.random() * 720 - 360) + 'deg');
+      box.appendChild(c); setTimeout(() => c.remove(), 2200);
+    }
+  }
+  function timerBar() {
+    const bar = $('wu-timer').firstElementChild;
+    clearInterval(tick);
+    tick = setInterval(() => { const left = Math.max(0, 1 - (Date.now() - t0) / FAST_MS); bar.style.width = left * 100 + '%'; bar.classList.toggle('slow', left === 0 || missed); }, 80);
+  }
+  function nextQ() {
+    if (idx >= queue.length) return endRound();
+    dots(); busy = false; missed = false;
+    const q = queue[idx];
+    $('wu-pic').innerHTML = q.pic; $('wu-prompt').innerHTML = q.prompt;
+    $('wu-opts').className = 'wu-opts' + (q.big ? ' big' : '');
+    $('wu-opts').innerHTML = shuffle(q.opts).map(o => `<button class="wu-opt" data-i="${q.opts.indexOf(o)}"><span>${o}</span></button>`).join('');
+    $('wu-q').classList.remove('wu-in'); void $('wu-q').offsetWidth; $('wu-q').classList.add('wu-in');
+    t0 = Date.now(); timerBar();
+  }
+  function tap(btn) {
+    if (busy) return;
+    const q = queue[idx];
+    if (q.opts[btn.dataset.i] !== q.answer) { missed = true; btn.classList.remove('wrong'); void btn.offsetWidth; btn.classList.add('wrong'); return; }
+    busy = true; clearInterval(tick);
+    const fast = !missed && Date.now() - t0 < FAST_MS, pts = 2 + (fast ? 1 : 0);
+    btn.classList.add('right');
+    $('wu-opts').querySelectorAll('.wu-opt').forEach(b => { if (b !== btn) b.classList.add('dim'); });
+    const g = $('wu-prompt').querySelector('.wu-gap'); if (g) g.textContent = q.answer;   // show the full sentence
+    addScore(pts);
+    if (window.toast) toast('+' + pts + (fast ? ' ⚡ Fast!' : ''));
+    idx++; setTimeout(nextQ, 1600);
+  }
+  function startRound(n) {
+    round = n; idx = 0; queue = ROUNDS[n][2]().slice(0, PER_ROUND);
+    $('wu-round').textContent = ROUNDS[n][1];
+    show('wu-q'); nextQ();
+  }
+  function endRound() {
+    clearInterval(tick); dots();
+    if (round < ROUNDS.length - 1) {
+      const [ico, title] = ROUNDS[round + 1];
+      return msg('🎉', `Round ${round + 1} done! You have <b>${score}</b> points.<br>Next: ${ico} <b>${title.split('· ').slice(1).join('· ')}</b>`, 'Next round ▶', () => startRound(round + 1));
+    }
+    const best = getBest(), record = score > best;
+    if (record) setBest(score);
+    $('wu-round').textContent = 'Finished!';
+    msg(record ? '🏆' : '⭐', `You got <b>${score}</b> of 60 points!` + (record ? '<br>New best score!' : `<br>Best score: ${best}`), 'Play again ↻', wuStart);
+    confetti();
+  }
+  window.wuStart = function () { score = 0; $('wu-score').textContent = 0; startRound(0); };
+  $('wu-opts').addEventListener('click', e => { const b = e.target.closest('.wu-opt'); if (b) tap(b); });
+  const best = getBest(); if (best) $('wu-best').textContent = 'Best score: ' + best + ' ⭐';
+})();
+</script>
+<script>
+/* "Итог": star counter, progress bar and confetti when everything is ticked (same as Lessons 3–9) */
+(function () {
+  const box = document.getElementById('fun-check');
+  const boxes = [...box.querySelectorAll('input[type=checkbox]')];
+  let celebrated = false;
+  function confetti() {
+    const colours = ['#FFC53D', '#FF7A45', '#3352E0', '#12A374', '#7B5CE6', '#E03E52'];
+    for (let i = 0; i < 40; i++) {
+      const c = document.createElement('i');
+      c.className = 'fc-confetti';
+      c.style.left = Math.random() * 100 + '%';
+      c.style.background = colours[i % colours.length];
+      c.style.animationDelay = Math.random() * 0.4 + 's';
+      c.style.setProperty('--x', (Math.random() * 160 - 80) + 'px');
+      c.style.setProperty('--r', (Math.random() * 720 - 360) + 'deg');
+      box.appendChild(c);
+      setTimeout(() => c.remove(), 2200);
+    }
+  }
+  function update(animate) {
+    const n = boxes.filter(b => b.checked).length;
+    box.querySelector('.fc-count b').textContent = n;
+    box.querySelector('.fc-meter i').style.width = (n / boxes.length * 100) + '%';
+    const done = n === boxes.length;
+    box.querySelector('.fc-done').hidden = !done;
+    box.classList.toggle('all-done', done);
+    if (done && animate && !celebrated) confetti();
+    celebrated = done;
+  }
+  boxes.forEach(b => b.addEventListener('change', () => update(true)));
+  document.addEventListener('DOMContentLoaded', () => setTimeout(() => update(false), 0));
+})();
+</script>
+</body>
+</html>
