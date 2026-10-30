@@ -17,6 +17,11 @@
      each change, with a progress count and the fields that changed.
      Teacher marks (✓ / ✗) and comments appear next to the answers,
      and a reset by the teacher reaches the open page straight away.
+   Extras: blocks with data-extra="id" (a step, a card, a tab and its
+   chip) are hidden from the student until the teacher opens them in
+   teacher.html (students/<id>/extras/<page>/<id>). The student's open
+   page shows them at once. ?extras=all shows every extra (teacher's
+   own browser, screen sharing).
    • watch  — the page is opened inside teacher.html with
      ?watch=<student>. It shows that student's answers read-only,
      never touches the teacher's own saves, and lets the teacher
@@ -87,11 +92,12 @@
   function stats() {
     let total = 0, answered = 0, right = 0;
     const count = (done, ok) => { total++; if (done) answered++; if (ok) right++; };
-    document.querySelectorAll('input[data-answer]:not(.xw-blank), textarea[data-answer], select[data-answer]').forEach(el =>
+    const live = el => !el.closest('[data-extra]:not(.unlocked)');
+    document.querySelectorAll('input[data-answer]:not(.xw-blank), textarea[data-answer], select[data-answer]').forEach(el => live(el) &&
       count(!!el.value.trim(), matches(el.value, el.dataset.answer, el.dataset.check === 'contains')));
-    document.querySelectorAll('.mc-options[data-correct]').forEach(g => { const c = g.querySelector('input:checked') || g.querySelector('.mc-option.selected input'); count(!!c, c && c.value === g.dataset.correct); });
+    document.querySelectorAll('.mc-options[data-correct]').forEach(g => { if (!live(g)) return; const c = g.querySelector('input:checked') || g.querySelector('.mc-option.selected input'); count(!!c, c && c.value === g.dataset.correct); });
     document.querySelectorAll('.choice-group[data-correct]').forEach(g => { const c = g.querySelector('.choice-btn.selected'); count(!!c, c && c.dataset.value === g.dataset.correct); });
-    document.querySelectorAll('.word-choice[data-answer]').forEach(g => { const c = g.querySelector('.selected'); count(!!c, c && c.textContent.trim().toLowerCase() === g.dataset.answer.toLowerCase()); });
+    document.querySelectorAll('.word-choice[data-answer]').forEach(g => { if (!live(g)) return; const c = g.querySelector('.selected'); count(!!c, c && c.textContent.trim().toLowerCase() === g.dataset.answer.toLowerCase()); });
     return { total, answered, right };
   }
 
@@ -124,6 +130,25 @@
       }
     });
   }
+
+  // extras the teacher has opened: { id: time } → .unlocked on every [data-extra="id"]
+  function applyExtras(map) {
+    map = map || {};
+    const all = params.get('extras') === 'all';
+    document.querySelectorAll('[data-extra]').forEach(el => el.classList.toggle('unlocked', all || !!map[el.dataset.extra]));
+    document.querySelectorAll('.extra-toggle').forEach(t => {
+      const on = all || !!map[t.dataset.for];
+      t.classList.toggle('on', on);
+      t.querySelector('span').textContent = on ? '🔓 Extra · open for the student' : '🔒 Extra · hidden from the student';
+      t.querySelector('button').textContent = on ? 'Hide again' : 'Open for the student';
+    });
+    if (!WATCH) {                                         // the open tab was closed again → back to the first tab
+      const open = document.querySelector('.lesson-part.active');
+      if (open && open.matches('[data-extra]:not(.unlocked)') && typeof window.showPart === 'function') window.showPart(document.querySelector('.lesson-part').id);
+    }
+    if (typeof updateScoreBar === 'function') try { updateScoreBar(); } catch (e) {}
+  }
+  const whenReady = fn => document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', fn) : fn();
 
   /* ================= WATCH MODE (teacher) ================= */
   if (WATCH) {
@@ -235,6 +260,7 @@
       },
       scrollToLatest() { if (latest[0]) latest[0].scrollIntoView({ behavior: 'smooth', block: 'center' }); },
       setNotes(notes) { drawNotes(notes); },
+      setExtras(map) { applyExtras(map); },
       stats
     };
 
@@ -276,6 +302,19 @@
         const label = (target.value || target.textContent || '').trim().slice(0, 140);
         t.annotate(anchor, label);
       });
+
+      // Open / Hide switch on every extra block (not on its tab button or chip: those follow the block)
+      document.querySelectorAll('[data-extra]:not(.part-tab):not(a)').forEach(box => {
+        const bar = document.createElement('div');
+        bar.className = 'extra-toggle watch-tools';
+        bar.dataset.for = box.dataset.extra;
+        bar.innerHTML = '<span></span><button type="button"></button>';
+        bar.querySelector('button').addEventListener('click', () => {
+          const t = teacher(); if (t && t.setExtra) t.setExtra(box.dataset.extra, !box.classList.contains('unlocked'));
+        });
+        (box.classList.contains('lesson-part') ? box.querySelector('.wrap:not(nav .wrap)') || box : box).prepend(bar);
+      });
+      applyExtras({});
 
       // "↺ Reset task" on every task box that holds answers
       document.querySelectorAll(TASKS).forEach(box => {
@@ -351,6 +390,22 @@
   });
   document.addEventListener('visibilitychange', () => presence(document.visibilityState === 'visible'));
 
+  // extras: last known state from this device first (works offline / on a local copy), then live from Firebase
+  const EXTRAS_KEY = 'extras-' + PAGE;
+  let extras = {}; try { extras = JSON.parse(get(EXTRAS_KEY) || '{}') || {}; } catch (e) {}
+  whenReady(() => applyExtras(extras));
+  function extrasChanged(map) {
+    map = map || {};
+    const fresh = Object.keys(map).filter(k => !extras[k]);
+    extras = map; set(EXTRAS_KEY, JSON.stringify(map));
+    whenReady(() => {
+      applyExtras(map);
+      const el = fresh.length && document.querySelector('[data-extra="' + cssId(fresh[0]) + '"]:not(.part-tab):not(a)');
+      const h = el && el.querySelector('h2, h3');
+      if (el && typeof toast === 'function') toast('🔓 New task: ' + (h ? h.textContent.trim() : 'open!'));
+    });
+  }
+
   // before the first save on this device: find this page's answers key among the saved ones
   function guessKey() {
     for (let i = 0; i < store.length; i++) { const k = store.key(i); if (IS_ANSWERS(k) && k.includes(PAGE)) return k; }
@@ -390,6 +445,8 @@
       else if (first && KEY && remote && !remote.stats) setTimeout(upload, 800); // older record: add the progress count
       first = false;
     });
+
+    db.onValue(db.ref(d, `students/${STUDENT}/extras/${PAGE}`), snap => extrasChanged(snap.val()));
 
     // the teacher's marks and comments for this page
     db.onValue(db.ref(d, `students/${STUDENT}/notes/${PAGE}`), snap => {

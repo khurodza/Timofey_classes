@@ -320,14 +320,17 @@ function updateScoreBar() {
   if (!bar) return;
 
   let total = 0, done = 0, correct = 0;
+  const locked = el => el.closest('[data-extra]:not(.unlocked)');   // extras the teacher hasn't opened don't count
 
   document.querySelectorAll('.blank[data-answer]').forEach(inp => {
+    if (locked(inp)) return;
     total++;
     if (inp.value.trim()) done++;
     if (inp.classList.contains('correct')) correct++;
   });
 
   document.querySelectorAll('.mc-options[data-correct]').forEach(group => {
+    if (locked(group)) return;
     total++;
     const selected = group.querySelector('.mc-option.selected');
     if (selected) done++;

@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 11 – An expensive car!</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+/* Lesson 11 */
+/* teacher-only notes: hidden on the student's page, shown inside teacher.html (sync.js adds html.watching) */
+.teacher-only{display:none}
+html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;border:2px dashed #D9628F;border-radius:var(--radius);padding:12px 16px;line-height:1.7;font-size:16px}
+.teacher-only .to-label{font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#B0416C;margin-bottom:6px}
+.teacher-only b{color:#9A3F64}
+.teacher-only ul,.teacher-only ol{margin:4px 0 0 20px}
+.teacher-only table{border-collapse:collapse;margin-top:6px}
+.teacher-only td{padding:2px 10px 2px 0;vertical-align:top}
+/* Exercise 7: pictures with a phrase under each */
+.adj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;margin-top:12px}
+.adj-item{display:flex;flex-direction:column;gap:6px}
+.adj-item img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;display:block;border:1px solid var(--border)}
+.adj-item .lab{display:flex;align-items:center;gap:6px}
+.adj-item .lab .num{font-weight:900;color:var(--muted)}
+.adj-item .blank,.adj-item .given{flex:1;min-width:0;width:auto}
+.adj-item .given{display:inline-block;padding:6px 10px;border:2px dashed #9BC27A;border-radius:10px;color:#4E7F1E;font-weight:700;font-style:italic}
+@media(max-width:560px){.adj-grid{grid-template-columns:repeat(2,1fr);gap:10px}}
+/* noun cards (warm-up) */
+.noun-row{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}
+.noun-row .noun{padding:8px 16px;border-radius:999px;background:#fff;border:2px solid var(--border);font-weight:800;font-size:18px}
+/* questionnaire */
+.camp{border-radius:16px;overflow:hidden;border:3px solid #1A9BD7;margin-top:12px;background:#fff}
+.camp-head{background:#1AA6E0;color:#fff;text-align:center;padding:12px 10px}
+.camp-head b{display:block;font:900 30px/1.1 var(--font-head);letter-spacing:.12em;color:#FFC53D}
+.camp-head span{font:800 18px/1.2 var(--font-head);letter-spacing:.06em}
+.camp-intro{background:#2F4A63;color:#FFC53D;padding:10px 16px;font-weight:600}
+.camp-q{padding:10px 16px;border-top:1px solid var(--border)}
+.camp-q p{margin:0 0 6px;font-weight:800;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.camp-q .blank{width:100%;max-width:none;text-align:left}
+.brighton{border-radius:16px;overflow:hidden;border:3px solid #222;margin-top:12px;background:#fff}
+.brighton-head{background:#222;color:#fff;padding:12px 16px}
+.brighton-head b{display:block;font:900 30px/1 Georgia,serif;color:#9BCB2E}
+.brighton-head span{letter-spacing:.5em;font-size:13px;text-transform:uppercase}
+.brighton table{width:100%;border-collapse:collapse}
+.brighton td{padding:8px 16px;border-top:1px solid var(--border);vertical-align:middle}
+.brighton td:first-child{font-weight:800;width:48%}
+.brighton td .blank{width:100%;max-width:none;text-align:left}
+.hand{font-family:"Comic Sans MS","Chalkboard SE",cursive;color:#5A7A1E}
+.note-text{font-family:"Comic Sans MS","Chalkboard SE",cursive;font-size:19px;line-height:2.1;background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 16px;box-shadow:var(--shadow-sm)}
+.note-text .blank{width:150px}
+/* Workbook p. 12: two cars */
+.car-box{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:16px;align-items:center;margin-top:12px}
+.car-box img{width:100%;border-radius:12px;display:block}
+.car-box .blanks{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.car-box .blanks .lab{display:flex;align-items:center;gap:6px}
+.car-box .blank,.car-box .given{flex:1;min-width:0;width:auto}
+.car-box .given{display:inline-block;padding:6px 10px;border:2px dashed #9BC27A;border-radius:10px;color:#4E7F1E;font-weight:700;font-style:italic}
+@media(max-width:620px){.car-box{grid-template-columns:1fr}.car-box img{max-width:300px}}
+/* memory game */
+.mem-pics.covered img{filter:blur(18px) grayscale(1);opacity:.35}
+.mem-pics.covered .lab{visibility:hidden}
+.mem-result{margin-top:10px;font-weight:800;font-size:18px}
+.mem-result .miss{font-weight:600;color:var(--muted)}
+.wo-line{flex-wrap:wrap}
+/* opposites pairs */
+.opp-row{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:18px}
+.opp-row b{min-width:70px}
+.opp-row .blank{width:150px}
+/* word snake */
+.snake{font:800 20px/1.6 ui-monospace,Menlo,monospace;letter-spacing:.12em;word-break:break-all;background:#EEF8E4;border:2px dashed #9BC27A;border-radius:14px;padding:10px 14px;color:#2E5A10}
+.find-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-top:10px}
+.find-grid .blank{width:100%;max-width:none}
+.sent-list .gap-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin:8px 0;font-size:18px}
+.sent-list .word-choice{display:inline-flex;flex-wrap:wrap;gap:6px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="back-home" href="../index.html">← All lessons</a>
+    <div class="hero-grid">
+      <div>
+        <h1 class="name-slot" data-with="Lesson 11: An expensive car, {name}!" data-without="Lesson 11: An expensive car!">Lesson 11: An expensive car!</h1>
+        <p><b>Adjectives</b> and their opposites: <i>new – old, fast – slow, cheap – expensive</i>. Then a summer camp questionnaire: <b>write about you</b>.</p>
+        <div class="hero-badges">
+          <span class="badge">Lesson 11</span>
+          <span class="badge">Unit 1: All together</span>
+          <span class="badge">Student’s Book p. 17</span>
+          <span class="badge">Vocabulary: adjectives</span>
+          <span class="badge">Writing: personal information</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     Student's Book p. 17 / Teacher's Book T17.
+     PART 1 Warm-up: TB lead-in for Ex. 7 ("What is expensive?").
+     PART 2 Adjectives: Ex. 7 (1.08 → audio/lesson-11-1-08), Ex. 8, Ex. 9 + Look box.
+     PART 3 Writing: Ex. 10 (The Lakes questionnaire) + Итог.
+     EXTRAS — hidden from Timofey until opened in teacher.html (data-extra, see GUIDE.md):
+       x-memory    TB "Activity idea · Extension" (memory game)
+       x-wb12      Workbook p. 12 Ex. 3–4
+       x-wb13      Workbook p. 13 Vocabulary Extra Ex. 1–2
+       x-wb15      Workbook p. 15 Developing Writing
+       x-homework  TB Homework: interview a family member (whole tab)
+       x-worksheet Vocabulary Worksheet Unit 1 (Standard + Extension tasks) (whole tab)
+     Teacher's notes are in .teacher-only boxes: visible only in teacher.html.
+══════════════════════════════════════════════════════════ -->
+<nav class="parts">
+  <div class="wrap">
+    <button class="part-tab" data-part="part-warm" onclick="showPart('part-warm')">Warm-up</button>
+    <button class="part-tab" data-part="part-adj" onclick="showPart('part-adj')">Adjectives</button>
+    <button class="part-tab" data-part="part-write" onclick="showPart('part-write')">About me</button>
+    <button class="part-tab" data-part="part-ws" data-extra="x-worksheet" onclick="showPart('part-ws')">Extra practice</button>
+    <button class="part-tab hw" data-part="part-homework" data-extra="x-homework" onclick="showPart('part-homework')">Homework</button>
+  </div>
+</nav>
+
+<!-- ══════════ PART 1: warm-up ══════════ -->
+<div class="lesson-part" id="part-warm">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#w1">1 · What is expensive?</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="teacher-only">
+    <div class="to-label">👩‍🏫 Teacher only · plan for Lesson 11 (about 60 min)</div>
+    <table>
+      <tr><td><b>Warm-up</b></td><td>5 min</td><td>Nouns → “What is expensive / fast / old?”</td></tr>
+      <tr><td><b>Adjectives</b></td><td>25 min</td><td>Ex. 7 (1.08) → Ex. 8 → Look box + Ex. 9</td></tr>
+      <tr><td><b>About me</b></td><td>15–20 min</td><td>Ex. 10 questionnaire → “perfect roommate” talk → Итог</td></tr>
+      <tr><td><b>Extras</b></td><td>if time</td><td>All hidden from him. Open them here with the violet <b>Open for the student</b> bar:
+        <br>• Adjectives tab: <b>Memory game</b> (TB Activity idea), <b>Workbook p. 12</b> Ex. 3–4, <b>Workbook p. 13</b> Vocabulary Extra Ex. 1–2
+        <br>• About me tab: <b>Workbook p. 15</b> Developing Writing
+        <br>• <b>Extra practice</b> tab: Vocabulary Worksheet Unit 1 (Standard + Extension)
+        <br>• <b>Homework</b> tab: TB homework — interview a family member</td></tr>
+    </table>
+    <p style="margin-top:6px">Aims (Teacher’s Book T17): <b>Vocabulary</b> — adjectives and their opposites; adjective + noun word order (<i>an old computer</i>). <b>Writing</b> — personal information in full sentences. Not on the site: <i>Practice Extra · Unit 1 Practise it!</i> (online platform).</p>
+  </div>
+
+  <section class="step" id="w1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Warm-up · Speaking</div>
+        <h2>What is expensive?</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Things</div>
+      <h3>Read the words. Listen. Do you know them all?</h3>
+      <div class="noun-row">
+        <span class="noun">car <button class="say say-big" data-say="car" aria-label="Listen"></button></span>
+        <span class="noun">hotel <button class="say say-big" data-say="hotel" aria-label="Listen"></button></span>
+        <span class="noun">train <button class="say say-big" data-say="train" aria-label="Listen"></button></span>
+        <span class="noun">football <button class="say say-big" data-say="football" aria-label="Listen"></button></span>
+        <span class="noun">T-shirt <button class="say say-big" data-say="T-shirt" aria-label="Listen"></button></span>
+        <span class="noun">trousers <button class="say say-big" data-say="trousers" aria-label="Listen"></button></span>
+      </div>
+      <div class="tip"><span class="tip-title">New words</span><b>train</b> — поезд · <b>trousers</b> — брюки (always <b>s</b>: <span class="key">my trousers</span>, like <i>jeans</i>).</div>
+      <h3 style="margin-top:16px">Now answer: what is …? Write 2–3 things for each.</h3>
+      <ol style="margin:10px 0 8px 22px;line-height:1.9;font-size:18px">
+        <li>What is <b>expensive</b>? <button class="say" data-say="expensive">expensive</button> <span class="ru-hint" lang="ru">(дорогой)</span></li>
+        <li>What is <b>fast</b>? <button class="say" data-say="fast">fast</button> <span class="ru-hint" lang="ru">(быстрый)</span></li>
+        <li>What is <b>old</b>? <button class="say" data-say="old">old</button> <span class="ru-hint" lang="ru">(старый)</span></li>
+      </ol>
+      <textarea class="free-write" id="fw-w1" placeholder="1. A car, jeans, …&#10;2. A train, …&#10;3. My grandpa’s house, …" rows="4"></textarea>
+      <div class="char-count" id="cc-fw-w1">0 characters</div>
+      <div class="tip class-note"><span class="tip-title">In class: quick fire!</span>Your teacher says a word: <i>pizza!</i> You say <i>cheap!</i> or <i>expensive!</i> Then swap.</div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · lead-in (Teacher’s Book T17, Ex. 7)</div>
+        <b>Teacher’s Book:</b> <i>Check/clarify: train, trousers. Before students do the task, write the nouns from Exercise 7 on the board. Ask what they might describe with the adjectives, e.g. What is expensive? (a car, jeans, etc.).</i>
+        <ul>
+          <li>Accept one-word answers, then model the full form: <i>A car is expensive. A Ferrari is fast.</i></li>
+          <li>Quick fire ideas: pizza, a phone, a bike, a plane, a snail, a computer, a Lamborghini, a bus ticket.</li>
+          <li><i>trousers</i> /ˈtraʊzəz/ — the stress and the /aʊ/; plural only (like <i>jeans</i>) → no <i>a</i>: <i>clean trousers</i>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-adj');window.scrollTo(0,0)">Next: Adjectives →</button>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════ PART 2: Adjectives (SB p. 17, Ex. 7–9) ══════════ -->
+<div class="lesson-part" id="part-adj">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#a1">1 · Pictures</a>
+    <a href="#a2">2 · Opposites</a>
+    <a href="#a3">3 · Words in order</a>
+    <a href="#a4" data-extra="x-memory">+ · Memory game</a>
+    <a href="#a5" data-extra="x-wb12">+ · Two cars</a>
+    <a href="#a6" data-extra="x-wb13">+ · More opposites</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="a1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Vocabulary · Student’s Book p. 17 · 1.08</div>
+        <h2>An expensive car</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-a1">
+      <div class="exercise-label">Exercise 7 · 1.08</div>
+      <h3>Write the words from the list under the pictures. Then listen and check.</h3>
+      <p class="ru-hint" lang="ru">Нажми на слово в списке — оно зачеркнётся. Пиши вместе с <i lang="en">a / an</i>.</p>
+      <div class="word-bank-ref">
+        <span class="crossed">an expensive car</span><span>a big hotel</span><span>a fast train</span><span>a new football</span><span>a slow train</span><span>a small hotel</span><span>a dirty T-shirt</span><span>an old football</span><span>a cheap car</span><span>clean trousers</span>
+      </div>
+      <div class="adj-grid">
+        <div class="adj-item"><img src="images/unit1/p17-adj-0.jpg" alt="A red sports car"><span class="lab"><span class="num">0</span><span class="given">an expensive car</span></span></div>
+        <div class="adj-item"><img src="images/unit1/p17-adj-1.jpg" alt="A white T-shirt with brown marks"><span class="lab"><span class="num">1</span><input class="blank" id="a1-1" data-answer="a dirty T-shirt|a dirty t shirt|a dirty tshirt" autocomplete="off" spellcheck="false"></span></div>
+        <div class="adj-item"><img src="images/unit1/p17-adj-2.jpg" alt="A narrow hotel between tall buildings"><span class="lab"><span class="num">2</span><input class="blank" id="a1-2" data-answer="a small hotel" autocomplete="off" spellcheck="false"></span></div>
+        <div class="adj-item"><img src="images/unit1/p17-adj-3.jpg" alt="A shiny black and white football"><span class="lab"><span class="num">3</span><input class="blank" id="a1-3" data-answer="a new football" autocomplete="off" spellcheck="false"></span></div>
+        <div class="adj-item"><img src="images/unit1/p17-adj-4.jpg" alt="A small yellow car with a 150 dollar price"><span class="lab"><span class="num">4</span><input class="blank" id="a1-4" data-answer="a cheap car" autocomplete="off" spellcheck="false"></span></div>
+        <div class="adj-item"><img src="images/unit1/p17-adj-5.jpg" alt="A modern high-speed train"><span class="lab"><span class="num">5</span><input class="blank" id="a1-5" data-answer="a fast train" autocomplete="off" spellcheck="false"></span></div>
+        <div class="adj-item"><img src="images/unit1/p17-adj-6.jpg" alt="A huge hotel by the beach"><span class="lab"><span class="num">6</span><input class="blank" id="a1-6" data-answer="a big hotel" autocomplete="off" spellcheck="false"></span></div>
+        <div class="adj-item"><img src="images/unit1/p17-adj-7.jpg" alt="Blue trousers on a washing line"><span class="lab"><span class="num">7</span><input class="blank" id="a1-7" data-answer="clean trousers" autocomplete="off" spellcheck="false"></span></div>
+        <div class="adj-item"><img src="images/unit1/p17-adj-8.jpg" alt="A brown leather football with laces"><span class="lab"><span class="num">8</span><input class="blank" id="a1-8" data-answer="an old football" autocomplete="off" spellcheck="false"></span></div>
+        <div class="adj-item"><img src="images/unit1/p17-adj-9.jpg" alt="An old green steam train"><span class="lab"><span class="num">9</span><input class="blank" id="a1-9" data-answer="a slow train" autocomplete="off" spellcheck="false"></span></div>
+      </div>
+      <h3 style="margin-top:16px">Listen and check.</h3>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-11-1-08.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-a1')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-a1')">Try again</button>
+      </div>
+      <div class="tip"><span class="tip-title">Say it!</span>
+        <button class="say" data-say="an expensive car">an expensive car</button>
+        <button class="say" data-say="a dirty T-shirt">a dirty T-shirt</button>
+        <button class="say" data-say="a small hotel">a small hotel</button>
+        <button class="say" data-say="a new football">a new football</button>
+        <button class="say" data-say="a cheap car">a cheap car</button>
+        <button class="say" data-say="a fast train">a fast train</button>
+        <button class="say" data-say="a big hotel">a big hotel</button>
+        <button class="say" data-say="clean trousers">clean trousers</button>
+        <button class="say" data-say="an old football">an old football</button>
+        <button class="say" data-say="a slow train">a slow train</button>
+      </div>
+      <div class="rec"></div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Exercise 7 (1.08)</div>
+        <b>Answers:</b> 1 a dirty T-shirt · 2 a small hotel · 3 a new football · 4 a cheap car · 5 a fast train · 6 a big hotel · 7 clean trousers · 8 an old football · 9 a slow train
+        <ul>
+          <li>Pairs to point out with the pictures: 2/6 small – big hotel, 3/8 new – old football, 5/9 fast – slow train, 0/4 expensive – cheap car, 1/7 dirty – clean.</li>
+          <li><b>a / an</b> depends on the <b>sound of the next word</b>, not the noun: <i>a car → an expensive car</i>, <i>a football → an old football</i>.</li>
+          <li>The audio reads the phrases in order 0–9; let him check, then repeat each phrase after the recording (or record himself).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="a2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Vocabulary · Student’s Book p. 17</div>
+        <h2>Opposites</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-match-a2">
+      <div class="exercise-label">Exercise 8</div>
+      <h3>Match the opposites.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>new ⇄ <b>old</b></span></div>
+      <div class="match-grid">
+        <div class="match-col" data-side="left">
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-a2')">big</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-a2')">dirty</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-a2')">cheap</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-a2')">fast</div>
+        </div>
+        <div class="match-col" data-side="right">
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-a2')">slow</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-a2')">expensive</div>
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-a2')">small</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-a2')">clean</div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-ghost" onclick="resetMatchEx('ex-match-a2')">Reset</button>
+      </div>
+      <div class="tip"><span class="tip-title">opposite = противоположность</span>
+        <button class="say" data-say="new">new</button> ⇄ <button class="say" data-say="old">old</button> ·
+        <button class="say" data-say="big">big</button> ⇄ <button class="say" data-say="small">small</button> ·
+        <button class="say" data-say="dirty">dirty</button> ⇄ <button class="say" data-say="clean">clean</button> ·
+        <button class="say" data-say="cheap">cheap</button> ⇄ <button class="say" data-say="expensive">expensive</button> ·
+        <button class="say" data-say="fast">fast</button> ⇄ <button class="say" data-say="slow">slow</button>
+      </div>
+      <div class="tip class-note"><span class="tip-title">In class: opposites ping-pong</span>Your teacher says <i>big!</i> — you say <i>small!</i> Faster and faster! Then you start.</div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Exercise 8</div>
+        <b>Teacher’s Book:</b> <i>Check/clarify: opposite.</i> <b>Answers:</b> 1 c (big – small) · 2 e (dirty – clean) · 3 b (cheap – expensive) · 4 a (fast – slow)
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="a3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Vocabulary · Student’s Book p. 17</div>
+        <h2>Put the words in order</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Look!</div>
+      <div class="tip rule"><span class="tip-title">Adjectives always stay the same</span>
+        <span class="key">new shoes</span> not <s>news shoes</s> · <span class="key">green trousers</span> not <s>greens trousers</s>
+        <br>The adjective goes <b>before</b> the noun: <span class="key">an old computer</span> <span lang="ru">(как в русском: старый компьютер)</span>.
+      </div>
+      <div class="tip"><span class="tip-title">a or an?</span>Listen to the <b>first sound</b> of the next word: <span class="key">a car</span> → <span class="key">an expensive car</span>. Many things (<i>shoes, tickets</i>) → no <i>a</i>: <span class="key">clean shoes</span>.</div>
+    </div>
+    <div class="card" id="ex-wo-a3">
+      <div class="exercise-label">Exercise 9</div>
+      <h3>Put the words in order.</h3>
+      <p class="ru-hint" lang="ru">Перетащи слова (или нажми на слово, а потом на место).</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>old / computer / an → <b>an old computer</b></span></div>
+      <div class="wo-line"><span class="num">1.</span><div class="wo-q" id="wo-a3-1" data-answer="a new T-shirt"><span class="wo-tile">T-shirt</span><span class="wo-tile">a</span><span class="wo-tile">new</span></div></div>
+      <div class="wo-line"><span class="num">2.</span><div class="wo-q" id="wo-a3-2" data-answer="an expensive restaurant"><span class="wo-tile">expensive</span><span class="wo-tile">restaurant</span><span class="wo-tile">an</span></div></div>
+      <div class="wo-line"><span class="num">3.</span><div class="wo-q" id="wo-a3-3" data-answer="a fast car"><span class="wo-tile">car</span><span class="wo-tile">fast</span><span class="wo-tile">a</span></div></div>
+      <div class="wo-line"><span class="num">4.</span><div class="wo-q" id="wo-a3-4" data-answer="clean shoes"><span class="wo-tile">shoes</span><span class="wo-tile">clean</span></div></div>
+      <div class="wo-line"><span class="num">5.</span><div class="wo-q" id="wo-a3-5" data-answer="a cheap hotel"><span class="wo-tile">hotel</span><span class="wo-tile">cheap</span><span class="wo-tile">a</span></div></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWordOrder('ex-wo-a3')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWordOrder('ex-wo-a3')">Try again</button>
+      </div>
+      <h3 style="margin-top:16px">Now you! Write three things you have. Use an adjective.</h3>
+      <textarea class="free-write" id="fw-a3" placeholder="I’ve got an old bike, a new phone and …" rows="3"></textarea>
+      <div class="char-count" id="cc-fw-a3">0 characters</div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Exercise 9 + Look box</div>
+        <b>Teacher’s Book:</b> <i>Remind students that we use an article with a noun and that the adjective comes between the article and the noun. Elicit or explain that there is no article with shirts and tickets because they are plural.</i>
+        <br><b>Answers:</b> 1 a new T-shirt · 2 an expensive restaurant · 3 a fast car · 4 clean shoes · 5 a cheap hotel
+        <br><b>Language note (T17) · Indefinite articles:</b> <i>a / an</i> go before a singular noun when the thing is not already known (<i>Do you have a cat?</i>) — compare <i>the</i> for something known (<i>Where is the cat?</i>). <i>a</i> /ə/ before a consonant <b>sound</b> (<i>a car, a big apple</i>), <i>an</i> /ən/ before a vowel <b>sound</b> (<i>an old car, an apple</i>). Spelling can trick: <i>a university, a one-year-old child</i>.
+        <br>For a Russian speaker: no articles in Russian → expect <i>*I have old bike</i>; and the “Look” box matters less (Russian adjectives agree, English never: <i>*olds shoes</i>).
+        <br>The free-writing line previews <i>have got</i> (Unit 2) — accept <i>I have …</i> too.
+      </div>
+    </div>
+  </section>
+
+  <!-- EXTRA: TB Activity idea · Extension -->
+  <section class="step" id="a4" data-extra="x-memory">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Extra · Game <span class="extra-badge">extra</span></div>
+        <h2>Memory game</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-mem">
+      <div class="exercise-label">Remember the pictures</div>
+      <h3>Look at the pictures for 30 seconds. Then press <i>Hide</i> and write all the phrases you remember.</h3>
+      <p class="ru-hint" lang="ru">Очко — только если есть и прилагательное, и существительное: <i lang="en">a fast train</i>.</p>
+      <div class="adj-grid mem-pics" id="mem-pics">
+        <div class="adj-item"><img src="images/unit1/p17-adj-0.jpg" alt=""><span class="lab">an expensive car</span></div>
+        <div class="adj-item"><img src="images/unit1/p17-adj-1.jpg" alt=""><span class="lab">a dirty T-shirt</span></div>
+        <div class="adj-item"><img src="images/unit1/p17-adj-2.jpg" alt=""><span class="lab">a small hotel</span></div>
+        <div class="adj-item"><img src="images/unit1/p17-adj-3.jpg" alt=""><span class="lab">a new football</span></div>
+        <div class="adj-item"><img src="images/unit1/p17-adj-4.jpg" alt=""><span class="lab">a cheap car</span></div>
+        <div class="adj-item"><img src="images/unit1/p17-adj-5.jpg" alt=""><span class="lab">a fast train</span></div>
+        <div class="adj-item"><img src="images/unit1/p17-adj-6.jpg" alt=""><span class="lab">a big hotel</span></div>
+        <div class="adj-item"><img src="images/unit1/p17-adj-7.jpg" alt=""><span class="lab">clean trousers</span></div>
+        <div class="adj-item"><img src="images/unit1/p17-adj-8.jpg" alt=""><span class="lab">an old football</span></div>
+        <div class="adj-item"><img src="images/unit1/p17-adj-9.jpg" alt=""><span class="lab">a slow train</span></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-accent" onclick="memHide(true)">Hide 🙈</button>
+        <button class="btn-ghost" onclick="memHide(false)">Show again</button>
+      </div>
+      <textarea class="free-write" id="fw-mem" placeholder="an expensive car, …" rows="4"></textarea>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="memCheck()">How many? ✓</button>
+      </div>
+      <div class="mem-result" id="mem-result"></div>
+      <h3 style="margin-top:18px">Round 2: new phrases! Use the adjectives with <b>other</b> things.</h3>
+      <p class="ru-hint" lang="ru">Фраза должна иметь смысл: <i lang="en">a slow car, an expensive pizza</i> — да; <i lang="en">a fast pizza</i> — нет!</p>
+      <textarea class="free-write" id="fw-mem2" placeholder="a slow car, an expensive pizza, …" rows="3"></textarea>
+      <div class="char-count" id="cc-fw-mem2">0 characters</div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Activity idea · Extension (T17)</div>
+        <i>Students take turns to close their books and remember as many of the items in Exercise 7 as possible. To get a point, they have to say both the adjective and the noun. An alternative is to use the adjectives to say items that were not in the exercise, e.g. a slow car, an expensive pizza. However, these have to make sense in order to score a point, e.g. they can’t say a fast pizza!</i>
+        <br>One-to-one: play against him — take turns saying a phrase aloud, first to run out loses. The “How many?” button counts the 10 phrases he wrote (articles optional).
+      </div>
+    </div>
+  </section>
+
+  <!-- EXTRA: Workbook p. 12, Ex. 3–4 -->
+  <section class="step" id="a5" data-extra="x-wb12">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Extra · Workbook p. 12 <span class="extra-badge">extra</span></div>
+        <h2>Two cars</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-a5">
+      <div class="exercise-label">Workbook p. 12 · Exercise 3</div>
+      <h3>Write the adjectives from the list under the pictures.</h3>
+      <div class="word-bank-ref">
+        <span class="crossed">big</span><span>cheap</span><span>clean</span><span>dirty</span><span>expensive</span><span>fast</span><span>new</span><span>old</span><span>slow</span><span>small</span>
+      </div>
+      <p style="font-weight:800;margin:12px 0 0">The car is …</p>
+      <div class="car-box">
+        <img src="images/unit1/wb12-car-a.jpg" alt="A shiny new sports car">
+        <div class="blanks">
+          <span class="lab"><span class="num">0</span><span class="given">big</span></span>
+          <span class="lab"><span class="num">1</span><input class="blank" id="a5-1" data-answer="clean|expensive|fast|new" autocomplete="off" spellcheck="false"></span>
+          <span class="lab"><span class="num">2</span><input class="blank" id="a5-2" data-answer="clean|expensive|fast|new" autocomplete="off" spellcheck="false"></span>
+          <span class="lab"><span class="num">3</span><input class="blank" id="a5-3" data-answer="clean|expensive|fast|new" autocomplete="off" spellcheck="false"></span>
+          <span class="lab"><span class="num">4</span><input class="blank" id="a5-4" data-answer="clean|expensive|fast|new" autocomplete="off" spellcheck="false"></span>
+        </div>
+      </div>
+      <p style="font-weight:800;margin:16px 0 0">The car is …</p>
+      <div class="car-box">
+        <img src="images/unit1/wb12-car-b.jpg" alt="A small, old, dirty car">
+        <div class="blanks">
+          <span class="lab"><span class="num">5</span><input class="blank" id="a5-5" data-answer="cheap|dirty|old|slow|small" autocomplete="off" spellcheck="false"></span>
+          <span class="lab"><span class="num">6</span><input class="blank" id="a5-6" data-answer="cheap|dirty|old|slow|small" autocomplete="off" spellcheck="false"></span>
+          <span class="lab"><span class="num">7</span><input class="blank" id="a5-7" data-answer="cheap|dirty|old|slow|small" autocomplete="off" spellcheck="false"></span>
+          <span class="lab"><span class="num">8</span><input class="blank" id="a5-8" data-answer="cheap|dirty|old|slow|small" autocomplete="off" spellcheck="false"></span>
+          <span class="lab"><span class="num">9</span><input class="blank" id="a5-9" data-answer="cheap|dirty|old|slow|small" autocomplete="off" spellcheck="false"></span>
+        </div>
+      </div>
+      <p class="ru-hint" lang="ru">Порядок не важен — но не пиши одно слово два раза!</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-a5')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-a5')">Try again</button>
+      </div>
+    </div>
+    <div class="card" id="ex-wo-a5">
+      <div class="exercise-label">Workbook p. 12 · Exercise 4</div>
+      <h3>Put the words in order to make sentences.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>book / English / My / new / is → <b>My English book is new.</b></span></div>
+      <div class="wo-line"><span class="num">1.</span><div class="wo-q" id="wo-a5-1" data-answer="Her pen is red ."><span class="wo-tile">red</span><span class="wo-tile">Her</span><span class="wo-tile">is</span><span class="wo-tile">pen</span><span class="wo-tile">.</span></div></div>
+      <div class="wo-line"><span class="num">2.</span><div class="wo-q" id="wo-a5-2" data-answer="Our house is old ."><span class="wo-tile">is</span><span class="wo-tile">house</span><span class="wo-tile">old</span><span class="wo-tile">Our</span><span class="wo-tile">.</span></div></div>
+      <div class="wo-line"><span class="num">3.</span><div class="wo-q" id="wo-a5-3" data-answer="Their bikes are fast ."><span class="wo-tile">fast</span><span class="wo-tile">bikes</span><span class="wo-tile">Their</span><span class="wo-tile">are</span><span class="wo-tile">.</span></div></div>
+      <div class="wo-line"><span class="num">4.</span><div class="wo-q" id="wo-a5-4" data-answer="Our school is big ."><span class="wo-tile">big</span><span class="wo-tile">school</span><span class="wo-tile">Our</span><span class="wo-tile">is</span><span class="wo-tile">.</span></div></div>
+      <div class="wo-line"><span class="num">5.</span><div class="wo-q" id="wo-a5-5" data-answer="My bedroom is small ."><span class="wo-tile">My</span><span class="wo-tile">small</span><span class="wo-tile">bedroom</span><span class="wo-tile">is</span><span class="wo-tile">.</span></div></div>
+      <div class="wo-line"><span class="num">6.</span><div class="wo-q" id="wo-a5-6" data-answer="Her car is expensive ."><span class="wo-tile">car</span><span class="wo-tile">Her</span><span class="wo-tile">expensive</span><span class="wo-tile">is</span><span class="wo-tile">.</span></div></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWordOrder('ex-wo-a5')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWordOrder('ex-wo-a5')">Try again</button>
+      </div>
+      <div class="tip">Two places for an adjective: <span class="key">a new book</span> (before the noun) or <span class="key">My book is new.</span> (after <i>be</i>).</div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Workbook p. 12 Ex. 3–4 (TB: THINK more → Workbook Vocabulary p12, Ex.3–4)</div>
+        <b>Ex. 3:</b> car 1 — big, clean, expensive, fast, new (any order) · car 2 — cheap, dirty, old, slow, small (any order). The site accepts any of the right words in each box, so check he didn’t repeat one.
+        <br><b>Ex. 4:</b> 1 Her pen is red. · 2 Our house is old. · 3 Their bikes are fast. · 4 Our school is big. · 5 My bedroom is small. · 6 Her car is expensive.
+        <br>Ex. 4 is new for him: adjective <b>after be</b> (predicative). Contrast with Ex. 9 (<i>a red pen</i> → <i>The pen is red</i>).
+      </div>
+    </div>
+  </section>
+
+  <!-- EXTRA: Workbook p. 13, Vocabulary Extra Ex. 1–2 -->
+  <section class="step" id="a6" data-extra="x-wb13">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Extra · Workbook p. 13 · Vocabulary Extra <span class="extra-badge">extra</span></div>
+        <h2>More opposites</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-a6">
+      <div class="exercise-label">Workbook p. 13 · Vocabulary Extra · Exercise 1</div>
+      <h3>Write an adjective from the list under each picture.</h3>
+      <div class="word-bank-ref">
+        <span>hard</span><span>high</span><span>long</span><span>low</span><span class="crossed">short</span><span>soft</span>
+      </div>
+      <div class="adj-grid">
+        <div class="adj-item"><img src="images/unit1/wb13-adj-0.jpg" alt="A short boy, an arrow points at his head"><span class="lab"><span class="num">0</span><span class="given">short</span></span></div>
+        <div class="adj-item"><img src="images/unit1/wb13-adj-1.jpg" alt="A very tall building with an arrow from top to bottom"><span class="lab"><span class="num">1</span><input class="blank" id="a6-1" data-answer="high|tall" autocomplete="off" spellcheck="false"></span></div>
+        <div class="adj-item"><img src="images/unit1/wb13-adj-2.jpg" alt="A hand knocks on a wooden door"><span class="lab"><span class="num">2</span><input class="blank" id="a6-2" data-answer="hard" autocomplete="off" spellcheck="false"></span></div>
+        <div class="adj-item"><img src="images/unit1/wb13-adj-3.jpg" alt="A boy under a door, the top is near his head"><span class="lab"><span class="num">3</span><input class="blank" id="a6-3" data-answer="low" autocomplete="off" spellcheck="false"></span></div>
+        <div class="adj-item"><img src="images/unit1/wb13-adj-4.jpg" alt="A girl hugs herself in a soft jumper"><span class="lab"><span class="num">4</span><input class="blank" id="a6-4" data-answer="soft" autocomplete="off" spellcheck="false"></span></div>
+        <div class="adj-item"><img src="images/unit1/wb13-adj-5.jpg" alt="A very long car with an arrow from end to end"><span class="lab"><span class="num">5</span><input class="blank" id="a6-5" data-answer="long" autocomplete="off" spellcheck="false"></span></div>
+      </div>
+      <div class="tip"><span class="tip-title">Listen</span>
+        <button class="say" data-say="hard">hard</button> <button class="say" data-say="soft">soft</button> <button class="say" data-say="high">high</button> <button class="say" data-say="low">low</button> <button class="say" data-say="long">long</button> <button class="say" data-say="short">short</button>
+      </div>
+      <h3 style="margin-top:16px">Exercise 2 · Put the adjectives from Exercise 1 in pairs with their opposites.</h3>
+      <div class="opp-row"><b>short</b> ⇄ <input class="blank" id="a6-p1" data-answer="long" autocomplete="off" spellcheck="false"></div>
+      <div class="opp-row"><b>high</b> ⇄ <input class="blank" id="a6-p2" data-answer="low" autocomplete="off" spellcheck="false"></div>
+      <div class="opp-row"><b>hard</b> ⇄ <input class="blank" id="a6-p3" data-answer="soft" autocomplete="off" spellcheck="false"></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-a6')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-a6')">Try again</button>
+      </div>
+      <div class="tip rule"><span class="tip-title">All the pairs (Workbook p. 13)</span>new ⇄ old · fast ⇄ slow · big ⇄ small · clean ⇄ dirty · cheap ⇄ expensive · short ⇄ long · high ⇄ low · hard ⇄ soft</div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Workbook p. 13 Vocabulary Extra Ex. 1–2 (TB: THINK more)</div>
+        <b>Ex. 1:</b> 1 high · 2 hard · 3 low · 4 soft · 5 long. <b>Ex. 2:</b> short – long, high – low, hard – soft.
+        <br>Picture 0 is a <i>short</i> boy: opposite of <i>tall</i> for people; <i>short</i> ⇄ <i>long</i> for things (the limousine). Accept <i>tall</i> for the building (1), but the book wants <i>high</i>. Picture 2: knocking on a <i>hard</i> door; picture 4: a <i>soft</i> jumper.
+        <br>The Reference mind map on WB p. 13 (countries + adjectives) is summed up in the rule box.
+      </div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-write');window.scrollTo(0,0)">Next: About me →</button>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════ PART 3: Writing (SB p. 17, Ex. 10) ══════════ -->
+<div class="lesson-part" id="part-write">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#b1">1 · The Lakes camp</a>
+    <a href="#b2" data-extra="x-wb15">+ · Brighton Music Academy</a>
+    <a href="#b3">2 · Итог</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="b1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Writing · Personal information · Student’s Book p. 17</div>
+        <h2>The Lakes English Summer Camp</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-b1">
+      <div class="exercise-label">Exercise 10</div>
+      <h3>Look at the questionnaire. Answer the questions about you in <b>full sentences</b>.</h3>
+      <div class="tip"><span class="tip-title">New word: roommate</span>A <b>roommate</b> <button class="say" data-say="roommate">roommate</button> sleeps in the same room as you at camp <span lang="ru">(сосед по комнате)</span>. <b>questionnaire</b> <button class="say" data-say="questionnaire">questionnaire</button> = анкета.</div>
+      <div class="camp">
+        <div class="camp-head"><b>THE LAKES</b><span>ENGLISH SUMMER CAMP</span></div>
+        <div class="camp-intro">We’re really excited about your visit next month. Answer the questions about yourself to find the perfect roommate.</div>
+        <div class="camp-q"><p>What’s your name? <button class="say say-big" data-say="What’s your name?" aria-label="Listen"></button></p><input class="blank" id="b1-1" placeholder="My name’s …" autocomplete="off"></div>
+        <div class="camp-q"><p>Where are you from? <button class="say say-big" data-say="Where are you from?" aria-label="Listen"></button></p><input class="blank" id="b1-2" placeholder="I’m from … . I’m …" autocomplete="off"></div>
+        <div class="camp-q"><p>How old are you? <button class="say say-big" data-say="How old are you?" aria-label="Listen"></button></p><input class="blank" id="b1-3" placeholder="I’m … years old." autocomplete="off"></div>
+        <div class="camp-q"><p>Who’s your favourite actor? <button class="say say-big" data-say="Who’s your favourite actor?" aria-label="Listen"></button></p><input class="blank" id="b1-4" placeholder="My favourite actor is … ." autocomplete="off"></div>
+        <div class="camp-q"><p>What’s your favourite colour? <button class="say say-big" data-say="What’s your favourite colour?" aria-label="Listen"></button></p><input class="blank" id="b1-5" placeholder="My favourite colour is … ." autocomplete="off"></div>
+      </div>
+      <div class="tip rule"><span class="tip-title">Full sentences, please!</span>Not <s>Moscow</s> → <span class="key">I’m from Moscow. I’m Russian.</span> Not <s>12</s> → <span class="key">I’m 12 years old.</span> Start with a <b>capital letter</b>, end with a <b>full stop</b>.</div>
+      <div class="tip class-note"><span class="tip-title">In class: the perfect roommate</span>Read your answers to your teacher. Your teacher answers the questions too. Are you a good roommate for your teacher? Why? <i>Yes! Our favourite colour is blue!</i></div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Exercise 10</div>
+        <b>Teacher’s Book:</b> <i>Check/clarify: roommate. If space allows, encourage students to walk around the classroom to find someone who could be their perfect roommate.</i>
+        <ul>
+          <li>One-to-one: you fill in the questionnaire too (as yourself or as a famous person) and compare: <i>Is Timofey a good roommate for me?</i></li>
+          <li>Check: capital letters for names, cities, nationalities (<i>Russian</i>); <i>I’m 12</i> / <i>I’m 12 years old</i> (not <i>*I have 12</i> — Russian/German transfer); <i>My favourite actor <u>is</u> …</i> (no missing <i>is</i>).</li>
+          <li>Teacher marks: use ✎ on each answer — there is no automatic check.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXTRA: Workbook p. 15, Developing Writing -->
+  <section class="step" id="b2" data-extra="x-wb15">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Extra · Workbook p. 15 · Developing writing <span class="extra-badge">extra</span></div>
+        <h2>Brighton Music Academy: about me</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-b2">
+      <div class="exercise-label">Workbook p. 15 · Exercise 1 · Input</div>
+      <h3>Read the questionnaire. Where is Maria from?</h3>
+      <div class="brighton">
+        <div class="brighton-head"><b>Brighton</b><span>Music Academy</span></div>
+        <p style="margin:10px 16px">Be the best – Summer Music Camp on the English Coast! Pop, rap, reggaeton, R&amp;B, country – we can help you be the best!<br><b style="color:#5A8A12">We want to know all about you.</b></p>
+        <table>
+          <tr><td>What’s your name?</td><td class="hand">Maria Garcia</td></tr>
+          <tr><td>Where are you from?</td><td class="hand">Guadalajara in Mexico</td></tr>
+          <tr><td>How old are you?</td><td class="hand">12</td></tr>
+          <tr><td>What’s your favourite music?</td><td class="hand">pop</td></tr>
+          <tr><td>Who’s your favourite singer?</td><td class="hand">Miley Cyrus</td></tr>
+        </table>
+      </div>
+      <div class="mc-options" data-correct="b" style="margin-top:12px">
+        <label class="mc-option"><input type="radio" name="b2-1" value="a"><span class="mc-bullet">A</span> Brighton, in the UK</label>
+        <label class="mc-option"><input type="radio" name="b2-1" value="b"><span class="mc-bullet">B</span> Guadalajara, in Mexico</label>
+        <label class="mc-option"><input type="radio" name="b2-1" value="c"><span class="mc-bullet">C</span> Tennessee, in the US</label>
+      </div>
+
+      <div class="exercise-label" style="margin-top:20px">Exercise 2 · Analyse</div>
+      <h3>Complete the text about Maria with the missing words.</h3>
+      <div class="note-text">
+        Hi, my name is <span class="given" style="font-family:inherit">Maria</span>.
+        I’m Mexican. I’m from <input class="blank" id="b2-1" data-answer="Guadalajara|Guadalajara in Mexico|Guadalajara, Mexico" autocomplete="off" spellcheck="false">.
+        I’m <input class="blank" id="b2-2" data-answer="12|twelve" autocomplete="off" style="width:70px"> years old. I love a lot of music! My favourite music is
+        <input class="blank" id="b2-3" data-answer="pop" autocomplete="off" spellcheck="false">. It’s great! I love rap and reggaeton, too. My favourite singer is
+        <input class="blank" id="b2-4" data-answer="Miley Cyrus" autocomplete="off" spellcheck="false">. She’s a singer from Tennessee, in the US. She’s amazing! Her father is a country singer.
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-b2');checkBlanks('ex-b2')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-b2');resetBlanks('ex-b2')">Try again</button>
+      </div>
+
+      <div class="exercise-label" style="margin-top:20px">Exercise 3 · Plan</div>
+      <h3>Complete the questionnaire about you.</h3>
+      <div class="brighton">
+        <div class="brighton-head"><b>Brighton</b><span>Music Academy</span></div>
+        <table>
+          <tr><td>What’s your name?</td><td><input class="blank" id="b2-q1" autocomplete="off"></td></tr>
+          <tr><td>Where are you from?</td><td><input class="blank" id="b2-q2" autocomplete="off"></td></tr>
+          <tr><td>How old are you?</td><td><input class="blank" id="b2-q3" autocomplete="off"></td></tr>
+          <tr><td>What’s your favourite music?</td><td><input class="blank" id="b2-q4" autocomplete="off"></td></tr>
+          <tr><td>Who’s your favourite singer?</td><td><input class="blank" id="b2-q5" autocomplete="off"></td></tr>
+        </table>
+      </div>
+
+      <div class="exercise-label" style="margin-top:20px">Exercise 4 · Produce</div>
+      <h3>Use your answers from Exercise 3 to write a text about you. Use the text about Maria to help you.</h3>
+      <textarea class="free-write" id="fw-b2" rows="7" placeholder="Hi, my name is … . I’m … . I’m from … . I’m … years old. My favourite music is … . I love … , too. My favourite singer is … . He’s / She’s … . He’s / She’s … !"></textarea>
+      <div class="char-count" id="cc-fw-b2">0 characters</div>
+      <div class="tip"><span class="tip-title">Writing tip: checking</span>When you finish, always read your writing again. Check for mistakes. Do all the verbs agree with their subjects? <span class="key">I am</span> · <span class="key">She is</span> · <span class="key">They are</span></div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Workbook p. 15 Developing Writing (TB: THINK more)</div>
+        <b>Ex. 1:</b> Guadalajara, in Mexico. <b>Ex. 2:</b> 1 Guadalajara · 2 12 / twelve · 3 pop · 4 Miley Cyrus.
+        <br>Good as a model before / instead of the Homework tab. Point out the structure: name → nationality + city → age → favourite music → favourite singer + one fact (<i>She’s amazing!</i>).
+        <br>Check the tip together: he underlines every verb in his text (<i>am / is / are</i>, <i>love</i>) and checks the subject.
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="b3">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Итог</div>
+        <h2>Что ты теперь умеешь?</h2>
+      </div>
+    </div>
+    <div class="card fun-check" lang="ru" id="fun-check">
+      <div class="fc-head">
+        <h3>Теперь я…</h3>
+        <span class="fc-count"><b>0</b> / 4 ⭐</span>
+      </div>
+      <div class="fc-meter"><i></i></div>
+      <p class="fc-hint">Отметь всё, что уже получается!</p>
+      <div class="reflect-list">
+        <label class="reflect-item"><input type="checkbox" id="rr1"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🚗</span><span class="reflect-text">знаю 10 прилагательных: <i lang="en">big, small, new, old, fast, slow, cheap, expensive, clean, dirty</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr2"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">⇄</span><span class="reflect-text">называю противоположности: <i lang="en">fast ⇄ slow</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr3"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🧩</span><span class="reflect-text">ставлю прилагательное перед существительным и выбираю <i lang="en">a / an</i>: <i lang="en">an old car</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr4"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">✍️</span><span class="reflect-text">заполняю анкету о себе полными предложениями</span></label>
+      </div>
+      <div class="fc-done" hidden><span class="fc-trophy">🏆</span><span><b>Супер!</b> Урок 11 пройден. Так держать!</span></div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<!-- ══════════ EXTRA TAB: Vocabulary Worksheet Unit 1 (Teacher's Resource Bank) ══════════ -->
+<div class="lesson-part" id="part-ws" data-extra="x-worksheet">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#v1">1 · Countries</a>
+    <a href="#v2">2 · Adjectives</a>
+    <a href="#v3">3 · Phrases &amp; sentences</a>
+    <a href="#v4">4 · Challenge</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="teacher-only">
+    <div class="to-label">👩‍🏫 Teacher only · Vocabulary Worksheet Unit 1 (TB: THINK more → Worksheets)</div>
+    From <i>Worksheets/Vocabulary/…Vocabulary_Standard_Unit_1</i> (Tasks 1–7) + <i>…Extension_Unit_1</i> (Tasks 2, 3, 5 as “Challenge”). Countries & nationalities = Lesson 8 review; adjectives = today. Good for a fast finisher or as extra homework (open the tab and tell him).
+    <br>Changed from the sheet: Task 3’s word snake is re-made with all ten adjectives (the sheet says “nine” but its key lists ten).
+  </div>
+
+  <section class="step" id="v1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Worksheet · Tasks 1–2 · Lesson 8 review</div>
+        <h2>Countries and nationalities</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-v1">
+      <div class="exercise-label">Task 1</div>
+      <h3>Complete the names of the countries. You are given the first letter.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>Tokyo is in <b>Japan</b>.</span></div>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> Seville is in <input class="blank" id="v1-1" data-answer="Spain" placeholder="S _ _ _ _" autocomplete="off" spellcheck="false">.</p>
+        <p class="gap-line"><span class="num">2.</span> Cancun is in <input class="blank" id="v1-2" data-answer="Mexico" placeholder="M _ _ _ _ _" autocomplete="off" spellcheck="false">.</p>
+        <p class="gap-line"><span class="num">3.</span> Istanbul is in <input class="blank" id="v1-3" data-answer="Turkey|Türkiye" placeholder="T _ _ _ _ _" autocomplete="off" spellcheck="false">.</p>
+        <p class="gap-line"><span class="num">4.</span> Moscow is in <input class="blank" id="v1-4" data-answer="Russia" placeholder="R _ _ _ _ _" autocomplete="off" spellcheck="false">.</p>
+        <p class="gap-line"><span class="num">5.</span> Lisbon is in <input class="blank" id="v1-5" data-answer="Portugal" placeholder="P _ _ _ _ _ _ _" autocomplete="off" spellcheck="false">.</p>
+        <p class="gap-line"><span class="num">6.</span> Rio de Janeiro is in <input class="blank" id="v1-6" data-answer="Brazil" placeholder="B _ _ _ _ _" autocomplete="off" spellcheck="false">.</p>
+        <p class="gap-line"><span class="num">7.</span> New York is in the <input class="blank" id="v1-7" data-answer="USA|US" placeholder="U _ _" autocomplete="off" spellcheck="false" style="width:90px">.</p>
+        <p class="gap-line"><span class="num">8.</span> Manchester is in the <input class="blank" id="v1-8" data-answer="UK" placeholder="U _" autocomplete="off" spellcheck="false" style="width:90px">.</p>
+        <p class="gap-line"><span class="num">9.</span> Cape Town is in <input class="blank" id="v1-9" data-answer="South Africa" placeholder="S _ _ _ _  A _ _ _ _ _" autocomplete="off" spellcheck="false">.</p>
+      </div>
+      <div class="exercise-label" style="margin-top:18px">Task 2</div>
+      <h3>Choose the correct options.</h3>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> They’re <span class="word-choice" id="v2-1" data-answer="British"><button class="word-choice-btn" onclick="selectWord(this)">British</button><button class="word-choice-btn" onclick="selectWord(this)">Britese</button></span>.</p>
+        <p class="gap-line"><span class="num">2.</span> We’re <span class="word-choice" id="v2-2" data-answer="Japanese"><button class="word-choice-btn" onclick="selectWord(this)">Japanish</button><button class="word-choice-btn" onclick="selectWord(this)">Japanese</button></span>.</p>
+        <p class="gap-line"><span class="num">3.</span> You’re <span class="word-choice" id="v2-3" data-answer="Brazilian"><button class="word-choice-btn" onclick="selectWord(this)">Brazilian</button><button class="word-choice-btn" onclick="selectWord(this)">Brazilese</button></span>.</p>
+        <p class="gap-line"><span class="num">4.</span> He’s <span class="word-choice" id="v2-4" data-answer="American"><button class="word-choice-btn" onclick="selectWord(this)">Americish</button><button class="word-choice-btn" onclick="selectWord(this)">American</button></span>.</p>
+        <p class="gap-line"><span class="num">5.</span> I’m South <span class="word-choice" id="v2-5" data-answer="African"><button class="word-choice-btn" onclick="selectWord(this)">Africish</button><button class="word-choice-btn" onclick="selectWord(this)">African</button></span>.</p>
+        <p class="gap-line"><span class="num">6.</span> She’s <span class="word-choice" id="v2-6" data-answer="Mexican"><button class="word-choice-btn" onclick="selectWord(this)">Mexicish</button><button class="word-choice-btn" onclick="selectWord(this)">Mexican</button></span>.</p>
+        <p class="gap-line"><span class="num">7.</span> You’re <span class="word-choice" id="v2-7" data-answer="Turkish"><button class="word-choice-btn" onclick="selectWord(this)">Turkish</button><button class="word-choice-btn" onclick="selectWord(this)">Turkan</button></span>.</p>
+        <p class="gap-line"><span class="num">8.</span> They’re <span class="word-choice" id="v2-8" data-answer="Russian"><button class="word-choice-btn" onclick="selectWord(this)">Russian</button><button class="word-choice-btn" onclick="selectWord(this)">Russese</button></span>.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-v1');checkWords('ex-v1')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-v1');resetWords('ex-v1')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="v2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Worksheet · Tasks 3–4</div>
+        <h2>Adjectives</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-v2">
+      <div class="exercise-label">Task 3</div>
+      <h3>Find ten adjectives in the word snake. 🐍</h3>
+      <div class="snake">mioCLEANkpoSMALLtusDIRTYwejSLOWplhNEWwegOLDjistCHEAPrpkilEXPENSIVEmnsFASTpsdgBIGsv</div>
+      <p class="ru-hint" lang="ru">Порядок не важен.</p>
+      <div class="find-grid">
+        <input class="blank" id="v3-1" data-answer="clean|small|dirty|slow|new|old|cheap|expensive|fast|big" autocomplete="off" spellcheck="false">
+        <input class="blank" id="v3-2" data-answer="clean|small|dirty|slow|new|old|cheap|expensive|fast|big" autocomplete="off" spellcheck="false">
+        <input class="blank" id="v3-3" data-answer="clean|small|dirty|slow|new|old|cheap|expensive|fast|big" autocomplete="off" spellcheck="false">
+        <input class="blank" id="v3-4" data-answer="clean|small|dirty|slow|new|old|cheap|expensive|fast|big" autocomplete="off" spellcheck="false">
+        <input class="blank" id="v3-5" data-answer="clean|small|dirty|slow|new|old|cheap|expensive|fast|big" autocomplete="off" spellcheck="false">
+        <input class="blank" id="v3-6" data-answer="clean|small|dirty|slow|new|old|cheap|expensive|fast|big" autocomplete="off" spellcheck="false">
+        <input class="blank" id="v3-7" data-answer="clean|small|dirty|slow|new|old|cheap|expensive|fast|big" autocomplete="off" spellcheck="false">
+        <input class="blank" id="v3-8" data-answer="clean|small|dirty|slow|new|old|cheap|expensive|fast|big" autocomplete="off" spellcheck="false">
+        <input class="blank" id="v3-9" data-answer="clean|small|dirty|slow|new|old|cheap|expensive|fast|big" autocomplete="off" spellcheck="false">
+        <input class="blank" id="v3-10" data-answer="clean|small|dirty|slow|new|old|cheap|expensive|fast|big" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="exercise-label" style="margin-top:18px">Task 4</div>
+      <h3>Choose the correct words.</h3>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> Russia is a very <span class="word-choice" id="v4-1" data-answer="big"><button class="word-choice-btn" onclick="selectWord(this)">big</button><button class="word-choice-btn" onclick="selectWord(this)">small</button></span> country.</p>
+        <p class="gap-line"><span class="num">2.</span> The shop is <span class="word-choice" id="v4-2" data-answer="cheap"><button class="word-choice-btn" onclick="selectWord(this)">cheap</button><button class="word-choice-btn" onclick="selectWord(this)">expensive</button></span>: books are €1 and pens 50c.</p>
+        <p class="gap-line"><span class="num">3.</span> The beach is <span class="word-choice" id="v4-3" data-answer="clean"><button class="word-choice-btn" onclick="selectWord(this)">clean</button><button class="word-choice-btn" onclick="selectWord(this)">dirty</button></span>. It is beautiful.</p>
+        <p class="gap-line"><span class="num">4.</span> Usain Bolt is <span class="word-choice" id="v4-4" data-answer="fast"><button class="word-choice-btn" onclick="selectWord(this)">slow</button><button class="word-choice-btn" onclick="selectWord(this)">fast</button></span>.</p>
+        <p class="gap-line"><span class="num">5.</span> My tablet is <span class="word-choice" id="v4-5" data-answer="old"><button class="word-choice-btn" onclick="selectWord(this)">new</button><button class="word-choice-btn" onclick="selectWord(this)">old</button></span> – it is six years old.</p>
+        <p class="gap-line"><span class="num">6.</span> Twenty pounds for a burger: that’s <span class="word-choice" id="v4-6" data-answer="expensive"><button class="word-choice-btn" onclick="selectWord(this)">cheap</button><button class="word-choice-btn" onclick="selectWord(this)">expensive</button></span>!</p>
+        <p class="gap-line"><span class="num">7.</span> I have a <span class="word-choice" id="v4-7" data-answer="new"><button class="word-choice-btn" onclick="selectWord(this)">new</button><button class="word-choice-btn" onclick="selectWord(this)">old</button></span> sister. She’s two weeks old.</p>
+        <p class="gap-line"><span class="num">8.</span> I like <span class="word-choice" id="v4-8" data-answer="small"><button class="word-choice-btn" onclick="selectWord(this)">big</button><button class="word-choice-btn" onclick="selectWord(this)">small</button></span> animals like birds.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-v2');checkWords('ex-v2')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-v2');resetWords('ex-v2')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="v3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Worksheet · Tasks 5–7</div>
+        <h2>Phrases and sentences</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-v5">
+      <div class="exercise-label">Task 5</div>
+      <h3>Complete the sentences with the words in the list.</h3>
+      <div class="word-bank-ref"><span>awesome</span><span>later</span><span>goodbye</span><span class="crossed">going</span><span>is</span><span>know</span></div>
+      <div class="dialogue">
+        <span class="dl-name">A</span><p class="dl-text">Hello Tina.</p>
+        <span class="dl-name two">B</span><p class="dl-text">How’s it <span class="given">going</span>?</p>
+        <span class="dl-name">A</span><p class="dl-text">This is my new computer.</p>
+        <span class="dl-name two">B</span><p class="dl-text ask">Wow, that’s <input class="blank" id="v5-1" data-answer="awesome" autocomplete="off" spellcheck="false">!</p>
+        <span class="dl-name">A</span><p class="dl-text">Is this your camera?</p>
+        <span class="dl-name two">B</span><p class="dl-text ask">Yes, it <input class="blank" id="v5-2" data-answer="is" autocomplete="off" spellcheck="false" style="width:70px">.</p>
+        <span class="dl-name">A</span><p class="dl-text">I’m off now.</p>
+        <span class="dl-name two">B</span><p class="dl-text ask"><input class="blank" id="v5-3" data-answer="Goodbye" autocomplete="off" spellcheck="false">.</p>
+        <span class="dl-name">A</span><p class="dl-text">Madrid is the capital of Spain.</p>
+        <span class="dl-name two">B</span><p class="dl-text ask">I <input class="blank" id="v5-4" data-answer="know" autocomplete="off" spellcheck="false">!</p>
+        <span class="dl-name">A</span><p class="dl-text">See you later.</p>
+        <span class="dl-name two">B</span><p class="dl-text ask">OK. See you <input class="blank" id="v5-5" data-answer="later" autocomplete="off" spellcheck="false">.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-v5')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-v5')">Try again</button>
+      </div>
+    </div>
+    <div class="card" id="ex-wo-v6">
+      <div class="exercise-label">Task 6</div>
+      <h3>Put the words in order to make sentences.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>Brazil / is / from / Maria → <b>Maria is from Brazil.</b></span></div>
+      <div class="wo-line"><span class="num">1.</span><div class="wo-q" id="wo-v6-1" data-answer="Tom is American ."><span class="wo-tile">is</span><span class="wo-tile">American</span><span class="wo-tile">.</span><span class="wo-tile">Tom</span></div></div>
+      <div class="wo-line"><span class="num">2.</span><div class="wo-q" id="wo-v6-2" data-answer="It is a new phone ."><span class="wo-tile">it</span><span class="wo-tile">is</span><span class="wo-tile">phone</span><span class="wo-tile">new</span><span class="wo-tile">a</span><span class="wo-tile">.</span></div></div>
+      <div class="wo-line"><span class="num">3.</span><div class="wo-q" id="wo-v6-3" data-answer="It is a slow taxi ."><span class="wo-tile">it</span><span class="wo-tile">is</span><span class="wo-tile">a</span><span class="wo-tile">taxi</span><span class="wo-tile">slow</span><span class="wo-tile">.</span></div></div>
+      <div class="wo-line"><span class="num">4.</span><div class="wo-q" id="wo-v6-4" data-answer="Tomoko is from Japan ."><span class="wo-tile">Japan</span><span class="wo-tile">Tomoko</span><span class="wo-tile">from</span><span class="wo-tile">is</span><span class="wo-tile">.</span></div></div>
+      <div class="wo-line"><span class="num">5.</span><div class="wo-q" id="wo-v6-5" data-answer="They are small houses ."><span class="wo-tile">small</span><span class="wo-tile">houses</span><span class="wo-tile">are</span><span class="wo-tile">they</span><span class="wo-tile">.</span></div></div>
+      <div class="wo-line"><span class="num">6.</span><div class="wo-q" id="wo-v6-6" data-answer="It is a dirty shirt ."><span class="wo-tile">it</span><span class="wo-tile">a</span><span class="wo-tile">dirty</span><span class="wo-tile">is</span><span class="wo-tile">shirt</span><span class="wo-tile">.</span></div></div>
+      <div class="wo-line"><span class="num">7.</span><div class="wo-q" id="wo-v6-7" data-answer="They are expensive pens ."><span class="wo-tile">expensive</span><span class="wo-tile">they</span><span class="wo-tile">pens</span><span class="wo-tile">are</span><span class="wo-tile">.</span></div></div>
+      <p class="ru-hint" lang="ru">Первое слово предложения — с большой буквы, даже если на плитке маленькая (<i lang="en">it → It</i>): здесь это не важно.</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWordOrder('ex-wo-v6')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWordOrder('ex-wo-v6')">Try again</button>
+      </div>
+    </div>
+    <div class="card" id="ex-v7">
+      <div class="exercise-label">Task 7</div>
+      <h3>Choose the correct words.</h3>
+      <p class="read-text" style="font-size:19px;line-height:2.2">
+        I am <span class="word-choice" id="v7-1" data-answer="American"><button class="word-choice-btn" onclick="selectWord(this)">America</button><button class="word-choice-btn" onclick="selectWord(this)">American</button></span>.
+        I’m from New York City in the <span class="word-choice" id="v7-2" data-answer="USA"><button class="word-choice-btn" onclick="selectWord(this)">USA</button><button class="word-choice-btn" onclick="selectWord(this)">UK</button></span>, but my parents are from other countries.
+        My mum is <span class="word-choice" id="v7-3" data-answer="Spanish"><button class="word-choice-btn" onclick="selectWord(this)">Spanish</button><button class="word-choice-btn" onclick="selectWord(this)">Spain</button></span>. She’s from Malaga.
+        My dad is from Istanbul. It is the capital of <span class="word-choice" id="v7-4" data-answer="Turkey"><button class="word-choice-btn" onclick="selectWord(this)">Turkey</button><button class="word-choice-btn" onclick="selectWord(this)">Turkish</button></span>.
+        New York is <span class="word-choice" id="v7-5" data-answer="big"><button class="word-choice-btn" onclick="selectWord(this)">big</button><button class="word-choice-btn" onclick="selectWord(this)">small</button></span>: 8.5 million people live in this city.
+        Our house is in Brooklyn. It is 100 years old. It is an <span class="word-choice" id="v7-6" data-answer="old"><button class="word-choice-btn" onclick="selectWord(this)">old</button><button class="word-choice-btn" onclick="selectWord(this)">new</button></span> house.
+      </p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-v7')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-v7')">Try again</button>
+      </div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Worksheet answers</div>
+        <b>1</b> Spain, Mexico, Turkey, Russia, Portugal, Brazil, USA, UK, South Africa · <b>2</b> British, Japanese, Brazilian, American, African, Mexican, Turkish, Russian · <b>3</b> clean, small, dirty, slow, new, old, cheap, expensive, fast, big · <b>4</b> big, cheap, clean, fast, old, expensive, new, small · <b>5</b> awesome, is, Goodbye, know, later · <b>6</b> Tom is American. It is a new phone. It is a slow taxi. Tomoko is from Japan. They are small houses. It is a dirty shirt. They are expensive pens. · <b>7</b> American, USA, Spanish, Turkey, big, old.
+        <br>Note: the worksheet says “Istanbul … the capital of Turkey” — Istanbul is <b>not</b> the capital (Ankara is). Worth a quick “Is that true?” moment.
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="v4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Worksheet Extension · Challenge ⭐</div>
+        <h2>Challenge</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-v8">
+      <div class="exercise-label">Challenge 1</div>
+      <h3>Put the letters in order to make nationalities.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>She’s <i>hsitirb</i> → <b>British</b>.</span></div>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> They’re <i>janeseap</i> <input class="blank" id="v8-1" data-answer="Japanese" autocomplete="off" spellcheck="false">.</p>
+        <p class="gap-line"><span class="num">2.</span> We’re <i>zilianbra</i> <input class="blank" id="v8-2" data-answer="Brazilian" autocomplete="off" spellcheck="false">.</p>
+        <p class="gap-line"><span class="num">3.</span> You’re <i>amneacir</i> <input class="blank" id="v8-3" data-answer="American" autocomplete="off" spellcheck="false">.</p>
+        <p class="gap-line"><span class="num">4.</span> He’s <i>htuos ricanfa</i> <input class="blank" id="v8-4" data-answer="South African" autocomplete="off" spellcheck="false">.</p>
+        <p class="gap-line"><span class="num">5.</span> I’m <i>ortgupeseu</i> <input class="blank" id="v8-5" data-answer="Portuguese" autocomplete="off" spellcheck="false">.</p>
+        <p class="gap-line"><span class="num">6.</span> You’re <i>urthsik</i> <input class="blank" id="v8-6" data-answer="Turkish" autocomplete="off" spellcheck="false">.</p>
+        <p class="gap-line"><span class="num">7.</span> They’re <i>asnisru</i> <input class="blank" id="v8-7" data-answer="Russian" autocomplete="off" spellcheck="false">.</p>
+      </div>
+      <div class="exercise-label" style="margin-top:18px">Challenge 2</div>
+      <h3>Write the opposite of the adjective.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>A <u>big</u> pizza. → <b>small</b></span></div>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> This phone is <u>cheap</u>. → <input class="blank" id="v9-1" data-answer="expensive" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">2.</span> <u>Dirty</u> shoes. → <input class="blank" id="v9-2" data-answer="clean" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">3.</span> A <u>slow</u> car. → <input class="blank" id="v9-3" data-answer="fast" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">4.</span> This shirt is <u>new</u>. → <input class="blank" id="v9-4" data-answer="old" autocomplete="off" spellcheck="false"></p>
+      </div>
+      <div class="exercise-label" style="margin-top:18px">Challenge 3</div>
+      <h3>There is one mistake in each sentence. Write the correct word.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>Maria is from <s>Brasil</s>. → <b>Brazil</b></span></div>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> Tom is Americanne. → <input class="blank" id="v10-1" data-answer="American" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">2.</span> My phone is newe. → <input class="blank" id="v10-2" data-answer="new" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">3.</span> This taxi is slowe. → <input class="blank" id="v10-3" data-answer="slow" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">4.</span> Tomoko is from Japannese. → <input class="blank" id="v10-4" data-answer="Japan" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">5.</span> My house is smal. → <input class="blank" id="v10-5" data-answer="small" autocomplete="off" spellcheck="false"></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-v8')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-v8')">Try again</button>
+      </div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Extension answers</div>
+        <b>1</b> Japanese, Brazilian, American, South African, Portuguese, Turkish, Russian · <b>2</b> expensive, clean, fast, old · <b>3</b> American, new, slow, Japan, small.
+        <br><i>Portuguese</i> is new (not in Unit 1) — he met it in Lesson 10 (Ronaldo).
+      </div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<!-- ══════════ EXTRA TAB: Homework (Teacher's Book T17) ══════════ -->
+<div class="lesson-part" id="part-homework" data-extra="x-homework">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#h1">1 · Interview</a>
+    <a href="#h2">2 · Write about them</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="h1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Homework · Task 1 · Speaking</div>
+        <h2>Interview a family member</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-h1">
+      <div class="exercise-label hw">Questionnaire</div>
+      <h3>Choose someone in your family. Ask the questions in English (or translate them!) and write the answers.</h3>
+      <p class="ru-hint" lang="ru">Возьми интервью у кого-нибудь из семьи: мама, папа, брат, бабушка… Запиши ответы.</p>
+      <div class="camp">
+        <div class="camp-head"><b>THE LAKES</b><span>ENGLISH SUMMER CAMP</span></div>
+        <div class="camp-q"><p>Who is it?</p><input class="blank" id="h1-0" placeholder="my mum / my brother / …" autocomplete="off"></div>
+        <div class="camp-q"><p>What’s your name? <button class="say say-big" data-say="What’s your name?" aria-label="Listen"></button></p><input class="blank" id="h1-1" autocomplete="off"></div>
+        <div class="camp-q"><p>Where are you from? <button class="say say-big" data-say="Where are you from?" aria-label="Listen"></button></p><input class="blank" id="h1-2" autocomplete="off"></div>
+        <div class="camp-q"><p>How old are you? <button class="say say-big" data-say="How old are you?" aria-label="Listen"></button></p><input class="blank" id="h1-3" autocomplete="off"></div>
+        <div class="camp-q"><p>Who’s your favourite actor? <button class="say say-big" data-say="Who’s your favourite actor?" aria-label="Listen"></button></p><input class="blank" id="h1-4" autocomplete="off"></div>
+        <div class="camp-q"><p>What’s your favourite colour? <button class="say say-big" data-say="What’s your favourite colour?" aria-label="Listen"></button></p><input class="blank" id="h1-5" autocomplete="off"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="h2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Homework · Task 2 · Writing</div>
+        <h2>Write about them</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label hw">Writing</div>
+      <h3>Write 5 sentences about your family member. Use <i>he’s / she’s</i> and <i>his / her</i>.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>This is my mum. Her name’s Anna. She’s from Moscow. She’s 40 years old. Her favourite actor is … . Her favourite colour is green.</span></div>
+      <textarea class="free-write" id="fw-h2" rows="6" placeholder="This is my … . His / Her name’s … ."></textarea>
+      <div class="char-count" id="cc-fw-h2">0 characters</div>
+      <div class="tip"><span class="tip-title">Check!</span><b>he → his</b>, <b>she → her</b>: <span class="key">He’s my dad. His name’s Ivan.</span> <span class="key">She’s my sister. Her name’s Masha.</span></div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Homework (Teacher’s Book T17)</div>
+        <i>Ask students to interview a member of their family and complete a similar questionnaire.</i>
+        <br>Task 2 is added on top: the questionnaire answers turned into 3rd-person sentences (recycles <i>he’s / she’s</i> + possessive <i>his / her</i> from the Welcome unit). Next lesson: he presents the person in 30 seconds.
+      </div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+
+<script src="../assets/sync.js"></script>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/matching.js"></script>
+<script src="../assets/wordorder.js"></script>
+<script src="../assets/name.js"></script>
+<script src="../assets/dictionary.js"></script>
+<script>
+/* Memory game (extra): blur the pictures, then count the Exercise 7 phrases he remembers */
+const MEM = ['expensive car', 'dirty t-shirt', 'small hotel', 'new football', 'cheap car', 'fast train', 'big hotel', 'clean trousers', 'old football', 'slow train'];
+function memHide(on) { document.getElementById('mem-pics').classList.toggle('covered', on); }
+function memCheck() {
+  const text = document.getElementById('fw-mem').value.toLowerCase().replace(/t ?shirt/g, 't-shirt').replace(/\s+/g, ' ');
+  const got = MEM.filter(p => text.includes(p)), miss = MEM.filter(p => !text.includes(p));
+  document.getElementById('mem-result').innerHTML = '⭐ ' + got.length + ' / ' + MEM.length +
+    (miss.length ? ' <span class="miss">· not yet: ' + miss.length + ' — press “Show again” and look!</span>' : ' — all of them! 🏆');
+}
+</script>
+<script>
+/* "Итог": star counter, progress bar and confetti when everything is ticked (same as Lessons 3–10) */
+(function () {
+  const box = document.getElementById('fun-check');
+  const boxes = [...box.querySelectorAll('input[type=checkbox]')];
+  let celebrated = false;
+  function confetti() {
+    const colours = ['#FFC53D', '#FF7A45', '#3352E0', '#12A374', '#7B5CE6', '#E03E52'];
+    for (let i = 0; i < 40; i++) {
+      const c = document.createElement('i');
+      c.className = 'fc-confetti';
+      c.style.left = Math.random() * 100 + '%';
+      c.style.background = colours[i % colours.length];
+      c.style.animationDelay = Math.random() * 0.4 + 's';
+      c.style.setProperty('--x', (Math.random() * 160 - 80) + 'px');
+      c.style.setProperty('--r', (Math.random() * 720 - 360) + 'deg');
+      box.appendChild(c);
+      setTimeout(() => c.remove(), 2200);
+    }
+  }
+  function update(animate) {
+    const n = boxes.filter(b => b.checked).length;
+    box.querySelector('.fc-count b').textContent = n;
+    box.querySelector('.fc-meter i').style.width = (n / boxes.length * 100) + '%';
+    const done = n === boxes.length;
+    box.querySelector('.fc-done').hidden = !done;
+    box.classList.toggle('all-done', done);
+    if (done && animate && !celebrated) confetti();
+    celebrated = done;
+  }
+  boxes.forEach(b => b.addEventListener('change', () => update(true)));
+  document.addEventListener('DOMContentLoaded', () => setTimeout(() => update(false), 0));
+})();
+</script>
+</body>
+</html>

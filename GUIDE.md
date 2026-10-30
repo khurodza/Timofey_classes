@@ -23,6 +23,7 @@ website/
     ├── lesson-08.html          ← Lesson 8: Unit 1 countries, nationalities, music website (Student's Book pp. 12–14)
     ├── lesson-09.html          ← Lesson 9: numbers & flags warm-up, question words, to be (Student's Book pp. 14–15), o · p (from Lesson 2), homework Workbook pp. 10–11
     ├── lesson-10.html          ← Lesson 10: Lesson 9 quiz show, football stars, Student's Book p. 16 (getting to know someone), e (from Lesson 2), homework Workbook p. 14, teacher-only notes
+    ├── lesson-11.html          ← Lesson 11: adjectives + opposites, questionnaire (Student's Book p. 17); extras hidden until opened: memory game, Workbook pp. 12, 13, 15, Vocabulary Worksheet Unit 1, homework
     ├── images/                 ← Put lesson images here
     ├── audio/                  ← Put lesson audio files here
     │   └── words/               ← One short clip per sound button (see "Sound buttons")
@@ -344,6 +345,28 @@ Hidden on the student's page; shown only when the page is open inside
 Teacher's Book notes, answers and the lesson plan. The CSS is in the page's
 own `<style>` block. The text is still in the page source, so don't put
 anything there the student must never see.
+
+### Extras the teacher opens (hidden until needed)
+
+```html
+<a href="#a4" data-extra="x-memory">+ · Memory game</a>              <!-- chip -->
+<section class="step" id="a4" data-extra="x-memory">…</section>     <!-- the block -->
+<button class="part-tab" data-part="part-ws" data-extra="x-ws" …>   <!-- a whole tab: -->
+<div class="lesson-part" id="part-ws" data-extra="x-ws">…</div>      <!-- same id on tab + part -->
+```
+
+- Everything with `data-extra` is **hidden from the student**. In
+  `teacher.html` (live view) extras are shown with a violet dashed outline and
+  a bar **Open for the student / Hide again**. Opening one shows it on the
+  student's open page at once (with a "🔓 New task" toast); hiding it again
+  takes it away. Stored in Firebase at `students/<id>/extras/<page>`.
+- Every element with the same `data-extra` id opens together (chip + step,
+  or tab + part).
+- Locked extras don't count in the score badge or the dashboard progress.
+- Use `<div class="step-num plus">+</div>` and `<span class="extra-badge">extra</span>`
+  for extra steps instead of a number. Example: Lesson 11.
+- `?extras=all` at the end of a lesson address shows every extra (your own
+  browser, e.g. for screen sharing).
 
 ### Note boxes
 

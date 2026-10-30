@@ -94,7 +94,7 @@
   // count word-order questions in the score badge and "Check my answers"
   const baseCheckAll = window.checkAll;
   window.woScore = () => {
-    const qs = [...document.querySelectorAll('.wo-q[data-answer]')];
+    const qs = [...document.querySelectorAll('.wo-q[data-answer]')].filter(q => !q.closest('[data-extra]:not(.unlocked)'));
     return { total: qs.length, done: qs.filter(q => data[q.id]).length, correct: qs.filter(q => q.classList.contains('correct')).length };
   };
   window.checkAll = function () { checkWordOrder(); baseCheckAll(); };
