@@ -566,6 +566,13 @@ reports which page and tab is open.
   it). *Follow* jumps to whatever the student opens.
 - **Mark / comment:** point at any answer → ✎ → ✓ / ✗ / comment. The student
   sees it under the answer on their own page at once.
+- **Move to homework:** in the live view every task has a **📚 Move to homework**
+  button (top right). The student's page moves the task into the Homework
+  tab at once (a Homework tab is made if the lesson has none); **↩ Back to the
+  lesson** puts it back in its place. Answers stay. Works on all four sites
+  (the layout is detected in `sync.js`: Timofey/Matvey → Homework tab,
+  Polina → `#tab-hw`, Ksyusha and tab-less lessons → a "🏠 Homework" block at the
+  end of the lesson page). Stored at `students/<id>/moved/<page>`.
 - **Reset:** the whole page (dashboard or live view) or one task (hover a
   task in the live view → ↺ Reset task). The student's open page updates.
 - **Progress report** (Russian, printable): topics and skills per lesson

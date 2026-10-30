@@ -12,6 +12,7 @@
      students/<id>/presence       which page is open right now
      students/<id>/notes/<page>   the teacher's marks and comments
      students/<id>/extras/<page>  extra tasks the teacher opened for the student ({ id: time })
+     students/<id>/moved/<page>   lesson tasks the teacher moved to homework ({ step id: time })
      students/<id>/flashcards/<deck>  flashcard progress (known / still learning / Learn stage), written by the student's site
      teacher/seen/<id>/<page>     when the teacher last looked (for "new")
      teacher/reports/<id>/...     the teacher's edits of the report
@@ -59,9 +60,9 @@ function avatar(s, cls = '', withDot = true) {
 }
 
 /* ---------------- state ---------------- */
-const presence = {}, pages = {}, seen = {}, notes = {}, extras = {}, reports = {}, siteLists = {}, tracking = {}, markedDone = {};
+const presence = {}, pages = {}, seen = {}, notes = {}, extras = {}, moved = {}, reports = {}, siteLists = {}, tracking = {}, markedDone = {};
 const flash = {}, deckLists = {}, openDecks = new Set();   // flashcard progress + each site's decks.js
-STUDENTS.forEach(s => { pages[s.id] = {}; seen[s.id] = {}; notes[s.id] = {}; extras[s.id] = {}; reports[s.id] = {}; markedDone[s.id] = {}; });
+STUDENTS.forEach(s => { pages[s.id] = {}; seen[s.id] = {}; notes[s.id] = {}; extras[s.id] = {}; moved[s.id] = {}; reports[s.id] = {}; markedDone[s.id] = {}; });
 let route = { view: 'overview' };
 
 /* ---------------- sign-in ---------------- */
@@ -87,6 +88,7 @@ function start() {
     onValue(ref(db, `students/${s.id}/pages`), snap => { pages[s.id] = snap.val() || {}; refresh(); viewerDataChanged(s.id); });
     onValue(ref(db, `students/${s.id}/notes`), snap => { notes[s.id] = snap.val() || {}; refresh(); viewerNotesChanged(s.id); });
     onValue(ref(db, `students/${s.id}/extras`), snap => { extras[s.id] = snap.val() || {}; viewerExtrasChanged(s.id); });
+    onValue(ref(db, `students/${s.id}/moved`), snap => { moved[s.id] = snap.val() || {}; viewerMovedChanged(s.id); });
     onValue(ref(db, `students/${s.id}/flashcards`), snap => { flash[s.id] = snap.val() || {}; if (Object.keys(flash[s.id]).length) loadDecks(s); refresh(); });
     onValue(ref(db, `teacher/seen/${s.id}`), snap => { seen[s.id] = snap.val() || {}; refresh(); });
     onValue(ref(db, `teacher/reports/${s.id}`), snap => { reports[s.id] = snap.val() || {}; if (route.view === 'report' && route.s === s.id && !reportEditing) renderReport(); });
@@ -318,8 +320,18 @@ let front = 0, viewing = null, loadToken = 0;   // viewing = { s, page, path, pa
 window.__teacher = {                             // called from the page inside the frame (assets/sync.js)
   annotate: (anchor, label) => viewing && openNote(viewing.s, viewing.page, anchor, label),
   resetTask: (keys, title) => viewing && resetTask(viewing.s, viewing.page, keys, title),
-  setExtra: (id, on) => viewing && setExtra(viewing.s, viewing.page, id, on)
+  setExtra: (id, on) => viewing && setExtra(viewing.s, viewing.page, id, on),
+  moveTask: (id, toHomework) => viewing && moveTask(viewing.s, viewing.page, id, toHomework)
 };
+// move a lesson task to the Homework tab or back (the student's page follows at once)
+function moveTask(sid, page, id, toHomework) {
+  const r = ref(db, `students/${sid}/moved/${page}/${id}`);
+  (toHomework ? set(r, Date.now()) : remove(r)).then(() => toast(toHomework ? 'Moved to homework' : 'Back in the lesson'));
+}
+function viewerMovedChanged(sid) {
+  if (!viewing || viewing.s !== sid) return;
+  try { frames[front].contentWindow.__watch.setMoved(moved[sid][viewing.page]); } catch (e) {}
+}
 // open / hide an extra task on the student's page (they see it at once)
 function setExtra(sid, page, id, on) {
   const r = ref(db, `students/${sid}/extras/${page}/${id}`);
@@ -394,6 +406,7 @@ function showPage(sid, page, path, part, highlight) {
       if (y) w.scrollTo(0, y);
       w.__watch.setNotes(notes[sid][page]);
       if (w.__watch.setExtras) w.__watch.setExtras(extras[sid][page]);
+      if (w.__watch.setMoved) w.__watch.setMoved(moved[sid][page]);
       if (highlight && highlight.length && w.__watch.highlight(highlight) && !samePage) w.__watch.scrollToLatest();
     } catch (e) {}
     back.classList.remove('back'); vis.classList.add('back');

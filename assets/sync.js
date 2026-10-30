@@ -22,6 +22,9 @@
    teacher.html (students/<id>/extras/<page>/<id>). The student's open
    page shows them at once. ?extras=all shows every extra (teacher's
    own browser, screen sharing).
+   Moved tasks: the teacher can move any step (section.step with an id)
+   into the Homework tab and back (students/<id>/moved/<page>/<step id>).
+   A Homework tab is made if the lesson has none; a moved extra is shown.
    • watch  — the page is opened inside teacher.html with
      ?watch=<student>. It shows that student's answers read-only,
      never touches the teacher's own saves, and lets the teacher
@@ -148,6 +151,134 @@
     }
     if (typeof updateScoreBar === 'function') try { updateScoreBar(); } catch (e) {}
   }
+  // tasks the teacher moved to homework: { task: time } → the task goes to the homework (and back).
+  // The page layout is detected, so the same code works on every site:
+  //   steps — section.step inside .lesson-part tabs, Homework = the .part-tab.hw tab (Timofey, Matvey)
+  //   tabs  — .exercise inside .tab-content tabs, Homework = #tab-hw (Polina)
+  //   plain — .section / section.step on one page; a "🏠 Homework" block is added at the end (Ksyusha, tab-less lessons)
+  const LAYOUT = () => document.querySelector('.lesson-part') ? 'steps' : document.querySelector('.tab-content') ? 'tabs' : 'plain';
+  const TASKS_SEL = { steps: 'section.step', tabs: '.tab-content > .exercise', plain: '.section, section.step' };
+  let taskKeysDone = false;
+  function taskKeys() {                                 // every task's name: its id, or its place on the page (fixed before anything moves)
+    if (taskKeysDone) return; taskKeysDone = true;
+    document.querySelectorAll(TASKS_SEL[LAYOUT()]).forEach((el, i) => { if (!el.parentElement.closest(TASKS_SEL[LAYOUT()])) el.dataset.task = el.id || 'task-' + (i + 1); });
+  }
+  const taskEl = k => document.querySelector('[data-task="' + cssId(k) + '"]');
+  function homeworkBox(make) {                          // where moved tasks go (made if needed and make is true)
+    const lay = LAYOUT();
+    if (lay === 'steps') {
+      const tab = document.querySelector('.part-tab.hw');
+      let part = tab ? document.getElementById(tab.dataset.part) : document.getElementById('part-homework');
+      if (!part && make) {
+        const parts = document.querySelectorAll('.lesson-part'), bar = document.querySelector('nav.parts .wrap');
+        part = document.createElement('div');
+        part.id = 'part-homework'; part.className = 'lesson-part'; part.dataset.made = '1';
+        part.innerHTML = '<nav class="chips"><div class="wrap"></div></nav><div class="wrap"></div>';
+        parts[parts.length - 1].after(part);
+        const b = document.createElement('button');
+        b.className = 'part-tab hw'; b.dataset.part = 'part-homework'; b.dataset.made = '1'; b.textContent = 'Homework';
+        b.addEventListener('click', () => window.showPart('part-homework'));
+        if (bar) bar.appendChild(b);
+      }
+      return part && { root: part, box: part.querySelector(':scope > .wrap') || part, chips: part.querySelector('nav.chips .wrap') };
+    }
+    if (lay === 'tabs') {
+      let part = document.getElementById('tab-hw');
+      if (!part && make) {
+        const tabs = document.querySelectorAll('.tab-content'), bar = document.querySelector('.tab-bar');
+        part = document.createElement('div');
+        part.id = 'tab-hw'; part.className = 'tab-content'; part.dataset.made = '1';
+        tabs[tabs.length - 1].after(part);
+        const b = document.createElement('button');
+        b.className = 'tab-btn'; b.dataset.made = '1'; b.dataset.tab = 'hw'; b.textContent = '🏠 Homework';
+        b.addEventListener('click', () => typeof window.switchTab === 'function' && window.switchTab('hw', b));
+        if (bar) bar.appendChild(b);
+      }
+      return part && { root: part, box: part };
+    }
+    let part = document.getElementById('moved-homework');
+    if (!part && make) {
+      part = document.createElement('div');
+      part.id = 'moved-homework'; part.className = 'hw-block'; part.dataset.made = '1';
+      part.innerHTML = '<h2 class="hw-block-title">🏠 Homework</h2>';
+      const tasks = [...document.querySelectorAll('[data-task]')], last = tasks[tasks.length - 1];
+      (last ? last.parentElement : document.body).appendChild(part);
+    }
+    return part && { root: part, box: part };
+  }
+  function applyMoves(map) {
+    map = map || {};
+    taskKeys();
+    document.querySelectorAll('[data-task][data-moved]').forEach(el => {     // back to the lesson
+      const k = el.dataset.task;
+      if (map[k]) return;
+      const home = document.querySelector('template[data-home="' + cssId(k) + '"]');
+      if (home) home.replaceWith(el);
+      if (el.id) {
+        const chip = document.querySelector('a[data-moved][href="#' + cssId(el.id) + '"]'), chome = document.querySelector('template[data-chip-home="' + cssId(el.id) + '"]');
+        if (chip && chome) { chome.replaceWith(chip); chip.removeAttribute('data-moved'); }
+      }
+      const num = el.querySelector('.step-num'); if (num && el.dataset.num != null) num.textContent = el.dataset.num;
+      el.removeAttribute('data-moved'); el.classList.remove('has-moved');
+    });
+    const keys = Object.keys(map).filter(k => taskEl(k)).sort((a, b) => map[a] - map[b]);
+    const hw = homeworkBox(keys.length > 0);
+    keys.forEach(k => {
+      const el = taskEl(k);
+      if (el.dataset.moved || el.closest('#' + cssId(hw.root.id))) return;
+      const t = document.createElement('template'); t.dataset.home = k; el.before(t);
+      const finish = [...hw.box.querySelectorAll(':scope > *')].find(x => x.querySelector('.fun-check') && !x.dataset.moved);   // keep Итог last
+      finish ? finish.before(el) : hw.box.appendChild(el);
+      el.dataset.moved = '1'; el.classList.add('has-moved');
+      const chip = el.id && document.querySelector('nav.chips a[href="#' + cssId(el.id) + '"]');
+      if (chip && hw.chips) { const ct = document.createElement('template'); ct.dataset.chipHome = el.id; chip.before(ct); chip.dataset.moved = '1'; hw.chips.appendChild(chip); }
+    });
+    if (hw) {
+      if (LAYOUT() === 'steps') {                         // renumber the homework steps 1, 2, 3 …
+        let n = 0;
+        hw.root.querySelectorAll('section.step').forEach(sec => {
+          const num = sec.querySelector('.step-num'); if (!num || num.classList.contains('plus')) return;
+          if (sec.dataset.num == null) sec.dataset.num = num.textContent;
+          num.textContent = ++n;
+        });
+        hw.root.querySelectorAll('nav.chips a').forEach(a => {
+          const sec = document.getElementById(a.getAttribute('href').slice(1)), num = sec && sec.querySelector('.step-num');
+          if (num) a.textContent = num.textContent + ' · ' + a.textContent.replace(/^\s*[^·]*·\s*/, '');
+        });
+      }
+      const any = !!hw.root.querySelector('[data-moved]');
+      hw.root.classList.toggle('has-moved', any);
+      const tab = document.querySelector('.part-tab[data-part="' + cssId(hw.root.id) + '"], .tab-btn[data-made]');
+      if (tab) tab.classList.toggle('has-moved', any);
+      if (hw.root.dataset.made && !any) {                 // a homework place we made, now empty again
+        const wasOpen = hw.root.classList.contains('active');
+        document.querySelectorAll('[data-made]').forEach(x => x !== hw.root && x.matches('.part-tab, .tab-btn') && x.remove());
+        hw.root.remove();
+        if (wasOpen && typeof window.showPart === 'function' && document.querySelector('.lesson-part')) window.showPart(document.querySelector('.lesson-part').id);
+        if (wasOpen && typeof window.switchTab === 'function' && document.querySelector('.tab-content')) window.switchTab(document.querySelector('.tab-content').id.replace(/^tab-/, ''), document.querySelector('.tab-btn'));
+      }
+    }
+    document.querySelectorAll('.move-btn').forEach(b => {
+      const on = !!b.parentElement.dataset.moved;
+      b.textContent = on ? '↩ Back to the lesson' : '📚 Move to homework';
+      b.classList.toggle('on', on);
+    });
+    if (typeof updateScoreBar === 'function') try { updateScoreBar(); } catch (e) {}
+  }
+  // styles for extras and moved tasks (here, so every site has them whatever its stylesheet)
+  addCss(
+    'html:not(.watching) [data-extra]:not(.unlocked):not(.has-moved){display:none!important}' +
+    'html.watching section[data-extra],html.watching div.card[data-extra]{outline:3px dashed #9B7BE6;outline-offset:8px;border-radius:18px}' +
+    'html.watching section[data-extra].unlocked,html.watching div.card[data-extra].unlocked{outline-color:#12A374}' +
+    'html.watching .part-tab[data-extra]{border-style:dashed;border-color:#9B7BE6}html.watching .part-tab[data-extra].unlocked{border-color:#12A374}' +
+    'html.watching .chips a[data-extra]{opacity:.6;font-style:italic}html.watching .chips a[data-extra].unlocked{opacity:1;font-style:normal}' +
+    '.extra-toggle{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px;padding:8px 12px;border-radius:12px;background:#F1ECFD;border:2px solid #9B7BE6;font:700 14px/1.3 system-ui,sans-serif;color:#4B3A8C}' +
+    '.extra-toggle button{border:0;border-radius:99px;padding:6px 14px;background:#7B5CE6;color:#fff;font:800 13px/1 system-ui;cursor:pointer}' +
+    '.extra-toggle.on{background:#E8F7EF;border-color:#12A374;color:#0D6B4C}.extra-toggle.on button{background:#fff;color:#0D6B4C;border:2px solid #12A374}' +
+    '.w-movable{position:relative}' +
+    '.move-btn{position:absolute;top:-14px;right:16px;z-index:21;border:2px solid #7B5CE6;border-radius:99px;padding:5px 12px;background:#fff;color:#5B44B8;font:800 12px/1 system-ui,sans-serif;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.12)}' +
+    '.move-btn:hover{background:#7B5CE6;color:#fff}.move-btn.on{border-color:#12A374;color:#0D6B4C}.move-btn.on:hover{background:#12A374;color:#fff}' +
+    '.hw-block{margin:40px 0 20px;padding-top:12px;border-top:3px dashed #7B5CE6}.hw-block-title{color:#7B5CE6;margin:0 0 12px}');
   const whenReady = fn => document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', fn) : fn();
 
   /* ================= WATCH MODE (teacher) ================= */
@@ -261,6 +392,7 @@
       scrollToLatest() { if (latest[0]) latest[0].scrollIntoView({ behavior: 'smooth', block: 'center' }); },
       setNotes(notes) { drawNotes(notes); },
       setExtras(map) { applyExtras(map); },
+      setMoved(map) { applyMoves(map); },
       stats
     };
 
@@ -315,6 +447,19 @@
         (box.classList.contains('lesson-part') ? box.querySelector('.wrap:not(nav .wrap)') || box : box).prepend(bar);
       });
       applyExtras({});
+
+      // 📚 Move to homework / ↩ Back to the lesson on every task (not on tasks that are homework already)
+      taskKeys();
+      const hwHome = homeworkBox(false);
+      document.querySelectorAll('[data-task]').forEach(el => {
+        if (hwHome && hwHome.root.contains(el)) return;
+        el.classList.add('w-movable');
+        const b = document.createElement('button');
+        b.type = 'button'; b.className = 'move-btn watch-tools'; b.textContent = '📚 Move to homework';
+        b.addEventListener('click', () => { const t = teacher(); if (t && t.moveTask) t.moveTask(el.dataset.task, !el.dataset.moved); });
+        el.prepend(b);
+      });
+      applyMoves({});
 
       // "↺ Reset task" on every task box that holds answers
       document.querySelectorAll(TASKS).forEach(box => {
@@ -394,6 +539,18 @@
   const EXTRAS_KEY = 'extras-' + PAGE;
   let extras = {}; try { extras = JSON.parse(get(EXTRAS_KEY) || '{}') || {}; } catch (e) {}
   whenReady(() => applyExtras(extras));
+  const MOVED_KEY = 'moved-' + PAGE;
+  let moved = {}; try { moved = JSON.parse(get(MOVED_KEY) || '{}') || {}; } catch (e) {}
+  whenReady(() => applyMoves(moved));
+  function movedChanged(map) {
+    map = map || {};
+    const fresh = Object.keys(map).filter(k => !moved[k]);
+    moved = map; set(MOVED_KEY, JSON.stringify(map));
+    whenReady(() => {
+      applyMoves(map);
+      if (fresh.length && typeof toast === 'function') toast('📚 New homework task!');
+    });
+  }
   function extrasChanged(map) {
     map = map || {};
     const fresh = Object.keys(map).filter(k => !extras[k]);
@@ -447,6 +604,7 @@
     });
 
     db.onValue(db.ref(d, `students/${STUDENT}/extras/${PAGE}`), snap => extrasChanged(snap.val()));
+    db.onValue(db.ref(d, `students/${STUDENT}/moved/${PAGE}`), snap => movedChanged(snap.val()));
 
     // the teacher's marks and comments for this page
     db.onValue(db.ref(d, `students/${STUDENT}/notes/${PAGE}`), snap => {

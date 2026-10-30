@@ -1270,18 +1270,6 @@ footer.site-footer{margin-top:46px;padding:18px 0 40px;border-top:1px solid var(
 .watch-bar{position:sticky;top:0;z-index:50;padding:8px 16px;background:#12A374;color:#fff;font-weight:800;text-align:center}
 html.watching .rec,html.watching .dict-fab{display:none}
 
-/* extras (Lesson 11 on): blocks with data-extra="id" stay hidden until the teacher opens them in teacher.html
-   (sync.js adds .unlocked). In the teacher's view they are always shown, outlined in violet, with an Open / Hide switch. */
-html:not(.watching) [data-extra]:not(.unlocked){display:none!important}
-html.watching section[data-extra],html.watching div.card[data-extra]{outline:3px dashed #9B7BE6;outline-offset:8px;border-radius:18px}
-html.watching section[data-extra].unlocked,html.watching div.card[data-extra].unlocked{outline-color:#12A374}
-html.watching .part-tab[data-extra]{border-style:dashed;border-color:#9B7BE6}
-html.watching .part-tab[data-extra].unlocked{border-color:#12A374}
-html.watching .chips a[data-extra]{opacity:.6;font-style:italic}
-html.watching .chips a[data-extra].unlocked{opacity:1;font-style:normal}
-.extra-toggle{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px;padding:8px 12px;border-radius:12px;background:#F1ECFD;border:2px solid #9B7BE6;font:700 14px/1.3 system-ui,sans-serif;color:#4B3A8C}
-.extra-toggle button{border:0;border-radius:99px;padding:6px 14px;background:#7B5CE6;color:#fff;font:800 13px/1 system-ui;cursor:pointer}
-.extra-toggle.on{background:#E8F7EF;border-color:#12A374;color:#0D6B4C}
-.extra-toggle.on button{background:#fff;color:#0D6B4C;border:2px solid #12A374}
+/* extras + moved tasks: their styles are injected by sync.js (same on every site); these two are for the lesson pages */
 .step-num.plus{background:#7B5CE6!important;font-size:22px}
 .extra-badge{display:inline-block;margin-left:6px;padding:2px 9px;border-radius:99px;background:#F1ECFD;color:#5B44B8;font:800 11px/1.5 system-ui;letter-spacing:.06em;text-transform:uppercase;vertical-align:middle}
