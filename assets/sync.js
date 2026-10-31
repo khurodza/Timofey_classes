@@ -442,7 +442,7 @@
         bar.dataset.for = box.dataset.extra;
         bar.innerHTML = '<span></span><button type="button"></button>';
         bar.querySelector('button').addEventListener('click', () => {
-          const t = teacher(); if (t && t.setExtra) t.setExtra(box.dataset.extra, !box.classList.contains('unlocked'));
+          const t = teacher(); if (t && t.setExtra) t.setExtra(box.dataset.extra, !box.classList.contains('unlocked')); else bar.querySelector('button').textContent = '⟳ Reload the teacher page first';
         });
         (box.classList.contains('lesson-part') ? box.querySelector('.wrap:not(nav .wrap)') || box : box).prepend(bar);
       });
@@ -456,7 +456,7 @@
         el.classList.add('w-movable');
         const b = document.createElement('button');
         b.type = 'button'; b.className = 'move-btn watch-tools'; b.textContent = '📚 Move to homework';
-        b.addEventListener('click', () => { const t = teacher(); if (t && t.moveTask) t.moveTask(el.dataset.task, !el.dataset.moved); });
+        b.addEventListener('click', () => { const t = teacher(); if (t && t.moveTask) t.moveTask(el.dataset.task, !el.dataset.moved); else b.textContent = '⟳ Reload the teacher page first'; });
         el.prepend(b);
       });
       applyMoves({});

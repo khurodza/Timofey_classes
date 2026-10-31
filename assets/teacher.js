@@ -326,7 +326,7 @@ window.__teacher = {                             // called from the page inside 
 // move a lesson task to the Homework tab or back (the student's page follows at once)
 function moveTask(sid, page, id, toHomework) {
   const r = ref(db, `students/${sid}/moved/${page}/${id}`);
-  (toHomework ? set(r, Date.now()) : remove(r)).then(() => toast(toHomework ? 'Moved to homework' : 'Back in the lesson'));
+  (toHomework ? set(r, Date.now()) : remove(r)).then(() => toast(toHomework ? 'Moved to homework' : 'Back in the lesson'), e => toast('Not saved: ' + e.message));
 }
 function viewerMovedChanged(sid) {
   if (!viewing || viewing.s !== sid) return;
@@ -335,7 +335,7 @@ function viewerMovedChanged(sid) {
 // open / hide an extra task on the student's page (they see it at once)
 function setExtra(sid, page, id, on) {
   const r = ref(db, `students/${sid}/extras/${page}/${id}`);
-  (on ? set(r, Date.now()) : remove(r)).then(() => toast(on ? `Opened for ${stu(sid).name}` : `Hidden from ${stu(sid).name}`));
+  (on ? set(r, Date.now()) : remove(r)).then(() => toast(on ? `Opened for ${stu(sid).name}` : `Hidden from ${stu(sid).name}`), e => toast('Not saved: ' + e.message));
 }
 function viewerExtrasChanged(sid) {
   if (!viewing || viewing.s !== sid) return;
