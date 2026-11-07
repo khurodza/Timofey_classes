@@ -317,6 +317,16 @@ function renderDash() {
 /* ---------------- live viewer (two frames: the new version loads behind, then swaps in) ---------------- */
 const frames = [$('frame-a'), $('frame-b')];
 let front = 0, viewing = null, loadToken = 0;   // viewing = { s, page, path, part, json }
+// A link clicked inside the viewer (e.g. "All lessons" → Lesson 11) loads a page without ?watch = the student's view.
+// Catch that and reopen the page properly (teacher notes, extras, Move to homework).
+frames.forEach(f => f.addEventListener('load', () => {
+  if (!viewing || !viewing.s || f.classList.contains('back') || f.hidden) return;
+  let loc; try { loc = f.contentWindow.location; } catch (e) { return; }
+  if (!loc || loc.href === 'about:blank' || new URLSearchParams(loc.search).has('watch')) return;
+  const s = stu(viewing.s), m = loc.pathname.match(/\/(lessons|homework)\/([^/]+)\.html$/);
+  if (m && loc.pathname.startsWith(s.site)) { $('follow').checked = false; showPage(s.id, m[2], loc.pathname, loc.hash.slice(1) || null); }
+  else go('#/s/' + s.id);                       // home page etc. → back to the dashboard
+}));
 window.__teacher = {                             // called from the page inside the frame (assets/sync.js)
   annotate: (anchor, label) => viewing && openNote(viewing.s, viewing.page, anchor, label),
   resetTask: (keys, title) => viewing && resetTask(viewing.s, viewing.page, keys, title),
