@@ -39,6 +39,9 @@
   const STUDENT = 'timofey';
   const IS_ANSWERS = k => k === 'answers-' + PAGE;     // which localStorage key holds this page's answers
   const NAME_KEY = 'studentName';                       // where the site keeps the student's name
+  // moving tasks between lessons: 'domready' = the page starts its exercises on DOMContentLoaded;
+  // a pattern = the inline script that starts them (the task is put in just before it runs); false = off
+  const SEND_MODE = 'domready';
   /* ---- the same on every site ---- */
   const FIREBASE = {
     apiKey: 'AIzaSyAHX47UEkMuLtZS4LrxIKiFQtThG4beysQ',
@@ -373,14 +376,24 @@
     }
     return true;
   }
+  const parseDoc = html => new DOMParser().parseFromString(html, 'text/html');
   async function bringIn(list) {
-    taskKeys();                                         // this page's own task names first, before anything is added
     const docs = {};
     await Promise.all([...new Set(list.map(x => x.path))].map(async path => {
-      try { const r = await fetch(path); docs[path] = r.ok ? new DOMParser().parseFromString(await r.text(), 'text/html') : null; } catch (e) { docs[path] = null; }
-      const d = docs[path];                             // the source lesson's own styles
-      if (d) d.querySelectorAll('head style').forEach(st => document.head.appendChild(document.importNode(st, true)));
+      try { const r = await fetch(path); docs[path] = r.ok ? parseDoc(await r.text()) : null; } catch (e) { docs[path] = null; }
     }));
+    putIn(list, docs);
+  }
+  function fetchNow(list) {                             // a blocking fetch, for pages that start their exercises while loading
+    const docs = {};
+    [...new Set(list.map(x => x.path))].forEach(path => {
+      try { const r = new XMLHttpRequest(); r.open('GET', path, false); r.send(); docs[path] = r.status === 200 ? parseDoc(r.responseText) : null; } catch (e) { docs[path] = null; }
+    });
+    return docs;
+  }
+  function putIn(list, docs) {
+    taskKeys();                                         // this page's own task names first, before anything is added
+    Object.values(docs).forEach(d => d && d.querySelectorAll('head style').forEach(st => document.head.appendChild(document.importNode(st, true))));
     list.forEach(x => {
       const d = docs[x.path], src = d && findTask(d, x.task);
       if (!src) return;
@@ -396,8 +409,18 @@
   }
   // tasks arriving from other lessons: hold back the page scripts' start-up (DOMContentLoaded) until they're in,
   // so the page's own code restores, saves and scores them like any other task
-  const arriving = incoming(sentMap);
-  if (arriving.length) {
+  const arriving = SEND_MODE ? incoming(sentMap) : [];
+  if (arriving.length && SEND_MODE instanceof RegExp) {
+    // the page's own start-up script runs while the page loads: put the tasks in just before it runs
+    const docs = fetchNow(arriving);
+    const mo = new MutationObserver(() => {
+      const start = [...document.querySelectorAll('script:not([src])')].find(sc => SEND_MODE.test(sc.textContent));
+      if (!start) return;
+      mo.disconnect();
+      try { putIn(arriving, docs); } catch (e) { console.error(e); }
+    });
+    mo.observe(document.documentElement, { childList: true, subtree: true, characterData: true });
+  } else if (arriving.length) {
     const held = [];
     document.addEventListener = function (type, fn, opt) {
       if (type === 'DOMContentLoaded') { held.push(fn); return; }
@@ -593,7 +616,7 @@
           b.addEventListener('click', () => { const t = teacher(); if (t && t.moveTask) t.moveTask(el.dataset.task, !el.dataset.moved); else b.textContent = '⟳ Reload the teacher page first'; });
           bar.appendChild(b);
         }
-        if (lessons.length && !el.classList.contains('sent-away')) {   // ➡ to another lesson
+        if (SEND_MODE && lessons.length && !el.classList.contains('sent-away')) {   // ➡ to another lesson
           const sel = document.createElement('select');
           sel.className = 'send-sel';
           sel.innerHTML = '<option value="">➡ To another lesson…</option>' + lessons.map(l => '<option value="' + esc(l.page) + '">' + esc(lessonName(l.title, l.page)) + '</option>').join('');
