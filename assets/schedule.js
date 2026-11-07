@@ -3,7 +3,8 @@
    A week calendar of lessons. Every lesson shows the teacher's own
    time and Moscow time, and links to Zoom, the student's site, the
    lesson page and the student's notes. Lessons can repeat weekly; a
-   single week can be skipped.
+   single week can be skipped, or moved ("Move this week" = skip it +
+   a one-time lesson at the new time).
    Firebase:
      teacher/schedule/<id>  { student, start (ms), minutes, weekly, until, skip:{yyyy-mm-dd:true},
                               zoom, page, note }
@@ -141,7 +142,7 @@ export function initSchedule(ctx) {
           ${o.e.note ? `<div class="ev-note">${esc(o.e.note)}</div>` : ''}
           ${hwBox(o)}
           ${lessonLinks(o)}
-          <div class="ev-edit"><button data-edit="${o.id}">Edit</button>${o.e.weekly ? `<button data-skip="${o.id}|${dayKey(new Date(o.at))}">Skip week</button>` : ''}</div>
+          <div class="ev-edit"><button data-edit="${o.id}">Edit</button>${o.e.weekly ? `<button data-move="${o.id}|${o.at}">Move this week</button><button data-skip="${o.id}|${dayKey(new Date(o.at))}">Skip week</button>` : ''}</div>
         </div>`; }).join('')}
         <button class="add-here" data-add="${dayKey(d)}">+ lesson</button>
       </div>`;
@@ -159,6 +160,7 @@ export function initSchedule(ctx) {
   function wire(root) {
     root.querySelectorAll('[data-add]').forEach(b => b.onclick = () => openEvent(null, b.dataset.add));
     root.querySelectorAll('[data-edit]').forEach(b => b.onclick = () => openEvent(b.dataset.edit));
+    root.querySelectorAll('[data-move]').forEach(b => b.onclick = () => { const [id, at] = b.dataset.move.split('|'); openEvent(null, null, { id, at: +at }); });
     root.querySelectorAll('[data-skip]').forEach(b => b.onclick = () => { const [id, day] = b.dataset.skip.split('|'); set(ref(db, `teacher/schedule/${id}/skip/${day}`), true).then(() => toast('Skipped this week')); });
     root.querySelectorAll('[data-held]').forEach(b => b.onclick = () => { const [id, day, v] = b.dataset.held.split('|'); setStatus(id, day, v); });
     root.querySelectorAll('[data-hw]').forEach(t => t.onchange = () => { const [sid, day] = t.dataset.hw.split('|'); saveHw(sid, day, t.value.trim()); });
@@ -226,12 +228,13 @@ export function initSchedule(ctx) {
   }
 
   /* ---------- add / edit dialog ---------- */
-  let editing = null;
-  function openEvent(id, day) {
-    editing = id;
-    const e = id ? events[id] : { student: STUDENTS[0].id, minutes: 60, weekly: true };
-    const start = id ? new Date(e.start) : new Date(day + 'T17:00');
-    $('ev-title').textContent = id ? 'Edit lesson' : 'New lesson';
+  let editing = null, moving = null;   // moving = { id, at }: one week of a repeating lesson → a one-time lesson
+  function openEvent(id, day, move) {
+    editing = id; moving = move || null;
+    const src = move && events[move.id];
+    const e = id ? events[id] : src ? { ...src, weekly: false, until: null } : { student: STUDENTS[0].id, minutes: 60, weekly: true };
+    const start = id ? new Date(e.start) : src ? new Date(move.at) : new Date(day + 'T17:00');
+    $('ev-title').textContent = id ? 'Edit lesson' : src ? 'Move this week only' : 'New lesson';
     $('ev-student').innerHTML = STUDENTS.map(s => `<option value="${s.id}" ${s.id === e.student ? 'selected' : ''}>${esc(s.name)}</option>`).join('');
     $('ev-date').value = dayKey(start);
     $('ev-time').value = start.toTimeString().slice(0, 5);
@@ -263,7 +266,8 @@ export function initSchedule(ctx) {
     const start = +new Date($('ev-date').value + 'T' + $('ev-time').value);
     if (isNaN(start)) return toast('Please choose a date and time');
     const old = editing ? events[editing] : {};
-    const rec = { ...old, student: $('ev-student').value, start, minutes: +$('ev-min').value || 60, weekly: $('ev-weekly').checked,
+    if (moving && events[moving.id]) set(ref(db, `teacher/schedule/${moving.id}/skip/${dayKey(new Date(moving.at))}`), true);   // the usual time is skipped this week
+    const rec = { ...old, skip: editing ? old.skip || null : null, student: $('ev-student').value, start, minutes: +$('ev-min').value || 60, weekly: $('ev-weekly').checked,
       until: $('ev-until').value || null, zoom: $('ev-zoom').value.trim() || null, page: $('ev-page').value || null, note: $('ev-note').value.trim() || null };
     const r = editing ? ref(db, `teacher/schedule/${editing}`) : push(ref(db, 'teacher/schedule'));
     set(r, rec).then(() => toast('Lesson saved'));
