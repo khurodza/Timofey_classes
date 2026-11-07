@@ -77,6 +77,8 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     <a href="#w1">1 · Phrases and sentences</a>
     <a href="#w2">2 · Words in order</a>
     <a href="#w3">3 · Choose the words</a>
+    <a href="#w4" data-extra="x-ws-basic">+ · Basic version</a>
+    <a href="#w5" data-extra="x-ws-ext">+ · Extension version</a>
   </div>
 </nav>
 
@@ -89,7 +91,7 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
       <tr><td><b>Dialogue</b></td><td>20 min</td><td>Ex. 1 photo → Ex. 2 (1.09) → Ex. 3 T/F → Phrases for fluency Ex. 4–6</td></tr>
       <tr><td><b>Speaking</b></td><td>20 min</td><td>Key Language → Ex. 7 → Ex. 8 → Ex. 9 act out + own dialogues → Итог</td></tr>
       <tr><td><b>Extras</b></td><td>if time</td><td>All hidden from him. Open them here with the violet <b>Open for the student</b> bar:
-        <br>• Warm-up tab: <b>First letters</b> (TB Warmer T18)
+        <br>• Warm-up tab: <b>First letters</b> (TB Warmer T18); the worksheet’s <b>Basic</b> (easier) and <b>Extension</b> (harder) versions of Tasks 5–7
         <br>• Dialogue tab: <b>Workbook p. 16</b> Ex. 4–6 (Dialogue + Phrases for fluency)
         <br>• Speaking tab: <b>Record your dialogue</b> (TB Activity idea · Extension)</td></tr>
     </table>
@@ -237,6 +239,112 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
           <li>Note: the worksheet says “Istanbul … the capital of Turkey” — Istanbul is <b>not</b> the capital (Ankara is). Quick “Is that true?” moment.</li>
           <li>Lead-in to the dialogue: “Where’s your mum from? Where’s your dad from?” → today’s question <i>Where’s she from?</i></li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="step" id="w4" data-extra="x-ws-basic">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Extra · Vocabulary Worksheet Unit 1 · Basic · Tasks 5–6 <span class="extra-badge">extra</span></div>
+        <h2>Basic version</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-wb-b5">
+      <div class="exercise-label">Basic · Task 5</div>
+      <h3>Complete the words in the sentences with vowels.</h3>
+      <p class="ru-hint" lang="ru">Гласные: a, e, i, o, u. Напиши слово целиком.</p>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">0.</span> <b>A</b> Madrid is the capital of Spain. <b>B</b> <span class="given">I know!</span></p>
+        <p class="gap-line"><span class="num">1.</span> <b>A</b> Hello Tina. <b>B</b> How’s it <input class="blank" id="wsb5-1" data-answer="going" placeholder="g _ ing" autocomplete="off" spellcheck="false" style="width:160px">?</p>
+        <p class="gap-line"><span class="num">2.</span> <b>A</b> This is my new <input class="blank" id="wsb5-2" data-answer="computer" placeholder="c _ mp _ ter" autocomplete="off" spellcheck="false" style="width:160px">. <b>B</b> Wow, that’s awesome!</p>
+        <p class="gap-line"><span class="num">3.</span> <b>A</b> Is this your <input class="blank" id="wsb5-3" data-answer="camera" placeholder="c _ m _ ra" autocomplete="off" spellcheck="false" style="width:160px">? <b>B</b> Yes, it is.</p>
+        <p class="gap-line"><span class="num">4.</span> <b>A</b> I’m off now. <b>B</b> <input class="blank" id="wsb5-4" data-answer="Goodbye" placeholder="Go _ dby _" autocomplete="off" spellcheck="false" style="width:160px">.</p>
+        <p class="gap-line"><span class="num">5.</span> <b>A</b> See you later. <b>B</b> OK. See you <input class="blank" id="wsb5-5" data-answer="later" placeholder="l _ t _ r" autocomplete="off" spellcheck="false" style="width:160px">.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-wb-b5')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-wb-b5')">Try again</button>
+      </div>
+    </div>
+    <div class="card" id="ex-wb-b6">
+      <div class="exercise-label">Basic · Task 6</div>
+      <h3>Choose the correct words.</h3>
+      <p class="read-text" style="font-size:19px;line-height:2.2">
+        I am <span class="word-choice" id="wsb6-1" data-answer="American"><button class="word-choice-btn" onclick="selectWord(this)">America</button><button class="word-choice-btn" onclick="selectWord(this)">American</button></span>. I’m from New York City in the <span class="word-choice" id="wsb6-2" data-answer="USA"><button class="word-choice-btn" onclick="selectWord(this)">USA</button><button class="word-choice-btn" onclick="selectWord(this)">UK</button></span>, but my parents are from other countries.
+        My mum is <span class="word-choice" id="wsb6-3" data-answer="Spanish"><button class="word-choice-btn" onclick="selectWord(this)">Spanish</button><button class="word-choice-btn" onclick="selectWord(this)">Spain</button></span>. She’s from Malaga. My dad is from Moscow. It is the capital of <span class="word-choice" id="wsb6-4" data-answer="Russia"><button class="word-choice-btn" onclick="selectWord(this)">Russia</button><button class="word-choice-btn" onclick="selectWord(this)">Russian</button></span>.
+        New York is a <span class="word-choice" id="wsb6-5" data-answer="big"><button class="word-choice-btn" onclick="selectWord(this)">big</button><button class="word-choice-btn" onclick="selectWord(this)">small</button></span> city. Our house is in Brooklyn. It is 100 years old. It is an <span class="word-choice" id="wsb6-6" data-answer="old"><button class="word-choice-btn" onclick="selectWord(this)">old</button><button class="word-choice-btn" onclick="selectWord(this)">new</button></span> house.
+      </p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-wb-b6')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-wb-b6')">Try again</button>
+      </div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Worksheet Basic (Thk2e_BrE_L0_Vocabulary_Basic_Unit_1)</div>
+        Easier versions of Standard Tasks 5 and 7 — open if the Standard ones were hard, or as extra practice.
+        <br><b>Answer key (worksheet):</b> Task 5: going, computer, camera, goodbye, later (item 0 is the example) · Task 6: American, USA, Spanish, Russia, big, old
+        <br>This version has the dad from <b>Moscow, the capital of Russia</b> — correct, unlike the Standard sheet’s “Istanbul … capital of Turkey”. Ask him: <i>Is Moscow the capital of Russia? And Istanbul — Turkey?</i>
+        <br>Basic Tasks 1–4 (countries, nationalities, word snake, choose the adjective) are easier versions of Standard 1–4, which are in Lesson 11’s Extra practice tab.
+      </div>
+    </div>
+  </section>
+
+
+  <section class="step" id="w5" data-extra="x-ws-ext">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Extra · Vocabulary Worksheet Unit 1 · Extension · Tasks 4 and 6 <span class="extra-badge">extra</span></div>
+        <h2>Extension version</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-match-wse4">
+      <div class="exercise-label">Extension · Task 4</div>
+      <h3>Match the phrases.</h3>
+      <div class="match-grid">
+        <div class="match-col" data-side="left">
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-wse4')">Hello Tina.</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-wse4')">This is my new computer.</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-wse4')">Is this your camera?</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-wse4')">I’m off now.</div>
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-wse4')">Tokyo is the capital of Japan.</div>
+          <div class="match-item" data-pair="6" onclick="selectMatch(this,'ex-match-wse4')">See you later.</div>
+        </div>
+        <div class="match-col" data-side="right">
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-wse4')">I know.</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-wse4')">Goodbye.</div>
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-wse4')">How’s it going?</div>
+          <div class="match-item" data-pair="6" onclick="selectMatch(this,'ex-match-wse4')">OK. See you later.</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-wse4')">Yes, it is.</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-wse4')">Wow, that’s awesome!</div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-ghost" onclick="resetMatchEx('ex-match-wse4')">Reset</button>
+      </div>
+    </div>
+    <div class="card" id="ex-wse6">
+      <div class="exercise-label">Extension · Task 6</div>
+      <h3>Complete the words. You are given the first letter.</h3>
+      <p class="read-text" style="font-size:19px;line-height:2.2">
+        I am <span class="given">American</span>. I am from New York City in the <input class="blank" id="wse6-2" data-answer="USA|US" autocomplete="off" spellcheck="false" style="width:90px">,
+        but my parents are from other countries. My mum is <input class="blank" id="wse6-3" data-answer="Spanish" autocomplete="off" spellcheck="false" style="width:130px">. She’s from Malaga,
+        and my father is from Istanbul – a city in <input class="blank" id="wse6-4" data-answer="Turkey|Türkiye" autocomplete="off" spellcheck="false" style="width:120px">.
+        New York is a <input class="blank" id="wse6-5" data-answer="big" autocomplete="off" spellcheck="false" style="width:90px"> city: 8.5 million people live in this city.
+        We live in an <input class="blank" id="wse6-6" data-answer="old" autocomplete="off" spellcheck="false" style="width:90px"> house in Brooklyn – it’s 100 years old.
+      </p>
+      <p class="ru-hint" lang="ru">Первые буквы: U… · S… · T… · b… · o…</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-wse6')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-wse6')">Try again</button>
+      </div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Worksheet Extension (Thk2e_BrE_L0_Vocabulary_Extension_Unit_1)</div>
+        Harder versions of Standard Tasks 5 and 7 — for a fast finisher.
+        <br><b>Answer key (worksheet):</b> Task 4: 1 c · 2 f · 3 e · 4 b · 5 a · 6 d · Task 6: American (given), USA, Spanish, Turkey, big, old
+        <br>Here Istanbul is just “a city in Turkey” (correct). Extension Task 5 (correct one word) and Tasks 2–3 are already in Lesson 11’s Extra practice tab (“Challenge”); Task 1 is a countries crossword (not on the site).
       </div>
     </div>
   </section>
