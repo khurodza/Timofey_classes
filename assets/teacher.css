@@ -478,7 +478,7 @@ h2{font-weight:700;letter-spacing:-.01em}
 .ev-links{display:flex;flex-wrap:wrap;gap:6px}
 .ev-links .btn.small{padding:4px 10px;font-size:12px;box-shadow:0 2px 0 var(--ink)}
 .ev-links .btn.small.ghost{box-shadow:none;border:1.5px dashed transparent;color:var(--muted)}
-.ev-edit{display:flex;gap:10px}
+.ev-edit{display:flex;flex-wrap:wrap;gap:4px 10px}
 .ev-edit button{border:0;background:none;padding:0;font:600 12px var(--font);color:var(--muted);cursor:pointer;text-decoration:underline}
 .add-here{margin-top:auto;border:2px dashed transparent;border-radius:12px;background:none;color:var(--muted);font:600 13px var(--font);padding:6px;cursor:pointer;
   border-image:none;outline:2px dotted rgba(30,44,77,.2);outline-offset:-2px}

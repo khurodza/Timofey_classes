@@ -142,7 +142,7 @@ export function initSchedule(ctx) {
           ${o.e.note ? `<div class="ev-note">${esc(o.e.note)}</div>` : ''}
           ${hwBox(o)}
           ${lessonLinks(o)}
-          <div class="ev-edit"><button data-edit="${o.id}">Edit</button>${o.e.weekly ? `<button data-move="${o.id}|${o.at}">Move this week</button><button data-skip="${o.id}|${dayKey(new Date(o.at))}">Skip week</button>` : ''}</div>
+          <div class="ev-edit"><button data-edit="${o.id}">Edit</button>${o.e.weekly ? `<button data-move="${o.id}|${o.at}" title="Move this week only">Move</button><button data-skip="${o.id}|${dayKey(new Date(o.at))}" title="Skip this week">Skip</button>` : ''}</div>
         </div>`; }).join('')}
         <button class="add-here" data-add="${dayKey(d)}">+ lesson</button>
       </div>`;
