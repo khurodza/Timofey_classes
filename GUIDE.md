@@ -24,6 +24,7 @@ website/
     ├── lesson-09.html          ← Lesson 9: numbers & flags warm-up, question words, to be (Student's Book pp. 14–15), o · p (from Lesson 2), homework Workbook pp. 10–11
     ├── lesson-10.html          ← Lesson 10: Lesson 9 quiz show, football stars, Student's Book p. 16 (getting to know someone), e (from Lesson 2), homework Workbook p. 14, teacher-only notes
     ├── lesson-11.html          ← Lesson 11: adjectives + opposites, questionnaire (Student's Book p. 17); extras hidden until opened: memory game, Workbook pp. 12, 13, 15, Vocabulary Worksheet Unit 1, homework
+    ├── lesson-12.html          ← Lesson 12: warm-up = Vocabulary Worksheet Unit 1 Tasks 5–7; Student’s Book p. 18 (dialogue 1.09, phrases for fluency, Who’s that?); extras hidden until opened: TB Warmer, Workbook p. 16 Ex. 4–6, record your dialogue
     ├── images/                 ← Put lesson images here
     ├── audio/                  ← Put lesson audio files here
     │   └── words/               ← One short clip per sound button (see "Sound buttons")

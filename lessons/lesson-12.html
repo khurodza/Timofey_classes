@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 12 – Who’s that?</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+/* Lesson 12 */
+/* teacher-only notes: hidden on the student's page, shown inside teacher.html (sync.js adds html.watching) */
+.teacher-only{display:none}
+html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;border:2px dashed #D9628F;border-radius:var(--radius);padding:12px 16px;line-height:1.7;font-size:16px}
+.teacher-only .to-label{font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#B0416C;margin-bottom:6px}
+.teacher-only b{color:#9A3F64}
+.teacher-only ul,.teacher-only ol{margin:4px 0 0 20px}
+.teacher-only table{border-collapse:collapse;margin-top:6px}
+.teacher-only td{padding:2px 10px 2px 0;vertical-align:top}
+/* Lesson 12 */
+.photo-wide{width:100%;max-width:640px;border-radius:14px;display:block;margin:10px 0 12px;border:1px solid var(--border)}
+.dl-name.three{background:#7B5CE6}
+.dlg3 .dl-text{margin:0}
+.dlg-no{font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-size:.8rem;margin:18px 0 4px}
+.wo-line{flex-wrap:wrap}
+.given{display:inline-block;padding:4px 10px;border:2px dashed #9BC27A;border-radius:10px;color:#4E7F1E;font-weight:700;font-style:italic}
+.key-lang{border-collapse:collapse;margin:8px 0}
+.key-lang th{text-align:left;padding:2px 18px 4px 0;font-size:.85rem;text-transform:uppercase;letter-spacing:.06em}
+.key-lang td{padding:4px 18px 4px 0}
+.sent-list .gap-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin:8px 0;font-size:18px}
+.sent-list .word-choice{display:inline-flex;flex-wrap:wrap;gap:6px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="back-home" href="../index.html">← All lessons</a>
+    <div class="hero-grid">
+      <div>
+        <h1 class="name-slot" data-with="Lesson 12: Who’s that, {name}?" data-without="Lesson 12: Who’s that?">Lesson 12: Who’s that?</h1>
+        <p>A new girl at school: <b>listen to a dialogue</b>, learn <b>phrases for fluency</b> — <i>How’s it going? That’s awesome! I know! See you later.</i> — and <b>talk about other people</b>: <i>Who’s she? Where’s she from?</i></p>
+        <div class="hero-badges">
+          <span class="badge">Lesson 12</span>
+          <span class="badge">Unit 1: All together</span>
+          <span class="badge">Student’s Book p. 18</span>
+          <span class="badge">Speaking: phrases for fluency</span>
+          <span class="badge">Functions: talking about others</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     Student's Book p. 18 / Teacher's Book T18.
+     PART 1 Warm-up: Vocabulary Worksheet Unit 1 Tasks 5–7 (copied from Lesson 11's Extra practice tab).
+     PART 2 Dialogue: Ex. 1–2 (1.09 → audio/lesson-12-1-09), Ex. 3, Phrases for fluency Ex. 4–6.
+     PART 3 Speaking: Key Language, Ex. 7, Ex. 8, Ex. 9 + Итог.
+     EXTRAS — hidden from Timofey until opened in teacher.html (data-extra, see GUIDE.md):
+       x-warmer  TB Warmer T18 (first letters of the p. 17 adjectives)
+       x-wb16    Workbook p. 16 Ex. 4–6 (Dialogue + Phrases for fluency)
+       x-record  TB Activity idea · Extension (record the dialogue)
+     Teacher's notes are in .teacher-only boxes: visible only in teacher.html.
+══════════════════════════════════════════════════════════ -->
+<nav class="parts">
+  <div class="wrap">
+    <button class="part-tab" data-part="part-warm" onclick="showPart('part-warm')">Warm-up</button>
+    <button class="part-tab" data-part="part-dlg" onclick="showPart('part-dlg')">Dialogue</button>
+    <button class="part-tab" data-part="part-speak" onclick="showPart('part-speak')">Speaking</button>
+  </div>
+</nav>
+
+<!-- ══════════ PART 1: warm-up (Vocabulary Worksheet Unit 1, Tasks 5–7) ══════════ -->
+<div class="lesson-part" id="part-warm">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#w0" data-extra="x-warmer">+ · First letters</a>
+    <a href="#w1">1 · Phrases and sentences</a>
+    <a href="#w2">2 · Words in order</a>
+    <a href="#w3">3 · Choose the words</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="teacher-only">
+    <div class="to-label">👩‍🏫 Teacher only · plan for Lesson 12 (about 60 min)</div>
+    <table>
+      <tr><td><b>Warm-up</b></td><td>10–12 min</td><td>Vocabulary Worksheet Unit 1, Tasks 5–7 (phrases, words in order, choose the words)</td></tr>
+      <tr><td><b>Dialogue</b></td><td>20 min</td><td>Ex. 1 photo → Ex. 2 (1.09) → Ex. 3 T/F → Phrases for fluency Ex. 4–6</td></tr>
+      <tr><td><b>Speaking</b></td><td>20 min</td><td>Key Language → Ex. 7 → Ex. 8 → Ex. 9 act out + own dialogues → Итог</td></tr>
+      <tr><td><b>Extras</b></td><td>if time</td><td>All hidden from him. Open them here with the violet <b>Open for the student</b> bar:
+        <br>• Warm-up tab: <b>First letters</b> (TB Warmer T18)
+        <br>• Dialogue tab: <b>Workbook p. 16</b> Ex. 4–6 (Dialogue + Phrases for fluency)
+        <br>• Speaking tab: <b>Record your dialogue</b> (TB Activity idea · Extension)</td></tr>
+    </table>
+    <p style="margin-top:6px">Aims (Teacher’s Book T18): <b>Developing Speaking</b> — a dialogue about a new girl; <b>Phrases for fluency</b> — <i>How’s it going? · See you later. · That’s awesome! · I know!</i>; <b>Functions</b> — talking about yourself and others: <i>Who’s that/he/she? — That’s/He’s/She’s …</i></p>
+  </div>
+
+  <section class="step" id="w0" data-extra="x-warmer">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Teacher’s Book T18 · Warmer <span class="extra-badge">extra</span></div>
+        <h2>First letters</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-w0">
+      <div class="exercise-label">Warmer</div>
+      <h3>Ten adjectives from Lesson 11. Complete the words.</h3>
+      <div class="sent-list"><p class="gap-line"><span class="num">1.</span> <b>b</b> … <input class="blank" id="tw-1" data-answer="big" placeholder="b _ _ " autocomplete="off" spellcheck="false"></p><p class="gap-line"><span class="num">2.</span> <b>s</b> … <input class="blank" id="tw-2" data-answer="small" placeholder="s _ _ _ _ " autocomplete="off" spellcheck="false"></p><p class="gap-line"><span class="num">3.</span> <b>n</b> … <input class="blank" id="tw-3" data-answer="new" placeholder="n _ _ " autocomplete="off" spellcheck="false"></p><p class="gap-line"><span class="num">4.</span> <b>o</b> … <input class="blank" id="tw-4" data-answer="old" placeholder="o _ _ " autocomplete="off" spellcheck="false"></p><p class="gap-line"><span class="num">5.</span> <b>f</b> … <input class="blank" id="tw-5" data-answer="fast" placeholder="f _ _ _ " autocomplete="off" spellcheck="false"></p><p class="gap-line"><span class="num">6.</span> <b>s</b> … <input class="blank" id="tw-6" data-answer="slow" placeholder="s _ _ _ " autocomplete="off" spellcheck="false"></p><p class="gap-line"><span class="num">7.</span> <b>c</b> … <input class="blank" id="tw-7" data-answer="cheap" placeholder="c _ _ _ _ " autocomplete="off" spellcheck="false"></p><p class="gap-line"><span class="num">8.</span> <b>e</b> … <input class="blank" id="tw-8" data-answer="expensive" placeholder="e _ _ _ _ _ _ _ _ " autocomplete="off" spellcheck="false"></p><p class="gap-line"><span class="num">9.</span> <b>c</b> … <input class="blank" id="tw-9" data-answer="clean" placeholder="c _ _ _ _ " autocomplete="off" spellcheck="false"></p><p class="gap-line"><span class="num">10.</span> <b>d</b> … <input class="blank" id="tw-10" data-answer="dirty" placeholder="d _ _ _ _ " autocomplete="off" spellcheck="false"></p></div>
+      <h3 style="margin-top:14px">Now use each adjective with a noun.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>fast → <b>a fast car</b></span></div>
+      <textarea class="free-write" id="fw-w0" placeholder="a big hotel, a new phone, …" rows="3"></textarea>
+      <div class="char-count" id="cc-fw-w0">0 characters</div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-w0')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-w0')">Try again</button>
+      </div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · TB Warmer (T18)</div>
+        <b>Teacher’s Book:</b> <i>Write the first letter of each of the adjectives from p17 on the board. Give students two minutes to work in pairs and complete the words. Elicit the correct spelling of each and ask students to use the adjective to describe a noun. For example, fast – a fast car. Correct.</i>
+        <br><b>Answers:</b> big, small, new, old, fast, slow, cheap, expensive, clean, dirty (the order here follows the opposite pairs).
+      </div>
+    </div>
+  </section>
+
+
+  <section class="step" id="w1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Warm-up · Vocabulary Worksheet Unit 1 · Task 5</div>
+        <h2>Phrases and sentences</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-v5">
+      <div class="exercise-label">Task 5</div>
+      <h3>Complete the sentences with the words in the list.</h3>
+      <div class="word-bank-ref"><span>awesome</span><span>later</span><span>goodbye</span><span class="crossed">going</span><span>is</span><span>know</span></div>
+      <div class="dialogue">
+        <span class="dl-name">A</span><p class="dl-text">Hello Tina.</p>
+        <span class="dl-name two">B</span><p class="dl-text">How’s it <span class="given">going</span>?</p>
+        <span class="dl-name">A</span><p class="dl-text">This is my new computer.</p>
+        <span class="dl-name two">B</span><p class="dl-text ask">Wow, that’s <input class="blank" id="v5-1" data-answer="awesome" autocomplete="off" spellcheck="false">!</p>
+        <span class="dl-name">A</span><p class="dl-text">Is this your camera?</p>
+        <span class="dl-name two">B</span><p class="dl-text ask">Yes, it <input class="blank" id="v5-2" data-answer="is" autocomplete="off" spellcheck="false" style="width:70px">.</p>
+        <span class="dl-name">A</span><p class="dl-text">I’m off now.</p>
+        <span class="dl-name two">B</span><p class="dl-text ask"><input class="blank" id="v5-3" data-answer="Goodbye" autocomplete="off" spellcheck="false">.</p>
+        <span class="dl-name">A</span><p class="dl-text">Madrid is the capital of Spain.</p>
+        <span class="dl-name two">B</span><p class="dl-text ask">I <input class="blank" id="v5-4" data-answer="know" autocomplete="off" spellcheck="false">!</p>
+        <span class="dl-name">A</span><p class="dl-text">See you later.</p>
+        <span class="dl-name two">B</span><p class="dl-text ask">OK. See you <input class="blank" id="v5-5" data-answer="later" autocomplete="off" spellcheck="false">.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-v5')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-v5')">Try again</button>
+      </div>
+    
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Task 5 (Vocabulary Worksheet Unit 1)</div>
+        <b>Answers:</b> 1 awesome · 2 is · 3 Goodbye · 4 know · 5 later
+        <ul>
+          <li>These are the <b>phrases for fluency</b> from today’s dialogue (SB p. 18 Ex. 4): <i>How’s it going? · That’s awesome! · I know! · See you later.</i> Say each line with feeling and have him repeat — today’s main part builds on them.</li>
+          <li>Act it out: you are A, he is B; then swap.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="step" id="w2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Warm-up · Vocabulary Worksheet Unit 1 · Task 6</div>
+        <h2>Put the words in order</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-wo-v6">
+      <div class="exercise-label">Task 6</div>
+      <h3>Put the words in order to make sentences.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>Brazil / is / from / Maria → <b>Maria is from Brazil.</b></span></div>
+      <div class="wo-line"><span class="num">1.</span><div class="wo-q" id="wo-v6-1" data-answer="Tom is American ."><span class="wo-tile">is</span><span class="wo-tile">American</span><span class="wo-tile">.</span><span class="wo-tile">Tom</span></div></div>
+      <div class="wo-line"><span class="num">2.</span><div class="wo-q" id="wo-v6-2" data-answer="It is a new phone ."><span class="wo-tile">it</span><span class="wo-tile">is</span><span class="wo-tile">phone</span><span class="wo-tile">new</span><span class="wo-tile">a</span><span class="wo-tile">.</span></div></div>
+      <div class="wo-line"><span class="num">3.</span><div class="wo-q" id="wo-v6-3" data-answer="It is a slow taxi ."><span class="wo-tile">it</span><span class="wo-tile">is</span><span class="wo-tile">a</span><span class="wo-tile">taxi</span><span class="wo-tile">slow</span><span class="wo-tile">.</span></div></div>
+      <div class="wo-line"><span class="num">4.</span><div class="wo-q" id="wo-v6-4" data-answer="Tomoko is from Japan ."><span class="wo-tile">Japan</span><span class="wo-tile">Tomoko</span><span class="wo-tile">from</span><span class="wo-tile">is</span><span class="wo-tile">.</span></div></div>
+      <div class="wo-line"><span class="num">5.</span><div class="wo-q" id="wo-v6-5" data-answer="They are small houses ."><span class="wo-tile">small</span><span class="wo-tile">houses</span><span class="wo-tile">are</span><span class="wo-tile">they</span><span class="wo-tile">.</span></div></div>
+      <div class="wo-line"><span class="num">6.</span><div class="wo-q" id="wo-v6-6" data-answer="It is a dirty shirt ."><span class="wo-tile">it</span><span class="wo-tile">a</span><span class="wo-tile">dirty</span><span class="wo-tile">is</span><span class="wo-tile">shirt</span><span class="wo-tile">.</span></div></div>
+      <div class="wo-line"><span class="num">7.</span><div class="wo-q" id="wo-v6-7" data-answer="They are expensive pens ."><span class="wo-tile">expensive</span><span class="wo-tile">they</span><span class="wo-tile">pens</span><span class="wo-tile">are</span><span class="wo-tile">.</span></div></div>
+      <p class="ru-hint" lang="ru">Первое слово предложения — с большой буквы, даже если на плитке маленькая (<i lang="en">it → It</i>): здесь это не важно.</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWordOrder('ex-wo-v6')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWordOrder('ex-wo-v6')">Try again</button>
+      </div>
+    
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Task 6</div>
+        <b>Answers:</b> 1 Tom is American. · 2 It is a new phone. · 3 It is a slow taxi. · 4 Tomoko is from Japan. · 5 They are small houses. · 6 It is a dirty shirt. · 7 They are expensive pens.
+        <ul>
+          <li>Pattern to point at: <b>be</b> + (a / an) + <b>adjective</b> + noun (Lesson 11). Ask him to read each sentence aloud with the contraction: <i>It’s a new phone. They’re small houses.</i></li>
+          <li>Same skill as today’s Ex. 8 (words in order → dialogues).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="step" id="w3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Warm-up · Vocabulary Worksheet Unit 1 · Task 7</div>
+        <h2>Choose the correct words</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-v7">
+      <div class="exercise-label">Task 7</div>
+      <h3>Choose the correct words.</h3>
+      <p class="read-text" style="font-size:19px;line-height:2.2">
+        I am <span class="word-choice" id="v7-1" data-answer="American"><button class="word-choice-btn" onclick="selectWord(this)">America</button><button class="word-choice-btn" onclick="selectWord(this)">American</button></span>.
+        I’m from New York City in the <span class="word-choice" id="v7-2" data-answer="USA"><button class="word-choice-btn" onclick="selectWord(this)">USA</button><button class="word-choice-btn" onclick="selectWord(this)">UK</button></span>, but my parents are from other countries.
+        My mum is <span class="word-choice" id="v7-3" data-answer="Spanish"><button class="word-choice-btn" onclick="selectWord(this)">Spanish</button><button class="word-choice-btn" onclick="selectWord(this)">Spain</button></span>. She’s from Malaga.
+        My dad is from Istanbul. It is the capital of <span class="word-choice" id="v7-4" data-answer="Turkey"><button class="word-choice-btn" onclick="selectWord(this)">Turkey</button><button class="word-choice-btn" onclick="selectWord(this)">Turkish</button></span>.
+        New York is <span class="word-choice" id="v7-5" data-answer="big"><button class="word-choice-btn" onclick="selectWord(this)">big</button><button class="word-choice-btn" onclick="selectWord(this)">small</button></span>: 8.5 million people live in this city.
+        Our house is in Brooklyn. It is 100 years old. It is an <span class="word-choice" id="v7-6" data-answer="old"><button class="word-choice-btn" onclick="selectWord(this)">old</button><button class="word-choice-btn" onclick="selectWord(this)">new</button></span> house.
+      </p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-v7')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-v7')">Try again</button>
+      </div>
+    
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Task 7</div>
+        <b>Answers:</b> 1 American · 2 USA · 3 Spanish · 4 Turkey · 5 big · 6 old
+        <ul>
+          <li>Country ⇄ nationality (Lesson 8): <i>America → American, Spain → Spanish, Turkey → Turkish</i>.</li>
+          <li>Note: the worksheet says “Istanbul … the capital of Turkey” — Istanbul is <b>not</b> the capital (Ankara is). Quick “Is that true?” moment.</li>
+          <li>Lead-in to the dialogue: “Where’s your mum from? Where’s your dad from?” → today’s question <i>Where’s she from?</i></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-dlg');window.scrollTo(0,0)">Next: Dialogue →</button>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════ PART 2: Dialogue (SB p. 18, Ex. 1–6) ══════════ -->
+<div class="lesson-part" id="part-dlg">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#d1">1 · Who’s that?</a>
+    <a href="#d2">2 · True or false?</a>
+    <a href="#d3">3 · Phrases for fluency</a>
+    <a href="#d4" data-extra="x-wb16">+ · Workbook p. 16</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="d1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Developing Speaking · Student’s Book p. 18 · 1.09</div>
+        <h2>Who’s that?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-d1">
+      <div class="exercise-label">Exercise 1</div>
+      <h3>Look at the photo. How many people can you see?</h3>
+      <img class="photo-wide" src="images/unit1/p18-photo.jpg" alt="Three teenagers talking in a park: a girl with glasses and headphones, a boy with curly hair holding a phone, and a blond boy with a skateboard">
+      <p class="gap-line" style="font-size:18px">I can see <input class="blank" id="d1-1" data-answer="three|3|three people|3 people" autocomplete="off" spellcheck="false" style="width:150px"> people.</p>
+      <div class="exercise-label" style="margin-top:18px">Exercise 2 · 1.09</div>
+      <h3>Now read and listen to the dialogue. Where is Daniela from?</h3>
+      <div class="audio-wrap">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-12-1-09.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <div class="dialogue dlg3">
+        <span class="dl-name">Mark</span><p class="dl-text">Hi, Tom.</p>
+        <span class="dl-name two">Tom</span><p class="dl-text">Hi, Mark. How’s it going?</p>
+        <span class="dl-name">Mark</span><p class="dl-text">Great, thanks. Nice skateboard!</p>
+        <span class="dl-name two">Tom</span><p class="dl-text">Oh, right. Thanks!</p>
+        <span class="dl-name">Mark</span><p class="dl-text">Who’s that?</p>
+        <span class="dl-name two">Tom</span><p class="dl-text">That’s Daniela.</p>
+        <span class="dl-name">Mark</span><p class="dl-text">Who’s she?</p>
+        <span class="dl-name two">Tom</span><p class="dl-text">She’s new. She’s in another class.</p>
+        <span class="dl-name">Mark</span><p class="dl-text">Where’s she from?</p>
+        <span class="dl-name two">Tom</span><p class="dl-text">I’m not sure. But I think she’s Spanish. From Madrid, I think.</p>
+        <span class="dl-name">Mark</span><p class="dl-text">Spanish? Wow! That’s awesome.</p>
+        <span class="dl-name two">Tom</span><p class="dl-text">I know!</p>
+        <span class="dl-name three">Daniela</span><p class="dl-text">Hi, you two. I’m Daniela. I’m new here. I’m from Manchester.</p>
+        <span class="dl-name">Mark</span><p class="dl-text">Manchester? But Tom …</p>
+        <span class="dl-name two">Tom</span><p class="dl-text">OK, time to go. See you later, Mark. Bye, Daniela.</p>
+        <span class="dl-name three">Daniela</span><p class="dl-text">Bye. Is there a problem?</p>
+      </div>
+      <p class="gap-line" style="font-size:18px;margin-top:14px">Daniela is from <input class="blank" id="d1-2" data-answer="Manchester|Manchester in the UK|the UK|UK|England" autocomplete="off" spellcheck="false">.</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-d1')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-d1')">Try again</button>
+      </div>
+      <div class="tip"><span class="tip-title">New words</span><b>skateboard</b> — скейтборд · <b>another class</b> — другой класс · <b>I’m not sure</b> — я не уверен · <b>time to go</b> — пора идти</div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Exercises 1–2 (1.09)</div>
+        <b>Teacher’s Book:</b> <i>Get students to cover the dialogue on p18 and just look at the photo. In pairs, give students two minutes to think about the answer to the question.</i> <b>Answers:</b> Ex. 1 three · Ex. 2 Manchester
+        <ul>
+          <li>Before the dialogue, scroll so only the photo shows. Ask: <i>Who’s that? Is she new? Where’s she from?</i> Let him guess (names, countries).</li>
+          <li>First listen with the text hidden (scroll up), second listen reading along.</li>
+          <li>The joke: Tom thinks Daniela is Spanish (from Madrid) — but she’s from Manchester. Ask: <i>Is Tom right? Why does Daniela ask “Is there a problem?”</i></li>
+          <li>Then read it in roles: you Mark, he Tom (you read Daniela too), then swap.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="step" id="d2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Reading · Student’s Book p. 18</div>
+        <h2>True or false?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-d3">
+      <div class="exercise-label">Exercise 3</div>
+      <h3>Read the dialogue again. Mark the sentences T (true) or F (false).</h3>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> Mark likes Tom’s skateboard. <span class="word-choice" id="d3-1" data-answer="T"><button class="word-choice-btn" onclick="selectWord(this)">T</button><button class="word-choice-btn" onclick="selectWord(this)">F</button></span></p>
+        <p class="gap-line"><span class="num">2.</span> Daniela is in Tom’s class. <span class="word-choice" id="d3-2" data-answer="F"><button class="word-choice-btn" onclick="selectWord(this)">T</button><button class="word-choice-btn" onclick="selectWord(this)">F</button></span></p>
+        <p class="gap-line"><span class="num">3.</span> Tom thinks Daniela is from Madrid. <span class="word-choice" id="d3-3" data-answer="T"><button class="word-choice-btn" onclick="selectWord(this)">T</button><button class="word-choice-btn" onclick="selectWord(this)">F</button></span></p>
+        <p class="gap-line"><span class="num">4.</span> Daniela is not Spanish. <span class="word-choice" id="d3-4" data-answer="T"><button class="word-choice-btn" onclick="selectWord(this)">T</button><button class="word-choice-btn" onclick="selectWord(this)">F</button></span></p>
+      </div>
+      <h3 style="margin-top:14px">Correct the false sentence.</h3>
+      <textarea class="free-write" id="fw-d3" placeholder="Daniela is not in Tom’s class. She’s …" rows="2"></textarea>
+      <div class="char-count" id="cc-fw-d3">0 characters</div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-d3')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-d3')">Try again</button>
+      </div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Exercise 3</div>
+        <b>Teacher’s Book:</b> <i>During feedback, you could play the audio again and encourage students to think about the correct answer to the false statement.</i>
+        <br><b>Answers:</b> 1 T · 2 F · 3 T · 4 T
+        <br>Correction for 2: <i>Daniela is in another class.</i> / <i>She isn’t in Tom’s class.</i> For 4, ask for the proof: <i>“I’m from Manchester.”</i>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="step" id="d3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Phrases for fluency · Student’s Book p. 18</div>
+        <h2>Phrases for fluency</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-d4">
+      <div class="exercise-label">Exercise 4</div>
+      <h3>Find the expressions 1–4 in the dialogue. Who says them?</h3>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> <b>How’s it going?</b> <span class="word-choice" id="d4-1" data-answer="Tom"><button class="word-choice-btn" onclick="selectWord(this)">Mark</button><button class="word-choice-btn" onclick="selectWord(this)">Tom</button><button class="word-choice-btn" onclick="selectWord(this)">Daniela</button></span></p>
+        <p class="gap-line"><span class="num">2.</span> <b>See you later.</b> <span class="word-choice" id="d4-2" data-answer="Tom"><button class="word-choice-btn" onclick="selectWord(this)">Mark</button><button class="word-choice-btn" onclick="selectWord(this)">Tom</button><button class="word-choice-btn" onclick="selectWord(this)">Daniela</button></span></p>
+        <p class="gap-line"><span class="num">3.</span> <b>That’s awesome!</b> <span class="word-choice" id="d4-3" data-answer="Mark"><button class="word-choice-btn" onclick="selectWord(this)">Mark</button><button class="word-choice-btn" onclick="selectWord(this)">Tom</button><button class="word-choice-btn" onclick="selectWord(this)">Daniela</button></span></p>
+        <p class="gap-line"><span class="num">4.</span> <b>I know!</b> <span class="word-choice" id="d4-4" data-answer="Tom"><button class="word-choice-btn" onclick="selectWord(this)">Mark</button><button class="word-choice-btn" onclick="selectWord(this)">Tom</button><button class="word-choice-btn" onclick="selectWord(this)">Daniela</button></span></p>
+      </div>
+      <div class="tip"><span class="tip-title">Say it!</span>
+        <button class="say" data-say="How’s it going?">How’s it going?</button>
+        <button class="say" data-say="See you later.">See you later.</button>
+        <button class="say" data-say="That’s awesome!">That’s awesome!</button>
+        <button class="say" data-say="I know!">I know!</button>
+      </div>
+      <h3 style="margin-top:14px">How do you say them in Russian?</h3>
+      <textarea class="free-write" id="fw-d4" placeholder="1. How’s it going? — …" rows="4"></textarea>
+      <div class="char-count" id="cc-fw-d4">0 characters</div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-d4')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-d4')">Try again</button>
+      </div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Exercise 4</div>
+        <b>Teacher’s Book:</b> <i>To encourage speed-reading, you could do this as a race and ask students to find the expressions as quickly as possible.</i>
+        <br><b>Answers:</b> 1 Tom · 2 Tom · 3 Mark · 4 Tom
+        <br>Russian: <i>Как дела? / Как жизнь?</i> · <i>Увидимся! / Пока!</i> · <i>Круто! / Здорово!</i> · <i>Точно! / Знаю! / Вот именно!</i> — <i>I know!</i> here = agreeing (“That’s right!”), not “I have the information”.
+        <br>The sound buttons use the site voice (not the recording); if a clip is missing, the browser voice reads it.
+      </div>
+    </div>
+    <div class="card" id="ex-d5">
+      <div class="exercise-label">Exercise 5</div>
+      <h3>Change the underlined expressions. Use an expression from Exercise 4.</h3>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> <b>A</b> This is my new bicycle. <b>B</b> <u>Great!</u> → <input class="blank" id="d5-1" data-answer="That’s awesome!|That’s awesome|That's awesome!|That's awesome|That is awesome!|That is awesome" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">2.</span> <b>A</b> This is a nice computer. <b>B</b> <u>Yes, it is.</u> → <input class="blank" id="d5-2" data-answer="I know!|I know" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">3.</span> <b>A</b> Hi, George. <u>How are you?</u> → <input class="blank" id="d5-3" data-answer="How’s it going?|How’s it going|How's it going?|How's it going|How is it going?|How is it going" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">4.</span> <b>A</b> OK, I’m off now. <u>Goodbye!</u> → <input class="blank" id="d5-4" data-answer="See you later!|See you later|See you later." autocomplete="off" spellcheck="false"></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-d5')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-d5')">Try again</button>
+      </div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Exercise 5</div>
+        <b>Teacher’s Book:</b> <i>During feedback, point out the use of question marks and exclamation marks and say the expressions for students to repeat.</i>
+        <br><b>Answers:</b> 1 That’s awesome! · 2 I know! · 3 How’s it going? · 4 See you later.
+        <br><i>I’m off now</i> = I’m going now (new; explain).
+      </div>
+    </div>
+    <div class="card" id="ex-d6">
+      <div class="exercise-label">Exercise 6</div>
+      <h3>Complete the dialogues with the expressions in Exercise 4.</h3>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">0.</span> <b>A</b> Moscow is a city in Russia. <b>B</b> <span class="given">I know</span>!</p>
+        <p class="gap-line"><span class="num">1.</span> <b>A</b> Hello, Ben! <b>B</b> <input class="blank" id="d6-1" data-answer="How’s it going|How's it going|How is it going" autocomplete="off" spellcheck="false">?</p>
+        <p class="gap-line"><span class="num">2.</span> <b>A</b> Look at my new phone. <b>B</b> <input class="blank" id="d6-2" data-answer="That’s awesome|That's awesome|That is awesome" autocomplete="off" spellcheck="false">!</p>
+        <p class="gap-line"><span class="num">3.</span> <b>A</b> Goodbye, Mike. <b>B</b> <input class="blank" id="d6-3" data-answer="See you later" autocomplete="off" spellcheck="false">, Annie.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-d6')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-d6')">Try again</button>
+      </div>
+      <div class="tip class-note"><span class="tip-title">In class: act it out!</span>Read the dialogues with your teacher. Then swap roles.</div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Exercise 6</div>
+        <b>Teacher’s Book:</b> <i>During feedback, say the sentences for students to repeat. Drill sentences to ensure correct pronunciation. In pairs, students practise the dialogues.</i>
+        <br><b>Answers:</b> 1 How’s it going · 2 That’s awesome · 3 See you later
+        <br>Drill the intonation: falling on <i>How’s it going?</i> (wh-question), excited rise-fall on <i>That’s awesome!</i>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="step" id="d4" data-extra="x-wb16">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Extra · Workbook p. 16 · Ex. 4–6 <span class="extra-badge">extra</span></div>
+        <h2>Workbook: dialogue and phrases</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-wb4">
+      <div class="exercise-label">Workbook p. 16 · Exercise 4 · Dialogue</div>
+      <h3>Choose the correct answers to complete the conversation.</h3>
+      <div class="dialogue">
+        <span class="dl-name">Boy</span><p class="dl-text">Hi, what’s your name?</p>
+        <span class="dl-name two">Girl</span><p class="dl-text"><span class="num">0</span> I’m <span class="given">Alex</span>.</p>
+        <span class="dl-name">Boy</span><p class="dl-text">And where are you from?</p>
+        <span class="dl-name two">Girl</span><p class="dl-text"><span class="num">1</span> <span class="word-choice" id="wb4-1" data-answer="I’m Canadian."><button class="word-choice-btn" onclick="selectWord(this)">I’m Canadian.</button><button class="word-choice-btn" onclick="selectWord(this)">I’m 11.</button><button class="word-choice-btn" onclick="selectWord(this)">Sara.</button></span></p>
+        <span class="dl-name">Boy</span><p class="dl-text">What city are you from?</p>
+        <span class="dl-name two">Girl</span><p class="dl-text"><span class="num">2</span> <span class="word-choice" id="wb4-2" data-answer="Toronto."><button class="word-choice-btn" onclick="selectWord(this)">Japan.</button><button class="word-choice-btn" onclick="selectWord(this)">Toronto.</button><button class="word-choice-btn" onclick="selectWord(this)">Mexico.</button></span></p>
+        <span class="dl-name">Boy</span><p class="dl-text">Toronto’s a beautiful city.</p>
+        <span class="dl-name two">Girl</span><p class="dl-text"><span class="num">3</span> <span class="word-choice" id="wb4-3" data-answer="Yes, it is."><button class="word-choice-btn" onclick="selectWord(this)">Yes, I am.</button><button class="word-choice-btn" onclick="selectWord(this)">Yes, it is.</button><button class="word-choice-btn" onclick="selectWord(this)">Yes, they are.</button></span></p>
+        <span class="dl-name">Boy</span><p class="dl-text">Who’s your favourite singer?</p>
+        <span class="dl-name two">Girl</span><p class="dl-text"><span class="num">4</span> <span class="word-choice" id="wb4-4" data-answer="Shawn Mendes."><button class="word-choice-btn" onclick="selectWord(this)">Shawn Mendes.</button><button class="word-choice-btn" onclick="selectWord(this)">Lionel Messi.</button><button class="word-choice-btn" onclick="selectWord(this)">Yes.</button></span></p>
+        <span class="dl-name">Boy</span><p class="dl-text">Why is he your favourite singer?</p>
+        <span class="dl-name two">Girl</span><p class="dl-text"><span class="num">5</span> <span class="word-choice" id="wb4-5" data-answer="Because he’s so awesome."><button class="word-choice-btn" onclick="selectWord(this)">No.</button><button class="word-choice-btn" onclick="selectWord(this)">Yes.</button><button class="word-choice-btn" onclick="selectWord(this)">Because he’s so awesome.</button></span></p>
+        <span class="dl-name">Boy</span><p class="dl-text">Nice to meet you, Alex.</p>
+        <span class="dl-name two">Girl</span><p class="dl-text"><span class="num">6</span> <span class="word-choice" id="wb4-6" data-answer="Nice to meet you, too."><button class="word-choice-btn" onclick="selectWord(this)">Yes.</button><button class="word-choice-btn" onclick="selectWord(this)">No.</button><button class="word-choice-btn" onclick="selectWord(this)">Nice to meet you, too.</button></span></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-wb4')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-wb4')">Try again</button>
+      </div>
+    </div>
+    <div class="card" id="ex-match-wb5">
+      <div class="exercise-label">Workbook p. 16 · Exercise 5 · Phrases for fluency</div>
+      <h3>Match the phrases with their meanings.</h3>
+      <div class="match-grid">
+        <div class="match-col" data-side="left">
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-wb5')">How’s it going?</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-wb5')">See you later.</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-wb5')">I know.</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-wb5')">That is so awesome!</div>
+        </div>
+        <div class="match-col" data-side="right">
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-wb5')">Goodbye.</div>
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-wb5')">How are you?</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-wb5')">Great.</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-wb5')">You’re right.</div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-ghost" onclick="resetMatchEx('ex-match-wb5')">Reset</button>
+      </div>
+    </div>
+    <div class="card" id="ex-wb6">
+      <div class="exercise-label">Workbook p. 16 · Exercise 6</div>
+      <h3>Use the phrases from Exercise 5 to complete the dialogues.</h3>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> <b>A</b> Hi, David. <input class="blank" id="wb6-1" data-answer="How’s it going?|How’s it going|How's it going?|How's it going|How is it going?|How is it going" autocomplete="off" spellcheck="false"> <b>B</b> I’m fine, thanks.</p>
+        <p class="gap-line"><span class="num">2.</span> <b>A</b> Bye, Tomas. <b>B</b> Bye, Lina. <input class="blank" id="wb6-2" data-answer="See you later.|See you later" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">3.</span> <b>A</b> This is my new tablet. <b>B</b> <input class="blank" id="wb6-3" data-answer="That is so awesome!|That is so awesome|That’s so awesome!|That’s so awesome|That's so awesome!|That's so awesome|That’s awesome!|That’s awesome|That's awesome!|That's awesome|That is awesome!|That is awesome" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">4.</span> <b>A</b> Raheem’s a great football player. <b>B</b> <input class="blank" id="wb6-4" data-answer="I know.|I know" autocomplete="off" spellcheck="false"></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-wb6')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-wb6')">Try again</button>
+      </div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Workbook p. 16, Ex. 4–6 (TB T18: THINK more → Workbook)</div>
+        <b>Answers (my key — the Workbook Key PDF has no text layer, please glance at it):</b> Ex. 4: 1 A · 2 B · 3 B · 4 A · 5 C · 6 C · Ex. 5: 1 b · 2 a · 3 d · 4 c · Ex. 6: 1 How’s it going? · 2 See you later. · 3 That is so awesome! · 4 I know.
+        <br>The TB margin lists this as “Workbook Listening p16, Ex. 4–6”; on the page Ex. 1–3 are the listening (1.03) and Ex. 4–6 are Dialogue + Phrases for fluency — those are here. Ex. 4 is reading only (no audio).
+        <br><i>Raheem</i> = Raheem Sterling (English footballer).
+      </div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-speak');window.scrollTo(0,0)">Next: Speaking →</button>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════ PART 3: Functions + Speaking (SB p. 18, Ex. 7–9) ══════════ -->
+<div class="lesson-part" id="part-speak">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#s1">1 · Who’s she?</a>
+    <a href="#s2">2 · Make dialogues</a>
+    <a href="#s3">3 · Speaking</a>
+    <a href="#s4" data-extra="x-record">+ · Record it</a>
+    <a href="#s5">4 · Итог</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="s1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Functions · Student’s Book p. 18</div>
+        <h2>Talking about yourself and others</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Key language</div>
+      <div class="tip rule"><span class="tip-title">Who’s …? — That’s / He’s / She’s …</span>
+        <table class="key-lang">
+          <tr><th>Questions</th><th>Answers</th></tr>
+          <tr><td><span class="key">Who’s that?</span></td><td><span class="key">That’s Maria.</span></td></tr>
+          <tr><td><span class="key">Who’s he?</span></td><td><span class="key">He’s Ben.</span></td></tr>
+          <tr><td><span class="key">Who’s she?</span></td><td><span class="key">She’s Maria.</span></td></tr>
+        </table>
+        <b>Who’s</b> = <b>Who is</b> (кто это?) · <b>Where’s</b> = <b>Where is</b> (где? / откуда?)
+      </div>
+    </div>
+    <div class="card" id="ex-match-s7">
+      <div class="exercise-label">Exercise 7</div>
+      <h3>Match the questions with the answers.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>Who’s that? ⇄ <b>That’s Daniela.</b></span></div>
+      <div class="match-grid">
+        <div class="match-col" data-side="left">
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-s7')">Where’s she from?</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-s7')">How old are you?</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-s7')">Who’s your favourite singer?</div>
+        </div>
+        <div class="match-col" data-side="right">
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-s7')">Billie Eilish.</div>
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-s7')">She’s from Madrid.</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-s7')">I’m 11.</div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-ghost" onclick="resetMatchEx('ex-match-s7')">Reset</button>
+      </div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Key language + Exercise 7</div>
+        <b>Answers:</b> 0 b (example) · 1 a · 2 d · 3 c
+        <ul>
+          <li>Point at the photo (Dialogue tab): <i>Who’s that? — That’s Daniela. Where’s she from? — She’s from Manchester.</i> Then about real people: his friends, family, footballers from Lesson 10.</li>
+          <li>Typical mistakes for a Russian speaker: <i>*Who is she from?</i> → <i>Where is she from?</i>; <i>*How many years are you?</i> → <i>How old are you?</i>; <i>*I have 11 years</i> → <i>I’m 11</i>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="step" id="s2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Functions · Student’s Book p. 18</div>
+        <h2>Make dialogues</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-wo-s8">
+      <div class="exercise-label">Exercise 8</div>
+      <h3>Put the words in the correct order to make dialogues.</h3>
+      <p class="ru-hint" lang="ru">Перетащи слова (или нажми на слово, а потом на место). Большая буква в начале здесь не важна.</p>
+      <p class="dlg-no">Dialogue 1</p>
+      <div class="wo-line"><span class="num">A</span><span class="given">Who’s that?</span></div>
+      <div class="wo-line"><span class="num">B</span><div class="wo-q" id="wo-s8-1" data-answer="That’s Lucas ."><span class="wo-tile">Lucas</span><span class="wo-tile">that’s</span><span class="wo-tile">.</span></div></div>
+      <div class="wo-line"><span class="num">A</span><div class="wo-q" id="wo-s8-2" data-answer="Where’s he from ?"><span class="wo-tile">he</span><span class="wo-tile">from</span><span class="wo-tile">where’s</span><span class="wo-tile">?</span></div></div>
+      <div class="wo-line"><span class="num">B</span><div class="wo-q" id="wo-s8-3" data-answer="He’s from the UK ."><span class="wo-tile">the UK</span><span class="wo-tile">from</span><span class="wo-tile">he’s</span><span class="wo-tile">.</span></div></div>
+      <p class="dlg-no">Dialogue 2</p>
+      <div class="wo-line"><span class="num">A</span><div class="wo-q" id="wo-s8-4" data-answer="Who are they ?"><span class="wo-tile">they</span><span class="wo-tile">are</span><span class="wo-tile">who</span><span class="wo-tile">?</span></div></div>
+      <div class="wo-line"><span class="num">B</span><div class="wo-q" id="wo-s8-5" data-answer="They are Mario and Alex ."><span class="wo-tile">Mario</span><span class="wo-tile">are</span><span class="wo-tile">and</span><span class="wo-tile">they</span><span class="wo-tile">Alex</span><span class="wo-tile">.</span></div></div>
+      <div class="wo-line"><span class="num">A</span><div class="wo-q" id="wo-s8-6" data-answer="Where are they from ?"><span class="wo-tile">are</span><span class="wo-tile">from</span><span class="wo-tile">where</span><span class="wo-tile">they</span><span class="wo-tile">?</span></div></div>
+      <div class="wo-line"><span class="num">B</span><div class="wo-q" id="wo-s8-7" data-answer="They are from Mexico ."><span class="wo-tile">from</span><span class="wo-tile">they</span><span class="wo-tile">Mexico</span><span class="wo-tile">are</span><span class="wo-tile">.</span></div></div>
+      <p class="dlg-no">Dialogue 3</p>
+      <div class="wo-line"><span class="num">A</span><div class="wo-q" id="wo-s8-8" data-answer="Hi, what’s your name ?"><span class="wo-tile">Hi,</span><span class="wo-tile">your</span><span class="wo-tile">name</span><span class="wo-tile">what’s</span><span class="wo-tile">?</span></div></div>
+      <div class="wo-line"><span class="num">B</span><div class="wo-q" id="wo-s8-9" data-answer="I’m Bea ."><span class="wo-tile">Bea</span><span class="wo-tile">I’m</span><span class="wo-tile">.</span></div></div>
+      <div class="wo-line"><span class="num">A</span><div class="wo-q" id="wo-s8-10" data-answer="How old are you, Bea ?"><span class="wo-tile">old</span><span class="wo-tile">you,</span><span class="wo-tile">how</span><span class="wo-tile">are</span><span class="wo-tile">Bea</span><span class="wo-tile">?</span></div></div>
+      <div class="wo-line"><span class="num">B</span><div class="wo-q" id="wo-s8-11" data-answer="I’m 12 ."><span class="wo-tile">12</span><span class="wo-tile">I’m</span><span class="wo-tile">.</span></div></div>
+      <div class="wo-line"><span class="num">A</span><div class="wo-q" id="wo-s8-12" data-answer="Who’s your favourite actor ?"><span class="wo-tile">favourite</span><span class="wo-tile">your</span><span class="wo-tile">actor</span><span class="wo-tile">who’s</span><span class="wo-tile">?</span></div></div>
+      <div class="wo-line"><span class="num">B</span><div class="wo-q" id="wo-s8-13" data-answer="It’s Tom Holland ."><span class="wo-tile">Tom Holland</span><span class="wo-tile">it’s</span><span class="wo-tile">.</span></div></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWordOrder('ex-wo-s8')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWordOrder('ex-wo-s8')">Try again</button>
+      </div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Exercise 8</div>
+        <b>Answers:</b>
+        <br>1 A Who’s that? B That’s Lucas. A Where’s he from? B He’s from the UK.
+        <br>2 A Who are they? B They are Mario and Alex / Alex and Mario. A Where are they from? B They are from Mexico.
+        <br>3 A Hi, what’s your name? B I’m Bea. A How old are you, Bea? B I’m 12. A Who’s your favourite actor? B It’s Tom Holland.
+        <br>The checker accepts only <i>Mario and Alex</i> in 2B — <i>Alex and Mario</i> is right too (tell him if he gets a red mark for it).
+        <br><i>Who are they?</i> — plural: <i>Who’s</i> → <i>Who are</i>, <i>he’s</i> → <i>they are</i>.
+      </div>
+    </div>
+  </section>
+
+
+  <section class="step" id="s3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Speaking · Student’s Book p. 18</div>
+        <h2>Act it out!</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Exercise 9 · Speaking</div>
+      <h3>Act out the dialogues in Exercise 8 with your teacher. Then make similar dialogues. Use the questions and answers in the Key Language box.</h3>
+      <div class="tip class-note"><span class="tip-title">In class: who’s that?</span>Your teacher shows a photo. Ask: <i>Who’s that? Where’s he/she from? How old is he/she?</i> Then you show a photo of your friend or a star — your teacher asks!</div>
+      <h3 style="margin-top:14px">Write your own dialogue. Use <i>Who’s …? Where’s … from? How old …? Who’s your favourite …?</i></h3>
+      <textarea class="free-write" id="fw-s9" placeholder="A Who’s that?&#10;B That’s …&#10;A Where’s he from?&#10;B …" rows="6"></textarea>
+      <div class="char-count" id="cc-fw-s9">0 characters</div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Exercise 9</div>
+        <b>Teacher’s Book:</b> <i>Monitor and check students’ intonation when asking the questions.</i>
+        <br><b>Activity idea · Mixed ability:</b> <i>Weaker classes: Give students two minutes (or more if necessary) to prepare the new dialogues in Exercise 9. Stronger classes: Students should be able to create dialogues without preparation time.</i>
+        <ul>
+          <li>One-to-one: you are the partner. Act out Ex. 8 twice (swap roles), then new dialogues with photos — footballers from Lesson 10 (Ronaldo, Messi…), his favourite singer/actor, his friends.</li>
+          <li>Wh-questions: falling intonation (<i>Where’s she ↘from?</i>).</li>
+          <li>Let him write his dialogue in the box first if he needs time (weaker-class idea), then say it without reading.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="step" id="s4" data-extra="x-record">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Extra · Teacher’s Book T18 · Activity idea · Extension <span class="extra-badge">extra</span></div>
+        <h2>Record your dialogue</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Record and listen</div>
+      <h3>Record your dialogue. Listen. Check your pronunciation and intonation. Then record it again — is it better?</h3>
+      <p class="ru-hint" lang="ru">Нажми кнопку записи, скажи диалог (ты и учитель), потом послушай. Запиши ещё раз — стало лучше?</p>
+      <div class="rec"></div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Activity idea · Extension (T18)</div>
+        <b>Teacher’s Book:</b> <i>If students have access to a recording facility (on their mobile phones, for example), they could record their dialogues and play them back to check their own pronunciation and intonation. They can then repeat the exercise and listen out for improvements. Invite some of the groups to act out a dialogue for the class.</i>
+        <br>One-to-one: record you + him on his side (the recorder uses his microphone), listen together, pick one thing to improve (e.g. falling intonation on <i>Where’s …?</i>), record again.
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="s5">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Итог</div>
+        <h2>Что ты теперь умеешь?</h2>
+      </div>
+    </div>
+    <div class="card fun-check" lang="ru" id="fun-check">
+      <div class="fc-head">
+        <h3>Теперь я…</h3>
+        <span class="fc-count"><b>0</b> / 4 ⭐</span>
+      </div>
+      <div class="fc-meter"><i></i></div>
+      <p class="fc-hint">Отметь всё, что уже получается!</p>
+      <div class="reflect-list">
+        <label class="reflect-item"><input type="checkbox" id="rr1"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🎧</span><span class="reflect-text">понимаю диалог о новой девочке Даниэле</span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr2"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">💬</span><span class="reflect-text">говорю как носитель: <i lang="en">How’s it going? · See you later. · That’s awesome! · I know!</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr3"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">❓</span><span class="reflect-text">спрашиваю о других: <i lang="en">Who’s that? Where’s she from?</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr4"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🎭</span><span class="reflect-text">разыгрываю свой диалог</span></label>
+      </div>
+      <div class="fc-done" hidden><span class="fc-trophy">🏆</span><span><b>Супер!</b> Урок 12 пройден. Так держать!</span></div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<script src="../assets/sync.js"></script>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/matching.js"></script>
+<script src="../assets/wordorder.js"></script>
+<script src="../assets/name.js"></script>
+<script src="../assets/dictionary.js"></script>
+<script>
+/* "Итог": star counter, progress bar and confetti when everything is ticked (same as Lessons 3–11) */
+(function () {
+  const box = document.getElementById('fun-check');
+  const boxes = [...box.querySelectorAll('input[type=checkbox]')];
+  let celebrated = false;
+  function confetti() {
+    const colours = ['#FFC53D', '#FF7A45', '#3352E0', '#12A374', '#7B5CE6', '#E03E52'];
+    for (let i = 0; i < 40; i++) {
+      const c = document.createElement('i');
+      c.className = 'fc-confetti';
+      c.style.left = Math.random() * 100 + '%';
+      c.style.background = colours[i % colours.length];
+      c.style.animationDelay = Math.random() * 0.4 + 's';
+      c.style.setProperty('--x', (Math.random() * 160 - 80) + 'px');
+      c.style.setProperty('--r', (Math.random() * 720 - 360) + 'deg');
+      box.appendChild(c);
+      setTimeout(() => c.remove(), 2200);
+    }
+  }
+  function update(animate) {
+    const n = boxes.filter(b => b.checked).length;
+    box.querySelector('.fc-count b').textContent = n;
+    box.querySelector('.fc-meter i').style.width = (n / boxes.length * 100) + '%';
+    const done = n === boxes.length;
+    box.querySelector('.fc-done').hidden = !done;
+    box.classList.toggle('all-done', done);
+    if (done && animate && !celebrated) confetti();
+    celebrated = done;
+  }
+  boxes.forEach(b => b.addEventListener('change', () => update(true)));
+  document.addEventListener('DOMContentLoaded', () => setTimeout(() => update(false), 0));
+})();
+</script>
+</body>
+</html>
