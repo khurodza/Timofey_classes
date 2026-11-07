@@ -285,7 +285,7 @@
     '.send-sel{border:2px solid #E08A2E;border-radius:99px;padding:4px 8px;background:#fff;color:#9A5410;font:800 12px/1 system-ui,sans-serif;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.12);max-width:190px}' +
     'html:not(.watching) .sent-away{display:none!important}' +
     'html.watching section.sent-away,html.watching .sent-away.exercise,html.watching .sent-away.section{max-height:150px;overflow:hidden;outline:3px dashed #E08A2E;outline-offset:6px;border-radius:18px}' +
-    'html.watching .sent-away > .extra-toggle{display:none}'html.watching .sent-away > :not(.watch-tools){opacity:.35}html.watching .chips a.sent-away{opacity:.4;text-decoration:line-through}' +
+    'html.watching .sent-away > .extra-toggle{display:none}html.watching .sent-away > :not(.watch-tools){opacity:.35}html.watching .chips a.sent-away{opacity:.4;text-decoration:line-through}' +
     '.sent-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px;padding:8px 12px;border-radius:12px;background:#FDF0E1;border:2px solid #E08A2E;font:700 14px/1.3 system-ui,sans-serif;color:#7A4510}' +
     '.sent-bar button{border:0;border-radius:99px;padding:6px 14px;background:#E08A2E;color:#fff;font:800 13px/1 system-ui;cursor:pointer}' +
     '.sent-badge{display:inline-block;margin-left:10px;padding:3px 10px;border-radius:99px;background:#FDF0E1;color:#9A5410;font:800 12px/1.4 system-ui,sans-serif;vertical-align:middle}' +
