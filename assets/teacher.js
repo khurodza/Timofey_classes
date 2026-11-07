@@ -325,7 +325,7 @@ frames.forEach(f => f.addEventListener('load', () => {
   if (!loc || loc.href === 'about:blank' || new URLSearchParams(loc.search).has('watch')) return;
   const s = stu(viewing.s), m = loc.pathname.match(/\/(lessons|homework)\/([^/]+)\.html$/);
   if (m && loc.pathname.startsWith(s.site)) { $('follow').checked = false; showPage(s.id, m[2], loc.pathname, loc.hash.slice(1) || null); }
-  else go('#/s/' + s.id);                       // home page etc. → back to the dashboard
+  // other pages (e.g. "All lessons") just stay open in the viewer
 }));
 window.__teacher = {                             // called from the page inside the frame (assets/sync.js)
   annotate: (anchor, label) => viewing && openNote(viewing.s, viewing.page, anchor, label),
