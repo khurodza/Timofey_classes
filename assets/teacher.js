@@ -117,7 +117,7 @@ async function loadSiteList(s) {
   const found = new Map();
   for (const index of ['index.html', 'homework.html']) {
     try {
-      const res = await fetch(s.site + index); if (!res.ok) continue;
+      const res = await fetch(s.site + index, { cache: 'no-cache' }); if (!res.ok) continue;   // never an old copy: new lessons show up at once
       const doc = new DOMParser().parseFromString(await res.text(), 'text/html');
       doc.querySelectorAll('a[href]').forEach(a => {
         const url = new URL(a.getAttribute('href'), location.origin + s.site + index);
