@@ -320,7 +320,7 @@ function updateScoreBar() {
   if (!bar) return;
 
   let total = 0, done = 0, correct = 0;
-  const locked = el => el.closest('[data-extra]:not(.unlocked)');   // extras the teacher hasn't opened don't count
+  const locked = el => el.closest('[data-extra]:not(.unlocked), .sent-away');   // unopened extras and tasks sent to another lesson don't count
 
   document.querySelectorAll('.blank[data-answer]').forEach(inp => {
     if (locked(inp)) return;

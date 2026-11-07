@@ -60,7 +60,7 @@ function avatar(s, cls = '', withDot = true) {
 }
 
 /* ---------------- state ---------------- */
-const presence = {}, pages = {}, seen = {}, notes = {}, extras = {}, moved = {}, reports = {}, siteLists = {}, tracking = {}, markedDone = {};
+const presence = {}, pages = {}, seen = {}, notes = {}, extras = {}, moved = {}, sent = {}, reports = {}, siteLists = {}, tracking = {}, markedDone = {};
 const flash = {}, deckLists = {}, openDecks = new Set();   // flashcard progress + each site's decks.js
 STUDENTS.forEach(s => { pages[s.id] = {}; seen[s.id] = {}; notes[s.id] = {}; extras[s.id] = {}; moved[s.id] = {}; reports[s.id] = {}; markedDone[s.id] = {}; });
 let route = { view: 'overview' };
@@ -89,6 +89,7 @@ function start() {
     onValue(ref(db, `students/${s.id}/notes`), snap => { notes[s.id] = snap.val() || {}; refresh(); viewerNotesChanged(s.id); });
     onValue(ref(db, `students/${s.id}/extras`), snap => { extras[s.id] = snap.val() || {}; viewerExtrasChanged(s.id); });
     onValue(ref(db, `students/${s.id}/moved`), snap => { moved[s.id] = snap.val() || {}; viewerMovedChanged(s.id); });
+    onValue(ref(db, `students/${s.id}/sent`), snap => { const was = JSON.stringify(sent[s.id] || {}); sent[s.id] = snap.val() || {}; if (was !== JSON.stringify(sent[s.id])) viewerSentChanged(s.id); });
     onValue(ref(db, `students/${s.id}/flashcards`), snap => { flash[s.id] = snap.val() || {}; if (Object.keys(flash[s.id]).length) loadDecks(s); refresh(); });
     onValue(ref(db, `teacher/seen/${s.id}`), snap => { seen[s.id] = snap.val() || {}; refresh(); });
     onValue(ref(db, `teacher/reports/${s.id}`), snap => { reports[s.id] = snap.val() || {}; if (route.view === 'report' && route.s === s.id && !reportEditing) renderReport(); });
@@ -331,8 +332,20 @@ window.__teacher = {                             // called from the page inside 
   annotate: (anchor, label) => viewing && openNote(viewing.s, viewing.page, anchor, label),
   resetTask: (keys, title) => viewing && resetTask(viewing.s, viewing.page, keys, title),
   setExtra: (id, on) => viewing && setExtra(viewing.s, viewing.page, id, on),
-  moveTask: (id, toHomework) => viewing && moveTask(viewing.s, viewing.page, id, toHomework)
+  moveTask: (id, toHomework) => viewing && moveTask(viewing.s, viewing.page, id, toHomework),
+  sendTask: (id, to, from) => viewing && sendTask(viewing.s, from || viewing.page, id, to),
+  lessons: () => viewing ? pageList(viewing.s).filter(p => p.page !== viewing.page && p.path).map(p => ({ page: p.page, title: p.title || p.page })) : []
 };
+// send a task to another lesson (to = page) or back to its own lesson (to = null); both pages change at once
+function sendTask(sid, from, id, to) {
+  const r = ref(db, `students/${sid}/sent/${from}/${id}`);
+  const path = from === viewing.page ? viewing.path : ((pageList(sid).find(p => p.page === from) || {}).path);
+  (to ? set(r, { to, path, at: Date.now() }) : remove(r)).then(() => toast(to ? 'Moved to the other lesson' : 'Back in its own lesson'), e => toast('Not saved: ' + e.message));
+}
+function viewerSentChanged(sid) {
+  if (!viewing || viewing.s !== sid || !viewing.page) return;
+  showPage(sid, viewing.page, viewing.path, viewing.part);   // reload: tasks may have arrived or left
+}
 // move a lesson task to the Homework tab or back (the student's page follows at once)
 function moveTask(sid, page, id, toHomework) {
   const r = ref(db, `students/${sid}/moved/${page}/${id}`);
@@ -385,6 +398,7 @@ function renderViewerBar() {
 function storeAnswers(sid, page) {
   const r = pages[sid][page], key = (r && r.key) || 'answers-' + page;
   sessionStorage.setItem(`watch-${sid}-${key}`, r ? r.json : '{}');
+  sessionStorage.setItem(`watch-${sid}-sent`, JSON.stringify(sent[sid] || {}));
 }
 function showPage(sid, page, path, part, highlight) {
   const s = stu(sid);

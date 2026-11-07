@@ -25,6 +25,9 @@
    Moved tasks: the teacher can move any step (section.step with an id)
    into the Homework tab and back (students/<id>/moved/<page>/<step id>).
    A Homework tab is made if the lesson has none; a moved extra is shown.
+   Sent to another lesson: students/<id>/sent/<page>/<task> = { to, path, at }.
+   The task leaves its page and is copied into the <to> page (ids get the
+   prefix "<page>__", so its answers are saved there under their own names).
    • watch  — the page is opened inside teacher.html with
      ?watch=<student>. It shows that student's answers read-only,
      never touches the teacher's own saves, and lets the teacher
@@ -95,7 +98,7 @@
   function stats() {
     let total = 0, answered = 0, right = 0;
     const count = (done, ok) => { total++; if (done) answered++; if (ok) right++; };
-    const live = el => !el.closest('[data-extra]:not(.unlocked)');
+    const live = el => !el.closest('[data-extra]:not(.unlocked), .sent-away');
     document.querySelectorAll('input[data-answer]:not(.xw-blank), textarea[data-answer], select[data-answer]').forEach(el => live(el) &&
       count(!!el.value.trim(), matches(el.value, el.dataset.answer, el.dataset.check === 'contains')));
     document.querySelectorAll('.mc-options[data-correct]').forEach(g => { if (!live(g)) return; const c = g.querySelector('input:checked') || g.querySelector('.mc-option.selected input'); count(!!c, c && c.value === g.dataset.correct); });
@@ -156,7 +159,7 @@
   //   steps — section.step inside .lesson-part tabs, Homework = the .part-tab.hw tab (Timofey, Matvey)
   //   tabs  — .exercise inside .tab-content tabs, Homework = #tab-hw (Polina)
   //   plain — .section / section.step on one page; a "🏠 Homework" block is added at the end (Ksyusha, tab-less lessons)
-  const LAYOUT = () => document.querySelector('.lesson-part') ? 'steps' : document.querySelector('.tab-content') ? 'tabs' : 'plain';
+  const LAYOUT = (root = document) => root.querySelector('.lesson-part') ? 'steps' : root.querySelector('.tab-content') ? 'tabs' : 'plain';
   const TASKS_SEL = { steps: 'section.step', tabs: '.tab-content > .exercise', plain: '.section, section.step' };
   let taskKeysDone = false;
   function taskKeys() {                                 // every task's name: its id, or its place on the page (fixed before anything moves)
@@ -259,7 +262,7 @@
       }
     }
     document.querySelectorAll('.move-btn').forEach(b => {
-      const on = !!b.parentElement.dataset.moved;
+      const on = !!b.closest('[data-task]').dataset.moved;
       b.textContent = on ? '↩ Back to the lesson' : '📚 Move to homework';
       b.classList.toggle('on', on);
     });
@@ -278,8 +281,136 @@
     '.w-movable{position:relative}' +
     '.move-btn{position:absolute;top:-14px;right:16px;z-index:21;border:2px solid #7B5CE6;border-radius:99px;padding:5px 12px;background:#fff;color:#5B44B8;font:800 12px/1 system-ui,sans-serif;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.12)}' +
     '.move-btn:hover{background:#7B5CE6;color:#fff}.move-btn.on{border-color:#12A374;color:#0D6B4C}.move-btn.on:hover{background:#12A374;color:#fff}' +
+    '.move-bar{position:absolute;top:-14px;right:16px;z-index:21;display:flex;gap:6px;align-items:center}.move-bar .move-btn{position:static}' +
+    '.send-sel{border:2px solid #E08A2E;border-radius:99px;padding:4px 8px;background:#fff;color:#9A5410;font:800 12px/1 system-ui,sans-serif;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.12);max-width:190px}' +
+    'html:not(.watching) .sent-away{display:none!important}' +
+    'html.watching section.sent-away,html.watching .sent-away.exercise,html.watching .sent-away.section{max-height:150px;overflow:hidden;outline:3px dashed #E08A2E;outline-offset:6px;border-radius:18px}' +
+    'html.watching .sent-away > .extra-toggle{display:none}'html.watching .sent-away > :not(.watch-tools){opacity:.35}html.watching .chips a.sent-away{opacity:.4;text-decoration:line-through}' +
+    '.sent-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px;padding:8px 12px;border-radius:12px;background:#FDF0E1;border:2px solid #E08A2E;font:700 14px/1.3 system-ui,sans-serif;color:#7A4510}' +
+    '.sent-bar button{border:0;border-radius:99px;padding:6px 14px;background:#E08A2E;color:#fff;font:800 13px/1 system-ui;cursor:pointer}' +
+    '.sent-badge{display:inline-block;margin-left:10px;padding:3px 10px;border-radius:99px;background:#FDF0E1;color:#9A5410;font:800 12px/1.4 system-ui,sans-serif;vertical-align:middle}' +
     '.hw-block{margin:40px 0 20px;padding-top:12px;border-top:3px dashed #7B5CE6}.hw-block-title{color:#7B5CE6;margin:0 0 12px}');
   const whenReady = fn => document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', fn) : fn();
+
+  /* ================= tasks sent to another lesson ================= */
+  // The list comes from teacher.html (watch) or from this device's last copy (student; kept fresh in start()).
+  const SENT_CACHE = 'sent-map';
+  let sentMap = {};
+  try { sentMap = JSON.parse(WATCH ? sessionStorage.getItem('watch-' + WATCH + '-sent') : get(SENT_CACHE)) || {}; } catch (e) {}
+  const incoming = map => {
+    const out = [];
+    Object.entries(map || {}).forEach(([from, tasks]) => from !== PAGE && Object.entries(tasks || {}).forEach(([task, x]) => {
+      if (x && x.to === PAGE && x.path) out.push({ from, task, path: x.path, at: x.at || 0 });
+    }));
+    return out.sort((a, b) => a.at - b.at);
+  };
+  const outgoing = map => (map || {})[PAGE] || {};
+  const sentSig = map => JSON.stringify([incoming(map), Object.entries(outgoing(map)).map(([k, x]) => k + '>' + (x && x.to)).sort()]);
+  const lessonName = (title, page) => (String(title || '').split(/\s[–—-]\s|:/)[0] || page).trim();
+
+  // this page's own tasks that were sent away: hidden from the student (teacher view shows them faded)
+  whenReady(() => {
+    taskKeys();
+    Object.entries(outgoing(sentMap)).forEach(([k, x]) => {
+      const el = taskEl(k); if (!el || !x) return;
+      el.classList.add('sent-away'); el.dataset.sentTo = x.to;
+      const chip = el.id && document.querySelector('nav.chips a[href="#' + cssId(el.id) + '"]');
+      if (chip) chip.classList.add('sent-away');
+    });
+  });
+
+  // a task's element inside another page (same naming as taskKeys)
+  function findTask(root, key) {
+    const sel = TASKS_SEL[LAYOUT(root)], all = [...root.querySelectorAll(sel)];
+    return all.find((el, i) => !el.parentElement.closest(sel) && (el.id || 'task-' + (i + 1)) === key) || null;
+  }
+  // give every id / radio name in the copy a prefix, and fix relative links (the source may sit in another folder)
+  function prefixCopy(root, P, base) {
+    const els = [root, ...root.querySelectorAll('*')];
+    const ids = new Set(els.filter(x => x.id).map(x => x.id)), names = new Set(els.map(x => x.getAttribute('name')).filter(Boolean));
+    const known = v => ids.has(v) || names.has(v);
+    const KEEP = /^data-(answer|correct|pair|side|say|file|value|check|i)$/;
+    els.forEach(x => [...x.attributes].forEach(({ name: n, value: v }) => {
+      let nv = v;
+      if (n === 'id' || (n === 'name' && names.has(v))) nv = P + v;
+      else if (n === 'for' || n === 'list' || n === 'aria-labelledby' || n === 'aria-controls') nv = v.split(' ').map(t => ids.has(t) ? P + t : t).join(' ');
+      else if (n === 'href' && v[0] === '#') nv = ids.has(v.slice(1)) ? '#' + P + v.slice(1) : v;
+      else if (n.startsWith('on')) nv = v.replace(/(['"])([^'"\s]+)\1/g, (m, q, t) => known(t) ? q + P + t + q : m);
+      else if ((n === 'src' || n === 'href' || n === 'poster') && v && !/^([a-z]+:|\/|#)/i.test(v)) nv = new URL(v, base).pathname;
+      else if (n.startsWith('data-') && !KEEP.test(n) && known(v)) nv = P + v;
+      if (nv !== v) x.setAttribute(n, nv);
+    }));
+  }
+  // where a task from another lesson goes: the last normal tab (before its Итог), or the end of the page
+  function placeHere(el) {
+    const lay = LAYOUT();
+    let box = null, part = null;
+    if (lay === 'steps') {
+      const hw = new Set([...document.querySelectorAll('.part-tab.hw')].map(t => t.dataset.part));
+      const parts = [...document.querySelectorAll('.lesson-part')].filter(p => !hw.has(p.id) && !p.hasAttribute('data-extra'));
+      part = parts[parts.length - 1] || document.querySelector('.lesson-part');
+      box = part && (part.querySelector(':scope > .wrap') || part);
+    } else if (lay === 'tabs') {
+      const tabs = [...document.querySelectorAll('.tab-content')].filter(t => t.id !== 'tab-hw');
+      box = tabs[tabs.length - 1];
+    } else {
+      const tasks = [...document.querySelectorAll('[data-task]')], last = tasks[tasks.length - 1];
+      box = last ? last.parentElement : null;
+    }
+    if (!box) return false;
+    if (lay === 'steps') {                                // next step number in that tab
+      const nums = [...box.querySelectorAll('section.step .step-num')].map(n => +n.textContent.trim()).filter(n => n > 0);
+      const num = el.querySelector('.step-num');
+      if (num) { num.classList.remove('plus'); num.textContent = (nums.length ? Math.max(...nums) : 0) + 1; }
+    }
+    const finish = [...box.querySelectorAll(':scope > *')].find(x => x.matches('.fun-check, #moved-homework') || x.querySelector('.fun-check'));
+    finish ? finish.before(el) : box.appendChild(el);
+    const chips = part && part.querySelector('nav.chips .wrap'), h = el.querySelector('h2, h3'), num = el.querySelector('.step-num');
+    if (chips && el.id && h) {
+      const a = document.createElement('a');
+      a.href = '#' + el.id; a.textContent = (num ? num.textContent + ' · ' : '') + h.firstChild.textContent.trim();
+      chips.appendChild(a);
+    }
+    return true;
+  }
+  async function bringIn(list) {
+    taskKeys();                                         // this page's own task names first, before anything is added
+    const docs = {};
+    await Promise.all([...new Set(list.map(x => x.path))].map(async path => {
+      try { const r = await fetch(path); docs[path] = r.ok ? new DOMParser().parseFromString(await r.text(), 'text/html') : null; } catch (e) { docs[path] = null; }
+      const d = docs[path];                             // the source lesson's own styles
+      if (d) d.querySelectorAll('head style').forEach(st => document.head.appendChild(document.importNode(st, true)));
+    }));
+    list.forEach(x => {
+      const d = docs[x.path], src = d && findTask(d, x.task);
+      if (!src) return;
+      const el = document.importNode(src, true);
+      prefixCopy(el, x.from + '__', new URL(x.path, location.href));
+      [el, ...el.querySelectorAll('[data-extra]')].forEach(e => e.removeAttribute('data-extra'));
+      el.removeAttribute('data-task');
+      el.classList.add('sent-here'); el.dataset.sentFrom = x.from; el.dataset.sentTask = x.task;
+      const h = el.querySelector('h2, h3');
+      if (h) { const b = document.createElement('span'); b.className = 'sent-badge'; b.textContent = '↪ from ' + lessonName(d.title, x.from); h.appendChild(b); }
+      placeHere(el);
+    });
+  }
+  // tasks arriving from other lessons: hold back the page scripts' start-up (DOMContentLoaded) until they're in,
+  // so the page's own code restores, saves and scores them like any other task
+  const arriving = incoming(sentMap);
+  if (arriving.length) {
+    const held = [];
+    document.addEventListener = function (type, fn, opt) {
+      if (type === 'DOMContentLoaded') { held.push(fn); return; }
+      return EventTarget.prototype.addEventListener.call(this, type, fn, opt);
+    };
+    EventTarget.prototype.addEventListener.call(document, 'DOMContentLoaded', () => {
+      bringIn(arriving).catch(e => console.error(e)).then(() => {
+        delete document.addEventListener;
+        const ev = new Event('DOMContentLoaded');
+        held.forEach(fn => { try { typeof fn === 'function' ? fn.call(document, ev) : fn.handleEvent(ev); } catch (e) { console.error(e); } });
+      });
+    });
+  }
 
   /* ================= WATCH MODE (teacher) ================= */
   if (WATCH) {
@@ -451,13 +582,41 @@
       // 📚 Move to homework / ↩ Back to the lesson on every task (not on tasks that are homework already)
       taskKeys();
       const hwHome = homeworkBox(false);
+      const lessons = (() => { try { return teacher().lessons() || []; } catch (e) { return []; } })();
       document.querySelectorAll('[data-task]').forEach(el => {
-        if (hwHome && hwHome.root.contains(el)) return;
         el.classList.add('w-movable');
-        const b = document.createElement('button');
-        b.type = 'button'; b.className = 'move-btn watch-tools'; b.textContent = '📚 Move to homework';
-        b.addEventListener('click', () => { const t = teacher(); if (t && t.moveTask) t.moveTask(el.dataset.task, !el.dataset.moved); else b.textContent = '⟳ Reload the teacher page first'; });
-        el.prepend(b);
+        const bar = document.createElement('div');
+        bar.className = 'move-bar watch-tools';
+        if (!(hwHome && hwHome.root.contains(el)) && !el.classList.contains('sent-away')) {
+          const b = document.createElement('button');
+          b.type = 'button'; b.className = 'move-btn watch-tools'; b.textContent = '📚 Move to homework';
+          b.addEventListener('click', () => { const t = teacher(); if (t && t.moveTask) t.moveTask(el.dataset.task, !el.dataset.moved); else b.textContent = '⟳ Reload the teacher page first'; });
+          bar.appendChild(b);
+        }
+        if (lessons.length && !el.classList.contains('sent-away')) {   // ➡ to another lesson
+          const sel = document.createElement('select');
+          sel.className = 'send-sel';
+          sel.innerHTML = '<option value="">➡ To another lesson…</option>' + lessons.map(l => '<option value="' + esc(l.page) + '">' + esc(lessonName(l.title, l.page)) + '</option>').join('');
+          sel.addEventListener('change', () => { const t = teacher(); if (sel.value && t && t.sendTask) t.sendTask(el.dataset.task, sel.value); });
+          bar.appendChild(sel);
+        }
+        if (bar.children.length) el.prepend(bar);
+        if (el.classList.contains('sent-away')) {          // sent away: say where, and offer to bring it back
+          const to = lessons.find(l => l.page === el.dataset.sentTo);
+          const sb = document.createElement('div');
+          sb.className = 'sent-bar watch-tools';
+          sb.innerHTML = '<span>➡ Moved to ' + esc(to ? lessonName(to.title, to.page) : el.dataset.sentTo) + ' · hidden here</span><button type="button">↩ Bring back</button>';
+          sb.querySelector('button').addEventListener('click', () => { const t = teacher(); if (t && t.sendTask) t.sendTask(el.dataset.task, null); });
+          el.prepend(sb);
+        }
+      });
+      document.querySelectorAll('.sent-here').forEach(el => {   // came from another lesson: send it back from here
+        const sb = document.createElement('div');
+        sb.className = 'sent-bar watch-tools';
+        const from = lessons.find(l => l.page === el.dataset.sentFrom);
+        sb.innerHTML = '<span>↪ Moved here from ' + esc(from ? lessonName(from.title, from.page) : el.dataset.sentFrom) + '</span><button type="button">↩ Send back</button>';
+        sb.querySelector('button').addEventListener('click', () => { const t = teacher(); if (t && t.sendTask) t.sendTask(el.dataset.sentTask, null, el.dataset.sentFrom); });
+        el.prepend(sb);
       });
       applyMoves({});
 
@@ -604,6 +763,12 @@
     });
 
     db.onValue(db.ref(d, `students/${STUDENT}/extras/${PAGE}`), snap => extrasChanged(snap.val()));
+    // tasks sent between lessons: if this page gains or loses one, reload with the new list
+    db.onValue(db.ref(d, `students/${STUDENT}/sent`), snap => {
+      const map = snap.val() || {}, changedHere = sentSig(map) !== sentSig(sentMap);
+      set(SENT_CACHE, JSON.stringify(map));
+      if (changedHere) { sentMap = map; sessionStorage.setItem('sync-scroll-' + PAGE, String(scrollY)); location.reload(); }
+    });
     db.onValue(db.ref(d, `students/${STUDENT}/moved/${PAGE}`), snap => movedChanged(snap.val()));
 
     // the teacher's marks and comments for this page

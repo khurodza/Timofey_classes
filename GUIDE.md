@@ -346,6 +346,17 @@ Teacher's Book notes, answers and the lesson plan. The CSS is in the page's
 own `<style>` block. The text is still in the page source, so don't put
 anything there the student must never see.
 
+### Moving a task to another lesson (teacher view)
+
+Every task in `teacher.html` has **➡ To another lesson…** next to **📚 Move to homework**.
+The task disappears from its lesson and is copied into the chosen lesson (end of the
+last normal tab, before Итог, with a "↪ from Lesson N" badge). **↩ Bring back** / **↩ Send back**
+undoes it. Ids inside the copy get the prefix `lesson-NN__`, so answers are saved in the new
+lesson; answers already given in the old lesson stay there. Tasks with their own page code
+(e.g. the Lesson 11 memory game) may not work after moving. Stored in Firebase at
+`students/<id>/sent/<page>/<task>`.
+
+
 ### Extras the teacher opens (hidden until needed)
 
 ```html
