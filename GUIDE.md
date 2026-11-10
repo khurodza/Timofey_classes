@@ -25,6 +25,7 @@ website/
     ├── lesson-10.html          ← Lesson 10: Lesson 9 quiz show, football stars, Student's Book p. 16 (getting to know someone), e (from Lesson 2), homework Workbook p. 14, teacher-only notes
     ├── lesson-11.html          ← Lesson 11: adjectives + opposites, questionnaire (Student's Book p. 17); extras hidden until opened: memory game, Workbook pp. 12, 13, 15, Vocabulary Worksheet Unit 1, homework
     ├── lesson-12.html          ← Lesson 12: warm-up = Vocabulary Worksheet Unit 1 Tasks 5–7; Student’s Book p. 18 (dialogue 1.09, phrases for fluency, Who’s that?); extras hidden until opened: TB Warmer, Workbook p. 16 Ex. 4–6, record your dialogue
+    ├── lesson-13.html          ← Lesson 13: warm-up = questions about the teacher’s photo + his picture; Student’s Book p. 19 (Becky’s vlog, being patient); Unit 1 Standard Test tab; extras hidden until opened: Worksheet Life Lessons (Being patient), Practice Extra Master it! (site version); Homework tab: patience diary
     ├── images/                 ← Put lesson images here
     ├── audio/                  ← Put lesson audio files here
     │   └── words/               ← One short clip per sound button (see "Sound buttons")

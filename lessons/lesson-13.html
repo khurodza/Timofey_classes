@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 13 – Being patient</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+/* teacher-only notes: hidden on the student's page, shown inside teacher.html (sync.js adds html.watching) */
+.teacher-only{display:none}
+html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;border:2px dashed #D9628F;border-radius:var(--radius);padding:12px 16px;line-height:1.7;font-size:16px}
+.teacher-only .to-label{font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#B0416C;margin-bottom:6px}
+.teacher-only b{color:#9A3F64}
+.teacher-only ul,.teacher-only ol{margin:4px 0 0 20px}
+.teacher-only table{border-collapse:collapse;margin-top:6px}
+.teacher-only td{padding:2px 10px 2px 0;vertical-align:top}
+/* Lesson 13 */
+.photo-wide{width:100%;max-width:560px;border-radius:14px;display:block;margin:10px 0 12px;border:1px solid var(--border)}
+.given{display:inline-block;padding:4px 10px;border:2px dashed #9BC27A;border-radius:10px;color:#4E7F1E;font-weight:700;font-style:italic}
+.sent-list .gap-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin:8px 0;font-size:18px}
+.sent-list .word-choice{display:inline-flex;flex-wrap:wrap;gap:6px}
+.qw-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 4px}
+.qw{display:inline-block;padding:6px 14px;border-radius:999px;background:#FFF3C4;border:2px solid #FFC53D;font-weight:800;font-size:18px;color:#5B4300}
+.photo-side{display:grid;grid-template-columns:340px 1fr;gap:16px;align-items:start;margin:10px 0 4px}
+.photo-side img{width:100%;border-radius:14px;border:1px solid var(--border);display:block}
+.photo-side .vocab-box{height:100%;box-sizing:border-box}
+.qw-col{flex-direction:column;align-items:flex-start}
+@media (max-width:640px){.photo-side{grid-template-columns:1fr}.photo-side img{max-width:300px}.qw-col{flex-direction:row}}
+.vocab-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:10px}
+.vocab-box{border:1px solid var(--border);border-radius:14px;padding:10px 12px;background:#F7F9FF}
+.vocab-box h4{margin:0 0 6px;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.vocab-box .say{margin:3px 3px 3px 0}
+.info-card{display:grid;grid-template-columns:1fr 170px;gap:14px;align-items:start}
+.info-card img{width:100%;border-radius:12px;border:1px solid var(--border)}
+@media (max-width:560px){.info-card{grid-template-columns:1fr}.info-card img{max-width:170px}}
+.dlg-pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.dlg-no{font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-size:.8rem;margin:6px 0 4px}
+.photo-pick{display:flex;flex-wrap:wrap;gap:20px;margin-top:12px}
+.photo-pick figure{margin:0;width:220px}
+.photo-pick img{width:100%;max-height:220px;object-fit:cover;border-radius:12px;border:1px solid var(--border);display:block;margin-bottom:6px}
+.tips-box{border:3px solid #8DC63F;border-radius:16px;padding:12px 16px;margin-top:14px;background:#F4FBE9}
+.tips-box h4{margin:0 0 6px;color:#4E7F1E;letter-spacing:.06em;text-transform:uppercase}
+.tips-box li{color:#3F6A14;font-weight:700;margin:4px 0}
+.test-table{border-collapse:collapse;margin:8px 0;font-size:18px}
+.test-table th{text-align:left;padding:6px 14px;border-bottom:2px solid var(--border);font-size:.85rem;text-transform:uppercase;letter-spacing:.06em}
+.test-table td{padding:6px 14px;border-bottom:1px solid var(--border)}
+.test-pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:10px}
+.test-pics figure{margin:0}
+.test-pics img{width:100%;max-width:220px;border-radius:10px;border:1px solid var(--border);display:block;margin-bottom:6px}
+.test-pics figcaption{font-size:18px}
+.pts{float:right;font-weight:800;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="back-home" href="../index.html">← All lessons</a>
+    <div class="hero-grid">
+      <div>
+        <h1 class="name-slot" data-with="Lesson 13: Be patient, {name}!" data-without="Lesson 13: Being patient">Lesson 13: Being patient</h1>
+        <p>The last lesson of Unit 1: <b>ask questions about a photo</b>, watch <b>Becky’s vlog</b>, learn to <b>wait and be patient</b> — and then the <b>Unit 1 test</b>.</p>
+        <div class="hero-badges">
+          <span class="badge">Lesson 13</span>
+          <span class="badge">Unit 1: All together</span>
+          <span class="badge">Student’s Book p. 19</span>
+          <span class="badge">Life Competencies: being patient</span>
+          <span class="badge">Unit 1 Test</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     Student's Book p. 19 / Teacher's Book T19 (Life Competencies: Being patient).
+     PART 1 Warm-up: ask questions about the teacher's photo, then Timofey shows his picture.
+     PART 2 Being patient: TB Warmer, Ex. 1–2 (vlog 03 → video/unit-01-vlog.mp4), Ex. 3, Ex. 4, Activity idea, Итог.
+     PART 3 Unit 1 Test (Standard, 80 points) — visible tab.
+     EXTRAS — hidden from Timofey until opened in teacher.html (data-extra, see GUIDE.md):
+       x-ws      Worksheet: Life Lessons · Being patient (Thk2e_BrE_L0_Vlog_Unit_1)
+       x-master  Practice Extra · Unit 1 Master it! (site version)
+     Homework tab: TB Homework (patience diary).
+══════════════════════════════════════════════════════════ -->
+<nav class="parts">
+  <div class="wrap">
+    <button class="part-tab" data-part="part-warm" onclick="showPart('part-warm')">Warm-up</button>
+    <button class="part-tab" data-part="part-patient" onclick="showPart('part-patient')">Being patient</button>
+    <button class="part-tab" data-part="part-test" onclick="showPart('part-test')">Unit 1 Test</button>
+    <button class="part-tab" data-part="part-ws" data-extra="x-ws" onclick="showPart('part-ws')">Worksheet</button>
+    <button class="part-tab" data-part="part-master" data-extra="x-master" onclick="showPart('part-master')">Master it!</button>
+    <button class="part-tab hw" data-part="part-homework" onclick="showPart('part-homework')">Homework</button>
+  </div>
+</nav>
+
+<!-- ══════════ PART 1: Warm-up (photo questions) ══════════ -->
+<div class="lesson-part" id="part-warm">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#a1">1 · Ask about the photo</a>
+    <a href="#a2">2 · Your picture</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="teacher-only">
+    <div class="to-label">👩‍🏫 Teacher only · plan for Lesson 13 (about 60 min)</div>
+    <table>
+      <tr><td><b>Warm-up</b></td><td>10 min</td><td>He asks you questions about your photo → he shows his picture, you ask him</td></tr>
+      <tr><td><b>Being patient</b></td><td>20–25 min</td><td>TB Warmer → vlog Ex. 1–2 → Ex. 3 dialogues → Ex. 4 speaking + tips → Activity idea</td></tr>
+      <tr><td><b>Unit 1 Test</b></td><td>25–30 min</td><td>Standard test, 10 tasks, 80 points. No Check buttons — use <b>Show right / wrong</b> here.</td></tr>
+      <tr><td><b>Extras</b></td><td>if time</td><td>Hidden: <b>Worksheet</b> tab (Life Lessons: Being patient) and <b>Master it!</b> tab (Practice Extra). Open them with the violet bar.</td></tr>
+      <tr><td><b>Homework</b></td><td></td><td>Patience diary (TB Homework) — visible tab.</td></tr>
+    </table>
+  </div>
+
+  <section class="step" id="a1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Warm-up · Speaking</div>
+        <h2>Ask about the photo</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-a1">
+      <div class="exercise-label">Questions</div>
+      <h3>Look at the photo. Ask your teacher questions about it.</h3>
+      <p class="ru-hint" lang="ru">Задавай вопросы учителю о фото: кто это, где это, какого цвета… Используй слова-подсказки.</p>
+      <div class="photo-side">
+      <img src="images/unit1/l13-warmup.jpg" alt="A smiling woman with glasses hugs a big black and brown dog in a living room with a window, a lamp and a green sofa">
+
+      <div class="vocab-box" style="background:#FFFBEA">
+        <h4>Question words</h4>
+        <div class="qw-row qw-col">
+          <span class="qw">Who …?</span>
+          <span class="qw">What …?</span>
+          <span class="qw">Where …?</span>
+          <span class="qw">How old …?</span>
+          <span class="qw">What colour …?</span>
+          <span class="qw">How many …?</span>
+          <span class="qw">Why …?</span>
+          <span class="qw">When …?</span>
+          <span class="qw">Is … ?</span>
+          <span class="qw">Are … ?</span>
+        </div>
+      </div>
+      </div>
+
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · photo warm-up</div>
+        Aim: questions with <b>be</b> + question words from Unit 1 (Lesson 9). He asks, you answer — keep your answers short so he has to ask more.
+        <br><b>Questions he can make:</b>
+        <ul>
+          <li><i>Who’s that? Who is she? What’s her name? How old is she? Where is she from? Is she your friend / sister?</i></li>
+          <li><i>What’s the dog’s name? How old is the dog? Is it your dog? What colour is the dog? Is it friendly?</i></li>
+          <li><i>Where is it? Is it your house / flat? What colour is the sofa? How many dogs / windows / lamps are there?</i></li>
+          <li><i>Why is she happy?</i></li>
+        </ul>
+        Push for full questions with the verb: not “Who?” → <i>Who is she?</i>; not “Dog name?” → <i>What’s the dog’s name?</i> Correct word order: <i>How old <b>is she</b>?</i>
+        <br>Vocabulary buttons without an af_bella clip read with the browser voice.
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="a2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Warm-up · Speaking</div>
+        <h2>Your picture</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-a2">
+      <div class="exercise-label">Your turn</div>
+      <h3>Show your teacher your picture. Answer the questions.</h3>
+      <p class="ru-hint" lang="ru">Покажи учителю свою картинку. Учитель задаёт вопросы — ты отвечаешь. Потом расскажи о ней сам.</p>
+      <div class="qw-row">
+        <span class="qw">Who …?</span>
+        <span class="qw">What …?</span>
+        <span class="qw">Where …?</span>
+        <span class="qw">How old …?</span>
+        <span class="qw">What colour …?</span>
+        <span class="qw">Why …?</span>
+      </div>
+      <h3 style="margin-top:14px">Write 3 sentences about your picture.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>This is my dog. His name is Rex. He’s three.</span></div>
+      <textarea class="free-write" id="fw-a2" placeholder="This is … / That’s … / He’s … / It’s …" rows="4"></textarea>
+      <div class="char-count" id="cc-fw-a2">0 characters</div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · his picture</div>
+        Ask the same kinds of questions back (Who / Where / How old / What colour / Why). Then ask him to describe it in 3 sentences without your questions. Note mistakes with <b>is / are</b> and <b>he / she / it</b> — they come up in the test today (Tasks 6–8).
+      </div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-patient');window.scrollTo(0,0)">Next: Being patient →</button>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════ PART 2: Life Competencies — Being patient (SB p. 19) ══════════ -->
+<div class="lesson-part" id="part-patient">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#p1">1 · Being patient</a>
+    <a href="#p2">2 · Becky’s vlog</a>
+    <a href="#p3">3 · Two dialogues</a>
+    <a href="#p4">4 · Me and my world</a>
+    <a href="#p5">5 · I can wait for …</a>
+    <a href="#p6">6 · Итог</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="p1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Life Competencies · Student’s Book p. 19 · Warmer</div>
+        <h2>Being patient</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-p1">
+      <div class="exercise-label">What does it mean?</div>
+      <h3>What does <b>being patient</b> mean? Choose.</h3>
+      <div class="mc-options" data-correct="a">
+        <label class="mc-option"><input type="radio" name="mcp1" value="a"><span class="mc-bullet">A</span> You can wait and you are calm.</label>
+        <label class="mc-option"><input type="radio" name="mcp1" value="b"><span class="mc-bullet">B</span> You are very fast.</label>
+        <label class="mc-option"><input type="radio" name="mcp1" value="c"><span class="mc-bullet">C</span> You are angry.</label>
+      </div>
+      <h3 style="margin-top:14px">Read and check.</h3>
+      <p class="read-text" style="font-size:20px"><b>Sometimes we are excited about something. We want it to happen now. But we need to wait and be patient.</b></p>
+      <div class="tip"><span class="tip-title">New words</span>
+        <button class="say" data-say="patient">patient</button> ·
+        <button class="say" data-say="excited">excited</button> ·
+        <button class="say" data-say="wait">wait</button> ·
+        <button class="say" data-say="I can’t wait!" data-file="i-cant-wait">I can’t wait!</button>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-p1')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-p1')">Try again</button>
+      </div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · TB Warmer (T19)</div>
+        <b>Teacher’s Book:</b> <i>Write being patient on the board and elicit what it might mean. Encourage students to try and clarify its meaning through examples or explanation, rather than through a translation. Ask students to read the introductory paragraph to check their ideas. Elicit examples of people being patient in Unit 1.</i>
+        <br>Ask before he chooses: <i>You’re at a bus stop. The bus is late. Are you patient?</i> Answer: <b>A</b>. Unit 1 example: Lesson 12 — Tom waits for the new girl… or anyone waiting for the football match.
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="p2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Student’s Book p. 19 · Ex. 1–2 · Vlog 03</div>
+        <h2>Becky’s vlog</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-p2">
+      <div class="exercise-label">Exercise 1 · Vlog</div>
+      <h3>Watch the vlog. Complete the information.</h3>
+      <div class="video-wrap">
+        <video controls preload="metadata" playsinline>
+          <source src="video/unit-01-vlog.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="info-card" style="margin-top:14px">
+        <div class="sent-list">
+          <p class="gap-line"><b>NAME –</b> <span class="given">Becky</span></p>
+          <p class="gap-line"><b>AGE –</b> <input class="blank" id="p2-1" data-answer="13|thirteen" autocomplete="off" spellcheck="false" style="width:110px"></p>
+          <p class="gap-line"><b>NATIONALITY –</b> <input class="blank" id="p2-2" data-answer="British|English" autocomplete="off" spellcheck="false"></p>
+          <p class="gap-line"><b>FROM –</b> <input class="blank" id="p2-3" data-answer="Liverpool|Liverpool, the UK|Liverpool in the UK" autocomplete="off" spellcheck="false"></p>
+          <p class="gap-line"><b>FAVOURITE SINGER –</b> <input class="blank" id="p2-4" data-answer="George Ezra" autocomplete="off" spellcheck="false"></p>
+          <p class="gap-line"><b>FAVOURITE COLOUR –</b> <input class="blank" id="p2-5" data-answer="green" autocomplete="off" spellcheck="false"></p>
+          <p class="gap-line"><b>BEST FRIEND –</b> <input class="blank" id="p2-6" data-answer="Sophie|Sofie" autocomplete="off" spellcheck="false"></p>
+        </div>
+        <img src="images/unit1/p19-becky.jpg" alt="Becky, a smiling girl with long red hair">
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-p2')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-p2')">Try again</button>
+      </div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Exercise 1</div>
+        <b>Answers:</b> Age 13 · Nationality British · From Liverpool · Favourite singer George Ezra · Favourite colour green · Best friend Sophie
+        <br>Before watching, ask him to guess from the photo: <i>How old is she? Where’s she from?</i> Becky mentions The Beatles (from Liverpool) — ask if he knows them. Spelling help: <b>G-e-o-r-g-e E-z-r-a</b>, <b>S-o-p-h-i-e</b>.
+      </div>
+    </div>
+
+    <div class="card" id="ex-p2b">
+      <div class="exercise-label">Exercise 2 · Vlog</div>
+      <h3>Watch the vlog again. Match the sentence halves.</h3>
+      <p class="ru-hint" lang="ru">Сначала попробуй по памяти, потом посмотри ещё раз и проверь.</p>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> There is a party <span class="word-choice" id="p2b-1" data-answer="tomorrow."><button class="word-choice-btn" onclick="selectWord(this)">next week.</button><button class="word-choice-btn" onclick="selectWord(this)">tomorrow.</button><button class="word-choice-btn" onclick="selectWord(this)">on Saturday.</button></span></p>
+        <p class="gap-line"><span class="num">2.</span> A trip to have pizza is <span class="word-choice" id="p2b-2" data-answer="on Saturday."><button class="word-choice-btn" onclick="selectWord(this)">next week.</button><button class="word-choice-btn" onclick="selectWord(this)">tomorrow.</button><button class="word-choice-btn" onclick="selectWord(this)">on Saturday.</button></span></p>
+        <p class="gap-line"><span class="num">3.</span> Becky’s birthday is <span class="word-choice" id="p2b-3" data-answer="next week."><button class="word-choice-btn" onclick="selectWord(this)">next week.</button><button class="word-choice-btn" onclick="selectWord(this)">tomorrow.</button><button class="word-choice-btn" onclick="selectWord(this)">on Saturday.</button></span></p>
+      </div>
+      <div class="tip"><span class="tip-title">New words</span><b>party</b> — вечеринка · <b>trip</b> — поездка · <b>tomorrow</b> — завтра · <b>next week</b> — на следующей неделе · <b>birthday</b> — день рождения</div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-p2b')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-p2b')">Try again</button>
+      </div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Exercise 2</div>
+        <b>Teacher’s Book:</b> <i>Ask students to try to answer the questions from memory before watching the video again to check.</i>
+        <br><b>Answers:</b> 1 b (tomorrow) · 2 c (on Saturday) · 3 a (next week)
+        <br>Follow-up: <i>Is Becky patient? What about the ice cream?</i> (She waits — “Work now, then ice cream.”) The joke at the end: <i>“I can’t wait! … Of course I can!”</i>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="p3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Student’s Book p. 19 · Ex. 3 · Reading</div>
+        <h2>Two dialogues</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-p3">
+      <div class="exercise-label">Exercise 3</div>
+      <h3>Read the dialogues. Then match the dialogues with the photos.</h3>
+      <p class="ru-hint" lang="ru">У тебя одна минута! Не нужно понимать каждое слово.</p>
+      <div class="dlg-pair">
+        <div>
+          <div class="dlg-no">Dialogue 1</div>
+          <div class="dialogue">
+            <span class="dl-name">Ollie</span><p class="dl-text">Hi, Mario.</p>
+            <span class="dl-name two">Mario</span><p class="dl-text">Oh, hi Ollie. I’m excited. Very excited.</p>
+            <span class="dl-name">Ollie</span><p class="dl-text">Excited? Why?</p>
+            <span class="dl-name two">Mario</span><p class="dl-text">It’s the big football game tonight.</p>
+            <span class="dl-name">Ollie</span><p class="dl-text">When is it?</p>
+            <span class="dl-name two">Mario</span><p class="dl-text">Eight o’clock. I can’t wait.</p>
+            <span class="dl-name">Ollie</span><p class="dl-text">That’s only three more hours.</p>
+            <span class="dl-name two">Mario</span><p class="dl-text">I know, but I can’t wait!</p>
+          </div>
+        </div>
+        <div>
+          <div class="dlg-no">Dialogue 2</div>
+          <div class="dialogue">
+            <span class="dl-name">Isa</span><p class="dl-text">Look. This lady in front of us is very slow!</p>
+            <span class="dl-name two">Sara</span><p class="dl-text">And? What’s the problem?</p>
+            <span class="dl-name">Isa</span><p class="dl-text">Why is she so slow? I want to get to the cinema!</p>
+            <span class="dl-name two">Sara</span><p class="dl-text">We have lots of time before our film starts.</p>
+            <span class="dl-name">Isa</span><p class="dl-text">Yes! And?</p>
+            <span class="dl-name two">Sara</span><p class="dl-text">There’s lots of time, Isa. Be patient! She’s an old lady.</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo-pick">
+        <figure>
+          <img src="images/unit1/p19-photo-a.jpg" alt="Photo A: an old lady with a walking stick walks slowly along a street">
+          <p class="gap-line">Photo A → <span class="word-choice" id="p3-a" data-answer="Dialogue 2"><button class="word-choice-btn" onclick="selectWord(this)">Dialogue 1</button><button class="word-choice-btn" onclick="selectWord(this)">Dialogue 2</button></span></p>
+        </figure>
+        <figure>
+          <img src="images/unit1/p19-photo-b.jpg" alt="Photo B: two boys sitting and talking">
+          <p class="gap-line">Photo B → <span class="word-choice" id="p3-b" data-answer="Dialogue 1"><button class="word-choice-btn" onclick="selectWord(this)">Dialogue 1</button><button class="word-choice-btn" onclick="selectWord(this)">Dialogue 2</button></span></p>
+        </figure>
+      </div>
+      <div class="tip"><span class="tip-title">New words</span><b>tonight</b> — сегодня вечером · <b>I can’t wait</b> — не могу дождаться · <b>in front of us</b> — перед нами · <b>slow</b> — медленный · <b>lots of time</b> — много времени · <b>lady</b> — женщина, дама · <b>Be patient!</b> — Потерпи!</div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-p3')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-p3')">Try again</button>
+      </div>
+      <div class="tip class-note"><span class="tip-title">In class: act it out!</span>Read the dialogues with your teacher. Then swap roles.</div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Exercise 3</div>
+        <b>Teacher’s Book:</b> <i>Give students one minute to scan the dialogues and find the answers. Encourage them not to focus on every word.</i>
+        <br><b>Answers:</b> A 2 · B 1
+        <br>Then ask: <i>Who is patient? Who is not patient?</i> (Mario and Isa are not patient; Sara is.) <i>When is the football game?</i> (8 o’clock) — question words again.
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="p4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Me and my world · Student’s Book p. 19 · Ex. 4 · Speaking</div>
+        <h2>Me and my world</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-p4">
+      <div class="exercise-label">Exercise 4 · Speaking</div>
+      <h3>Tick (✓) what’s true for you. Tell your teacher.</h3>
+      <p style="font-size:19px;margin:6px 0"><b>It’s difficult to wait …</b></p>
+      <div class="reflect-list">
+        <label class="reflect-item"><input type="checkbox" id="p4-1"><span class="check-box"></span><span class="reflect-text">for my birthday.</span></label>
+        <label class="reflect-item"><input type="checkbox" id="p4-2"><span class="check-box"></span><span class="reflect-text">for a bus.</span></label>
+        <label class="reflect-item"><input type="checkbox" id="p4-3"><span class="check-box"></span><span class="reflect-text">for slow people.</span></label>
+        <label class="reflect-item"><input type="checkbox" id="p4-4"><span class="check-box"></span><span class="reflect-text">for the next school holiday.</span></label>
+      </div>
+      <div class="example-row"><span class="ex-tag">Example</span><span>It’s difficult to wait for my birthday. It’s in May!</span></div>
+      <div class="tips-box">
+        <h4>Tips for being patient</h4>
+        <ul>
+          <li>Remember to wait for other people.</li>
+          <li>Ask, ‘Why is this person slow?’</li>
+          <li>Try to help the person and not get angry.</li>
+        </ul>
+      </div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Exercise 4 + Tips</div>
+        <b>Teacher’s Book:</b> <i>This exercise can be done as a mingle activity with students changing partners every few minutes.</i>
+        <br>One-to-one: you tick yours too and compare. Ask follow-ups: <i>When is your birthday? Why is it difficult?</i> Read the tips together — which one is easy for him? Which one is difficult?
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="p5">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Teacher’s Book T19 · Activity idea · Extension</div>
+        <h2>I can wait for …</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-p5">
+      <div class="exercise-label">Writing · Game</div>
+      <h3>Write three things you can wait for.</h3>
+      <div class="example-row"><span class="ex-tag">Example</span><span>I can wait for my birthday.</span></div>
+      <textarea class="free-write" id="fw-p5a" placeholder="1. I can wait for …&#10;2. …&#10;3. …" rows="4"></textarea>
+      <div class="char-count" id="cc-fw-p5a">0 characters</div>
+      <h3 style="margin-top:14px">Game: five true sentences and one false sentence about you. Your teacher guesses the false one!</h3>
+      <textarea class="free-write" id="fw-p5b" placeholder="1. I’m 12.&#10;2. My favourite colour is …&#10;…" rows="6"></textarea>
+      <div class="char-count" id="cc-fw-p5b">0 characters</div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Activity idea · Extension (T19)</div>
+        <b>Teacher’s Book:</b> <i>Ask students to write a list of three things they can wait for (e.g. my birthday). As an alternative, they could write five true sentences and one false one. Give your own examples to get them started. Then ask them to work in pairs and each partner guesses which of the sentences is untrue.</i>
+        <br>Do your own 5 + 1 first (use the warm-up photo facts!). If time is short, skip this — the test needs ~25 min.
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="p6">
+    <div class="step-head">
+      <div class="step-num">6</div>
+      <div>
+        <div class="step-meta">Итог</div>
+        <h2>Что ты теперь умеешь?</h2>
+      </div>
+    </div>
+    <div class="card fun-check" lang="ru" id="fun-check">
+      <div class="fc-head">
+        <h3>Теперь я…</h3>
+        <span class="fc-count"><b>0</b> / 4 ⭐</span>
+      </div>
+      <div class="fc-meter"><i></i></div>
+      <p class="fc-hint">Отметь всё, что уже получается!</p>
+      <div class="reflect-list">
+        <label class="reflect-item"><input type="checkbox" id="rr1"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">❓</span><span class="reflect-text">задаю вопросы о фото: <i lang="en">Who is she? Where is it?</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr2"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">🎬</span><span class="reflect-text">понимаю влог Бекки</span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr3"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">⏳</span><span class="reflect-text">знаю, что значит <i lang="en">being patient</i> и <i lang="en">I can’t wait!</i></span></label>
+        <label class="reflect-item"><input type="checkbox" id="rr4"><span class="check-box"></span><span class="fc-ico" aria-hidden="true">📝</span><span class="reflect-text">написал тест по Unit 1</span></label>
+      </div>
+      <div class="fc-done" hidden><span class="fc-trophy">🏆</span><span><b>Супер!</b> Unit 1 пройден. Так держать!</span></div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-test');window.scrollTo(0,0)">Next: Unit 1 Test →</button>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════ PART 3: Unit 1 Standard Test ══════════ -->
+<div class="lesson-part" id="part-test">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#t1">Vocabulary 1–3</a>
+    <a href="#t4">Grammar 4–8</a>
+    <a href="#t9">Dialogues 9–10</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="tip rule"><span class="tip-title">Unit 1 Test</span>Work alone. Don’t use the dictionary. Your teacher checks your answers. <span lang="ru">Работай сам, без словаря — учитель проверит.</span></div>
+
+  <div class="teacher-only">
+    <div class="to-label">👩‍🏫 Teacher only · Unit 1 Standard Test (Thk2e_BrE_L0_Unit_Test_Standard_1) · 80 points</div>
+    No Check buttons in this tab. Use <b>Show right / wrong</b> in this view (or his score badge “Check my answers” afterwards).
+    <br><b>Key:</b> 1 Brazil, Japanese, Mexico, Sudanese, American · 2 South Africa, Turkey, British, Russian, Ecuadorean · 3 expensive, cheap, fast, small, clean · 4 1d 2a 3b 4e 5c · 5 How, Why, Who, What, What · 6 I, It, We, She, You · 7 are, am, is, are, are · 8 You’re 18. / She’s a tennis player. / They’re from Istanbul. / We’re American. / The bus is slow. · 9 name, What, beautiful, Yes, meet · 10 That’s Hiro. / She’s from Berlin. / Yes, it is. / It’s Taylor Swift. / Nice to meet you, too.
+    <br><b>Points (book):</b> 1 = 10 · 2 = 5 · 3 = 10 · 4 = 5 · 5 = 10 · 6 = 5 · 7 = 10 · 8 = 10 · 9 = 5 · 10 = 10 → <b>80</b>. (Tasks worth 10 = 2 points per item.)
+  </div>
+
+  <section class="step" id="t1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Vocabulary <span class="pts">10 points</span></div>
+        <h2>Complete the table</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-t1">
+      <table class="test-table">
+        <tr><th>Countries</th><th>Nationalities</th></tr>
+        <tr><td><input class="blank" id="t1-1" data-answer="Brazil" autocomplete="off" spellcheck="false"></td><td>Brazilian</td></tr>
+        <tr><td>Japan</td><td><input class="blank" id="t1-2" data-answer="Japanese" autocomplete="off" spellcheck="false"></td></tr>
+        <tr><td><input class="blank" id="t1-3" data-answer="Mexico" autocomplete="off" spellcheck="false"></td><td>Mexican</td></tr>
+        <tr><td>Sudan</td><td><input class="blank" id="t1-4" data-answer="Sudanese" autocomplete="off" spellcheck="false"></td></tr>
+        <tr><td>the US</td><td><input class="blank" id="t1-5" data-answer="American" autocomplete="off" spellcheck="false"></td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="step" id="t2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Vocabulary <span class="pts">5 points</span></div>
+        <h2>Choose the correct words</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-t2">
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> <span class="word-choice" id="t2-1" data-answer="South Africa"><button class="word-choice-btn" onclick="selectWord(this)">South Africa</button><button class="word-choice-btn" onclick="selectWord(this)">South African</button></span> is a beautiful country.</p>
+        <p class="gap-line"><span class="num">2.</span> Yildiz is from <span class="word-choice" id="t2-2" data-answer="Turkey"><button class="word-choice-btn" onclick="selectWord(this)">Turkey</button><button class="word-choice-btn" onclick="selectWord(this)">Turkish</button></span>.</p>
+        <p class="gap-line"><span class="num">3.</span> Tom is <span class="word-choice" id="t2-3" data-answer="British"><button class="word-choice-btn" onclick="selectWord(this)">the UK</button><button class="word-choice-btn" onclick="selectWord(this)">British</button></span>. He’s from Birmingham.</p>
+        <p class="gap-line"><span class="num">4.</span> I’m from Moscow. I’m <span class="word-choice" id="t2-4" data-answer="Russian"><button class="word-choice-btn" onclick="selectWord(this)">Russia</button><button class="word-choice-btn" onclick="selectWord(this)">Russian</button></span>.</p>
+        <p class="gap-line"><span class="num">5.</span> Alfonso is from <span class="word-choice" id="t2-5" data-answer="Ecuador"><button class="word-choice-btn" onclick="selectWord(this)">Ecuador</button><button class="word-choice-btn" onclick="selectWord(this)">Ecuadorean</button></span>.</p>
+      </div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 Key</div>1 South Africa · 2 Turkey · 3 British · 4 Russian · 5 Ecuador — <b>note:</b> the printed key says “Ecuadorean” for 5, but after “is from” the country (Ecuador) is correct; the site accepts <b>Ecuador</b>.</div>
+    </div>
+  </section>
+
+  <section class="step" id="t3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Vocabulary <span class="pts">10 points</span></div>
+        <h2>Look at the pictures</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-t3">
+      <h3>Look at the pictures. Then complete the sentences with the words in the list.</h3>
+      <div class="word-bank-ref"><span>fast</span><span>clean</span><span>cheap</span><span>expensive</span><span>small</span></div>
+      <div class="test-pics">
+        <figure><img src="images/unit1/test-1.jpg" alt="A laptop with a price tag: £4,000"><figcaption>1. It’s <input class="blank" id="t3-1" data-answer="expensive" autocomplete="off" spellcheck="false" style="width:130px">.</figcaption></figure>
+        <figure><img src="images/unit1/test-2.jpg" alt="Tickets that cost £5"><figcaption>2. They’re <input class="blank" id="t3-2" data-answer="cheap" autocomplete="off" spellcheck="false" style="width:120px">.</figcaption></figure>
+        <figure><img src="images/unit1/test-3.jpg" alt="A sports car driving fast"><figcaption>3. It’s <input class="blank" id="t3-3" data-answer="fast" autocomplete="off" spellcheck="false" style="width:120px">.</figcaption></figure>
+        <figure><img src="images/unit1/test-4.jpg" alt="A very small pizza on a big plate"><figcaption>4. It’s <input class="blank" id="t3-4" data-answer="small" autocomplete="off" spellcheck="false" style="width:120px">.</figcaption></figure>
+        <figure><img src="images/unit1/test-5.jpg" alt="Two shiny white shirts"><figcaption>5. They’re <input class="blank" id="t3-5" data-answer="clean" autocomplete="off" spellcheck="false" style="width:120px">.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="t4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Grammar <span class="pts">5 points</span></div>
+        <h2>Match the sentence halves</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-match-t4">
+      <div class="match-grid">
+        <div class="match-col" data-side="left">
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-t4')">1. Where</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-t4')">2. How</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-t4')">3. What’s</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-t4')">4. Who</div>
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-t4')">5. Why</div>
+        </div>
+        <div class="match-col" data-side="right">
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-t4')">a. old are you?</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-t4')">b. your favourite colour?</div>
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-t4')">c. is she your favourite singer?</div>
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-t4')">d. are you from?</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-t4')">e. is your favourite sportsperson?</div>
+        </div>
+      </div>
+      <div class="btn-row"><button class="btn-ghost" onclick="resetMatchEx('ex-match-t4')">Reset</button></div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 Note</div>Matching shows right pairs as soon as he connects them (that’s how matching works on the site) — fine for 5 points; or let him say the answers first.</div>
+    </div>
+  </section>
+
+  <section class="step" id="t5">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Grammar <span class="pts">10 points</span></div>
+        <h2>Choose the correct words</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-t5">
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> <span class="word-choice" id="t5-1" data-answer="How"><button class="word-choice-btn" onclick="selectWord(this)">What</button><button class="word-choice-btn" onclick="selectWord(this)">How</button></span> old is he?</p>
+        <p class="gap-line"><span class="num">2.</span> <span class="word-choice" id="t5-2" data-answer="Why"><button class="word-choice-btn" onclick="selectWord(this)">Why</button><button class="word-choice-btn" onclick="selectWord(this)">What</button></span> is blue your favourite colour?</p>
+        <p class="gap-line"><span class="num">3.</span> <span class="word-choice" id="t5-3" data-answer="Who"><button class="word-choice-btn" onclick="selectWord(this)">Who</button><button class="word-choice-btn" onclick="selectWord(this)">Where</button></span> is your favourite pop star?</p>
+        <p class="gap-line"><span class="num">4.</span> <span class="word-choice" id="t5-4" data-answer="What"><button class="word-choice-btn" onclick="selectWord(this)">Where</button><button class="word-choice-btn" onclick="selectWord(this)">What</button></span> is your favourite colour?</p>
+        <p class="gap-line"><span class="num">5.</span> <span class="word-choice" id="t5-5" data-answer="What"><button class="word-choice-btn" onclick="selectWord(this)">How</button><button class="word-choice-btn" onclick="selectWord(this)">What</button></span> is your name?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="t6">
+    <div class="step-head">
+      <div class="step-num">6</div>
+      <div>
+        <div class="step-meta">Grammar <span class="pts">5 points</span></div>
+        <h2>Complete the sentences</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-t6">
+      <h3>Complete the sentences with the words in the list.</h3>
+      <div class="word-bank-ref"><span>she</span><span>I</span><span>it</span><span>we</span><span>you</span></div>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> <input class="blank" id="t6-1" data-answer="I" autocomplete="off" spellcheck="false" style="width:90px"> am Martin.</p>
+        <p class="gap-line"><span class="num">2.</span> <input class="blank" id="t6-2" data-answer="It" autocomplete="off" spellcheck="false" style="width:90px"> is an old car.</p>
+        <p class="gap-line"><span class="num">3.</span> Fernanda and I are from Rio de Janeiro. <input class="blank" id="t6-3" data-answer="We" autocomplete="off" spellcheck="false" style="width:90px"> are Brazilian.</p>
+        <p class="gap-line"><span class="num">4.</span> Billie Eilish is great. <input class="blank" id="t6-4" data-answer="She" autocomplete="off" spellcheck="false" style="width:90px">’s my favourite singer.</p>
+        <p class="gap-line"><span class="num">5.</span> <input class="blank" id="t6-5" data-answer="You" autocomplete="off" spellcheck="false" style="width:90px"> are my friend.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="t7">
+    <div class="step-head">
+      <div class="step-num">7</div>
+      <div>
+        <div class="step-meta">Grammar <span class="pts">10 points</span></div>
+        <h2>The verb <i>to be</i></h2>
+      </div>
+    </div>
+    <div class="card" id="ex-t7">
+      <h3>Complete the sentences with the verb <i>to be</i>.</h3>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> You <input class="blank" id="t7-1" data-answer="are" autocomplete="off" spellcheck="false" style="width:90px"> brothers.</p>
+        <p class="gap-line"><span class="num">2.</span> I <input class="blank" id="t7-2" data-answer="am" autocomplete="off" spellcheck="false" style="width:90px"> 25.</p>
+        <p class="gap-line"><span class="num">3.</span> It <input class="blank" id="t7-3" data-answer="is" autocomplete="off" spellcheck="false" style="width:90px"> dirty but new.</p>
+        <p class="gap-line"><span class="num">4.</span> We <input class="blank" id="t7-4" data-answer="are" autocomplete="off" spellcheck="false" style="width:90px"> friends.</p>
+        <p class="gap-line"><span class="num">5.</span> They <input class="blank" id="t7-5" data-answer="are" autocomplete="off" spellcheck="false" style="width:90px"> Mexican.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="t8">
+    <div class="step-head">
+      <div class="step-num">8</div>
+      <div>
+        <div class="step-meta">Grammar <span class="pts">10 points</span></div>
+        <h2>Find the mistakes</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-t8">
+      <h3>Find the mistakes. Write the correct sentences. Use contracted forms where possible (<i>I’m, he’s, they’re</i>).</h3>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> You is 18. → <input class="blank" id="t8-1" data-answer="You’re 18.|You’re 18|You're 18.|You're 18|You are 18.|You are 18" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">2.</span> She am a tennis player. → <input class="blank" id="t8-2" data-answer="She’s a tennis player.|She’s a tennis player|She's a tennis player.|She's a tennis player|She is a tennis player.|She is a tennis player" autocomplete="off" spellcheck="false" style="width:240px"></p>
+        <p class="gap-line"><span class="num">3.</span> They is from Istanbul. → <input class="blank" id="t8-3" data-answer="They’re from Istanbul.|They’re from Istanbul|They're from Istanbul.|They're from Istanbul|They are from Istanbul.|They are from Istanbul" autocomplete="off" spellcheck="false" style="width:240px"></p>
+        <p class="gap-line"><span class="num">4.</span> We American. → <input class="blank" id="t8-4" data-answer="We’re American.|We’re American|We're American.|We're American|We are American.|We are American" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">5.</span> The bus slow. → <input class="blank" id="t8-5" data-answer="The bus is slow.|The bus is slow|The bus’s slow.|The bus's slow" autocomplete="off" spellcheck="false"></p>
+      </div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 Note</div>The site also accepts full forms (<i>You are 18.</i>); the book wants contractions — take off a point if you like.</div>
+    </div>
+  </section>
+
+  <section class="step" id="t9">
+    <div class="step-head">
+      <div class="step-num">9</div>
+      <div>
+        <div class="step-meta">Functions <span class="pts">5 points</span></div>
+        <h2>Complete the dialogue</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-t9">
+      <h3>Complete the dialogue with the words in the list.</h3>
+      <div class="word-bank-ref"><span>what</span><span>meet</span><span>name</span><span>beautiful</span><span>yes</span></div>
+      <div class="dialogue">
+        <span class="dl-name">A</span><p class="dl-text">Hi! I’m Brad. I’m from New York.</p>
+        <span class="dl-name two">B</span><p class="dl-text">Hi Brad!</p>
+        <span class="dl-name">A</span><p class="dl-text ask">What’s your <input class="blank" id="t9-1" data-answer="name" autocomplete="off" spellcheck="false" style="width:120px">?</p>
+        <span class="dl-name two">B</span><p class="dl-text">I’m Leo. I’m from Spain.</p>
+        <span class="dl-name">A</span><p class="dl-text ask">Awesome! <input class="blank" id="t9-2" data-answer="What" autocomplete="off" spellcheck="false" style="width:120px"> city are you from?</p>
+        <span class="dl-name two">B</span><p class="dl-text">Seville.</p>
+        <span class="dl-name">A</span><p class="dl-text ask">Seville’s a <input class="blank" id="t9-3" data-answer="beautiful" autocomplete="off" spellcheck="false" style="width:140px"> city.</p>
+        <span class="dl-name two">B</span><p class="dl-text ask"><input class="blank" id="t9-4" data-answer="Yes" autocomplete="off" spellcheck="false" style="width:100px">, it is.</p>
+        <span class="dl-name">A</span><p class="dl-text ask">Nice to <input class="blank" id="t9-5" data-answer="meet" autocomplete="off" spellcheck="false" style="width:110px"> you, Leo!</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="t10">
+    <div class="step-head">
+      <div class="step-num">10</div>
+      <div>
+        <div class="step-meta">Functions <span class="pts">10 points</span></div>
+        <h2>Choose the correct answers</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-t10">
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> <b>A</b> Who’s that? <b>B</b> <span class="word-choice" id="t10-1" data-answer="That’s Hiro."><button class="word-choice-btn" onclick="selectWord(this)">He’s from Tokyo.</button><button class="word-choice-btn" onclick="selectWord(this)">That’s Hiro.</button></span></p>
+        <p class="gap-line"><span class="num">2.</span> <b>A</b> Where’s she from? <b>B</b> <span class="word-choice" id="t10-2" data-answer="She’s from Berlin."><button class="word-choice-btn" onclick="selectWord(this)">She’s from Berlin.</button><button class="word-choice-btn" onclick="selectWord(this)">We’re from Berlin.</button></span></p>
+        <p class="gap-line"><span class="num">3.</span> <b>A</b> Berlin’s a beautiful city. <b>B</b> <span class="word-choice" id="t10-3" data-answer="Yes, it is."><button class="word-choice-btn" onclick="selectWord(this)">Yes, I am.</button><button class="word-choice-btn" onclick="selectWord(this)">Yes, it is.</button></span></p>
+        <p class="gap-line"><span class="num">4.</span> <b>A</b> Who’s your favourite singer? <b>B</b> <span class="word-choice" id="t10-4" data-answer="It’s Taylor Swift."><button class="word-choice-btn" onclick="selectWord(this)">It’s Taylor Swift.</button><button class="word-choice-btn" onclick="selectWord(this)">I’m Taylor Swift.</button></span></p>
+        <p class="gap-line"><span class="num">5.</span> <b>A</b> Nice to meet you. <b>B</b> <span class="word-choice" id="t10-5" data-answer="Nice to meet you, too."><button class="word-choice-btn" onclick="selectWord(this)">Nice to meet you, too.</button><button class="word-choice-btn" onclick="selectWord(this)">Yes, it is.</button></span></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="tip class-note"><span class="tip-title">Finished?</span>Tell your teacher. <span lang="ru">Скажи учителю, что ты закончил.</span></div>
+
+</div>
+</div>
+
+<!-- ══════════ EXTRA: Worksheet — Life Lessons: Being patient (hidden) ══════════ -->
+<div class="lesson-part" id="part-ws" data-extra="x-ws">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#w1">1 · Remember?</a>
+    <a href="#w2">2 · Give it a go</a>
+    <a href="#w3">3 · Keep it up</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="w1">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Worksheet · Life Lessons: Being patient · Tasks 1–4 <span class="extra-badge">extra</span></div>
+        <h2>What can you remember?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-w1">
+      <div class="exercise-label">Task 1</div>
+      <h3>Answer the questions about Becky.</h3>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> How old is Becky? <input class="blank" id="w1-1" data-answer="13|thirteen|She’s 13.|She's 13.|She is 13." autocomplete="off" spellcheck="false" style="width:140px"></p>
+        <p class="gap-line"><span class="num">2.</span> What’s her nationality? <input class="blank" id="w1-2" data-answer="British|She’s British.|She's British.|She is British." autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">3.</span> Where is she from? <input class="blank" id="w1-3" data-answer="Liverpool|She’s from Liverpool.|She's from Liverpool.|She is from Liverpool." autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">4.</span> Who is her favourite singer? <input class="blank" id="w1-4" data-answer="George Ezra" autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">5.</span> What’s her favourite colour? <input class="blank" id="w1-5" data-answer="green|It’s green.|It's green." autocomplete="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">6.</span> Who is her best friend? <input class="blank" id="w1-6" data-answer="Sophie" autocomplete="off" spellcheck="false"></p>
+      </div>
+      <div class="exercise-label" style="margin-top:16px">Task 2</div>
+      <h3>Why is Becky excited?</h3>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="mcw2" value="a"><span class="mc-bullet">A</span> Because it’s her birthday.</label>
+        <label class="mc-option"><input type="radio" name="mcw2" value="b"><span class="mc-bullet">B</span> Because this is her first vlog.</label>
+        <label class="mc-option"><input type="radio" name="mcw2" value="c"><span class="mc-bullet">C</span> Because she has an ice cream.</label>
+      </div>
+      <div class="exercise-label" style="margin-top:16px">Task 3</div>
+      <p class="gap-line" style="font-size:18px">Becky’s vlog is all about <input class="blank" id="w3-1" data-answer="life lessons" autocomplete="off" spellcheck="false"> .</p>
+      <div class="exercise-label" style="margin-top:16px">Task 4</div>
+      <h3>What four things does Becky say she can wait for? Complete the sentences.</h3>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> Tomorrow evening <input class="blank" id="w4-1" data-answer="there’s a party|there's a party|there is a party|there’s a party.|there's a party.|there is a party." autocomplete="off" spellcheck="false" style="width:260px"></p>
+        <p class="gap-line"><span class="num">2.</span> On Saturday <input class="blank" id="w4-2" data-answer="there’s a trip to the new pizza restaurant|there's a trip to the new pizza restaurant|there is a trip to the new pizza restaurant|there’s a trip to the pizza restaurant|there's a trip to the pizza restaurant|there is a trip to the pizza restaurant" autocomplete="off" spellcheck="false" style="width:360px"></p>
+        <p class="gap-line"><span class="num">3.</span> Next week <input class="blank" id="w4-3" data-answer="it’s her birthday|it's her birthday|it is her birthday|it’s my birthday|it's my birthday" autocomplete="off" spellcheck="false" style="width:260px"> !</p>
+        <p class="gap-line"><span class="num">4.</span> Now <input class="blank" id="w4-4" data-answer="she wants an ice cream|she wants ice cream|I want an ice cream" autocomplete="off" spellcheck="false" style="width:260px"> .</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-w1');checkMC('ex-w1')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-w1');resetMC('ex-w1')">Try again</button>
+      </div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Worksheet Tasks 1–4 (Thk2e_BrE_L0_Vlog_Unit_1 · key: Vlog_Answer_Key)</div>
+        <b>Key:</b> 1: 13, British, Liverpool, George Ezra, green, Sophie · 2: Because this is her first vlog. · 3: life lessons · 4: there’s a party / there’s a trip to the new pizza restaurant / it’s her birthday / she wants an ice cream.
+        <br>Task 2 in the original is open (“Look at the picture. Why is Becky excited?”); here it’s multiple choice. Task 4 accepts the key wording and close variants — check other answers by eye.
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="w2">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Worksheet · Give it a go · Tasks 5–7 <span class="extra-badge">extra</span></div>
+        <h2>How patient are you?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-w2">
+      <div class="exercise-label">Task 5</div>
+      <h3>Read the situations. How patient are you? 1 = very patient, 3 = not at all patient.</h3>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> You want to speak to your mum about something important, but she’s on the phone to her best friend. <span class="word-choice" id="w5-1"><button class="word-choice-btn" onclick="selectWord(this)">1</button><button class="word-choice-btn" onclick="selectWord(this)">2</button><button class="word-choice-btn" onclick="selectWord(this)">3</button></span></p>
+        <p class="gap-line"><span class="num">2.</span> Your friend is meeting you at a café. She’s already 20 minutes late. <span class="word-choice" id="w5-2"><button class="word-choice-btn" onclick="selectWord(this)">1</button><button class="word-choice-btn" onclick="selectWord(this)">2</button><button class="word-choice-btn" onclick="selectWord(this)">3</button></span></p>
+        <p class="gap-line"><span class="num">3.</span> You’re going to a concert. You’re on the bus and you’re stuck in traffic. <span class="word-choice" id="w5-3"><button class="word-choice-btn" onclick="selectWord(this)">1</button><button class="word-choice-btn" onclick="selectWord(this)">2</button><button class="word-choice-btn" onclick="selectWord(this)">3</button></span></p>
+        <p class="gap-line"><span class="num">4.</span> You’re walking with your grandmother in the park. She walks very slowly. It’s going to rain. <span class="word-choice" id="w5-4"><button class="word-choice-btn" onclick="selectWord(this)">1</button><button class="word-choice-btn" onclick="selectWord(this)">2</button><button class="word-choice-btn" onclick="selectWord(this)">3</button></span></p>
+      </div>
+      <div class="tip"><span class="tip-title">New words</span><b>important</b> — важный · <b>late</b> — опаздывает · <b>stuck in traffic</b> — в пробке · <b>grandmother</b> — бабушка · <b>It’s going to rain</b> — сейчас пойдёт дождь</div>
+      <div class="exercise-label" style="margin-top:16px">Task 6</div>
+      <h3>Compare with your teacher. Who is more patient?</h3>
+      <div class="exercise-label" style="margin-top:16px">Task 7</div>
+      <h3>Read the advice. Tick (✓) the ones you think are useful.</h3>
+      <div class="reflect-list">
+        <label class="reflect-item"><input type="checkbox" id="w7-a"><span class="check-box"></span><span class="reflect-text"><b>a</b> Make yourself wait. Start small. For example, wait an extra five minutes before you do something you want to do.</span></label>
+        <label class="reflect-item"><input type="checkbox" id="w7-b"><span class="check-box"></span><span class="reflect-text"><b>b</b> Don’t do things that aren’t important.</span></label>
+        <label class="reflect-item"><input type="checkbox" id="w7-c"><span class="check-box"></span><span class="reflect-text"><b>c</b> Think about situations where you aren’t patient. Write them down to help you understand why you aren’t patient.</span></label>
+        <label class="reflect-item"><input type="checkbox" id="w7-d"><span class="check-box"></span><span class="reflect-text"><b>d</b> Breathe slowly. Stop for a minute, breathe and relax!</span></label>
+      </div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Tasks 5–7</div>
+        Students’ own answers. The language here is above A1 — read each situation aloud and mime/explain; he only needs to pick 1–3. Do Task 6 by giving your own numbers too.
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="w3">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Worksheet · Keep it up · Tasks 8–10 <span class="extra-badge">extra</span></div>
+        <h2>My week</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-w3">
+      <div class="exercise-label">Task 8</div>
+      <h3>Think about your week. What things can’t you wait for?</h3>
+      <textarea class="free-write" id="fw-w8" placeholder="1. I can’t wait for …&#10;2. …&#10;3. …" rows="4"></textarea>
+      <div class="char-count" id="cc-fw-w8">0 characters</div>
+      <div class="exercise-label" style="margin-top:16px">Tasks 9–10</div>
+      <h3>Try the tips this week. Write: the situation · the tip you tried · the result. Tell your teacher next time.</h3>
+      <textarea class="free-write" id="fw-w9" placeholder="Situation: … / Tip: … / Result: …" rows="4"></textarea>
+      <div class="char-count" id="cc-fw-w9">0 characters</div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · Tasks 8–10</div>
+        Students’ own answers. Tasks 9–10 overlap with the TB Homework (patience diary) — use one or the other.
+      </div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<!-- ══════════ EXTRA: Practice Extra · Unit 1 Master it! (hidden) ══════════ -->
+<div class="lesson-part" id="part-master" data-extra="x-master">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#m1">1 · Countries</a>
+    <a href="#m2">2 · Opposites</a>
+    <a href="#m3">3 · Questions</a>
+    <a href="#m4">4 · Phrases</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="teacher-only">
+    <div class="to-label">👩‍🏫 Teacher only · Practice Extra · Unit 1 Master it!</div>
+    The real “Master it!” is online (Cambridge One Practice Extra) and isn’t in the course files — this is a site version of a Unit 1 review with new items (not the same as the test). Good before the test as a quick revision, or after it for the weak points.
+  </div>
+
+  <section class="step" id="m1">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Master it! · Countries and nationalities <span class="extra-badge">extra</span></div>
+        <h2>Countries and nationalities</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-m1">
+      <h3>Write the nationality.</h3>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> He’s from Italy. He’s <input class="blank" id="m1-1" data-answer="Italian" autocomplete="off" spellcheck="false">.</p>
+        <p class="gap-line"><span class="num">2.</span> She’s from Spain. She’s <input class="blank" id="m1-2" data-answer="Spanish" autocomplete="off" spellcheck="false">.</p>
+        <p class="gap-line"><span class="num">3.</span> We’re from China. We’re <input class="blank" id="m1-3" data-answer="Chinese" autocomplete="off" spellcheck="false">.</p>
+        <p class="gap-line"><span class="num">4.</span> They’re from France. They’re <input class="blank" id="m1-4" data-answer="French" autocomplete="off" spellcheck="false">.</p>
+        <p class="gap-line"><span class="num">5.</span> I’m from Germany. I’m <input class="blank" id="m1-5" data-answer="German" autocomplete="off" spellcheck="false">.</p>
+        <p class="gap-line"><span class="num">6.</span> Becky is from the UK. She’s <input class="blank" id="m1-6" data-answer="British" autocomplete="off" spellcheck="false">.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-m1')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-m1')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="m2">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Master it! · Adjectives <span class="extra-badge">extra</span></div>
+        <h2>Opposites</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-match-m2">
+      <h3>Match the opposites.</h3>
+      <div class="match-grid">
+        <div class="match-col" data-side="left">
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-m2')">big</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-m2')">new</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-m2')">fast</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-m2')">cheap</div>
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-m2')">clean</div>
+        </div>
+        <div class="match-col" data-side="right">
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-m2')">slow</div>
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-m2')">dirty</div>
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-m2')">small</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-m2')">expensive</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-m2')">old</div>
+        </div>
+      </div>
+      <div class="btn-row"><button class="btn-ghost" onclick="resetMatchEx('ex-match-m2')">Reset</button></div>
+    </div>
+  </section>
+
+  <section class="step" id="m3">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Master it! · Question words + to be <span class="extra-badge">extra</span></div>
+        <h2>Questions</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-wo-m3">
+      <h3>Put the words in order to make questions.</h3>
+      <div class="wo-line"><span class="num">1.</span><div class="wo-q" id="wo-m3-1" data-answer="Where is she from ?"><span class="wo-tile">from</span><span class="wo-tile">she</span><span class="wo-tile">Where</span><span class="wo-tile">is</span><span class="wo-tile">?</span></div></div>
+      <div class="wo-line"><span class="num">2.</span><div class="wo-q" id="wo-m3-2" data-answer="How old are you ?"><span class="wo-tile">you</span><span class="wo-tile">old</span><span class="wo-tile">are</span><span class="wo-tile">How</span><span class="wo-tile">?</span></div></div>
+      <div class="wo-line"><span class="num">3.</span><div class="wo-q" id="wo-m3-3" data-answer="Who is your best friend ?"><span class="wo-tile">best</span><span class="wo-tile">Who</span><span class="wo-tile">friend</span><span class="wo-tile">your</span><span class="wo-tile">is</span><span class="wo-tile">?</span></div></div>
+      <div class="wo-line"><span class="num">4.</span><div class="wo-q" id="wo-m3-4" data-answer="Why is he your favourite singer ?"><span class="wo-tile">he</span><span class="wo-tile">favourite</span><span class="wo-tile">Why</span><span class="wo-tile">your</span><span class="wo-tile">singer</span><span class="wo-tile">is</span><span class="wo-tile">?</span></div></div>
+      <div class="wo-line"><span class="num">5.</span><div class="wo-q" id="wo-m3-5" data-answer="When is the football game ?"><span class="wo-tile">game</span><span class="wo-tile">the</span><span class="wo-tile">When</span><span class="wo-tile">football</span><span class="wo-tile">is</span><span class="wo-tile">?</span></div></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWordOrder('ex-wo-m3')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWordOrder('ex-wo-m3')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="m4">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Master it! · Phrases for fluency <span class="extra-badge">extra</span></div>
+        <h2>Phrases</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-m4">
+      <h3>Choose the best answer.</h3>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> <b>A</b> Hi, Sam! How’s it going? <b>B</b> <span class="word-choice" id="m4-1" data-answer="Great, thanks."><button class="word-choice-btn" onclick="selectWord(this)">Great, thanks.</button><button class="word-choice-btn" onclick="selectWord(this)">I know!</button></span></p>
+        <p class="gap-line"><span class="num">2.</span> <b>A</b> Look! My new bike. <b>B</b> <span class="word-choice" id="m4-2" data-answer="That’s awesome!"><button class="word-choice-btn" onclick="selectWord(this)">See you later.</button><button class="word-choice-btn" onclick="selectWord(this)">That’s awesome!</button></span></p>
+        <p class="gap-line"><span class="num">3.</span> <b>A</b> The game is at eight. <b>B</b> <span class="word-choice" id="m4-3" data-answer="I can’t wait!"><button class="word-choice-btn" onclick="selectWord(this)">I can’t wait!</button><button class="word-choice-btn" onclick="selectWord(this)">Nice to meet you.</button></span></p>
+        <p class="gap-line"><span class="num">4.</span> <b>A</b> Bye, Anna! <b>B</b> <span class="word-choice" id="m4-4" data-answer="See you later."><button class="word-choice-btn" onclick="selectWord(this)">How’s it going?</button><button class="word-choice-btn" onclick="selectWord(this)">See you later.</button></span></p>
+        <p class="gap-line"><span class="num">5.</span> <b>A</b> Hurry up! The bus is late. <b>B</b> <span class="word-choice" id="m4-5" data-answer="Be patient!"><button class="word-choice-btn" onclick="selectWord(this)">Be patient!</button><button class="word-choice-btn" onclick="selectWord(this)">Yes, I am.</button></span></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-m4')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-m4')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<!-- ══════════ HOMEWORK: patience diary (TB T19 Homework) ══════════ -->
+<div class="lesson-part" id="part-homework">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#h1">1 · My patience diary</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <section class="step" id="h1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Homework · Teacher’s Book T19</div>
+        <h2>My patience diary</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-h1">
+      <h3>For two or three days, write when you need to wait. Are you patient?</h3>
+      <p class="ru-hint" lang="ru">2–3 дня записывай: когда тебе пришлось ждать? Ты был терпеливым? Если нет — что можно сделать в следующий раз?</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>Monday: I wait for the bus. It’s 15 minutes late. I’m patient — I listen to music.</span></div>
+      <p class="gap-line" style="font-size:18px"><b>Day 1</b></p>
+      <textarea class="free-write" id="fw-h1" placeholder="I wait for … I’m patient / I’m not patient …" rows="3"></textarea>
+      <div class="char-count" id="cc-fw-h1">0 characters</div>
+      <p class="gap-line" style="font-size:18px"><b>Day 2</b></p>
+      <textarea class="free-write" id="fw-h2" placeholder="…" rows="3"></textarea>
+      <div class="char-count" id="cc-fw-h2">0 characters</div>
+      <p class="gap-line" style="font-size:18px"><b>Day 3</b></p>
+      <textarea class="free-write" id="fw-h3" placeholder="…" rows="3"></textarea>
+      <div class="char-count" id="cc-fw-h3">0 characters</div>
+      <div class="teacher-only">
+        <div class="to-label">👩‍🏫 Teacher only · TB Homework (T19)</div>
+        <b>Teacher’s Book:</b> <i>Ask students to keep a diary for two or three days, with a record of times when they needed to be patient. Did they manage to be patient? If so, how? If not, what could they have done to be more patient?</i>
+      </div>
+    </div>
+  </section>
+</div>
+</div>
+
+<script src="../assets/sync.js"></script>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/matching.js"></script>
+<script src="../assets/wordorder.js"></script>
+<script src="../assets/name.js"></script>
+<script src="../assets/dictionary.js"></script>
+<script>
+/* "Итог": star counter, progress bar and confetti when everything is ticked (same as Lessons 3–12) */
+(function () {
+  const box = document.getElementById('fun-check');
+  const boxes = [...box.querySelectorAll('input[type=checkbox]')];
+  let celebrated = false;
+  function confetti() {
+    const colours = ['#FFC53D', '#FF7A45', '#3352E0', '#12A374', '#7B5CE6', '#E03E52'];
+    for (let i = 0; i < 40; i++) {
+      const c = document.createElement('i');
+      c.className = 'fc-confetti';
+      c.style.left = Math.random() * 100 + '%';
+      c.style.background = colours[i % colours.length];
+      c.style.animationDelay = Math.random() * 0.4 + 's';
+      c.style.setProperty('--x', (Math.random() * 160 - 80) + 'px');
+      c.style.setProperty('--r', (Math.random() * 720 - 360) + 'deg');
+      box.appendChild(c);
+      setTimeout(() => c.remove(), 2200);
+    }
+  }
+  function update(animate) {
+    const n = boxes.filter(b => b.checked).length;
+    box.querySelector('.fc-count b').textContent = n;
+    box.querySelector('.fc-meter i').style.width = (n / boxes.length * 100) + '%';
+    const done = n === boxes.length;
+    box.querySelector('.fc-done').hidden = !done;
+    box.classList.toggle('all-done', done);
+    if (done && animate && !celebrated) confetti();
+    celebrated = done;
+  }
+  boxes.forEach(b => b.addEventListener('change', () => update(true)));
+  document.addEventListener('DOMContentLoaded', () => setTimeout(() => update(false), 0));
+})();
+</script>
+</body>
+</html>
