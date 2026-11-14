@@ -26,6 +26,7 @@ website/
     ├── lesson-11.html          ← Lesson 11: adjectives + opposites, questionnaire (Student's Book p. 17); extras hidden until opened: memory game, Workbook pp. 12, 13, 15, Vocabulary Worksheet Unit 1, homework
     ├── lesson-12.html          ← Lesson 12: warm-up = Vocabulary Worksheet Unit 1 Tasks 5–7; Student’s Book p. 18 (dialogue 1.09, phrases for fluency, Who’s that?); extras hidden until opened: TB Warmer, Workbook p. 16 Ex. 4–6, record your dialogue
     ├── lesson-13.html          ← Lesson 13: warm-up = questions about the teacher’s photo + his picture; Student’s Book p. 19 (Becky’s vlog, being patient); Unit 1 Standard Test tab; extras hidden until opened: Worksheet Life Lessons (Being patient), Practice Extra Master it! (site version); Homework tab: patience diary
+    ├── lesson-14.html          ← Lesson 14: End-of-term test 1 (Standard). Warm-up before the start (mood check + emoji quiz, `WARMUP` list in the page script), exit ticket under the results. Russian instructions → “Начать тест” starts a 40-min timer (`TEST_MINUTES` in the page script); no Check buttons, score badge or dictionary; results + “Show correct answers” only after everything is filled in and he presses “Завершить тест”, or when the teacher opens the extra `x-results` (extra `x-time` = no time limit)
     ├── images/                 ← Put lesson images here
     ├── audio/                  ← Put lesson audio files here
     │   └── words/               ← One short clip per sound button (see "Sound buttons")

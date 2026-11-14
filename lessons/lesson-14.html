@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 14 – End-of-term test 1</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+/* teacher-only notes: hidden on the student's page, shown inside teacher.html (sync.js adds html.watching) */
+.teacher-only{display:none}
+html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;border:2px dashed #D9628F;border-radius:var(--radius);padding:12px 16px;line-height:1.7;font-size:16px}
+.teacher-only .to-label{font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#B0416C;margin-bottom:6px}
+.teacher-only b{color:#9A3F64}
+.teacher-only ul{margin:4px 0 0 20px}
+
+/* Lesson 14: the test */
+.sent-list .gap-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin:10px 0;font-size:18px}
+.sent-list .word-choice{display:inline-flex;flex-wrap:wrap;gap:6px}
+.pts{float:right;font-weight:800;color:var(--muted);font-size:.85rem}
+.gapword{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:800;font-size:20px;letter-spacing:.12em;background:var(--blue-soft);border-radius:10px;padding:3px 10px;white-space:nowrap}
+.hint{color:var(--muted);font-size:15px}
+.first{font-weight:900;margin-right:-4px}
+.opp-word{display:inline-block;min-width:76px;font-weight:900}
+.wide{flex:1 1 260px;max-width:420px;text-align:left}
+.wb-letters span b{color:var(--blue);margin-right:6px}
+
+/* Chloe's email */
+.email{border:2px solid var(--border-strong);border-radius:16px;overflow:hidden;margin-top:12px;background:#fff}
+.email-bar{background:linear-gradient(90deg,#C9D2EC,#EEF2FB);padding:6px 14px;font-size:14px;font-weight:800;color:var(--muted)}
+.email-body{padding:14px 18px;line-height:2.5}
+.email-body p{margin:0 0 6px}
+.email-body sup{font-weight:900;color:var(--blue);margin-right:2px}
+.email-body .blank{width:130px}
+
+/* intro (Russian instructions) */
+.intro-card{border:3px solid var(--blue);background:linear-gradient(160deg,#fff 0%,#E8EDFF 100%)}
+.intro-card h2{margin-top:0}
+.rules{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px}
+.rules li{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start;background:#fff;border:1px solid var(--border);border-radius:16px;padding:12px 14px;font-size:18px;line-height:1.5}
+.rules li > span:first-child{font-size:28px;line-height:1.2;text-align:center}
+.rules b{color:var(--blue-dark)}
+.start-row{margin-top:18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.btn-big{font-size:20px;padding:14px 30px}
+
+/* timer bar */
+.timer-bar{position:sticky;top:0;z-index:500;background:var(--ink);color:#fff;border-radius:0 0 16px 16px;padding:8px 18px;margin:0 0 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;box-shadow:var(--shadow)}
+html.watching .timer-bar{top:34px}
+.timer-clock{font:800 26px/1 var(--font-head);font-variant-numeric:tabular-nums;letter-spacing:.03em}
+.timer-bar small{font-size:14px;font-weight:700;color:#C9D2EC}
+.timer-bar.low{background:#B4530B}
+.timer-bar.over{background:var(--red)}
+.timer-bar.done{background:var(--green-ink)}
+
+/* states: before the start only the instructions are on the page */
+html:not(.watching) body.pre #test{display:none}
+html:not(.watching) body:not(.pre) #intro{display:none}
+html.watching .start-row{display:none}
+body.locked #test .blank,body.locked #test .free-write{background:#EEF1F8;color:var(--ink);opacity:1;-webkit-text-fill-color:currentColor}
+body.locked #test .blank.correct{background:var(--green-soft)}
+body.locked #test .blank.wrong{background:var(--red-soft)}
+body.locked #test .word-choice-btn{cursor:default;opacity:1}
+body.locked #test .word-choice-btn:not(.selected):not(.key-right){opacity:.55}
+
+/* finish + results */
+.finish-card{text-align:center}
+.finish-card p{margin:.3em 0}
+#results{display:none}
+body.results #results, html.watching #results{display:block}
+body.results #finish-panel{display:none}
+.res-table{border-collapse:collapse;width:100%;max-width:560px;font-size:18px;margin:8px 0}
+.res-table td{padding:6px 12px;border-bottom:1px solid var(--border)}
+.res-table td:last-child{text-align:right;font-weight:900;white-space:nowrap}
+.res-table tr.sum td{border-top:3px solid var(--ink);border-bottom:0;font-size:22px;font-weight:900}
+.res-table tr.full td:last-child{color:var(--green-ink)}
+.ans-key{display:inline-block;background:var(--green-soft);border:2px solid var(--green);color:var(--green-ink);border-radius:10px;padding:2px 10px;font-weight:800;font-size:16px;margin-left:4px}
+.word-choice-btn.key-right{outline:3px solid var(--green);outline-offset:2px}
+#sample{display:none;margin-top:12px}
+body.keys #sample{display:block}
+.teacher-switch{font-size:17px}
+
+/* warm-up (before the test) */
+html:not(.watching) body:not(.pre) #warmup{display:none}
+.mood-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:19px}
+.mood-row .word-choice-btn,.ticket .word-choice-btn{font-size:18px;padding:8px 16px}
+.mood-msg{margin:10px 0 0;font-weight:800;color:var(--blue-dark);min-height:1.6em}
+.wu-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.wu-stars{font:800 20px/1 var(--font-head);background:var(--yellow-soft);border:2px solid var(--yellow);border-radius:999px;padding:8px 16px}
+.wu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:14px}
+.wu-q{border:2px solid var(--border);border-radius:18px;padding:14px;background:#fff;text-align:center;transition:transform .2s,border-color .2s,background .2s}
+.wu-q.done{border-color:var(--green);background:var(--green-soft);transform:rotate(-1deg)}
+.wu-q:nth-child(even).done{transform:rotate(1deg)}
+.wu-emoji{font-size:46px;line-height:1.1}
+.wu-text{font-weight:800;margin:4px 0 10px;min-height:2.6em;display:flex;align-items:center;justify-content:center}
+.wu-q .word-choice{display:flex;flex-direction:column;gap:6px;margin:0}
+.wu-q .word-choice-btn{width:100%}
+.wu-q .word-choice-btn.wrong{animation:wuShake .35s}
+@keyframes wuShake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.wu-ready{display:none;margin-top:16px;text-align:center;font:800 22px/1.4 var(--font-head);color:var(--green-ink)}
+#warmup.all-done .wu-ready{display:block}
+
+/* exit ticket (after the results) */
+#exit{display:none}
+body.results #exit, html.watching #exit{display:block}
+.ticket{position:relative;overflow:hidden;border:3px dashed var(--violet);border-radius:22px;background:linear-gradient(160deg,#fff 0%,#EEE9FF 100%);padding:22px 26px}
+.ticket::before,.ticket::after{content:"";position:absolute;top:50%;width:34px;height:34px;border-radius:50%;background:var(--bg);border:3px dashed var(--violet);transform:translateY(-50%)}
+.ticket::before{left:-20px}.ticket::after{right:-20px}
+.ticket-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;border-bottom:2px dashed #C9BDF5;padding-bottom:10px;margin-bottom:6px}
+.ticket-head b{font:800 24px/1.2 var(--font-head);color:#4B2FB8}
+.ticket-head span{font-size:14px;font-weight:800;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.et-q{margin:16px 0 0}
+.et-q > b{display:block;font-size:19px}
+.et-q > small{display:block;color:var(--muted);font-size:15px;margin-bottom:8px}
+.et-q .word-choice{margin:0}
+.ticket .free-write{min-height:70px}
+.et-stamp{display:none;margin:20px auto 0;width:max-content;max-width:100%;text-align:center;border:4px solid var(--green);color:var(--green-ink);border-radius:16px;padding:10px 22px;font:800 22px/1.3 var(--font-head);transform:rotate(-3deg);background:#fff}
+#exit.all-done .et-stamp{display:block;animation:etStamp .45s ease-out}
+@keyframes etStamp{0%{transform:scale(2.2) rotate(-12deg);opacity:0}100%{transform:scale(1) rotate(-3deg);opacity:1}}
+.confetti-bit{position:fixed;top:-12px;width:10px;height:16px;border-radius:3px;z-index:9000;pointer-events:none;animation:confFall 2s ease-in forwards}
+@keyframes confFall{to{transform:translate(var(--x),105vh) rotate(var(--r));opacity:.9}}
+</style>
+</head>
+<body class="pre">
+
+<header class="hero">
+  <div class="wrap">
+    <a class="back-home" href="../index.html">← All lessons</a>
+    <div class="hero-grid">
+      <div>
+        <h1 class="name-slot" data-with="Lesson 14: Test time, {name}!" data-without="Lesson 14: End-of-term test">Lesson 14: End-of-term test</h1>
+        <p>Vocabulary, grammar, reading and writing. <span lang="ru">Работай сам и внимательно читай каждое задание.</span></p>
+        <div class="hero-badges">
+          <span class="badge">Lesson 14</span>
+          <span class="badge">End-of-term test 1</span>
+          <span class="badge">11 tasks · 100 points</span>
+          <span class="badge">⏱ 40 minutes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     Think 2e Level 0 · End-of-term test 1 Standard (Think 1/Tests/Thk2e_BrE_L0_End_Of_Term_Standard_Test_1.pdf + Answer Key).
+     Warm-up (#warmup: mood check + emoji quiz) shows only before the test starts; exit ticket (#exit) only with the results.
+     How this page works (script at the bottom):
+       • Intro in Russian → "Начать тест" starts the timer (TEST_MINUTES at the top of the script).
+       • No Check buttons, no score badge, no dictionary on this page.
+       • Results + "Show correct answers" appear only when every task is filled in and he presses
+         "Завершить тест" — or when the teacher opens the extra x-results in teacher.html.
+       • Time up → answers are locked. The extra x-time switches the time limit off.
+     Auto-marked: Tasks 1–10 = 70 points. Task 11 (writing, 30 points) is marked by the teacher.
+══════════════════════════════════════════════════════════ -->
+
+<div class="wrap" style="padding-top:22px">
+
+  <!-- ══════════ Warm-up: wake up your English (only before the test starts) ══════════ -->
+  <section class="step" id="warmup">
+    <div class="step-head">
+      <div class="step-num">🚀</div>
+      <div>
+        <div class="step-meta">Warm-up · 3 minutes</div>
+        <h2>Wake up your English!</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-mood">
+      <div class="mood-row">
+        <b>How are you today?</b>
+        <span class="word-choice" id="wu-mood"><button class="word-choice-btn" onclick="selectWord(this)">😎 Great</button><button class="word-choice-btn" onclick="selectWord(this)">🙂 OK</button><button class="word-choice-btn" onclick="selectWord(this)">😴 Sleepy</button><button class="word-choice-btn" onclick="selectWord(this)">😬 Nervous</button></span>
+      </div>
+      <p class="mood-msg" id="mood-msg"></p>
+    </div>
+    <div class="card" id="ex-warm">
+      <div class="wu-top">
+        <h3 style="margin:0"><b>Emoji quiz.</b> Tap the right answer and collect 8 stars! <span lang="ru" class="hint">Нажми на правильный ответ и собери 8 звёзд.</span></h3>
+        <span class="wu-stars" id="wu-stars">⭐ 0 / 8</span>
+      </div>
+      <div class="wu-grid" id="wu-grid"></div>
+      <div class="wu-ready">🚀 Your English is awake! <span lang="ru">Ты готов к тесту. Прочитай правила ниже.</span></div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 Warm-up</div>Eight quick questions from the Welcome unit and Unit 1 (flag, colour, number, day, classroom object, age, month, greeting) — none of them is a test answer. A wrong tap shakes and he tries again, so everybody ends with 8 stars. It disappears from his page when he presses <b>Начать тест</b>. Ask him to say each answer aloud if you want some speaking first.</div>
+    </div>
+  </section>
+
+  <!-- ══════════ Instructions (Russian) ══════════ -->
+  <div class="card intro-card" id="intro" lang="ru">
+    <h2>Перед началом теста</h2>
+    <p>Прочитай правила. Когда будешь готов, нажми <b>«Начать тест»</b>.</p>
+    <ul class="rules">
+      <li><span>⏱</span><span><b>Время ограничено.</b> На весь тест даётся <b><span class="mins">40</span> минут</b>. Таймер запустится, как только ты нажмёшь «Начать тест», и его нельзя остановить.</span></li>
+      <li><span>📖</span><span><b>Внимательно читай каждое задание.</b> Очень важно прочитать и понять, что именно нужно сделать, и только потом отвечать.</span></li>
+      <li><span>🤫</span><span><b>Во время теста вопросы задавать нельзя.</b> Все вопросы можно задать только после того, как ты закончишь.</span></li>
+      <li><span>✍️</span><span><b>Заполни все задания.</b> В тесте 11 заданий. Когда всё будет заполнено, появится кнопка «Завершить тест».</span></li>
+      <li><span>✅</span><span><b>Результат и правильные ответы</b> ты увидишь только после того, как завершишь тест.</span></li>
+    </ul>
+    <div class="start-row">
+      <button class="btn-primary btn-big" id="start-btn" type="button">Начать тест ▶</button>
+      <span class="hint">Удачи! 🍀</span>
+    </div>
+    <div class="teacher-only" lang="en">
+      <div class="to-label">👩‍🏫 Teacher only · End-of-term test 1 Standard · 100 points</div>
+      Timofey sees only these instructions until he presses <b>Начать тест</b>; then the timer (40 min) starts and the tasks appear. You see everything here at once.
+      <ul>
+        <li><b>Before:</b> a 3-minute warm-up (mood check + emoji quiz) sits above these rules. <b>After:</b> an exit ticket appears under the results.</li>
+        <li><b>No Check buttons.</b> Results and the “Show correct answers” button appear on his page only after everything is filled in and he presses <b>Завершить тест</b> — or when you open <b>“Results and answers”</b> just below.</li>
+        <li><b>Time up:</b> his answers lock and he is told to tell you. Open “Results and answers” to show him the score, or “Extra time” to let him go on.</li>
+        <li>The <b>Results</b> block at the bottom of this view shows his score live. <b>Show right / wrong</b> colours his answers here only.</li>
+        <li><b>Key:</b> 1 Brazilian, cheap, daughter, fridge, chemist’s · 2 funny, uncle, bathroom, park, bored · 3 slow, thirsty, office, kitchen, next · 4 1c 2d 3a 4e 5b · 5 Don’t eat in that café! / This is my sister. / Where’s your uncle from? / Are there any people here? / Maria’s brother’s over there. · 6 me, Why, aren’t, Tom’s, any · 7 Is, isn’t, Are, aren’t, ’m · 8 Don’t, this, Our, us, There · 9 1e 2h 3c 4j 5f 6a 7d 8i 9b 10g · 10 F F T T T</li>
+        <li><b>Points (book):</b> Tasks 1–8 = 5 each · Task 9 = 20 (2 per gap) · Task 10 = 10 (2 per item) · Task 11 writing = 30 (you mark it) → <b>100</b>. The site counts Tasks 1–10 = 70.</li>
+        <li><b>Site is a little kinder than the key:</b> Task 5 also accepts full forms (<i>Where is your uncle from?</i>) and <i>cafe</i> without the accent; Task 7 item 2 also accepts <i>is</i> (“…but my dad is at home” is logical too). Take points off if you like.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- teacher switches (extras): shown to the teacher with Open / Hide buttons -->
+  <div class="card teacher-switch" data-extra="x-results" id="unlock-results">
+    <span lang="ru">🔓 Учитель открыл результаты и правильные ответы.</span>
+    <div class="teacher-only"><div class="to-label">👩‍🏫 Results and answers</div><b>Open for the student</b> = show him the results and the “Show correct answers” button now, even if not everything is filled in (his answers lock). <b>Hide again</b> takes them away.</div>
+  </div>
+  <div class="card teacher-switch" data-extra="x-time" id="unlock-time">
+    <span lang="ru">⏱ Учитель дал дополнительное время. Таймер отключён.</span>
+    <div class="teacher-only"><div class="to-label">👩‍🏫 Extra time</div><b>Open for the student</b> = no time limit (unlocks his answers if the time is already up). <b>Hide again</b> puts the limit back.</div>
+  </div>
+
+  <!-- saved test state (start time etc.) travels with the answers -->
+  <input type="hidden" id="test-start"><input type="hidden" id="test-end"><input type="hidden" id="test-finished"><input type="hidden" id="test-shown">
+
+  <!-- ══════════ THE TEST ══════════ -->
+  <div id="test">
+
+  <div class="timer-bar" id="timer-bar">
+    <span><span class="timer-clock" id="timer-clock">40:00</span> <small id="timer-note" lang="ru">осталось</small></span>
+    <small id="fill-count" lang="ru">Заполнено 0 из 56</small>
+  </div>
+
+  <!-- ───── Vocabulary ───── -->
+  <section class="step" id="t1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Vocabulary <span class="pts">5 points</span></div>
+        <h2>Complete the words</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-t1">
+      <h3>Complete the words. Write the whole word.</h3>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> <span class="gapword">Br_z__i_n</span> <span class="hint">(nationality)</span> <input class="blank" id="t1-1" data-answer="Brazilian" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:170px"></p>
+        <p class="gap-line"><span class="num">2.</span> <span class="gapword">ch__p</span> <span class="hint">(adjective)</span> <input class="blank" id="t1-2" data-answer="cheap" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:170px"></p>
+        <p class="gap-line"><span class="num">3.</span> <span class="gapword">d___hter</span> <span class="hint">(person in family)</span> <input class="blank" id="t1-3" data-answer="daughter" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:170px"></p>
+        <p class="gap-line"><span class="num">4.</span> <span class="gapword">fr__ge</span> <span class="hint">(object in house)</span> <input class="blank" id="t1-4" data-answer="fridge" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:170px"></p>
+        <p class="gap-line"><span class="num">5.</span> <span class="gapword">ch_m_st’s</span> <span class="hint">(shop)</span> <input class="blank" id="t1-5" data-answer="chemist’s|chemists" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:170px"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="t2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Vocabulary <span class="pts">5 points</span></div>
+        <h2>Complete the words</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-t2">
+      <h3>Complete the words. The first letter is there.</h3>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> This film isn’t sad! It’s <span class="first">f</span><input class="blank" id="t2-1" data-answer="funny|unny" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px">.</p>
+        <p class="gap-line"><span class="num">2.</span> Your mother’s brother is your <span class="first">u</span><input class="blank" id="t2-2" data-answer="uncle|ncle" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px">.</p>
+        <p class="gap-line"><span class="num">3.</span> There’s a good shower in the <span class="first">b</span><input class="blank" id="t2-3" data-answer="bathroom|athroom" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px">.</p>
+        <p class="gap-line"><span class="num">4.</span> You play football in the <span class="first">p</span><input class="blank" id="t2-4" data-answer="park|ark" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px">.</p>
+        <p class="gap-line"><span class="num">5.</span> I’m <span class="first">b</span><input class="blank" id="t2-5" data-answer="bored|ored" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px">. This film isn’t exciting.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="t3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Vocabulary <span class="pts">5 points</span></div>
+        <h2>Choose the correct words</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-t3">
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> My dad’s car is terrible! It’s old and very <span class="word-choice" id="t3-1" data-answer="slow"><button class="word-choice-btn" onclick="selectWord(this)">slow</button><button class="word-choice-btn" onclick="selectWord(this)">fast</button></span>.</p>
+        <p class="gap-line"><span class="num">2.</span> Can I have some water? I’m <span class="word-choice" id="t3-2" data-answer="thirsty"><button class="word-choice-btn" onclick="selectWord(this)">hungry</button><button class="word-choice-btn" onclick="selectWord(this)">thirsty</button></span>.</p>
+        <p class="gap-line"><span class="num">3.</span> Where is the post <span class="word-choice" id="t3-3" data-answer="office"><button class="word-choice-btn" onclick="selectWord(this)">station</button><button class="word-choice-btn" onclick="selectWord(this)">office</button></span>?</p>
+        <p class="gap-line"><span class="num">4.</span> There’s a good cooker in our <span class="word-choice" id="t3-4" data-answer="kitchen"><button class="word-choice-btn" onclick="selectWord(this)">kitchen</button><button class="word-choice-btn" onclick="selectWord(this)">living room</button></span>.</p>
+        <p class="gap-line"><span class="num">5.</span> Our house is <span class="word-choice" id="t3-5" data-answer="next"><button class="word-choice-btn" onclick="selectWord(this)">opposite</button><button class="word-choice-btn" onclick="selectWord(this)">next</button></span> to the bank.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="t4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Vocabulary <span class="pts">5 points</span></div>
+        <h2>Match the words to their opposites</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-t4">
+      <h3>Choose the opposite for each word.</h3>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> <span class="opp-word">big</span> ↔ <span class="word-choice" id="t4-1" data-answer="small"><button class="word-choice-btn" onclick="selectWord(this)">in front of</button><button class="word-choice-btn" onclick="selectWord(this)">awful</button><button class="word-choice-btn" onclick="selectWord(this)">small</button><button class="word-choice-btn" onclick="selectWord(this)">dirty</button><button class="word-choice-btn" onclick="selectWord(this)">hot</button></span></p>
+        <p class="gap-line"><span class="num">2.</span> <span class="opp-word">clean</span> ↔ <span class="word-choice" id="t4-2" data-answer="dirty"><button class="word-choice-btn" onclick="selectWord(this)">in front of</button><button class="word-choice-btn" onclick="selectWord(this)">awful</button><button class="word-choice-btn" onclick="selectWord(this)">small</button><button class="word-choice-btn" onclick="selectWord(this)">dirty</button><button class="word-choice-btn" onclick="selectWord(this)">hot</button></span></p>
+        <p class="gap-line"><span class="num">3.</span> <span class="opp-word">behind</span> ↔ <span class="word-choice" id="t4-3" data-answer="in front of"><button class="word-choice-btn" onclick="selectWord(this)">in front of</button><button class="word-choice-btn" onclick="selectWord(this)">awful</button><button class="word-choice-btn" onclick="selectWord(this)">small</button><button class="word-choice-btn" onclick="selectWord(this)">dirty</button><button class="word-choice-btn" onclick="selectWord(this)">hot</button></span></p>
+        <p class="gap-line"><span class="num">4.</span> <span class="opp-word">cold</span> ↔ <span class="word-choice" id="t4-4" data-answer="hot"><button class="word-choice-btn" onclick="selectWord(this)">in front of</button><button class="word-choice-btn" onclick="selectWord(this)">awful</button><button class="word-choice-btn" onclick="selectWord(this)">small</button><button class="word-choice-btn" onclick="selectWord(this)">dirty</button><button class="word-choice-btn" onclick="selectWord(this)">hot</button></span></p>
+        <p class="gap-line"><span class="num">5.</span> <span class="opp-word">great</span> ↔ <span class="word-choice" id="t4-5" data-answer="awful"><button class="word-choice-btn" onclick="selectWord(this)">in front of</button><button class="word-choice-btn" onclick="selectWord(this)">awful</button><button class="word-choice-btn" onclick="selectWord(this)">small</button><button class="word-choice-btn" onclick="selectWord(this)">dirty</button><button class="word-choice-btn" onclick="selectWord(this)">hot</button></span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── Grammar ───── -->
+  <section class="step" id="t5">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Grammar <span class="pts">5 points</span></div>
+        <h2>Put the words in order</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-t5">
+      <h3>Put the words in order to make sentences. Use contracted forms where possible.</h3>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> café / eat / not / that / in / do / ! <input class="blank wide" id="t5-1" data-answer="Don’t eat in that café!|Do not eat in that café!" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">2.</span> my / is / sister / this / . <input class="blank wide" id="t5-2" data-answer="This is my sister." autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">3.</span> your / from / is / where / uncle / ? <input class="blank wide" id="t5-3" data-answer="Where’s your uncle from?|Where is your uncle from?" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">4.</span> people / are / any / there / here / ? <input class="blank wide" id="t5-4" data-answer="Are there any people here?" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">5.</span> there / is / brother / Maria’s / over / . <input class="blank wide" id="t5-5" data-answer="Maria’s brother’s over there.|Maria’s brother is over there." autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="t6">
+    <div class="step-head">
+      <div class="step-num">6</div>
+      <div>
+        <div class="step-meta">Grammar <span class="pts">5 points</span></div>
+        <h2>Choose the correct words</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-t6">
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> James isn’t with <span class="word-choice" id="t6-1" data-answer="me"><button class="word-choice-btn" onclick="selectWord(this)">my</button><button class="word-choice-btn" onclick="selectWord(this)">me</button></span>.</p>
+        <p class="gap-line"><span class="num">2.</span> <span class="word-choice" id="t6-2" data-answer="Why"><button class="word-choice-btn" onclick="selectWord(this)">Why</button><button class="word-choice-btn" onclick="selectWord(this)">Where</button></span> are you here?</p>
+        <p class="gap-line"><span class="num">3.</span> Jack and Tom <span class="word-choice" id="t6-3" data-answer="aren’t"><button class="word-choice-btn" onclick="selectWord(this)">isn’t</button><button class="word-choice-btn" onclick="selectWord(this)">aren’t</button></span> in the garden.</p>
+        <p class="gap-line"><span class="num">4.</span> <span class="word-choice" id="t6-4" data-answer="Tom’s"><button class="word-choice-btn" onclick="selectWord(this)">Toms’</button><button class="word-choice-btn" onclick="selectWord(this)">Tom’s</button></span> phone is here.</p>
+        <p class="gap-line"><span class="num">5.</span> Are there <span class="word-choice" id="t6-5" data-answer="any"><button class="word-choice-btn" onclick="selectWord(this)">some</button><button class="word-choice-btn" onclick="selectWord(this)">any</button></span> interesting things in the museum?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="t7">
+    <div class="step-head">
+      <div class="step-num">7</div>
+      <div>
+        <div class="step-meta">Grammar <span class="pts">5 points</span></div>
+        <h2>The verb <i>be</i></h2>
+      </div>
+    </div>
+    <div class="card" id="ex-t7">
+      <h3>Complete the dialogues with the correct form of <i>be</i>.</h3>
+      <div class="dialogue">
+        <span class="dl-name">1 A</span><p class="dl-text ask"><input class="blank" id="t7-1" data-answer="Is" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> Beth at your house?</p>
+        <span class="dl-name two">B</span><p class="dl-text">No, she isn’t here.</p>
+        <span class="dl-name">2 A</span><p class="dl-text">Are your parents here?</p>
+        <span class="dl-name two">B</span><p class="dl-text ask">My mum and my sister are here, but my dad <input class="blank" id="t7-2" data-answer="isn’t|is not|is" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> at home.</p>
+        <span class="dl-name">3 A</span><p class="dl-text ask"><input class="blank" id="t7-3" data-answer="Are" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> Jack and Emily there?</p>
+        <span class="dl-name two">B</span><p class="dl-text">Yes, they’re here.</p>
+        <span class="dl-name">4 A</span><p class="dl-text">Where are Mike and Susie?</p>
+        <span class="dl-name two">B</span><p class="dl-text ask">I don’t know. They <input class="blank" id="t7-4" data-answer="aren’t|are not" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> here.</p>
+        <span class="dl-name">5 A</span><p class="dl-text">Are you British?</p>
+        <span class="dl-name two">B</span><p class="dl-text ask">No, I <input class="blank" id="t7-5" data-answer="’m|am|m" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> not.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="t8">
+    <div class="step-head">
+      <div class="step-num">8</div>
+      <div>
+        <div class="step-meta">Grammar <span class="pts">5 points</span></div>
+        <h2>Complete the sentences</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-t8">
+      <h3>Complete the sentences with the words in the list.</h3>
+      <div class="word-bank-ref"><span>us</span><span>there</span><span>our</span><span>don’t</span><span>this</span></div>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> <input class="blank" id="t8-1" data-answer="Don’t" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px"> go to the park now!</p>
+        <p class="gap-line"><span class="num">2.</span> Is <input class="blank" id="t8-2" data-answer="this" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px"> your pen here?</p>
+        <p class="gap-line"><span class="num">3.</span> <input class="blank" id="t8-3" data-answer="Our" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px"> house is in this street.</p>
+        <p class="gap-line"><span class="num">4.</span> Liam isn’t with <input class="blank" id="t8-4" data-answer="us" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px">.</p>
+        <p class="gap-line"><span class="num">5.</span> <input class="blank" id="t8-5" data-answer="There" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px">’s a glass of water on the table.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── Reading ───── -->
+  <section class="step" id="t9">
+    <div class="step-head">
+      <div class="step-num">9</div>
+      <div>
+        <div class="step-meta">Reading <span class="pts">20 points</span></div>
+        <h2>Complete Chloe’s email</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-t9">
+      <h3>Complete Chloe’s email. Write the words (a–j) in the correct place in the text (1–10). Use each word once.</h3>
+      <div class="word-bank-ref wb-letters"><span><b>a</b>great</span><span><b>b</b>we</span><span><b>c</b>there</span><span><b>d</b>expensive</span><span><b>e</b>my</span><span><b>f</b>some</span><span><b>g</b>hot</span><span><b>h</b>it</span><span><b>i</b>big</span><span><b>j</b>slow</span></div>
+      <div class="email">
+        <div class="email-bar">← → &nbsp; ✉ To: Jessica</div>
+        <div class="email-body">
+          <p>Hi Jessica,</p>
+          <p>I’m on holiday in Greece with <sup>1</sup><input class="blank" id="t9-1" data-answer="my|e" autocomplete="off" autocapitalize="off" spellcheck="false"> parents! We’re in the town of Hydra. <sup>2</sup><input class="blank" id="t9-2" data-answer="It|h" autocomplete="off" autocapitalize="off" spellcheck="false">’s next to the sea and it’s really beautiful. The people are very friendly, too!</p>
+          <p>Hydra’s different because <sup>3</sup><input class="blank" id="t9-3" data-answer="there|c" autocomplete="off" autocapitalize="off" spellcheck="false"> aren’t any cars or buses! You walk or take a bike. Things here are <sup>4</sup><input class="blank" id="t9-4" data-answer="slow|j" autocomplete="off" autocapitalize="off" spellcheck="false"> and there aren’t many fun activities for me. There are <sup>5</sup><input class="blank" id="t9-5" data-answer="some|f" autocomplete="off" autocapitalize="off" spellcheck="false"> museums but they aren’t very interesting. It isn’t a very exciting town but there are some excellent restaurants – Greek food is <sup>6</sup><input class="blank" id="t9-6" data-answer="great|a" autocomplete="off" autocapitalize="off" spellcheck="false"> and the restaurants aren’t <sup>7</sup><input class="blank" id="t9-7" data-answer="expensive|d" autocomplete="off" autocapitalize="off" spellcheck="false">. Lunch only costs 8 euros! There aren’t many British restaurants here, but it isn’t a problem!</p>
+          <p>Our hotel is in the centre. The rooms aren’t very <sup>8</sup><input class="blank" id="t9-8" data-answer="big|i" autocomplete="off" autocapitalize="off" spellcheck="false"> but they’re clean and the shower is awesome! <sup>9</sup><input class="blank" id="t9-9" data-answer="We|b" autocomplete="off" autocapitalize="off" spellcheck="false">’re opposite a small supermarket and buy water there every day because it’s <sup>10</sup><input class="blank" id="t9-10" data-answer="hot|g" autocomplete="off" autocapitalize="off" spellcheck="false"> and sunny here!</p>
+          <p>See you soon!<br>Chloe</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="t10">
+    <div class="step-head">
+      <div class="step-num">10</div>
+      <div>
+        <div class="step-meta">Reading <span class="pts">10 points</span></div>
+        <h2>True or false?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-t10">
+      <h3>Read the email again. Answer true (T) or false (F).</h3>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> Jessica is in Greece with her friends. <span class="word-choice" id="t10-1" data-answer="False"><button class="word-choice-btn" onclick="selectWord(this)">True</button><button class="word-choice-btn" onclick="selectWord(this)">False</button></span></p>
+        <p class="gap-line"><span class="num">2.</span> The buses in Hydra are very bad. <span class="word-choice" id="t10-2" data-answer="False"><button class="word-choice-btn" onclick="selectWord(this)">True</button><button class="word-choice-btn" onclick="selectWord(this)">False</button></span></p>
+        <p class="gap-line"><span class="num">3.</span> Hydra isn’t very interesting. <span class="word-choice" id="t10-3" data-answer="True"><button class="word-choice-btn" onclick="selectWord(this)">True</button><button class="word-choice-btn" onclick="selectWord(this)">False</button></span></p>
+        <p class="gap-line"><span class="num">4.</span> It’s cheap to eat in Hydra. <span class="word-choice" id="t10-4" data-answer="True"><button class="word-choice-btn" onclick="selectWord(this)">True</button><button class="word-choice-btn" onclick="selectWord(this)">False</button></span></p>
+        <p class="gap-line"><span class="num">5.</span> The supermarket is in front of the hotel. <span class="word-choice" id="t10-5" data-answer="True"><button class="word-choice-btn" onclick="selectWord(this)">True</button><button class="word-choice-btn" onclick="selectWord(this)">False</button></span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── Writing ───── -->
+  <section class="step" id="t11">
+    <div class="step-head">
+      <div class="step-num">11</div>
+      <div>
+        <div class="step-meta">Writing <span class="pts">30 points</span></div>
+        <h2>You and your family</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-t11">
+      <h3>Write about you and your family (35–50 words). Use the ideas below to help you:</h3>
+      <div class="word-bank-ref"><span>How old you are</span><span>Where you are from</span><span>Your family</span><span>Your house</span></div>
+      <textarea class="free-write" id="fw-writing" placeholder="Write here…" rows="7" spellcheck="false" autocomplete="off"></textarea>
+      <div class="char-count" id="word-count">0 words</div>
+      <div class="tip class-note" id="sample"><span class="tip-title">Sample answer</span>I’m from Segovia in Spain. I’m twelve years old. My family is small. My mother’s name is Rocio and my father’s name is Pablo. My sister is Elena. She’s eight years old. My house isn’t big. There’s a small living room, a kitchen, a bathroom and three bedrooms.</div>
+    </div>
+  </section>
+
+  <!-- ───── Finish ───── -->
+  <div class="card finish-card" id="finish-panel" lang="ru">
+    <p id="finish-text"></p>
+    <div class="btn-row" style="justify-content:center"><button class="btn-accent btn-big" id="finish-btn" type="button" hidden>Завершить тест ✓</button></div>
+  </div>
+
+  <!-- ───── Results (only after the test is finished, or opened by the teacher) ───── -->
+  <section class="step" id="results">
+    <div class="step-head">
+      <div class="step-num">★</div>
+      <div>
+        <div class="step-meta" lang="ru">Тест завершён</div>
+        <h2 lang="ru">Результаты</h2>
+      </div>
+    </div>
+    <div class="card" id="results-card">
+      <table class="res-table" id="res-table"></table>
+      <p class="hint" lang="ru" id="res-note"></p>
+      <div class="btn-row">
+        <button class="btn-primary" id="keys-btn" type="button" lang="ru">Показать правильные ответы</button>
+      </div>
+      <p class="hint" lang="ru" style="margin-top:14px">Теперь можно задать учителю свои вопросы. 🙋</p>
+    </div>
+  </section>
+
+  </div><!-- /#test -->
+
+  <!-- ══════════ Exit ticket (only after the results are open) ══════════ -->
+  <section class="step" id="exit">
+    <div class="ticket" id="ex-exit">
+      <div class="ticket-head"><b>🎟 Exit ticket</b><span>Lesson 14 · <span class="et-name">Timofey</span></span></div>
+      <div class="et-q">
+        <b>1. The test was…</b><small lang="ru">Тест был…</small>
+        <span class="word-choice" id="et-how"><button class="word-choice-btn" onclick="selectWord(this)">😎 easy</button><button class="word-choice-btn" onclick="selectWord(this)">🙂 OK</button><button class="word-choice-btn" onclick="selectWord(this)">😅 difficult</button></span>
+      </div>
+      <div class="et-q">
+        <b>2. My best part 💪</b><small lang="ru">Что получилось лучше всего</small>
+        <span class="word-choice" id="et-best"><button class="word-choice-btn" onclick="selectWord(this)">Vocabulary</button><button class="word-choice-btn" onclick="selectWord(this)">Grammar</button><button class="word-choice-btn" onclick="selectWord(this)">Reading</button><button class="word-choice-btn" onclick="selectWord(this)">Writing</button></span>
+      </div>
+      <div class="et-q">
+        <b>3. The most difficult part 🧗</b><small lang="ru">Что было труднее всего</small>
+        <span class="word-choice" id="et-hard"><button class="word-choice-btn" onclick="selectWord(this)">Vocabulary</button><button class="word-choice-btn" onclick="selectWord(this)">Grammar</button><button class="word-choice-btn" onclick="selectWord(this)">Reading</button><button class="word-choice-btn" onclick="selectWord(this)">Writing</button></span>
+      </div>
+      <div class="et-q">
+        <b>4. I want to practise more… 🎯</b><small lang="ru">Что я хочу ещё потренировать (можно по-русски)</small>
+        <textarea class="free-write" id="fw-exit-practise" rows="2" placeholder="Write here…"></textarea>
+      </div>
+      <div class="et-q">
+        <b>5. My question for the teacher 🙋</b><small lang="ru">Мой вопрос учителю — теперь можно спрашивать! (можно по-русски)</small>
+        <textarea class="free-write" id="fw-exit-question" rows="2" placeholder="Write here…"></textarea>
+      </div>
+      <div class="et-stamp">✓ DONE! Great work<span class="et-comma">, <span class="et-name"></span></span>! 🎉</div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 Exit ticket</div>Appears on his page together with the results. Questions 1–3 are one tap each; when all three are answered he gets the “DONE” stamp and confetti. 4–5 are free writing (Russian is fine) — question 5 is where his saved-up questions go. Compare his “How are you today?” answer from the warm-up with question 1.</div>
+    </div>
+  </section>
+</div>
+
+<script src="../assets/sync.js"></script>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/name.js"></script>
+<script>
+/* ============================================================
+   Lesson 14 — End-of-term test: timer, lock, results.
+   Change the time limit here (minutes):
+   ============================================================ */
+const TEST_MINUTES = 40;
+
+/* warm-up questions: emoji, text, right answer first (shown in the order of "show") */
+const WARMUP = [
+  ['🇯🇵', 'This country is…', 'Japan', ['Mexico', 'Japan', 'Turkey']],
+  ['🟢', 'This colour is…', 'green', ['green', 'blue', 'red']],
+  ['🧮', '7 + 5 = …', 'twelve', ['twenty', 'eleven', 'twelve']],
+  ['📅', 'Monday, …, Wednesday', 'Tuesday', ['Thursday', 'Tuesday', 'Sunday']],
+  ['✏️', 'It’s a…', 'pencil', ['pencil', 'ruler', 'desk']],
+  ['🎂', 'How old are you?', 'I’m twelve.', ['I’m from Russia.', 'I’m fine, thanks.', 'I’m twelve.']],
+  ['❄️', 'December, …, February', 'January', ['June', 'January', 'November']],
+  ['👋', 'Nice to meet you!', 'Nice to meet you, too!', ['Yes, it is.', 'Nice to meet you, too!', 'I’m a student.']]
+];
+document.getElementById('wu-grid').innerHTML = WARMUP.map(([emoji, text, right, show], i) =>
+  '<div class="wu-q"><div class="wu-emoji">' + emoji + '</div><div class="wu-text">' + text + '</div>' +
+  '<span class="word-choice" id="wu-' + (i + 1) + '" data-right="' + right + '">' +
+  show.map(o => '<button class="word-choice-btn" onclick="selectWord(this)">' + o + '</button>').join('') + '</span></div>').join('');
+
+(function () {
+  const LIMIT = TEST_MINUTES * 60000;
+  const WATCH = new URLSearchParams(location.search).has('watch');   // opened inside teacher.html
+  const $ = id => document.getElementById(id);
+  const body = document.body;
+  // Tasks 1–10: card id, title, points per item
+  const TASKS = [
+    ['ex-t1', '1 · Complete the words', 1], ['ex-t2', '2 · Complete the words', 1], ['ex-t3', '3 · Correct words', 1], ['ex-t4', '4 · Opposites', 1],
+    ['ex-t5', '5 · Words in order', 1], ['ex-t6', '6 · Correct words', 1], ['ex-t7', '7 · The verb be', 1], ['ex-t8', '8 · Words in the list', 1],
+    ['ex-t9', '9 · Chloe’s email', 2], ['ex-t10', '10 · True or false', 2]
+  ];
+  const ITEMS = '.blank[data-answer], .word-choice[data-answer]';
+  const items = box => [...box.querySelectorAll(ITEMS)];
+  const writing = $('fw-writing');
+  document.querySelectorAll('.mins').forEach(e => e.textContent = TEST_MINUTES);
+
+  /* ---- comparing answers: case, ’ / ', é / e, final punctuation and spaces don't matter ---- */
+  const CYR = { 'а': 'a', 'с': 'c', 'е': 'e' };   // Russian keyboard look-alikes, for one-letter answers (Task 9)
+  function norm(s) {
+    const t = String(s).toLowerCase().replace(/[’‘`ʼ]/g, "'").replace(/é/g, 'e').replace(/[.!?,]/g, ' ').replace(/\s+/g, ' ').trim();
+    return t.length === 1 && CYR[t] ? CYR[t] : t;
+  }
+  const valueOf = el => el.classList.contains('word-choice')
+    ? ((el.querySelector('.word-choice-btn.selected') || {}).textContent || '').trim()
+    : el.value.trim();
+  const isRight = el => { const v = norm(valueOf(el)); return !!v && el.dataset.answer.split('|').map(norm).includes(v); };
+
+  /* ---- right / wrong colours and the correct answers ---- */
+  function mark(on) {
+    $('test').querySelectorAll(ITEMS).forEach(el => {
+      const target = el.classList.contains('word-choice') ? el.querySelector('.word-choice-btn.selected') : el;
+      el.querySelectorAll('.word-choice-btn').forEach(b => b.classList.remove('correct', 'wrong'));
+      el.classList.remove('correct', 'wrong');
+      if (on && target && valueOf(el)) target.classList.add(isRight(el) ? 'correct' : 'wrong');
+    });
+  }
+  function showKeys(on) {
+    document.querySelectorAll('.ans-key').forEach(k => k.remove());
+    document.querySelectorAll('.key-right').forEach(b => b.classList.remove('key-right'));
+    body.classList.toggle('keys', on);
+    if (!on) return;
+    $('test').querySelectorAll(ITEMS).forEach(el => {
+      if (isRight(el)) return;
+      const answer = el.dataset.answer.split('|')[0];
+      if (el.classList.contains('word-choice')) {
+        el.querySelectorAll('.word-choice-btn').forEach(b => { if (norm(b.textContent) === norm(answer)) b.classList.add('key-right'); });
+      } else {
+        const k = document.createElement('span');
+        k.className = 'ans-key'; k.textContent = '✓ ' + answer;
+        el.insertAdjacentElement('afterend', k);
+      }
+    });
+  }
+  // "Show right / wrong" in the teacher's view uses the page's checkAll()
+  window.checkAll = () => mark(true);
+
+  function results() {
+    let sum = 0, max = 0, rows = '';
+    TASKS.forEach(([id, title, pts]) => {
+      const list = items($(id));
+      const got = list.filter(isRight).length * pts, of = list.length * pts;
+      sum += got; max += of;
+      rows += '<tr' + (got === of ? ' class="full"' : '') + '><td>' + title + '</td><td>' + got + ' / ' + of + '</td></tr>';
+    });
+    rows += '<tr><td>11 · Writing</td><td>… / 30</td></tr>';
+    rows += '<tr class="sum"><td>Tasks 1–10</td><td>' + sum + ' / ' + max + '</td></tr>';
+    $('res-table').innerHTML = rows;
+    const start = +data['test-start'] || 0, end = +data['test-end'] || 0;
+    $('res-note').textContent = 'Задание 11 (письмо, 30 баллов) проверит учитель.' +
+      (start && end > start ? ' Время: ' + Math.max(1, Math.round((end - start) / 60000)) + ' мин.' : '');
+  }
+
+  const fmt = ms => { const s = Math.max(0, Math.ceil(ms / 1000)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+  let shownResults = false, shownKeys = false, warned = false;
+
+  function render() {
+    const start = +data['test-start'] || 0;
+    const opened = $('unlock-results').classList.contains('unlocked');     // the teacher opened the results
+    const noLimit = $('unlock-time').classList.contains('unlocked');       // the teacher gave extra time
+    let finished = !!data['test-finished'];
+    const left = start ? start + LIMIT - Date.now() : LIMIT;
+
+    // how much is filled in
+    const all = [...$('test').querySelectorAll(ITEMS)];
+    const empty = all.filter(el => !valueOf(el));
+    const words = writing.value.trim() ? writing.value.trim().split(/\s+/).length : 0;
+    const total = all.length + 1, filled = all.length - empty.length + (words ? 1 : 0);
+    const complete = filled === total;
+    $('fill-count').textContent = 'Заполнено ' + filled + ' из ' + total;
+    $('word-count').textContent = words + (words === 1 ? ' word' : ' words') + ' (35–50)';
+
+    const timeUp = !!start && !finished && !noLimit && left <= 0;
+    if (timeUp && complete && !WATCH) { finish(); finished = true; }       // everything is filled in: straight to the results
+    const showResults = finished || opened;
+    const locked = showResults || timeUp;
+
+    body.classList.toggle('pre', !start);
+    body.classList.toggle('locked', locked && !WATCH);
+    body.classList.toggle('results', showResults);
+    if (!WATCH) {
+      $('test').querySelectorAll('.blank, .free-write').forEach(el => { el.readOnly = locked; });
+      $('test').querySelectorAll('.word-choice-btn').forEach(b => { b.disabled = locked; });
+    }
+
+    // timer
+    const bar = $('timer-bar');
+    bar.classList.toggle('done', showResults);
+    bar.classList.toggle('over', !showResults && timeUp);
+    bar.classList.toggle('low', !showResults && !timeUp && !noLimit && !!start && left <= 5 * 60000);
+    if (showResults) { $('timer-clock').textContent = '✓'; $('timer-note').textContent = 'тест завершён'; }
+    else if (noLimit) { $('timer-clock').textContent = '∞'; $('timer-note').textContent = 'дополнительное время'; }
+    else if (timeUp) { $('timer-clock').textContent = '0:00'; $('timer-note').textContent = 'время вышло'; }
+    else { $('timer-clock').textContent = fmt(left); $('timer-note').textContent = start ? 'осталось' : 'таймер ещё не запущен'; }
+    if (!WATCH && start && !locked && !noLimit && left <= 5 * 60000 && !warned) { warned = true; toast('⏱ Осталось 5 минут'); }
+
+    // finish panel
+    const btn = $('finish-btn');
+    btn.hidden = !(complete && !locked) || WATCH;
+    if (timeUp) $('finish-text').innerHTML = '<b>⏰ Время вышло.</b> Ответы больше нельзя менять. Скажи учителю, что ты закончил.';
+    else if (complete) $('finish-text').innerHTML = '<b>Всё заполнено!</b> Проверь свои ответы ещё раз. После кнопки «Завершить тест» менять ответы будет нельзя.';
+    else {
+      const open = TASKS.filter(([id]) => items($(id)).some(el => !valueOf(el))).map(([id]) => id.replace('ex-t', ''));
+      if (!words) open.push('11');
+      $('finish-text').innerHTML = 'Заполнено <b>' + filled + ' из ' + total + '</b>. Ещё не заполнены задания: <b>' + open.join(', ') + '</b>.<br>Кнопка «Завершить тест» появится, когда всё будет заполнено.';
+    }
+
+    // results: colours on his page only when the results are open; in the teacher's view the score is always live
+    if (showResults || WATCH) results();
+    const keys = (showResults || WATCH) && !!data['test-shown'];
+    if (!WATCH && showResults !== shownResults) mark(showResults);
+    if (keys !== shownKeys) showKeys(keys);
+    shownResults = showResults; shownKeys = keys;
+    $('keys-btn').textContent = keys ? 'Скрыть правильные ответы' : 'Показать правильные ответы';
+    extras();
+  }
+
+  /* ---- warm-up and exit ticket ---- */
+  const MOOD = {
+    'Great': '😎 Super! Let’s go!',
+    'OK': '🙂 Good! A little warm-up and you are ready.',
+    'Sleepy': '😴 Stand up, stretch your arms, jump three times! Now you are awake.',
+    'Nervous': '😬 Breathe in… and out… three times. You know a lot. You can do it! 💪'
+  };
+  const picked = id => ((($(id) || {}).querySelector && $(id).querySelector('.word-choice-btn.selected')) || {}).textContent || '';
+  let wuDone = null, etDone = null;
+  function confetti() {
+    const colours = ['#FFC53D', '#FF7A45', '#3352E0', '#12A374', '#7B5CE6', '#E03E52'];
+    for (let i = 0; i < 50; i++) {
+      const c = document.createElement('i');
+      c.className = 'confetti-bit';
+      c.style.left = Math.random() * 100 + 'vw';
+      c.style.background = colours[i % colours.length];
+      c.style.animationDelay = Math.random() * 0.5 + 's';
+      c.style.setProperty('--x', (Math.random() * 200 - 100) + 'px');
+      c.style.setProperty('--r', (Math.random() * 720 - 360) + 'deg');
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), 2700);
+    }
+  }
+  function extras() {
+    // mood
+    const mood = picked('wu-mood').replace(/^\S+\s/, '').trim();
+    $('mood-msg').textContent = MOOD[mood] || '';
+    // emoji quiz: a right tap = a star, a wrong tap shakes and he tries again
+    let stars = 0;
+    document.querySelectorAll('#wu-grid .word-choice').forEach(q => {
+      const sel = q.querySelector('.word-choice-btn.selected');
+      const ok = !!sel && sel.textContent.trim() === q.dataset.right;
+      q.querySelectorAll('.word-choice-btn').forEach(b => { b.classList.toggle('correct', ok && b === sel); b.classList.toggle('wrong', !ok && b === sel); });
+      q.closest('.wu-q').classList.toggle('done', ok);
+      if (ok) stars++;
+    });
+    $('wu-stars').textContent = '⭐ ' + stars + ' / ' + WARMUP.length;
+    const all = stars === WARMUP.length;
+    $('warmup').classList.toggle('all-done', all);
+    if (all && wuDone === false && !WATCH) { confetti(); setTimeout(() => $('intro').scrollIntoView({ behavior: 'smooth', block: 'center' }), 1400); }
+    wuDone = all;
+    // exit ticket: stamp when the three taps are done
+    const name = studentName();
+    document.querySelectorAll('.et-name').forEach(e => e.textContent = name || 'Timofey');
+    document.querySelectorAll('.et-comma').forEach(e => e.style.display = name ? '' : 'none');
+    const done = ['et-how', 'et-best', 'et-hard'].every(picked);
+    $('exit').classList.toggle('all-done', done);
+    if (done && etDone === false && !WATCH) confetti();
+    etDone = done;
+  }
+
+  function finish() {
+    if (data['test-finished']) return;
+    save({ 'test-finished': '1', 'test-end': String(Date.now()) });
+  }
+
+  $('start-btn').addEventListener('click', () => {
+    if (WATCH || data['test-start']) return;
+    save({ 'test-start': String(Date.now()) });
+    render();
+    window.scrollTo(0, 0);
+  });
+  $('finish-btn').addEventListener('click', () => { finish(); render(); $('results').scrollIntoView({ behavior: 'smooth' }); });
+  $('keys-btn').addEventListener('click', () => { save({ 'test-shown': data['test-shown'] ? '' : '1' }); render(); });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(render, 0);
+    document.addEventListener('input', () => setTimeout(render, 0));
+    document.addEventListener('click', () => setTimeout(render, 0));
+    setInterval(render, 500);
+  });
+})();
+</script>
+</body>
+</html>
