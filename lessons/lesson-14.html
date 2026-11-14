@@ -516,7 +516,7 @@ body.results #exit, html.watching #exit{display:block}
     </div>
   </section>
 
-  <!-- ══════════ EXTRAS: Student’s Book pp. 4–5 (Starter · Welcome! + Language in action) — hidden until opened in teacher.html; not part of the test or its score ══════════ -->
+  <!-- ══════════ EXTRAS: Student’s Book pp. 4 and 6 (Starter · Welcome! + Language in action) — hidden until opened in teacher.html; not part of the test or its score ══════════ -->
   <section class="step" id="x4a" data-extra="x-sb4-months">
     <div class="step-head">
       <div class="step-num plus">+</div>
@@ -794,13 +794,29 @@ body.results #exit, html.watching #exit{display:block}
     </div>
   </section>
 
-  <!-- ───── SB p. 5 · Language in action ───── -->
+  <!-- ───── SB p. 6 · Language in action (audio S.07 = Own it! 1 Unit 0 Track 7; video S.1 = Unit 0 Page 6 Language in Action) ───── -->
   <section class="step" id="x5a" data-extra="x-sb5-pronouns">
     <div class="step-head">
       <div class="step-num plus">+</div>
       <div>
-        <div class="step-meta">Student’s Book p. 5 · Language in action <span class="extra-badge">extra</span></div>
+        <div class="step-meta">Student’s Book p. 6 · Language in action <span class="extra-badge">extra</span></div>
         <h2>Subject pronouns and possessive adjectives</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-x5-v">
+      <div class="exercise-label">Video S.1</div>
+      <h3>Watch the video. Where is Isabella from? What is Martín’s dream?</h3>
+      <div class="video-wrap">
+        <video controls preload="metadata" playsinline>
+          <source src="video/starter-language-in-action.mp4" type="video/mp4">
+          <track kind="subtitles" src="video/starter-language-in-action.vtt" srclang="en" label="English">
+        </video>
+      </div>
+      <p class="gap-line"><span class="num">1.</span> Isabella is from <input class="blank" id="x5-v-1" data-answer="the united states|the us|the usa|the united states of america|united states|usa|the u.s.|america" placeholder="country" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:200px">.</p>
+      <p class="gap-line"><span class="num">2.</span> Martín’s dream is to <input class="blank" id="x5-v-2" data-answer="play guitar|play the guitar" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:200px">.</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-x5-v')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-x5-v')">Try again</button>
       </div>
     </div>
     <div class="card" id="ex-x5-1">
@@ -828,7 +844,7 @@ body.results #exit, html.watching #exit{display:block}
         <button class="btn-primary" onclick="checkWords('ex-x5-1')">Check ✓</button>
         <button class="btn-ghost" onclick="resetWords('ex-x5-1')">Try again</button>
       </div>
-      <div class="teacher-only"><div class="to-label">👩‍🏫 SB p. 5 · Ex 1</div>Key: 2 We, We · 3 Her, She · 4 Their. Video S.1 (Where is Isabella from? What is Martín’s dream?) isn’t in the project files, so it’s left out.</div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 SB p. 5 · Ex 1</div>Key: 2 We, We · 3 Her, She · 4 Their. Video S.1: Isabella is from the United States (American); Martín’s dream is to play guitar. Subtitles: CC button.</div>
     </div>
   </section>
 
@@ -836,7 +852,7 @@ body.results #exit, html.watching #exit{display:block}
     <div class="step-head">
       <div class="step-num plus">+</div>
       <div>
-        <div class="step-meta">Student’s Book p. 5 · Language in action <span class="extra-badge">extra</span></div>
+        <div class="step-meta">Student’s Book p. 6 · Language in action <span class="extra-badge">extra</span></div>
         <h2>Verb <i>be</i></h2>
       </div>
     </div>
@@ -853,7 +869,7 @@ body.results #exit, html.watching #exit{display:block}
       <div class="example-row"><span class="ex-tag">Example</span><span>1. I<b>’m</b> from Granada.</span></div>
       <div class="sent-list">
         <p class="gap-line"><span class="num">2.</span> Camila Cabello <input class="blank" id="x5-2-2" data-answer="is|’s|'s" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> brilliant.</p>
-        <p class="gap-line"><span class="num">3.</span> Miranda and Suki <input class="blank" id="x5-2-3" data-answer="are|aren’t|aren't|are not|’re|'re" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> Spanish.</p>
+        <p class="gap-line"><span class="num">3.</span> Miranda and Suki <input class="blank" id="x5-2-3" data-answer="aren’t|aren't|are not" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> Spanish.</p>
         <p class="gap-line"><span class="num">4.</span> <input class="blank" id="x5-2-4" data-answer="are" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> you a good singer?</p>
         <p class="gap-line"><span class="num">5.</span> <input class="blank" id="x5-2-5a" data-answer="is" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> Diana’s bedroom red? No, it <input class="blank" id="x5-2-5b" data-answer="isn’t|isn't|is not" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px">.</p>
       </div>
@@ -861,12 +877,12 @@ body.results #exit, html.watching #exit{display:block}
         <button class="btn-primary" onclick="checkBlanks('ex-x5-2')">Check ✓</button>
         <button class="btn-ghost" onclick="resetBlanks('ex-x5-2')">Try again</button>
       </div>
-      <div class="teacher-only"><div class="to-label">👩‍🏫 SB p. 5 · Ex 2</div>Key: 2 is · 3 are (or aren’t, depending on the profiles; both accepted) · 4 Are · 5 Is, isn’t.</div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 SB p. 5 · Ex 2</div>Key: 2 is · 3 aren’t (profile: “They aren’t Spanish. Miranda’s Mexican and Suki’s Turkish.”) · 4 Are · 5 Is, isn’t.</div>
     </div>
 
     <div class="card" id="ex-x5-3">
       <div class="exercise-label">Exercise 3</div>
-      <h3>Complete the profile with the correct form of <i>be</i>. Guess the person.</h3>
+      <h3>Complete the profile with the correct form of <i>be</i>. Guess the person. Listen and check.</h3>
       <div class="email">
         <div class="email-bar">🇺🇸 🎤 Who is she?</div>
         <div class="email-body">
@@ -877,12 +893,18 @@ body.results #exit, html.watching #exit{display:block}
           <p><sup>5</sup><input class="blank" id="x5-3-5" data-answer="is" autocomplete="off" autocapitalize="off" spellcheck="false"> she your favourite singer?</p>
         </div>
       </div>
+      <div class="audio-wrap" style="margin-top:14px">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-14-s07.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
       <p class="gap-line" style="margin-top:14px"><b>Who is she?</b> <input class="blank" id="x5-3-who" data-answer="taylor swift|taylor|swift" placeholder="name" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:180px"></p>
       <div class="btn-row">
         <button class="btn-primary" onclick="checkBlanks('ex-x5-3')">Check ✓</button>
         <button class="btn-ghost" onclick="resetBlanks('ex-x5-3')">Try again</button>
       </div>
-      <div class="teacher-only"><div class="to-label">👩‍🏫 SB p. 5 · Ex 3</div>Key: 2 isn’t · 3 ’s / is · 4 are · 5 Is → <b>Taylor Swift</b>. Track S.07 isn’t in the project files, so there’s no audio. Read the profile aloud or play a bit of <i>Shake it Off</i> to check.</div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 SB p. 5 · Ex 3</div>Key: 2 isn’t · 3 ’s / is · 4 are · 5 Is → <b>Taylor Swift</b>. Audio: track S.07.</div>
     </div>
 
     <div class="card" id="ex-x5-4">
@@ -906,7 +928,7 @@ body.results #exit, html.watching #exit{display:block}
     <div class="step-head">
       <div class="step-num plus">+</div>
       <div>
-        <div class="step-meta">Student’s Book p. 5 · Language in action <span class="extra-badge">extra</span></div>
+        <div class="step-meta">Student’s Book p. 6 · Language in action <span class="extra-badge">extra</span></div>
         <h2>Question words</h2>
       </div>
     </div>
