@@ -21,6 +21,8 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
 .email-body p{margin:0 0 6px}
 .email-body sup{font-weight:900;color:var(--blue);margin-right:2px}
 .email-body .blank{width:130px}
+.dg-gap{font-size:22px;font-weight:800;letter-spacing:.02em;display:inline-flex;align-items:center;gap:2px}
+.dg-gap .blank{width:64px;min-width:64px;text-align:center;font-weight:800}
 </style>
 </head>
 <body>
@@ -31,10 +33,11 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     <div class="hero-grid">
       <div>
         <h1 class="name-slot" data-with="Lesson 15: Welcome back, {name}!" data-without="Lesson 15: Welcome back!">Lesson 15: Welcome back!</h1>
-        <p>Months, numbers, dates, colours, pronouns, the verb <i>be</i> and question words.</p>
+        <p>Months, numbers, dates, colours, pronouns, the verb <i>be</i> and question words, and the letter teams <b>sh, ch, ph, ck, th</b>.</p>
         <div class="hero-badges">
           <span class="badge">Lesson 15</span>
           <span class="badge">Starter review</span>
+          <span class="badge">Reading: sh · ch · ph · ck · th</span>
         </div>
       </div>
     </div>
@@ -44,6 +47,751 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
 <!-- Sections from Own it! 1 Student’s Book pp. 4 and 6 (moved here from Lesson 14). Each one is a
      data-extra: hidden from Timofey until opened in teacher.html (see GUIDE.md "Extras the teacher opens").
      Add the rest of the lesson below them. -->
+<nav class="parts">
+  <div class="wrap">
+    <button class="part-tab" data-part="part-sh" onclick="showPart('part-sh')">sh · sheep</button>
+    <button class="part-tab" data-part="part-ch" onclick="showPart('part-ch')">ch · chips</button>
+    <button class="part-tab" data-part="part-ph" onclick="showPart('part-ph')">ph · photo</button>
+    <button class="part-tab" data-part="part-ck" onclick="showPart('part-ck')">ck · duck</button>
+    <button class="part-tab" data-part="part-th1" onclick="showPart('part-th1')">th · thumb</button>
+    <button class="part-tab" data-part="part-th2" onclick="showPart('part-th2')">th · father</button>
+    <button class="part-tab" data-part="part-mix" onclick="showPart('part-mix')">All together</button>
+    <button class="part-tab" data-part="part-words" onclick="showPart('part-words')">Months, numbers &amp; colours</button>
+    <button class="part-tab" data-part="part-grammar" onclick="showPart('part-grammar')">Grammar: be &amp; pronouns</button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════
+     READ IT RIGHT: digraphs, one tab each: sh → ch → ph → ck → th /θ/ → th /ð/ → all together
+     Order and key words from the teacher's presentation "Диграфы часть 1" (made for a younger
+     pupil), adapted for a 12-year-old: German traps, minimal pairs, spelling rules, tongue twisters.
+     Clips: Kokoro af_bella (lessons/audio/words); sentences and twisters at a slower speed.
+══════════════════════════════════════════════════════════ -->
+<div class="lesson-part" id="part-sh">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#dg1a">1 · sh</a>
+    <a href="#dg1b">2 · s or sh?</a>
+    <a href="#dg1c">3 · Sentences</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="teacher-only">
+    <div class="to-label">👩‍🏫 Teacher only · Read it right: digraphs</div>
+    Built on your presentation <i>«Диграфы часть 1»</i>: same order (<b>sh → ch → ph → ck → th</b> as in <i>thumb</i> <b>→ th</b> as in <i>father</i>) and the same key words and sentences on each step, with the letter tiles “s + h → sh” from the slides.
+    <ul>
+      <li><b>Adapted for a 12-year-old:</b> no cartoon videos or picture cards; instead German traps (<i>sch</i> vs <i>sh</i>, <i>ich/ach</i> vs <i>ch</i>, <i>Foto</i> vs <i>photo</i>), minimal pairs, a spelling rule for <b>ck</b>, and tongue twisters. A few slide sentences are tidied (<i>The dolphin takes a photo</i>) or swapped for present-tense ones.</li>
+      <li><b>One tab per sound (≈5 min each):</b> meet the sound → one short exercise → read the sentences aloud (the sentence clips are slowed down).</li>
+      <li><b>th:</b> use a mirror or the camera; the tongue tip must be visible. Hand on the throat for quiet /θ/ vs buzzing /ð/. Link to today’s dates: <i>fourth, fifth, thirteenth, month, Thursday, birthday</i>.</li>
+      <li><b>Short of time?</b> The last tab, <i>All together</i>, works as homework.</li>
+      <li><b>Your Wordwall games</b> for this presentation:
+        <a href="https://wordwall.net/ru/resource/35007144" target="_blank" rel="noopener">1</a> ·
+        <a href="https://wordwall.net/ru/resource/35006988" target="_blank" rel="noopener">2</a> ·
+        <a href="https://wordwall.net/ru/resource/35006964" target="_blank" rel="noopener">3</a> ·
+        <a href="https://wordwall.net/ru/resource/35006598" target="_blank" rel="noopener">4</a></li>
+    </ul>
+  </div>
+
+  <section class="step" id="dg1a">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Meet the sound</div>
+        <h2>sh</h2>
+      </div>
+    </div>
+    <div class="card">
+      <h3>A <b>digraph</b> is a team of <b>two letters</b> that make <b>one sound</b>.</h3>
+      <p>Don’t read the letters one by one: <b>s</b> + <b>h</b> is not “s-h”. Together they are one new sound. Today: <span class="key">sh</span> → <span class="key">ch</span> → <span class="key">ph</span> → <span class="key">ck</span> → <span class="key">th</span>.</p>
+    </div>
+    <div class="card">
+      <div class="sound-card">
+        <div class="sound-head">
+          <div class="sound-letter">sh</div>
+          <div><div class="ipa">/ʃ/</div><div class="sound-name">as in <b>sheep</b></div></div>
+        </div>
+        <div class="sound-body">
+          <div class="blend-list"><div class="blend"><span class="tile">s</span><span class="op">+</span><span class="tile">h</span><span class="op">→</span><span class="tile v">sh</span><span class="op">=</span><span class="ipa">/ʃ/</span></div></div>
+          <h4>How to say it</h4>
+          <p>Round your lips and push the air out: “shhh!” (Be quiet!) It is the German <b>sch</b> in <i>Schiff, Schuh, Fisch</i>.</p>
+          <h4>Key words</h4>
+          <div class="word-row"><button class="say" data-say="sheep">sheep</button> <button class="say" data-say="shark">shark</button></div>
+          <h4>More words: listen and repeat</h4>
+          <div class="word-row"><button class="say" data-say="shrimp">shrimp</button> <button class="say" data-say="shop">shop</button> <button class="say" data-say="ship">ship</button> <button class="say" data-say="shelf">shelf</button> <button class="say" data-say="shell">shell</button> <button class="say" data-say="shoes">shoes</button> <button class="say" data-say="T-shirt">T-shirt</button> <button class="say" data-say="fish">fish</button> <button class="say" data-say="English">English</button> <button class="say" data-say="finish">finish</button> <button class="say" data-say="she">she</button> <button class="say" data-say="short">short</button></div>
+          <div class="trap"><span class="trap-title">German trap: no “c”</span>The sound is the same as German <b>sch</b>, but English writes it with two letters only: <i>Schiff</i> → <button class="say" data-say="ship">ship</button>, <i>Schuh</i> → <button class="say" data-say="shoe">shoe</button>, <i>Fisch</i> → <button class="say" data-say="fish">fish</button>. Never “schip”!</div>
+          <div class="trap"><span class="trap-title">Don’t mix s and sh</span><div class="pairs" style="margin-top:8px">
+        <div class="pair"><button class="say" data-say="sea">sea</button><span class="vs">or</span><button class="say" data-say="she">she</button></div>
+        <div class="pair"><button class="say" data-say="sip">sip</button><span class="vs">or</span><button class="say" data-say="ship">ship</button></div>
+        <div class="pair"><button class="say" data-say="sell">sell</button><span class="vs">or</span><button class="say" data-say="shell">shell</button></div>
+        <div class="pair"><button class="say" data-say="sort">sort</button><span class="vs">or</span><button class="say" data-say="short">short</button></div>
+        <div class="pair"><button class="say" data-say="sock">sock</button><span class="vs">or</span><button class="say" data-say="shock">shock</button></div>
+        <div class="pair"><button class="say" data-say="so">so</button><span class="vs">or</span><button class="say" data-say="show">show</button></div>
+      </div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="dg1b">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Hear the difference</div>
+        <h2>s or sh?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-dg-sh">
+      <div class="exercise-label">Listen and choose</div>
+      <h3>Press ▶ and choose the word you hear: <b>s</b> or <b>sh</b>?</h3>
+      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="ship"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="dg-sh1" value="a"><span class="mc-bullet">A</span> sip</label><label class="mc-option"><input type="radio" name="dg-sh1" value="b"><span class="mc-bullet">B</span> ship</label></div></div>
+      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="sell"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="dg-sh2" value="a"><span class="mc-bullet">A</span> sell</label><label class="mc-option"><input type="radio" name="dg-sh2" value="b"><span class="mc-bullet">B</span> shell</label></div></div>
+      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="she"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="dg-sh3" value="a"><span class="mc-bullet">A</span> sea</label><label class="mc-option"><input type="radio" name="dg-sh3" value="b"><span class="mc-bullet">B</span> she</label></div></div>
+      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="short"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="dg-sh4" value="a"><span class="mc-bullet">A</span> sort</label><label class="mc-option"><input type="radio" name="dg-sh4" value="b"><span class="mc-bullet">B</span> short</label></div></div>
+      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="sock"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="dg-sh5" value="a"><span class="mc-bullet">A</span> sock</label><label class="mc-option"><input type="radio" name="dg-sh5" value="b"><span class="mc-bullet">B</span> shock</label></div></div>
+      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="show"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="dg-sh6" value="a"><span class="mc-bullet">A</span> so</label><label class="mc-option"><input type="radio" name="dg-sh6" value="b"><span class="mc-bullet">B</span> show</label></div></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-dg-sh')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-dg-sh')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="dg1c">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Read aloud</div>
+        <h2>Sentences</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Read aloud</div>
+      <h3>Read each sentence <b>aloud</b> first. Then check with 🔊.</h3>
+      <div class="word-row" style="flex-direction:column;align-items:flex-start">
+        <button class="say sentence" data-say="She is in the shoe shop.">She is in the shoe shop.</button>
+        <button class="say sentence" data-say="The shark is under the ship.">The shark is under the ship.</button>
+        <button class="say sentence" data-say="My English T-shirt is on the shelf.">My English T-shirt is on the shelf.</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-ch');window.scrollTo(0,0)">Next: ch →</button>
+  </div>
+
+</div>
+</div>
+
+<div class="lesson-part" id="part-ch">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#dg2a">1 · ch</a>
+    <a href="#dg2b">2 · sh or ch?</a>
+    <a href="#dg2c">3 · Sentences</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="dg2a">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Meet the sound</div>
+        <h2>ch</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="sound-card">
+        <div class="sound-head">
+          <div class="sound-letter">ch</div>
+          <div><div class="ipa">/tʃ/</div><div class="sound-name">as in <b>chips</b></div></div>
+        </div>
+        <div class="sound-body">
+          <div class="blend-list"><div class="blend"><span class="tile">c</span><span class="op">+</span><span class="tile">h</span><span class="op">→</span><span class="tile v">ch</span><span class="op">=</span><span class="ipa">/tʃ/</span></div></div>
+          <h4>How to say it</h4>
+          <p>Start with a quick <b>t</b> and go straight into <b>sh</b>: t + sh → “tsh”. It is the <b>tsch</b> in German <i>Deutsch, tschüss, Matsch</i>.</p>
+          <h4>Key words</h4>
+          <div class="word-row"><button class="say" data-say="chimp">chimp</button> <button class="say" data-say="chips">chips</button></div>
+          <h4>More words: listen and repeat</h4>
+          <div class="word-row"><button class="say" data-say="champion">champion</button> <button class="say" data-say="cheese">cheese</button> <button class="say" data-say="cherry">cherry</button> <button class="say" data-say="chair">chair</button> <button class="say" data-say="chess">chess</button> <button class="say" data-say="lunch">lunch</button> <button class="say" data-say="much">much</button> <button class="say" data-say="teacher">teacher</button> <button class="say" data-say="children">children</button> <button class="say" data-say="chicken">chicken</button> <button class="say" data-say="chat">chat</button> <button class="say" data-say="beach">beach</button></div>
+          <div class="trap"><span class="trap-title">German trap: not “ich”, not “ach”</span>English <b>ch</b> is never the soft sound in <i>ich</i> or the hard sound in <i>Buch</i>. Say “tsch”: <button class="say" data-say="much">much</button>, <button class="say" data-say="rich">rich</button>, <button class="say" data-say="lunch">lunch</button>.</div>
+          <div class="tip"><span class="tip-title">tch = the same sound</span>After a short vowel you often see three letters: <button class="say" data-say="watch">watch</button> <button class="say" data-say="match">match</button> <button class="say" data-say="kitchen">kitchen</button> <button class="say" data-say="witch">witch</button>. The <b>t</b> is already inside the sound.</div>
+          <div class="tip"><span class="tip-title">Sometimes ch = /k/</span>In a few words <b>ch</b> sounds like <b>k</b>: <button class="say" data-say="school">school</button> <button class="say" data-say="Christmas">Christmas</button> <button class="say" data-say="chemistry">chemistry</button>. Learn them as they come.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="dg2b">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Hear the difference</div>
+        <h2>sh or ch?</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">sh or ch?</div>
+      <h3>Only one small <b>t</b> makes the difference. Listen and repeat the pairs.</h3>
+      <div class="pairs">
+        <div class="pair"><button class="say" data-say="ship">ship</button><span class="vs">or</span><button class="say" data-say="chip">chip</button></div>
+        <div class="pair"><button class="say" data-say="sheep">sheep</button><span class="vs">or</span><button class="say" data-say="cheap">cheap</button></div>
+        <div class="pair"><button class="say" data-say="shoes">shoes</button><span class="vs">or</span><button class="say" data-say="choose">choose</button></div>
+        <div class="pair"><button class="say" data-say="wash">wash</button><span class="vs">or</span><button class="say" data-say="watch">watch</button></div>
+        <div class="pair"><button class="say" data-say="share">share</button><span class="vs">or</span><button class="say" data-say="chair">chair</button></div>
+        <div class="pair"><button class="say" data-say="shop">shop</button><span class="vs">or</span><button class="say" data-say="chop">chop</button></div>
+      </div>
+    </div>
+    <div class="card" id="ex-dg-ch">
+      <div class="exercise-label">Listen and choose</div>
+      <h3>Press ▶ and choose the word you hear: <b>sh</b> or <b>ch</b>?</h3>
+      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="chip"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="dg-ch1" value="a"><span class="mc-bullet">A</span> ship</label><label class="mc-option"><input type="radio" name="dg-ch1" value="b"><span class="mc-bullet">B</span> chip</label></div></div>
+      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="sheep"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="dg-ch2" value="a"><span class="mc-bullet">A</span> sheep</label><label class="mc-option"><input type="radio" name="dg-ch2" value="b"><span class="mc-bullet">B</span> cheap</label></div></div>
+      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="choose"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="dg-ch3" value="a"><span class="mc-bullet">A</span> shoes</label><label class="mc-option"><input type="radio" name="dg-ch3" value="b"><span class="mc-bullet">B</span> choose</label></div></div>
+      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="watch"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="dg-ch4" value="a"><span class="mc-bullet">A</span> wash</label><label class="mc-option"><input type="radio" name="dg-ch4" value="b"><span class="mc-bullet">B</span> watch</label></div></div>
+      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="share"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="dg-ch5" value="a"><span class="mc-bullet">A</span> share</label><label class="mc-option"><input type="radio" name="dg-ch5" value="b"><span class="mc-bullet">B</span> chair</label></div></div>
+      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="shop"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="dg-ch6" value="a"><span class="mc-bullet">A</span> shop</label><label class="mc-option"><input type="radio" name="dg-ch6" value="b"><span class="mc-bullet">B</span> chop</label></div></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-dg-ch')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-dg-ch')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="dg2c">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Read aloud</div>
+        <h2>Sentences</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Read aloud</div>
+      <h3>Read each sentence <b>aloud</b> first. Then check with 🔊.</h3>
+      <div class="word-row" style="flex-direction:column;align-items:flex-start">
+        <button class="say sentence" data-say="The witch is rich.">The witch is rich.</button>
+        <button class="say sentence" data-say="The shell is on the beach.">The shell is on the beach.</button>
+        <button class="say sentence" data-say="The shoes are on the chair.">The shoes are on the chair.</button>
+        <button class="say sentence" data-say="The champion has chips and cheese for lunch.">The champion has chips and cheese for lunch.</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-ph');window.scrollTo(0,0)">Next: ph →</button>
+  </div>
+
+</div>
+</div>
+
+<div class="lesson-part" id="part-ph">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#dg3a">1 · ph</a>
+    <a href="#dg3b">2 · f or ph?</a>
+    <a href="#dg3c">3 · Sentences</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="dg3a">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Meet the sound</div>
+        <h2>ph</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="sound-card">
+        <div class="sound-head">
+          <div class="sound-letter">ph</div>
+          <div><div class="ipa">/f/</div><div class="sound-name">as in <b>photo</b></div></div>
+        </div>
+        <div class="sound-body">
+          <div class="blend-list"><div class="blend"><span class="tile">p</span><span class="op">+</span><span class="tile">h</span><span class="op">→</span><span class="tile v">ph</span><span class="op">=</span><span class="ipa">/f/</span></div></div>
+          <h4>How to say it</h4>
+          <p>Easy: <b>ph</b> is just <b>f</b>. Top teeth on your bottom lip and blow. There is no “p” in it at all!</p>
+          <h4>Key words</h4>
+          <div class="word-row"><button class="say" data-say="photo">photo</button> <button class="say" data-say="phone">phone</button></div>
+          <h4>More words: listen and repeat</h4>
+          <div class="word-row"><button class="say" data-say="dolphin">dolphin</button> <button class="say" data-say="elephant">elephant</button> <button class="say" data-say="alphabet">alphabet</button> <button class="say" data-say="sphere">sphere</button> <button class="say" data-say="physics">physics</button> <button class="say" data-say="graph">graph</button> <button class="say" data-say="phrase">phrase</button> <button class="say" data-say="Philip">Philip</button></div>
+          <div class="trap"><span class="trap-title">German trap: Foto ≠ photo</span>These words come from Greek. Modern German often writes <b>f</b> (<i>Foto, Telefon, Elefant, Delfin</i>), but English keeps <b>ph</b>: <button class="say" data-say="photo">photo</button>, <button class="say" data-say="telephone">telephone</button>, <button class="say" data-say="elephant">elephant</button>, <button class="say" data-say="dolphin">dolphin</button>.</div>
+          <div class="tip">Never say “p-hoto” or “p-hone”. One sound: <span class="ipa">/f/</span>.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="dg3b">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Spelling</div>
+        <h2>f or ph?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-dg-ph">
+      <div class="exercise-label">f or ph?</div>
+      <h3>The sound is the same, the spelling is not. Listen and write <b>f</b> or <b>ph</b>.</h3>
+      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="photo"></button><span class="dg-gap"><input class="blank" id="dg-ph1" data-answer="ph" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">oto</span></div>
+      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="fish"></button><span class="dg-gap"><input class="blank" id="dg-ph2" data-answer="f" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ish</span></div>
+      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="dolphin"></button><span class="dg-gap">dol<input class="blank" id="dg-ph3" data-answer="ph" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">in</span></div>
+      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="five"></button><span class="dg-gap"><input class="blank" id="dg-ph4" data-answer="f" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ive</span></div>
+      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="alphabet"></button><span class="dg-gap">al<input class="blank" id="dg-ph5" data-answer="ph" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">abet</span></div>
+      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="friend"></button><span class="dg-gap"><input class="blank" id="dg-ph6" data-answer="f" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">riend</span></div>
+      <div class="listen-q"><span class="num">7.</span><button class="say say-big" data-say="elephant"></button><span class="dg-gap">ele<input class="blank" id="dg-ph7" data-answer="ph" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ant</span></div>
+      <div class="listen-q"><span class="num">8.</span><button class="say say-big" data-say="football"></button><span class="dg-gap"><input class="blank" id="dg-ph8" data-answer="f" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ootball</span></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-dg-ph')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-dg-ph')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="dg3c">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Read aloud</div>
+        <h2>Sentences</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Read aloud</div>
+      <h3>Read each sentence <b>aloud</b> first. Then check with 🔊.</h3>
+      <div class="word-row" style="flex-direction:column;align-items:flex-start">
+        <button class="say sentence" data-say="The dolphin takes a photo.">The dolphin takes a photo.</button>
+        <button class="say sentence" data-say="The elephant has got a phone.">The elephant has got a phone.</button>
+        <button class="say sentence" data-say="Philip likes cherries and physics.">Philip likes cherries and physics.</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-ck');window.scrollTo(0,0)">Next: ck →</button>
+  </div>
+
+</div>
+</div>
+
+<div class="lesson-part" id="part-ck">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#dg4a">1 · ck</a>
+    <a href="#dg4b">2 · k or ck?</a>
+    <a href="#dg4c">3 · Sentences</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="dg4a">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Meet the sound</div>
+        <h2>ck</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="sound-card">
+        <div class="sound-head">
+          <div class="sound-letter">ck</div>
+          <div><div class="ipa">/k/</div><div class="sound-name">as in <b>duck</b></div></div>
+        </div>
+        <div class="sound-body">
+          <div class="blend-list"><div class="blend"><span class="tile">c</span><span class="op">+</span><span class="tile">k</span><span class="op">→</span><span class="tile v">ck</span><span class="op">=</span><span class="ipa">/k/</span></div></div>
+          <h4>How to say it</h4>
+          <p>Two letters, but only <b>one</b> short <b>k</b>. Just like German <i>Rock, dick, Jacke</i>. The vowel before <b>ck</b> is always <b>short</b>.</p>
+          <h4>Key words</h4>
+          <div class="word-row"><button class="say" data-say="duck">duck</button> <button class="say" data-say="rock">rock</button></div>
+          <h4>More words: listen and repeat</h4>
+          <div class="word-row"><button class="say" data-say="clock">clock</button> <button class="say" data-say="black">black</button> <button class="say" data-say="rocket">rocket</button> <button class="say" data-say="stick">stick</button> <button class="say" data-say="back">back</button> <button class="say" data-say="sock">sock</button> <button class="say" data-say="jacket">jacket</button> <button class="say" data-say="backpack">backpack</button> <button class="say" data-say="check">check</button> <button class="say" data-say="quick">quick</button> <button class="say" data-say="kick">kick</button> <button class="say" data-say="chicken">chicken</button></div>
+          <div class="tip"><span class="tip-title">Where does ck live?</span><b>ck</b> comes right <b>after one short vowel</b>, in the middle or at the end of a word: <i>ba<b>ck</b>, ro<b>ck</b>et</i>. It is <b>never</b> at the start of a word.</div>
+          <div class="tip"><span class="tip-title">k or ck?</span>After a long vowel, two vowel letters or a consonant, write only <b>k</b>: <button class="say" data-say="book">book</button> <button class="say" data-say="week">week</button> <button class="say" data-say="milk">milk</button> <button class="say" data-say="bank">bank</button>.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="dg4b">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Spelling</div>
+        <h2>k or ck?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-dg-ck">
+      <div class="exercise-label">k or ck?</div>
+      <h3>Listen and finish the word with <b>k</b> or <b>ck</b>. Look at the letter before the gap!</h3>
+      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="duck"></button><span class="dg-gap">du<input class="blank" id="dg-ck1" data-answer="ck" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="book"></button><span class="dg-gap">boo<input class="blank" id="dg-ck2" data-answer="k" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="black"></button><span class="dg-gap">bla<input class="blank" id="dg-ck3" data-answer="ck" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="milk"></button><span class="dg-gap">mil<input class="blank" id="dg-ck4" data-answer="k" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="clock"></button><span class="dg-gap">clo<input class="blank" id="dg-ck5" data-answer="ck" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="week"></button><span class="dg-gap">wee<input class="blank" id="dg-ck6" data-answer="k" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="listen-q"><span class="num">7.</span><button class="say say-big" data-say="stick"></button><span class="dg-gap">sti<input class="blank" id="dg-ck7" data-answer="ck" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="listen-q"><span class="num">8.</span><button class="say say-big" data-say="bank"></button><span class="dg-gap">ban<input class="blank" id="dg-ck8" data-answer="k" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-dg-ck')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-dg-ck')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="dg4c">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Read aloud</div>
+        <h2>Sentences</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Read aloud</div>
+      <h3>Read each sentence <b>aloud</b> first. Then check with 🔊.</h3>
+      <div class="word-row" style="flex-direction:column;align-items:flex-start">
+        <button class="say sentence" data-say="The rocket is fast.">The rocket is fast.</button>
+        <button class="say sentence" data-say="The stick is black.">The stick is black.</button>
+        <button class="say sentence" data-say="A black fish is under the ship.">A black fish is under the ship.</button>
+        <button class="say sentence" data-say="Quick! Check the clock and pack your backpack.">Quick! Check the clock and pack your backpack.</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-th1');window.scrollTo(0,0)">Next: th (quiet) →</button>
+  </div>
+
+</div>
+</div>
+
+<div class="lesson-part" id="part-th1">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#dg5a">1 · th (quiet)</a>
+    <a href="#dg5b">2 · th, s, t or f?</a>
+    <a href="#dg5c">3 · Sentences</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="dg5a">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Meet the sound</div>
+        <h2>th <span style="font-weight:600">(quiet)</span></h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="sound-card">
+        <div class="sound-head">
+          <div class="sound-letter">th</div>
+          <div><div class="ipa">/θ/</div><div class="sound-name">quiet th, as in <b>thumb</b></div></div>
+        </div>
+        <div class="sound-body">
+          <div class="blend-list"><div class="blend"><span class="tile">t</span><span class="op">+</span><span class="tile">h</span><span class="op">→</span><span class="tile v">th</span><span class="op">=</span><span class="ipa">/θ/</span></div></div>
+          <h4>How to say it</h4>
+          <p>German doesn’t have this sound, so your mouth has to learn it. Put the <b>tip of your tongue between your teeth</b> (you can see it in a mirror!) and blow air. <b>No voice</b>: only air.</p>
+          <h4>Key words</h4>
+          <div class="word-row"><button class="say" data-say="thumb">thumb</button> <button class="say" data-say="path">path</button></div>
+          <h4>More words: listen and repeat</h4>
+          <div class="word-row"><button class="say" data-say="bath">bath</button> <button class="say" data-say="thunder">thunder</button> <button class="say" data-say="moth">moth</button> <button class="say" data-say="throne">throne</button> <button class="say" data-say="three">three</button> <button class="say" data-say="think">think</button> <button class="say" data-say="thanks">thanks</button> <button class="say" data-say="thing">thing</button> <button class="say" data-say="thin">thin</button> <button class="say" data-say="maths">maths</button> <button class="say" data-say="tooth">tooth</button> <button class="say" data-say="teeth">teeth</button></div>
+          <div class="trap"><span class="trap-title">German trap: not s, not t, not f</span>If your tongue stays behind your teeth, people hear a different word:<div class="pairs" style="margin-top:8px">
+        <div class="pair"><button class="say" data-say="think">think</button><span class="vs">or</span><button class="say" data-say="sink">sink</button></div>
+        <div class="pair"><button class="say" data-say="three">three</button><span class="vs">or</span><button class="say" data-say="tree">tree</button></div>
+        <div class="pair"><button class="say" data-say="thin">thin</button><span class="vs">or</span><button class="say" data-say="tin">tin</button></div>
+        <div class="pair"><button class="say" data-say="mouth">mouth</button><span class="vs">or</span><button class="say" data-say="mouse">mouse</button></div>
+        <div class="pair"><button class="say" data-say="path">path</button><span class="vs">or</span><button class="say" data-say="pass">pass</button></div>
+        <div class="pair"><button class="say" data-say="three">three</button><span class="vs">or</span><button class="say" data-say="free">free</button></div>
+      </div></div>
+          <div class="tip"><span class="tip-title">You need it for dates!</span><button class="say" data-say="month">month</button> <button class="say" data-say="Thursday">Thursday</button> <button class="say" data-say="birthday">birthday</button> <button class="say" data-say="fourth">fourth</button> <button class="say" data-say="fifth">fifth</button> <button class="say" data-say="thirteenth">thirteenth</button> <button class="say" data-say="thirty">thirty</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="dg5b">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Hear the difference</div>
+        <h2>th, s, t or f?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-dg-th">
+      <div class="exercise-label">Listen and choose</div>
+      <h3>Press ▶ and choose the word you hear.</h3>
+      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="think"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="dg-th1" value="a"><span class="mc-bullet">A</span> think</label><label class="mc-option"><input type="radio" name="dg-th1" value="b"><span class="mc-bullet">B</span> sink</label></div></div>
+      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="tree"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="dg-th2" value="a"><span class="mc-bullet">A</span> three</label><label class="mc-option"><input type="radio" name="dg-th2" value="b"><span class="mc-bullet">B</span> tree</label></div></div>
+      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="thin"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="dg-th3" value="a"><span class="mc-bullet">A</span> thin</label><label class="mc-option"><input type="radio" name="dg-th3" value="b"><span class="mc-bullet">B</span> tin</label></div></div>
+      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="mouse"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="dg-th4" value="a"><span class="mc-bullet">A</span> mouth</label><label class="mc-option"><input type="radio" name="dg-th4" value="b"><span class="mc-bullet">B</span> mouse</label></div></div>
+      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="path"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="dg-th5" value="a"><span class="mc-bullet">A</span> path</label><label class="mc-option"><input type="radio" name="dg-th5" value="b"><span class="mc-bullet">B</span> pass</label></div></div>
+      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="three"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="dg-th6" value="a"><span class="mc-bullet">A</span> three</label><label class="mc-option"><input type="radio" name="dg-th6" value="b"><span class="mc-bullet">B</span> free</label></div></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-dg-th')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-dg-th')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="dg5c">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Read aloud</div>
+        <h2>Sentences</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Read aloud</div>
+      <h3>Read each sentence <b>aloud</b> first. Then check with 🔊.</h3>
+      <div class="word-row" style="flex-direction:column;align-items:flex-start">
+        <button class="say sentence" data-say="Three kids think.">Three kids think.</button>
+        <button class="say sentence" data-say="A moth can fly.">A moth can fly.</button>
+        <button class="say sentence" data-say="John sits on the throne.">John sits on the throne.</button>
+        <button class="say sentence" data-say="My birthday is on Thursday the thirteenth.">My birthday is on Thursday the thirteenth.</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-th2');window.scrollTo(0,0)">Next: th (buzzing) →</button>
+  </div>
+
+</div>
+</div>
+
+<div class="lesson-part" id="part-th2">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#dg6a">1 · th (buzzing)</a>
+    <a href="#dg6b">2 · Quiet or buzzing?</a>
+    <a href="#dg6c">3 · Sentences</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="dg6a">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Meet the sound</div>
+        <h2>th <span style="font-weight:600">(buzzing)</span></h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="sound-card">
+        <div class="sound-head">
+          <div class="sound-letter">th</div>
+          <div><div class="ipa">/ð/</div><div class="sound-name">buzzing th, as in <b>father</b></div></div>
+        </div>
+        <div class="sound-body">
+          <div class="blend-list"><div class="blend"><span class="tile">t</span><span class="op">+</span><span class="tile">h</span><span class="op">→</span><span class="tile v">th</span><span class="op">=</span><span class="ipa">/ð/</span></div></div>
+          <h4>How to say it</h4>
+          <p>The tongue is in the <b>same place</b>: between your teeth. Now <b>switch your voice on</b>. Put a hand on your throat: it buzzes, like a bee behind your teeth.</p>
+          <h4>Key words</h4>
+          <div class="word-row"><button class="say" data-say="father">father</button> <button class="say" data-say="brother">brother</button></div>
+          <h4>More words: listen and repeat</h4>
+          <div class="word-row"><button class="say" data-say="weather">weather</button> <button class="say" data-say="clothes">clothes</button> <button class="say" data-say="they">they</button> <button class="say" data-say="mother">mother</button> <button class="say" data-say="this">this</button> <button class="say" data-say="that">that</button> <button class="say" data-say="the">the</button> <button class="say" data-say="these">these</button> <button class="say" data-say="those">those</button> <button class="say" data-say="there">there</button> <button class="say" data-say="then">then</button> <button class="say" data-say="with">with</button> <button class="say" data-say="together">together</button></div>
+          <div class="trap"><span class="trap-title">German trap: not z, not d</span>Keep the tongue between your teeth:<div class="pairs" style="margin-top:8px">
+        <div class="pair"><button class="say" data-say="they">they</button><span class="vs">or</span><button class="say" data-say="day">day</button></div>
+        <div class="pair"><button class="say" data-say="then">then</button><span class="vs">or</span><button class="say" data-say="den">den</button></div>
+        <div class="pair"><button class="say" data-say="there">there</button><span class="vs">or</span><button class="say" data-say="dare">dare</button></div>
+      </div></div>
+          <div class="tip"><span class="tip-title">How do I know which th?</span><b>Buzzing</b> <span class="ipa">/ð/</span>: small grammar words (<i>the, this, that, these, those, they, there, then</i>) and family words with <b>-ther</b> (<i>mother, father, brother</i>). <b>Quiet</b> <span class="ipa">/θ/</span>: most other words (<i>think, three, month, maths</i>).</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="dg6b">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Hear the difference</div>
+        <h2>Quiet or buzzing?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-dg-th2">
+      <div class="exercise-label">Listen and sort</div>
+      <h3>Listen with a hand on your throat. Is the <b>th</b> quiet <span class="ipa">/θ/</span> or buzzing <span class="ipa">/ð/</span>?</h3>
+      <div class="sort-row"><button class="say" data-say="three">three</button><span class="word-choice" id="dg-ts1" data-answer="quiet"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
+      <div class="sort-row"><button class="say" data-say="this">this</button><span class="word-choice" id="dg-ts2" data-answer="buzzing"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
+      <div class="sort-row"><button class="say" data-say="think">think</button><span class="word-choice" id="dg-ts3" data-answer="quiet"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
+      <div class="sort-row"><button class="say" data-say="mother">mother</button><span class="word-choice" id="dg-ts4" data-answer="buzzing"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
+      <div class="sort-row"><button class="say" data-say="month">month</button><span class="word-choice" id="dg-ts5" data-answer="quiet"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
+      <div class="sort-row"><button class="say" data-say="they">they</button><span class="word-choice" id="dg-ts6" data-answer="buzzing"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
+      <div class="sort-row"><button class="say" data-say="birthday">birthday</button><span class="word-choice" id="dg-ts7" data-answer="quiet"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
+      <div class="sort-row"><button class="say" data-say="weather">weather</button><span class="word-choice" id="dg-ts8" data-answer="buzzing"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
+      <div class="sort-row"><button class="say" data-say="Thursday">Thursday</button><span class="word-choice" id="dg-ts9" data-answer="quiet"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
+      <div class="sort-row"><button class="say" data-say="that">that</button><span class="word-choice" id="dg-ts10" data-answer="buzzing"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
+      <div class="sort-row"><button class="say" data-say="maths">maths</button><span class="word-choice" id="dg-ts11" data-answer="quiet"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
+      <div class="sort-row"><button class="say" data-say="brother">brother</button><span class="word-choice" id="dg-ts12" data-answer="buzzing"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-dg-th2')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-dg-th2')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="dg6c">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Read aloud</div>
+        <h2>Sentences</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Read aloud</div>
+      <h3>Read each sentence <b>aloud</b> first. Then check with 🔊.</h3>
+      <div class="word-row" style="flex-direction:column;align-items:flex-start">
+        <button class="say sentence" data-say="This is my mother.">This is my mother.</button>
+        <button class="say sentence" data-say="That is my father.">That is my father.</button>
+        <button class="say sentence" data-say="My brother is on the bench.">My brother is on the bench.</button>
+        <button class="say sentence" data-say="They like this weather.">They like this weather.</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-mix');window.scrollTo(0,0)">Next: All together →</button>
+  </div>
+
+</div>
+</div>
+
+<div class="lesson-part" id="part-mix">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#dg7a">1 · Which two letters?</a>
+    <a href="#dg7b">2 · Write the word</a>
+    <a href="#dg7c">3 · Tongue twisters</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="dg7a">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">All five teams</div>
+        <h2>Which two letters?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-dg-mix">
+      <div class="exercise-label">Listen and complete</div>
+      <h3>Press ▶ and write the missing team: <span class="key">sh</span> <span class="key">ch</span> <span class="key">ph</span> <span class="key">ck</span> <span class="key">th</span></h3>
+      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="shark"></button><span class="dg-gap"><input class="blank" id="dg-mx1" data-answer="sh" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ark</span></div>
+      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="cheese"></button><span class="dg-gap"><input class="blank" id="dg-mx2" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">eese</span></div>
+      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="phone"></button><span class="dg-gap"><input class="blank" id="dg-mx3" data-answer="ph" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">one</span></div>
+      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="rocket"></button><span class="dg-gap">ro<input class="blank" id="dg-mx4" data-answer="ck" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">et</span></div>
+      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="thumb"></button><span class="dg-gap"><input class="blank" id="dg-mx5" data-answer="th" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">umb</span></div>
+      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="brother"></button><span class="dg-gap">bro<input class="blank" id="dg-mx6" data-answer="th" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">er</span></div>
+      <div class="listen-q"><span class="num">7.</span><button class="say say-big" data-say="champion"></button><span class="dg-gap"><input class="blank" id="dg-mx7" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ampion</span></div>
+      <div class="listen-q"><span class="num">8.</span><button class="say say-big" data-say="finish"></button><span class="dg-gap">fini<input class="blank" id="dg-mx8" data-answer="sh" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="listen-q"><span class="num">9.</span><button class="say say-big" data-say="elephant"></button><span class="dg-gap">ele<input class="blank" id="dg-mx9" data-answer="ph" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ant</span></div>
+      <div class="listen-q"><span class="num">10.</span><button class="say say-big" data-say="jacket"></button><span class="dg-gap">ja<input class="blank" id="dg-mx10" data-answer="ck" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">et</span></div>
+      <div class="listen-q"><span class="num">11.</span><button class="say say-big" data-say="bath"></button><span class="dg-gap">ba<input class="blank" id="dg-mx11" data-answer="th" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="listen-q"><span class="num">12.</span><button class="say say-big" data-say="lunch"></button><span class="dg-gap">lun<input class="blank" id="dg-mx12" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-dg-mix')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-dg-mix')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="dg7b">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Dictation</div>
+        <h2>Write the word</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-dg-dict">
+      <div class="exercise-label">Dictation</div>
+      <h3>Listen and write the whole word. The last one has <b>two</b> teams!</h3>
+      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="ship"></button><input class="blank" id="dg-d1" data-answer="ship" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="lunch"></button><input class="blank" id="dg-d2" data-answer="lunch" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="photo"></button><input class="blank" id="dg-d3" data-answer="photo" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="sock"></button><input class="blank" id="dg-d4" data-answer="sock" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="month"></button><input class="blank" id="dg-d5" data-answer="month" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="this"></button><input class="blank" id="dg-d6" data-answer="this" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">7.</span><button class="say say-big" data-say="thanks"></button><input class="blank" id="dg-d7" data-answer="thanks" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q"><span class="num">8.</span><button class="say say-big" data-say="chicken"></button><input class="blank" id="dg-d8" data-answer="chicken" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-dg-dict')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-dg-dict')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="dg7c">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Read and play</div>
+        <h2>Tongue twisters</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Tongue twisters</div>
+      <h3>Read each one slowly, then faster… three times without a mistake! Check with 🔊.</h3>
+      <div class="riddle"><p class="read-text"><b class="key">sh</b> She sells seashells by the seashore.</p><button class="say" data-say="She sells seashells by the seashore." data-file="l15-twister-1">Listen</button></div>
+      <div class="riddle"><p class="read-text"><b class="key">ch</b> Charlie chooses chips and cheese for lunch.</p><button class="say" data-say="Charlie chooses chips and cheese for lunch." data-file="l15-twister-2">Listen</button></div>
+      <div class="riddle"><p class="read-text"><b class="key">ph</b> Philip’s phone has photos of a dolphin and an elephant.</p><button class="say" data-say="Philip’s phone has photos of a dolphin and an elephant." data-file="l15-twister-3">Listen</button></div>
+      <div class="riddle"><p class="read-text"><b class="key">ck</b> A quick black duck kicks a rock.</p><button class="say" data-say="A quick black duck kicks a rock." data-file="l15-twister-4">Listen</button></div>
+      <div class="riddle"><p class="read-text"><b class="key">th</b> Three thin moths think about the thunder.</p><button class="say" data-say="Three thin moths think about the thunder." data-file="l15-twister-5">Listen</button></div>
+      <div class="riddle"><p class="read-text"><b class="key">th</b> This is my brother, that is my mother, and they are together with my father.</p><button class="say" data-say="This is my brother, that is my mother, and they are together with my father." data-file="l15-twister-6">Listen</button></div>
+      <p style="margin-top:16px"><b>Record yourself:</b> choose your best twister and say it as fast as you can. Then listen: can you hear every <b>th</b>?</p>
+      <div class="rec"></div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Writing</div>
+      <h3>Your turn! Write your own tongue twister with <b>sh</b>, <b>ch</b> or <b>th</b> for your teacher.</h3>
+      <textarea class="free-write" id="fw-dg-twister" placeholder="Three…" rows="3"></textarea>
+      <div class="char-count" id="cc-fw-dg-twister">0 characters</div>
+    </div>
+  </section>
+
+
+</div>
+</div>
+
+<!-- ══════════ end of digraphs ══════════ -->
+
+<div class="lesson-part" id="part-words">
 <nav class="chips">
   <div class="wrap">
     <a href="#x4a" data-extra="x-sb4-months">+ · Months</a>
@@ -51,9 +799,6 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     <a href="#x4c" data-extra="x-sb4-dates">+ · Dates</a>
     <a href="#x4d" data-extra="x-sb4-colours">+ · Colours</a>
     <a href="#x4e" data-extra="x-sb4-quiz">+ · Number quiz</a>
-    <a href="#x5a" data-extra="x-sb5-pronouns">+ · Pronouns</a>
-    <a href="#x5b" data-extra="x-sb5-be">+ · Verb be</a>
-    <a href="#x5c" data-extra="x-sb5-questions">+ · Question words</a>
   </div>
 </nav>
 
@@ -338,6 +1083,20 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
   </section>
 
   <!-- ───── SB p. 6 · Language in action (audio S.07 = Own it! 1 Unit 0 Track 7; video S.1 = Unit 0 Page 6 Language in Action) ───── -->
+</div>
+</div>
+
+<div class="lesson-part" id="part-grammar">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#x5a" data-extra="x-sb5-pronouns">+ · Pronouns</a>
+    <a href="#x5b" data-extra="x-sb5-be">+ · Verb be</a>
+    <a href="#x5c" data-extra="x-sb5-questions">+ · Question words</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
   <section class="step" id="x5a" data-extra="x-sb5-pronouns">
     <div class="step-head">
       <div class="step-num plus">+</div>
@@ -523,6 +1282,8 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
 
 
   <!-- ══════════ the rest of Lesson 15 goes here ══════════ -->
+
+</div>
 
 </div>
 
