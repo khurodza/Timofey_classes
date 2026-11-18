@@ -33,11 +33,11 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     <div class="hero-grid">
       <div>
         <h1 class="name-slot" data-with="Lesson 15: Welcome back, {name}!" data-without="Lesson 15: Welcome back!">Lesson 15: Welcome back!</h1>
-        <p>Months, numbers, dates, colours, pronouns, the verb <i>be</i> and question words, and the letter teams <b>sh, ch, ph, ck, th</b>.</p>
+        <p>Months, numbers, dates and colours, and the letter teams <b>sh</b> and <b>ch</b>.</p>
         <div class="hero-badges">
           <span class="badge">Lesson 15</span>
           <span class="badge">Starter review</span>
-          <span class="badge">Reading: sh · ch · ph · ck · th</span>
+          <span class="badge">Reading: sh · ch</span>
         </div>
       </div>
     </div>
@@ -51,18 +51,13 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
   <div class="wrap">
     <button class="part-tab" data-part="part-sh" onclick="showPart('part-sh')">sh · sheep</button>
     <button class="part-tab" data-part="part-ch" onclick="showPart('part-ch')">ch · chips</button>
-    <button class="part-tab" data-part="part-ph" onclick="showPart('part-ph')">ph · photo</button>
-    <button class="part-tab" data-part="part-ck" onclick="showPart('part-ck')">ck · duck</button>
-    <button class="part-tab" data-part="part-th1" onclick="showPart('part-th1')">th · thumb</button>
-    <button class="part-tab" data-part="part-th2" onclick="showPart('part-th2')">th · father</button>
-    <button class="part-tab" data-part="part-mix" onclick="showPart('part-mix')">All together</button>
     <button class="part-tab" data-part="part-words" onclick="showPart('part-words')">Months, numbers &amp; colours</button>
-    <button class="part-tab" data-part="part-grammar" onclick="showPart('part-grammar')">Grammar: be &amp; pronouns</button>
+    <button class="part-tab hw" data-part="part-homework" onclick="showPart('part-homework')">Homework</button>
   </div>
 </nav>
 
 <!-- ══════════════════════════════════════════════════════════
-     READ IT RIGHT: digraphs, one tab each: sh → ch → ph → ck → th /θ/ → th /ð/ → all together
+     READ IT RIGHT: digraphs, one tab each: sh → ch (ph, ck → Lesson 16; th, th, all together → Lesson 17)
      Order and key words from the teacher's presentation "Диграфы часть 1" (made for a younger
      pupil), adapted for a 12-year-old: German traps, minimal pairs, spelling rules, tongue twisters.
      Clips: Kokoro af_bella (lessons/audio/words); sentences and twisters at a slower speed.
@@ -104,6 +99,7 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     </div>
     <div class="card">
       <h3>A <b>digraph</b> is a team of <b>two letters</b> that make <b>one sound</b>.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Диграф — это команда из <b>двух букв</b>, которые дают <b>один звук</b>.</p>
       <p>Don’t read the letters one by one: <b>s</b> + <b>h</b> is not “s-h”. Together they are one new sound. Today: <span class="key">sh</span> → <span class="key">ch</span> → <span class="key">ph</span> → <span class="key">ck</span> → <span class="key">th</span>.</p>
     </div>
     <div class="card">
@@ -145,6 +141,7 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     <div class="card" id="ex-dg-sh">
       <div class="exercise-label">Listen and choose</div>
       <h3>Press ▶ and choose the word you hear: <b>s</b> or <b>sh</b>?</h3>
+      <p class="ru-hint" lang="ru" data-auto>Нажми ▶ и выбери слово, которое слышишь: <b>s</b> или <b>sh</b>?</p>
       <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="ship"></button>
         <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="dg-sh1" value="a"><span class="mc-bullet">A</span> sip</label><label class="mc-option"><input type="radio" name="dg-sh1" value="b"><span class="mc-bullet">B</span> ship</label></div></div>
       <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="sell"></button>
@@ -175,6 +172,7 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     <div class="card">
       <div class="exercise-label">Read aloud</div>
       <h3>Read each sentence <b>aloud</b> first. Then check with 🔊.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Сначала прочитай каждое предложение <b>вслух</b>. Потом проверь себя кнопкой 🔊.</p>
       <div class="word-row" style="flex-direction:column;align-items:flex-start">
         <button class="say sentence" data-say="She is in the shoe shop.">She is in the shoe shop.</button>
         <button class="say sentence" data-say="The shark is under the ship.">The shark is under the ship.</button>
@@ -242,6 +240,7 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     <div class="card">
       <div class="exercise-label">sh or ch?</div>
       <h3>Only one small <b>t</b> makes the difference. Listen and repeat the pairs.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Разницу делает только маленький звук <b>t</b>. Послушай и повтори пары слов.</p>
       <div class="pairs">
         <div class="pair"><button class="say" data-say="ship">ship</button><span class="vs">or</span><button class="say" data-say="chip">chip</button></div>
         <div class="pair"><button class="say" data-say="sheep">sheep</button><span class="vs">or</span><button class="say" data-say="cheap">cheap</button></div>
@@ -254,6 +253,7 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     <div class="card" id="ex-dg-ch">
       <div class="exercise-label">Listen and choose</div>
       <h3>Press ▶ and choose the word you hear: <b>sh</b> or <b>ch</b>?</h3>
+      <p class="ru-hint" lang="ru" data-auto>Нажми ▶ и выбери слово, которое слышишь: <b>sh</b> или <b>ch</b>?</p>
       <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="chip"></button>
         <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="dg-ch1" value="a"><span class="mc-bullet">A</span> ship</label><label class="mc-option"><input type="radio" name="dg-ch1" value="b"><span class="mc-bullet">B</span> chip</label></div></div>
       <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="sheep"></button>
@@ -284,6 +284,7 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     <div class="card">
       <div class="exercise-label">Read aloud</div>
       <h3>Read each sentence <b>aloud</b> first. Then check with 🔊.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Сначала прочитай каждое предложение <b>вслух</b>. Потом проверь себя кнопкой 🔊.</p>
       <div class="word-row" style="flex-direction:column;align-items:flex-start">
         <button class="say sentence" data-say="The witch is rich.">The witch is rich.</button>
         <button class="say sentence" data-say="The shell is on the beach.">The shell is on the beach.</button>
@@ -294,497 +295,8 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
   </section>
 
   <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
-    <button class="btn-accent" onclick="showPart('part-ph');window.scrollTo(0,0)">Next: ph →</button>
+    <button class="btn-accent" onclick="showPart('part-words');window.scrollTo(0,0)">Next: Months, numbers &amp; colours →</button>
   </div>
-
-</div>
-</div>
-
-<div class="lesson-part" id="part-ph">
-<nav class="chips">
-  <div class="wrap">
-    <a href="#dg3a">1 · ph</a>
-    <a href="#dg3b">2 · f or ph?</a>
-    <a href="#dg3c">3 · Sentences</a>
-  </div>
-</nav>
-
-<div class="wrap">
-
-  <section class="step" id="dg3a">
-    <div class="step-head">
-      <div class="step-num">1</div>
-      <div>
-        <div class="step-meta">Meet the sound</div>
-        <h2>ph</h2>
-      </div>
-    </div>
-    <div class="card">
-      <div class="sound-card">
-        <div class="sound-head">
-          <div class="sound-letter">ph</div>
-          <div><div class="ipa">/f/</div><div class="sound-name">as in <b>photo</b></div></div>
-        </div>
-        <div class="sound-body">
-          <div class="blend-list"><div class="blend"><span class="tile">p</span><span class="op">+</span><span class="tile">h</span><span class="op">→</span><span class="tile v">ph</span><span class="op">=</span><span class="ipa">/f/</span></div></div>
-          <h4>How to say it</h4>
-          <p>Easy: <b>ph</b> is just <b>f</b>. Top teeth on your bottom lip and blow. There is no “p” in it at all!</p>
-          <h4>Key words</h4>
-          <div class="word-row"><button class="say" data-say="photo">photo</button> <button class="say" data-say="phone">phone</button></div>
-          <h4>More words: listen and repeat</h4>
-          <div class="word-row"><button class="say" data-say="dolphin">dolphin</button> <button class="say" data-say="elephant">elephant</button> <button class="say" data-say="alphabet">alphabet</button> <button class="say" data-say="sphere">sphere</button> <button class="say" data-say="physics">physics</button> <button class="say" data-say="graph">graph</button> <button class="say" data-say="phrase">phrase</button> <button class="say" data-say="Philip">Philip</button></div>
-          <div class="trap"><span class="trap-title">German trap: Foto ≠ photo</span>These words come from Greek. Modern German often writes <b>f</b> (<i>Foto, Telefon, Elefant, Delfin</i>), but English keeps <b>ph</b>: <button class="say" data-say="photo">photo</button>, <button class="say" data-say="telephone">telephone</button>, <button class="say" data-say="elephant">elephant</button>, <button class="say" data-say="dolphin">dolphin</button>.</div>
-          <div class="tip">Never say “p-hoto” or “p-hone”. One sound: <span class="ipa">/f/</span>.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="step" id="dg3b">
-    <div class="step-head">
-      <div class="step-num">2</div>
-      <div>
-        <div class="step-meta">Spelling</div>
-        <h2>f or ph?</h2>
-      </div>
-    </div>
-    <div class="card" id="ex-dg-ph">
-      <div class="exercise-label">f or ph?</div>
-      <h3>The sound is the same, the spelling is not. Listen and write <b>f</b> or <b>ph</b>.</h3>
-      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="photo"></button><span class="dg-gap"><input class="blank" id="dg-ph1" data-answer="ph" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">oto</span></div>
-      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="fish"></button><span class="dg-gap"><input class="blank" id="dg-ph2" data-answer="f" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ish</span></div>
-      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="dolphin"></button><span class="dg-gap">dol<input class="blank" id="dg-ph3" data-answer="ph" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">in</span></div>
-      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="five"></button><span class="dg-gap"><input class="blank" id="dg-ph4" data-answer="f" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ive</span></div>
-      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="alphabet"></button><span class="dg-gap">al<input class="blank" id="dg-ph5" data-answer="ph" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">abet</span></div>
-      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="friend"></button><span class="dg-gap"><input class="blank" id="dg-ph6" data-answer="f" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">riend</span></div>
-      <div class="listen-q"><span class="num">7.</span><button class="say say-big" data-say="elephant"></button><span class="dg-gap">ele<input class="blank" id="dg-ph7" data-answer="ph" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ant</span></div>
-      <div class="listen-q"><span class="num">8.</span><button class="say say-big" data-say="football"></button><span class="dg-gap"><input class="blank" id="dg-ph8" data-answer="f" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ootball</span></div>
-      <div class="btn-row">
-        <button class="btn-primary" onclick="checkBlanks('ex-dg-ph')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetBlanks('ex-dg-ph')">Try again</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="step" id="dg3c">
-    <div class="step-head">
-      <div class="step-num">3</div>
-      <div>
-        <div class="step-meta">Read aloud</div>
-        <h2>Sentences</h2>
-      </div>
-    </div>
-    <div class="card">
-      <div class="exercise-label">Read aloud</div>
-      <h3>Read each sentence <b>aloud</b> first. Then check with 🔊.</h3>
-      <div class="word-row" style="flex-direction:column;align-items:flex-start">
-        <button class="say sentence" data-say="The dolphin takes a photo.">The dolphin takes a photo.</button>
-        <button class="say sentence" data-say="The elephant has got a phone.">The elephant has got a phone.</button>
-        <button class="say sentence" data-say="Philip likes cherries and physics.">Philip likes cherries and physics.</button>
-      </div>
-    </div>
-  </section>
-
-  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
-    <button class="btn-accent" onclick="showPart('part-ck');window.scrollTo(0,0)">Next: ck →</button>
-  </div>
-
-</div>
-</div>
-
-<div class="lesson-part" id="part-ck">
-<nav class="chips">
-  <div class="wrap">
-    <a href="#dg4a">1 · ck</a>
-    <a href="#dg4b">2 · k or ck?</a>
-    <a href="#dg4c">3 · Sentences</a>
-  </div>
-</nav>
-
-<div class="wrap">
-
-  <section class="step" id="dg4a">
-    <div class="step-head">
-      <div class="step-num">1</div>
-      <div>
-        <div class="step-meta">Meet the sound</div>
-        <h2>ck</h2>
-      </div>
-    </div>
-    <div class="card">
-      <div class="sound-card">
-        <div class="sound-head">
-          <div class="sound-letter">ck</div>
-          <div><div class="ipa">/k/</div><div class="sound-name">as in <b>duck</b></div></div>
-        </div>
-        <div class="sound-body">
-          <div class="blend-list"><div class="blend"><span class="tile">c</span><span class="op">+</span><span class="tile">k</span><span class="op">→</span><span class="tile v">ck</span><span class="op">=</span><span class="ipa">/k/</span></div></div>
-          <h4>How to say it</h4>
-          <p>Two letters, but only <b>one</b> short <b>k</b>. Just like German <i>Rock, dick, Jacke</i>. The vowel before <b>ck</b> is always <b>short</b>.</p>
-          <h4>Key words</h4>
-          <div class="word-row"><button class="say" data-say="duck">duck</button> <button class="say" data-say="rock">rock</button></div>
-          <h4>More words: listen and repeat</h4>
-          <div class="word-row"><button class="say" data-say="clock">clock</button> <button class="say" data-say="black">black</button> <button class="say" data-say="rocket">rocket</button> <button class="say" data-say="stick">stick</button> <button class="say" data-say="back">back</button> <button class="say" data-say="sock">sock</button> <button class="say" data-say="jacket">jacket</button> <button class="say" data-say="backpack">backpack</button> <button class="say" data-say="check">check</button> <button class="say" data-say="quick">quick</button> <button class="say" data-say="kick">kick</button> <button class="say" data-say="chicken">chicken</button></div>
-          <div class="tip"><span class="tip-title">Where does ck live?</span><b>ck</b> comes right <b>after one short vowel</b>, in the middle or at the end of a word: <i>ba<b>ck</b>, ro<b>ck</b>et</i>. It is <b>never</b> at the start of a word.</div>
-          <div class="tip"><span class="tip-title">k or ck?</span>After a long vowel, two vowel letters or a consonant, write only <b>k</b>: <button class="say" data-say="book">book</button> <button class="say" data-say="week">week</button> <button class="say" data-say="milk">milk</button> <button class="say" data-say="bank">bank</button>.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="step" id="dg4b">
-    <div class="step-head">
-      <div class="step-num">2</div>
-      <div>
-        <div class="step-meta">Spelling</div>
-        <h2>k or ck?</h2>
-      </div>
-    </div>
-    <div class="card" id="ex-dg-ck">
-      <div class="exercise-label">k or ck?</div>
-      <h3>Listen and finish the word with <b>k</b> or <b>ck</b>. Look at the letter before the gap!</h3>
-      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="duck"></button><span class="dg-gap">du<input class="blank" id="dg-ck1" data-answer="ck" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
-      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="book"></button><span class="dg-gap">boo<input class="blank" id="dg-ck2" data-answer="k" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
-      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="black"></button><span class="dg-gap">bla<input class="blank" id="dg-ck3" data-answer="ck" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
-      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="milk"></button><span class="dg-gap">mil<input class="blank" id="dg-ck4" data-answer="k" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
-      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="clock"></button><span class="dg-gap">clo<input class="blank" id="dg-ck5" data-answer="ck" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
-      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="week"></button><span class="dg-gap">wee<input class="blank" id="dg-ck6" data-answer="k" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
-      <div class="listen-q"><span class="num">7.</span><button class="say say-big" data-say="stick"></button><span class="dg-gap">sti<input class="blank" id="dg-ck7" data-answer="ck" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
-      <div class="listen-q"><span class="num">8.</span><button class="say say-big" data-say="bank"></button><span class="dg-gap">ban<input class="blank" id="dg-ck8" data-answer="k" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
-      <div class="btn-row">
-        <button class="btn-primary" onclick="checkBlanks('ex-dg-ck')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetBlanks('ex-dg-ck')">Try again</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="step" id="dg4c">
-    <div class="step-head">
-      <div class="step-num">3</div>
-      <div>
-        <div class="step-meta">Read aloud</div>
-        <h2>Sentences</h2>
-      </div>
-    </div>
-    <div class="card">
-      <div class="exercise-label">Read aloud</div>
-      <h3>Read each sentence <b>aloud</b> first. Then check with 🔊.</h3>
-      <div class="word-row" style="flex-direction:column;align-items:flex-start">
-        <button class="say sentence" data-say="The rocket is fast.">The rocket is fast.</button>
-        <button class="say sentence" data-say="The stick is black.">The stick is black.</button>
-        <button class="say sentence" data-say="A black fish is under the ship.">A black fish is under the ship.</button>
-        <button class="say sentence" data-say="Quick! Check the clock and pack your backpack.">Quick! Check the clock and pack your backpack.</button>
-      </div>
-    </div>
-  </section>
-
-  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
-    <button class="btn-accent" onclick="showPart('part-th1');window.scrollTo(0,0)">Next: th (quiet) →</button>
-  </div>
-
-</div>
-</div>
-
-<div class="lesson-part" id="part-th1">
-<nav class="chips">
-  <div class="wrap">
-    <a href="#dg5a">1 · th (quiet)</a>
-    <a href="#dg5b">2 · th, s, t or f?</a>
-    <a href="#dg5c">3 · Sentences</a>
-  </div>
-</nav>
-
-<div class="wrap">
-
-  <section class="step" id="dg5a">
-    <div class="step-head">
-      <div class="step-num">1</div>
-      <div>
-        <div class="step-meta">Meet the sound</div>
-        <h2>th <span style="font-weight:600">(quiet)</span></h2>
-      </div>
-    </div>
-    <div class="card">
-      <div class="sound-card">
-        <div class="sound-head">
-          <div class="sound-letter">th</div>
-          <div><div class="ipa">/θ/</div><div class="sound-name">quiet th, as in <b>thumb</b></div></div>
-        </div>
-        <div class="sound-body">
-          <div class="blend-list"><div class="blend"><span class="tile">t</span><span class="op">+</span><span class="tile">h</span><span class="op">→</span><span class="tile v">th</span><span class="op">=</span><span class="ipa">/θ/</span></div></div>
-          <h4>How to say it</h4>
-          <p>German doesn’t have this sound, so your mouth has to learn it. Put the <b>tip of your tongue between your teeth</b> (you can see it in a mirror!) and blow air. <b>No voice</b>: only air.</p>
-          <h4>Key words</h4>
-          <div class="word-row"><button class="say" data-say="thumb">thumb</button> <button class="say" data-say="path">path</button></div>
-          <h4>More words: listen and repeat</h4>
-          <div class="word-row"><button class="say" data-say="bath">bath</button> <button class="say" data-say="thunder">thunder</button> <button class="say" data-say="moth">moth</button> <button class="say" data-say="throne">throne</button> <button class="say" data-say="three">three</button> <button class="say" data-say="think">think</button> <button class="say" data-say="thanks">thanks</button> <button class="say" data-say="thing">thing</button> <button class="say" data-say="thin">thin</button> <button class="say" data-say="maths">maths</button> <button class="say" data-say="tooth">tooth</button> <button class="say" data-say="teeth">teeth</button></div>
-          <div class="trap"><span class="trap-title">German trap: not s, not t, not f</span>If your tongue stays behind your teeth, people hear a different word:<div class="pairs" style="margin-top:8px">
-        <div class="pair"><button class="say" data-say="think">think</button><span class="vs">or</span><button class="say" data-say="sink">sink</button></div>
-        <div class="pair"><button class="say" data-say="three">three</button><span class="vs">or</span><button class="say" data-say="tree">tree</button></div>
-        <div class="pair"><button class="say" data-say="thin">thin</button><span class="vs">or</span><button class="say" data-say="tin">tin</button></div>
-        <div class="pair"><button class="say" data-say="mouth">mouth</button><span class="vs">or</span><button class="say" data-say="mouse">mouse</button></div>
-        <div class="pair"><button class="say" data-say="path">path</button><span class="vs">or</span><button class="say" data-say="pass">pass</button></div>
-        <div class="pair"><button class="say" data-say="three">three</button><span class="vs">or</span><button class="say" data-say="free">free</button></div>
-      </div></div>
-          <div class="tip"><span class="tip-title">You need it for dates!</span><button class="say" data-say="month">month</button> <button class="say" data-say="Thursday">Thursday</button> <button class="say" data-say="birthday">birthday</button> <button class="say" data-say="fourth">fourth</button> <button class="say" data-say="fifth">fifth</button> <button class="say" data-say="thirteenth">thirteenth</button> <button class="say" data-say="thirty">thirty</button></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="step" id="dg5b">
-    <div class="step-head">
-      <div class="step-num">2</div>
-      <div>
-        <div class="step-meta">Hear the difference</div>
-        <h2>th, s, t or f?</h2>
-      </div>
-    </div>
-    <div class="card" id="ex-dg-th">
-      <div class="exercise-label">Listen and choose</div>
-      <h3>Press ▶ and choose the word you hear.</h3>
-      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="think"></button>
-        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="dg-th1" value="a"><span class="mc-bullet">A</span> think</label><label class="mc-option"><input type="radio" name="dg-th1" value="b"><span class="mc-bullet">B</span> sink</label></div></div>
-      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="tree"></button>
-        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="dg-th2" value="a"><span class="mc-bullet">A</span> three</label><label class="mc-option"><input type="radio" name="dg-th2" value="b"><span class="mc-bullet">B</span> tree</label></div></div>
-      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="thin"></button>
-        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="dg-th3" value="a"><span class="mc-bullet">A</span> thin</label><label class="mc-option"><input type="radio" name="dg-th3" value="b"><span class="mc-bullet">B</span> tin</label></div></div>
-      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="mouse"></button>
-        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="dg-th4" value="a"><span class="mc-bullet">A</span> mouth</label><label class="mc-option"><input type="radio" name="dg-th4" value="b"><span class="mc-bullet">B</span> mouse</label></div></div>
-      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="path"></button>
-        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="dg-th5" value="a"><span class="mc-bullet">A</span> path</label><label class="mc-option"><input type="radio" name="dg-th5" value="b"><span class="mc-bullet">B</span> pass</label></div></div>
-      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="three"></button>
-        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="dg-th6" value="a"><span class="mc-bullet">A</span> three</label><label class="mc-option"><input type="radio" name="dg-th6" value="b"><span class="mc-bullet">B</span> free</label></div></div>
-      <div class="btn-row">
-        <button class="btn-primary" onclick="checkMC('ex-dg-th')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetMC('ex-dg-th')">Try again</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="step" id="dg5c">
-    <div class="step-head">
-      <div class="step-num">3</div>
-      <div>
-        <div class="step-meta">Read aloud</div>
-        <h2>Sentences</h2>
-      </div>
-    </div>
-    <div class="card">
-      <div class="exercise-label">Read aloud</div>
-      <h3>Read each sentence <b>aloud</b> first. Then check with 🔊.</h3>
-      <div class="word-row" style="flex-direction:column;align-items:flex-start">
-        <button class="say sentence" data-say="Three kids think.">Three kids think.</button>
-        <button class="say sentence" data-say="A moth can fly.">A moth can fly.</button>
-        <button class="say sentence" data-say="John sits on the throne.">John sits on the throne.</button>
-        <button class="say sentence" data-say="My birthday is on Thursday the thirteenth.">My birthday is on Thursday the thirteenth.</button>
-      </div>
-    </div>
-  </section>
-
-  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
-    <button class="btn-accent" onclick="showPart('part-th2');window.scrollTo(0,0)">Next: th (buzzing) →</button>
-  </div>
-
-</div>
-</div>
-
-<div class="lesson-part" id="part-th2">
-<nav class="chips">
-  <div class="wrap">
-    <a href="#dg6a">1 · th (buzzing)</a>
-    <a href="#dg6b">2 · Quiet or buzzing?</a>
-    <a href="#dg6c">3 · Sentences</a>
-  </div>
-</nav>
-
-<div class="wrap">
-
-  <section class="step" id="dg6a">
-    <div class="step-head">
-      <div class="step-num">1</div>
-      <div>
-        <div class="step-meta">Meet the sound</div>
-        <h2>th <span style="font-weight:600">(buzzing)</span></h2>
-      </div>
-    </div>
-    <div class="card">
-      <div class="sound-card">
-        <div class="sound-head">
-          <div class="sound-letter">th</div>
-          <div><div class="ipa">/ð/</div><div class="sound-name">buzzing th, as in <b>father</b></div></div>
-        </div>
-        <div class="sound-body">
-          <div class="blend-list"><div class="blend"><span class="tile">t</span><span class="op">+</span><span class="tile">h</span><span class="op">→</span><span class="tile v">th</span><span class="op">=</span><span class="ipa">/ð/</span></div></div>
-          <h4>How to say it</h4>
-          <p>The tongue is in the <b>same place</b>: between your teeth. Now <b>switch your voice on</b>. Put a hand on your throat: it buzzes, like a bee behind your teeth.</p>
-          <h4>Key words</h4>
-          <div class="word-row"><button class="say" data-say="father">father</button> <button class="say" data-say="brother">brother</button></div>
-          <h4>More words: listen and repeat</h4>
-          <div class="word-row"><button class="say" data-say="weather">weather</button> <button class="say" data-say="clothes">clothes</button> <button class="say" data-say="they">they</button> <button class="say" data-say="mother">mother</button> <button class="say" data-say="this">this</button> <button class="say" data-say="that">that</button> <button class="say" data-say="the">the</button> <button class="say" data-say="these">these</button> <button class="say" data-say="those">those</button> <button class="say" data-say="there">there</button> <button class="say" data-say="then">then</button> <button class="say" data-say="with">with</button> <button class="say" data-say="together">together</button></div>
-          <div class="trap"><span class="trap-title">German trap: not z, not d</span>Keep the tongue between your teeth:<div class="pairs" style="margin-top:8px">
-        <div class="pair"><button class="say" data-say="they">they</button><span class="vs">or</span><button class="say" data-say="day">day</button></div>
-        <div class="pair"><button class="say" data-say="then">then</button><span class="vs">or</span><button class="say" data-say="den">den</button></div>
-        <div class="pair"><button class="say" data-say="there">there</button><span class="vs">or</span><button class="say" data-say="dare">dare</button></div>
-      </div></div>
-          <div class="tip"><span class="tip-title">How do I know which th?</span><b>Buzzing</b> <span class="ipa">/ð/</span>: small grammar words (<i>the, this, that, these, those, they, there, then</i>) and family words with <b>-ther</b> (<i>mother, father, brother</i>). <b>Quiet</b> <span class="ipa">/θ/</span>: most other words (<i>think, three, month, maths</i>).</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="step" id="dg6b">
-    <div class="step-head">
-      <div class="step-num">2</div>
-      <div>
-        <div class="step-meta">Hear the difference</div>
-        <h2>Quiet or buzzing?</h2>
-      </div>
-    </div>
-    <div class="card" id="ex-dg-th2">
-      <div class="exercise-label">Listen and sort</div>
-      <h3>Listen with a hand on your throat. Is the <b>th</b> quiet <span class="ipa">/θ/</span> or buzzing <span class="ipa">/ð/</span>?</h3>
-      <div class="sort-row"><button class="say" data-say="three">three</button><span class="word-choice" id="dg-ts1" data-answer="quiet"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
-      <div class="sort-row"><button class="say" data-say="this">this</button><span class="word-choice" id="dg-ts2" data-answer="buzzing"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
-      <div class="sort-row"><button class="say" data-say="think">think</button><span class="word-choice" id="dg-ts3" data-answer="quiet"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
-      <div class="sort-row"><button class="say" data-say="mother">mother</button><span class="word-choice" id="dg-ts4" data-answer="buzzing"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
-      <div class="sort-row"><button class="say" data-say="month">month</button><span class="word-choice" id="dg-ts5" data-answer="quiet"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
-      <div class="sort-row"><button class="say" data-say="they">they</button><span class="word-choice" id="dg-ts6" data-answer="buzzing"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
-      <div class="sort-row"><button class="say" data-say="birthday">birthday</button><span class="word-choice" id="dg-ts7" data-answer="quiet"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
-      <div class="sort-row"><button class="say" data-say="weather">weather</button><span class="word-choice" id="dg-ts8" data-answer="buzzing"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
-      <div class="sort-row"><button class="say" data-say="Thursday">Thursday</button><span class="word-choice" id="dg-ts9" data-answer="quiet"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
-      <div class="sort-row"><button class="say" data-say="that">that</button><span class="word-choice" id="dg-ts10" data-answer="buzzing"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
-      <div class="sort-row"><button class="say" data-say="maths">maths</button><span class="word-choice" id="dg-ts11" data-answer="quiet"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
-      <div class="sort-row"><button class="say" data-say="brother">brother</button><span class="word-choice" id="dg-ts12" data-answer="buzzing"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
-      <div class="btn-row">
-        <button class="btn-primary" onclick="checkWords('ex-dg-th2')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetWords('ex-dg-th2')">Try again</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="step" id="dg6c">
-    <div class="step-head">
-      <div class="step-num">3</div>
-      <div>
-        <div class="step-meta">Read aloud</div>
-        <h2>Sentences</h2>
-      </div>
-    </div>
-    <div class="card">
-      <div class="exercise-label">Read aloud</div>
-      <h3>Read each sentence <b>aloud</b> first. Then check with 🔊.</h3>
-      <div class="word-row" style="flex-direction:column;align-items:flex-start">
-        <button class="say sentence" data-say="This is my mother.">This is my mother.</button>
-        <button class="say sentence" data-say="That is my father.">That is my father.</button>
-        <button class="say sentence" data-say="My brother is on the bench.">My brother is on the bench.</button>
-        <button class="say sentence" data-say="They like this weather.">They like this weather.</button>
-      </div>
-    </div>
-  </section>
-
-  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
-    <button class="btn-accent" onclick="showPart('part-mix');window.scrollTo(0,0)">Next: All together →</button>
-  </div>
-
-</div>
-</div>
-
-<div class="lesson-part" id="part-mix">
-<nav class="chips">
-  <div class="wrap">
-    <a href="#dg7a">1 · Which two letters?</a>
-    <a href="#dg7b">2 · Write the word</a>
-    <a href="#dg7c">3 · Tongue twisters</a>
-  </div>
-</nav>
-
-<div class="wrap">
-
-  <section class="step" id="dg7a">
-    <div class="step-head">
-      <div class="step-num">1</div>
-      <div>
-        <div class="step-meta">All five teams</div>
-        <h2>Which two letters?</h2>
-      </div>
-    </div>
-    <div class="card" id="ex-dg-mix">
-      <div class="exercise-label">Listen and complete</div>
-      <h3>Press ▶ and write the missing team: <span class="key">sh</span> <span class="key">ch</span> <span class="key">ph</span> <span class="key">ck</span> <span class="key">th</span></h3>
-      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="shark"></button><span class="dg-gap"><input class="blank" id="dg-mx1" data-answer="sh" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ark</span></div>
-      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="cheese"></button><span class="dg-gap"><input class="blank" id="dg-mx2" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">eese</span></div>
-      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="phone"></button><span class="dg-gap"><input class="blank" id="dg-mx3" data-answer="ph" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">one</span></div>
-      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="rocket"></button><span class="dg-gap">ro<input class="blank" id="dg-mx4" data-answer="ck" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">et</span></div>
-      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="thumb"></button><span class="dg-gap"><input class="blank" id="dg-mx5" data-answer="th" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">umb</span></div>
-      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="brother"></button><span class="dg-gap">bro<input class="blank" id="dg-mx6" data-answer="th" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">er</span></div>
-      <div class="listen-q"><span class="num">7.</span><button class="say say-big" data-say="champion"></button><span class="dg-gap"><input class="blank" id="dg-mx7" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ampion</span></div>
-      <div class="listen-q"><span class="num">8.</span><button class="say say-big" data-say="finish"></button><span class="dg-gap">fini<input class="blank" id="dg-mx8" data-answer="sh" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
-      <div class="listen-q"><span class="num">9.</span><button class="say say-big" data-say="elephant"></button><span class="dg-gap">ele<input class="blank" id="dg-mx9" data-answer="ph" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ant</span></div>
-      <div class="listen-q"><span class="num">10.</span><button class="say say-big" data-say="jacket"></button><span class="dg-gap">ja<input class="blank" id="dg-mx10" data-answer="ck" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">et</span></div>
-      <div class="listen-q"><span class="num">11.</span><button class="say say-big" data-say="bath"></button><span class="dg-gap">ba<input class="blank" id="dg-mx11" data-answer="th" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
-      <div class="listen-q"><span class="num">12.</span><button class="say say-big" data-say="lunch"></button><span class="dg-gap">lun<input class="blank" id="dg-mx12" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
-      <div class="btn-row">
-        <button class="btn-primary" onclick="checkBlanks('ex-dg-mix')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetBlanks('ex-dg-mix')">Try again</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="step" id="dg7b">
-    <div class="step-head">
-      <div class="step-num">2</div>
-      <div>
-        <div class="step-meta">Dictation</div>
-        <h2>Write the word</h2>
-      </div>
-    </div>
-    <div class="card" id="ex-dg-dict">
-      <div class="exercise-label">Dictation</div>
-      <h3>Listen and write the whole word. The last one has <b>two</b> teams!</h3>
-      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="ship"></button><input class="blank" id="dg-d1" data-answer="ship" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
-      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="lunch"></button><input class="blank" id="dg-d2" data-answer="lunch" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
-      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="photo"></button><input class="blank" id="dg-d3" data-answer="photo" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
-      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="sock"></button><input class="blank" id="dg-d4" data-answer="sock" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
-      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="month"></button><input class="blank" id="dg-d5" data-answer="month" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
-      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="this"></button><input class="blank" id="dg-d6" data-answer="this" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
-      <div class="listen-q"><span class="num">7.</span><button class="say say-big" data-say="thanks"></button><input class="blank" id="dg-d7" data-answer="thanks" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
-      <div class="listen-q"><span class="num">8.</span><button class="say say-big" data-say="chicken"></button><input class="blank" id="dg-d8" data-answer="chicken" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
-      <div class="btn-row">
-        <button class="btn-primary" onclick="checkBlanks('ex-dg-dict')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetBlanks('ex-dg-dict')">Try again</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="step" id="dg7c">
-    <div class="step-head">
-      <div class="step-num">3</div>
-      <div>
-        <div class="step-meta">Read and play</div>
-        <h2>Tongue twisters</h2>
-      </div>
-    </div>
-    <div class="card">
-      <div class="exercise-label">Tongue twisters</div>
-      <h3>Read each one slowly, then faster… three times without a mistake! Check with 🔊.</h3>
-      <div class="riddle"><p class="read-text"><b class="key">sh</b> She sells seashells by the seashore.</p><button class="say" data-say="She sells seashells by the seashore." data-file="l15-twister-1">Listen</button></div>
-      <div class="riddle"><p class="read-text"><b class="key">ch</b> Charlie chooses chips and cheese for lunch.</p><button class="say" data-say="Charlie chooses chips and cheese for lunch." data-file="l15-twister-2">Listen</button></div>
-      <div class="riddle"><p class="read-text"><b class="key">ph</b> Philip’s phone has photos of a dolphin and an elephant.</p><button class="say" data-say="Philip’s phone has photos of a dolphin and an elephant." data-file="l15-twister-3">Listen</button></div>
-      <div class="riddle"><p class="read-text"><b class="key">ck</b> A quick black duck kicks a rock.</p><button class="say" data-say="A quick black duck kicks a rock." data-file="l15-twister-4">Listen</button></div>
-      <div class="riddle"><p class="read-text"><b class="key">th</b> Three thin moths think about the thunder.</p><button class="say" data-say="Three thin moths think about the thunder." data-file="l15-twister-5">Listen</button></div>
-      <div class="riddle"><p class="read-text"><b class="key">th</b> This is my brother, that is my mother, and they are together with my father.</p><button class="say" data-say="This is my brother, that is my mother, and they are together with my father." data-file="l15-twister-6">Listen</button></div>
-      <p style="margin-top:16px"><b>Record yourself:</b> choose your best twister and say it as fast as you can. Then listen: can you hear every <b>th</b>?</p>
-      <div class="rec"></div>
-    </div>
-    <div class="card">
-      <div class="exercise-label">Writing</div>
-      <h3>Your turn! Write your own tongue twister with <b>sh</b>, <b>ch</b> or <b>th</b> for your teacher.</h3>
-      <textarea class="free-write" id="fw-dg-twister" placeholder="Three…" rows="3"></textarea>
-      <div class="char-count" id="cc-fw-dg-twister">0 characters</div>
-    </div>
-  </section>
-
 
 </div>
 </div>
@@ -816,6 +328,7 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     <div class="card" id="ex-v-months">
       <div class="exercise-label">Exercise 1</div>
       <h3>Put the months in the correct order. Write 1–12.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Расставь месяцы по порядку. Напиши номера 1–12.</p>
       <div class="month-grid">
         <label class="month-item"><input class="blank num" id="v-m-apr" data-answer="4" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off"><span>April</span></label>
         <label class="month-item"><input class="blank num" id="v-m-aug" data-answer="8" inputmode="numeric" maxlength="2" placeholder="?" autocomplete="off"><span>August</span></label>
@@ -848,6 +361,7 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     <div class="card" id="ex-v-this">
       <div class="exercise-label">Exercise 2</div>
       <h3>Complete the sentences.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Закончи предложения.</p>
       <p class="gap-line"><span class="num">1.</span> This month is <input class="blank" id="v-s1" data-answer="january|february|march|april|may|june|july|august|september|october|november|december" placeholder="month" autocomplete="off">.</p>
       <p class="gap-line"><span class="num">2.</span> My birthday is in <input class="blank" id="v-s2" data-answer="january|february|march|april|may|june|july|august|september|october|november|december" placeholder="month" autocomplete="off">.</p>
       <div class="btn-row">
@@ -869,6 +383,7 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     <div class="card">
       <div class="exercise-label">Exercise 3</div>
       <h3>Write the numbers.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Напиши числа.</p>
       <p class="gap-line"><span class="num">1.</span> The number of letters in my name: <input class="blank" id="v-n1" placeholder="?" inputmode="numeric" autocomplete="off" style="min-width:80px;width:80px"></p>
       <p class="gap-line"><span class="num">2.</span> The date today: <input class="blank" id="v-n2" placeholder="?" autocomplete="off" style="min-width:80px;width:80px"></p>
       <p class="gap-line"><span class="num">3.</span> The number of people in my house: <input class="blank" id="v-n3" placeholder="?" inputmode="numeric" autocomplete="off" style="min-width:80px;width:80px"></p>
@@ -878,6 +393,7 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     <div class="card">
       <div class="exercise-label">Learn to learn</div>
       <h3>Learning numbers together</h3>
+      <p class="ru-hint" lang="ru" data-auto>Учим числа вместе.</p>
       <p>Learn and practise <b>cardinal</b> (23 = twenty-three) and <b>ordinal</b> (23rd = twenty-third) numbers together. Listen to each pair.</p>
       <table class="ref-table">
         <tr><th>Cardinal</th><th></th><th>Ordinal</th><th></th></tr>
@@ -901,6 +417,7 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     <div class="card" id="ex-v-hear">
       <div class="exercise-label">Exercise 4</div>
       <h3>Listen. Choose the numbers you hear.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Послушай. Выбери числа, которые слышишь.</p>
       <div class="audio-wrap">
         <audio controls preload="metadata">
           <source src="audio/lesson-03-s02.m4a" type="audio/mp4">
@@ -928,6 +445,7 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     <div class="card" id="ex-v-ord">
       <div class="exercise-label">Exercise 5 · Use it!</div>
       <h3>Say the cardinal number aloud. Then write the ordinal number in words.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Назови количественное число вслух. Потом напиши порядковое число словами.</p>
       <div class="ord-grid">
       <span class="cue-input"><span class="cue-lab">1</span><span class="given">first</span></span>
       <span class="cue-input"><span class="cue-lab">2</span><input class="blank" id="v-o2" data-answer="second" placeholder="?" autocomplete="off" autocapitalize="off"></span>
@@ -960,6 +478,7 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     <div class="card" id="ex-v-dates">
       <div class="exercise-label">Exercise 6</div>
       <h3>Listen and complete the sentences with the date.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Послушай и закончи предложения датой.</p>
       <div class="audio-wrap">
         <audio controls preload="metadata">
           <source src="audio/lesson-03-s03.m4a" type="audio/mp4">
@@ -986,6 +505,7 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     <div class="card">
       <div class="exercise-label">Exercise 7</div>
       <h3>Complete the sentences. Then say them aloud.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Закончи предложения. Потом произнеси их вслух.</p>
       <p class="gap-line"><span class="num">1.</span> My birthday is on <input class="blank" id="v-b1" placeholder="e.g. 5th May" autocomplete="off" style="min-width:150px">.</p>
       <p class="gap-line"><span class="num">2.</span> Today is <input class="blank" id="v-b2" placeholder="e.g. 3rd October" autocomplete="off" style="min-width:150px">.</p>
       <div class="tip class-note"><span class="tip-title">In class: tell your teacher</span>Say the date the long way: “My birthday is on <span class="key">the fifth of May</span>.”</div>
@@ -1003,6 +523,7 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     <div class="card" id="ex-v-colours">
       <div class="exercise-label">Exercise 8</div>
       <h3>Add the colours and write the new colour.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Смешай цвета и напиши, какой цвет получился.</p>
       <div class="mix-grid">
         <div class="mix-item"><span class="mix-num">1</span><svg class="mix-svg" viewBox="0 0 124 80" aria-hidden="true"><defs><clipPath id="mixclip1"><circle cx="42" cy="40" r="34"/></clipPath></defs><circle cx="42" cy="40" r="34" fill="#E53935"/><circle cx="82" cy="40" r="34" fill="#1E88E5"/><circle cx="82" cy="40" r="34" fill="#7E57C2" clip-path="url(#mixclip1)"/></svg><span class="mix-sum">red + blue</span><span class="given">purple</span></div>
         <div class="mix-item"><span class="mix-num">2</span><svg class="mix-svg" viewBox="0 0 124 80" aria-hidden="true"><defs><clipPath id="mixclip2"><circle cx="42" cy="40" r="34"/></clipPath></defs><circle cx="42" cy="40" r="34" fill="#1E88E5"/><circle cx="82" cy="40" r="34" fill="#FDD835"/><circle cx="82" cy="40" r="34" fill="#43A047" clip-path="url(#mixclip2)"/></svg><span class="mix-sum">blue + yellow</span><input class="blank" id="v-c2" data-answer="green" placeholder="?" autocomplete="off" autocapitalize="off"></div>
@@ -1069,6 +590,7 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
       <div class="quiz-result" hidden></div>
       <div class="quiz-listen">
         <h3>🎧 Listen and check.</h3>
+        <p class="ru-hint" lang="ru" data-auto>🎧 Послушай и проверь.</p>
       <div class="audio-wrap">
         <audio controls preload="metadata">
           <source src="audio/lesson-03-s05.m4a" type="audio/mp4">
@@ -1086,205 +608,353 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
 </div>
 </div>
 
-<div class="lesson-part" id="part-grammar">
+<!-- ══════════════════════════════════════════════════════════
+     HOMEWORK: Workbook p. 4 (Starter · Welcome!, Ex. 1–5) + /ʃ/ and /tʃ/ practice
+══════════════════════════════════════════════════════════ -->
+<div class="lesson-part" id="part-homework">
 <nav class="chips">
   <div class="wrap">
-    <a href="#x5a" data-extra="x-sb5-pronouns">+ · Pronouns</a>
-    <a href="#x5b" data-extra="x-sb5-be">+ · Verb be</a>
-    <a href="#x5c" data-extra="x-sb5-questions">+ · Question words</a>
+    <a href="#hw1">1 · Months</a>
+    <a href="#hw2">2 · Crossword</a>
+    <a href="#hw3">3 · Online profiles</a>
+    <a href="#hw4">4 · sh or ch?</a>
+    <a href="#hw5">5 · New pairs</a>
+    <a href="#hw6">6 · Sneaky spellings</a>
+    <a href="#hw7">7 · Charlie the chef</a>
   </div>
 </nav>
 
 <div class="wrap">
 
-  <section class="step" id="x5a" data-extra="x-sb5-pronouns">
+  <div class="teacher-only">
+    <div class="to-label">👩‍🏫 Teacher only · Homework</div>
+    Steps 1–3 = Workbook p. 4, Ex. 1–5. The crossword is the same puzzle as in Lesson 3 homework (copied). Steps 4–7 = extra practice on <span class="ipa">/ʃ/</span> and <span class="ipa">/tʃ/</span>.
+    <ul>
+      <li><b>Ex. 4 key:</b> 1 Carlos, 2 6th June (he is 12 <i>tomorrow</i>, it’s 5th June), 3 blue, 4 a doctor.</li>
+      <li><b>Step 7 key:</b> /tʃ/ = 10 (Charlie, kitchen, beach, chips, lunch, chooses, cheese, cherry, chocolate, children); /ʃ/ = 5 (chef, fish, Sharon, she, shares). <i>chef</i> is the ch word without /tʃ/.</li>
+    </ul>
+  </div>
+
+  <section class="step" id="hw1">
     <div class="step-head">
-      <div class="step-num plus">+</div>
+      <div class="step-num">1</div>
       <div>
-        <div class="step-meta">Student’s Book p. 6 · Language in action <span class="extra-badge">extra</span></div>
-        <h2>Subject pronouns and possessive adjectives</h2>
+        <div class="step-meta">Homework · Workbook p. 4 · Ex. 1</div>
+        <h2>Months and ordinal numbers</h2>
       </div>
     </div>
-    <div class="card" id="ex-x5-v">
-      <div class="exercise-label">Video S.1</div>
-      <h3>Watch the video. Where is Isabella from? What is Martín’s dream?</h3>
-      <div class="video-wrap">
-        <video controls preload="metadata" playsinline>
-          <source src="video/starter-language-in-action.mp4" type="video/mp4">
-          <track kind="subtitles" src="video/starter-language-in-action.vtt" srclang="en" label="English">
-        </video>
-      </div>
-      <p class="gap-line"><span class="num">1.</span> Isabella is from <input class="blank" id="x5-v-1" data-answer="the united states|the us|the usa|the united states of america|united states|usa|the u.s.|america" placeholder="country" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:200px">.</p>
-      <p class="gap-line"><span class="num">2.</span> Martín’s dream is to <input class="blank" id="x5-v-2" data-answer="play guitar|play the guitar" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:200px">.</p>
+    <div class="card" id="ex-hw-months">
+      <div class="exercise-label hw">Exercise 1</div>
+      <h3>Complete the sentences with the months in the box and ordinal numbers.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Закончи предложения месяцами из рамки и порядковыми числительными.</p>
+      <p class="word-row"><span class="key">April</span> <span class="key">August</span> <span class="key">February</span> <span class="key"><s>January</s></span> <span class="key">June</span> <span class="key">March</span> <span class="key">November</span> <span class="key">October</span></p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>1. <b>January</b> is the first month.</span></div>
+      <p class="gap-line"><span class="num">2.</span> <input class="blank" id="hw-m2" data-answer="february" placeholder="month" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:150px"> is the <input class="blank" id="hw-o2" data-answer="second" placeholder="ordinal" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:150px"> month.</p>
+      <p class="gap-line"><span class="num">3.</span> <input class="blank" id="hw-m3" data-answer="march" placeholder="month" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:150px"> is the third month.</p>
+      <p class="gap-line"><span class="num">4.</span> <input class="blank" id="hw-m4" data-answer="april" placeholder="month" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:150px"> is the <input class="blank" id="hw-o4" data-answer="fourth" placeholder="ordinal" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:150px"> month.</p>
+      <p class="gap-line"><span class="num">5.</span> May is the <input class="blank" id="hw-o5" data-answer="fifth" placeholder="ordinal" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:150px"> month.</p>
+      <p class="gap-line"><span class="num">6.</span> <input class="blank" id="hw-m6" data-answer="june" placeholder="month" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:150px"> is the sixth month.</p>
+      <p class="gap-line"><span class="num">7.</span> July is the <input class="blank" id="hw-o7" data-answer="seventh" placeholder="ordinal" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:150px"> month.</p>
+      <p class="gap-line"><span class="num">8.</span> <input class="blank" id="hw-m8" data-answer="august" placeholder="month" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:150px"> is the <input class="blank" id="hw-o8" data-answer="eighth" placeholder="ordinal" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:150px"> month.</p>
+      <p class="gap-line"><span class="num">9.</span> September is the <input class="blank" id="hw-o9" data-answer="ninth" placeholder="ordinal" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:150px"> month.</p>
+      <p class="gap-line"><span class="num">10.</span> <input class="blank" id="hw-m10" data-answer="october" placeholder="month" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:150px"> is the tenth month.</p>
+      <p class="gap-line"><span class="num">11.</span> <input class="blank" id="hw-m11" data-answer="november" placeholder="month" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:150px"> is the <input class="blank" id="hw-o11" data-answer="eleventh" placeholder="ordinal" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:150px"> month.</p>
+      <p class="gap-line"><span class="num">12.</span> December is the <input class="blank" id="hw-o12" data-answer="twelfth" placeholder="ordinal" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:150px"> month.</p>
       <div class="btn-row">
-        <button class="btn-primary" onclick="checkBlanks('ex-x5-v')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetBlanks('ex-x5-v')">Try again</button>
+        <button class="btn-primary" onclick="checkBlanks('ex-hw-months')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw-months')">Try again</button>
       </div>
-    </div>
-    <div class="card" id="ex-x5-1">
-      <div class="ref-wrap" style="overflow-x:auto">
-        <table class="ref-table">
-          <tr><th>Subject pronouns</th><th>Possessive adjectives</th></tr>
-          <tr><td class="label">I</td><td><b>My</b> name is Simon.</td></tr>
-          <tr><td class="label">You</td><td>What’s <b>your</b> dream?</td></tr>
-          <tr><td class="label">He</td><td><b>His</b> dream is to play guitar.</td></tr>
-          <tr><td class="label">She</td><td><b>Her</b> dream is to be a singer.</td></tr>
-          <tr><td class="label">It</td><td><b>Its</b> hair is long.</td></tr>
-          <tr><td class="label">We</td><td><b>Our</b> teacher is kind.</td></tr>
-          <tr><td class="label">They</td><td><b>Their</b> car is blue.</td></tr>
-        </table>
-      </div>
-      <div class="exercise-label" style="margin-top:18px">Exercise 1</div>
-      <h3>Look at the table. Choose the correct words.</h3>
-      <div class="example-row"><span class="ex-tag">Example</span><span>1. Alana is <b>my</b> best friend.</span></div>
-      <div class="sent-list">
-        <p class="gap-line"><span class="num">2.</span> <span class="word-choice" id="x5-1-2a" data-answer="We"><button class="word-choice-btn" onclick="selectWord(this)">Our</button><button class="word-choice-btn" onclick="selectWord(this)">We</button></span> aren’t from Brazil. <span class="word-choice" id="x5-1-2b" data-answer="We"><button class="word-choice-btn" onclick="selectWord(this)">Our</button><button class="word-choice-btn" onclick="selectWord(this)">We</button></span>’re from Spain.</p>
-        <p class="gap-line"><span class="num">3.</span> <span class="word-choice" id="x5-1-3a" data-answer="Her"><button class="word-choice-btn" onclick="selectWord(this)">Her</button><button class="word-choice-btn" onclick="selectWord(this)">She</button></span> name is Luna. <span class="word-choice" id="x5-1-3b" data-answer="She"><button class="word-choice-btn" onclick="selectWord(this)">Her</button><button class="word-choice-btn" onclick="selectWord(this)">She</button></span>’s 13.</p>
-        <p class="gap-line"><span class="num">4.</span> <span class="word-choice" id="x5-1-4" data-answer="Their"><button class="word-choice-btn" onclick="selectWord(this)">Their</button><button class="word-choice-btn" onclick="selectWord(this)">They</button></span> names are Kit and Bella.</p>
-      </div>
-      <div class="btn-row">
-        <button class="btn-primary" onclick="checkWords('ex-x5-1')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetWords('ex-x5-1')">Try again</button>
-      </div>
-      <div class="teacher-only"><div class="to-label">👩‍🏫 SB p. 5 · Ex 1</div>Key: 2 We, We · 3 Her, She · 4 Their. Video S.1: Isabella is from the United States (American); Martín’s dream is to play guitar. Subtitles: CC button.</div>
+      <div class="tip">Ordinals: <i>first, second, third</i>, then add <b>-th</b>: <i>fourth, sixth…</i> Careful: <i>fifth, eighth, ninth, twelfth</i>.</div>
     </div>
   </section>
 
-  <section class="step" id="x5b" data-extra="x-sb5-be">
+  <section class="step" id="hw2">
     <div class="step-head">
-      <div class="step-num plus">+</div>
+      <div class="step-num">2</div>
       <div>
-        <div class="step-meta">Student’s Book p. 6 · Language in action <span class="extra-badge">extra</span></div>
-        <h2>Verb <i>be</i></h2>
+        <div class="step-meta">Homework · Workbook p. 4 · Ex. 2</div>
+        <h2>Colour crossword</h2>
       </div>
     </div>
-    <div class="card" id="ex-x5-2">
-      <div class="ref-wrap" style="overflow-x:auto">
-        <table class="ref-table">
-          <tr><td class="label">+</td><td>I<b>’m</b> from the UK. She<b>’s</b> amazing.<br>We<b>’re</b> students at an international school.</td></tr>
-          <tr><td class="label">–</td><td>But we<b>’re not</b> in the same class.</td></tr>
-          <tr><td class="label">?</td><td><b>Is</b> Simon from the UK? Yes, he <b>is</b>.<br><b>Are</b> Isabelle and Martine friends? Yes, they <b>are</b>.<br><b>Is</b> Isabella from Brazil? No, she <b>isn’t</b>.</td></tr>
-        </table>
-      </div>
-      <div class="exercise-label" style="margin-top:18px">Exercise 2</div>
-      <h3>Use the table to complete the sentences with the correct form of the verb <i>be</i>.</h3>
-      <div class="example-row"><span class="ex-tag">Example</span><span>1. I<b>’m</b> from Granada.</span></div>
-      <div class="sent-list">
-        <p class="gap-line"><span class="num">2.</span> Camila Cabello <input class="blank" id="x5-2-2" data-answer="is|’s|'s" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> brilliant.</p>
-        <p class="gap-line"><span class="num">3.</span> Miranda and Suki <input class="blank" id="x5-2-3" data-answer="aren’t|aren't|are not" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> Spanish.</p>
-        <p class="gap-line"><span class="num">4.</span> <input class="blank" id="x5-2-4" data-answer="are" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> you a good singer?</p>
-        <p class="gap-line"><span class="num">5.</span> <input class="blank" id="x5-2-5a" data-answer="is" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> Diana’s bedroom red? No, it <input class="blank" id="x5-2-5b" data-answer="isn’t|isn't|is not" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px">.</p>
-      </div>
-      <div class="btn-row">
-        <button class="btn-primary" onclick="checkBlanks('ex-x5-2')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetBlanks('ex-x5-2')">Try again</button>
-      </div>
-      <div class="teacher-only"><div class="to-label">👩‍🏫 SB p. 5 · Ex 2</div>Key: 2 is · 3 aren’t (profile: “They aren’t Spanish. Miranda’s Mexican and Suki’s Turkish.”) · 4 Are · 5 Is, isn’t.</div>
-    </div>
-
-    <div class="card" id="ex-x5-3">
-      <div class="exercise-label">Exercise 3</div>
-      <h3>Complete the profile with the correct form of <i>be</i>. Guess the person. Listen and check.</h3>
-      <div class="email">
-        <div class="email-bar">🇺🇸 🎤 Who is she?</div>
-        <div class="email-body">
-          <p>Her birthday <sup>1</sup><b>is</b> (✓) on 13th December.</p>
-          <p>She <sup>2</sup><input class="blank" id="x5-3-2" data-answer="isn’t|isn't|is not" autocomplete="off" autocapitalize="off" spellcheck="false"> (✗) British.</p>
-          <p>She <sup>3</sup><input class="blank" id="x5-3-3" data-answer="’s|'s|is" autocomplete="off" autocapitalize="off" spellcheck="false"> (✓) American.</p>
-          <p>My favourite songs <sup>4</sup><input class="blank" id="x5-3-4" data-answer="are" autocomplete="off" autocapitalize="off" spellcheck="false"> (✓) <i>Shake it Off</i> and <i>Back to December</i>.</p>
-          <p><sup>5</sup><input class="blank" id="x5-3-5" data-answer="is" autocomplete="off" autocapitalize="off" spellcheck="false"> she your favourite singer?</p>
+    <div class="card" id="ex-hw-xw">
+      <div class="exercise-label hw">Exercise 2</div>
+      <h3>Complete the crossword. Write seven more colours.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Разгадай кроссворд. Впиши ещё семь цветов.</p>
+      <div class="xw-wrap">
+        <div class="crossword-scroll">
+          <div class="xw-grid xw-sparse" style="grid-template-columns:repeat(10,38px);grid-template-rows:repeat(9,38px)">
+        <div class="xw-cell xw-given" style="grid-column:4;grid-row:1"><span class="xw-num">1</span><span class="xw-letter">G</span></div>
+        <div class="xw-cell xw-given" style="grid-column:4;grid-row:2"><span class="xw-num">2</span><span class="xw-letter">R</span></div>
+        <div class="xw-cell" style="grid-column:5;grid-row:2"><input type="text" class="xw-blank" maxlength="1" id="xw-c4-r1" data-answer="E" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:6;grid-row:2"><input type="text" class="xw-blank" maxlength="1" id="xw-c5-r1" data-answer="D" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:1;grid-row:3"><span class="xw-num">3</span><input type="text" class="xw-blank" maxlength="1" id="xw-c0-r2" data-answer="B" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:2;grid-row:3"><input type="text" class="xw-blank" maxlength="1" id="xw-c1-r2" data-answer="L" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:3;grid-row:3"><input type="text" class="xw-blank" maxlength="1" id="xw-c2-r2" data-answer="U" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell xw-given" style="grid-column:4;grid-row:3"><span class="xw-letter">E</span></div>
+        <div class="xw-cell xw-given" style="grid-column:4;grid-row:4"><span class="xw-letter">E</span></div>
+        <div class="xw-cell" style="grid-column:6;grid-row:4"><span class="xw-num">5</span><input type="text" class="xw-blank" maxlength="1" id="xw-c5-r3" data-answer="Y" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:9;grid-row:4"><span class="xw-num">6</span><input type="text" class="xw-blank" maxlength="1" id="xw-c8-r3" data-answer="P" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:1;grid-row:5"><span class="xw-num">4</span><input type="text" class="xw-blank" maxlength="1" id="xw-c0-r4" data-answer="O" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:2;grid-row:5"><input type="text" class="xw-blank" maxlength="1" id="xw-c1-r4" data-answer="R" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:3;grid-row:5"><input type="text" class="xw-blank" maxlength="1" id="xw-c2-r4" data-answer="A" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell xw-given" style="grid-column:4;grid-row:5"><span class="xw-letter">N</span></div>
+        <div class="xw-cell" style="grid-column:5;grid-row:5"><input type="text" class="xw-blank" maxlength="1" id="xw-c4-r4" data-answer="G" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:6;grid-row:5"><input type="text" class="xw-blank" maxlength="1" id="xw-c5-r4" data-answer="E" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:9;grid-row:5"><input type="text" class="xw-blank" maxlength="1" id="xw-c8-r4" data-answer="I" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:6;grid-row:6"><input type="text" class="xw-blank" maxlength="1" id="xw-c5-r5" data-answer="L" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:9;grid-row:6"><input type="text" class="xw-blank" maxlength="1" id="xw-c8-r5" data-answer="N" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:5;grid-row:7"><span class="xw-num">7</span><input type="text" class="xw-blank" maxlength="1" id="xw-c4-r6" data-answer="B" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:6;grid-row:7"><input type="text" class="xw-blank" maxlength="1" id="xw-c5-r6" data-answer="L" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:7;grid-row:7"><input type="text" class="xw-blank" maxlength="1" id="xw-c6-r6" data-answer="A" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:8;grid-row:7"><input type="text" class="xw-blank" maxlength="1" id="xw-c7-r6" data-answer="C" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:9;grid-row:7"><input type="text" class="xw-blank" maxlength="1" id="xw-c8-r6" data-answer="K" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:6;grid-row:8"><input type="text" class="xw-blank" maxlength="1" id="xw-c5-r7" data-answer="O" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:6;grid-row:9"><span class="xw-num">8</span><input type="text" class="xw-blank" maxlength="1" id="xw-c5-r8" data-answer="W" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:7;grid-row:9"><input type="text" class="xw-blank" maxlength="1" id="xw-c6-r8" data-answer="H" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:8;grid-row:9"><input type="text" class="xw-blank" maxlength="1" id="xw-c7-r8" data-answer="I" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:9;grid-row:9"><input type="text" class="xw-blank" maxlength="1" id="xw-c8-r8" data-answer="T" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+        <div class="xw-cell" style="grid-column:10;grid-row:9"><input type="text" class="xw-blank" maxlength="1" id="xw-c9-r8" data-answer="E" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+          </div>
+        </div>
+        <div class="xw-clues">
+          <h4>Across →</h4>
+          <p>2 three letters <span class="swatch" style="background:#E53935"></span></p>
+          <p>3 four letters <span class="swatch" style="background:#1E88E5"></span></p>
+          <p>4 six letters <span class="swatch" style="background:#FB8C00"></span></p>
+          <p>7 five letters <span class="swatch" style="background:#222"></span></p>
+          <p>8 five letters <span class="swatch" style="background:#fff"></span></p>
+          <h4>Down ↓</h4>
+          <p>1 five letters <span class="swatch" style="background:#43A047"></span> <i>green</i></p>
+          <p>5 six letters <span class="swatch" style="background:#FDD835"></span></p>
+          <p>6 four letters <span class="swatch" style="background:#F48FB1"></span></p>
         </div>
       </div>
-      <div class="audio-wrap" style="margin-top:14px">
-        <audio controls preload="metadata">
-          <source src="audio/lesson-15-s07.m4a" type="audio/mp4">
-          Your browser does not support audio.
-        </audio>
-      </div>
-      <p class="gap-line" style="margin-top:14px"><b>Who is she?</b> <input class="blank" id="x5-3-who" data-answer="taylor swift|taylor|swift" placeholder="name" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:180px"></p>
       <div class="btn-row">
-        <button class="btn-primary" onclick="checkBlanks('ex-x5-3')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetBlanks('ex-x5-3')">Try again</button>
+        <button class="btn-primary" onclick="checkBlanks('ex-hw-xw','xw-blank')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw-xw','xw-blank')">Try again</button>
       </div>
-      <div class="teacher-only"><div class="to-label">👩‍🏫 SB p. 5 · Ex 3</div>Key: 2 isn’t · 3 ’s / is · 4 are · 5 Is → <b>Taylor Swift</b>. Audio: track S.07.</div>
-    </div>
-
-    <div class="card" id="ex-x5-4">
-      <div class="exercise-label">Exercise 4</div>
-      <h3>Write questions with the verb <i>be</i>.</h3>
-      <div class="example-row"><span class="ex-tag">Example</span><span>1. you / 12? → <b>Are you 12?</b></span></div>
-      <div class="sent-list">
-        <p class="gap-line"><span class="num">2.</span> you / from / Ankara? <input class="blank wide" id="x5-4-2" data-answer="are you from ankara?|are you from ankara" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
-        <p class="gap-line"><span class="num">3.</span> your best friends / in your class? <input class="blank wide" id="x5-4-3" data-answer="are your best friends in your class?|are your best friends in your class" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
-        <p class="gap-line"><span class="num">4.</span> your teacher / English? <input class="blank wide" id="x5-4-4" data-answer="is your teacher english?|is your teacher english" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
-        <p class="gap-line"><span class="num">5.</span> today / 19th June? <input class="blank wide" id="x5-4-5" data-answer="is today 19th june?|is today 19th june|is today the 19th of june?|is today the 19th of june" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
-      </div>
-      <div class="btn-row">
-        <button class="btn-primary" onclick="checkBlanks('ex-x5-4')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetBlanks('ex-x5-4')">Try again</button>
-      </div>
+      <div class="tip">Stuck? The little colour next to each clue is a hint.</div>
     </div>
   </section>
 
-  <section class="step" id="x5c" data-extra="x-sb5-questions">
+  <section class="step" id="hw3">
     <div class="step-head">
-      <div class="step-num plus">+</div>
+      <div class="step-num">3</div>
       <div>
-        <div class="step-meta">Student’s Book p. 6 · Language in action <span class="extra-badge">extra</span></div>
-        <h2>Question words</h2>
+        <div class="step-meta">Homework · Workbook p. 4 · Ex. 3–5</div>
+        <h2>Online profiles</h2>
       </div>
     </div>
-    <div class="card" id="ex-match-x5-5">
-      <div class="exercise-label">Exercise 5</div>
-      <h3>Match the question words with their functions.</h3>
-      <div class="example-row"><span class="ex-tag">Example</span><span>What ⇄ <b>things</b></span></div>
-      <div class="match-grid">
-        <div class="match-col" data-side="left">
-          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-x5-5')">Where</div>
-          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-x5-5')">When</div>
-          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-x5-5')">How old</div>
-          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-x5-5')">Who</div>
-        </div>
-        <div class="match-col" data-side="right">
-          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-x5-5')">age</div>
-          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-x5-5')">people</div>
-          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-x5-5')">places</div>
-          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-x5-5')">time and dates</div>
-        </div>
-      </div>
-      <div class="btn-row">
-        <button class="btn-ghost" onclick="resetMatchEx('ex-match-x5-5')">Try again</button>
-      </div>
-    </div>
-
-    <div class="card" id="ex-x5-6">
-      <div class="exercise-label">Exercise 6</div>
-      <h3>Complete the questions with <i>is</i> or <i>are</i>.</h3>
-      <div class="example-row"><span class="ex-tag">Example</span><span>1. Where <b>are</b> you from?</span></div>
-      <div class="sent-list">
-        <p class="gap-line"><span class="num">2.</span> How old <span class="word-choice" id="x5-6-2" data-answer="are"><button class="word-choice-btn" onclick="selectWord(this)">is</button><button class="word-choice-btn" onclick="selectWord(this)">are</button></span> you?</p>
-        <p class="gap-line"><span class="num">3.</span> When <span class="word-choice" id="x5-6-3" data-answer="is"><button class="word-choice-btn" onclick="selectWord(this)">is</button><button class="word-choice-btn" onclick="selectWord(this)">are</button></span> your birthday?</p>
-        <p class="gap-line"><span class="num">4.</span> Who <span class="word-choice" id="x5-6-4" data-answer="is"><button class="word-choice-btn" onclick="selectWord(this)">is</button><button class="word-choice-btn" onclick="selectWord(this)">are</button></span> your best friend?</p>
-        <p class="gap-line"><span class="num">5.</span> What <span class="word-choice" id="x5-6-5" data-answer="is"><button class="word-choice-btn" onclick="selectWord(this)">is</button><button class="word-choice-btn" onclick="selectWord(this)">are</button></span> your favourite colour?</p>
-      </div>
-      <div class="btn-row">
-        <button class="btn-primary" onclick="checkWords('ex-x5-6')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetWords('ex-x5-6')">Try again</button>
-      </div>
-    </div>
-
     <div class="card">
-      <div class="exercise-label">Exercise 7 · Use it!</div>
-      <h3>Ask and answer the questions in Exercise 4 and Exercise 6.</h3>
-      <div class="tip class-note"><span class="tip-title">In class: ask your teacher</span>Take turns: “<span class="key">Are you 12?</span>” — “Yes, I am. / No, I’m not.” Then ask the questions from Exercise 6.</div>
+      <div class="exercise-label hw">Exercise 3 · Reading</div>
+      <h3>Read about Dasha and Carlos. Where are their friends from?</h3>
+      <p class="ru-hint" lang="ru" data-auto>Прочитай о Даше и Карлосе. Откуда их друзья?</p>
+      <div class="email">
+        <div class="email-bar">International student profile day!</div>
+        <div class="email-body" style="line-height:1.8">
+          <p>Hello! My name’s Dasha. I’m from Warsaw in Poland. I’m 11. How old are you? In this photo, I’m with my two best friends. Polina is Polish, but Marta isn’t Polish. She’s Brazilian. My favourite colour is green. What’s your favourite colour? My birthday is on 10th April. When’s your birthday? My dream is to be a doctor! What’s your dream? Write soon!</p>
+        </div>
+      </div>
+      <div class="email">
+        <div class="email-bar">Reply</div>
+        <div class="email-body" style="line-height:1.8">
+          <p>Hi, Dasha! I’m Carlos and I’m 11, too! I’m Mexican, from Mexico City. In this photo, I’m with my best friends. They’re not Mexican. Yusuf is from Türkiye and David is from England. My favourite colour is blue. I’m 12 tomorrow! It’s 5th June and it’s my birthday! My dream is to be a singer! Who’s your favourite singer? Let me know! 🙂</p>
+        </div>
+      </div>
+    </div>
+    <div class="card" id="ex-hw-friends">
+      <div class="exercise-label hw">Exercise 3</div>
+      <h3>Where are their friends from?</h3>
+      <p class="ru-hint" lang="ru" data-auto>Откуда их друзья?</p>
+      <p class="gap-line"><span class="num">1.</span> Polina is from <input class="blank" id="hw-fr1" data-answer="poland" placeholder="country" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:150px">.</p>
+      <p class="gap-line"><span class="num">2.</span> Marta is from <input class="blank" id="hw-fr2" data-answer="brazil" placeholder="country" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:150px">.</p>
+      <p class="gap-line"><span class="num">3.</span> Yusuf is from <input class="blank" id="hw-fr3" data-answer="türkiye|turkiye|turkey" placeholder="country" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:150px">.</p>
+      <p class="gap-line"><span class="num">4.</span> David is from <input class="blank" id="hw-fr4" data-answer="england" placeholder="country" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:150px">.</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-hw-friends')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw-friends')">Try again</button>
+      </div>
+    </div>
+    <div class="card" id="ex-hw-table">
+      <div class="exercise-label hw">Exercise 4</div>
+      <h3>Read the profiles again and complete the table.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Прочитай анкеты ещё раз и заполни таблицу.</p>
+      <table class="ref-table">
+        <tr><th>Name</th><th>Birthday</th><th>Favourite colour</th><th>Dream</th></tr>
+        <tr><td>Dasha</td><td>10th April</td><td>green</td><td><span class="num">4</span> <input class="blank" id="hw-tb4" data-answer="doctor|a doctor|to be a doctor" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:110px"></td></tr>
+        <tr><td><span class="num">1</span> <input class="blank" id="hw-tb1" data-answer="carlos" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:110px"></td><td><span class="num">2</span> <input class="blank" id="hw-tb2" data-answer="6th june|6 june|sixth june|june 6th|june 6|6th of june" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:110px"></td><td><span class="num">3</span> <input class="blank" id="hw-tb3" data-answer="blue" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:110px"></td><td>singer</td></tr>
+      </table>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-hw-table')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw-table')">Try again</button>
+      </div>
+      <div class="tip">Careful with 2! Carlos says: “I’m 12 <b>tomorrow</b>! It’s 5th June.” So when is his birthday?</div>
+    </div>
+    <div class="card" id="ex-hw-circle">
+      <div class="exercise-label hw">Exercise 5</div>
+      <h3>Choose the correct answers.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Выбери правильные ответы.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>1. Dasha is from China / <b>Poland</b>.</span></div>
+      <p class="gap-line"><span class="num">2.</span> Her birthday is in the <span class="word-choice" id="hw-c2" data-answer="fourth"><button class="word-choice-btn" onclick="selectWord(this)">fourth</button><button class="word-choice-btn" onclick="selectWord(this)">seventh</button></span> month of the year.</p>
+      <p class="gap-line"><span class="num">3.</span> Carlos is from <span class="word-choice" id="hw-c3" data-answer="Mexico"><button class="word-choice-btn" onclick="selectWord(this)">Türkiye</button><button class="word-choice-btn" onclick="selectWord(this)">Mexico</button></span>.</p>
+      <p class="gap-line"><span class="num">4.</span> His birthday is in the <span class="word-choice" id="hw-c4" data-answer="sixth"><button class="word-choice-btn" onclick="selectWord(this)">sixth</button><button class="word-choice-btn" onclick="selectWord(this)">twelfth</button></span> month of the year.</p>
+      <p class="gap-line"><span class="num">5.</span> <span class="word-choice" id="hw-c5" data-answer="Carlos"><button class="word-choice-btn" onclick="selectWord(this)">David</button><button class="word-choice-btn" onclick="selectWord(this)">Carlos</button></span> is 12 tomorrow.</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-hw-circle')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-hw-circle')">Try again</button>
+      </div>
     </div>
   </section>
 
+  <section class="step" id="hw4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Homework · Sounds</div>
+        <h2><span class="ipa">/ʃ/</span> or <span class="ipa">/tʃ/</span>? sh or ch?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-hw-shch">
+      <div class="exercise-label hw">Listen and complete</div>
+      <h3>Press ▶ and write <b>sh</b> or <b>ch</b>. Remember: <b>ch</b> starts with a little <b>t</b>.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Нажми ▶ и впиши <b>sh</b> или <b>ch</b>. Помни: <b>ch</b> начинается с маленького <b>t</b>.</p>
+      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="shop"></button><span class="dg-gap"><input class="blank" id="hw-sc1" data-answer="sh" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">op</span></div>
+      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="chips"></button><span class="dg-gap"><input class="blank" id="hw-sc2" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ips</span></div>
+      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="fish"></button><span class="dg-gap">fi<input class="blank" id="hw-sc3" data-answer="sh" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="much"></button><span class="dg-gap">mu<input class="blank" id="hw-sc4" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="cherry"></button><span class="dg-gap"><input class="blank" id="hw-sc5" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">erry</span></div>
+      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="shelf"></button><span class="dg-gap"><input class="blank" id="hw-sc6" data-answer="sh" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">elf</span></div>
+      <div class="listen-q"><span class="num">7.</span><button class="say say-big" data-say="beach"></button><span class="dg-gap">bea<input class="blank" id="hw-sc7" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="listen-q"><span class="num">8.</span><button class="say say-big" data-say="English"></button><span class="dg-gap">Engli<input class="blank" id="hw-sc8" data-answer="sh" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="listen-q"><span class="num">9.</span><button class="say say-big" data-say="chess"></button><span class="dg-gap"><input class="blank" id="hw-sc9" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ess</span></div>
+      <div class="listen-q"><span class="num">10.</span><button class="say say-big" data-say="wash"></button><span class="dg-gap">wa<input class="blank" id="hw-sc10" data-answer="sh" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="listen-q"><span class="num">11.</span><button class="say say-big" data-say="lunch"></button><span class="dg-gap">lun<input class="blank" id="hw-sc11" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="listen-q"><span class="num">12.</span><button class="say say-big" data-say="she"></button><span class="dg-gap"><input class="blank" id="hw-sc12" data-answer="sh" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">e</span></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-hw-shch')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw-shch')">Try again</button>
+      </div>
+    </div>
+  </section>
 
-  <!-- ══════════ the rest of Lesson 15 goes here ══════════ -->
+  <section class="step" id="hw5">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Homework · Sounds</div>
+        <h2>New pairs: sh or ch?</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label hw">Listen and repeat</div>
+      <h3>New words, same game. Say each pair: is the <b>t</b> there or not?</h3>
+      <p class="ru-hint" lang="ru" data-auto>Новые слова, та же игра. Произнеси каждую пару: есть там <b>t</b> или нет?</p>
+      <div class="pairs">
+        <div class="pair"><button class="say" data-say="shin">shin</button><span class="vs">or</span><button class="say" data-say="chin">chin</button></div>
+        <div class="pair"><button class="say" data-say="shoe">shoe</button><span class="vs">or</span><button class="say" data-say="chew">chew</button></div>
+        <div class="pair"><button class="say" data-say="sheet">sheet</button><span class="vs">or</span><button class="say" data-say="cheat">cheat</button></div>
+        <div class="pair"><button class="say" data-say="cash">cash</button><span class="vs">or</span><button class="say" data-say="catch">catch</button></div>
+        <div class="pair"><button class="say" data-say="dish">dish</button><span class="vs">or</span><button class="say" data-say="ditch">ditch</button></div>
+        <div class="pair"><button class="say" data-say="mash">mash</button><span class="vs">or</span><button class="say" data-say="match">match</button></div>
+      </div>
+      <div class="tip"><i>shin</i> = Schienbein, <i>chin</i> = Kinn, <i>chew</i> = kauen, <i>sheet</i> = Blatt, <i>cheat</i> = schummeln, <i>cash</i> = Bargeld, <i>catch</i> = fangen, <i>dish</i> = Gericht, <i>ditch</i> = Graben, <i>mash</i> = Brei, <i>match</i> = Spiel. Remember: after a short vowel, <b>ch</b> is often <b>tch</b>.</div>
+    </div>
+    <div class="card" id="ex-hw-pairs">
+      <div class="exercise-label hw">Listen and choose</div>
+      <h3>Press ▶ and choose the word you hear.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Нажми ▶ и выбери слово, которое слышишь.</p>
+      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="chin"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="hw-pp1" value="a"><span class="mc-bullet">A</span> shin</label><label class="mc-option"><input type="radio" name="hw-pp1" value="b"><span class="mc-bullet">B</span> chin</label></div></div>
+      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="shoe"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="hw-pp2" value="a"><span class="mc-bullet">A</span> shoe</label><label class="mc-option"><input type="radio" name="hw-pp2" value="b"><span class="mc-bullet">B</span> chew</label></div></div>
+      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="cheat"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="hw-pp3" value="a"><span class="mc-bullet">A</span> sheet</label><label class="mc-option"><input type="radio" name="hw-pp3" value="b"><span class="mc-bullet">B</span> cheat</label></div></div>
+      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="cash"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="hw-pp4" value="a"><span class="mc-bullet">A</span> cash</label><label class="mc-option"><input type="radio" name="hw-pp4" value="b"><span class="mc-bullet">B</span> catch</label></div></div>
+      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="ditch"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="hw-pp5" value="a"><span class="mc-bullet">A</span> dish</label><label class="mc-option"><input type="radio" name="hw-pp5" value="b"><span class="mc-bullet">B</span> ditch</label></div></div>
+      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="mash"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="hw-pp6" value="a"><span class="mc-bullet">A</span> mash</label><label class="mc-option"><input type="radio" name="hw-pp6" value="b"><span class="mc-bullet">B</span> match</label></div></div>
+      <div class="listen-q"><span class="num">7.</span><button class="say say-big" data-say="shin"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="hw-pp7" value="a"><span class="mc-bullet">A</span> shin</label><label class="mc-option"><input type="radio" name="hw-pp7" value="b"><span class="mc-bullet">B</span> chin</label></div></div>
+      <div class="listen-q"><span class="num">8.</span><button class="say say-big" data-say="catch"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="hw-pp8" value="a"><span class="mc-bullet">A</span> cash</label><label class="mc-option"><input type="radio" name="hw-pp8" value="b"><span class="mc-bullet">B</span> catch</label></div></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-hw-pairs')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-hw-pairs')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="hw6">
+    <div class="step-head">
+      <div class="step-num">6</div>
+      <div>
+        <div class="step-meta">Homework · Sounds · boss level</div>
+        <h2>Sneaky spellings</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-hw-sneaky">
+      <div class="exercise-label hw">Listen and sort</div>
+      <h3>These sounds hide in other letters too! Listen: do you hear <span class="ipa">/ʃ/</span> (<i>sheep</i>) or <span class="ipa">/tʃ/</span> (<i>chips</i>)?</h3>
+      <p class="ru-hint" lang="ru" data-auto>Эти звуки прячутся и в других буквах! Послушай: ты слышишь /ʃ/ (<i>sheep</i>) или /tʃ/ (<i>chips</i>)?</p>
+      <div class="sort-row"><button class="say" data-say="machine">machine</button><span class="word-choice" id="hw-sn1" data-answer="/ʃ/"><button class="word-choice-btn" onclick="selectWord(this)">/ʃ/</button><button class="word-choice-btn" onclick="selectWord(this)">/tʃ/</button></span></div>
+      <div class="sort-row"><button class="say" data-say="chocolate">chocolate</button><span class="word-choice" id="hw-sn2" data-answer="/tʃ/"><button class="word-choice-btn" onclick="selectWord(this)">/ʃ/</button><button class="word-choice-btn" onclick="selectWord(this)">/tʃ/</button></span></div>
+      <div class="sort-row"><button class="say" data-say="chef">chef</button><span class="word-choice" id="hw-sn3" data-answer="/ʃ/"><button class="word-choice-btn" onclick="selectWord(this)">/ʃ/</button><button class="word-choice-btn" onclick="selectWord(this)">/tʃ/</button></span></div>
+      <div class="sort-row"><button class="say" data-say="picture">picture</button><span class="word-choice" id="hw-sn4" data-answer="/tʃ/"><button class="word-choice-btn" onclick="selectWord(this)">/ʃ/</button><button class="word-choice-btn" onclick="selectWord(this)">/tʃ/</button></span></div>
+      <div class="sort-row"><button class="say" data-say="sugar">sugar</button><span class="word-choice" id="hw-sn5" data-answer="/ʃ/"><button class="word-choice-btn" onclick="selectWord(this)">/ʃ/</button><button class="word-choice-btn" onclick="selectWord(this)">/tʃ/</button></span></div>
+      <div class="sort-row"><button class="say" data-say="question">question</button><span class="word-choice" id="hw-sn6" data-answer="/tʃ/"><button class="word-choice-btn" onclick="selectWord(this)">/ʃ/</button><button class="word-choice-btn" onclick="selectWord(this)">/tʃ/</button></span></div>
+      <div class="sort-row"><button class="say" data-say="station">station</button><span class="word-choice" id="hw-sn7" data-answer="/ʃ/"><button class="word-choice-btn" onclick="selectWord(this)">/ʃ/</button><button class="word-choice-btn" onclick="selectWord(this)">/tʃ/</button></span></div>
+      <div class="sort-row"><button class="say" data-say="future">future</button><span class="word-choice" id="hw-sn8" data-answer="/tʃ/"><button class="word-choice-btn" onclick="selectWord(this)">/ʃ/</button><button class="word-choice-btn" onclick="selectWord(this)">/tʃ/</button></span></div>
+      <div class="sort-row"><button class="say" data-say="sure">sure</button><span class="word-choice" id="hw-sn9" data-answer="/ʃ/"><button class="word-choice-btn" onclick="selectWord(this)">/ʃ/</button><button class="word-choice-btn" onclick="selectWord(this)">/tʃ/</button></span></div>
+      <div class="sort-row"><button class="say" data-say="kitchen">kitchen</button><span class="word-choice" id="hw-sn10" data-answer="/tʃ/"><button class="word-choice-btn" onclick="selectWord(this)">/ʃ/</button><button class="word-choice-btn" onclick="selectWord(this)">/tʃ/</button></span></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-hw-sneaky')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-hw-sneaky')">Try again</button>
+      </div>
+      <div class="tip"><span class="tip-title">Spot the pattern</span><b>-tion</b> says <span class="ipa">/ʃən/</span> (<i>station, nation</i>), <b>-ture</b> says <span class="ipa">/tʃə/</span> (<i>picture, future</i>). In French words <b>ch</b> says <span class="ipa">/ʃ/</span>: <i>chef, machine</i>.</div>
+    </div>
+  </section>
+
+  <section class="step" id="hw7">
+    <div class="step-head">
+      <div class="step-num">7</div>
+      <div>
+        <div class="step-meta">Homework · Read and record</div>
+        <h2>Charlie the chef</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label hw">Read aloud</div>
+      <h3>Read the story <b>aloud</b>. Then check each sentence with 🔊.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Прочитай рассказ <b>вслух</b>. Потом проверь каждое предложение кнопкой 🔊.</p>
+      <p class="read-text">Charlie is a chef. He works in a kitchen near the beach. On Sunday he cooks fish and chips for lunch. Sharon chooses cheese and a cherry cake. She shares the chocolate with her children.</p>
+      <div class="word-row" style="flex-direction:column;align-items:flex-start">
+        <button class="say sentence" data-say="Charlie is a chef." data-file="l15-hw-story-1">Charlie is a chef.</button>
+        <button class="say sentence" data-say="He works in a kitchen near the beach." data-file="l15-hw-story-2">He works in a kitchen near the beach.</button>
+        <button class="say sentence" data-say="On Sunday he cooks fish and chips for lunch." data-file="l15-hw-story-3">On Sunday he cooks fish and chips for lunch.</button>
+        <button class="say sentence" data-say="Sharon chooses cheese and a cherry cake." data-file="l15-hw-story-4">Sharon chooses cheese and a cherry cake.</button>
+        <button class="say sentence" data-say="She shares the chocolate with her children." data-file="l15-hw-story-5">She shares the chocolate with her children.</button>
+      </div>
+      <p style="margin-top:14px"><b>Record yourself</b> reading the whole story. Listen: is every <b>sh</b> soft and every <b>ch</b> sharp?</p>
+      <p class="ru-hint" lang="ru" data-auto>Запиши, как ты читаешь весь рассказ. Послушай: каждый <b>sh</b> мягкий, а каждый <b>ch</b> чёткий?</p>
+      <div class="rec"></div>
+    </div>
+    <div class="card" id="ex-hw-story">
+      <div class="exercise-label hw">Find the sounds</div>
+      <h3>How many words in the story have the sound…</h3>
+      <p class="ru-hint" lang="ru" data-auto>Сколько слов в рассказе со звуком…</p>
+      <p class="gap-line"><span class="ipa">/tʃ/</span> as in <i>chips</i>? <input class="blank" id="hw-st1" data-answer="10|ten" placeholder="number" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:90px"></p>
+      <p class="gap-line"><span class="ipa">/ʃ/</span> as in <i>sheep</i>? <input class="blank" id="hw-st2" data-answer="5|five" placeholder="number" autocomplete="off" autocapitalize="off" spellcheck="false" style="min-width:90px"></p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-hw-story')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-hw-story')">Try again</button>
+      </div>
+      <div class="tip">Careful: one word has a <b>ch</b> but no <span class="ipa">/tʃ/</span>!</div>
+    </div>
+  </section>
 
 </div>
-
 </div>
 
 <script src="../assets/sync.js"></script>
