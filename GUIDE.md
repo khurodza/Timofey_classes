@@ -28,8 +28,8 @@ website/
     ├── lesson-13.html          ← Lesson 13: warm-up = questions about the teacher’s photo + his picture; Student’s Book p. 19 (Becky’s vlog, being patient); Unit 1 Standard Test tab; extras hidden until opened: Worksheet Life Lessons (Being patient), Practice Extra Master it! (site version); Homework tab: patience diary
     ├── lesson-14.html          ← Lesson 14: End-of-term test 1 (Standard). Warm-up before the start (mood check + emoji quiz, `WARMUP` list in the page script), exit ticket under the results. Russian instructions → “Начать тест” starts a 40-min timer (`TEST_MINUTES` in the page script); no Check buttons, score badge or dictionary; results + “Show correct answers” only after everything is filled in and he presses “Завершить тест”, or when the teacher opens the extra `x-results` (extra `x-time` = no time limit)
     ├── lesson-15.html          ← Lesson 15: Starter review. Digraph tabs sh → ch (order from the teacher’s presentation «Диграфы часть 1», adapted for a 12-year-old; Russian line under every instruction; sentence clips slower, Kokoro speed 0.72), Student’s Book p. 4 tab (sections are extras hidden until opened), Homework = Workbook p. 4 (Ex. 1–5) + /ʃ/–/tʃ/ practice (story clips `l15-hw-story-N`)
-    ├── lesson-16.html          ← Lesson 16: digraph tabs ph and ck + “Grammar: be & pronouns” (Student’s Book p. 6, extras hidden until opened) — moved from Lesson 15
-    ├── lesson-17.html          ← Lesson 17: digraph tabs th /θ/ (thumb), th /ð/ (father) and “All together” (gap-fill, dictation, tongue twisters `l15-twister-N`) — moved from Lesson 15
+    ├── lesson-16.html          ← Lesson 16: digraph tabs ph and ck — moved from Lesson 15; Homework = sh/ch/ph/ck practice (steps 1–6) + ordinal numbers (steps 7–12), easy → hard, existing clips only; each half ends with a celebration card (`assets/celebrate.js` + `.css`)
+    ├── lesson-17.html          ← Lesson 17: digraph tabs th /θ/ (thumb), th /ð/ (father) and “All together” (gap-fill, dictation, tongue twisters `l15-twister-N`) + “Grammar: be & pronouns” (Student’s Book p. 6, always visible; from Lesson 16) + “Whose? & imperatives” (Own it! 1 Teacher’s Book p. 25 = Student’s Book p. 9; hidden extras: class rules, Grammar tutor p. 124, Workbook p. 6 Ex. 4–6) — moved from Lesson 15
     ├── images/                 ← Put lesson images here
     ├── audio/                  ← Put lesson audio files here
     │   └── words/               ← One short clip per sound button (see "Sound buttons")
@@ -207,6 +207,12 @@ soft yellow background, so it's obvious at a glance which lines need answers.
 - Each word's `data-col` is the column it belongs in; `.given` = the example word.
 - He drags a word into a column (or taps the word, then the column). Places save.
 - Needs `assets/sortcols.js` loaded after `lessons.js`. Example: Lesson 4, Homework Task 1.
+
+### Two columns (rule from Lesson 17 on)
+
+Any list longer than 6 lines goes into two columns: wrap the items in
+`<div class="two-col" style="--rows:6">` (rows = half the items, rounded up) and
+add `col-top` to the first item of the right column. One column on phones.
 
 ### Word choice (inline buttons, e.g. take/give)
 

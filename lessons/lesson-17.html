@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lesson 17 – Two sounds of th</title>
+<title>Lesson 17 – Two sounds of th and the verb be</title>
 <link rel="stylesheet" href="../assets/style.css">
 <style>
 /* teacher-only notes: hidden on the student's page, shown inside teacher.html (sync.js adds html.watching) */
@@ -23,6 +23,74 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
 .email-body .blank{width:130px}
 .dg-gap{font-size:22px;font-weight:800;letter-spacing:.02em;display:inline-flex;align-items:center;gap:2px}
 .dg-gap .blank{width:64px;min-width:64px;text-align:center;font-weight:800}
+/* grammar tables */
+.gr{border:2px solid var(--border);border-radius:18px;overflow:hidden}
+.gr-row{display:grid;grid-template-columns:1.25fr 1fr 1.3fr}
+.gr-row + .gr-row{border-top:1px solid var(--border)}
+.gr-row > div{padding:10px 16px;display:flex;align-items:center;flex-wrap:wrap}
+.gr-head > div{font:800 17px/1.25 var(--font-head);flex-direction:column;align-items:flex-start!important}
+.gr-head small{font:700 14px/1.3 var(--font-body);opacity:.9}
+.gr-hs{background:var(--blue);color:#fff}.gr-hp{background:#B8471A;color:#fff}
+.gr-pair{gap:4px 10px}
+.gr-s,.gr-p{font:800 22px/1.2 var(--font-head);min-width:66px}
+.gr-s{color:var(--blue)}.gr-p{color:#B8471A}
+.gr-arrow{color:var(--muted);font-weight:800}
+.gr-pair small{color:var(--muted);font-size:14px;margin-left:auto}
+.gr-exs{background:var(--blue-soft)}.gr-exp{background:var(--orange-soft)}
+.gr-ex{display:block!important}
+.gr-exs b{color:var(--blue-dark);font-weight:900}.gr-exp b{color:#B8471A;font-weight:900}
+@media(max-width:640px){.gr-row{grid-template-columns:1fr 1fr}.gr-head > div:first-child{display:none}.gr-pair{grid-column:1/-1}.gr-row > div{padding:8px 12px}}
+.be-am{--v:#7B3FC4;--vs:#F1E9FD}.be-is{--v:#0B7A55;--vs:#DDF6EC}.be-are{--v:#B8471A;--vs:#FFEDE4}
+.be-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.be-col{border:2px solid var(--v);border-radius:18px;overflow:hidden;text-align:center;background:#fff}
+.be-who{font-weight:800;padding:10px 6px 2px;background:var(--vs)}
+.be-verb{font:800 36px/1.15 var(--font-head);color:var(--v);padding-bottom:10px;background:var(--vs)}
+.be-col dl{display:grid;grid-template-columns:auto 1fr;gap:10px 12px;margin:0;padding:14px;text-align:left;align-items:start}
+.be-col dt,.be-tag{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;color:#fff;font-weight:900;line-height:1}
+.be-plus{background:#0B7A55}.be-minus{background:#C42B40}.be-q{background:var(--blue)}
+.be-col dd{margin:0;font-weight:700}
+.be-col dd small{display:block;color:var(--muted);font-size:15px}
+.be-col i,.be-exs i{font-style:normal;font-weight:900;color:var(--v)}
+.be-swap{margin-top:16px;padding:14px 18px;border-radius:18px;background:var(--blue-soft);font-size:20px;font-weight:700}
+.be-swap > div{margin:4px 0}
+.be-sub,.be-v{display:inline-block;padding:1px 12px;border-radius:10px;font-weight:900}
+.be-sub{background:#fff;border:2px solid var(--blue);color:var(--blue-dark)}
+.be-v{background:#0B7A55;border:2px solid #0B7A55;color:#fff}
+.be-x{padding-left:62px;color:var(--blue-dark);font-weight:800}.be-x small{font-size:15px}
+.be-exs{list-style:none;margin:16px 0 0;padding:0}
+.be-exs li{position:relative;padding:5px 0 5px 40px}
+.be-exs .be-tag{position:absolute;left:0;top:5px}
+@media(max-width:640px){.be-grid{grid-template-columns:1fr}}
+/* matching: tiles above, words below; a matched word moves into its tile */
+.match-grid.match-tiles{display:block}
+.match-tiles .match-col[data-side="left"]{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.match-tiles .match-col[data-side="right"]{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:16px;padding:14px;border-radius:18px;background:var(--bg)}
+.match-tiles .match-item{grid-row:auto!important;grid-column:auto!important;margin:0;display:flex;align-items:center;justify-content:center;text-align:center}
+.match-tiles [data-side="left"] .match-item{flex-direction:column;min-height:92px;padding:10px 6px;font:800 24px/1.15 var(--font-head);color:var(--blue-dark);background:var(--blue-soft)}
+.match-tiles [data-side="left"] .match-item.selected{background:var(--blue);border-color:var(--blue);color:#fff}
+.match-tiles [data-side="left"] .match-item.matched{background:var(--green-soft);color:var(--green-ink)}
+.match-tiles [data-side="left"] .match-item.matched::after{content:attr(data-word);margin-top:4px;font:800 17px/1.2 var(--font-body)}
+.match-tiles [data-side="right"] .match-item{width:auto;padding:8px 18px;border-radius:999px}
+.match-tiles [data-side="right"] .match-item.matched{display:none}
+.match-tiles .match-col[data-side="right"]:not(:has(.match-item:not(.matched))){display:none}
+@media(max-width:560px){.match-tiles .match-col[data-side="left"]{grid-template-columns:repeat(2,1fr)}.match-tiles [data-side="left"] .match-item{min-height:76px}}
+/* whose + imperatives */
+.gr-p u{text-decoration:none;border-bottom:4px solid #FF7A45}
+.wh-qa{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.wh-qa > div{padding:10px 14px;border-radius:14px;background:var(--bg)}
+.wh-qa b{color:var(--blue-dark);font-weight:900}.wh-qa i{font-style:normal;font-weight:900;color:#B8471A}
+.th-grid{display:grid;grid-template-columns:auto 1fr 1fr;gap:10px;margin-bottom:22px}
+.th-h{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 14px;border-radius:14px;background:var(--blue-soft);color:var(--blue-dark);font-weight:900;text-align:center;line-height:1.2}
+.th-h small{font-weight:700;font-size:14px}
+.th-grid figure{margin:0;padding:10px;border:2px solid var(--border);border-radius:16px;text-align:center}
+.th-grid img{height:120px;max-width:100%;object-fit:contain}
+.th-grid figcaption b{color:#B8471A;font-weight:900}
+.imp{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px;font-size:21px}
+.imp > div{padding:14px 18px;border-radius:16px}.imp small{display:block;font-weight:800;font-size:15px}
+.imp-y{background:var(--green-soft)}.imp-y b,.imp-y small{color:var(--green-ink)}
+.imp-n{background:var(--red-soft)}.imp-n b,.imp-n small{color:var(--red-ink)}
+.imp b{font-weight:900}
+@media(max-width:560px){.wh-qa{grid-template-columns:1fr}.th-h{padding:6px}.th-grid img{height:84px}}
 </style>
 </head>
 <body>
@@ -33,10 +101,11 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     <div class="hero-grid">
       <div>
         <h1 class="name-slot" data-with="Lesson 17: Tongue out, {name}!" data-without="Lesson 17: Tongue out!">Lesson 17: Tongue out!</h1>
-        <p>The two sounds of <b>th</b> (<i>thumb</i> and <i>father</i>), then all five letter teams together: <b>sh, ch, ph, ck, th</b>.</p>
+        <p>The two sounds of <b>th</b> (<i>thumb</i> and <i>father</i>), then all five letter teams together: <b>sh, ch, ph, ck, th</b>. Pronouns, the verb <i>be</i>, question words, <i>whose</i> and imperatives.</p>
         <div class="hero-badges">
           <span class="badge">Lesson 17</span>
           <span class="badge">Reading: th</span>
+          <span class="badge">Student’s Book pp. 6, 9</span>
           <span class="badge">Tongue twisters</span>
         </div>
       </div>
@@ -45,12 +114,15 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
 </header>
 
 <!-- Moved here from Lesson 15: the digraph tabs "th · thumb", "th · father" and "All together"
-     (presentation "Диграфы часть 1": sh, ch in Lesson 15 → ph, ck in Lesson 16 → th here). -->
+     (presentation "Диграфы часть 1": sh, ch in Lesson 15 → ph, ck in Lesson 16 → th here).
+     "Grammar: be & pronouns" (Student’s Book p. 6, always visible) moved from Lesson 16. -->
 <nav class="parts">
   <div class="wrap">
     <button class="part-tab" data-part="part-th1" onclick="showPart('part-th1')">th · thumb</button>
     <button class="part-tab" data-part="part-th2" onclick="showPart('part-th2')">th · father</button>
     <button class="part-tab" data-part="part-mix" onclick="showPart('part-mix')">All together</button>
+    <button class="part-tab" data-part="part-grammar" onclick="showPart('part-grammar')">Grammar: be &amp; pronouns</button>
+    <button class="part-tab" data-part="part-whose" onclick="showPart('part-whose')">Whose? &amp; imperatives</button>
   </div>
 </nav>
 
@@ -216,18 +288,20 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
       <div class="exercise-label">Listen and sort</div>
       <h3>Listen with a hand on your throat. Is the <b>th</b> quiet <span class="ipa">/θ/</span> or buzzing <span class="ipa">/ð/</span>?</h3>
       <p class="ru-hint" lang="ru" data-auto>Слушай, приложив руку к горлу. Этот <b>th</b> глухой /θ/ или звонкий /ð/?</p>
+      <div class="two-col" style="--rows:6">
       <div class="sort-row"><button class="say" data-say="three">three</button><span class="word-choice" id="dg-ts1" data-answer="quiet"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
       <div class="sort-row"><button class="say" data-say="this">this</button><span class="word-choice" id="dg-ts2" data-answer="buzzing"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
       <div class="sort-row"><button class="say" data-say="think">think</button><span class="word-choice" id="dg-ts3" data-answer="quiet"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
       <div class="sort-row"><button class="say" data-say="mother">mother</button><span class="word-choice" id="dg-ts4" data-answer="buzzing"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
       <div class="sort-row"><button class="say" data-say="month">month</button><span class="word-choice" id="dg-ts5" data-answer="quiet"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
       <div class="sort-row"><button class="say" data-say="they">they</button><span class="word-choice" id="dg-ts6" data-answer="buzzing"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
-      <div class="sort-row"><button class="say" data-say="birthday">birthday</button><span class="word-choice" id="dg-ts7" data-answer="quiet"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
+      <div class="sort-row col-top"><button class="say" data-say="birthday">birthday</button><span class="word-choice" id="dg-ts7" data-answer="quiet"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
       <div class="sort-row"><button class="say" data-say="weather">weather</button><span class="word-choice" id="dg-ts8" data-answer="buzzing"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
       <div class="sort-row"><button class="say" data-say="Thursday">Thursday</button><span class="word-choice" id="dg-ts9" data-answer="quiet"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
       <div class="sort-row"><button class="say" data-say="that">that</button><span class="word-choice" id="dg-ts10" data-answer="buzzing"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
       <div class="sort-row"><button class="say" data-say="maths">maths</button><span class="word-choice" id="dg-ts11" data-answer="quiet"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
       <div class="sort-row"><button class="say" data-say="brother">brother</button><span class="word-choice" id="dg-ts12" data-answer="buzzing"><button class="word-choice-btn" onclick="selectWord(this)">quiet</button><button class="word-choice-btn" onclick="selectWord(this)">buzzing</button></span></div>
+      </div>
       <div class="btn-row">
         <button class="btn-primary" onclick="checkWords('ex-dg-th2')">Check ✓</button>
         <button class="btn-ghost" onclick="resetWords('ex-dg-th2')">Try again</button>
@@ -286,18 +360,20 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
       <div class="exercise-label">Listen and complete</div>
       <h3>Press ▶ and write the missing team: <span class="key">sh</span> <span class="key">ch</span> <span class="key">ph</span> <span class="key">ck</span> <span class="key">th</span></h3>
       <p class="ru-hint" lang="ru" data-auto>Нажми ▶ и впиши пропущенную пару букв: sh, ch, ph, ck или th.</p>
+      <div class="two-col" style="--rows:6">
       <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="shark"></button><span class="dg-gap"><input class="blank" id="dg-mx1" data-answer="sh" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ark</span></div>
       <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="cheese"></button><span class="dg-gap"><input class="blank" id="dg-mx2" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">eese</span></div>
       <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="phone"></button><span class="dg-gap"><input class="blank" id="dg-mx3" data-answer="ph" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">one</span></div>
       <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="rocket"></button><span class="dg-gap">ro<input class="blank" id="dg-mx4" data-answer="ck" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">et</span></div>
       <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="thumb"></button><span class="dg-gap"><input class="blank" id="dg-mx5" data-answer="th" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">umb</span></div>
       <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="brother"></button><span class="dg-gap">bro<input class="blank" id="dg-mx6" data-answer="th" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">er</span></div>
-      <div class="listen-q"><span class="num">7.</span><button class="say say-big" data-say="champion"></button><span class="dg-gap"><input class="blank" id="dg-mx7" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ampion</span></div>
+      <div class="listen-q col-top"><span class="num">7.</span><button class="say say-big" data-say="champion"></button><span class="dg-gap"><input class="blank" id="dg-mx7" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ampion</span></div>
       <div class="listen-q"><span class="num">8.</span><button class="say say-big" data-say="finish"></button><span class="dg-gap">fini<input class="blank" id="dg-mx8" data-answer="sh" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
       <div class="listen-q"><span class="num">9.</span><button class="say say-big" data-say="elephant"></button><span class="dg-gap">ele<input class="blank" id="dg-mx9" data-answer="ph" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ant</span></div>
       <div class="listen-q"><span class="num">10.</span><button class="say say-big" data-say="jacket"></button><span class="dg-gap">ja<input class="blank" id="dg-mx10" data-answer="ck" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">et</span></div>
       <div class="listen-q"><span class="num">11.</span><button class="say say-big" data-say="bath"></button><span class="dg-gap">ba<input class="blank" id="dg-mx11" data-answer="th" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
       <div class="listen-q"><span class="num">12.</span><button class="say say-big" data-say="lunch"></button><span class="dg-gap">lun<input class="blank" id="dg-mx12" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      </div>
       <div class="btn-row">
         <button class="btn-primary" onclick="checkBlanks('ex-dg-mix')">Check ✓</button>
         <button class="btn-ghost" onclick="resetBlanks('ex-dg-mix')">Try again</button>
@@ -317,14 +393,16 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
       <div class="exercise-label">Dictation</div>
       <h3>Listen and write the whole word. The last one has <b>two</b> teams!</h3>
       <p class="ru-hint" lang="ru" data-auto>Послушай и напиши слово целиком. В последнем слове <b>две</b> пары букв!</p>
+      <div class="two-col" style="--rows:4">
       <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="ship"></button><input class="blank" id="dg-d1" data-answer="ship" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
       <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="lunch"></button><input class="blank" id="dg-d2" data-answer="lunch" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
       <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="photo"></button><input class="blank" id="dg-d3" data-answer="photo" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
       <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="sock"></button><input class="blank" id="dg-d4" data-answer="sock" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
-      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="month"></button><input class="blank" id="dg-d5" data-answer="month" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="listen-q col-top"><span class="num">5.</span><button class="say say-big" data-say="month"></button><input class="blank" id="dg-d5" data-answer="month" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
       <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="this"></button><input class="blank" id="dg-d6" data-answer="this" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
       <div class="listen-q"><span class="num">7.</span><button class="say say-big" data-say="thanks"></button><input class="blank" id="dg-d7" data-answer="thanks" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
       <div class="listen-q"><span class="num">8.</span><button class="say say-big" data-say="chicken"></button><input class="blank" id="dg-d8" data-answer="chicken" placeholder="type it" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      </div>
       <div class="btn-row">
         <button class="btn-primary" onclick="checkBlanks('ex-dg-dict')">Check ✓</button>
         <button class="btn-ghost" onclick="resetBlanks('ex-dg-dict')">Try again</button>
@@ -363,6 +441,531 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     </div>
   </section>
 
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-grammar');window.scrollTo(0,0)">Next: Grammar →</button>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════ Grammar: Student’s Book p. 6 ══════════ -->
+<div class="lesson-part" id="part-grammar">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#x5a">1 · Pronouns</a>
+    <a href="#x5b">2 · Verb be</a>
+    <a href="#x5c">3 · Question words</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="x5a">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Student’s Book p. 6 · Language in action</div>
+        <h2>Subject pronouns and possessive adjectives</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-x5-v">
+      <div class="exercise-label">Video S.1</div>
+      <h3>Watch the video. Where is Isabella from? What is Martín’s dream?</h3>
+      <p class="ru-hint" lang="ru" data-auto>Посмотри видео. Откуда Изабелла? О чём мечтает Мартин?</p>
+      <div class="video-wrap">
+        <video controls preload="metadata" playsinline>
+          <source src="video/starter-language-in-action.mp4" type="video/mp4">
+          <track kind="subtitles" src="video/starter-language-in-action.vtt" srclang="en" label="English">
+        </video>
+      </div>
+      <p class="gap-line"><span class="num">1.</span> Isabella is from <input class="blank" id="x5-v-1" data-answer="the united states|the us|the usa|the united states of america|united states|usa|the u.s.|america" placeholder="country" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:200px">.</p>
+      <p class="gap-line"><span class="num">2.</span> Martín’s dream is to <input class="blank" id="x5-v-2" data-answer="play guitar|play the guitar" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:200px">.</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-x5-v')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-x5-v')">Try again</button>
+      </div>
+    </div>
+    <div class="card" id="ex-x5-1">
+      <div class="gr" role="table" aria-label="Subject pronouns and possessive adjectives">
+        <div class="gr-row gr-head" role="row"><div role="columnheader">What changes?</div><div class="gr-hs" role="columnheader">Subject pronoun<small>Who? <span lang="ru">Кто?</span> + verb</small></div><div class="gr-hp" role="columnheader">Possessive adjective<small>Whose? <span lang="ru">Чей?</span> + noun</small></div></div>
+        <div class="gr-row" role="row"><div class="gr-pair" role="cell"><span class="gr-s">I</span><span class="gr-arrow" aria-hidden="true">→</span><span class="gr-p">my</span><small lang="ru">я → мой</small></div><div class="gr-ex gr-exs" role="cell"><b>I</b>’m Simon.</div><div class="gr-ex gr-exp" role="cell"><b>My</b> name is Simon.</div></div>
+        <div class="gr-row" role="row"><div class="gr-pair" role="cell"><span class="gr-s">You</span><span class="gr-arrow" aria-hidden="true">→</span><span class="gr-p">your</span><small lang="ru">ты → твой</small></div><div class="gr-ex gr-exs" role="cell"><b>You</b>’re my friend.</div><div class="gr-ex gr-exp" role="cell">What’s <b>your</b> dream?</div></div>
+        <div class="gr-row" role="row"><div class="gr-pair" role="cell"><span class="gr-s">He</span><span class="gr-arrow" aria-hidden="true">→</span><span class="gr-p">his</span><small lang="ru">он → его</small></div><div class="gr-ex gr-exs" role="cell"><b>He</b>’s Martín.</div><div class="gr-ex gr-exp" role="cell"><b>His</b> dream is to play guitar.</div></div>
+        <div class="gr-row" role="row"><div class="gr-pair" role="cell"><span class="gr-s">She</span><span class="gr-arrow" aria-hidden="true">→</span><span class="gr-p">her</span><small lang="ru">она → её</small></div><div class="gr-ex gr-exs" role="cell"><b>She</b>’s Isabella.</div><div class="gr-ex gr-exp" role="cell"><b>Her</b> dream is to be a singer.</div></div>
+        <div class="gr-row" role="row"><div class="gr-pair" role="cell"><span class="gr-s">It</span><span class="gr-arrow" aria-hidden="true">→</span><span class="gr-p">its</span><small lang="ru">оно → его</small></div><div class="gr-ex gr-exs" role="cell"><b>It</b>’s a dog.</div><div class="gr-ex gr-exp" role="cell"><b>Its</b> hair is long.</div></div>
+        <div class="gr-row" role="row"><div class="gr-pair" role="cell"><span class="gr-s">We</span><span class="gr-arrow" aria-hidden="true">→</span><span class="gr-p">our</span><small lang="ru">мы → наш</small></div><div class="gr-ex gr-exs" role="cell"><b>We</b>’re students.</div><div class="gr-ex gr-exp" role="cell"><b>Our</b> teacher is kind.</div></div>
+        <div class="gr-row" role="row"><div class="gr-pair" role="cell"><span class="gr-s">They</span><span class="gr-arrow" aria-hidden="true">→</span><span class="gr-p">their</span><small lang="ru">они → их</small></div><div class="gr-ex gr-exs" role="cell"><b>They</b>’re friends.</div><div class="gr-ex gr-exp" role="cell"><b>Their</b> car is blue.</div></div>
+      </div>
+      <div class="exercise-label" style="margin-top:18px">Exercise 1</div>
+      <h3>Look at the table. Choose the correct words.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Посмотри на таблицу. Выбери правильные слова.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>1. Alana is <b>my</b> best friend.</span></div>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">2.</span> <span class="word-choice" id="x5-1-2a" data-answer="We"><button class="word-choice-btn" onclick="selectWord(this)">Our</button><button class="word-choice-btn" onclick="selectWord(this)">We</button></span> aren’t from Brazil. <span class="word-choice" id="x5-1-2b" data-answer="We"><button class="word-choice-btn" onclick="selectWord(this)">Our</button><button class="word-choice-btn" onclick="selectWord(this)">We</button></span>’re from Spain.</p>
+        <p class="gap-line"><span class="num">3.</span> <span class="word-choice" id="x5-1-3a" data-answer="Her"><button class="word-choice-btn" onclick="selectWord(this)">Her</button><button class="word-choice-btn" onclick="selectWord(this)">She</button></span> name is Luna. <span class="word-choice" id="x5-1-3b" data-answer="She"><button class="word-choice-btn" onclick="selectWord(this)">Her</button><button class="word-choice-btn" onclick="selectWord(this)">She</button></span>’s 13.</p>
+        <p class="gap-line"><span class="num">4.</span> <span class="word-choice" id="x5-1-4" data-answer="Their"><button class="word-choice-btn" onclick="selectWord(this)">Their</button><button class="word-choice-btn" onclick="selectWord(this)">They</button></span> names are Kit and Bella.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-x5-1')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-x5-1')">Try again</button>
+      </div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 SB p. 5 · Ex 1</div>Key: 2 We, We · 3 Her, She · 4 Their. Video S.1: Isabella is from the United States (American); Martín’s dream is to play guitar. Subtitles: CC button.</div>
+    </div>
+  </section>
+
+  <section class="step" id="x5b">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Student’s Book p. 6 · Language in action</div>
+        <h2>Verb <i>be</i></h2>
+      </div>
+    </div>
+    <div class="card" id="ex-x5-2">
+      <div class="be-grid">
+        <div class="be-col be-am"><div class="be-who">I</div><div class="be-verb">am</div><dl><dt class="be-plus">+</dt><dd>I<i>’m</i> <small>= I am</small></dd><dt class="be-minus">–</dt><dd>I<i>’m not</i></dd><dt class="be-q">?</dt><dd><i>Am</i> I …?<small>Yes, I <i>am</i>.<br>No, I<i>’m not</i>.</small></dd></dl></div>
+        <div class="be-col be-is"><div class="be-who">He · She · It</div><div class="be-verb">is</div><dl><dt class="be-plus">+</dt><dd>She<i>’s</i> <small>= she is</small></dd><dt class="be-minus">–</dt><dd>She <i>isn’t</i></dd><dt class="be-q">?</dt><dd><i>Is</i> she …?<small>Yes, she <i>is</i>.<br>No, she <i>isn’t</i>.</small></dd></dl></div>
+        <div class="be-col be-are"><div class="be-who">We · You · They</div><div class="be-verb">are</div><dl><dt class="be-plus">+</dt><dd>We<i>’re</i> <small>= we are</small></dd><dt class="be-minus">–</dt><dd>We <i>aren’t</i></dd><dt class="be-q">?</dt><dd><i>Are</i> we …?<small>Yes, we <i>are</i>.<br>No, we <i>aren’t</i>.</small></dd></dl></div>
+      </div>
+      <div class="be-swap">
+        <div><span class="be-tag be-plus">+</span> <span class="be-sub">Simon</span> <span class="be-v">is</span> from the UK.</div>
+        <div class="be-x">⇅ <small>swap the two words · <span lang="ru">меняем местами</span></small></div>
+        <div><span class="be-tag be-q">?</span> <span class="be-v">Is</span> <span class="be-sub">Simon</span> from the UK?</div>
+      </div>
+      <ul class="be-exs">
+        <li><span class="be-tag be-plus">+</span> I<i class="be-am">’m</i> from the UK. She<i class="be-is">’s</i> amazing. We<i class="be-are">’re</i> students at an international school.</li>
+        <li><span class="be-tag be-minus">–</span> But we<i class="be-are">’re not</i> in the same class.</li>
+        <li><span class="be-tag be-q">?</span> <i class="be-is">Is</i> Simon from the UK? Yes, he <i class="be-is">is</i>. &nbsp; <i class="be-are">Are</i> Isabelle and Martine friends? Yes, they <i class="be-are">are</i>. &nbsp; <i class="be-is">Is</i> Isabella from Brazil? No, she <i class="be-is">isn’t</i>.</li>
+      </ul>
+      <div class="exercise-label" style="margin-top:18px">Exercise 2</div>
+      <h3>Use the table to complete the sentences with the correct form of the verb <i>be</i>.</h3>
+      <p class="ru-hint" lang="ru" data-auto>С помощью таблицы закончи предложения правильной формой глагола <i>be</i>.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>1. I<b>’m</b> from Granada.</span></div>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">2.</span> Camila Cabello <input class="blank" id="x5-2-2" data-answer="is|’s|'s" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> brilliant.</p>
+        <p class="gap-line"><span class="num">3.</span> Miranda and Suki <input class="blank" id="x5-2-3" data-answer="aren’t|aren't|are not" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> Spanish.</p>
+        <p class="gap-line"><span class="num">4.</span> <input class="blank" id="x5-2-4" data-answer="are" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> you a good singer?</p>
+        <p class="gap-line"><span class="num">5.</span> <input class="blank" id="x5-2-5a" data-answer="is" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> Diana’s bedroom red? No, it <input class="blank" id="x5-2-5b" data-answer="isn’t|isn't|is not" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px">.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-x5-2')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-x5-2')">Try again</button>
+      </div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 SB p. 5 · Ex 2</div>Key: 2 is · 3 aren’t (profile: “They aren’t Spanish. Miranda’s Mexican and Suki’s Turkish.”) · 4 Are · 5 Is, isn’t.</div>
+    </div>
+
+    <div class="card" id="ex-x5-3">
+      <div class="exercise-label">Exercise 3</div>
+      <h3>Complete the profile with the correct form of <i>be</i>. Guess the person. Listen and check.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Заполни анкету правильной формой глагола <i>be</i>. Угадай, кто это. Послушай и проверь.</p>
+      <div class="email">
+        <div class="email-bar">🇺🇸 🎤 Who is she?</div>
+        <div class="email-body">
+          <p>Her birthday <sup>1</sup><b>is</b> (✓) on 13th December.</p>
+          <p>She <sup>2</sup><input class="blank" id="x5-3-2" data-answer="isn’t|isn't|is not" autocomplete="off" autocapitalize="off" spellcheck="false"> (✗) British.</p>
+          <p>She <sup>3</sup><input class="blank" id="x5-3-3" data-answer="’s|'s|is" autocomplete="off" autocapitalize="off" spellcheck="false"> (✓) American.</p>
+          <p>My favourite songs <sup>4</sup><input class="blank" id="x5-3-4" data-answer="are" autocomplete="off" autocapitalize="off" spellcheck="false"> (✓) <i>Shake it Off</i> and <i>Back to December</i>.</p>
+          <p><sup>5</sup><input class="blank" id="x5-3-5" data-answer="is" autocomplete="off" autocapitalize="off" spellcheck="false"> she your favourite singer?</p>
+        </div>
+      </div>
+      <div class="audio-wrap" style="margin-top:14px">
+        <audio controls preload="metadata">
+          <source src="audio/lesson-15-s07.m4a" type="audio/mp4">
+          Your browser does not support audio.
+        </audio>
+      </div>
+      <p class="gap-line" style="margin-top:14px"><b>Who is she?</b> <input class="blank" id="x5-3-who" data-answer="taylor swift|taylor|swift" placeholder="name" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:180px"></p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-x5-3')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-x5-3')">Try again</button>
+      </div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 SB p. 5 · Ex 3</div>Key: 2 isn’t · 3 ’s / is · 4 are · 5 Is → <b>Taylor Swift</b>. Audio: track S.07.</div>
+    </div>
+
+    <div class="card" id="ex-x5-4">
+      <div class="exercise-label">Exercise 4</div>
+      <h3>Write questions with the verb <i>be</i>.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Составь вопросы с глаголом <i>be</i>.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>1. you / 12? → <b>Are you 12?</b></span></div>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">2.</span> you / from / Ankara? <input class="blank wide" id="x5-4-2" data-answer="are you from ankara?|are you from ankara" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">3.</span> your best friends / in your class? <input class="blank wide" id="x5-4-3" data-answer="are your best friends in your class?|are your best friends in your class" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">4.</span> your teacher / English? <input class="blank wide" id="x5-4-4" data-answer="is your teacher english?|is your teacher english" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+        <p class="gap-line"><span class="num">5.</span> today / 19th June? <input class="blank wide" id="x5-4-5" data-answer="is today 19th june?|is today 19th june|is today the 19th of june?|is today the 19th of june" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-x5-4')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-x5-4')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="x5c">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Student’s Book p. 6 · Language in action</div>
+        <h2>Question words</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-match-x5-5">
+      <div class="exercise-label">Exercise 5</div>
+      <h3>Match the question words with their functions.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Соедини вопросительные слова с тем, о чём они спрашивают.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>What ⇄ <b>things</b></span></div>
+      <div class="match-grid match-tiles">
+        <div class="match-col" data-side="left">
+          <div class="match-item" data-pair="2" data-word="places" onclick="selectMatch(this,'ex-match-x5-5')">Where</div>
+          <div class="match-item" data-pair="3" data-word="time and dates" onclick="selectMatch(this,'ex-match-x5-5')">When</div>
+          <div class="match-item" data-pair="4" data-word="age" onclick="selectMatch(this,'ex-match-x5-5')">How old</div>
+          <div class="match-item" data-pair="5" data-word="people" onclick="selectMatch(this,'ex-match-x5-5')">Who</div>
+        </div>
+        <div class="match-col" data-side="right">
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-x5-5')">age</div>
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-x5-5')">people</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-x5-5')">places</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-x5-5')">time and dates</div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-ghost" onclick="resetMatchEx('ex-match-x5-5')">Try again</button>
+      </div>
+    </div>
+
+    <div class="card" id="ex-x5-6">
+      <div class="exercise-label">Exercise 6</div>
+      <h3>Complete the questions with <i>is</i> or <i>are</i>.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Закончи вопросы словами <i>is</i> или <i>are</i>.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>1. Where <b>are</b> you from?</span></div>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">2.</span> How old <span class="word-choice" id="x5-6-2" data-answer="are"><button class="word-choice-btn" onclick="selectWord(this)">is</button><button class="word-choice-btn" onclick="selectWord(this)">are</button></span> you?</p>
+        <p class="gap-line"><span class="num">3.</span> When <span class="word-choice" id="x5-6-3" data-answer="is"><button class="word-choice-btn" onclick="selectWord(this)">is</button><button class="word-choice-btn" onclick="selectWord(this)">are</button></span> your birthday?</p>
+        <p class="gap-line"><span class="num">4.</span> Who <span class="word-choice" id="x5-6-4" data-answer="is"><button class="word-choice-btn" onclick="selectWord(this)">is</button><button class="word-choice-btn" onclick="selectWord(this)">are</button></span> your best friend?</p>
+        <p class="gap-line"><span class="num">5.</span> What <span class="word-choice" id="x5-6-5" data-answer="is"><button class="word-choice-btn" onclick="selectWord(this)">is</button><button class="word-choice-btn" onclick="selectWord(this)">are</button></span> your favourite colour?</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-x5-6')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-x5-6')">Try again</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Exercise 7 · Use it!</div>
+      <h3>Ask and answer the questions in Exercise 4 and Exercise 6.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Задавайте друг другу вопросы из упражнений 4 и 6 и отвечайте на них.</p>
+      <div class="tip class-note"><span class="tip-title">In class: ask your teacher</span>Take turns: “<span class="key">Are you 12?</span>” — “Yes, I am. / No, I’m not.” Then ask the questions from Exercise 6.</div>
+    </div>
+  </section>
+
+
+
+  <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
+    <button class="btn-accent" onclick="showPart('part-whose');window.scrollTo(0,0)">Next: Whose? →</button>
+  </div>
+
+</div>
+
+</div>
+
+<!-- ══════════ Whose? & imperatives: Teacher’s Book p. 25 (Student’s Book p. 9); extras: class rules, Grammar tutor p. 124, Workbook p. 6 ══════════ -->
+<div class="lesson-part" id="part-whose">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#wh1">1 · Video</a>
+    <a href="#wh2">2 · whose</a>
+    <a href="#wh3">3 · this, that, these, those</a>
+    <a href="#wh4">4 · Imperatives</a>
+    <a href="#wh5" data-extra="x-sb9-rules">+ · Class rules</a>
+    <a href="#wh6" data-extra="x-sb9-tutor">+ · Grammar tutor</a>
+    <a href="#wh7" data-extra="x-sb9-wb">+ · Workbook</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="wh1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Student’s Book p. 9 · Language in action</div>
+        <h2>Whose things are these?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-w9-v">
+      <div class="exercise-label">Video S.2</div>
+      <h3>Watch the video. What colour is Mia’s pen? What classroom objects are there?</h3>
+      <p class="ru-hint" lang="ru" data-auto>Посмотри видео. Какого цвета ручка Мии? Какие школьные предметы там есть?</p>
+      <div class="video-wrap">
+        <video controls preload="metadata" playsinline>
+          <source src="video/starter-whose.mp4" type="video/mp4">
+          <track kind="subtitles" src="video/starter-whose.vtt" srclang="en" label="English">
+        </video>
+      </div>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> Mia’s pen is <input class="blank" id="w9-v1" data-answer="purple" placeholder="colour" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;max-width:100%">.</p>
+        <p class="gap-line"><span class="num">2.</span> Write the objects you see:</p>
+      </div>
+      <textarea class="free-write" id="fw-w9-obj" rows="2" placeholder="a pen, …"></textarea>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-w9-v')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-w9-v')">Try again</button>
+      </div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 TB p. 25 · Warmer</div>Students make notes on the classroom objects as they see them. Mia’s pen is <b>purple</b>. Objects: a pen, a ruler, pencils, a calculator, sunglasses, a bag. The vlog ends at about 2:05; then the grammar part starts.</div>
+    </div>
+  </section>
+
+  <section class="step" id="wh2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Student’s Book p. 9 · Language in action</div>
+        <h2><i>whose</i> + possessive pronouns</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-w9-1">
+      <div class="gr" role="table" aria-label="Possessive adjectives and possessive pronouns">
+        <div class="gr-row gr-head" role="row"><div role="columnheader">What changes?</div><div class="gr-hs" role="columnheader">With a noun<small>my <b>pen</b></small></div><div class="gr-hp" role="columnheader">Possessive pronoun<small>no noun after it!</small></div></div>
+        <div class="gr-row" role="row"><div class="gr-pair" role="cell"><span class="gr-s">my</span><span class="gr-arrow" aria-hidden="true">→</span><span class="gr-p"><u>mine</u></span><small lang="ru">мой</small></div><div class="gr-ex gr-exs" role="cell">It’s <b>my</b> pen.</div><div class="gr-ex gr-exp" role="cell">It’s <b>mine</b>.</div></div>
+        <div class="gr-row" role="row"><div class="gr-pair" role="cell"><span class="gr-s">your</span><span class="gr-arrow" aria-hidden="true">→</span><span class="gr-p">your<u>s</u></span><small lang="ru">твой / ваш</small></div><div class="gr-ex gr-exs" role="cell">It’s <b>your</b> pen.</div><div class="gr-ex gr-exp" role="cell">It’s <b>yours</b>.</div></div>
+        <div class="gr-row" role="row"><div class="gr-pair" role="cell"><span class="gr-s">his</span><span class="gr-arrow" aria-hidden="true">→</span><span class="gr-p">his</span><small lang="ru">его</small></div><div class="gr-ex gr-exs" role="cell">It’s <b>his</b> pen.</div><div class="gr-ex gr-exp" role="cell">It’s <b>his</b>.</div></div>
+        <div class="gr-row" role="row"><div class="gr-pair" role="cell"><span class="gr-s">her</span><span class="gr-arrow" aria-hidden="true">→</span><span class="gr-p">her<u>s</u></span><small lang="ru">её</small></div><div class="gr-ex gr-exs" role="cell">It’s <b>her</b> pen.</div><div class="gr-ex gr-exp" role="cell">It’s <b>hers</b>.</div></div>
+        <div class="gr-row" role="row"><div class="gr-pair" role="cell"><span class="gr-s">our</span><span class="gr-arrow" aria-hidden="true">→</span><span class="gr-p">our<u>s</u></span><small lang="ru">наш</small></div><div class="gr-ex gr-exs" role="cell">It’s <b>our</b> pen.</div><div class="gr-ex gr-exp" role="cell">It’s <b>ours</b>.</div></div>
+        <div class="gr-row" role="row"><div class="gr-pair" role="cell"><span class="gr-s">their</span><span class="gr-arrow" aria-hidden="true">→</span><span class="gr-p">their<u>s</u></span><small lang="ru">их</small></div><div class="gr-ex gr-exs" role="cell">It’s <b>their</b> pen.</div><div class="gr-ex gr-exp" role="cell">It’s <b>theirs</b>.</div></div>
+      </div>
+      <div class="wh-qa">
+        <div><b>Whose</b> sunglasses are these? → They’re <i>mine</i>. / They’re <i>yours</i>.</div>
+        <div><b>Whose</b> calculator is that? → It’s <i>his</i>.</div>
+        <div><b>Whose</b> pencils are those? → They’re <i>his</i>.</div>
+        <div><b>Whose</b> pen is this? → It’s <i>hers</i>. / It’s <i>ours</i>. / It’s <i>theirs</i>.</div>
+      </div>
+      <div class="tip"><b>Whose…?</b> = <span lang="ru">Чей? Чья? Чьи?</span> One thing: <b>It’s</b> mine. Two or more: <b>They’re</b> mine.</div>
+      <div class="exercise-label">Exercise 1</div>
+      <h3>Look at the table. Complete the second sentence with a possessive pronoun.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Посмотри на таблицу. Закончи второе предложение притяжательным местоимением.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>1. It’s your pencil. It’s <b>yours</b>.</span></div>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">2.</span> That’s his notebook. That’s <input class="blank" id="w9-1-2" data-answer="his" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px;max-width:100%">.</p>
+        <p class="gap-line"><span class="num">3.</span> This table is my table. This table is <input class="blank" id="w9-1-3" data-answer="mine" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px;max-width:100%">.</p>
+        <p class="gap-line"><span class="num">4.</span> Those are our chairs. Those are <input class="blank" id="w9-1-4" data-answer="ours" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px;max-width:100%">.</p>
+        <p class="gap-line"><span class="num">5.</span> Is this your calculator? Is this <input class="blank" id="w9-1-5" data-answer="yours" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px;max-width:100%">?</p>
+        <p class="gap-line"><span class="num">6.</span> Are these her pens? Are these <input class="blank" id="w9-1-6" data-answer="hers" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px;max-width:100%">?</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-w9-1')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-w9-1')">Try again</button>
+      </div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 TB p. 25 · Ex 1</div>Key: 2 his · 3 mine · 4 ours · 5 yours · 6 hers. After feedback, act out sentences 1–6 with your own things (pencils, notebooks, etc.).</div>
+    </div>
+  </section>
+
+  <section class="step" id="wh3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Student’s Book p. 9 · Language in action</div>
+        <h2>this, that, these, those</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-w9-2">
+      <div class="th-grid">
+        <div></div><div class="th-h">1<small>one · один</small></div><div class="th-h">2+<small>many · много</small></div>
+        <div class="th-h">near<small>близко</small></div>
+        <figure><img src="images/welcome/whose-this.png" alt="" loading="lazy"><figcaption><b>This</b> is my pencil.</figcaption></figure>
+        <figure><img src="images/welcome/whose-these.png" alt="" loading="lazy"><figcaption><b>These</b> are my notebooks.</figcaption></figure>
+        <div class="th-h">not near<small>далеко</small></div>
+        <figure><img src="images/welcome/whose-that.png" alt="" loading="lazy"><figcaption><b>That</b> is my calculator.</figcaption></figure>
+        <figure><img src="images/welcome/whose-those.png" alt="" loading="lazy"><figcaption><b>Those</b> are my pens.</figcaption></figure>
+      </div>
+      <div class="exercise-label">Exercise 2</div>
+      <h3>Write the questions. Listen and match the questions with the answers (a–d).</h3>
+      <p class="ru-hint" lang="ru" data-auto>Составь вопросы. Послушай и подбери к вопросам ответы (a–d).</p>
+      <p class="word-row"><span class="key">a</span> It’s his. &nbsp; <span class="key">b</span> It’s mine. &nbsp; <span class="key">c</span> They’re hers. &nbsp; <span class="key">d</span> They’re ours.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>1. book / whose / this / is → <b>Whose book is this?</b> (b)</span></div>
+      <div class="audio-wrap" style="margin-top:14px"><audio controls preload="metadata"><source src="audio/lesson-17-s10.m4a" type="audio/mp4">Your browser does not support audio.</audio></div>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">2.</span> posters / those / are / whose <input class="blank wide" id="w9-2-2" data-answer="whose posters are those|whose posters are those?" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:260px;max-width:100%"> <span class="word-choice" id="w9-2-2m" data-answer="d"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">c</button><button class="word-choice-btn" onclick="selectWord(this)">d</button></span></p>
+        <p class="gap-line"><span class="num">3.</span> are / pens / whose / these <input class="blank wide" id="w9-2-3" data-answer="whose pens are these|whose pens are these?" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:260px;max-width:100%"> <span class="word-choice" id="w9-2-3m" data-answer="c"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">c</button><button class="word-choice-btn" onclick="selectWord(this)">d</button></span></p>
+        <p class="gap-line"><span class="num">4.</span> that / ruler / whose / is <input class="blank wide" id="w9-2-4" data-answer="whose ruler is that|whose ruler is that?" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:260px;max-width:100%"> <span class="word-choice" id="w9-2-4m" data-answer="a"><button class="word-choice-btn" onclick="selectWord(this)">a</button><button class="word-choice-btn" onclick="selectWord(this)">c</button><button class="word-choice-btn" onclick="selectWord(this)">d</button></span></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-w9-2');checkWords('ex-w9-2')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-w9-2');resetWords('ex-w9-2')">Try again</button>
+      </div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 TB p. 25 · Ex 2</div>Key: 2 Whose posters are those? – d · 3 Whose pens are these? – c · 4 Whose ruler is that? – a. After feedback, play S.10 again and drill the pronunciation of the questions.</div>
+    </div>
+  </section>
+
+  <section class="step" id="wh4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Student’s Book p. 9 · Language in action</div>
+        <h2>Imperatives</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-w9-3">
+      <div class="imp">
+        <div class="imp-y"><small>Positive</small><b>Close</b> the door! ✓</div>
+        <div class="imp-n"><small>Negative</small><b>Don’t</b> be late!</div>
+      </div>
+      <div class="exercise-label">Exercise 3</div>
+      <h3>Look at the table and choose the correct words.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Посмотри на таблицу и выбери правильные слова.</p>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> We use a verb <span class="word-choice" id="w9-3-1" data-answer="without to"><button class="word-choice-btn" onclick="selectWord(this)">with to</button><button class="word-choice-btn" onclick="selectWord(this)">without to</button></span> for imperatives.</p>
+        <p class="gap-line"><span class="num">2.</span> We use <i>don’t</i> to form <span class="word-choice" id="w9-3-2" data-answer="negative"><button class="word-choice-btn" onclick="selectWord(this)">positive</button><button class="word-choice-btn" onclick="selectWord(this)">negative</button></span> imperatives.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-w9-3')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-w9-3')">Try again</button>
+      </div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 TB p. 25 · Ex 3</div>Key: 1 without to · 2 negative. We use imperatives to tell people what to do (or not to do). Elicit two more classroom rules: one positive, one negative.</div>
+    </div>
+    <div class="card" id="ex-w9-4">
+      <div class="exercise-label">Exercise 4</div>
+      <h3>Complete the instructions with the verbs in the box. Listen and check.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Закончи инструкции глаголами из рамки. Послушай и проверь.</p>
+      <p class="word-row"><span class="key">don’t forget</span> <span class="key"><s>don’t write</s></span> <span class="key">listen to</span> <span class="key">use</span> <span class="key">write</span></p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>1. <b>Don’t write</b> on the desks!</span></div>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">2.</span> <input class="blank" id="w9-4-2" data-answer="write" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:160px;max-width:100%"> new words in your notebook!</p>
+        <p class="gap-line"><span class="num">3.</span> <input class="blank" id="w9-4-3" data-answer="don't forget|don’t forget" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:160px;max-width:100%"> to bring your pen!</p>
+        <p class="gap-line"><span class="num">4.</span> <input class="blank" id="w9-4-4" data-answer="listen to" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:160px;max-width:100%"> your teacher!</p>
+        <p class="gap-line"><span class="num">5.</span> <input class="blank" id="w9-4-5" data-answer="use" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:160px;max-width:100%"> a dictionary!</p>
+      </div>
+      <div class="audio-wrap" style="margin-top:14px"><audio controls preload="metadata"><source src="audio/lesson-17-s11.m4a" type="audio/mp4">Your browser does not support audio.</audio></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-w9-4')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-w9-4')">Try again</button>
+      </div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 TB p. 25 · Ex 4</div>Key: 2 Write · 3 Don’t forget · 4 Listen to · 5 Use. Which of the rules apply to our English class?</div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Exercise 5</div>
+      <h3>Listen and follow the instructions.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Послушай и выполни инструкции.</p>
+      <div class="audio-wrap" style="margin-top:14px"><audio controls preload="metadata"><source src="audio/lesson-17-s12.m4a" type="audio/mp4">Your browser does not support audio.</audio></div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 TB p. 25 · Ex 5</div>Demonstrate first: say <i>Stand up!</i> and make sure he stands up. Audio S.12: 1 Open your books! 2 Stand up! 3 Sit down! 4 Write your name! 5 Look at me! 6 Close your books!</div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Exercise 6 · Use it!</div>
+      <h3>Take turns to give your partner instructions. Use classroom objects or your own ideas.</h3>
+      <p class="ru-hint" lang="ru" data-auto>По очереди давайте друг другу инструкции. Используй школьные предметы или свои идеи.</p>
+      <div class="tip class-note"><span class="tip-title">In class: tell your teacher what to do</span><span class="key">Pick up your pen!</span> <span class="key">Write your birthday!</span></div>
+      <textarea class="free-write" id="fw-w9-6" rows="3" placeholder="Pick up …&#10;Don’t …"></textarea>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 TB p. 25 · Ex 6</div>Give a few minutes to write the instructions first, if necessary.</div>
+    </div>
+  </section>
+
+  <section class="step" id="wh5" data-extra="x-sb9-rules">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Teacher’s Book p. 25 · Exercise 4 ★★★ <span class="extra-badge">extra</span></div>
+        <h2>Five new rules</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Write and vote</div>
+      <h3>Write five new rules for our English class. Then choose the best one.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Напиши пять новых правил для наших уроков английского. Потом выбери лучшее.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span><b>Don’t message</b> friends during lessons!</span></div>
+      <textarea class="free-write" id="fw-w9-rules" rows="5" placeholder="1. …&#10;2. …&#10;3. …&#10;4. …&#10;5. …"></textarea>
+    </div>
+  </section>
+
+  <section class="step" id="wh6" data-extra="x-sb9-tutor">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Student’s Book p. 124 · Grammar tutor <span class="extra-badge">extra</span></div>
+        <h2>Grammar tutor</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-w9-g4">
+      <div class="exercise-label">Grammar tutor 4</div>
+      <h3>Put the words in the correct order to make questions. Then complete the answers with the correct possessive pronouns.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Составь вопросы из слов. Потом закончи ответы правильными притяжательными местоимениями.</p>
+      <div class="tip">We use <b>whose</b> to ask about possession. We don’t use <b>its</b> as a possessive pronoun.</div>
+      <div class="example-row"><span class="ex-tag">Example</span><span>1. book / is / Whose / this / ? (mine) → <b>Whose book is this? It’s mine.</b></span></div>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">2.</span> is / this / Whose / dictionary / ? (your) <input class="blank wide" id="w9-g4-2" data-answer="whose dictionary is this|whose dictionary is this?" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:260px;max-width:100%"> It’s <input class="blank" id="w9-g4-2p" data-answer="yours" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px;max-width:100%">.</p>
+        <p class="gap-line"><span class="num">3.</span> calculator / is / Whose / that / ? (his) <input class="blank wide" id="w9-g4-3" data-answer="whose calculator is that|whose calculator is that?" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:260px;max-width:100%"> It’s <input class="blank" id="w9-g4-3p" data-answer="his" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px;max-width:100%">.</p>
+        <p class="gap-line"><span class="num">4.</span> these / pens / Whose / are / ? (her) <input class="blank wide" id="w9-g4-4" data-answer="whose pens are these|whose pens are these?" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:260px;max-width:100%"> They’re <input class="blank" id="w9-g4-4p" data-answer="hers" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px;max-width:100%">.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-w9-g4')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-w9-g4')">Try again</button>
+      </div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 Key</div>2 Whose dictionary is this? yours · 3 Whose calculator is that? his · 4 Whose pens are these? hers</div>
+    </div>
+    <div class="card" id="ex-w9-g5">
+      <div class="exercise-label">Grammar tutor 5</div>
+      <h3>Write the affirmative or the negative.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Напиши утверждение или отрицание.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>1. Write on the paper! → <b>Don’t write on the paper!</b></span></div>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">2.</span> <input class="blank wide" id="w9-g5-2" data-answer="use your calculator|use your calculator!|use your calculator." placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:260px;max-width:100%"> → Don’t use your calculator!</p>
+        <p class="gap-line"><span class="num">3.</span> Use your dictionary! → <input class="blank wide" id="w9-g5-3" data-answer="don't use your dictionary|don’t use your dictionary|don't use your dictionary!|don’t use your dictionary!|don't use your dictionary.|don’t use your dictionary." placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:260px;max-width:100%"></p>
+        <p class="gap-line"><span class="num">4.</span> <input class="blank wide" id="w9-g5-4" data-answer="use a pen|use a pen!|use a pen." placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:260px;max-width:100%"> → Don’t use a pen!</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-w9-g5')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-w9-g5')">Try again</button>
+      </div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 Key</div>2 Use your calculator! · 3 Don’t use your dictionary! · 4 Use a pen!</div>
+    </div>
+  </section>
+
+  <section class="step" id="wh7" data-extra="x-sb9-wb">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Workbook p. 6 · Homework in TB p. 25 <span class="extra-badge">extra</span></div>
+        <h2>Workbook p. 6</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-w9-w4">
+      <div class="exercise-label hw">Workbook · Exercise 4</div>
+      <h3>Complete the sentences with the correct possessive pronouns.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Закончи предложения правильными притяжательными местоимениями.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>1. Whose dictionaries are these? They’re their dictionaries. They’re <b>theirs</b>.</span></div>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">2.</span> Whose ruler is this? It’s my ruler. It’s <input class="blank" id="w9-w4-2" data-answer="mine" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px;max-width:100%">.</p>
+        <p class="gap-line"><span class="num">3.</span> Whose books are these? They’re our books. They’re <input class="blank" id="w9-w4-3" data-answer="ours" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px;max-width:100%">.</p>
+        <p class="gap-line"><span class="num">4.</span> Whose poster is that? It’s her poster. It’s <input class="blank" id="w9-w4-4" data-answer="hers" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px;max-width:100%">.</p>
+        <p class="gap-line"><span class="num">5.</span> Whose chairs are those? They’re your chairs. They’re <input class="blank" id="w9-w4-5" data-answer="yours" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px;max-width:100%">.</p>
+        <p class="gap-line"><span class="num">6.</span> Whose calculator is this? It’s his calculator. It’s <input class="blank" id="w9-w4-6" data-answer="his" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:120px;max-width:100%">.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-w9-w4')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-w9-w4')">Try again</button>
+      </div>
+    </div>
+    <div class="card" id="ex-w9-w5">
+      <div class="exercise-label hw">Workbook · Exercise 5</div>
+      <h3>Put the words in the correct order to make sentences.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Составь предложения из слов.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>1. write / Don’t / notebook / my / in → <b>Don’t write in my notebook.</b></span></div>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">2.</span> board / the / Write / the / words / on <input class="blank wide" id="w9-w5-2" data-answer="write the words on the board|write the words on the board.|write the words on the board!" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:300px;max-width:100%"></p>
+        <p class="gap-line"><span class="num">3.</span> late / Don’t / for / be / class <input class="blank wide" id="w9-w5-3" data-answer="don't be late for class|don’t be late for class|don't be late for class.|don’t be late for class.|don't be late for class!|don’t be late for class!" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:300px;max-width:100%"></p>
+        <p class="gap-line"><span class="num">4.</span> teacher / to / Listen / the <input class="blank wide" id="w9-w5-4" data-answer="listen to the teacher|listen to the teacher.|listen to the teacher!" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:300px;max-width:100%"></p>
+        <p class="gap-line"><span class="num">5.</span> eat / in / class / Don’t <input class="blank wide" id="w9-w5-5" data-answer="don't eat in class|don’t eat in class|don't eat in class.|don’t eat in class.|don't eat in class!|don’t eat in class!" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:300px;max-width:100%"></p>
+        <p class="gap-line"><span class="num">6.</span> book / your / Close <input class="blank wide" id="w9-w5-6" data-answer="close your book|close your book.|close your book!" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:300px;max-width:100%"></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-w9-w5')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-w9-w5')">Try again</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label hw">Workbook · Exercise 6</div>
+      <h3>Write two more instructions for your class.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Напиши ещё две инструкции для своего класса.</p>
+      <textarea class="free-write" id="fw-w9-w6" rows="3" placeholder="1. …&#10;2. Don’t …"></textarea>
+    </div>
+  </section>
 
 </div>
 </div>

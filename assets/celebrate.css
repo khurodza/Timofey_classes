@@ -1,0 +1,39 @@
+/* End-of-part celebration (Lesson 16 homework). See celebrate.js */
+.fin{margin-top:26px;text-align:center}
+.fin-dots{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:14px 0}
+.fin-dots a{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:800;text-decoration:none;color:var(--muted);background:#fff;border:2px dashed var(--border-strong)}
+.fin-dots a.ok{background:var(--green);border:2px solid var(--green);color:#fff}
+.fin .btn-accent:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.fin.ready .btn-accent{animation:fin-pulse 1.4s ease-in-out infinite}
+html.watching .fin .btn-accent{display:none}
+@keyframes fin-pulse{50%{transform:scale(1.06)}}
+.cel{position:fixed;inset:0;z-index:3000;display:grid;place-items:center;padding:16px;overflow:hidden;background:rgba(22,33,62,.72);animation:cel-in .25s}
+.cel-box{position:relative;z-index:2;width:min(560px,100%);max-height:calc(100vh - 32px);overflow:auto;background:#fff;border-radius:28px;padding:28px 22px 24px;text-align:center;animation:cel-pop .5s cubic-bezier(.2,1.5,.4,1)}
+.cel-box h2{margin:14px 0 4px;font-size:clamp(25px,6vw,34px);line-height:1.15}
+.cel-box p{margin:6px 0}
+.cel-ru{color:var(--muted);font-size:16px}
+.cel-stars{font-size:38px;line-height:1.2}
+.cel-stars span{display:inline-block;filter:grayscale(1);opacity:.3}
+.cel-stars span.on{filter:none;opacity:1;animation:cel-star .6s cubic-bezier(.2,1.8,.4,1) both;animation-delay:calc(1.7s + var(--i)*.25s)}
+.cel-box .btn-primary{margin-top:14px}
+.cel-bit{position:absolute;z-index:1;pointer-events:none;font-weight:900;font-size:26px;font-family:var(--font-head)}
+/* letter tiles: drop in, then flip to a picture */
+.cel-tiles{display:flex;justify-content:center;gap:10px;height:130px;align-items:center;perspective:700px}
+.cel-tile{position:relative;width:21%;max-width:96px;aspect-ratio:1;transform-style:preserve-3d;animation:cel-fall .7s cubic-bezier(.3,1.5,.5,1) both,cel-flip .7s ease-in-out forwards,cel-hop 1s ease-in-out infinite;animation-delay:calc(var(--i)*.15s),calc(1s + var(--i)*.15s),calc(2.2s + var(--i)*.15s)}
+.cel-tile b,.cel-tile i{position:absolute;inset:0;display:grid;place-items:center;border-radius:20px;backface-visibility:hidden;-webkit-backface-visibility:hidden;color:#fff;font:800 clamp(26px,7vw,40px)/1 var(--font-head);background:var(--c)}
+.cel-tile i{transform:rotateY(180deg);background:#fff;border:4px solid var(--c);font-size:clamp(30px,9vw,48px);font-style:normal}
+/* podium */
+.cel-podium{display:flex;justify-content:center;align-items:flex-end;gap:6px;height:215px;overflow:hidden}
+.cel-place{width:30%;max-width:130px;display:flex;flex-direction:column;align-items:center}
+.cel-place>span{font-size:46px;line-height:1.2;animation:cel-drop .7s cubic-bezier(.3,1.6,.5,1) both,cel-hop 1s ease-in-out infinite;animation-delay:calc(var(--d) + .5s),calc(var(--d) + 1.3s)}
+.cel-place>div{width:100%;height:var(--h);border-radius:14px 14px 0 0;background:var(--c);color:#fff;font:800 26px/1.2 var(--font-head);padding-top:10px;transform-origin:bottom;animation:cel-rise .6s cubic-bezier(.2,1.3,.4,1) both;animation-delay:var(--d)}
+.cel-place small{display:block;font-size:15px}
+@keyframes cel-in{from{opacity:0}}
+@keyframes cel-pop{from{transform:scale(.6);opacity:0}}
+@keyframes cel-star{from{transform:scale(0) rotate(-180deg);opacity:0}}
+@keyframes cel-drop{from{translate:0 -260px;opacity:0}}
+@keyframes cel-fall{from{translate:0 -320px}}
+@keyframes cel-flip{to{transform:rotateY(180deg)}}
+@keyframes cel-hop{50%{translate:0 -10px}}
+@keyframes cel-rise{from{transform:scaleY(0)}}
+@media(prefers-reduced-motion:reduce){.cel,.cel *,.fin .btn-accent{animation-duration:.01s!important;animation-delay:0s!important;animation-iteration-count:1!important}}

@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lesson 16 – ph, ck and the verb be</title>
+<title>Lesson 16 – ph and ck</title>
 <link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/celebrate.css">
 <style>
 /* teacher-only notes: hidden on the student's page, shown inside teacher.html (sync.js adds html.watching) */
 .teacher-only{display:none}
@@ -23,6 +24,33 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
 .email-body .blank{width:130px}
 .dg-gap{font-size:22px;font-weight:800;letter-spacing:.02em;display:inline-flex;align-items:center;gap:2px}
 .dg-gap .blank{width:64px;min-width:64px;text-align:center;font-weight:800}
+/* homework */
+.sc-cols.sc-4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:640px){.sc-cols.sc-4{grid-template-columns:1fr 1fr}}
+.pic{font-size:34px;line-height:1;min-width:44px;text-align:center}
+.bignum{font-size:20px;min-width:58px}
+.end-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:0 20px}
+.team-story{line-height:2.4}
+.team-story .nw{white-space:nowrap}
+.team-story .blank{width:52px;min-width:52px;text-align:center;font-weight:800}
+.two-col{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(5,auto);grid-auto-flow:column;gap:0 28px}
+.two-col.six{grid-template-rows:repeat(6,auto)}
+@media(min-width:561px){.two-col:not(.six) .listen-q:nth-child(6),.two-col.six .listen-q:nth-child(7){border-top-color:transparent}}
+@media(max-width:560px){.two-col,.two-col.six{grid-template-rows:none}.two-col{grid-template-columns:1fr;grid-template-rows:none;grid-auto-flow:row}}
+.clues{line-height:1.9;font-size:18px;padding-left:24px}
+/* matching: tiles above, words below; a matched word moves into its tile */
+.match-grid.match-tiles{display:block}
+.match-tiles .match-col[data-side="left"]{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.match-tiles .match-col[data-side="right"]{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:16px;padding:14px;border-radius:18px;background:var(--bg)}
+.match-tiles .match-item{grid-row:auto!important;grid-column:auto!important;margin:0;display:flex;align-items:center;justify-content:center;text-align:center}
+.match-tiles [data-side="left"] .match-item{flex-direction:column;min-height:92px;padding:10px 6px;font:800 24px/1.15 var(--font-head);color:var(--blue-dark);background:var(--blue-soft)}
+.match-tiles [data-side="left"] .match-item.selected{background:var(--blue);border-color:var(--blue);color:#fff}
+.match-tiles [data-side="left"] .match-item.matched{background:var(--green-soft);color:var(--green-ink)}
+.match-tiles [data-side="left"] .match-item.matched::after{content:attr(data-word);margin-top:4px;font:800 17px/1.2 var(--font-body)}
+.match-tiles [data-side="right"] .match-item{width:auto;padding:8px 18px;border-radius:999px}
+.match-tiles [data-side="right"] .match-item.matched{display:none}
+.match-tiles .match-col[data-side="right"]:not(:has(.match-item:not(.matched))){display:none}
+@media(max-width:560px){.match-tiles .match-col[data-side="left"]{grid-template-columns:repeat(2,1fr)}.match-tiles [data-side="left"] .match-item{min-height:76px}}
 </style>
 </head>
 <body>
@@ -33,11 +61,9 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
     <div class="hero-grid">
       <div>
         <h1 class="name-slot" data-with="Lesson 16: Let’s go on, {name}!" data-without="Lesson 16: Let’s go on!">Lesson 16: Let’s go on!</h1>
-        <p>The letter teams <b>ph</b> and <b>ck</b>, pronouns, the verb <i>be</i> and question words.</p>
+        <p>The letter teams <b>ph</b> and <b>ck</b>.</p>
         <div class="hero-badges">
           <span class="badge">Lesson 16</span>
-          <span class="badge">Starter review</span>
-          <span class="badge">Student’s Book p. 6</span>
           <span class="badge">Reading: ph · ck</span>
         </div>
       </div>
@@ -45,13 +71,12 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
   </div>
 </header>
 
-<!-- Moved here from Lesson 15: the digraph tabs "ph" and "ck" and the tab "Grammar: be & pronouns"
-     (Student’s Book p. 6; its sections are data-extra: hidden from Timofey until opened in teacher.html). -->
+<!-- Moved here from Lesson 15: the digraph tabs "ph" and "ck". The Grammar tab (Student’s Book p. 6) is in Lesson 17. -->
 <nav class="parts">
   <div class="wrap">
     <button class="part-tab" data-part="part-ph" onclick="showPart('part-ph')">ph · photo</button>
     <button class="part-tab" data-part="part-ck" onclick="showPart('part-ck')">ck · duck</button>
-    <button class="part-tab" data-part="part-grammar" onclick="showPart('part-grammar')">Grammar: be &amp; pronouns</button>
+    <button class="part-tab hw" data-part="part-homework" onclick="showPart('part-homework')">Homework</button>
   </div>
 </nav>
 
@@ -241,225 +266,464 @@ html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;bor
   </section>
 
   <div class="btn-row" style="justify-content:flex-end;margin-top:30px">
-    <button class="btn-accent" onclick="showPart('part-grammar');window.scrollTo(0,0)">Next: Grammar →</button>
+    <button class="btn-accent" onclick="showPart('part-homework');window.scrollTo(0,0)">Go to homework →</button>
   </div>
 
 </div>
 </div>
 
-<!-- ══════════ Grammar: Student’s Book p. 6 ══════════ -->
-<div class="lesson-part" id="part-grammar">
+<!-- ══════════ Homework: sh/ch/ph/ck (1–6) + ordinal numbers (7–12), each easy → hard ══════════ -->
+<div class="lesson-part" id="part-homework">
 <nav class="chips">
   <div class="wrap">
-    <a href="#x5a" data-extra="x-sb5-pronouns">+ · Pronouns</a>
-    <a href="#x5b" data-extra="x-sb5-be">+ · Verb be</a>
-    <a href="#x5c" data-extra="x-sb5-questions">+ · Question words</a>
+    <a href="#hw1">1 · Sort</a>
+    <a href="#hw2">2 · Listen</a>
+    <a href="#hw3">3 · Similar words</a>
+    <a href="#hw4">4 · Spelling</a>
+    <a href="#hw5">5 · Write</a>
+    <a href="#hw6">6 · Story</a>
+    <a href="#hw7">7 · Match</a>
+    <a href="#hw8">8 · Endings</a>
+    <a href="#hw9">9 · Listen</a>
+    <a href="#hw10">10 · Write</a>
+    <a href="#hw11">11 · Race</a>
+    <a href="#hw12">12 · Dates</a>
   </div>
 </nav>
 
 <div class="wrap">
 
-  <section class="step" id="x5a" data-extra="x-sb5-pronouns">
+  <div class="teacher-only">
+    <div class="to-label">👩‍🏫 Teacher only · Homework</div>
+    Steps 1–6: letter teams. Steps 7–12: ordinal numbers. Both go from easy to hard. Check by yourself: the two recordings (steps 6 and 12) and the four sentences with dates (step 12). <b>Race:</b> Sasha, Rick, Jack, Phil, Chuck.
+  </div>
+
+  <section class="step" id="hw1">
     <div class="step-head">
-      <div class="step-num plus">+</div>
+      <div class="step-num">1</div>
       <div>
-        <div class="step-meta">Student’s Book p. 6 · Language in action <span class="extra-badge">extra</span></div>
-        <h2>Subject pronouns and possessive adjectives</h2>
+        <div class="step-meta">Homework · Letter teams · easy</div>
+        <h2>Four teams</h2>
       </div>
     </div>
-    <div class="card" id="ex-x5-v">
-      <div class="exercise-label">Video S.1</div>
-      <h3>Watch the video. Where is Isabella from? What is Martín’s dream?</h3>
-      <p class="ru-hint" lang="ru" data-auto>Посмотри видео. Откуда Изабелла? О чём мечтает Мартин?</p>
-      <div class="video-wrap">
-        <video controls preload="metadata" playsinline>
-          <source src="video/starter-language-in-action.mp4" type="video/mp4">
-          <track kind="subtitles" src="video/starter-language-in-action.vtt" srclang="en" label="English">
-        </video>
-      </div>
-      <p class="gap-line"><span class="num">1.</span> Isabella is from <input class="blank" id="x5-v-1" data-answer="the united states|the us|the usa|the united states of america|united states|usa|the u.s.|america" placeholder="country" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:200px">.</p>
-      <p class="gap-line"><span class="num">2.</span> Martín’s dream is to <input class="blank" id="x5-v-2" data-answer="play guitar|play the guitar" placeholder="…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:200px">.</p>
-      <div class="btn-row">
-        <button class="btn-primary" onclick="checkBlanks('ex-x5-v')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetBlanks('ex-x5-v')">Try again</button>
-      </div>
-    </div>
-    <div class="card" id="ex-x5-1">
-      <div class="ref-wrap" style="overflow-x:auto">
-        <table class="ref-table">
-          <tr><th>Subject pronouns</th><th>Possessive adjectives</th></tr>
-          <tr><td class="label">I</td><td><b>My</b> name is Simon.</td></tr>
-          <tr><td class="label">You</td><td>What’s <b>your</b> dream?</td></tr>
-          <tr><td class="label">He</td><td><b>His</b> dream is to play guitar.</td></tr>
-          <tr><td class="label">She</td><td><b>Her</b> dream is to be a singer.</td></tr>
-          <tr><td class="label">It</td><td><b>Its</b> hair is long.</td></tr>
-          <tr><td class="label">We</td><td><b>Our</b> teacher is kind.</td></tr>
-          <tr><td class="label">They</td><td><b>Their</b> car is blue.</td></tr>
-        </table>
-      </div>
-      <div class="exercise-label" style="margin-top:18px">Exercise 1</div>
-      <h3>Look at the table. Choose the correct words.</h3>
-      <p class="ru-hint" lang="ru" data-auto>Посмотри на таблицу. Выбери правильные слова.</p>
-      <div class="example-row"><span class="ex-tag">Example</span><span>1. Alana is <b>my</b> best friend.</span></div>
-      <div class="sent-list">
-        <p class="gap-line"><span class="num">2.</span> <span class="word-choice" id="x5-1-2a" data-answer="We"><button class="word-choice-btn" onclick="selectWord(this)">Our</button><button class="word-choice-btn" onclick="selectWord(this)">We</button></span> aren’t from Brazil. <span class="word-choice" id="x5-1-2b" data-answer="We"><button class="word-choice-btn" onclick="selectWord(this)">Our</button><button class="word-choice-btn" onclick="selectWord(this)">We</button></span>’re from Spain.</p>
-        <p class="gap-line"><span class="num">3.</span> <span class="word-choice" id="x5-1-3a" data-answer="Her"><button class="word-choice-btn" onclick="selectWord(this)">Her</button><button class="word-choice-btn" onclick="selectWord(this)">She</button></span> name is Luna. <span class="word-choice" id="x5-1-3b" data-answer="She"><button class="word-choice-btn" onclick="selectWord(this)">Her</button><button class="word-choice-btn" onclick="selectWord(this)">She</button></span>’s 13.</p>
-        <p class="gap-line"><span class="num">4.</span> <span class="word-choice" id="x5-1-4" data-answer="Their"><button class="word-choice-btn" onclick="selectWord(this)">Their</button><button class="word-choice-btn" onclick="selectWord(this)">They</button></span> names are Kit and Bella.</p>
+    <div class="card" id="ex-h16-sort">
+      <div class="exercise-label hw">Read and sort</div>
+      <h3>Read each word aloud. Put it in the correct column.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Прочитай каждое слово вслух. Перетащи его в нужный столбик.</p>
+      <div class="sc-bank" id="h16-sort"><span class="sc-tile" data-col="sh">shark</span> <span class="sc-tile" data-col="ch">cheese</span> <span class="sc-tile" data-col="ph">dolphin</span> <span class="sc-tile" data-col="ck">clock</span> <span class="sc-tile" data-col="ch">lunch</span> <span class="sc-tile" data-col="sh">wash</span> <span class="sc-tile" data-col="ck">sock</span> <span class="sc-tile" data-col="ph">phone</span> <span class="sc-tile" data-col="sh">shelf</span> <span class="sc-tile" data-col="ph">alphabet</span> <span class="sc-tile" data-col="ck">jacket</span> <span class="sc-tile" data-col="ch">children</span> <span class="sc-tile" data-col="sh">fish</span> <span class="sc-tile" data-col="ph">graph</span> <span class="sc-tile" data-col="ch">teacher</span> <span class="sc-tile" data-col="ck">stick</span></div>
+      <div class="sc-cols sc-4">
+        <div class="sc-col" data-col="sh"><div class="sc-head">sh</div><div class="sc-drop"><span class="sc-tile given">sheep</span></div></div>
+        <div class="sc-col" data-col="ch"><div class="sc-head">ch</div><div class="sc-drop"><span class="sc-tile given">chips</span></div></div>
+        <div class="sc-col" data-col="ph"><div class="sc-head">ph</div><div class="sc-drop"><span class="sc-tile given">photo</span></div></div>
+        <div class="sc-col" data-col="ck"><div class="sc-head">ck</div><div class="sc-drop"><span class="sc-tile given">duck</span></div></div>
       </div>
       <div class="btn-row">
-        <button class="btn-primary" onclick="checkWords('ex-x5-1')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetWords('ex-x5-1')">Try again</button>
+        <button class="btn-primary" onclick="checkSort('ex-h16-sort')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetSort('ex-h16-sort')">Try again</button>
       </div>
-      <div class="teacher-only"><div class="to-label">👩‍🏫 SB p. 5 · Ex 1</div>Key: 2 We, We · 3 Her, She · 4 Their. Video S.1: Isabella is from the United States (American); Martín’s dream is to play guitar. Subtitles: CC button.</div>
+      <div class="tip"><b>sh</b> = <span class="ipa">/ʃ/</span> · <b>ch</b> = <span class="ipa">/tʃ/</span> · <b>ph</b> = <span class="ipa">/f/</span> · <b>ck</b> = <span class="ipa">/k/</span></div>
     </div>
   </section>
 
-  <section class="step" id="x5b" data-extra="x-sb5-be">
+  <section class="step" id="hw2">
     <div class="step-head">
-      <div class="step-num plus">+</div>
+      <div class="step-num">2</div>
       <div>
-        <div class="step-meta">Student’s Book p. 6 · Language in action <span class="extra-badge">extra</span></div>
-        <h2>Verb <i>be</i></h2>
+        <div class="step-meta">Homework · Letter teams · easy</div>
+        <h2>Which team is missing?</h2>
       </div>
     </div>
-    <div class="card" id="ex-x5-2">
-      <div class="ref-wrap" style="overflow-x:auto">
-        <table class="ref-table">
-          <tr><td class="label">+</td><td>I<b>’m</b> from the UK. She<b>’s</b> amazing.<br>We<b>’re</b> students at an international school.</td></tr>
-          <tr><td class="label">–</td><td>But we<b>’re not</b> in the same class.</td></tr>
-          <tr><td class="label">?</td><td><b>Is</b> Simon from the UK? Yes, he <b>is</b>.<br><b>Are</b> Isabelle and Martine friends? Yes, they <b>are</b>.<br><b>Is</b> Isabella from Brazil? No, she <b>isn’t</b>.</td></tr>
-        </table>
-      </div>
-      <div class="exercise-label" style="margin-top:18px">Exercise 2</div>
-      <h3>Use the table to complete the sentences with the correct form of the verb <i>be</i>.</h3>
-      <p class="ru-hint" lang="ru" data-auto>С помощью таблицы закончи предложения правильной формой глагола <i>be</i>.</p>
-      <div class="example-row"><span class="ex-tag">Example</span><span>1. I<b>’m</b> from Granada.</span></div>
-      <div class="sent-list">
-        <p class="gap-line"><span class="num">2.</span> Camila Cabello <input class="blank" id="x5-2-2" data-answer="is|’s|'s" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> brilliant.</p>
-        <p class="gap-line"><span class="num">3.</span> Miranda and Suki <input class="blank" id="x5-2-3" data-answer="aren’t|aren't|are not" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> Spanish.</p>
-        <p class="gap-line"><span class="num">4.</span> <input class="blank" id="x5-2-4" data-answer="are" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> you a good singer?</p>
-        <p class="gap-line"><span class="num">5.</span> <input class="blank" id="x5-2-5a" data-answer="is" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px"> Diana’s bedroom red? No, it <input class="blank" id="x5-2-5b" data-answer="isn’t|isn't|is not" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:110px">.</p>
-      </div>
-      <div class="btn-row">
-        <button class="btn-primary" onclick="checkBlanks('ex-x5-2')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetBlanks('ex-x5-2')">Try again</button>
-      </div>
-      <div class="teacher-only"><div class="to-label">👩‍🏫 SB p. 5 · Ex 2</div>Key: 2 is · 3 aren’t (profile: “They aren’t Spanish. Miranda’s Mexican and Suki’s Turkish.”) · 4 Are · 5 Is, isn’t.</div>
-    </div>
-
-    <div class="card" id="ex-x5-3">
-      <div class="exercise-label">Exercise 3</div>
-      <h3>Complete the profile with the correct form of <i>be</i>. Guess the person. Listen and check.</h3>
-      <p class="ru-hint" lang="ru" data-auto>Заполни анкету правильной формой глагола <i>be</i>. Угадай, кто это. Послушай и проверь.</p>
-      <div class="email">
-        <div class="email-bar">🇺🇸 🎤 Who is she?</div>
-        <div class="email-body">
-          <p>Her birthday <sup>1</sup><b>is</b> (✓) on 13th December.</p>
-          <p>She <sup>2</sup><input class="blank" id="x5-3-2" data-answer="isn’t|isn't|is not" autocomplete="off" autocapitalize="off" spellcheck="false"> (✗) British.</p>
-          <p>She <sup>3</sup><input class="blank" id="x5-3-3" data-answer="’s|'s|is" autocomplete="off" autocapitalize="off" spellcheck="false"> (✓) American.</p>
-          <p>My favourite songs <sup>4</sup><input class="blank" id="x5-3-4" data-answer="are" autocomplete="off" autocapitalize="off" spellcheck="false"> (✓) <i>Shake it Off</i> and <i>Back to December</i>.</p>
-          <p><sup>5</sup><input class="blank" id="x5-3-5" data-answer="is" autocomplete="off" autocapitalize="off" spellcheck="false"> she your favourite singer?</p>
-        </div>
-      </div>
-      <div class="audio-wrap" style="margin-top:14px">
-        <audio controls preload="metadata">
-          <source src="audio/lesson-15-s07.m4a" type="audio/mp4">
-          Your browser does not support audio.
-        </audio>
-      </div>
-      <p class="gap-line" style="margin-top:14px"><b>Who is she?</b> <input class="blank" id="x5-3-who" data-answer="taylor swift|taylor|swift" placeholder="name" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:180px"></p>
-      <div class="btn-row">
-        <button class="btn-primary" onclick="checkBlanks('ex-x5-3')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetBlanks('ex-x5-3')">Try again</button>
-      </div>
-      <div class="teacher-only"><div class="to-label">👩‍🏫 SB p. 5 · Ex 3</div>Key: 2 isn’t · 3 ’s / is · 4 are · 5 Is → <b>Taylor Swift</b>. Audio: track S.07.</div>
-    </div>
-
-    <div class="card" id="ex-x5-4">
-      <div class="exercise-label">Exercise 4</div>
-      <h3>Write questions with the verb <i>be</i>.</h3>
-      <p class="ru-hint" lang="ru" data-auto>Составь вопросы с глаголом <i>be</i>.</p>
-      <div class="example-row"><span class="ex-tag">Example</span><span>1. you / 12? → <b>Are you 12?</b></span></div>
-      <div class="sent-list">
-        <p class="gap-line"><span class="num">2.</span> you / from / Ankara? <input class="blank wide" id="x5-4-2" data-answer="are you from ankara?|are you from ankara" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
-        <p class="gap-line"><span class="num">3.</span> your best friends / in your class? <input class="blank wide" id="x5-4-3" data-answer="are your best friends in your class?|are your best friends in your class" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
-        <p class="gap-line"><span class="num">4.</span> your teacher / English? <input class="blank wide" id="x5-4-4" data-answer="is your teacher english?|is your teacher english" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
-        <p class="gap-line"><span class="num">5.</span> today / 19th June? <input class="blank wide" id="x5-4-5" data-answer="is today 19th june?|is today 19th june|is today the 19th of june?|is today the 19th of june" autocomplete="off" autocapitalize="off" spellcheck="false"></p>
+    <div class="card" id="ex-h16-gap">
+      <div class="exercise-label hw">Listen and complete</div>
+      <h3>Press ▶ and write <b>sh</b>, <b>ch</b>, <b>ph</b> or <b>ck</b>.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Нажми ▶ и впиши <b>sh</b>, <b>ch</b>, <b>ph</b> или <b>ck</b>.</p>
+      <div class="two-col six">
+      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="cash" aria-label="Listen"></button><span class="dg-gap">ca<input class="blank" id="h16-g1" data-answer="sh" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="kick" aria-label="Listen"></button><span class="dg-gap">ki<input class="blank" id="h16-g2" data-answer="ck" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="sphere" aria-label="Listen"></button><span class="dg-gap">s<input class="blank" id="h16-g3" data-answer="ph" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ere</span></div>
+      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="cherry" aria-label="Listen"></button><span class="dg-gap"><input class="blank" id="h16-g4" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">erry</span></div>
+      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="short" aria-label="Listen"></button><span class="dg-gap"><input class="blank" id="h16-g5" data-answer="sh" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ort</span></div>
+      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="graph" aria-label="Listen"></button><span class="dg-gap">gra<input class="blank" id="h16-g6" data-answer="ph" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="listen-q"><span class="num">7.</span><button class="say say-big" data-say="rich" aria-label="Listen"></button><span class="dg-gap">ri<input class="blank" id="h16-g7" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="listen-q"><span class="num">8.</span><button class="say say-big" data-say="backpack" aria-label="Listen"></button><span class="dg-gap">ba<input class="blank" id="h16-g8" data-answer="ck" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">pack</span></div>
+      <div class="listen-q"><span class="num">9.</span><button class="say say-big" data-say="telephone" aria-label="Listen"></button><span class="dg-gap">tele<input class="blank" id="h16-g9" data-answer="ph" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">one</span></div>
+      <div class="listen-q"><span class="num">10.</span><button class="say say-big" data-say="English" aria-label="Listen"></button><span class="dg-gap">Engli<input class="blank" id="h16-g10" data-answer="sh" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="listen-q"><span class="num">11.</span><button class="say say-big" data-say="beach" aria-label="Listen"></button><span class="dg-gap">bea<input class="blank" id="h16-g11" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
+      <div class="listen-q"><span class="num">12.</span><button class="say say-big" data-say="check" aria-label="Listen"></button><span class="dg-gap">che<input class="blank" id="h16-g12" data-answer="ck" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span></div>
       </div>
       <div class="btn-row">
-        <button class="btn-primary" onclick="checkBlanks('ex-x5-4')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetBlanks('ex-x5-4')">Try again</button>
+        <button class="btn-primary" onclick="checkBlanks('ex-h16-gap')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-h16-gap')">Try again</button>
       </div>
     </div>
   </section>
 
-  <section class="step" id="x5c" data-extra="x-sb5-questions">
+  <section class="step" id="hw3">
     <div class="step-head">
-      <div class="step-num plus">+</div>
+      <div class="step-num">3</div>
       <div>
-        <div class="step-meta">Student’s Book p. 6 · Language in action <span class="extra-badge">extra</span></div>
-        <h2>Question words</h2>
+        <div class="step-meta">Homework · Letter teams · medium</div>
+        <h2>Which word do you hear?</h2>
       </div>
     </div>
-    <div class="card" id="ex-match-x5-5">
-      <div class="exercise-label">Exercise 5</div>
-      <h3>Match the question words with their functions.</h3>
-      <p class="ru-hint" lang="ru" data-auto>Соедини вопросительные слова с тем, о чём они спрашивают.</p>
-      <div class="example-row"><span class="ex-tag">Example</span><span>What ⇄ <b>things</b></span></div>
-      <div class="match-grid">
+    <div class="card" id="ex-h16-mc">
+      <div class="exercise-label hw">Listen and choose</div>
+      <h3>Press ▶ and choose the word you hear. Listen twice!</h3>
+      <p class="ru-hint" lang="ru" data-auto>Нажми ▶ и выбери слово, которое слышишь. Послушай два раза!</p>
+      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="ship" aria-label="Listen"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="h16-mc1" value="a"><span class="mc-bullet">A</span> chip</label><label class="mc-option"><input type="radio" name="h16-mc1" value="b"><span class="mc-bullet">B</span> ship</label><label class="mc-option"><input type="radio" name="h16-mc1" value="c"><span class="mc-bullet">C</span> sip</label></div></div>
+      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="cheap" aria-label="Listen"></button>
+        <div class="mc-options" data-correct="a"><label class="mc-option"><input type="radio" name="h16-mc2" value="a"><span class="mc-bullet">A</span> cheap</label><label class="mc-option"><input type="radio" name="h16-mc2" value="b"><span class="mc-bullet">B</span> sheep</label><label class="mc-option"><input type="radio" name="h16-mc2" value="c"><span class="mc-bullet">C</span> seat</label></div></div>
+      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="sock" aria-label="Listen"></button>
+        <div class="mc-options" data-correct="c"><label class="mc-option"><input type="radio" name="h16-mc3" value="a"><span class="mc-bullet">A</span> shock</label><label class="mc-option"><input type="radio" name="h16-mc3" value="b"><span class="mc-bullet">B</span> chop</label><label class="mc-option"><input type="radio" name="h16-mc3" value="c"><span class="mc-bullet">C</span> sock</label></div></div>
+      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="watch" aria-label="Listen"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="h16-mc4" value="a"><span class="mc-bullet">A</span> wash</label><label class="mc-option"><input type="radio" name="h16-mc4" value="b"><span class="mc-bullet">B</span> watch</label><label class="mc-option"><input type="radio" name="h16-mc4" value="c"><span class="mc-bullet">C</span> with</label></div></div>
+      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="chop" aria-label="Listen"></button>
+        <div class="mc-options" data-correct="c"><label class="mc-option"><input type="radio" name="h16-mc5" value="a"><span class="mc-bullet">A</span> shop</label><label class="mc-option"><input type="radio" name="h16-mc5" value="b"><span class="mc-bullet">B</span> stop</label><label class="mc-option"><input type="radio" name="h16-mc5" value="c"><span class="mc-bullet">C</span> chop</label></div></div>
+      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="sell" aria-label="Listen"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="h16-mc6" value="a"><span class="mc-bullet">A</span> shell</label><label class="mc-option"><input type="radio" name="h16-mc6" value="b"><span class="mc-bullet">B</span> sell</label><label class="mc-option"><input type="radio" name="h16-mc6" value="c"><span class="mc-bullet">C</span> shelf</label></div></div>
+      <div class="listen-q"><span class="num">7.</span><button class="say say-big" data-say="shoes" aria-label="Listen"></button>
+        <div class="mc-options" data-correct="b"><label class="mc-option"><input type="radio" name="h16-mc7" value="a"><span class="mc-bullet">A</span> choose</label><label class="mc-option"><input type="radio" name="h16-mc7" value="b"><span class="mc-bullet">B</span> shoes</label><label class="mc-option"><input type="radio" name="h16-mc7" value="c"><span class="mc-bullet">C</span> show</label></div></div>
+      <div class="listen-q"><span class="num">8.</span><button class="say say-big" data-say="catch" aria-label="Listen"></button>
+        <div class="mc-options" data-correct="c"><label class="mc-option"><input type="radio" name="h16-mc8" value="a"><span class="mc-bullet">A</span> cash</label><label class="mc-option"><input type="radio" name="h16-mc8" value="b"><span class="mc-bullet">B</span> cat</label><label class="mc-option"><input type="radio" name="h16-mc8" value="c"><span class="mc-bullet">C</span> catch</label></div></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-h16-mc')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-h16-mc')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="hw4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Homework · Letter teams · medium</div>
+        <h2>Which spelling is correct?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-h16-sp">
+      <div class="exercise-label hw">Choose</div>
+      <h3>Look at the picture. Choose the correct spelling.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Посмотри на картинку. Выбери слово, написанное правильно.</p>
+      <div class="sent-list">
+      <p class="gap-line"><span class="num">1.</span> <span class="pic">📸</span> <span class="word-choice" id="h16-s1" data-answer="photo"><button class="word-choice-btn" onclick="selectWord(this)">photo</button><button class="word-choice-btn" onclick="selectWord(this)">foto</button></span></p>
+      <p class="gap-line"><span class="num">2.</span> <span class="pic">🥛</span> <span class="word-choice" id="h16-s2" data-answer="milk"><button class="word-choice-btn" onclick="selectWord(this)">milck</button><button class="word-choice-btn" onclick="selectWord(this)">milk</button></span></p>
+      <p class="gap-line"><span class="num">3.</span> <span class="pic">🕐</span> <span class="word-choice" id="h16-s3" data-answer="clock"><button class="word-choice-btn" onclick="selectWord(this)">clok</button><button class="word-choice-btn" onclick="selectWord(this)">clock</button></span></p>
+      <p class="gap-line"><span class="num">4.</span> <span class="pic">🐘</span> <span class="word-choice" id="h16-s4" data-answer="elephant"><button class="word-choice-btn" onclick="selectWord(this)">elephant</button><button class="word-choice-btn" onclick="selectWord(this)">elefant</button></span></p>
+      <p class="gap-line"><span class="num">5.</span> <span class="pic">📖</span> <span class="word-choice" id="h16-s5" data-answer="book"><button class="word-choice-btn" onclick="selectWord(this)">book</button><button class="word-choice-btn" onclick="selectWord(this)">boock</button></span></p>
+      <p class="gap-line"><span class="num">6.</span> <span class="pic">🍒</span> <span class="word-choice" id="h16-s6" data-answer="cherry"><button class="word-choice-btn" onclick="selectWord(this)">sherry</button><button class="word-choice-btn" onclick="selectWord(this)">cherry</button></span></p>
+      <p class="gap-line"><span class="num">7.</span> <span class="pic">🧥</span> <span class="word-choice" id="h16-s7" data-answer="jacket"><button class="word-choice-btn" onclick="selectWord(this)">jaket</button><button class="word-choice-btn" onclick="selectWord(this)">jacket</button></span></p>
+      <p class="gap-line"><span class="num">8.</span> <span class="pic">🐬</span> <span class="word-choice" id="h16-s8" data-answer="dolphin"><button class="word-choice-btn" onclick="selectWord(this)">dolfin</button><button class="word-choice-btn" onclick="selectWord(this)">dolphin</button></span></p>
+      <p class="gap-line"><span class="num">9.</span> <span class="pic">🍟</span> <span class="word-choice" id="h16-s9" data-answer="chips"><button class="word-choice-btn" onclick="selectWord(this)">ships</button><button class="word-choice-btn" onclick="selectWord(this)">chips</button></span></p>
+      <p class="gap-line"><span class="num">10.</span> <span class="pic">🐟</span> <span class="word-choice" id="h16-s10" data-answer="fish"><button class="word-choice-btn" onclick="selectWord(this)">phish</button><button class="word-choice-btn" onclick="selectWord(this)">fish</button></span></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-h16-sp')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-h16-sp')">Try again</button>
+      </div>
+      <div class="tip"><b>ck</b> comes after <b>one short vowel</b>: <i>clock</i>. After two vowel letters or a consonant, write only <b>k</b>: <i>book, milk</i>.</div>
+    </div>
+  </section>
+
+  <section class="step" id="hw5">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Homework · Letter teams · hard</div>
+        <h2>Write the word</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-h16-pic">
+      <div class="exercise-label hw">Look and write</div>
+      <h3>No help now! Write the word for each picture. There is a letter team in every word.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Теперь без подсказок! Напиши слово к каждой картинке. В каждом слове есть буквенная пара.</p>
+      <div class="sent-list">
+      <p class="gap-line"><span class="num">1.</span> <span class="pic">🦈</span> <input class="blank" id="h16-p1" data-answer="shark" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">2.</span> <span class="pic">🧀</span> <input class="blank" id="h16-p2" data-answer="cheese" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">3.</span> <span class="pic">📱</span> <input class="blank" id="h16-p3" data-answer="phone|telephone" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">4.</span> <span class="pic">🦆</span> <input class="blank" id="h16-p4" data-answer="duck" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">5.</span> <span class="pic">🪑</span> <input class="blank" id="h16-p5" data-answer="chair" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">6.</span> <span class="pic">🚀</span> <input class="blank" id="h16-p6" data-answer="rocket" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">7.</span> <span class="pic">🐑</span> <input class="blank" id="h16-p7" data-answer="sheep" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">8.</span> <span class="pic">🧦</span> <input class="blank" id="h16-p8" data-answer="sock|socks" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">9.</span> <span class="pic">👕</span> <input class="blank" id="h16-p9" data-answer="t-shirt|tshirt|t shirt" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">10.</span> <span class="pic">🐔</span> <input class="blank" id="h16-p10" data-answer="chicken" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-h16-pic')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-h16-pic')">Try again</button>
+      </div>
+      <div class="tip">Number 10 has <b>two</b> teams.</div>
+    </div>
+  </section>
+
+  <section class="step" id="hw6">
+    <div class="step-head">
+      <div class="step-num">6</div>
+      <div>
+        <div class="step-meta">Homework · Letter teams · hard</div>
+        <h2>Jack and the shark</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-h16-story">
+      <div class="exercise-label hw">Complete</div>
+      <h3>Read the story. Complete the words with <b>sh</b>, <b>ch</b>, <b>ph</b> or <b>ck</b>.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Прочитай рассказ. Впиши в слова <b>sh</b>, <b>ch</b>, <b>ph</b> или <b>ck</b>.</p>
+      <p class="read-text team-story"><span class="nw">Ja<input class="blank" id="h16-st1" data-answer="ck" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span> is on a big <span class="nw"><input class="blank" id="h16-st2" data-answer="sh" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ip</span>. He has a <span class="nw">bla<input class="blank" id="h16-st3" data-answer="ck" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span> backpack. In it he has a <span class="nw"><input class="blank" id="h16-st4" data-answer="ph" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">one</span>, some <span class="nw"><input class="blank" id="h16-st5" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ips</span> and some <span class="nw"><input class="blank" id="h16-st6" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">eese</span> for <span class="nw">lun<input class="blank" id="h16-st7" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span>. Look, a <span class="nw">dol<input class="blank" id="h16-st8" data-answer="ph" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">in</span>! Jack takes a <span class="nw"><input class="blank" id="h16-st9" data-answer="ph" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">oto</span>. Oh no, a <span class="nw"><input class="blank" id="h16-st10" data-answer="sh" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ark</span>! It is very <span class="nw">qui<input class="blank" id="h16-st11" data-answer="ck" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false"></span>. It eats the chips, but it doesn’t like the cheese. Jack <span class="nw"><input class="blank" id="h16-st12" data-answer="ch" placeholder="?" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false">ecks</span> his photo. It’s great!</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-h16-story')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-h16-story')">Try again</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label hw">Read and record</div>
+      <h3>Read the whole story aloud and record yourself.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Прочитай весь рассказ вслух и запиши себя.</p>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+  <div class="card fin" data-steps="hw1,hw2,hw3,hw4,hw5,hw6" data-show="letters"></div>
+
+  <section class="step" id="hw7">
+    <div class="step-head">
+      <div class="step-num">7</div>
+      <div>
+        <div class="step-meta">Homework · Ordinal numbers · easy</div>
+        <h2>Numbers and words</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-match-h16">
+      <div class="exercise-label hw">Match</div>
+      <h3>Match the ordinal numbers with the words.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Соедини порядковые числительные со словами.</p>
+      <div class="match-grid match-tiles">
         <div class="match-col" data-side="left">
-          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-x5-5')">Where</div>
-          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-x5-5')">When</div>
-          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-x5-5')">How old</div>
-          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-x5-5')">Who</div>
+          <div class="match-item" data-pair="1" data-word="first" onclick="selectMatch(this,'ex-match-h16')">1st</div>
+          <div class="match-item" data-pair="2" data-word="second" onclick="selectMatch(this,'ex-match-h16')">2nd</div>
+          <div class="match-item" data-pair="3" data-word="third" onclick="selectMatch(this,'ex-match-h16')">3rd</div>
+          <div class="match-item" data-pair="4" data-word="fifth" onclick="selectMatch(this,'ex-match-h16')">5th</div>
+          <div class="match-item" data-pair="5" data-word="eighth" onclick="selectMatch(this,'ex-match-h16')">8th</div>
+          <div class="match-item" data-pair="6" data-word="ninth" onclick="selectMatch(this,'ex-match-h16')">9th</div>
+          <div class="match-item" data-pair="7" data-word="twelfth" onclick="selectMatch(this,'ex-match-h16')">12th</div>
+          <div class="match-item" data-pair="8" data-word="twentieth" onclick="selectMatch(this,'ex-match-h16')">20th</div>
         </div>
         <div class="match-col" data-side="right">
-          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-x5-5')">age</div>
-          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-x5-5')">people</div>
-          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-x5-5')">places</div>
-          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-x5-5')">time and dates</div>
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-h16')">eighth</div>
+          <div class="match-item" data-pair="8" onclick="selectMatch(this,'ex-match-h16')">twentieth</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-h16')">second</div>
+          <div class="match-item" data-pair="7" onclick="selectMatch(this,'ex-match-h16')">twelfth</div>
+          <div class="match-item" data-pair="1" onclick="selectMatch(this,'ex-match-h16')">first</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-h16')">fifth</div>
+          <div class="match-item" data-pair="6" onclick="selectMatch(this,'ex-match-h16')">ninth</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-h16')">third</div>
         </div>
       </div>
       <div class="btn-row">
-        <button class="btn-ghost" onclick="resetMatchEx('ex-match-x5-5')">Try again</button>
+        <button class="btn-ghost" onclick="resetMatchEx('ex-match-h16')">Try again</button>
       </div>
-    </div>
-
-    <div class="card" id="ex-x5-6">
-      <div class="exercise-label">Exercise 6</div>
-      <h3>Complete the questions with <i>is</i> or <i>are</i>.</h3>
-      <p class="ru-hint" lang="ru" data-auto>Закончи вопросы словами <i>is</i> или <i>are</i>.</p>
-      <div class="example-row"><span class="ex-tag">Example</span><span>1. Where <b>are</b> you from?</span></div>
-      <div class="sent-list">
-        <p class="gap-line"><span class="num">2.</span> How old <span class="word-choice" id="x5-6-2" data-answer="are"><button class="word-choice-btn" onclick="selectWord(this)">is</button><button class="word-choice-btn" onclick="selectWord(this)">are</button></span> you?</p>
-        <p class="gap-line"><span class="num">3.</span> When <span class="word-choice" id="x5-6-3" data-answer="is"><button class="word-choice-btn" onclick="selectWord(this)">is</button><button class="word-choice-btn" onclick="selectWord(this)">are</button></span> your birthday?</p>
-        <p class="gap-line"><span class="num">4.</span> Who <span class="word-choice" id="x5-6-4" data-answer="is"><button class="word-choice-btn" onclick="selectWord(this)">is</button><button class="word-choice-btn" onclick="selectWord(this)">are</button></span> your best friend?</p>
-        <p class="gap-line"><span class="num">5.</span> What <span class="word-choice" id="x5-6-5" data-answer="is"><button class="word-choice-btn" onclick="selectWord(this)">is</button><button class="word-choice-btn" onclick="selectWord(this)">are</button></span> your favourite colour?</p>
-      </div>
-      <div class="btn-row">
-        <button class="btn-primary" onclick="checkWords('ex-x5-6')">Check ✓</button>
-        <button class="btn-ghost" onclick="resetWords('ex-x5-6')">Try again</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="exercise-label">Exercise 7 · Use it!</div>
-      <h3>Ask and answer the questions in Exercise 4 and Exercise 6.</h3>
-      <p class="ru-hint" lang="ru" data-auto>Задавайте друг другу вопросы из упражнений 4 и 6 и отвечайте на них.</p>
-      <div class="tip class-note"><span class="tip-title">In class: ask your teacher</span>Take turns: “<span class="key">Are you 12?</span>” — “Yes, I am. / No, I’m not.” Then ask the questions from Exercise 6.</div>
     </div>
   </section>
 
+  <section class="step" id="hw8">
+    <div class="step-head">
+      <div class="step-num">8</div>
+      <div>
+        <div class="step-meta">Homework · Ordinal numbers · easy</div>
+        <h2>st, nd, rd or th?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-h16-end">
+      <div class="exercise-label hw">Choose</div>
+      <h3>Choose the correct ending.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Выбери правильное окончание.</p>
+      <div class="sent-list end-grid">
+      <p class="gap-line"><b class="bignum">1</b> <span class="word-choice" id="h16-e1" data-answer="st"><button class="word-choice-btn" onclick="selectWord(this)">st</button><button class="word-choice-btn" onclick="selectWord(this)">nd</button><button class="word-choice-btn" onclick="selectWord(this)">rd</button><button class="word-choice-btn" onclick="selectWord(this)">th</button></span></p>
+      <p class="gap-line"><b class="bignum">2</b> <span class="word-choice" id="h16-e2" data-answer="nd"><button class="word-choice-btn" onclick="selectWord(this)">st</button><button class="word-choice-btn" onclick="selectWord(this)">nd</button><button class="word-choice-btn" onclick="selectWord(this)">rd</button><button class="word-choice-btn" onclick="selectWord(this)">th</button></span></p>
+      <p class="gap-line"><b class="bignum">3</b> <span class="word-choice" id="h16-e3" data-answer="rd"><button class="word-choice-btn" onclick="selectWord(this)">st</button><button class="word-choice-btn" onclick="selectWord(this)">nd</button><button class="word-choice-btn" onclick="selectWord(this)">rd</button><button class="word-choice-btn" onclick="selectWord(this)">th</button></span></p>
+      <p class="gap-line"><b class="bignum">6</b> <span class="word-choice" id="h16-e6" data-answer="th"><button class="word-choice-btn" onclick="selectWord(this)">st</button><button class="word-choice-btn" onclick="selectWord(this)">nd</button><button class="word-choice-btn" onclick="selectWord(this)">rd</button><button class="word-choice-btn" onclick="selectWord(this)">th</button></span></p>
+      <p class="gap-line"><b class="bignum">11</b> <span class="word-choice" id="h16-e11" data-answer="th"><button class="word-choice-btn" onclick="selectWord(this)">st</button><button class="word-choice-btn" onclick="selectWord(this)">nd</button><button class="word-choice-btn" onclick="selectWord(this)">rd</button><button class="word-choice-btn" onclick="selectWord(this)">th</button></span></p>
+      <p class="gap-line"><b class="bignum">12</b> <span class="word-choice" id="h16-e12" data-answer="th"><button class="word-choice-btn" onclick="selectWord(this)">st</button><button class="word-choice-btn" onclick="selectWord(this)">nd</button><button class="word-choice-btn" onclick="selectWord(this)">rd</button><button class="word-choice-btn" onclick="selectWord(this)">th</button></span></p>
+      <p class="gap-line"><b class="bignum">13</b> <span class="word-choice" id="h16-e13" data-answer="th"><button class="word-choice-btn" onclick="selectWord(this)">st</button><button class="word-choice-btn" onclick="selectWord(this)">nd</button><button class="word-choice-btn" onclick="selectWord(this)">rd</button><button class="word-choice-btn" onclick="selectWord(this)">th</button></span></p>
+      <p class="gap-line"><b class="bignum">21</b> <span class="word-choice" id="h16-e21" data-answer="st"><button class="word-choice-btn" onclick="selectWord(this)">st</button><button class="word-choice-btn" onclick="selectWord(this)">nd</button><button class="word-choice-btn" onclick="selectWord(this)">rd</button><button class="word-choice-btn" onclick="selectWord(this)">th</button></span></p>
+      <p class="gap-line"><b class="bignum">22</b> <span class="word-choice" id="h16-e22" data-answer="nd"><button class="word-choice-btn" onclick="selectWord(this)">st</button><button class="word-choice-btn" onclick="selectWord(this)">nd</button><button class="word-choice-btn" onclick="selectWord(this)">rd</button><button class="word-choice-btn" onclick="selectWord(this)">th</button></span></p>
+      <p class="gap-line"><b class="bignum">23</b> <span class="word-choice" id="h16-e23" data-answer="rd"><button class="word-choice-btn" onclick="selectWord(this)">st</button><button class="word-choice-btn" onclick="selectWord(this)">nd</button><button class="word-choice-btn" onclick="selectWord(this)">rd</button><button class="word-choice-btn" onclick="selectWord(this)">th</button></span></p>
+      <p class="gap-line"><b class="bignum">30</b> <span class="word-choice" id="h16-e30" data-answer="th"><button class="word-choice-btn" onclick="selectWord(this)">st</button><button class="word-choice-btn" onclick="selectWord(this)">nd</button><button class="word-choice-btn" onclick="selectWord(this)">rd</button><button class="word-choice-btn" onclick="selectWord(this)">th</button></span></p>
+      <p class="gap-line"><b class="bignum">31</b> <span class="word-choice" id="h16-e31" data-answer="st"><button class="word-choice-btn" onclick="selectWord(this)">st</button><button class="word-choice-btn" onclick="selectWord(this)">nd</button><button class="word-choice-btn" onclick="selectWord(this)">rd</button><button class="word-choice-btn" onclick="selectWord(this)">th</button></span></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-h16-end')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-h16-end')">Try again</button>
+      </div>
+      <div class="tip">Look at the last word: twenty-<b>first</b> → 21<b>st</b>, twenty-<b>second</b> → 22<b>nd</b>. But 11, 12 and 13 always have <b>th</b>!</div>
+    </div>
+  </section>
 
-  <!-- ══════════ the rest of Lesson 15 goes here ══════════ -->
+  <section class="step" id="hw9">
+    <div class="step-head">
+      <div class="step-num">9</div>
+      <div>
+        <div class="step-meta">Homework · Ordinal numbers · medium</div>
+        <h2>5 or 5th?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-h16-ol">
+      <div class="exercise-label hw">Listen and choose</div>
+      <h3>Press ▶. Which number do you hear?</h3>
+      <p class="ru-hint" lang="ru" data-auto>Нажми ▶. Какое число ты слышишь?</p>
+      <div class="two-col">
+      <div class="listen-q"><span class="num">1.</span><button class="say say-big" data-say="five" aria-label="Listen"></button><span class="word-choice" id="h16-ol1" data-answer="5"><button class="word-choice-btn" onclick="selectWord(this)">5</button><button class="word-choice-btn" onclick="selectWord(this)">5th</button></span></div>
+      <div class="listen-q"><span class="num">2.</span><button class="say say-big" data-say="third" aria-label="Listen"></button><span class="word-choice" id="h16-ol2" data-answer="3rd"><button class="word-choice-btn" onclick="selectWord(this)">3</button><button class="word-choice-btn" onclick="selectWord(this)">3rd</button></span></div>
+      <div class="listen-q"><span class="num">3.</span><button class="say say-big" data-say="thirteenth" aria-label="Listen"></button><span class="word-choice" id="h16-ol3" data-answer="13th"><button class="word-choice-btn" onclick="selectWord(this)">13</button><button class="word-choice-btn" onclick="selectWord(this)">13th</button></span></div>
+      <div class="listen-q"><span class="num">4.</span><button class="say say-big" data-say="twelve" aria-label="Listen"></button><span class="word-choice" id="h16-ol4" data-answer="12"><button class="word-choice-btn" onclick="selectWord(this)">12</button><button class="word-choice-btn" onclick="selectWord(this)">12th</button></span></div>
+      <div class="listen-q"><span class="num">5.</span><button class="say say-big" data-say="twentieth" aria-label="Listen"></button><span class="word-choice" id="h16-ol5" data-answer="20th"><button class="word-choice-btn" onclick="selectWord(this)">20</button><button class="word-choice-btn" onclick="selectWord(this)">20th</button></span></div>
+      <div class="listen-q"><span class="num">6.</span><button class="say say-big" data-say="twenty-three" aria-label="Listen"></button><span class="word-choice" id="h16-ol6" data-answer="23"><button class="word-choice-btn" onclick="selectWord(this)">23</button><button class="word-choice-btn" onclick="selectWord(this)">23rd</button></span></div>
+      <div class="listen-q"><span class="num">7.</span><button class="say say-big" data-say="fifth" aria-label="Listen"></button><span class="word-choice" id="h16-ol7" data-answer="5th"><button class="word-choice-btn" onclick="selectWord(this)">5</button><button class="word-choice-btn" onclick="selectWord(this)">5th</button></span></div>
+      <div class="listen-q"><span class="num">8.</span><button class="say say-big" data-say="thirteen" aria-label="Listen"></button><span class="word-choice" id="h16-ol8" data-answer="13"><button class="word-choice-btn" onclick="selectWord(this)">13</button><button class="word-choice-btn" onclick="selectWord(this)">13th</button></span></div>
+      <div class="listen-q"><span class="num">9.</span><button class="say say-big" data-say="twelfth" aria-label="Listen"></button><span class="word-choice" id="h16-ol9" data-answer="12th"><button class="word-choice-btn" onclick="selectWord(this)">12</button><button class="word-choice-btn" onclick="selectWord(this)">12th</button></span></div>
+      <div class="listen-q"><span class="num">10.</span><button class="say say-big" data-say="twenty-third" aria-label="Listen"></button><span class="word-choice" id="h16-ol10" data-answer="23rd"><button class="word-choice-btn" onclick="selectWord(this)">23</button><button class="word-choice-btn" onclick="selectWord(this)">23rd</button></span></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-h16-ol')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-h16-ol')">Try again</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="step" id="hw10">
+    <div class="step-head">
+      <div class="step-num">10</div>
+      <div>
+        <div class="step-meta">Homework · Ordinal numbers · medium</div>
+        <h2>Write it in words</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-h16-ow">
+      <div class="exercise-label hw">Write</div>
+      <h3>Write the ordinal numbers in words.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Напиши порядковые числительные словами.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>7th → <b>seventh</b></span></div>
+      <div class="sent-list two-col six">
+      <p class="gap-line"><span class="num">1.</span> <b class="bignum">4th</b> <input class="blank" id="h16-ow1" data-answer="fourth" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:200px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">2.</span> <b class="bignum">6th</b> <input class="blank" id="h16-ow2" data-answer="sixth" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:200px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">3.</span> <b class="bignum">8th</b> <input class="blank" id="h16-ow3" data-answer="eighth" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:200px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">4.</span> <b class="bignum">9th</b> <input class="blank" id="h16-ow4" data-answer="ninth" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:200px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">5.</span> <b class="bignum">12th</b> <input class="blank" id="h16-ow5" data-answer="twelfth" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:200px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">6.</span> <b class="bignum">15th</b> <input class="blank" id="h16-ow6" data-answer="fifteenth" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:200px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">7.</span> <b class="bignum">20th</b> <input class="blank" id="h16-ow7" data-answer="twentieth" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:200px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">8.</span> <b class="bignum">21st</b> <input class="blank" id="h16-ow8" data-answer="twenty-first|twenty first" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:200px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">9.</span> <b class="bignum">25th</b> <input class="blank" id="h16-ow9" data-answer="twenty-fifth|twenty fifth" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:200px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">10.</span> <b class="bignum">30th</b> <input class="blank" id="h16-ow10" data-answer="thirtieth" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:200px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">11.</span> <b class="bignum">31st</b> <input class="blank" id="h16-ow11" data-answer="thirty-first|thirty first" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:200px;max-width:100%"></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-h16-ow')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-h16-ow')">Try again</button>
+      </div>
+      <div class="tip">Careful: <i>five → fi<b>f</b>th</i>, <i>eight → eigh<b>th</b></i>, <i>nine → ni<b>n</b>th</i>, <i>twent<b>y</b> → twent<b>ie</b>th</i>.</div>
+    </div>
+  </section>
+
+  <section class="step" id="hw11">
+    <div class="step-head">
+      <div class="step-num">11</div>
+      <div>
+        <div class="step-meta">Homework · Ordinal numbers · hard</div>
+        <h2>The race puzzle</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-h16-race">
+      <div class="exercise-label hw">Read and think</div>
+      <h3>Five friends are in a race. Read the clues. Who is first, second, third…? Write the ordinal numbers in words.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Пять друзей бегут наперегонки. Прочитай подсказки. Кто первый, второй, третий…? Напиши порядковые числительные словами.</p>
+      <ul class="clues">
+        <li>Phil is fourth.</li>
+        <li>Sasha is not fifth. Sasha is before Rick.</li>
+        <li>Jack is after Rick, but before Phil.</li>
+        <li>Chuck is the last.</li>
+      </ul>
+      <div class="sent-list">
+      <p class="gap-line"><span class="num">1.</span> Jack is <input class="blank" id="h16-r1" data-answer="third" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%">.</p>
+      <p class="gap-line"><span class="num">2.</span> Chuck is <input class="blank" id="h16-r2" data-answer="fifth" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%">.</p>
+      <p class="gap-line"><span class="num">3.</span> Sasha is <input class="blank" id="h16-r3" data-answer="first" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%">.</p>
+      <p class="gap-line"><span class="num">4.</span> Phil is <input class="blank" id="h16-r4" data-answer="fourth" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%">.</p>
+      <p class="gap-line"><span class="num">5.</span> Rick is <input class="blank" id="h16-r5" data-answer="second" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%">.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-h16-race')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-h16-race')">Try again</button>
+      </div>
+      <div class="tip"><b>before</b> = до, перед · <b>after</b> = после · <b>the last</b> = последний</div>
+    </div>
+  </section>
+
+  <section class="step" id="hw12">
+    <div class="step-head">
+      <div class="step-num">12</div>
+      <div>
+        <div class="step-meta">Homework · Ordinal numbers · boss level</div>
+        <h2>Dates</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-h16-dt">
+      <div class="exercise-label hw">Write</div>
+      <h3>Finish the sentences with the dates. The first number is the day, the second number is the month.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Закончи предложения датами. Первое число — день, второе — месяц.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>31.12 → The winter holidays start on <b>the 31st of December</b>.</span></div>
+      <div class="sent-list">
+      <p class="gap-line"><span class="num">1.</span> <b class="bignum">01.06</b> Summer starts on <input class="blank" id="h16-d1" data-answer="1 june|1 of june|1st june|1st of june|first june|first of june|june 1|june 1st|june first|june the 1|june the 1st|june the first|the 1 of june|the 1st of june|the first of june" placeholder="the … of …" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:220px;max-width:100%">.</p>
+      <p class="gap-line"><span class="num">2.</span> <b class="bignum">03.12</b> My sister’s birthday is on <input class="blank" id="h16-d2" data-answer="3 december|3 of december|3rd december|3rd of december|december 3|december 3rd|december the 3|december the 3rd|december the third|december third|the 3 of december|the 3rd of december|the third of december|third december|third of december" placeholder="the … of …" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:220px;max-width:100%">.</p>
+      <p class="gap-line"><span class="num">3.</span> <b class="bignum">22.08</b> The football match is on <input class="blank" id="h16-d3" data-answer="22 august|22 of august|22nd august|22nd of august|august 22|august 22nd|august the 22|august the 22nd|august the twenty second|august the twenty-second|august twenty second|august twenty-second|the 22 of august|the 22nd of august|the twenty second of august|the twenty-second of august|twenty second august|twenty second of august|twenty-second august|twenty-second of august" placeholder="the … of …" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:220px;max-width:100%">.</p>
+      <p class="gap-line"><span class="num">4.</span> <b class="bignum">12.02</b> Our English test is on <input class="blank" id="h16-d4" data-answer="12 february|12 of february|12th february|12th of february|february 12|february 12th|february the 12|february the 12th|february the twelfth|february twelfth|the 12 of february|the 12th of february|the twelfth of february|twelfth february|twelfth of february" placeholder="the … of …" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:220px;max-width:100%">.</p>
+      <p class="gap-line"><span class="num">5.</span> <b class="bignum">31.10</b> Halloween is on <input class="blank" id="h16-d5" data-answer="31 october|31 of october|31st october|31st of october|october 31|october 31st|october the 31|october the 31st|october the thirty first|october the thirty-first|october thirty first|october thirty-first|the 31 of october|the 31st of october|the thirty first of october|the thirty-first of october|thirty first october|thirty first of october|thirty-first october|thirty-first of october" placeholder="the … of …" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:220px;max-width:100%">.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-h16-dt')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-h16-dt')">Try again</button>
+      </div>
+    </div>
+    <div class="card" id="ex-h16-fx">
+      <div class="exercise-label hw">Find the mistake</div>
+      <h3>The underlined word is wrong. Write it correctly.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Подчёркнутое слово неправильное. Напиши его правильно.</p>
+      <div class="sent-list">
+      <p class="gap-line"><span class="num">1.</span> My birthday is on the <u>five</u> of May. → <input class="blank" id="h16-f1" data-answer="fifth" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:170px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">2.</span> Today is the <u>twenty-oneth</u> of March. → <input class="blank" id="h16-f2" data-answer="twenty-first|twenty first" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:170px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">3.</span> December is the <u>twelve</u> month. → <input class="blank" id="h16-f3" data-answer="twelfth" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:170px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">4.</span> I am in the <u>sixst</u> lesson. → <input class="blank" id="h16-f4" data-answer="sixth" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:170px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">5.</span> My sister is <u>thirdteen</u> years old. → <input class="blank" id="h16-f5" data-answer="thirteen" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:170px;max-width:100%"></p>
+      <p class="gap-line"><span class="num">6.</span> Her birthday is <u>in</u> 9th July. → <input class="blank" id="h16-f6" data-answer="on" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:170px;max-width:100%"></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-h16-fx')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-h16-fx')">Try again</button>
+      </div>
+      <div class="tip">Careful! Number 5 is an age, so do you need an ordinal? Number 6 is not about the number.</div>
+    </div>
+    <div class="card">
+      <div class="exercise-label hw">Write and say</div>
+      <h3>Finish the sentences about you. Write the numbers in words: <i>the fifth of May</i>. Then record yourself.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Закончи предложения о себе. Пиши числа словами: <i>the fifth of May</i>. Потом запиши себя.</p>
+      <div class="sent-list">
+      <p class="gap-line"><span class="num">1.</span> My birthday is on <input class="blank" id="h16-me1" placeholder="the … of …" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:280px;max-width:100%">.</p>
+      <p class="gap-line"><span class="num">2.</span> My mum’s birthday is on <input class="blank" id="h16-me2" placeholder="the … of …" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:280px;max-width:100%">.</p>
+      <p class="gap-line"><span class="num">3.</span> My best friend’s birthday is on <input class="blank" id="h16-me3" placeholder="the … of …" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:280px;max-width:100%">.</p>
+      <p class="gap-line"><span class="num">4.</span> Today is <input class="blank" id="h16-me4" placeholder="the … of …" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:280px;max-width:100%">.</p>
+      </div>
+      <div class="rec"></div>
+    </div>
+  </section>
+
+  <div class="card fin" data-steps="hw7,hw8,hw9,hw10,hw11,hw12" data-show="podium"></div>
 
 </div>
-
 </div>
 
 <script src="../assets/sync.js"></script>
 <script src="../assets/lessons.js"></script>
 <script src="../assets/matching.js"></script>
+<script src="../assets/sortcols.js"></script>
+<script src="../assets/celebrate.js"></script>
 <script src="../assets/name.js"></script>
 <script src="../assets/dictionary.js"></script>
 </body>

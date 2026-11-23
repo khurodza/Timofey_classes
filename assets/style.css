@@ -1273,3 +1273,9 @@ html.watching .rec,html.watching .dict-fab{display:none}
 /* extras + moved tasks: their styles are injected by sync.js (same on every site); these two are for the lesson pages */
 .step-num.plus{background:#7B5CE6!important;font-size:22px}
 .extra-badge{display:inline-block;margin-left:6px;padding:2px 9px;border-radius:99px;background:#F1ECFD;color:#5B44B8;font:800 11px/1.5 system-ui;letter-spacing:.06em;text-transform:uppercase;vertical-align:middle}
+
+/* two columns for lists longer than 6 lines (from Lesson 17): numbers go down the left column, then the right.
+   <div class="two-col" style="--rows:6"> …12 items… </div>; add class col-top to the first item of the right column */
+.two-col{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:repeat(var(--rows,6),auto);grid-auto-flow:column;gap:0 28px}
+@media(min-width:561px){.two-col .col-top{border-top-color:transparent!important}}
+@media(max-width:560px){.two-col{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-flow:row}}
