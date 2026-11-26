@@ -1,0 +1,13 @@
+{
+  "name": "MyClasses",
+  "short_name": "MyClasses",
+  "start_url": "../../teacher.html",
+  "scope": "../../",
+  "display": "standalone",
+  "background_color": "#F5EEE6",
+  "theme_color": "#2D5DA8",
+  "icons": [
+    { "src": "teacher-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "teacher-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
