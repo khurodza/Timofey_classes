@@ -127,7 +127,6 @@ export function initSchedule(ctx) {
     $('sch-range').textContent = `${fmt(weekStart)} – ${fmt(last)} ${last.getFullYear()}`;
     const wk = money(occ);
     $('sch-week-money').innerHTML = occ.length ? `This week: <b>${rub(wk.earned)}</b> earned${wk.planned ? ` · ${rub(wk.planned)} still planned` : ''}` : '';
-    $('sch-zones').textContent = `Your time (${myZone.replace('_', ' ')}) · Moscow time in small letters`;
     let html = '';
     for (let i = 0; i < 7; i++) {
       const d = new Date(weekStart); d.setDate(d.getDate() + i);

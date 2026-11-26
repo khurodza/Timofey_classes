@@ -24,10 +24,10 @@ import { initNotes } from './notes.js';
 
 const TEACHER = 'nkomlyakova15@gmail.com';
 const STUDENTS = [
-  { id: 'timofey', name: 'Timofey', ru: 'Тимофей', female: false, site: '/Timofey_classes/', color: '#2D5DA8' },
-  { id: 'polina',  name: 'Polina',  ru: 'Полина',  female: true,  site: '/Polina_classes/',  color: '#D9628F' },
-  { id: 'matvey',  name: 'Matvey',  ru: 'Матвей',  female: false, site: '/Matvey_classes/',  color: '#A99A3C' },
-  { id: 'ksyusha', name: 'Ksyusha', ru: 'Ксюша',   female: true,  site: '/Ksyusha_classes/', color: '#5F8FC9' }
+  { id: 'timofey', name: 'Timofey', ru: 'Тимофей', female: false, site: '/Timofey_classes/', color: '#2C4F9E' },
+  { id: 'polina',  name: 'Polina',  ru: 'Полина',  female: true,  site: '/Polina_classes/',  color: '#D9677A' },
+  { id: 'matvey',  name: 'Matvey',  ru: 'Матвей',  female: false, site: '/Matvey_classes/',  color: '#C98E22' },
+  { id: 'ksyusha', name: 'Ksyusha', ru: 'Ксюша',   female: true,  site: '/Ksyusha_classes/', color: '#3F8F86' }
 ];
 const FIREBASE = {
   apiKey: 'AIzaSyAHX47UEkMuLtZS4LrxIKiFQtThG4beysQ',

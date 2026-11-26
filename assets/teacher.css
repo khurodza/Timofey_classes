@@ -502,7 +502,6 @@ h2{font-weight:700;letter-spacing:-.01em}
 @media(max-width:1200px){.week{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:700px){.week{grid-template-columns:1fr}.ev-grid{grid-template-columns:1fr}}
 
-}
 a.btn{text-decoration:none;color:var(--ink)}
 .ev-links .btn{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block}
 
@@ -689,3 +688,140 @@ a.btn{text-decoration:none;color:var(--ink)}
 .s-card .now .pill-t{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .s-card .now .pill.live::before{flex:none}
 .s-card .top .badge-new{flex:none}
+:root{
+  --harlequin:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='100' viewBox='0 0 60 100'%3E%3Crect width='60' height='100' fill='%232C4F9E'/%3E%3Cpath d='M30 3 L57 50 L30 97 L3 50Z' fill='%23F4E8CF'/%3E%3Cg fill='%23C98E22' stroke='%238A5A10' stroke-width='.8' stroke-linejoin='round'%3E%3Cpath d='M30.0 35.0 L32.5 44.0 L40.6 39.4 L36.0 47.5 L45.0 50.0 L36.0 52.5 L40.6 60.6 L32.5 56.0 L30.0 65.0 L27.5 56.0 L19.4 60.6 L24.0 52.5 L15.0 50.0 L24.0 47.5 L19.4 39.4 L27.5 44.0Z'/%3E%3Cpath transform='translate(0 0)' d='M0 -11 L1.8 -4.4 L7.8 -7.8 L4.4 -1.8 L11 0 L4.4 1.8 L7.8 7.8 L1.8 4.4 L0 11 L-1.8 4.4 L-7.8 7.8 L-4.4 1.8 L-11 0 L-4.4 -1.8 L-7.8 -7.8 L-1.8 -4.4Z'/%3E%3Cpath transform='translate(60 0)' d='M0 -11 L1.8 -4.4 L7.8 -7.8 L4.4 -1.8 L11 0 L4.4 1.8 L7.8 7.8 L1.8 4.4 L0 11 L-1.8 4.4 L-7.8 7.8 L-4.4 1.8 L-11 0 L-4.4 -1.8 L-7.8 -7.8 L-1.8 -4.4Z'/%3E%3Cpath transform='translate(0 100)' d='M0 -11 L1.8 -4.4 L7.8 -7.8 L4.4 -1.8 L11 0 L4.4 1.8 L7.8 7.8 L1.8 4.4 L0 11 L-1.8 4.4 L-7.8 7.8 L-4.4 1.8 L-11 0 L-4.4 -1.8 L-7.8 -7.8 L-1.8 -4.4Z'/%3E%3Cpath transform='translate(60 100)' d='M0 -11 L1.8 -4.4 L7.8 -7.8 L4.4 -1.8 L11 0 L4.4 1.8 L7.8 7.8 L1.8 4.4 L0 11 L-1.8 4.4 L-7.8 7.8 L-4.4 1.8 L-11 0 L-4.4 -1.8 L-7.8 -7.8 L-1.8 -4.4Z'/%3E%3C/g%3E%3C/svg%3E");
+  --daisy:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%232C4F9E' stroke='%23C8462F' stroke-width='1'%3E%3Cellipse cx='12' cy='5.2' rx='3.3' ry='5' transform='rotate(0 12 12)'/%3E%3Cellipse cx='12' cy='5.2' rx='3.3' ry='5' transform='rotate(45 12 12)'/%3E%3Cellipse cx='12' cy='5.2' rx='3.3' ry='5' transform='rotate(90 12 12)'/%3E%3Cellipse cx='12' cy='5.2' rx='3.3' ry='5' transform='rotate(135 12 12)'/%3E%3Cellipse cx='12' cy='5.2' rx='3.3' ry='5' transform='rotate(180 12 12)'/%3E%3Cellipse cx='12' cy='5.2' rx='3.3' ry='5' transform='rotate(225 12 12)'/%3E%3Cellipse cx='12' cy='5.2' rx='3.3' ry='5' transform='rotate(270 12 12)'/%3E%3Cellipse cx='12' cy='5.2' rx='3.3' ry='5' transform='rotate(315 12 12)'/%3E%3C/g%3E%3Ccircle cx='12' cy='12' r='3' fill='%23C98E22' stroke='%23C8462F' stroke-width='1'/%3E%3C/svg%3E");
+}
+
+/* ============================================================
+   "Tiles & blooms" — redesign from inspo.png / inspo 1.jpg:
+   warm parchment, cobalt + cream harlequin tiles with amber
+   stars, terracotta, wine, mustard and leaf green like the
+   painted flower tiles. Fonts and shapes are unchanged.
+   ============================================================ */
+:root{
+  --cream:#F2E4C6; --cream-2:#E8D3AA; --paper:#FBF4E3;
+  --ink:#2A1F2D; --muted:#7B6A5F; --line:#DCC59B;
+  --blue:#2C4F9E; --blue-2:#1F3A78; --sky:#9FB6DE; --sky-soft:#DDE4F1;
+  --olive:#C98E22; --olive-2:#94620F; --olive-soft:#F1DCA8;      /* now amber / mustard */
+  --pink:#EE9C93; --pink-2:#C8462F; --pink-soft:#F6DACF;         /* now coral + terracotta */
+  --sage:#DAD7AE; --leaf:#5A6127; --leaf-2:#474D1C; --wine:#86202F; --terra:#D45A2B;
+  --right:#4F7A35; --right-soft:#E1EBCB; --wrong:#B8392C; --wrong-soft:#F6D8D0;
+  --shadow:0 2px 0 rgba(42,31,45,.08),0 10px 28px rgba(42,31,45,.08);
+}
+body{background:var(--cream)}
+
+/* buttons */
+.btn.primary,.btn.primary:hover,.ev-links .btn.primary{background:var(--grain),var(--pink)}
+.btn.primary:hover{filter:brightness(1.04)}
+.btn.ghost:hover{background:rgba(42,31,45,.07)}
+
+/* side panel: leaf green, the circle in the corner keeps its ring */
+.side{background:var(--leaf)}
+.side::before{background:var(--leaf-2);box-shadow:0 0 0 34px rgba(242,228,198,.09)}
+.side-label{color:var(--olive-soft)}
+.stu .meta small,.who{color:#E9E0BF}
+.brand .logo{background:var(--grain),var(--olive);color:var(--ink)}
+.all-btn{border-color:rgba(242,228,198,.6)}
+.all-btn.on{color:var(--leaf)}
+.nav-item:hover,.stu:hover{background:rgba(242,228,198,.12)}
+
+/* hero: a cobalt tile with a thin terracotta inner frame (like the navy daisy tile) */
+.hero{background:var(--grain),var(--blue);min-height:330px}
+.hero::after{content:"";position:absolute;inset:12px;border:2.5px solid var(--terra);border-radius:26px;pointer-events:none}
+.hero-blob{fill:var(--wine)}
+.hero-sun{--sun:clamp(230px,22vw,300px);width:var(--sun);height:var(--sun);top:calc(50% - var(--sun) / 2);right:6%;fill:var(--cream);overflow:visible}
+.hero h1{color:var(--cream);text-shadow:3px 3px 0 var(--wine)}
+.hero .eyebrow{color:var(--olive-soft)}
+.hero-sub{color:var(--cream)}
+
+/* ribbon under the hero: mustard band, wine edge */
+.ribbon{background:var(--grain),var(--olive);box-shadow:inset 0 -6px 0 var(--wine)}
+.ribbon span{color:var(--ink)}
+.ribbon span:nth-child(even){color:var(--wine)}
+
+/* section titles start with a little daisy tile */
+.group-title{color:var(--blue)}
+.group-title::before{content:"";flex:none;width:22px;height:22px;background:var(--daisy) center/contain no-repeat}
+.group-title::after{background:radial-gradient(circle at 10px 0,transparent 7px,var(--olive) 7.5px,var(--olive) 10px,transparent 10.5px) 0 0/20px 12px repeat-x}
+.earlier summary.group-title::before{width:auto;height:auto;background:none}   /* the folded list keeps its ▸ arrow */
+
+/* cards */
+.p-card.is-new{background:var(--grain),var(--pink-soft)}
+.tile.ix{background:repeating-linear-gradient(var(--paper) 0 27px,#E6D3AC 27px 28px)!important}
+.nt-free{background:repeating-linear-gradient(var(--paper) 0 29px,#E6D3AC 29px 30px)}
+#d-next .sticky{background:var(--grain),#F6E2A0}
+#v-dash .head{background:var(--grain),var(--sky-soft)}
+#v-dash .head::after{background:var(--sky)}
+.col-todo{background:var(--grain),var(--sage)}
+.col-doing{background:var(--grain),var(--pink-soft)}
+.col-done{background:var(--grain),var(--sky-soft)}
+
+/* live-view bar: leaf green like the side panel */
+.viewer-bar{background:var(--leaf);border-bottom:3px solid var(--ink)}
+.viewer-bar .btn,.viewer-bar .btn.ghost,.switch{border-color:rgba(242,228,198,.7)}
+.viewer-bar .btn:hover{background:rgba(242,228,198,.14)}
+.viewer-bar .btn.danger,.viewer-bar .btn.danger:hover{color:var(--ink);background:var(--pink);border-color:var(--ink)}
+#v-back{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+
+/* sign-in: the harlequin star tiles, full screen */
+.signin{background:var(--harlequin) center/96px 160px}
+.signin-card{box-shadow:8px 8px 0 var(--wine)}
+.signin .logo{background:var(--grain),var(--olive)}
+.deco-sun{fill:var(--olive-soft);opacity:.9}
+.signin-card h1{color:var(--blue)}
+
+/* dialogs, toast, scrollbars */
+.dlg{box-shadow:8px 8px 0 var(--wine)}
+.dlg::backdrop{background:rgba(42,31,45,.55)}
+.toast{background:var(--grain),var(--olive)}
+
+@media (max-width:900px){
+  .hero{min-height:0}
+  .hero-sun{--sun:170px;right:14px;top:14px;opacity:.85}
+}
+
+/* side panel: no decoration in the corner */
+.side::before{display:none}
+
+/* ============ calm everywhere: cream blocks, dark outlines; colour only on the student icons,
+   on a student's card / lesson under the cursor, and on the Live and Join Zoom buttons ============ */
+/* buttons: only Live and Join Zoom stay pink */
+.btn.primary,.btn.primary:hover{background:var(--paper)}
+.btn.primary:hover{background:var(--cream-2);filter:none}
+[data-live].btn.primary,#d-live,.ev-links a.btn.primary{background:var(--grain),var(--pink)}
+[data-live].btn.primary:hover,#d-live:hover,.ev-links a.btn.primary:hover{background:var(--grain),var(--pink);filter:brightness(1.05)}
+/* overview */
+.ask-held,.upnext,.upnext.soon{background:var(--paper);box-shadow:5px 5px 0 var(--ink)}
+.ask-held .lab,.upnext .lab,.un-text .lab{color:var(--muted)}
+.un-text b{color:var(--ink)}
+.money-wait,.ask-link{color:var(--ink)}
+.s-card::before{background:var(--cream-2)}
+.s-card:hover::before{background:var(--grain),var(--c,var(--sky))}
+/* a student's dashboard */
+#v-dash .head{background:var(--paper)}
+#v-dash .head::after{display:none}
+.tile.ix::before{background:var(--cream-2)}
+#d-next .sticky{background:var(--paper)}
+.sticky-weak span{color:var(--muted)}
+.col-todo,.col-doing,.col-done{background:var(--cream-2)}
+.p-card,.col .p-card,.col .p-card.is-new,.p-card.is-new{background:var(--paper);box-shadow:4px 4px 0 var(--ink)}
+.tag-hw,.tag-done{background:var(--paper)}
+/* schedule + earnings */
+.day.today{background:var(--paper);box-shadow:5px 5px 0 var(--ink)}
+.day-head span{color:var(--muted)}
+.ev{box-shadow:3px 3px 0 var(--cream-2);transition:box-shadow .15s}
+.ev:hover{box-shadow:3px 3px 0 var(--c)}
+.tag-rep{color:var(--muted)}
+.money{box-shadow:6px 6px 0 var(--ink)}
+.mt.earned,.mt.planned,.mt.total{background:var(--paper)}
+/* notes */
+.nt-strong,.nt-weak,.nt-todo{background:var(--paper)}
+.nt-weak .dot-i,.nt-strong .dot-i{background:var(--muted)}
+.nt-tab.on{background:var(--cream-2);color:var(--ink)}
+.nt-tab:hover{box-shadow:4px 4px 0 var(--c)}
+.hw-row.next b{color:var(--ink)}
+/* live view notes, dialogs */
+.ln-kind.on{background:var(--cream-2)}
+.ln-list .k-weak,.ln-list .k-strong,.ln-list .k-todo{border-left-color:var(--muted)}
+.dlg{box-shadow:8px 8px 0 var(--ink)}
