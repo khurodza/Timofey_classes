@@ -51,9 +51,41 @@
 
   <div class="section-title">All Lessons</div>
 
-  <div class="lesson-list" id="lessonList">
+  <!-- Lessons are grouped in folders (one per coursebook unit). Newest folder first.
+       New lesson → add its card at the top of the right folder's .lesson-list. -->
+
+  <!-- ═══ FOLDER: Unit 1 · Friends and family (Own it! 1) ═══ -->
+  <details class="folder" id="folder-unit1" open>
+    <summary><span class="folder-icon" aria-hidden="true">📁</span><span class="folder-name">1. Friends and family</span><span class="folder-count">1 lesson</span></summary>
+    <div class="lesson-list">
 
     <!-- ADD NEW LESSON CARDS HERE (newest lesson goes first / at the top) -->
+
+    <!-- LESSON 18 -->
+    <div class="lesson-card">
+      <span class="lesson-num">18</span>
+      <div class="lesson-info">
+        <span class="lesson-topic">Family members</span>
+        <div class="lesson-tags">
+          <span class="lesson-tag">friends and family</span>
+          <span class="lesson-tag">family words</span>
+          <span class="lesson-tag">family tree</span>
+          <span class="lesson-tag">male · female</span>
+        </div>
+        <span class="lesson-date">Student’s Book pp. 10–11</span>
+      </div>
+      <div class="lesson-actions">
+        <a class="btn-primary" href="lessons/lesson-18.html">Lesson →</a>
+      </div>
+    </div>
+
+    </div>
+  </details>
+
+  <!-- ═══ FOLDER: Starter (Lessons 1–17) ═══ -->
+  <details class="folder" id="folder-starter">
+    <summary><span class="folder-icon" aria-hidden="true">📁</span><span class="folder-name">Starter</span><span class="folder-count">17 lessons</span></summary>
+    <div class="lesson-list" id="lessonList">
 
     <!-- LESSON 17 -->
     <div class="lesson-card">
@@ -376,7 +408,8 @@
       </div>
     </div>
 
-  </div>
+    </div>
+  </details>
 
 </div>
 
@@ -391,6 +424,13 @@
     if (document.activeElement !== nameInput) nameInput.value = e.detail;
   });
   nameInput.addEventListener('input', () => setStudentName(nameInput.value));
+
+  /* folders remember whether they were open or closed (this browser only) */
+  document.querySelectorAll('details.folder').forEach(f => {
+    const k = 'folder-open:' + f.id;
+    try { const v = localStorage.getItem(k); if (v !== null) f.open = v === '1'; } catch (e) {}
+    f.addEventListener('toggle', () => { try { localStorage.setItem(k, f.open ? '1' : '0'); } catch (e) {} });
+  });
 </script>
 
 </body>

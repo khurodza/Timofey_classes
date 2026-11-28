@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 18 – Family members</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+/* teacher-only notes: hidden on the student's page, shown inside teacher.html (sync.js adds html.watching) */
+.teacher-only{display:none}
+html.watching .teacher-only{display:block;margin-top:14px;background:#FDEAF2;border:2px dashed #D9628F;border-radius:var(--radius);padding:12px 16px;line-height:1.7;font-size:16px}
+.teacher-only .to-label{font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#B0416C;margin-bottom:6px}
+.teacher-only b{color:#9A3F64}
+.sent-list .gap-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin:10px 0;font-size:18px}
+.sent-list .word-choice{display:inline-flex;flex-wrap:wrap;gap:6px}
+.pic{display:block;width:100%;border-radius:18px;margin:12px 0;box-shadow:var(--shadow-sm)}
+.who{display:inline-flex;align-items:center;gap:6px;font-weight:800}
+.who .lt{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#1E9BD7;color:#fff;font-weight:900;font-size:15px}
+.pair-chip{display:inline-block;padding:2px 12px;border-radius:999px;font-weight:800;background:var(--blue-soft);color:var(--blue-dark)}
+/* family words */
+.fam-words{display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;margin-top:6px}
+.fam-word{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px dashed var(--border)}
+.fam-word .ipa{color:var(--muted);font-size:15px}
+.fam-word small{margin-left:auto;color:var(--muted);font-size:15px}
+.fam-m .say{border-color:#3352E0}.fam-f .say{border-color:#D9628F}.fam-b .say{border-color:#12A374}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin:10px 0 0;font-size:15px;font-weight:700}
+.legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.legend .m::before{background:#3352E0}.legend .f::before{background:#D9628F}.legend .b::before{background:#12A374}
+@media(max-width:640px){.fam-words{grid-template-columns:1fr}}
+/* word search (Workbook p. 8) */
+.ws-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:3px;max-width:480px;margin:12px auto;user-select:none}
+.ws-grid span{aspect-ratio:1;display:grid;place-items:center;border-radius:8px;background:var(--bg);font-weight:800;font-size:18px;cursor:pointer;text-transform:lowercase}
+.ws-grid span.on{background:#FFD45C;color:#5A3B00}
+@media(max-width:480px){.ws-grid span{font-size:15px;border-radius:6px}}
+/* matching: tiles above, words below; a matched word moves into its tile */
+.match-grid.match-tiles{display:block}
+.match-tiles .match-col[data-side="left"]{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.match-tiles .match-col[data-side="right"]{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:16px;padding:14px;border-radius:18px;background:var(--bg)}
+.match-tiles .match-item{grid-row:auto!important;grid-column:auto!important;margin:0;display:flex;align-items:center;justify-content:center;text-align:center}
+.match-tiles [data-side="left"] .match-item{flex-direction:column;min-height:92px;padding:10px 6px;font:800 22px/1.15 var(--font-head);color:var(--blue-dark);background:var(--blue-soft)}
+.match-tiles [data-side="left"] .match-item.selected{background:var(--blue);border-color:var(--blue);color:#fff}
+.match-tiles [data-side="left"] .match-item.matched{background:var(--green-soft);color:var(--green-ink)}
+.match-tiles [data-side="left"] .match-item.matched::after{content:attr(data-word);margin-top:4px;font:800 17px/1.2 var(--font-body)}
+.match-tiles [data-side="right"] .match-item{width:auto;padding:8px 18px;border-radius:999px}
+.match-tiles [data-side="right"] .match-item.matched{display:none}
+.match-tiles .match-col[data-side="right"]:not(:has(.match-item:not(.matched))){display:none}
+@media(max-width:560px){.match-tiles .match-col[data-side="left"]{grid-template-columns:repeat(2,1fr)}.match-tiles [data-side="left"] .match-item{min-height:76px}}
+.sc-cols.three{grid-template-columns:repeat(3,1fr)}
+@media(max-width:560px){.sc-cols.three{grid-template-columns:1fr}.sc-cols.three .sc-col + .sc-col{border-left:0;border-top:2px solid #fff}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="back-home" href="../index.html">← All lessons</a>
+    <div class="hero-grid">
+      <div>
+        <h1 class="name-slot" data-with="Lesson 18: {name}’s family" data-without="Lesson 18: Family members">Lesson 18: Family members</h1>
+        <p>Unit 1 <b>Friends and family</b>: how are friends and families different? Words for the people in a family: <i>mum, dad, aunt, uncle, cousin…</i></p>
+        <div class="hero-badges">
+          <span class="badge">Lesson 18</span>
+          <span class="badge">Unit 1 · Friends and family</span>
+          <span class="badge">Student’s Book pp. 10–11</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Own it! 1 Teacher’s Book pp. 26–27 = Student’s Book pp. 10–11.
+     Extras hidden until opened: video questions (x-u1-video), Vocabulary bank (x-u1-vb), Workbook p. 8 (x-u1-wb). -->
+<nav class="parts">
+  <div class="wrap">
+    <button class="part-tab" data-part="part-start" onclick="showPart('part-start')">Start it!</button>
+    <button class="part-tab" data-part="part-family" onclick="showPart('part-family')">Family members</button>
+  </div>
+</nav>
+
+<!-- ══════════ Start it!: Teacher’s Book p. 26 (Student’s Book p. 10) ══════════ -->
+<div class="lesson-part" id="part-start">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#st1">1 · Warm-up</a>
+    <a href="#st2">2 · The photo</a>
+    <a href="#st3">3 · Video</a>
+    <a href="#st4" data-extra="x-u1-video">+ · Video questions</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="st1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Warm-up</div>
+        <h2>My people</h2>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Find a photo of your friends or family on your phone (or draw a picture). Show it and talk about the people in it.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Найди в телефоне фото своих друзей или семьи (или нарисуй). Покажи его и расскажи о людях на нём.</p>
+      <div class="tip class-note"><span class="tip-title">In class: show your photo</span><span class="key">This is my …</span> <span class="key">He’s / She’s …</span> <span class="key">His / Her name is …</span></div>
+      <textarea class="free-write" id="fw-st1" rows="3" placeholder="This is my … His name is …"></textarea>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 TB p. 26 · Warmer</div>Students find a photo of their friends or family on their devices, or draw a picture. They show their photos and talk about the people in them.</div>
+    </div>
+  </section>
+
+  <section class="step" id="st2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Student’s Book p. 10 · Start it!</div>
+        <h2>Friends and family</h2>
+      </div>
+    </div>
+    <div class="card">
+      <img class="pic" src="images/family/unit1-opener.jpg" alt="A big group of children running and laughing together">
+      <div class="exercise-label">Start it! · 1</div>
+      <h3>Look at the photo. How are friends and families different?</h3>
+      <p class="ru-hint" lang="ru" data-auto>Посмотри на фото. Чем друзья отличаются от семьи?</p>
+      <textarea class="free-write" id="fw-st2-1" rows="2" placeholder="Friends … Families …"></textarea>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 TB p. 26 · Ex 1</div>Ask him to think about the differences between his friends and family, and the friends in the photo in the book.</div>
+    </div>
+    <div class="card" id="ex-st2-2">
+      <div class="exercise-label">Start it! · 2</div>
+      <h3>Before you watch: are friends family?</h3>
+      <p class="ru-hint" lang="ru" data-auto>Перед просмотром: друзья — это семья?</p>
+      <textarea class="free-write" id="fw-st2-2" rows="2" placeholder="I think … because …"></textarea>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 TB p. 26 · Ex 2</div>No right answer: elicit contrasting opinions if possible and help him justify his answer. (The video’s answer: “Friends are our families, too!”)</div>
+    </div>
+  </section>
+
+  <section class="step" id="st3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Student’s Book p. 10 · Video 1.1</div>
+        <h2>Watch and check</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-st3">
+      <div class="exercise-label">Start it! · 3</div>
+      <h3>Where are Laura and Andrés from? Watch and check.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Откуда Лаура и Андрес? Посмотри видео и проверь.</p>
+      <div class="video-wrap">
+        <video controls preload="metadata" playsinline>
+          <source src="video/unit1-start-it.mp4" type="video/mp4">
+          <track kind="subtitles" src="video/unit1-start-it.vtt" srclang="en" label="English">
+        </video>
+      </div>
+      <div class="sent-list">
+        <p class="gap-line">Laura and Andrés are from <input class="blank" id="st3-1" data-answer="Colombia" placeholder="country" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:160px;max-width:100%">.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-st3')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-st3')">Try again</button>
+      </div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 TB p. 26 · Ex 3</div>Key: Laura and Andrés are from <b>Colombia</b>. (They live and work on a coffee farm in the mountains.)</div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Start it! · 4</div>
+      <h3>Which is your favourite family in the video? Why?</h3>
+      <p class="ru-hint" lang="ru" data-auto>Какая семья из видео тебе нравится больше всего? Почему?</p>
+      <div class="tip class-note"><span class="tip-title">Say it</span><span class="key">My favourite family is … because …</span></div>
+      <textarea class="free-write" id="fw-st3-4" rows="2" placeholder="My favourite family is … because …"></textarea>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 TB p. 26 · Ex 4</div>Elicit different opinions and help him justify his answer. Families in the video: Laura and Andrés (coffee farm, Colombia); Ji-woo and her grandmother, a “sea woman” on Jeju Island (South Korea).</div>
+    </div>
+  </section>
+
+  <section class="step" id="st4" data-extra="x-u1-video">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Teacher’s Book p. 26 · Extra digital activity <span class="extra-badge">extra</span></div>
+        <h2>Video questions</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-st4">
+      <div class="exercise-label">Video 1.1</div>
+      <h3>Watch the video again. Choose the correct words.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Посмотри видео ещё раз. Выбери правильные слова.</p>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> Laura and Andrés live on a big <span class="word-choice" id="st4-1" data-answer="farm"><button class="word-choice-btn" onclick="selectWord(this)">farm</button><button class="word-choice-btn" onclick="selectWord(this)">beach</button></span> in the mountains.</p>
+        <p class="gap-line"><span class="num">2.</span> They grow <span class="word-choice" id="st4-2" data-answer="coffee"><button class="word-choice-btn" onclick="selectWord(this)">tea</button><button class="word-choice-btn" onclick="selectWord(this)">coffee</button></span> plants.</p>
+        <p class="gap-line"><span class="num">3.</span> Laura helps her <span class="word-choice" id="st4-3" data-answer="father"><button class="word-choice-btn" onclick="selectWord(this)">mother</button><button class="word-choice-btn" onclick="selectWord(this)">father</button></span>.</p>
+        <p class="gap-line"><span class="num">4.</span> Ji-woo is <span class="word-choice" id="st4-4" data-answer="13"><button class="word-choice-btn" onclick="selectWord(this)">13</button><button class="word-choice-btn" onclick="selectWord(this)">30</button></span> years old. She lives in Seoul, South Korea.</p>
+        <p class="gap-line"><span class="num">5.</span> Her <span class="word-choice" id="st4-5" data-answer="grandmother"><button class="word-choice-btn" onclick="selectWord(this)">sister</button><button class="word-choice-btn" onclick="selectWord(this)">grandmother</button></span> is a “sea woman” on Jeju Island.</p>
+        <p class="gap-line"><span class="num">6.</span> The sea women can stay under water for <span class="word-choice" id="st4-6" data-answer="three to four minutes"><button class="word-choice-btn" onclick="selectWord(this)">thirty seconds</button><button class="word-choice-btn" onclick="selectWord(this)">three to four minutes</button></span>!</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkWords('ex-st4')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetWords('ex-st4')">Try again</button>
+      </div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 Key (from the video script)</div>1 farm · 2 coffee · 3 father · 4 13 · 5 grandmother · 6 three to four minutes</div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<!-- ══════════ Family members: Teacher’s Book p. 27 (Student’s Book p. 11); extras: Vocabulary bank, Workbook p. 8 ══════════ -->
+<div class="lesson-part" id="part-family">
+<nav class="chips">
+  <div class="wrap">
+    <a href="#fm1">1 · Warm-up</a>
+    <a href="#fm2">2 · Beth’s family</a>
+    <a href="#fm3">3 · Boy or girl?</a>
+    <a href="#fm4">4 · My family tree</a>
+    <a href="#fm5">5 · Use it!</a>
+    <a href="#fm6">6 · Explore it!</a>
+    <a href="#fm7" data-extra="x-u1-vb">+ · Vocabulary bank</a>
+    <a href="#fm8" data-extra="x-u1-wb">+ · Workbook</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="step" id="fm1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-meta">Warm-up</div>
+        <h2>One minute: family words</h2>
+      </div>
+    </div>
+    <div class="card">
+      <h3>You have one minute. Write as many words about family as you can.</h3>
+      <p class="ru-hint" lang="ru" data-auto>У тебя одна минута. Напиши как можно больше слов на тему «семья».</p>
+      <textarea class="free-write" id="fw-fm1" rows="3" placeholder="mum, brother, …"></textarea>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 TB p. 27 · Warmer</div>In teams (here: student vs teacher): one minute to write as many words related to the topic of family as they can.</div>
+    </div>
+  </section>
+
+  <section class="step" id="fm2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-meta">Student’s Book p. 11 · Vocabulary</div>
+        <h2>Beth’s family tree</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-fm2-1">
+      <img class="pic" src="images/family/beth-family-tree.jpg" alt="Beth’s family tree: a Victor and b Amanda; c Sara, d Andy, e Lizzie, f Ryan; g Theo, Beth, h Amy, i Olga and Marina">
+      <div class="exercise-label">Exercise 1 · 1.01</div>
+      <h3>Look at Beth’s family tree. Match nine words in the box with the people a–i. Listen and check.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Посмотри на семейное древо Бет. Подбери к людям a–i девять слов из рамки. Послушай и проверь.</p>
+      <p class="word-row"><span class="key">aunt</span> <span class="key">brother</span> <span class="key">cousin</span> <span class="key">dad</span> <span class="key">daughter</span> <span class="key"><s>grandad</s></span> <span class="key">granddaughter</span> <span class="key">grandma</span> <span class="key">grandson</span> <span class="key">husband</span> <span class="key">mum</span> <span class="key">nephew</span> <span class="key">niece</span> <span class="key">sister</span> <span class="key">son</span> <span class="key">uncle</span> <span class="key">wife</span></p>
+      <div class="example-row"><span class="ex-tag">Example</span><span><span class="who"><span class="lt">a</span> Victor</span> is Beth’s <b>grandad</b>.</span></div>
+      <div class="sent-list two-col" style="--rows:4">
+        <p class="gap-line"><span class="who"><span class="lt">b</span> Amanda</span> <input class="blank" id="fm2-1b" data-answer="grandma" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line"><span class="who"><span class="lt">c</span> Sara</span> <input class="blank" id="fm2-1c" data-answer="mum" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line"><span class="who"><span class="lt">d</span> Andy</span> <input class="blank" id="fm2-1d" data-answer="dad" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line"><span class="who"><span class="lt">e</span> Lizzie</span> <input class="blank" id="fm2-1e" data-answer="aunt" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line col-top"><span class="who"><span class="lt">f</span> Ryan</span> <input class="blank" id="fm2-1f" data-answer="uncle" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line"><span class="who"><span class="lt">g</span> Theo</span> <input class="blank" id="fm2-1g" data-answer="brother" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line"><span class="who"><span class="lt">h</span> Amy</span> <input class="blank" id="fm2-1h" data-answer="sister" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line"><span class="who"><span class="lt">i</span> Olga and Marina</span> <input class="blank" id="fm2-1i" data-answer="cousin|cousins" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+      </div>
+      <div class="audio-wrap" style="margin-top:14px"><audio controls preload="metadata"><source src="audio/lesson-18-1-01.m4a" type="audio/mp4">Your browser does not support audio.</audio></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-fm2-1')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-fm2-1')">Try again</button>
+      </div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 TB p. 27 · Ex 1 · 1.01</div>Key: a grandad · b grandma · c mum · d dad · e aunt · f uncle · g brother · h sister · i cousin. After feedback, ask personalised questions: <i>What’s your aunt’s name? How many cousins have you got?</i></div>
+    </div>
+
+    <div class="card">
+      <div class="exercise-label">Listen and repeat</div>
+      <h3>Tap a word to hear it. Say it after the speaker.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Нажми на слово, чтобы услышать его. Повтори за диктором.</p>
+      <div class="legend"><span class="m">boys and men</span><span class="f">girls and women</span><span class="b">both</span></div>
+      <div class="fam-words">
+        <div class="fam-word fam-m"><button class="say" data-say="dad">dad</button><span class="ipa">/dæd/</span><small lang="ru">папа</small></div>
+        <div class="fam-word fam-f"><button class="say" data-say="mum">mum</button><span class="ipa">/mʌm/</span><small lang="ru">мама</small></div>
+        <div class="fam-word fam-m"><button class="say" data-say="brother">brother</button><span class="ipa">/ˈbrʌðə/</span><small lang="ru">брат</small></div>
+        <div class="fam-word fam-f"><button class="say" data-say="sister">sister</button><span class="ipa">/ˈsɪstə/</span><small lang="ru">сестра</small></div>
+        <div class="fam-word fam-m"><button class="say" data-say="son">son</button><span class="ipa">/sʌn/</span><small lang="ru">сын</small></div>
+        <div class="fam-word fam-f"><button class="say" data-say="daughter">daughter</button><span class="ipa">/ˈdɔːtə/</span><small lang="ru">дочь</small></div>
+        <div class="fam-word fam-m"><button class="say" data-say="husband">husband</button><span class="ipa">/ˈhʌzbənd/</span><small lang="ru">муж</small></div>
+        <div class="fam-word fam-f"><button class="say" data-say="wife">wife</button><span class="ipa">/waɪf/</span><small lang="ru">жена</small></div>
+        <div class="fam-word fam-m"><button class="say" data-say="grandad">grandad</button><span class="ipa">/ˈɡrændæd/</span><small lang="ru">дедушка</small></div>
+        <div class="fam-word fam-f"><button class="say" data-say="grandma">grandma</button><span class="ipa">/ˈɡrænmɑː/</span><small lang="ru">бабушка</small></div>
+        <div class="fam-word fam-m"><button class="say" data-say="grandson">grandson</button><span class="ipa">/ˈɡrænsʌn/</span><small lang="ru">внук</small></div>
+        <div class="fam-word fam-f"><button class="say" data-say="granddaughter">granddaughter</button><span class="ipa">/ˈɡrændɔːtə/</span><small lang="ru">внучка</small></div>
+        <div class="fam-word fam-m"><button class="say" data-say="uncle">uncle</button><span class="ipa">/ˈʌŋkəl/</span><small lang="ru">дядя</small></div>
+        <div class="fam-word fam-f"><button class="say" data-say="aunt">aunt</button><span class="ipa">/ɑːnt/</span><small lang="ru">тётя</small></div>
+        <div class="fam-word fam-m"><button class="say" data-say="nephew">nephew</button><span class="ipa">/ˈnefjuː/</span><small lang="ru">племянник</small></div>
+        <div class="fam-word fam-f"><button class="say" data-say="niece">niece</button><span class="ipa">/niːs/</span><small lang="ru">племянница</small></div>
+        <div class="fam-word fam-b"><button class="say" data-say="cousin">cousin</button><span class="ipa">/ˈkʌzən/</span><small lang="ru">двоюродный брат / сестра</small></div>
+      </div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 TB p. 27 · Learn to learn</div>Encourage him to personalise new words: he writes the name of a real person next to each word in his notebook (e.g. his father’s name next to <i>dad</i>).</div>
+    </div>
+
+    <div class="card" id="ex-fm2-2">
+      <div class="exercise-label">Exercise 2 · 1.02</div>
+      <h3>Look again at Beth’s family tree. Complete the answers with words from Exercise 1. Listen, check and repeat.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Ещё раз посмотри на семейное древо Бет. Закончи ответы словами из упражнения 1. Послушай, проверь и повтори.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>1. <span class="pair-chip">Andy + Sara</span> = husband and <b>wife</b></span></div>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">2.</span> <span class="pair-chip">Lizzie + Olga</span> = mum and <input class="blank" id="fm2-2-2" data-answer="daughter" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line"><span class="num">3.</span> <span class="pair-chip">Amanda + Theo</span> = grandma and <input class="blank" id="fm2-2-3" data-answer="grandson" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line"><span class="num">4.</span> <span class="pair-chip">Ryan + Beth</span> = <input class="blank" id="fm2-2-4a" data-answer="uncle" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;max-width:100%"> and <input class="blank" id="fm2-2-4b" data-answer="niece" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;max-width:100%"></p>
+        <p class="gap-line"><span class="num">5.</span> <span class="pair-chip">Lizzie + Theo</span> = <input class="blank" id="fm2-2-5a" data-answer="aunt" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;max-width:100%"> and <input class="blank" id="fm2-2-5b" data-answer="nephew" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;max-width:100%"></p>
+        <p class="gap-line"><span class="num">6.</span> <span class="pair-chip">Theo + Beth</span> = <input class="blank" id="fm2-2-6a" data-answer="brother" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;max-width:100%"> and <input class="blank" id="fm2-2-6b" data-answer="sister" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:130px;max-width:100%"></p>
+      </div>
+      <div class="audio-wrap" style="margin-top:14px"><audio controls preload="metadata"><source src="audio/lesson-18-1-02.m4a" type="audio/mp4">Your browser does not support audio.</audio></div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-fm2-2')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-fm2-2')">Try again</button>
+      </div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 TB p. 27 · Ex 2 · 1.02</div>Key: 2 daughter · 3 grandson · 4 uncle, niece · 5 aunt, nephew · 6 brother, sister. During feedback, elicit complete sentences, e.g. <i>Andy and Sara are husband and wife.</i></div>
+    </div>
+  </section>
+
+  <section class="step" id="fm3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-meta">Student’s Book p. 11 · Exercise 3</div>
+        <h2>Boy, girl or both?</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-fm3">
+      <div class="exercise-label">Exercise 3</div>
+      <h3>Complete the lists with the family words in Exercise 1. Drag each word into a column.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Распредели слова из упражнения 1 по спискам. Перетащи каждое слово в нужную колонку.</p>
+      <div class="sc-bank" id="sc-fm3">
+        <span class="sc-tile" data-col="f">aunt</span><span class="sc-tile" data-col="m">husband</span><span class="sc-tile" data-col="b">cousin</span><span class="sc-tile" data-col="f">niece</span><span class="sc-tile" data-col="m">dad</span><span class="sc-tile" data-col="f">granddaughter</span><span class="sc-tile" data-col="m">son</span><span class="sc-tile" data-col="f">wife</span><span class="sc-tile" data-col="m">grandad</span><span class="sc-tile" data-col="f">mum</span><span class="sc-tile" data-col="m">nephew</span><span class="sc-tile" data-col="f">daughter</span><span class="sc-tile" data-col="m">uncle</span><span class="sc-tile" data-col="f">sister</span><span class="sc-tile" data-col="f">grandma</span>
+      </div>
+      <div class="sc-cols three">
+        <div class="sc-col" data-col="m"><div class="sc-head">Male ♂</div><div class="sc-drop"><span class="sc-tile given">brother</span></div></div>
+        <div class="sc-col" data-col="f"><div class="sc-head">Female ♀</div><div class="sc-drop"></div></div>
+        <div class="sc-col" data-col="b"><div class="sc-head">Both</div><div class="sc-drop"></div></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkSort('ex-fm3')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetSort('ex-fm3')">Try again</button>
+      </div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 TB p. 27 · Ex 3</div>Key: Male: brother, dad, grandad, husband, nephew, son, uncle · Female: aunt, daughter, granddaughter, grandma, mum, niece, sister, wife · Both: cousin. Then say the words in the order of Ex 1: you read the female words, he reads the male ones, both of you say <i>cousin</i> together.</div>
+    </div>
+  </section>
+
+  <section class="step" id="fm4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-meta">Student’s Book p. 11 · Learn to learn: Making connections</div>
+        <h2>My family tree</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="tip rule"><span class="tip-title">Learn to learn: making connections</span>Think of examples from your own life to help you remember new words. <span class="key">uncle = Uncle Sasha</span></div>
+      <div class="exercise-label">Exercise 4</div>
+      <h3>Draw your family tree. Use Beth’s family tree to help you.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Нарисуй своё семейное древо. Используй древо Бет как образец.</p>
+      <p>Draw it on paper, or write it here: one person on each line.</p>
+      <p class="ru-hint" lang="ru">Нарисуй на бумаге или напиши здесь: по одному человеку на строчке.</p>
+      <textarea class="free-write" id="fw-fm4" rows="6" placeholder="Irina – my mum&#10;Sergey – my dad&#10;…"></textarea>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 TB p. 27 · Ex 4 &amp; 5</div>Give a maximum number of family members to include (e.g. 8).</div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Exercise 5 · Guessing game</div>
+      <h3>Don’t show your family tree. Take turns to say the name of a person in your family. Can your partner guess who they are?</h3>
+      <p class="ru-hint" lang="ru" data-auto>Не показывай своё древо. По очереди называйте имя человека из своей семьи. Сможет ли собеседник угадать, кто это?</p>
+      <div class="dialogue">
+        <span class="dl-name">A</span>
+        <p class="dl-text">Carlos.</p>
+        <span class="dl-name two">B</span>
+        <p class="dl-text ask">Is he your brother?</p>
+        <span class="dl-name">A</span>
+        <p class="dl-text">No, he isn’t. Try again.</p>
+      </div>
+      <div class="tip class-note"><span class="tip-title">In class: play with your teacher</span><span class="key">Is he your …?</span> <span class="key">Is she your …?</span> <span class="key">Yes, he is. / No, she isn’t.</span></div>
+    </div>
+  </section>
+
+  <section class="step" id="fm5">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-meta">Student’s Book p. 11 · Use it!</div>
+        <h2>Who am I?</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Exercise 6 · Use it!</div>
+      <h3>Imagine you are a famous person. Write sentences to describe your family. Tell your partner. Can they guess who you are?</h3>
+      <p class="ru-hint" lang="ru" data-auto>Представь, что ты знаменитость. Напиши предложения о своей семье. Расскажи собеседнику. Угадает ли он, кто ты?</p>
+      <div class="dialogue">
+        <span class="dl-name">A</span>
+        <p class="dl-text">I’m British. My brother is William. My wife is Meghan. She’s American. My children are Archie and Lilibet.</p>
+        <span class="dl-name two">B</span>
+        <p class="dl-text">Are you Prince Harry?</p>
+        <span class="dl-name">A</span>
+        <p class="dl-text">Yes, I am.</p>
+      </div>
+      <textarea class="free-write" id="fw-fm5" rows="4" placeholder="I’m … My brother is … My dad is …"></textarea>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 TB p. 27 · Ex 6</div>He can also be a character from TV, films or books, but the character must have a famous family (e.g. Harry Potter, Bart Simpson, Luke Skywalker).</div>
+    </div>
+  </section>
+
+  <section class="step" id="fm6">
+    <div class="step-head">
+      <div class="step-num">6</div>
+      <div>
+        <div class="step-meta">Student’s Book p. 11 · Explore it!</div>
+        <h2>A big family</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-fm6">
+      <div class="exercise-label">Explore it!</div>
+      <h3>Guess the correct answer.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Угадай правильный ответ.</p>
+      <p>A Canadian woman, Vera Sommerfeld, is a great-great-great grandma 🇨🇦. There are … generations of women in her family.</p>
+      <p class="ru-hint" lang="ru">great-great-great grandma = прапрапрабабушка · generation = поколение</p>
+      <div class="mc-options" data-correct="c">
+        <label class="mc-option"><input type="radio" name="mc-fm6" value="a"><span class="mc-bullet">A</span> two</label>
+        <label class="mc-option"><input type="radio" name="mc-fm6" value="b"><span class="mc-bullet">B</span> four</label>
+        <label class="mc-option"><input type="radio" name="mc-fm6" value="c"><span class="mc-bullet">C</span> six</label>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-fm6')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-fm6')">Try again</button>
+      </div>
+      <div class="exercise-label" style="margin-top:20px">Your turn</div>
+      <h3>Find an interesting family fact. Write a question for your teacher to answer.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Найди интересный факт о какой-нибудь семье. Напиши вопрос для учителя.</p>
+      <textarea class="free-write" id="fw-fm6" rows="3" placeholder="How many … ? a … b … c …"></textarea>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 TB pp. 26–27 · Explore it! / Flipped class</div>Key: <b>c six</b>. Flipped class: he finds an interesting fact about a family before the lesson and prepares a quiz question with it.</div>
+    </div>
+  </section>
+
+  <section class="step" id="fm7" data-extra="x-u1-vb">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Vocabulary bank · Unit 1 <span class="extra-badge">extra</span></div>
+        <h2>True or false?</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="exercise-label">Vocabulary bank · 1</div>
+      <h3>Write true/false sentences about the people in your family. Tell your partner. Can they guess which sentences are false?</h3>
+      <p class="ru-hint" lang="ru" data-auto>Напиши правдивые и ложные предложения о людях в своей семье. Прочитай собеседнику. Угадает ли он, какие предложения ложные?</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>My grandma is 100 years old.</span></div>
+      <textarea class="free-write" id="fw-fm7" rows="5" placeholder="1. …&#10;2. …&#10;3. …&#10;4. …&#10;5. …"></textarea>
+    </div>
+  </section>
+
+  <section class="step" id="fm8" data-extra="x-u1-wb">
+    <div class="step-head">
+      <div class="step-num plus">+</div>
+      <div>
+        <div class="step-meta">Workbook p. 8 · Homework in TB p. 27 <span class="extra-badge">extra</span></div>
+        <h2>Workbook p. 8</h2>
+      </div>
+    </div>
+    <div class="card" id="ex-wb1">
+      <div class="exercise-label hw">Workbook · Exercise 1</div>
+      <h3>Find more words for family in the word search. Tap the letters, then write the words.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Найди в сетке слова на тему «семья». Нажимай на буквы, потом запиши слова.</p>
+      <div class="ws-grid" id="ws-grid" aria-label="Word search">
+        <span>w</span><span>g</span><span>n</span><span>e</span><span>p</span><span>h</span><span>e</span><span>w</span><span>g</span><span>s</span><span>o</span><span>n</span>
+        <span>b</span><span>r</span><span>o</span><span>t</span><span>h</span><span>e</span><span>r</span><span>d</span><span>f</span><span>t</span><span>s</span><span>e</span>
+        <span>r</span><span>a</span><span>d</span><span>g</span><span>u</span><span>j</span><span>i</span><span>n</span><span>k</span><span>m</span><span>o</span><span>x</span>
+        <span>a</span><span>n</span><span>u</span><span>t</span><span>s</span><span>s</span><span>k</span><span>j</span><span>i</span><span>e</span><span>a</span><span>y</span>
+        <span>v</span><span>d</span><span>w</span><span>h</span><span>b</span><span>c</span><span>u</span><span>n</span><span>c</span><span>l</span><span>e</span><span>d</span>
+        <span>g</span><span>m</span><span>u</span><span>m</span><span>a</span><span>k</span><span>e</span><span>h</span><span>k</span><span>m</span><span>y</span><span>a</span>
+        <span>d</span><span>a</span><span>t</span><span>s</span><span>n</span><span>h</span><span>d</span><span>a</span><span>d</span><span>w</span><span>d</span><span>u</span>
+        <span>g</span><span>r</span><span>a</span><span>n</span><span>d</span><span>a</span><span>d</span><span>e</span><span>q</span><span>i</span><span>f</span><span>g</span>
+        <span>r</span><span>g</span><span>u</span><span>w</span><span>j</span><span>o</span><span>p</span><span>r</span><span>t</span><span>f</span><span>q</span><span>h</span>
+        <span>b</span><span>d</span><span>n</span><span>i</span><span>e</span><span>c</span><span>e</span><span>i</span><span>m</span><span>e</span><span>p</span><span>t</span>
+        <span>f</span><span>g</span><span>t</span><span>k</span><span>h</span><span>o</span><span>s</span><span>n</span><span>g</span><span>x</span><span>v</span><span>e</span>
+        <span>c</span><span>o</span><span>u</span><span>s</span><span>i</span><span>n</span><span>s</span><span>i</span><span>s</span><span>t</span><span>e</span><span>r</span>
+      </div>
+      <div class="example-row"><span class="ex-tag">Example</span><span><b>brother</b> (line 2)</span></div>
+      <p class="ru-hint" lang="ru">Слова идут слева направо → и сверху вниз ↓. Первая буква — подсказка.</p>
+      <div class="sent-list two-col" style="--rows:7">
+        <p class="gap-line"><span class="num">1.</span> <input class="blank" id="wb1-1" data-answer="nephew" placeholder="n…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line"><span class="num">2.</span> <input class="blank" id="wb1-2" data-answer="son" placeholder="s…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line"><span class="num">3.</span> <input class="blank" id="wb1-3" data-answer="uncle" placeholder="u…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line"><span class="num">4.</span> <input class="blank" id="wb1-4" data-answer="mum" placeholder="m…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line"><span class="num">5.</span> <input class="blank" id="wb1-5" data-answer="dad" placeholder="d…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line"><span class="num">6.</span> <input class="blank" id="wb1-6" data-answer="grandad" placeholder="g…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line"><span class="num">7.</span> <input class="blank" id="wb1-7" data-answer="niece" placeholder="n…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line col-top"><span class="num">8.</span> <input class="blank" id="wb1-8" data-answer="cousin" placeholder="c…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line"><span class="num">9.</span> <input class="blank" id="wb1-9" data-answer="sister" placeholder="s…" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line"><span class="num">10.</span> <input class="blank" id="wb1-10" data-answer="grandma" placeholder="g… ↓" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line"><span class="num">11.</span> <input class="blank" id="wb1-11" data-answer="aunt" placeholder="a… ↓" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line"><span class="num">12.</span> <input class="blank" id="wb1-12" data-answer="husband" placeholder="h… ↓" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line"><span class="num">13.</span> <input class="blank" id="wb1-13" data-answer="wife" placeholder="w… ↓" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+        <p class="gap-line"><span class="num">14.</span> <input class="blank" id="wb1-14" data-answer="daughter" placeholder="d… ↓" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:150px;max-width:100%"></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-wb1')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-wb1')">Try again</button>
+      </div>
+      <div class="teacher-only"><div class="to-label">👩‍🏫 Key</div>→ nephew, son (line 1) · uncle (5) · mum (6) · dad (7) · grandad (8) · niece (10) · cousin, sister (12). ↓ grandma (column 2) · aunt (3) · husband (5) · wife (10) · daughter (12). The book says “13 more”; the grid also hides <i>son</i>, so 14 are listed here.</div>
+    </div>
+
+    <div class="card" id="ex-match-wb2">
+      <div class="exercise-label hw">Workbook · Exercise 2</div>
+      <h3>Match 1–8 with a–h to make family word pairs.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Соедини слова 1–8 с a–h, чтобы получились пары.</p>
+      <div class="example-row"><span class="ex-tag">Example</span><span>brother ⇄ <b>sister</b></span></div>
+      <div class="match-grid match-tiles">
+        <div class="match-col" data-side="left">
+          <div class="match-item" data-pair="2" data-word="niece" onclick="selectMatch(this,'ex-match-wb2')">nephew</div>
+          <div class="match-item" data-pair="3" data-word="wife" onclick="selectMatch(this,'ex-match-wb2')">husband</div>
+          <div class="match-item" data-pair="4" data-word="grandma" onclick="selectMatch(this,'ex-match-wb2')">grandad</div>
+          <div class="match-item" data-pair="5" data-word="aunt" onclick="selectMatch(this,'ex-match-wb2')">uncle</div>
+          <div class="match-item" data-pair="6" data-word="mum" onclick="selectMatch(this,'ex-match-wb2')">dad</div>
+          <div class="match-item" data-pair="7" data-word="daughter" onclick="selectMatch(this,'ex-match-wb2')">son</div>
+          <div class="match-item" data-pair="8" data-word="granddaughter" onclick="selectMatch(this,'ex-match-wb2')">grandson</div>
+        </div>
+        <div class="match-col" data-side="right">
+          <div class="match-item" data-pair="6" onclick="selectMatch(this,'ex-match-wb2')">mum</div>
+          <div class="match-item" data-pair="3" onclick="selectMatch(this,'ex-match-wb2')">wife</div>
+          <div class="match-item" data-pair="7" onclick="selectMatch(this,'ex-match-wb2')">daughter</div>
+          <div class="match-item" data-pair="5" onclick="selectMatch(this,'ex-match-wb2')">aunt</div>
+          <div class="match-item" data-pair="4" onclick="selectMatch(this,'ex-match-wb2')">grandma</div>
+          <div class="match-item" data-pair="8" onclick="selectMatch(this,'ex-match-wb2')">granddaughter</div>
+          <div class="match-item" data-pair="2" onclick="selectMatch(this,'ex-match-wb2')">niece</div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-ghost" onclick="resetMatchEx('ex-match-wb2')">Try again</button>
+      </div>
+    </div>
+
+    <div class="card" id="ex-wb3">
+      <div class="exercise-label hw">Workbook · Exercise 3</div>
+      <h3>Which family word in Exercise 1 can be male or female?</h3>
+      <p class="ru-hint" lang="ru" data-auto>Какое слово из упражнения 1 может обозначать и мужчину, и женщину?</p>
+      <div class="sent-list">
+        <p class="gap-line"><input class="blank" id="wb3-1" data-answer="cousin" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:160px;max-width:100%"></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-wb3')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-wb3')">Try again</button>
+      </div>
+    </div>
+
+    <div class="card" id="ex-wb4">
+      <img class="pic" src="images/family/ana-family-tree.jpg" alt="Ana’s family tree: grandparents Carlos and Maria; Marta and David with Lucas and Ana; Javier and Lucía with Pedro and Julia">
+      <div class="exercise-label hw">Workbook · Exercise 4</div>
+      <h3>Look at Ana’s family tree. Complete her sentences with the correct family words.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Посмотри на семейное древо Аны. Закончи её предложения правильными словами.</p>
+      <div class="sent-list">
+        <p class="gap-line"><span class="num">1.</span> Carlos is my <span class="given">grandad</span> and María is my <input class="blank" id="wb4-1" data-answer="grandma" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;max-width:100%">.</p>
+        <p class="gap-line"><span class="num">2.</span> Marta is my <input class="blank" id="wb4-2a" data-answer="mum" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;max-width:100%"> and David is my <input class="blank" id="wb4-2b" data-answer="dad" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;max-width:100%">.</p>
+        <p class="gap-line"><span class="num">3.</span> Javier is my <input class="blank" id="wb4-3a" data-answer="uncle" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;max-width:100%"> and Lucía is my <input class="blank" id="wb4-3b" data-answer="aunt" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;max-width:100%">.</p>
+        <p class="gap-line"><span class="num">4.</span> Lucas is my <input class="blank" id="wb4-4" data-answer="brother" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;max-width:100%">.</p>
+        <p class="gap-line"><span class="num">5.</span> Pedro and Julia are my <input class="blank" id="wb4-5" data-answer="cousins" placeholder="" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:140px;max-width:100%">.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkBlanks('ex-wb4')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetBlanks('ex-wb4')">Try again</button>
+      </div>
+    </div>
+
+    <div class="card" id="ex-wb5">
+      <div class="exercise-label hw">Workbook · Exercise 5</div>
+      <h3>Choose the correct answer.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Выбери правильный ответ.</p>
+      <div class="dialogue">
+        <span class="dl-name">David</span>
+        <p class="dl-text">Hi! I’m David and my sisters are April, May and June. This is my mum.</p>
+        <span class="dl-name two">Mum</span>
+        <p class="dl-text ask">Hi! I’m a mum with four children. My daughters are April, May and June and this is my son. His name is … .</p>
+      </div>
+      <div class="mc-options" data-correct="c">
+        <label class="mc-option"><input type="radio" name="mc-wb5" value="a"><span class="mc-bullet">A</span> July</label>
+        <label class="mc-option"><input type="radio" name="mc-wb5" value="b"><span class="mc-bullet">B</span> September</label>
+        <label class="mc-option"><input type="radio" name="mc-wb5" value="c"><span class="mc-bullet">C</span> David</label>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-wb5')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-wb5')">Try again</button>
+      </div>
+    </div>
+
+    <div class="card" id="ex-wb6">
+      <div class="exercise-label hw">Workbook · Explore it!</div>
+      <h3>Guess the correct answer: … is the most popular boy’s name in the UK in the last 500 years.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Угадай: какое мужское имя самое популярное в Великобритании за последние 500 лет?</p>
+      <div class="mc-options" data-correct="b">
+        <label class="mc-option"><input type="radio" name="mc-wb6" value="a"><span class="mc-bullet">A</span> Robert</label>
+        <label class="mc-option"><input type="radio" name="mc-wb6" value="b"><span class="mc-bullet">B</span> John</label>
+        <label class="mc-option"><input type="radio" name="mc-wb6" value="c"><span class="mc-bullet">C</span> James</label>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="checkMC('ex-wb6')">Check ✓</button>
+        <button class="btn-ghost" onclick="resetMC('ex-wb6')">Try again</button>
+      </div>
+      <h3 style="margin-top:18px">Find another interesting fact about names. Write a question for your teacher.</h3>
+      <p class="ru-hint" lang="ru" data-auto>Найди ещё один интересный факт об именах. Напиши вопрос для учителя.</p>
+      <textarea class="free-write" id="fw-wb6" rows="3" placeholder="What is …? a … b … c …"></textarea>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<script src="../assets/sync.js"></script>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/matching.js"></script>
+<script src="../assets/sortcols.js"></script>
+<script src="../assets/name.js"></script>
+<script src="../assets/dictionary.js"></script>
+<script>
+  /* word search: tap letters to colour them (just a helper, not saved or scored) */
+  document.querySelectorAll('#ws-grid span').forEach(c => c.addEventListener('click', () => c.classList.toggle('on')));
+</script>
+</body>
+</html>

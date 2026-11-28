@@ -30,6 +30,7 @@ website/
     ├── lesson-15.html          ← Lesson 15: Starter review. Digraph tabs sh → ch (order from the teacher’s presentation «Диграфы часть 1», adapted for a 12-year-old; Russian line under every instruction; sentence clips slower, Kokoro speed 0.72), Student’s Book p. 4 tab (sections are extras hidden until opened), Homework = Workbook p. 4 (Ex. 1–5) + /ʃ/–/tʃ/ practice (story clips `l15-hw-story-N`)
     ├── lesson-16.html          ← Lesson 16: digraph tabs ph and ck — moved from Lesson 15; Homework = sh/ch/ph/ck practice (steps 1–6) + ordinal numbers (steps 7–12), easy → hard, existing clips only; each half ends with a celebration card (`assets/celebrate.js` + `.css`)
     ├── lesson-17.html          ← Lesson 17: digraph tabs th /θ/ (thumb), th /ð/ (father) and “All together” (gap-fill, dictation, tongue twisters `l15-twister-N`) + “Grammar: be & pronouns” (Student’s Book p. 6, always visible; from Lesson 16) + “Whose? & imperatives” (Own it! 1 Teacher’s Book p. 25 = Student’s Book p. 9; hidden extras: class rules, Grammar tutor p. 124, Workbook p. 6 Ex. 4–6) — moved from Lesson 15
+    ├── lesson-18.html          ← Lesson 18: Unit 1 “Friends and family” · Family members (Own it! 1 Teacher’s Book pp. 26–27 = Student’s Book pp. 10–11): tabs “Start it!” (Video 1.1) and “Family members” (Beth’s family tree, 1.01/1.02, sort male/female, Use it!, Explore it!); hidden extras: video questions, Vocabulary bank, Workbook p. 8
     ├── images/                 ← Put lesson images here
     ├── audio/                  ← Put lesson audio files here
     │   └── words/               ← One short clip per sound button (see "Sound buttons")
@@ -72,8 +73,10 @@ He can change it later in the "Your name" box on the home page.
    instructions, badges, answers. Update the `NUMBER` in file paths too:
    the lesson's "Go to homework" link and the homework's "Back to Lesson"
    link both need the real lesson number.
-4. **Add a card on the home page.** Open `index.html`, find the comment
-   `ADD NEW LESSON CARDS HERE`, and paste a copy of the `.lesson-card` block
+4. **Add a card on the home page.** Lessons sit in folders (`<details class="folder">`,
+   one per unit: *Starter* = Lessons 1–17, *1. Friends and family* = from Lesson 18).
+   Open `index.html`, find the comment `ADD NEW LESSON CARDS HERE` (in the newest
+   folder; update its `folder-count`), and paste a copy of the `.lesson-card` block
    right below it (at the top of the list), updating the number, topic, tags,
    date, and both `href`s (lesson and homework). Newest lesson goes first —
    each new card pushes the earlier ones down, so the list always reads

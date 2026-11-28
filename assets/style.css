@@ -1279,3 +1279,16 @@ html.watching .rec,html.watching .dict-fab{display:none}
 .two-col{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:repeat(var(--rows,6),auto);grid-auto-flow:column;gap:0 28px}
 @media(min-width:561px){.two-col .col-top{border-top-color:transparent!important}}
 @media(max-width:560px){.two-col{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-flow:row}}
+
+/* home page: lesson folders (one per unit) */
+.folder{margin-top:14px;background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+.folder > summary{list-style:none;display:flex;align-items:center;gap:12px;padding:16px 20px;cursor:pointer;font-family:var(--font-head);font-weight:700;font-size:21px;color:var(--ink);border-radius:var(--radius)}
+.folder > summary::-webkit-details-marker{display:none}
+.folder > summary::after{content:"▸";margin-left:8px;font-size:18px;color:var(--muted);transition:transform .15s}
+.folder[open] > summary::after{transform:rotate(90deg)}
+.folder > summary:hover{background:var(--blue-soft)}
+.folder-icon{font-size:26px;line-height:1}
+.folder-name{flex:1;min-width:0}
+.folder-count{font-family:var(--font-body);font-size:13px;font-weight:800;color:var(--blue-dark);background:var(--blue-soft);border-radius:999px;padding:4px 12px;white-space:nowrap}
+.folder > .lesson-list{margin:0;padding:0 14px 14px}
+.folder .lesson-card{box-shadow:none}
